@@ -11,7 +11,7 @@ module.exports = {
       max_memory_restart: "500M",
       env: {
         NODE_ENV: "production",
-        PORT: 3001,
+        PORT: 6001,
         NEXT_SERVER_ACTIONS_ENCRYPTION_KEY:
           "VS5JQq6Nsu73wVZEF4j4BFGMEzymKgD3XNZ0eL+BDCU=",
       },
