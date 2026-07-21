@@ -1,6 +1,7 @@
 import { useUser } from "@/components/UserContext";
 import { Role } from "../generated/prisma/client";
 import { useCallback, useMemo } from "react";
+import { getAccessForPath } from "./AccessUtils";
 
 export function getUserAccess(role: Role, path: string): string[] {
   try {
@@ -8,8 +9,7 @@ export function getUserAccess(role: Role, path: string): string[] {
       role.permission || "[]",
     );
 
-    const found = permissions.find((p) => p.path === path);
-    return found ? found.access : [];
+    return getAccessForPath(permissions, path);
   } catch {
     return [];
   }

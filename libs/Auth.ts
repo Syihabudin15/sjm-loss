@@ -7,6 +7,7 @@ import { IUser } from "./IInterfaces";
 // import { listMenuServer } from "@/components/IMenu";
 import prisma from "./Prisma";
 import { Role } from "../generated/prisma/client";
+import { getAccessForPath } from "./AccessUtils";
 
 const secretKey = new TextEncoder().encode(process.env.APP_KEY || "secretcode");
 const globalForCache = globalThis as unknown as {
@@ -36,11 +37,23 @@ export async function signIn(user: IUser) {
   const expires = new Date(Date.now() + 24 * 60 * 60 * 1000);
   const session = await encrypt({ user, expires });
 
-  (await cookies()).set("session", session, { expires });
+  (await cookies()).set("session", session, {
+    expires,
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+  });
 }
 
 export async function signOut() {
-  (await cookies()).set("session", "", { expires: new Date(0) });
+  (await cookies()).set("session", "", {
+    expires: new Date(0),
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+  });
 }
 export async function getSession(): Promise<JwtPayload | null> {
   const session = (await cookies()).get("session")?.value;
@@ -128,8 +141,7 @@ function getUserAccess(role: Role, path: string): string[] {
       role.permission || "[]",
     );
 
-    const found = permissions.find((p) => p.path === path);
-    return found ? found.access : [];
+    return getAccessForPath(permissions, path);
   } catch {
     return [];
   }
