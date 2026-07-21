@@ -34,7 +34,7 @@ import {
   PayCircleOutlined,
   PrinterOutlined,
 } from "@ant-design/icons";
-import {
+import type {
   Angsuran,
   ESettleStatus,
   PayOffice,

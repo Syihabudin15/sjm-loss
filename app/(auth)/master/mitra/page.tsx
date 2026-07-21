@@ -22,7 +22,10 @@ import {
   PlusCircleFilled,
   SaveOutlined,
 } from "@ant-design/icons";
-import { ProdukPembiayaan, Sumdan } from "../../../../generated/prisma/client";
+import type {
+  ProdukPembiayaan,
+  Sumdan,
+} from "../../../../generated/prisma/client";
 import {
   App,
   Button,

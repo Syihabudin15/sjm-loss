@@ -29,7 +29,7 @@ import {
   PlusCircleOutlined,
   PrinterOutlined,
 } from "@ant-design/icons";
-import {
+import type {
   EDocStatus,
   ESettleStatus,
   ESubmissionStatus,

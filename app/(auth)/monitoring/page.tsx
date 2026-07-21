@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import moment from "moment";
-import { JenisPembiayaan, Sumdan } from "../../../generated/prisma/client";
+import type { JenisPembiayaan, Sumdan } from "../../../generated/prisma/client";
 import {
   App,
   Button,

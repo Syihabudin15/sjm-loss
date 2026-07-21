@@ -20,7 +20,7 @@ import {
   FormOutlined,
   PrinterOutlined,
 } from "@ant-design/icons";
-import { EDocStatus, Sumdan } from "../../../../generated/prisma/client";
+import type { EDocStatus, Sumdan } from "../../../../generated/prisma/client";
 import {
   App,
   Button,

@@ -9,9 +9,6 @@
     "start": "next start",
     "lint": "eslint"
   },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-  },
   "dependencies": {
     "@ant-design/icons": "^6.1.0",
     "@azure/storage-blob": "^12.29.1",

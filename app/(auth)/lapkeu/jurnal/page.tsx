@@ -17,7 +17,7 @@ import {
   PlusCircleOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-import {
+import type {
   CategoryOfAccount,
   JournalEntry,
   User,

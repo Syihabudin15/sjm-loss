@@ -11,8 +11,8 @@ import {
   PlusCircleFilled,
   SaveOutlined,
 } from "@ant-design/icons";
-import { Cabang } from "../../../../generated/prisma/client";
-import { App, Button, Card, Input, Modal, Table, TableProps, Tag } from "antd";
+import type { Cabang } from "../../../../generated/prisma/client";
+import { App, Button, Card, Input, Modal, Table, TableProps } from "antd";
 import { HookAPI } from "antd/es/modal/useModal";
 import moment from "moment";
 import { useEffect, useState } from "react";

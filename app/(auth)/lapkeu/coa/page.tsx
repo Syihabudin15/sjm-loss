@@ -14,7 +14,7 @@ import {
   PlusCircleOutlined,
   SnippetsOutlined,
 } from "@ant-design/icons";
-import {
+import type {
   AccountType,
   CategoryOfAccount,
 } from "../../../../generated/prisma/client";

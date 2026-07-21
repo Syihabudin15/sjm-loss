@@ -35,7 +35,7 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import {
+import type {
   Berkas,
   Debitur,
   Dropping,

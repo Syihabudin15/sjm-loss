@@ -25,7 +25,7 @@ import {
   PrinterOutlined,
   TransactionOutlined,
 } from "@ant-design/icons";
-import { Sumdan } from "../../../../generated/prisma/client";
+import type { Sumdan } from "../../../../generated/prisma/client";
 import {
   App,
   Button,

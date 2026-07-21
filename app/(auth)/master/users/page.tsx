@@ -18,7 +18,7 @@ import {
   SaveOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import {
+import type {
   AgentFronting,
   Cabang,
   Role,

@@ -2,7 +2,7 @@
 
 import { useMemo, useEffect, useState, useCallback, useId } from "react";
 import moment from "moment";
-import {
+import type {
   EDapemStatus,
   JenisPembiayaan,
   Sumdan,

@@ -22,7 +22,7 @@ import {
   PrinterOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import {
+import type {
   Debitur,
   JenisPembiayaan,
   ProdukPembiayaan,

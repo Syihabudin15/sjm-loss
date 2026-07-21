@@ -14,7 +14,7 @@ import {
   PrinterOutlined,
   RobotOutlined,
 } from "@ant-design/icons";
-import { Sumdan } from "../../../../generated/prisma/client";
+import type { Sumdan } from "../../../../generated/prisma/client";
 import { App, Button, Card, Modal, Table, TableProps } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
