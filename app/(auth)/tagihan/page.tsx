@@ -34,7 +34,12 @@ import {
   PayCircleOutlined,
   PrinterOutlined,
 } from "@ant-design/icons";
-import { Angsuran, ESettleStatus, PayOffice, Sumdan } from "@prisma/client";
+import {
+  Angsuran,
+  ESettleStatus,
+  PayOffice,
+  Sumdan,
+} from "../../../generated/prisma/client";
 import {
   App,
   Button,

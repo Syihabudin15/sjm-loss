@@ -5,13 +5,12 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["relationJoins"]
+  provider = "prisma-client"
+  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
 }
 
 enum EDataStatus {
@@ -63,26 +62,6 @@ enum ESettleStatus {
   JATUHTEMPO
 }
 
-model AppConfig {
-  id              String  @id @default(uuid())
-  name            String?
-  brand           String?
-  phone           String?
-  email           String?
-  legal_address   String?
-  ops_address     String?
-  pk_ttd_name     String?
-  pk_ttd_position String?
-  si_ttd_name     String?
-  si_ttd_position String?
-  sd_ttd_name     String?
-  sd_ttd_position String?
-  sg_ttd_name     String?
-  sg_ttd_position String?
-
-  updated_at DateTime @updatedAt
-}
-
 model Role {
   id          String      @id @default(uuid())
   name        String      @unique
@@ -113,24 +92,16 @@ model Sumdan {
   c_adm_sumdan     Float
   c_account_sumdan Int
   c_provisi_sumdan Float   @default(0)
-  rounded_sumdan   Int     @default(1)
 
   c_adm         Float
-  c_adm_mitra   Float
-  c_adm_ff      Float
-  c_fee_ao      Float     @default(0)
-  c_fee_cabang  Float     @default(0)
-  c_fee_area    Float     @default(0)
-  c_fee_bpp     Float     @default(0)
-  c_fee_bpb     Float     @default(0)
-  c_account     Int       @default(0)
+  c_provisi     Float     @default(0)
   c_gov         Int
   c_stamps      Int
   c_flagging    Int
   c_information Int
   c_ned         Int       @default(0)
-  c_bop_area    Float     @default(0)
-  max_bop       Int
+  fee_banpot    Float     @default(0)
+  max_bpp       Int
   rounded       Int       @default(1)
   dsr           Float
   contract_no   String?
@@ -157,13 +128,12 @@ model Sumdan {
 }
 
 model Area {
-  id         String     @id @default(uuid())
+  id         String   @id @default(uuid())
   name       String
-  status     Boolean    @default(true)
-  created_at DateTime   @default(now())
-  updated_at DateTime   @default(now())
+  status     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
   Cabangs    Cabang[]
-  HeadAreas  HeadArea[]
 
   @@index([name])
 }
@@ -175,12 +145,11 @@ model Cabang {
   phone   String?
   Area    Area    @relation(fields: [areaId], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
-  status      Boolean      @default(true)
-  created_at  DateTime     @default(now())
-  updated_at  DateTime     @default(now())
-  areaId      String
-  Users       User[]
-  HeadCabangs HeadCabang[]
+  status     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  areaId     String
+  Users      User[]
 
   @@index([name])
 }
@@ -216,8 +185,6 @@ model User {
   sumdanId        String?
   JournalDetails  JournalDetail[]
   agentFrontingId String?
-  HeadAreas       HeadArea[]
-  HeadCabangs     HeadCabang[]
 
   @@index([nip])
   @@index([fullname])
@@ -225,30 +192,6 @@ model User {
   @@index([phone])
   @@index([end_pkwt])
   @@index([pkwt_status])
-}
-
-model HeadArea {
-  id String @id @default(uuid())
-
-  status     Boolean  @default(true)
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  User       User     @relation(fields: [userId], references: [id])
-  Area       Area     @relation(fields: [areaId], references: [id])
-  userId     String
-  areaId     String
-}
-
-model HeadCabang {
-  id String @id @default(uuid())
-
-  status     Boolean  @default(true)
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  User       User     @relation(fields: [userId], references: [id])
-  Cabang     Cabang   @relation(fields: [cabangId], references: [id])
-  userId     String
-  cabangId   String
 }
 
 model ProdukPembiayaan {
@@ -334,6 +277,7 @@ model Debitur {
   @@index([city])
   @@index([district])
   @@index([ward])
+  @@index([pos_code])
 }
 
 model Dapem {
@@ -347,34 +291,25 @@ model Dapem {
 
   c_margin       Float
   c_adm          Float
-  c_adm_mitra    Float
-  c_adm_ff       Float
   c_insurance    Float
+  c_provisi      Float
   c_gov          Int
   c_stamp        Int
-  c_account      Int
   c_flagging     Int
   c_infomation   Int
   c_mutasi       Int
   c_blokir       Int
-  c_fee_ao       Float       @default(0)
-  c_fee_cabang   Float       @default(0)
-  c_fee_area     Float       @default(0)
-  c_fee_bpp      Float       @default(0)
-  c_fee_bpb      Float       @default(0)
+  c_fee_bpp      Int         @default(0)
   c_fee_fronting Float       @default(0)
   c_ned          Int         @default(0)
+  fee_banpot     Float       @default(0)
   c_takeover     Int
-  c_bop          Int
-  c_bop_area     Float       @default(0)
   tbo            Int
   rounded        Int
-  rounded_sumdan Int         @default(0)
   margin_type    EMarginType
 
-  prev_payoffice String?
-  takeover_from  String?
-  takeover_date  DateTime?
+  takeover_from String?
+  takeover_date DateTime?
 
   dom_status  Boolean
   address     String
@@ -405,34 +340,30 @@ model Dapem {
   f_phone   String?
   f_address String?
 
-  dropping_status      EDapemStatus       @default(DRAFT)
-  verif_status         ESubmissionStatus?
-  verif_desc           String?            @db.Text
-  slik_status          ESubmissionStatus?
-  slik_desc            String?            @db.Text
-  approv_status        ESubmissionStatus?
-  approv_desc          String?            @db.Text
-  takeover_status      EDapemStatus       @default(DRAFT)
-  takeover_desc        String?            @db.Text
-  takeover_date_exc    DateTime?
-  mutasi_status        EDapemStatus       @default(DRAFT)
-  mutasi_desc          String?            @db.Text
-  mutasi_date_exc      DateTime?
-  flagging_status      EDapemStatus       @default(DRAFT)
-  flagging_desc        String?            @db.Text
-  flagging_date_exc    DateTime?
-  cash_status          EDapemStatus       @default(DRAFT)
-  cash_desc            String?            @db.Text
-  document_status      EDocStatus         @default(UNIT)
-  document_desc        String?            @db.Text
-  guarantee_status     EDocStatus         @default(UNIT)
-  guarantee_desc       String?            @db.Text
-  ao_fee_status        EDapemStatus       @default(DRAFT)
-  ao_fee_desc          String?            @db.Text
-  ao_cabang_fee_status EDapemStatus       @default(DRAFT)
-  ao_cabang_fee_desc   String?            @db.Text
-  ao_area_fee_status   EDapemStatus       @default(DRAFT)
-  ao_area_fee_desc     String?            @db.Text
+  dropping_status   EDapemStatus       @default(DRAFT)
+  verif_status      ESubmissionStatus?
+  verif_desc        String?            @db.Text
+  slik_status       ESubmissionStatus?
+  slik_desc         String?            @db.Text
+  approv_status     ESubmissionStatus?
+  approv_desc       String?            @db.Text
+  takeover_status   EDapemStatus       @default(DRAFT)
+  takeover_desc     String?            @db.Text
+  takeover_date_exc DateTime?
+  mutasi_status     EDapemStatus       @default(DRAFT)
+  mutasi_desc       String?            @db.Text
+  mutasi_date_exc   DateTime?
+  flagging_status   EDapemStatus       @default(DRAFT)
+  flagging_desc     String?            @db.Text
+  flagging_date_exc DateTime?
+  cash_status       EDapemStatus       @default(DRAFT)
+  cash_desc         String?            @db.Text
+  document_status   EDocStatus         @default(UNIT)
+  document_desc     String?            @db.Text
+  guarantee_status  EDocStatus         @default(UNIT)
+  guarantee_desc    String?            @db.Text
+  ao_fee_status     EDapemStatus       @default(DRAFT)
+  ao_fee_desc       String?            @db.Text
 
   used_for      String
   no_contract   String
@@ -466,6 +397,8 @@ model Dapem {
   Jaminan          Jaminan?         @relation(fields: [jaminanId], references: [id], onUpdate: Cascade)
   AgentFronting    AgentFronting?   @relation(fields: [agentFrontingId], references: [id], onUpdate: Cascade)
   User             User             @relation(fields: [userId], references: [id])
+  PrevPayOffice    PayOffice?       @relation("PrevPayOffice", fields: [prevPayOfficeId], references: [id])
+  prevPayOfficeId  String?
 
   nopen              String
   produkPembiayaanId String
@@ -529,12 +462,14 @@ model PayOffice {
   file          String?   @db.Text
   pic           String?
   logo          String?
+  mitra         Boolean   @default(false)
 
-  status     Boolean   @default(true)
-  created_at DateTime  @default(now())
-  updated_at DateTime  @default(now())
-  Dapems     Dapem[]
-  Debiturs   Debitur[]
+  status         Boolean   @default(true)
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @default(now())
+  Dapems         Dapem[]
+  PrevPayOffices Dapem[]   @relation("PrevPayOffice")
+  Debiturs       Debitur[]
 
   @@index([name])
   @@index([code])

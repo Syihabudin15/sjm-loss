@@ -20,7 +20,7 @@ import {
   PlusCircleFilled,
   SaveOutlined,
 } from "@ant-design/icons";
-import { Sumdan } from "@prisma/client";
+import { Sumdan } from "../../../../generated/prisma/client";
 import {
   App,
   Button,

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${process.env.NEXT_PUBLIC_APP_SHORTNAME || "SIPP"}`,
+  title: `${process.env.NEXT_PUBLIC_APP_SHORTNAME || "LOSS SISTEM"}`,
   description:
     "Sistem informasi Pembiayaab Pensiun By Koperasi Jasa Sena Jaya Mandiri (KOPJAS SJM)",
 };

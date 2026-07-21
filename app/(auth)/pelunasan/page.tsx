@@ -34,7 +34,7 @@ import {
   ESettleStatus,
   ESubmissionStatus,
   Sumdan,
-} from "@prisma/client";
+} from "../../../generated/prisma/client";
 import {
   App,
   Button,
@@ -1003,7 +1003,7 @@ const ProsesData = ({
         data.Dapem.tenor,
         data.Dapem.c_margin_sumdan,
         data.Dapem.margin_type,
-        data.Dapem.rounded_sumdan,
+        data.Dapem.rounded,
       ).angsuran;
       setData((prev) => ({ ...prev, amount: nom, penalty: nom * (5 / 100) }));
       setTemp((prev) => ({

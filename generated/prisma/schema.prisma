@@ -1,0 +1,661 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum EDataStatus {
+  USER
+  CABANG
+  AREA
+  SEMUA
+}
+
+enum EDapemStatus {
+  DRAFT
+  BATAL
+  PENDING
+  PROSES
+  DISETUJUI
+  DITOLAK
+  LUNAS
+}
+
+enum ESubmissionStatus {
+  PENDING
+  DISETUJUI
+  DITOLAK
+}
+
+enum EMarginType {
+  FLAT
+  ANUITAS
+}
+
+enum EMarriageStatus {
+  KAWIN
+  BELUM_KAWIN
+  JANDA
+  DUDA
+}
+
+enum EDocStatus {
+  UNIT
+  DELIVERY
+  PUSAT
+  MITRA
+}
+
+enum ESettleStatus {
+  MENINGGAL
+  TOPUP
+  LEPAS
+  JATUHTEMPO
+}
+
+model Role {
+  id          String      @id @default(uuid())
+  name        String      @unique
+  data_status EDataStatus @default(SEMUA)
+  permission  String      @db.Text
+
+  status     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  Users      User[]
+
+  @@index([name])
+  @@index([data_status])
+}
+
+model Sumdan {
+  id               String  @id @default(uuid())
+  name             String
+  code             String
+  description      String? @db.Text
+  logo             String?
+  address          String? @db.Text
+  phone            String?
+  email            String?
+  tbo              Int     @default(3)
+  limit            BigInt  @default(0)
+  c_margin         Float
+  c_adm_sumdan     Float
+  c_account_sumdan Int
+  c_provisi_sumdan Float   @default(0)
+  rounded_sumdan   Int     @default(1)
+
+  c_adm         Float
+  c_fee_bpp     Float     @default(0)
+  c_gov         Int
+  c_stamps      Int
+  c_flagging    Int
+  c_information Int
+  c_ned         Int       @default(0)
+  fee_banpot    Float     @default(0)
+  max_bpp       Int
+  rounded       Int       @default(1)
+  dsr           Float
+  contract_no   String?
+  contract_no2  String?
+  contract_date DateTime?
+  sk_no         String?
+  sk_date       DateTime?
+  pic           String?
+  file          String?   @db.Text
+  sk_akad       String?   @db.Text
+
+  status               Boolean               @default(true)
+  created_at           DateTime              @default(now())
+  updated_at           DateTime              @default(now())
+  Users                User[]
+  ProdukPembiayaans    ProdukPembiayaan[]
+  Droppings            Dropping[]
+  Berkass              Berkas[]
+  Jaminans             Jaminan[]
+  SumdanAgentFrontings SumdanAgentFronting[]
+
+  @@index([name])
+  @@index([code])
+}
+
+model Area {
+  id         String   @id @default(uuid())
+  name       String
+  status     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  Cabangs    Cabang[]
+
+  @@index([name])
+}
+
+model Cabang {
+  id      String  @id @default(uuid())
+  name    String
+  address String? @db.Text
+  phone   String?
+  Area    Area    @relation(fields: [areaId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  status     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  areaId     String
+  Users      User[]
+
+  @@index([name])
+}
+
+model User {
+  id          String    @id @default(uuid())
+  nip         String?
+  fullname    String
+  username    String    @unique
+  password    String
+  email       String?
+  phone       String?
+  target      Int       @default(0)
+  position    String?
+  pkwt_status String?
+  start_pkwt  DateTime?
+  end_pkwt    DateTime?
+  nik         String?
+
+  status          Boolean         @default(true)
+  created_at      DateTime        @default(now())
+  updated_at      DateTime        @default(now())
+  Role            Role            @relation(fields: [roleId], references: [id], onUpdate: Cascade)
+  Cabang          Cabang          @relation(fields: [cabangId], references: [id], onUpdate: Cascade)
+  Sumdan          Sumdan?         @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
+  AgentFronting   AgentFronting?  @relation(fields: [agentFrontingId], references: [id], onUpdate: Cascade)
+  AOs             Dapem[]         @relation("AO")
+  AOCabangs       Dapem[]         @relation("AOCabang")
+  AOAreas         Dapem[]         @relation("AOArea")
+  Dapems          Dapem[]
+  roleId          String
+  cabangId        String
+  sumdanId        String?
+  JournalDetails  JournalDetail[]
+  agentFrontingId String?
+
+  @@index([nip])
+  @@index([fullname])
+  @@index([email])
+  @@index([phone])
+  @@index([end_pkwt])
+  @@index([pkwt_status])
+}
+
+model ProdukPembiayaan {
+  id          String      @id @default(uuid())
+  name        String
+  c_margin    Float
+  c_insurance Float
+  max_tenor   Int
+  max_plafond Int
+  min_age     Int
+  max_age     Int
+  max_paid    Int
+  margin_type EMarginType
+
+  status     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  Sumdan     Sumdan   @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
+  sumdanId   String
+  Dapems     Dapem[]
+
+  @@index([name])
+}
+
+model JenisPembiayaan {
+  id       String @id
+  name     String
+  c_blokir Int
+  c_mutasi Int    @default(0)
+
+  status_takeover Boolean  @default(false)
+  status_mutasi   Boolean  @default(false)
+  status          Boolean  @default(true)
+  created_at      DateTime @default(now())
+  updated_at      DateTime @default(now())
+  Dapems          Dapem[]
+
+  @@index([name])
+}
+
+model Debitur {
+  nopen      String   @unique
+  salary     Int
+  fullname   String
+  nik        String?
+  birthdate  DateTime
+  birthplace String?
+  religion   String?
+  address    String
+  ward       String?
+  district   String?
+  city       String?
+  province   String?
+  pos_code   String?
+  npwp       String?
+  phone      String?
+  education  String?
+  gender     String?
+
+  no_skep        String?
+  name_skep      String?
+  date_skep      DateTime?
+  tmt_skep       DateTime?
+  rank_skep      String?
+  publisher_skep String?
+  group_skep     String?
+  soul_code      Int?
+  job_year       Int?
+
+  mother_name    String?
+  account_name   String?
+  account_number String?
+  Dapems         Dapem[]
+  PayOffice      PayOffice? @relation(fields: [payOfficeId], references: [id])
+  payOfficeId    String?
+
+  @@index([fullname])
+  @@index([nik])
+  @@index([name_skep])
+  @@index([no_skep])
+  @@index([account_number])
+  @@index([province])
+  @@index([city])
+  @@index([district])
+  @@index([ward])
+  @@index([pos_code])
+}
+
+model Dapem {
+  id               String @id @default(uuid())
+  tenor            Int
+  plafond          Int
+  c_margin_sumdan  Float
+  c_account_sumdan Int
+  c_adm_sumdan     Float
+  c_provisi_sumdan Float  @default(0)
+
+  c_margin       Float
+  c_adm          Float
+  c_insurance    Float
+  c_gov          Int
+  c_stamp        Int
+  c_account      Int
+  c_flagging     Int
+  c_infomation   Int
+  c_mutasi       Int
+  c_blokir       Int
+  c_fee_bpp      Float       @default(0)
+  c_fee_fronting Float       @default(0)
+  c_ned          Int         @default(0)
+  fee_banpot     Float       @default(0)
+  c_takeover     Int
+  tbo            Int
+  rounded        Int
+  rounded_sumdan Int         @default(0)
+  margin_type    EMarginType
+
+  prev_payoffice String?
+  takeover_from  String?
+  takeover_date  DateTime?
+
+  dom_status  Boolean
+  address     String
+  ward        String
+  district    String
+  city        String
+  province    String?
+  pos_code    String?
+  geolocation String?
+
+  house_status    String?
+  house_year      String?
+  job             String?
+  job_address     String?
+  business        String?
+  marriage_status EMarriageStatus @default(BELUM_KAWIN)
+  aw_name         String?
+  aw_nik          String?
+  aw_birthdate    DateTime?
+  aw_birthplace   String?
+  aw_job          String?
+  aw_address      String?
+  aw_relate       String?
+  aw_phone        String?
+
+  f_name    String?
+  f_relate  String?
+  f_phone   String?
+  f_address String?
+
+  dropping_status   EDapemStatus       @default(DRAFT)
+  verif_status      ESubmissionStatus?
+  verif_desc        String?            @db.Text
+  slik_status       ESubmissionStatus?
+  slik_desc         String?            @db.Text
+  approv_status     ESubmissionStatus?
+  approv_desc       String?            @db.Text
+  takeover_status   EDapemStatus       @default(DRAFT)
+  takeover_desc     String?            @db.Text
+  takeover_date_exc DateTime?
+  mutasi_status     EDapemStatus       @default(DRAFT)
+  mutasi_desc       String?            @db.Text
+  mutasi_date_exc   DateTime?
+  flagging_status   EDapemStatus       @default(DRAFT)
+  flagging_desc     String?            @db.Text
+  flagging_date_exc DateTime?
+  cash_status       EDapemStatus       @default(DRAFT)
+  cash_desc         String?            @db.Text
+  document_status   EDocStatus         @default(UNIT)
+  document_desc     String?            @db.Text
+  guarantee_status  EDocStatus         @default(UNIT)
+  guarantee_desc    String?            @db.Text
+  ao_fee_status     EDapemStatus       @default(DRAFT)
+  ao_fee_desc       String?            @db.Text
+
+  used_for      String
+  no_contract   String
+  date_contract DateTime?
+  date_end      DateTime?
+  tbo_date      DateTime?
+
+  file_slik       String?
+  file_proses     String?
+  file_submission String?
+  video_interview String?
+  video_insurance String?
+  video_contract  String?
+  file_contract   String?
+  file_takeover   String?
+  file_mutasi     String?
+  file_flagging   String?
+  file_skep       String?
+
+  status           Boolean          @default(true)
+  created_at       DateTime         @default(now())
+  updated_at       DateTime         @default(now())
+  Debitur          Debitur          @relation(fields: [nopen], references: [nopen], onUpdate: Cascade)
+  ProdukPembiayaan ProdukPembiayaan @relation(fields: [produkPembiayaanId], references: [id], onUpdate: Cascade)
+  JenisPembiayaan  JenisPembiayaan  @relation(fields: [jenisPembiayaanId], references: [id], onUpdate: Cascade)
+  AO               User?            @relation("AO", fields: [aoId], references: [id], onUpdate: Cascade)
+  AOCabang         User?            @relation("AOCabang", fields: [aoCabangId], references: [id], onUpdate: Cascade)
+  AOArea           User?            @relation("AOArea", fields: [aoAreaId], references: [id], onUpdate: Cascade)
+  Dropping         Dropping?        @relation(fields: [droppingId], references: [id], onUpdate: Cascade)
+  Berkas           Berkas?          @relation(fields: [berkasId], references: [id], onUpdate: Cascade)
+  Jaminan          Jaminan?         @relation(fields: [jaminanId], references: [id], onUpdate: Cascade)
+  AgentFronting    AgentFronting?   @relation(fields: [agentFrontingId], references: [id], onUpdate: Cascade)
+  User             User             @relation(fields: [userId], references: [id])
+
+  nopen              String
+  produkPembiayaanId String
+  jenisPembiayaanId  String
+  aoId               String?
+  aoCabangId         String?
+  aoAreaId           String?
+  droppingId         String?
+  berkasId           String?
+  jaminanId          String?
+  Angsurans          Angsuran[]
+  Pelunasan          Pelunasan?
+  agentFrontingId    String?
+  PayOffice          PayOffice?   @relation(fields: [payOfficeId], references: [id])
+  payOfficeId        String?
+  Insurance          Insurance?   @relation(fields: [insuranceId], references: [id])
+  insuranceId        String?
+  Aianalyses         AIAnalysis[]
+  userId             String
+
+  @@index([dropping_status])
+  @@index([document_status])
+  @@index([guarantee_status])
+  @@index([slik_status])
+  @@index([verif_status])
+  @@index([approv_status])
+  @@index([created_at])
+  @@index([takeover_date])
+  @@index([takeover_status])
+  @@index([mutasi_status])
+  @@index([flagging_status])
+  @@index([cash_status])
+  @@index([tbo_date])
+  @@index([no_contract])
+  @@index([date_contract])
+  @@index([date_end])
+}
+
+model AIAnalysis {
+  id                String @id @default(uuid())
+  submission_data   String @db.Text
+  slik_data         String @db.Text
+  verif_summary     String @db.Text
+  slik_summary      String @db.Text
+  interview_summary String @db.Text
+  insurance_summary String @db.Text
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  Dapem      Dapem    @relation(fields: [dapemId], references: [id])
+  dapemId    String
+}
+
+model PayOffice {
+  id            String    @id @default(uuid())
+  name          String
+  code          String?
+  description   String?
+  no_contract   String?
+  date_contract DateTime?
+  file          String?   @db.Text
+  pic           String?
+  logo          String?
+
+  status     Boolean   @default(true)
+  created_at DateTime  @default(now())
+  updated_at DateTime  @default(now())
+  Dapems     Dapem[]
+  Debiturs   Debitur[]
+
+  @@index([name])
+  @@index([code])
+}
+
+model Insurance {
+  id            String    @id @default(uuid())
+  name          String
+  code          String?
+  description   String?
+  no_contract   String?
+  date_contract DateTime?
+  file          String?   @db.Text
+  pic           String?
+  logo          String?
+
+  status     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  Dapems     Dapem[]
+
+  @@index([name])
+  @@index([code])
+}
+
+model Dropping {
+  id         String    @id @default(uuid())
+  file_sub   String?
+  file_proof String?   @db.Text
+  status     Boolean
+  process_at DateTime?
+  created_at DateTime
+  Dapems     Dapem[]
+  Sumdan     Sumdan    @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
+  sumdanId   String
+
+  @@index([process_at])
+  @@index([created_at])
+  @@index([status])
+}
+
+model Berkas {
+  id         String     @id @default(uuid())
+  file_sub   String?
+  file_proof String?
+  status     EDocStatus
+  process_at DateTime?
+  created_at DateTime
+  Dapems     Dapem[]
+  Sumdan     Sumdan     @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
+  sumdanId   String
+
+  @@index([process_at])
+  @@index([created_at])
+  @@index([status])
+}
+
+model Jaminan {
+  id         String     @id @default(uuid())
+  file_sub   String?
+  file_proof String?
+  status     EDocStatus
+  process_at DateTime?
+  created_at DateTime
+  Dapems     Dapem[]
+  Sumdan     Sumdan     @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
+  sumdanId   String
+
+  @@index([process_at])
+  @@index([created_at])
+  @@index([status])
+}
+
+model Pelunasan {
+  id               String        @id @default(uuid())
+  amount           Int
+  amount_sumdan    Int
+  desc_sumdan      String?       @db.Text
+  penalty          Int
+  desc             String?       @db.Text
+  file_sub         String?
+  guarantee_status EDocStatus    @default(MITRA)
+  type             ESettleStatus
+  Dapem            Dapem         @relation(fields: [dapemId], references: [id], onUpdate: Cascade)
+
+  status_paid ESubmissionStatus @default(PENDING)
+  process_at  DateTime?
+  created_at  DateTime
+  dapemId     String            @unique
+
+  @@index([type])
+  @@index([guarantee_status])
+  @@index([status_paid])
+  @@index([process_at])
+  @@index([created_at])
+}
+
+model Angsuran {
+  id          String    @id @default(uuid())
+  counter     Int
+  principal   Int
+  margin      Int
+  date_pay    DateTime
+  date_paid   DateTime?
+  remaining   Int
+  inst_sumdan Int       @default(0)
+  fee_banpot  Int       @default(0)
+  c_ned       Int       @default(0)
+  Dapem       Dapem     @relation(fields: [dapemId], references: [id], onUpdate: Cascade)
+  dapemId     String
+
+  @@index([date_pay])
+}
+
+// AKUNTING
+enum AccountType {
+  ASSET
+  KEWAJIBAN
+  MODAL
+  PENDAPATAN
+  BEBAN
+}
+
+model CategoryOfAccount {
+  id             String              @id @default(uuid())
+  name           String
+  type           AccountType
+  status         Boolean             @default(true)
+  parentId       String?
+  Parent         CategoryOfAccount?  @relation("AccountHierarchy", fields: [parentId], references: [id], onUpdate: Cascade)
+  Childrens      CategoryOfAccount[] @relation("AccountHierarchy")
+  JournalDetails JournalDetail[]
+
+  @@index([name])
+  @@index([type])
+}
+
+model JournalEntry {
+  id   String   @id @default(uuid())
+  date DateTime
+
+  JournalDetails JournalDetail[]
+
+  @@index([date])
+}
+
+model JournalDetail {
+  id         String  @id @default(uuid())
+  debit      Int     @default(0)
+  credit     Int     @default(0)
+  desciption String?
+
+  JournalEntry        JournalEntry      @relation(fields: [journalEntryId], references: [id], onUpdate: Cascade)
+  CategoryOfAccount   CategoryOfAccount @relation(fields: [categoryOfAccountId], references: [id], onUpdate: Cascade)
+  User                User?             @relation(fields: [userId], references: [id], onUpdate: Cascade)
+  journalEntryId      String
+  categoryOfAccountId String
+  userId              String?
+}
+
+model AgentFronting {
+  id            String    @id @default(uuid())
+  name          String
+  code          String?
+  description   String?
+  file          String?   @db.Text
+  contract_no   String?
+  contract_date DateTime?
+  pic           String?
+  target        Int       @default(0)
+  c_fee         Float     @default(0)
+
+  status               Boolean               @default(true)
+  created_at           DateTime              @default(now())
+  updated_at           DateTime              @default(now())
+  SumdanAgentFrontings SumdanAgentFronting[]
+  Users                User[]
+  Dapems               Dapem[]
+
+  @@index([name])
+  @@index([code])
+}
+
+model SumdanAgentFronting {
+  id              String        @id @default(uuid())
+  Sumdan          Sumdan        @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
+  sumdanId        String
+  AgentFronting   AgentFronting @relation(fields: [agentFrontingId], references: [id], onUpdate: Cascade)
+  agentFrontingId String
+}

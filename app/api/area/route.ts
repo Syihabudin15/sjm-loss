@@ -2,7 +2,7 @@ import { getSession } from "@/libs/Auth";
 import { IArea } from "@/libs/IInterfaces";
 import prisma from "@/libs/Prisma";
 
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {
@@ -25,7 +25,6 @@ export const GET = async (request: NextRequest) => {
       OR: [
         { name: { contains: search } },
         { Cabangs: { some: { name: { contains: search } } } },
-        { HeadAreas: { some: { User: { fullname: { contains: search } } } } },
       ],
     }),
     ...(user.Role.data_status === "AREA" && { id: user.Cabang.areaId }),
@@ -55,7 +54,6 @@ export const GET = async (request: NextRequest) => {
             status: true,
           },
         },
-        HeadAreas: true,
       },
     }),
     prisma.area.count({ where }),
@@ -70,7 +68,7 @@ export const GET = async (request: NextRequest) => {
 
 export const POST = async (request: NextRequest) => {
   const body: IArea = await request.json();
-  const { id, HeadAreas, Cabangs, ...saved } = body;
+  const { id, Cabangs, ...saved } = body;
   try {
     const generateId = await generateAreaId();
     await Promise.all([
@@ -98,7 +96,7 @@ export const POST = async (request: NextRequest) => {
 
 export const PUT = async (request: NextRequest) => {
   const body: IArea = await request.json();
-  const { id, Cabangs, HeadAreas, ...updated } = body;
+  const { id, Cabangs, ...updated } = body;
   try {
     await Promise.all([
       prisma.area.update({

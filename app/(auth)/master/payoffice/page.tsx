@@ -10,7 +10,16 @@ import {
   SaveOutlined,
   TagOutlined,
 } from "@ant-design/icons";
-import { App, Button, Card, Input, Modal, Table, TableProps } from "antd";
+import {
+  App,
+  Button,
+  Card,
+  Input,
+  Modal,
+  Select,
+  Table,
+  TableProps,
+} from "antd";
 import { HookAPI } from "antd/es/modal/useModal";
 import moment from "moment";
 import { useEffect, useState } from "react";
@@ -28,6 +37,7 @@ export default function Page() {
     total: 0,
     data: [],
     search: "",
+    mitra: undefined,
   });
   const [loading, setLoading] = useState(false);
   const { modal } = App.useApp();
@@ -39,6 +49,7 @@ export default function Page() {
       page: pageProps.page.toString(),
       limit: pageProps.limit.toString(),
       ...(pageProps.search && { search: pageProps.search }),
+      ...(pageProps.mitra && { mitra: pageProps.mitra }),
     });
 
     const res = await fetch(`/api/payoffice?${params.toString()}`);
@@ -82,6 +93,22 @@ export default function Page() {
           <div>
             <div>{record.name}</div>
             <div className="text-xs opacity-70">@{record.code}</div>
+          </div>
+        );
+      },
+    },
+    {
+      title: "Status Mitra",
+      dataIndex: "mitra",
+      key: "mitra",
+      render(value, record, index) {
+        return (
+          <div>
+            {record.mitra ? (
+              <span className="text-green-600">Mitra Koperasi</span>
+            ) : (
+              <span className="text-red-600">Bukan Mitra</span>
+            )}
           </div>
         );
       },
@@ -146,12 +173,25 @@ export default function Page() {
             Add New
           </Button>
         )}
+        <Select
+          size="small"
+          style={{ width: 100 }}
+          value={pageProps.mitra}
+          onChange={(value) =>
+            setPageProps({ ...pageProps, mitra: value, page: 1 })
+          }
+          options={[
+            { label: "Semua", value: undefined },
+            { label: "Mitra Koperasi", value: true },
+            { label: "Bukan Mitra", value: false },
+          ]}
+        />
         <Input.Search
           size="small"
           style={{ width: 170 }}
           placeholder="Cari nama..."
           onChange={(e) =>
-            setPageProps({ ...pageProps, search: e.target.value })
+            setPageProps({ ...pageProps, search: e.target.value, page: 1 })
           }
         />
       </div>
@@ -293,11 +333,25 @@ function UpsertJenis({
         />
         <FormInput
           data={{
+            label: "Status Mitra",
+            mode: "horizontal",
+            type: "select",
+            options: [
+              { label: "Mitra Koperasi", value: true },
+              { label: "Bukan Mitra", value: false },
+            ],
+            value: data.mitra,
+            onChange: (e: boolean) => setData({ ...data, mitra: e }),
+          }}
+        />
+        <FormInput
+          data={{
             label: "Nomor PKS",
             mode: "horizontal",
             type: "text",
             value: data.no_contract,
             onChange: (e: string) => setData({ ...data, no_contract: e }),
+            hidden: !data.mitra,
           }}
         />
         <FormInput
@@ -308,8 +362,10 @@ function UpsertJenis({
             value: data.date_contract,
             onChange: (e: string) =>
               setData({ ...data, date_contract: e ? new Date(e) : null }),
+            hidden: !data.mitra,
           }}
         />
+
         <FormInput
           data={{
             label: "Logo Mitra",
@@ -414,6 +470,7 @@ const defaultData: IPayOffice = {
   description: null,
   file: null,
   logo: null,
+  mitra: false,
   Dapems: [],
 
   status: true,

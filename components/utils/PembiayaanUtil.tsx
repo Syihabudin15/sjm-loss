@@ -1,6 +1,6 @@
 import moment from "moment";
 import { PV } from "@formulajs/formulajs";
-import { EMarginType } from "@prisma/client";
+import { EMarginType } from "../../generated/prisma/client";
 import { IDapem, IOutputDapemDetail } from "@/libs/IInterfaces";
 
 export const IDRFormat = (number: number) => {
@@ -107,18 +107,9 @@ export const GetAngsuran = (
 };
 
 export const GetDapem = (data: IDapem) => {
-  const adm =
-    data.plafond *
-    ((data.c_adm_sumdan + data.c_adm + data.c_adm_mitra + data.c_adm_ff) / 100);
+  const adm = data.plafond * ((data.c_adm_sumdan + data.c_adm) / 100);
   const provisi =
-    data.plafond *
-    ((data.c_provisi_sumdan +
-      data.c_fee_ao +
-      data.c_fee_cabang +
-      data.c_fee_area +
-      data.c_fee_bpp +
-      data.c_fee_bpb) /
-      100);
+    data.plafond * ((data.c_provisi_sumdan + data.c_fee_bpp) / 100);
   const asuransi = data.plafond * (data.c_insurance / 100);
   const angs = GetAngsuran(
     data.plafond,
@@ -133,13 +124,11 @@ export const GetDapem = (data: IDapem) => {
     adm +
     asuransi +
     data.c_gov +
-    data.c_account +
     data.c_account_sumdan +
     data.c_stamp +
     data.c_mutasi +
     data.c_flagging +
     data.c_infomation +
-    data.c_bop +
     provisi;
 
   const lastbiaya = biaya + blok + data.c_takeover;
@@ -150,41 +139,27 @@ export const GetDapem = (data: IDapem) => {
 export const GetDetailDapem = (dapem: IDapem): IOutputDapemDetail => {
   const adm_sumdan = dapem.plafond * (dapem.c_adm_sumdan / 100);
   const provisi_sumdan = dapem.plafond * (dapem.c_provisi_sumdan / 100);
-  const asuransi = dapem.plafond * (dapem.c_insurance / 100);
+  const asuransi = dapem.plafond * (dapem.c_insurance / 100) + dapem.c_flagging;
   const adm = dapem.plafond * (dapem.c_adm / 100);
-  const adm_mita = dapem.plafond * (dapem.c_adm_mitra / 100);
-  const adm_ff = dapem.plafond * (dapem.c_adm_ff / 100);
-  const fee_ao = dapem.plafond * (dapem.c_fee_ao / 100);
-  const fee_cabang = dapem.plafond * (dapem.c_fee_cabang / 100);
-  const fee_area = dapem.plafond * (dapem.c_fee_area / 100);
-  const fee_bpp = dapem.plafond * (dapem.c_fee_bpp / 100);
-  const fee_bpb = dapem.plafond * (dapem.c_fee_bpb / 100);
-  const provisi = fee_ao + fee_cabang + fee_area + fee_bpp + fee_bpb;
-  const bop_area = dapem.c_bop * (dapem.c_bop_area / 100);
+  const provisi = dapem.plafond * (dapem.c_provisi / 100);
 
-  const administrasi = adm + adm_mita + adm_ff;
-  const tatalaksana =
-    dapem.c_gov +
-    dapem.c_flagging +
-    dapem.c_infomation +
-    dapem.c_stamp +
-    dapem.c_account +
-    dapem.c_mutasi +
-    bop_area +
-    dapem.c_bop;
+  const lainlain =
+    dapem.c_infomation + dapem.c_stamp + dapem.c_mutasi + dapem.c_fee_bpp;
   const angsuran = ValidateAngsuran(dapem);
   const angsuran_sumdan = ValidateAngsuran(dapem, true);
   const biaya =
-    administrasi +
+    adm +
+    +adm_sumdan +
     provisi +
-    tatalaksana +
-    asuransi +
-    adm_sumdan +
     provisi_sumdan +
-    dapem.c_account_sumdan;
-  const biayakop = administrasi + provisi + tatalaksana + asuransi;
+    dapem.c_account_sumdan +
+    asuransi +
+    dapem.c_gov +
+    lainlain;
+  const biayakop = adm + provisi + dapem.c_gov + asuransi + lainlain;
   const angs =
     Math.ceil(angsuran / dapem.rounded) * dapem.rounded + dapem.c_ned;
+  const angsurantotal = angs + (angs * dapem.fee_banpot) / 100;
 
   return {
     detail: {
@@ -192,27 +167,22 @@ export const GetDetailDapem = (dapem: IDapem): IOutputDapemDetail => {
       provisi_sumdan,
       asuransi,
       adm,
-      adm_ff,
-      adm_mita,
-      fee_ao,
-      fee_cabang,
-      fee_area,
-      fee_bpp,
-      fee_bpb,
+      provisi,
       angsuran,
       angsuran_sumdan,
-      bop_area,
+      fee_banpot: dapem.fee_banpot,
     },
-    angsuran: angs,
-    tatalaksana,
-    provisi,
-    administrasi: adm + adm_mita + adm_ff,
+    angsuran: angsurantotal,
+    administrasi: adm + adm_sumdan,
+    provisi: provisi + provisi_sumdan,
     asuransi,
     by_sumdan: adm_sumdan + provisi_sumdan + dapem.c_account_sumdan,
     biaya,
     biayakop,
     tk: dapem.plafond - biaya,
-    tb: dapem.plafond - (biaya + dapem.c_takeover + dapem.c_blokir * angs),
+    tb:
+      dapem.plafond -
+      (biaya + dapem.c_takeover + dapem.c_blokir * angsurantotal),
   };
 };
 
@@ -243,8 +213,7 @@ const AngsuranFlat = (dapem: IDapem, sumdan?: boolean) => {
     : dapem.c_margin + dapem.c_margin_sumdan;
   const margin = (dapem.plafond * (r / 100)) / 12;
   const angs = pokok + margin;
-  const rounded = sumdan ? dapem.rounded_sumdan : dapem.rounded;
-  return Math.ceil(angs / rounded) * rounded;
+  return Math.ceil(angs / dapem.rounded) * dapem.rounded;
 };
 
 export const GetSisaPokokMargin = (data: IDapem) => {
@@ -319,19 +288,12 @@ export const getInitialDapemDetail = (): IOutputDapemDetail => ({
     provisi_sumdan: 0,
     asuransi: 0,
     adm: 0,
-    adm_ff: 0,
-    adm_mita: 0,
-    fee_ao: 0,
-    fee_cabang: 0,
-    fee_area: 0,
-    fee_bpp: 0,
-    fee_bpb: 0,
+    provisi: 0,
     angsuran: 0,
     angsuran_sumdan: 0,
-    bop_area: 0,
+    fee_banpot: 0,
   },
   angsuran: 0,
-  tatalaksana: 0,
   provisi: 0,
   administrasi: 0,
   asuransi: 0,

@@ -111,7 +111,7 @@ export const AnalisaPerhitungan = (record: IDapem) => {
     ${ListNonStyle([
       {
         key: "Kantor Bayar Asal",
-        value: record.prev_payoffice,
+        value: record.PrevPayOffice.name,
       },
       {
         key: "Kantor Bayar Tujuan",
@@ -176,7 +176,32 @@ export const AnalisaPerhitungan = (record: IDapem) => {
           },
           {
             key: "Biaya Tatalaksana",
-            value: IDRFormat(detail.tatalaksana + detail.provisi),
+            value: IDRFormat(record.c_gov),
+            currency: true,
+          },
+          {
+            key: "Biaya Flagging",
+            value: IDRFormat(record.c_flagging),
+            currency: true,
+          },
+          {
+            key: "Biaya Data Informasi",
+            value: IDRFormat(record.c_infomation),
+            currency: true,
+          },
+          {
+            key: "Biaya Materai",
+            value: IDRFormat(record.c_stamp),
+            currency: true,
+          },
+          {
+            key: "Biaya Mutasi",
+            value: IDRFormat(record.c_mutasi),
+            currency: true,
+          },
+          {
+            key: "Biaya Bpp",
+            value: IDRFormat(record.c_fee_bpp),
             currency: true,
           },
           {

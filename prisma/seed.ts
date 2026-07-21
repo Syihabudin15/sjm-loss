@@ -1,6 +1,5 @@
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
-const prisma = new PrismaClient();
+import prisma from "../libs/Prisma";
 
 async function main() {
   const role = await prisma.role.upsert({
@@ -22,7 +21,7 @@ async function main() {
     update: {},
   });
   const area = await prisma.area.upsert({
-    where: { id: "KW01" },
+    where: { id: "KW001" },
     create: {
       id: "KW001",
       name: "JAWA BARAT",
@@ -47,7 +46,7 @@ async function main() {
     update: {},
   });
 
-  const pass = await bcrypt.hash("mantara2026", 10);
+  const pass = await bcrypt.hash("sjm2026", 10);
   await prisma.user.upsert({
     where: { username: "developer" },
     update: {},

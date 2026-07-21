@@ -2,7 +2,7 @@ import { serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { getSession } from "@/libs/Auth";
 import { IDropping } from "@/libs/IInterfaces";
 import prisma from "@/libs/Prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 import { ORDapem, WheresDapem } from "../utils/wheres";
@@ -144,7 +144,7 @@ export const PUT = async (req: NextRequest) => {
 
   try {
     const { Dapems, Sumdan, ...saved } = data;
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       await tx.dropping.update({ where: { id: data.id }, data: saved });
       for (const dpm of Dapems) {
         const {
@@ -162,6 +162,7 @@ export const PUT = async (req: NextRequest) => {
           Pelunasan,
           AgentFronting,
           PayOffice,
+          PrevPayOffice,
           Insurance,
           ...dpmData
         } = dpm;
@@ -208,7 +209,7 @@ export const DELETE = async (req: NextRequest) => {
     include: { Dapems: true },
   });
   if (find) {
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       await tx.dapem.updateMany({
         where: { droppingId: id },
         data: { droppingId: null },

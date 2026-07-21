@@ -6,7 +6,7 @@ import { hasAccess } from "./Permission";
 import { IUser } from "./IInterfaces";
 import { listMenuServer } from "@/components/IMenu";
 import prisma from "./Prisma";
-import { Role } from "@prisma/client";
+import { Role } from "../generated/prisma/client";
 
 const secretKey = new TextEncoder().encode(process.env.APP_KEY || "secretcode");
 const globalForCache = globalThis as unknown as {

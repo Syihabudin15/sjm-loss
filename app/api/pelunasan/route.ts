@@ -2,7 +2,11 @@ import { serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { getSession } from "@/libs/Auth";
 import { IPelunasan } from "@/libs/IInterfaces";
 import prisma from "@/libs/Prisma";
-import { ESettleStatus, ESubmissionStatus, Prisma } from "@prisma/client";
+import {
+  ESettleStatus,
+  ESubmissionStatus,
+  Prisma,
+} from "../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 

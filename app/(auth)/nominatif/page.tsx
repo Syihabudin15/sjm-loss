@@ -30,7 +30,7 @@ import {
   PrinterOutlined,
   SwapOutlined,
 } from "@ant-design/icons";
-import { JenisPembiayaan, Sumdan } from "@prisma/client";
+import { JenisPembiayaan, Sumdan } from "../../../generated/prisma/client";
 import {
   Button,
   Card,
@@ -353,7 +353,7 @@ export default function Page() {
                 <div style={{ fontSize: 9 }}>
                   <SwapOutlined />{" "}
                   <Tag style={{ fontSize: 9 }} color={"red"}>
-                    {record.prev_payoffice}
+                    {record.PrevPayOffice.code}
                   </Tag>{" "}
                   <ArrowRightOutlined style={{ fontSize: 9 }} />{" "}
                   <Tag style={{ fontSize: 9 }} color={"blue"}>
@@ -568,57 +568,20 @@ export default function Page() {
         },
       },
       {
-        title: "Adm Koperasi",
+        title: "Biaya Koperasi",
         dataIndex: "biaya",
         key: "biaya",
         render(value, record) {
           const adm = record.plafond * (record.c_adm / 100);
-          const adm_mitra = record.plafond * (record.c_adm_mitra / 100);
-          const adm_ff = record.plafond * (record.c_adm_ff / 100);
-          const total = adm + adm_mitra + adm_ff;
+          const tatalaksana =
+            record.c_gov +
+            record.c_stamp +
+            record.c_flagging +
+            record.c_infomation +
+            record.c_mutasi;
           return (
             <div className="text-xs text-right">
-              <span>{IDRFormat(total)}</span>
-            </div>
-          );
-        },
-      },
-      {
-        title: "Prov Koperasi",
-        dataIndex: "biaya",
-        key: "biaya",
-        render(value, record) {
-          const ao = record.plafond * (record.c_fee_ao / 100);
-          const cabang = record.plafond * (record.c_fee_cabang / 100);
-          const area = record.plafond * (record.c_fee_area / 100);
-          const bpp = record.plafond * (record.c_fee_bpp / 100);
-          const bpb = record.plafond * (record.c_fee_bpb / 100);
-          const total = ao + cabang + area + bpp + bpb;
-          return (
-            <div className="text-xs text-right">
-              <span>{IDRFormat(total)}</span>
-            </div>
-          );
-        },
-      },
-      {
-        title: "Tatalaksana",
-        dataIndex: "biaya",
-        key: "biaya",
-        render(value, record) {
-          return (
-            <div className="text-xs text-right">
-              <span className="text-right">
-                {IDRFormat(
-                  record.c_gov +
-                    record.c_flagging +
-                    record.c_infomation +
-                    record.c_stamp +
-                    record.c_bop +
-                    record.c_account +
-                    record.c_mutasi,
-                )}
-              </span>
+              <span>{IDRFormat(adm + tatalaksana)}</span>
             </div>
           );
         },
@@ -739,8 +702,6 @@ export default function Page() {
       rek_sumdan += curr.c_account_sumdan;
 
       adm += p * curr.c_adm;
-      adm_mitra += p * curr.c_adm_mitra;
-      adm_ff += p * curr.c_adm_ff;
       asuransi += p * curr.c_insurance;
 
       tatalaksana += curr.c_gov;
@@ -748,15 +709,9 @@ export default function Page() {
       flagging += curr.c_flagging;
       inform += curr.c_infomation;
       mutasi += curr.c_mutasi;
-      rek += curr.c_account;
 
-      fee_ao += p * curr.c_fee_ao;
-      fee_cabang += p * curr.c_fee_cabang;
-      fee_area += p * curr.c_fee_area;
       fee_bpp += p * curr.c_fee_bpp;
-      fee_bpb += p * curr.c_fee_bpb;
 
-      bop += curr.c_bop;
       takeover += curr.c_takeover;
       blokir += curr.c_blokir * detailDapem.angsuran;
     }

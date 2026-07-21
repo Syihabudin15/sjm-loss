@@ -1,6 +1,7 @@
 import { serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { IJournalEntry } from "@/libs/IInterfaces";
 import prisma from "@/libs/Prisma";
+import { Prisma } from "../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -74,7 +75,7 @@ export const POST = async (req: NextRequest) => {
   const { id, JournalDetails, ...saved } = data;
 
   try {
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const genId = await generateJurnalId();
       const jurnal = await tx.journalEntry.create({
         data: { id: genId, ...saved },
@@ -107,7 +108,7 @@ export const PUT = async (req: NextRequest) => {
   const { id, JournalDetails, ...saved } = data;
 
   try {
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       await tx.journalEntry.update({
         where: { id },
         data: saved,

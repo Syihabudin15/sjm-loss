@@ -2,7 +2,7 @@ import { serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { getSession } from "@/libs/Auth";
 import { IAngsuran } from "@/libs/IInterfaces";
 import prisma from "@/libs/Prisma";
-import { Angsuran, Prisma } from "@prisma/client";
+import { Angsuran, Prisma } from "../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 import { ORDapem, WheresDapem } from "../utils/wheres";

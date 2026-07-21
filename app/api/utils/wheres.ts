@@ -1,5 +1,5 @@
 import prisma from "@/libs/Prisma";
-import { Cabang, Prisma, Role, User } from "@prisma/client";
+import { Cabang, Prisma, Role, User } from "../../../generated/prisma/client";
 
 interface UserWhere extends User {
   Cabang: Cabang;

@@ -8,7 +8,7 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 import { Badge, Button, Drawer, Dropdown, Layout, Menu, Modal } from "antd";
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "./UserContext";
 import { listMenuUI, MenuPermission } from "./IMenu";
@@ -89,7 +89,7 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
     getNotif(); // Panggil sekali saat user pertama kali siap
 
     // Naikkan interval menjadi 10 atau 15 detik agar meringankan beban server database Anda
-    const interval = setInterval(getNotif, 1000 * 60 * 3);
+    const interval = setInterval(getNotif, 1000 * 60 * 5);
 
     return () => clearInterval(interval);
   }, [user, getNotif]);
@@ -248,7 +248,7 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
             className="custom-scrollbar"
           >
             <Menu
-              theme="light"
+              theme="dark"
               mode="inline"
               style={{ borderRight: "none" }}
               items={MenuPermission(

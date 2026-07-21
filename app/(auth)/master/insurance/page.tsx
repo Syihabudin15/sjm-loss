@@ -9,7 +9,6 @@ import {
   EditOutlined,
   PlusCircleFilled,
   SaveOutlined,
-  TagOutlined,
 } from "@ant-design/icons";
 import { App, Button, Card, Input, Modal, Table, TableProps } from "antd";
 import { HookAPI } from "antd/es/modal/useModal";

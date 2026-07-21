@@ -6,7 +6,7 @@ import {
   EDapemStatus,
   EDocStatus,
   ESubmissionStatus,
-} from "@prisma/client";
+} from "../../generated/prisma/client";
 import {
   Button,
   Divider,
@@ -340,7 +340,7 @@ export const MappingToExcelDapem = (data: IDapem[]) => {
       d.tenor,
       d.c_margin_sumdan,
       d.margin_type,
-      d.rounded_sumdan,
+      d.rounded,
     ).angsuran;
     return {
       NO: i + 1,
@@ -366,23 +366,15 @@ export const MappingToExcelDapem = (data: IDapem[]) => {
       "": "",
       B_ADM_SUMDAN: d.plafond * (d.c_adm_sumdan / 100),
       B_ADM_KOPERASI: d.plafond * (d.c_adm / 100),
-      B_ADM_MITRA: d.plafond * (d.c_adm_mitra / 100),
-      B_ADM_FF: d.plafond * (d.c_adm_ff / 100),
       B_ASURANSI: d.plafond * (d.c_insurance / 100),
       B_PROV_SUMDAN: d.plafond * (d.c_provisi_sumdan / 100),
-      B_FEE_AO: d.plafond * (d.c_fee_ao / 100),
-      B_FEE_CABANG: d.plafond * (d.c_fee_cabang / 100),
-      B_FEE_AREA: d.plafond * (d.c_fee_area / 100),
       B_FEE_BPP: d.plafond * (d.c_fee_bpp / 100),
-      B_FEE_BPB: d.plafond * (d.c_fee_bpb / 100),
       B_REKENING_SUMDAN: d.c_account_sumdan,
-      B_REKENING_KOPERASI: d.c_account,
       B_TATALAKSANA: d.c_gov,
       B_MATERAI: d.c_stamp,
       B_FLAGGING: d.c_flagging,
       B_SISTEM_INFORMASI: d.c_infomation,
       B_MUTASI: d.c_mutasi,
-      B_BOP_PEMBIAYAAN: d.c_bop,
       BLOKIR_ANGSURAN: d.c_blokir,
       NOMINAL_TAKEOVER: d.c_takeover,
       X_BLOKIR_ANGSURAN: d.c_blokir,
@@ -433,7 +425,7 @@ export const MappingToTagihan = (data: IDapem[], periode?: string) => {
       d.tenor,
       d.c_margin_sumdan,
       d.margin_type,
-      d.rounded_sumdan,
+      d.rounded,
     ).angsuran;
 
     return {

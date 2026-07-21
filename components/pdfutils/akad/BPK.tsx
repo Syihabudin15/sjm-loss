@@ -76,7 +76,7 @@ export const BPK = (record: IDapem) => {
       },
       {
         key: "Biaya Tatalaksana",
-        value: IDRFormat(detail.tatalaksana + detail.provisi),
+        value: IDRFormat(record.c_gov),
         currency: true,
       },
       {

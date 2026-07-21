@@ -132,7 +132,7 @@ export const PK = (record: IDapem) => {
       <div class="flex-1 flex gap-4">
       <p>Rp.</p>
         <div class="text-right w-20">
-          <p>${IDRFormat(detail.tatalaksana + detail.provisi)}</p>
+          <p>${IDRFormat(record.c_gov)}</p>
         </div>
       </div>
     </div>

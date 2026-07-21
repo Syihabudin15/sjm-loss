@@ -1,7 +1,7 @@
 import { serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { getSession } from "@/libs/Auth";
 import prisma from "@/libs/Prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 import { WheresDapem } from "./utils/wheres";
@@ -104,7 +104,7 @@ export const GET = async (req: NextRequest) => {
     // .subtract(i, 'months') untuk mundur ke belakang
     const targetMonth = moment().subtract(i, "months");
 
-    const temp = droppingall.filter((dp) => {
+    const temp = droppingall.filter((dp: any) => {
       return (
         dp.Dropping &&
         moment(dp.Dropping.process_at).isSame(targetMonth, "month") &&

@@ -9,7 +9,7 @@ import {
   KeyOutlined,
   PlusCircleFilled,
 } from "@ant-design/icons";
-import { EDataStatus, Role } from "@prisma/client";
+import { EDataStatus, Role } from "../../../../generated/prisma/client";
 import {
   App,
   Button,

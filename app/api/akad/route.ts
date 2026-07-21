@@ -1,7 +1,7 @@
 import { GetAngsuran, GetDetailDapem } from "@/components/utils/PembiayaanUtil";
 import { IDapem } from "@/libs/IInterfaces";
 import prisma from "@/libs/Prisma";
-import { Angsuran, Dapem } from "@prisma/client";
+import { Angsuran, Dapem, Prisma } from "../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -19,40 +19,43 @@ export const POST = async (req: NextRequest) => {
       { status: 400 },
     );
   try {
-    const result = await prisma.$transaction(async (tx) => {
-      await tx.dapem.update({
-        where: { id: data.id },
-        data: {
+    const result = await prisma.$transaction(
+      async (tx: Prisma.TransactionClient) => {
+        await tx.dapem.update({
+          where: { id: data.id },
+          data: {
+            date_contract: data.date_contract || new Date(),
+            no_contract: data.no_contract,
+            date_end: moment(data.date_contract || new Date())
+              .add(find.tenor, "month")
+              .toDate(),
+            tbo_date: moment(data.date_contract || new Date())
+              .add(find.tbo, "month")
+              .toDate(),
+          },
+        });
+        const generateAngsurans = GenerateTableAngsuran({
+          ...find,
           date_contract: data.date_contract || new Date(),
           no_contract: data.no_contract,
-          date_end: moment(data.date_contract || new Date())
-            .add(find.tenor, "month")
-            .toDate(),
-          tbo_date: moment(data.date_contract || new Date())
-            .add(find.tbo, "month")
-            .toDate(),
-        },
-      });
-      const generateAngsurans = GenerateTableAngsuran({
-        ...find,
-        date_contract: data.date_contract || new Date(),
-        no_contract: data.no_contract,
-      });
-      await tx.angsuran.deleteMany({ where: { dapemId: data.id } });
-      const newAngsurans =
-        find.Angsurans && find.Angsurans.length !== 0
-          ? generateAngsurans.map((item) => ({
-              ...item,
-              date_paid:
-                find.Angsurans.find((a) => a.counter === item.counter)
-                  ?.date_paid || null,
-            }))
-          : generateAngsurans;
-      await tx.angsuran.createMany({
-        data: newAngsurans,
-      });
-      return newAngsurans;
-    });
+        });
+        await tx.angsuran.deleteMany({ where: { dapemId: data.id } });
+        const newAngsurans =
+          find.Angsurans && find.Angsurans.length !== 0
+            ? generateAngsurans.map((item) => ({
+                ...item,
+                date_paid:
+                  find.Angsurans.find(
+                    (a: Angsuran) => a.counter === item.counter,
+                  )?.date_paid || null,
+              }))
+            : generateAngsurans;
+        await tx.angsuran.createMany({
+          data: newAngsurans,
+        });
+        return newAngsurans;
+      },
+    );
     result.unshift({
       id: "",
       counter: 0,
@@ -199,7 +202,7 @@ function GenerateFlat(dapem: Dapem): Angsuran[] {
     dapem.tenor,
     dapem.c_margin_sumdan,
     dapem.margin_type,
-    dapem.rounded_sumdan,
+    dapem.rounded,
   ).angsuran;
   let sisa = dapem.plafond;
 

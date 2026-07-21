@@ -116,11 +116,11 @@ export const GET = async (request: NextRequest) => {
     ]);
 
   const nomPendapatan = pendapatan.reduce(
-    (acc, curr) => acc + (curr.credit - curr.debit),
+    (acc: any, curr: any) => acc + (curr.credit - curr.debit),
     0,
   );
   const nomBeban = beban.reduce(
-    (acc, curr) => acc + (curr.debit - curr.credit),
+    (acc: any, curr: any) => acc + (curr.debit - curr.credit),
     0,
   );
   return NextResponse.json(

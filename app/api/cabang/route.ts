@@ -1,6 +1,6 @@
 import { getSession } from "@/libs/Auth";
 import prisma from "@/libs/Prisma";
-import { Cabang, Prisma } from "@prisma/client";
+import { Cabang, Prisma } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {

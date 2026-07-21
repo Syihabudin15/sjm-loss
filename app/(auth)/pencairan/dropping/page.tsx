@@ -2,7 +2,6 @@
 
 import { FormInput, ViewFiles } from "@/components";
 import { printSIStandar } from "@/components/pdfutils/si/SIStandar";
-import { printSIVima } from "@/components/pdfutils/si/SIVima";
 import { FilterData } from "@/components/utils/CompUtils";
 import {
   GetAngsuran,
@@ -26,7 +25,7 @@ import {
   PrinterOutlined,
   TransactionOutlined,
 } from "@ant-design/icons";
-import { Sumdan } from "@prisma/client";
+import { Sumdan } from "../../../../generated/prisma/client";
 import {
   App,
   Button,
@@ -275,11 +274,7 @@ export default function Page() {
                 icon={<PrinterOutlined />}
                 size="small"
                 type="primary"
-                onClick={() =>
-                  record.Sumdan.code.includes("VIMA")
-                    ? printSIVima(record)
-                    : printSIStandar(record)
-                }
+                onClick={() => printSIStandar(record)}
               ></Button>
             </Tooltip>
             <Tooltip title="Berkas Akad & Dropping">
@@ -485,7 +480,7 @@ export default function Page() {
                     curr.tenor,
                     curr.c_margin_sumdan,
                     curr.margin_type,
-                    curr.rounded_sumdan,
+                    curr.rounded,
                   ).angsuran,
               0,
             );

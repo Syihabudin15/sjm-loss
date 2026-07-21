@@ -84,12 +84,7 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
           {
             key: "Biaya Administrasi",
             value: IDRFormat(
-              record.plafond *
-                ((record.c_adm +
-                  record.c_adm_sumdan +
-                  record.c_adm_mitra +
-                  record.c_adm_ff) /
-                  100),
+              record.plafond * ((record.c_adm + record.c_adm_sumdan) / 100),
             ),
             currency: true,
           },
@@ -107,13 +102,7 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
             key: "Biaya Provisi",
             value: IDRFormat(
               record.plafond *
-                ((record.c_provisi_sumdan +
-                  record.c_fee_ao +
-                  record.c_fee_cabang +
-                  record.c_fee_area +
-                  record.c_fee_bpp +
-                  record.c_fee_bpb) /
-                  100),
+                ((record.c_provisi_sumdan + record.c_fee_bpp) / 100),
             ),
             currency: true,
           },
@@ -123,9 +112,7 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
               record.c_gov +
                 record.c_flagging +
                 record.c_infomation +
-                record.c_account +
                 record.c_stamp +
-                record.c_bop +
                 record.c_mutasi,
             ),
             currency: true,

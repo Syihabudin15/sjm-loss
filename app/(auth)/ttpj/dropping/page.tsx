@@ -19,7 +19,7 @@ import {
   PrinterOutlined,
   SecurityScanOutlined,
 } from "@ant-design/icons";
-import { EDocStatus, Sumdan } from "@prisma/client";
+import { EDocStatus, Sumdan } from "../../../../generated/prisma/client";
 import {
   App,
   Button,

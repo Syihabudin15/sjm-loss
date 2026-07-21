@@ -1,10 +1,10 @@
 import prisma from "@/libs/Prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {
   const params = Object.fromEntries(request.nextUrl.searchParams);
-  const { page = "1", limit = "50", search } = params;
+  const { page = "1", limit = "50", search, mitra } = params;
   const skip = (parseInt(page) - 1) * parseInt(limit);
 
   const where: Prisma.PayOfficeWhereInput = {
@@ -17,6 +17,7 @@ export const GET = async (request: NextRequest) => {
       ],
     }),
     status: true,
+    ...(mitra && { mitra: mitra === "true" }),
   };
 
   const [data, total] = await Promise.all([

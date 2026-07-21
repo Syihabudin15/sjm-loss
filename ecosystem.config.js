@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "mantara-sipp",
+      name: "sjm-sipp",
       script: "node_modules/next/dist/bin/next",
       args: "start",
       instances: 1, // ⬅️ WAJIB 1

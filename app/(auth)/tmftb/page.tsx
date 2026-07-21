@@ -2,7 +2,11 @@
 
 import { useMemo, useEffect, useState, useCallback, useId } from "react";
 import moment from "moment";
-import { EDapemStatus, JenisPembiayaan, Sumdan } from "@prisma/client";
+import {
+  EDapemStatus,
+  JenisPembiayaan,
+  Sumdan,
+} from "../../../generated/prisma/client";
 import {
   App,
   Button,
@@ -378,7 +382,7 @@ export default function Page() {
               <div style={{ fontSize: 9 }}>
                 <SwapOutlined />{" "}
                 <Tag style={{ fontSize: 9 }} color="red">
-                  {record.prev_payoffice}
+                  {record.PrevPayOffice.code}
                 </Tag>{" "}
                 <ArrowRightOutlined style={{ fontSize: 9 }} />{" "}
                 <Tag style={{ fontSize: 9 }} color="blue">

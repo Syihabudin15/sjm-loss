@@ -11,7 +11,7 @@ import {
   PlusCircleFilled,
   SaveOutlined,
 } from "@ant-design/icons";
-import { Cabang } from "@prisma/client";
+import { Cabang } from "../../../../generated/prisma/client";
 import { App, Button, Card, Input, Modal, Table, TableProps, Tag } from "antd";
 import { HookAPI } from "antd/es/modal/useModal";
 import moment from "moment";
@@ -82,22 +82,6 @@ export default function Page() {
       className: "text-center",
       render(value, record, index) {
         return record.Cabangs.length;
-      },
-    },
-    {
-      title: "PIC",
-      dataIndex: "pic",
-      key: "pic",
-      className: "text-center",
-      render(value, record, index) {
-        const find = record.HeadAreas.filter((f) => f.status);
-        return (
-          <div>
-            {find.map((f) => (
-              <div key={f.id}>{f.User.fullname}</div>
-            ))}
-          </div>
-        );
       },
     },
     {
@@ -688,7 +672,6 @@ const defaultData: IArea = {
   created_at: new Date(),
   updated_at: new Date(),
   Cabangs: [],
-  HeadAreas: [],
 };
 
 const defaultCabang: Cabang = {

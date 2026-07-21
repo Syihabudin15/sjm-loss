@@ -1,6 +1,6 @@
 import { clearRoleCache } from "@/libs/Auth";
 import prisma from "@/libs/Prisma";
-import { Prisma, Role } from "@prisma/client";
+import { Prisma, Role } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {

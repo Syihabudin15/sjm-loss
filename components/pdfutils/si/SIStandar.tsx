@@ -16,7 +16,7 @@ const generateSI = (record: IDropping) => {
           curr.tenor,
           curr.c_margin_sumdan,
           curr.margin_type,
-          curr.rounded_sumdan,
+          curr.rounded,
         ).angsuran,
     0,
   );
@@ -113,7 +113,7 @@ const generateSI = (record: IDropping) => {
         <div class="mb-4 flex gap-2 ml-3">
           <p class="w-44">Jumlah Dropping</p>
           <p class="w-4">:</p>
-          <p class="flex-1">Rp. ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.plafond - (curr.plafond * (curr.c_adm_sumdan / 100) + curr.c_account + curr.plafond * (curr.c_provisi_sumdan / 100) + angs), 0))}</p>
+          <p class="flex-1">Rp. ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.plafond - (curr.plafond * (curr.c_adm_sumdan / 100) + curr.plafond * (curr.c_provisi_sumdan / 100) + angs), 0))}</p>
         </div>
 
         <p>Sehubungan dengan hal tersebut, kami menginstruksikan kepada ${record.Sumdan.name} untuk melakukan pencairan (dropping) dana sebesar tersebut di atas ke rekening berikut :</p>
@@ -185,7 +185,7 @@ const generateSI = (record: IDropping) => {
                 <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.plafond * (r.c_adm_sumdan / 100))}</td>
                 ${hasProvisi ? `<td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.plafond * (r.c_provisi_sumdan / 100))}</td>` : ""}
                 <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.c_account_sumdan)}</td>
-                <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.c_blokir * GetAngsuran(r.plafond, r.tenor, r.c_margin_sumdan, r.margin_type, r.rounded_sumdan).angsuran)}</td>
+                <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.c_blokir * GetAngsuran(r.plafond, r.tenor, r.c_margin_sumdan, r.margin_type, r.rounded).angsuran)}</td>
                 <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.plafond - (r.plafond * (r.c_adm_sumdan / 100) + r.plafond * (r.c_provisi_sumdan / 100) + r.c_account_sumdan))}</td>
               </tr>
             `,
@@ -216,10 +216,10 @@ const generateSI = (record: IDropping) => {
                 ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.c_account_sumdan, 0))}
               </td>
               <td class="border border-gray-400 p-2 text-right border-dashed">
-                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.c_blokir * GetAngsuran(curr.plafond, curr.tenor, curr.c_margin_sumdan, curr.margin_type, curr.rounded_sumdan).angsuran, 0))}
+                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.c_blokir * GetAngsuran(curr.plafond, curr.tenor, curr.c_margin_sumdan, curr.margin_type, curr.rounded).angsuran, 0))}
               </td>
               <td class="border border-gray-400 p-2 text-right border-dashed">
-                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + (curr.plafond - (curr.plafond * (curr.c_adm_sumdan / 100) + curr.c_account_sumdan + curr.plafond * (curr.c_provisi_sumdan / 100)) + curr.c_blokir * GetAngsuran(curr.plafond, curr.tenor, curr.c_margin_sumdan, curr.margin_type, curr.rounded_sumdan).angsuran), 0))}
+                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + (curr.plafond - (curr.plafond * (curr.c_adm_sumdan / 100) + curr.c_account_sumdan + curr.plafond * (curr.c_provisi_sumdan / 100)) + curr.c_blokir * GetAngsuran(curr.plafond, curr.tenor, curr.c_margin_sumdan, curr.margin_type, curr.rounded).angsuran), 0))}
               </td>
             </tr>
           </tfoot>

@@ -5,11 +5,7 @@ import Link from "next/link";
 import moment from "moment";
 import { IDapem, IViewFiles } from "@/libs/IInterfaces";
 import { FormInput } from "..";
-import {
-  GetDetailDapem,
-  GetFullAge,
-  IDRFormat,
-} from "./PembiayaanUtil";
+import { GetDetailDapem, GetFullAge, IDRFormat } from "./PembiayaanUtil";
 import {
   DollarCircleOutlined,
   FolderOpenOutlined,
@@ -868,7 +864,7 @@ export const DetailDapem = ({
                 type: "textarea",
                 class: "flex-1",
                 disabled: true,
-                value: `${data.prev_payoffice} ${data.JenisPembiayaan.status_mutasi ? "-> " + (data.PayOffice.code || data.PayOffice.name) : ""}`,
+                value: `${data.PrevPayOffice.code} ${data.JenisPembiayaan.status_mutasi ? "-> " + (data.PayOffice.code || data.PayOffice.name) : ""}`,
               }}
             />
             <FormInput
@@ -952,13 +948,6 @@ export const DetailDapem = ({
                 </div>
               </div>
               <div className="my-1 flex">
-                <div className="w-[40%]">Pembulatan Mitra</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.rounded_sumdan)}
-                </div>
-              </div>
-              <div className="my-1 flex">
                 <div className="w-[40%]">Angsuran</div>
                 <div className="w-[5%]">:</div>
                 <div className="flex-1 justify-end text-right">
@@ -1011,7 +1000,7 @@ export const DetailDapem = ({
                 </div>
               </div>
               <div className="my-1 flex">
-                <div className="w-[40%]">Rekening Sumdan</div>
+                <div className="w-[40%]">Buka Rekening</div>
                 <div className="w-[5%]">:</div>
                 <div className="flex-1 justify-end text-right">
                   {IDRFormat(data.c_account_sumdan)}
@@ -1032,59 +1021,12 @@ export const DetailDapem = ({
                 </div>
               </div>
               <div className="my-1 flex">
-                <div className="w-[40%]">Adm Mitra ({data.c_adm_mitra}%)</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.adm_mita)}
+                <div className="w-[40%]">
+                  Provisi Koperasi ({data.c_provisi}%)
                 </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Adm FF ({data.c_adm_ff}%)</div>
                 <div className="w-[5%]">:</div>
                 <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.adm_ff)}
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Fee AO ({data.c_fee_ao}%)</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.fee_ao)}
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Fee Cabang ({data.c_fee_cabang}%)</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.fee_cabang)}
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Fee Area ({data.c_fee_area}%)</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.fee_area)}
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Fee BPP ({data.c_fee_bpp}%)</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.fee_bpp)}
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Fee BPB ({data.c_fee_bpb}%)</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.fee_bpb)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Rekening Koperasi</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_account)}
+                  {IDRFormat(detail.detail.provisi)}
                 </div>
               </div>
               <div className="my-1 flex border-b border-dashed">
@@ -1116,17 +1058,10 @@ export const DetailDapem = ({
                 </div>
               </div>
               <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">BOP Area </div>
+                <div className="w-[40%]">Bpp</div>
                 <div className="w-[5%]">:</div>
                 <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.bop_area)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">BOP Pembiayaan</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_bop)}
+                  {IDRFormat(data.c_fee_bpp)}
                 </div>
               </div>
               <div className="my-1 flex border-b border-dashed text-red-500 font-bold mt-2">
@@ -1299,7 +1234,7 @@ export const DetailDapem = ({
                 { name: "WAWANCARA", url: data.video_interview || "" },
                 { name: "ASURANSI", url: data.video_insurance || "" },
                 { name: "AKAD", url: data.file_contract || "" },
-                { name: "VIDEO AKAD", url: data.video_contract || "" },
+                // { name: "VIDEO AKAD", url: data.video_contract || "" },
                 { name: "BANK", url: data.file_proses || "" },
               ],
             }}

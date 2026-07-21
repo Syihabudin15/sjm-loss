@@ -2,7 +2,7 @@ import moment from "moment";
 import { IDapem } from "@/libs/IInterfaces";
 import { Header } from "../utils";
 import { IDRFormat } from "@/components/utils/PembiayaanUtil";
-import { Sumdan } from "@prisma/client";
+import { Sumdan } from "../../../generated/prisma/client";
 
 moment.locale("id");
 

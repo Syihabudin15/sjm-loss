@@ -2,7 +2,7 @@ import { GetRoman, serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { getSession } from "@/libs/Auth";
 import { IDocument } from "@/libs/IInterfaces";
 import prisma from "@/libs/Prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 import { WheresDapem } from "../../utils/wheres";
@@ -40,7 +40,9 @@ export const GET = async (req: NextRequest) => {
       SumdanAgentFrontings: {
         some: {
           sumdanId: {
-            in: user.AgentFronting?.SumdanAgentFrontings.map((s) => s.sumdanId),
+            in: user.AgentFronting?.SumdanAgentFrontings.map(
+              (s: any) => s.sumdanId,
+            ),
           },
         },
       },
@@ -79,9 +81,9 @@ export const GET = async (req: NextRequest) => {
     prisma.sumdan.count({ where }),
   ]);
 
-  const newData = data.map((d) => ({
+  const newData = data.map((d: any) => ({
     ...d,
-    Dapems: d.ProdukPembiayaans.flatMap((pd) => pd.Dapems),
+    Dapems: d.ProdukPembiayaans.flatMap((pd: any) => pd.Dapems),
   }));
 
   return NextResponse.json({
@@ -96,7 +98,7 @@ export const POST = async (req: NextRequest) => {
 
   try {
     const { Sumdan, Dapems, ...saved } = data;
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const drop = await tx.berkas.create({ data: saved });
       for (const dpm of Dapems) {
         await tx.dapem.update({

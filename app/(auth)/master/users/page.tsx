@@ -18,7 +18,13 @@ import {
   SaveOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { AgentFronting, Cabang, Role, Sumdan, User } from "@prisma/client";
+import {
+  AgentFronting,
+  Cabang,
+  Role,
+  Sumdan,
+  User,
+} from "../../../../generated/prisma/client";
 import {
   App,
   Button,

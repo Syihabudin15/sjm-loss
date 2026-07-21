@@ -29,7 +29,7 @@ import {
   PrinterOutlined,
   SwapOutlined,
 } from "@ant-design/icons";
-import { JenisPembiayaan, Sumdan } from "@prisma/client";
+import { JenisPembiayaan, Sumdan } from "../../../../generated/prisma/client";
 import {
   App,
   Button,
@@ -301,7 +301,7 @@ export default function Page() {
               <div style={{ fontSize: 9 }}>
                 <SwapOutlined />{" "}
                 <Tag style={{ fontSize: 9 }} color={"red"}>
-                  {record.prev_payoffice}
+                  {record.PrevPayOffice.code}
                 </Tag>{" "}
                 <ArrowRightOutlined style={{ fontSize: 9 }} />{" "}
                 <Tag style={{ fontSize: 9 }} color={"blue"}>

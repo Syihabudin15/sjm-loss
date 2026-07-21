@@ -211,7 +211,7 @@ export const FormPermohonan = (record?: IDapem) => {
           },
           {
             key: "Kantor Bayar",
-            value: record?.prev_payoffice || "",
+            value: record?.PrevPayOffice.name || "",
           },
         ])}
       </div>

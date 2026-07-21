@@ -60,7 +60,7 @@ const hitungPendingTerimaBersih = (droppingall: IDapem[]) => {
     const biaya =
       GetDapem(curr as IDapem).biaya +
       curr.c_takeover +
-      curr.c_bop +
+      curr.c_fee_bpp +
       curr.c_blokir * angs;
 
     const tbDiberikan = curr.cash_desc

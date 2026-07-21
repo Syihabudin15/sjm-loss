@@ -1,5 +1,5 @@
 import prisma from "@/libs/Prisma";
-import { Prisma, ProdukPembiayaan } from "@prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {

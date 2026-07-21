@@ -17,7 +17,11 @@ import {
   PlusCircleOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-import { CategoryOfAccount, JournalEntry, User } from "@prisma/client";
+import {
+  CategoryOfAccount,
+  JournalEntry,
+  User,
+} from "../../../../generated/prisma/client";
 import {
   Table,
   DatePicker,

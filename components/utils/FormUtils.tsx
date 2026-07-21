@@ -29,6 +29,7 @@ export interface IFormInput {
   labelIcon?: any;
   class?: any;
   accept?: string;
+  hidden?: boolean;
 }
 
 export const FormInput = ({ data }: { data: IFormInput }) => {
@@ -37,6 +38,7 @@ export const FormInput = ({ data }: { data: IFormInput }) => {
       className={`flex ${
         data.mode === "vertical" ? "flex-col" : "items-center gap-2"
       }  ${data.class}`}
+      hidden={data.hidden}
     >
       <p className="w-52">
         {data.labelIcon && <span className="mr-1">{data.labelIcon}</span>}

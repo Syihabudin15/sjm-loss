@@ -174,7 +174,7 @@ export const POST = async (req: NextRequest) => {
     // }
     const nopenDiExcel = (data as any[]).map((col) => String(col["Nopen"]));
     const debiturTidakAdaDiExcel = tagihan.filter(
-      (t) =>
+      (t: any) =>
         !nopenDiExcel.includes(t.Dapem.nopen) &&
         t.Dapem.takeover_status === "DISETUJUI" &&
         t.Dapem.mutasi_status === "DISETUJUI",
@@ -182,7 +182,7 @@ export const POST = async (req: NextRequest) => {
     msg.push({
       name: `Tidak ada di Excel`,
       value: debiturTidakAdaDiExcel.map(
-        (d) => `${d.Dapem.Debitur.fullname} (${d.Dapem.nopen})`,
+        (d: any) => `${d.Dapem.Debitur.fullname} (${d.Dapem.nopen})`,
       ),
     });
 

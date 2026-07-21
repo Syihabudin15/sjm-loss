@@ -1,7 +1,7 @@
 import prisma from "@/libs/Prisma";
 import moment from "moment";
 
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { getSession } from "@/libs/Auth";
@@ -81,8 +81,7 @@ export const GET = async (request: NextRequest) => {
       include: {
         Cabang: {
           include: {
-            Area: { include: { HeadAreas: { include: { User: true } } } },
-            HeadCabangs: { include: { User: true } },
+            Area: true,
           },
         },
         Sumdan: true,

@@ -8,8 +8,6 @@ import {
   Dapem,
   Debitur,
   Dropping,
-  HeadArea,
-  HeadCabang,
   Insurance,
   Jaminan,
   JenisPembiayaan,
@@ -22,7 +20,7 @@ import {
   Sumdan,
   SumdanAgentFronting,
   User,
-} from "@prisma/client";
+} from "../generated/prisma/client";
 
 export interface IUser extends User {
   sumdan: string | null;
@@ -73,13 +71,9 @@ export interface ICashDesc {
 export interface ISumdan extends Sumdan {
   ProdukPembiayaans: IProdukPembiayaan[];
 }
-export interface IHeadArea extends HeadArea {
-  Area: IArea;
-  User: IUserDapem;
-}
+
 export interface IArea extends Area {
   Cabangs: ICabang[];
-  HeadAreas: IHeadArea[];
 }
 export interface IProdukPembiayaan extends ProdukPembiayaan {
   Sumdan: Sumdan;
@@ -88,13 +82,8 @@ export interface IProdukPembiayaan extends ProdukPembiayaan {
 export interface IJenisPembiayaan extends JenisPembiayaan {
   Dapems: IDapem[];
 }
-export interface IHeadCabang extends HeadCabang {
-  Cabang: ICabang;
-  User: IUserDapem;
-}
 export interface ICabang extends Cabang {
   Area: IArea;
-  HeadCabangs: IHeadCabang[];
   Users: IUserDapem[];
 }
 export interface IUserDapem extends User {
@@ -131,6 +120,7 @@ export interface IDapem extends Dapem {
   Pelunasan: Pelunasan | null;
   AgentFronting: IAgentFronting | null;
   PayOffice: PayOffice;
+  PrevPayOffice: PayOffice;
   Insurance: Insurance;
 }
 
@@ -207,25 +197,18 @@ export interface IOutputDapemDetail {
     provisi_sumdan: number;
     asuransi: number;
     adm: number;
-    adm_ff: number;
-    adm_mita: number;
-    fee_ao: number;
-    fee_cabang: number;
-    fee_area: number;
-    fee_bpp: number;
-    fee_bpb: number;
-    bop_area: number;
+    provisi: number;
     angsuran: number;
+    fee_banpot: number;
     angsuran_sumdan: number;
   };
   angsuran: number;
-  tatalaksana: number;
   provisi: number;
   administrasi: number;
   asuransi: number;
   by_sumdan: number;
   biaya: number;
-  biayakop: number;
   tk: number;
   tb: number;
+  biayakop: number;
 }

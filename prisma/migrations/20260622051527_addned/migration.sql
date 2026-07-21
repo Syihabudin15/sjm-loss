@@ -1,8 +1,0 @@
--- AlterTable
-ALTER TABLE `angsuran` ADD COLUMN `c_ned` INTEGER NOT NULL DEFAULT 0;
-
--- AlterTable
-ALTER TABLE `dapem` ADD COLUMN `c_ned` INTEGER NOT NULL DEFAULT 0;
-
--- AlterTable
-ALTER TABLE `sumdan` ADD COLUMN `c_ned` INTEGER NOT NULL DEFAULT 0;

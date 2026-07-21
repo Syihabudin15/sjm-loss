@@ -1,5 +1,5 @@
 import prisma from "@/libs/Prisma";
-import { Insurance, Prisma } from "@prisma/client";
+import { Insurance, Prisma } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {

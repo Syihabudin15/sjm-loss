@@ -3,21 +3,21 @@ import { AnalisaPerhitungan } from "./Analisa";
 import { IDapem } from "@/libs/IInterfaces";
 import { JadwalAngsuran } from "./KartuAngsuran";
 import { PerjanjianKredit } from "./PerjanjianKredit";
-// import { SPKDR } from "./SKPDR";
-// import { BuktiPencairan } from "./BuktiPencairan";
-// import { Pemotongan } from "./Pemotongan";
-// import { Kesanggupan } from "./Kesanggupan";
+import { SPKDR } from "./SKPDR";
+import { BuktiPencairan } from "./BuktiPencairan";
+import { Pemotongan } from "./Pemotongan";
+import { Kesanggupan } from "./Kesanggupan";
 import { PenyerahanJaminan } from "./PenyerahanJaminan";
 import { FormCeklist1 } from "./FormCeklist1";
-import { PersetujuanPencairan } from "./PersetujuanPencairan";
-import { BPK } from "./BPK";
-import { SPK } from "./SPK";
+// import { PersetujuanPencairan } from "./PersetujuanPencairan";
+// import { BPK } from "./BPK";
+// import { SPK } from "./SPK";
 import { FLagging } from "./Flagging";
-import { PernyataanKuasa } from "./PernyataanKuasa";
-import { TTPJ } from "./TTPJ";
-import { DocChecklist1 } from "./DC1";
-import { DocChecklist2 } from "./DC2";
-import { PK } from "./PK";
+// import { PernyataanKuasa } from "./PernyataanKuasa";
+// import { TTPJ } from "./TTPJ";
+// import { DocChecklist1 } from "./DC1";
+// import { DocChecklist2 } from "./DC2";
+// import { PK } from "./PK";
 
 moment.locale("id");
 
@@ -89,31 +89,31 @@ const generateContractHtml = (record: IDapem) => {
         ${JadwalAngsuran(record, record.ProdukPembiayaan.Sumdan.name)}
       </div>
       <div class="page text-justify" style="font-size: 12px;">
-        ${PK(record)}
+        ${PerjanjianKredit(record)}
       </div>
-      <div class="page text-justify" style="font-size: 12px;">
-        ${PersetujuanPencairan(record)}
+      <div class="page pt-0 text-justify" style="font-size: 12px;">
+        ${BuktiPencairan(record, "DEBITUR")}
       </div>
-      <div class="page text-justify" style="font-size: 12px;">
-        ${BPK(record)}
+      <div class="page pt-0 text-justify" style="font-size: 12px;">
+        ${Pemotongan(record)}
       </div>
-      <div class="page text-justify" style="font-size: 12px;">
-        ${SPK(record)}
+      <div class="page pt-0 text-justify" style="font-size: 12px;">
+      ${Kesanggupan(record, "DEBITUR")}
       </div>
-      <div class="page text-justify" style="font-size: 12px;">
-        ${PernyataanKuasa(record)}
+      <div class="page pt-0 text-justify" style="font-size: 12px;">
+        ${SPKDR(record)}
+      </div>
+      <div class="page pt-0 text-justify" style="font-size: 12px;">
+        ${PenyerahanJaminan(record)}
       </div>
       <div class="page pt-0 text-justify" style="font-size: 12px;">
         ${FLagging(record)}
       </div>
       <div class="page text-justify" style="font-size: 11px;">
-        ${TTPJ(record)}
+        ${PenyerahanJaminan(record)}
       </div>
       <div class="page text-justify" style="font-size: 11px;">
-        ${DocChecklist1(record)}
-      </div>
-      <div class="page text-justify" style="font-size: 11px;">
-        ${DocChecklist2(record)}
+        ${FormCeklist1(record)}
       </div>
       
     </body>

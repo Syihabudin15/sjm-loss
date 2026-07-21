@@ -11,7 +11,7 @@ import {
   PlusCircleFilled,
   SaveOutlined,
 } from "@ant-design/icons";
-import { JenisPembiayaan } from "@prisma/client";
+import { JenisPembiayaan } from "../../../../generated/prisma/client";
 import {
   App,
   Button,

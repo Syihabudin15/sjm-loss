@@ -1,7 +1,7 @@
 import { serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { getSession } from "@/libs/Auth";
 import prisma from "@/libs/Prisma";
-import { Prisma, SumdanAgentFronting } from "@prisma/client";
+import { Prisma, SumdanAgentFronting } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { WheresDapem } from "../utils/wheres";
 
@@ -75,7 +75,7 @@ export const POST = async (req: NextRequest) => {
   try {
     const { id, SumdanAgentFrontings, Users, Dapems, ...saved } = data;
     const genId = await generateID();
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const agent = await tx.agentFronting.create({
         data: { id: genId, ...saved },
       });
@@ -111,7 +111,7 @@ export const PUT = async (req: NextRequest) => {
 
   try {
     const { id, SumdanAgentFrontings, Users, Dapems, ...saved } = data;
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const agent = await tx.agentFronting.update({
         where: { id: id },
         data: saved,

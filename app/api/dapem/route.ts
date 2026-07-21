@@ -7,7 +7,7 @@ import {
   EDocStatus,
   ESubmissionStatus,
   Prisma,
-} from "@prisma/client";
+} from "../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 import {
@@ -154,6 +154,7 @@ export const GET = async (request: NextRequest) => {
           },
         },
         PayOffice: { select: { name: true, code: true, logo: true } },
+        PrevPayOffice: { select: { name: true, code: true, logo: true } },
         JenisPembiayaan: {
           select: { name: true, status_mutasi: true, status_takeover: true },
         },
@@ -204,11 +205,12 @@ export const POST = async (req: NextRequest) => {
     Pelunasan,
     AgentFronting,
     PayOffice,
+    PrevPayOffice,
     Insurance,
     ...saved
   } = data;
   try {
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       await tx.debitur.upsert({
         where: { nopen: Debitur.nopen },
         update: Debitur,
@@ -248,6 +250,7 @@ export const PUT = async (req: NextRequest) => {
     Pelunasan,
     AgentFronting,
     PayOffice,
+    PrevPayOffice,
     Insurance,
     ...saved
   } = data;
@@ -258,7 +261,7 @@ export const PUT = async (req: NextRequest) => {
         { msg: "Not Found", status: 404 },
         { status: 404 },
       );
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       if (prevDapem.nopen !== Debitur.nopen) {
         const findSameWithNewNopen = await tx.debitur.findFirst({
           where: { nopen: Debitur.nopen },

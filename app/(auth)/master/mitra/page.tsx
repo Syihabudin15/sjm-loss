@@ -22,7 +22,7 @@ import {
   PlusCircleFilled,
   SaveOutlined,
 } from "@ant-design/icons";
-import { ProdukPembiayaan, Sumdan } from "@prisma/client";
+import { ProdukPembiayaan, Sumdan } from "../../../../generated/prisma/client";
 import {
   App,
   Button,
@@ -142,14 +142,10 @@ export default function Page() {
         return (
           <div>
             <div className="text-xs  text-blue-400">
-              <p>
-                Rounded : {IDRFormat(record.rounded_sumdan)}/
-                {IDRFormat(record.rounded)}
-              </p>
+              <p>Rounded : {IDRFormat(record.rounded)}</p>
               <p>DSR : {record.dsr}%</p>
               <p>TBO : {record.tbo} Bulan</p>
               <p>Limit : {IDRFormat(Number(record.limit))}</p>
-              <p>BOP : {IDRFormat(Number(record.max_bop))}</p>
             </div>
           </div>
         );
@@ -164,54 +160,38 @@ export default function Page() {
           <div className="text-xs text-blue-400">
             <p>Margin : {record.c_margin}%</p>
             <p>Admin : {record.c_adm_sumdan}%</p>
-            <p>Provisi : {record.c_provisi_sumdan}%</p>
+            {/* <p>Provisi : {record.c_provisi_sumdan}%</p> */}
             <p>Rekening : {IDRFormat(record.c_account_sumdan)}</p>
           </div>
         );
       },
     },
     {
-      title: "Biaya Adm Koperasi",
+      title: "Biaya Koperasi",
       dataIndex: "cost",
       key: "cost",
       render(value, record, index) {
         return (
           <div className="text-xs text-blue-400">
+            <p>Margin : {record.c_margin}%</p>
             <p>Admin : {record.c_adm}%</p>
-            <p>Mitra : {record.c_adm_mitra}%</p>
-            <p>FF : {record.c_adm_ff}%</p>
-          </div>
-        );
-      },
-    },
-    {
-      title: "Biaya Prov Koperasi",
-      dataIndex: "cost",
-      key: "cost",
-      render(value, record, index) {
-        return (
-          <div className="text-xs text-blue-400">
-            <p>AO : {record.c_fee_ao}%</p>
-            <p>Cabang : {record.c_fee_cabang}%</p>
-            <p>Area : {record.c_fee_area}%</p>
-            <p>BPP : {record.c_fee_bpp}%</p>
-            <p>BPB : {record.c_fee_bpb}%</p>
-          </div>
-        );
-      },
-    },
-    {
-      title: "Biaya Lain Koperasi",
-      dataIndex: "cost",
-      key: "cost",
-      render(value, record, index) {
-        return (
-          <div className="text-xs text-blue-400">
-            <p>Rekening : {IDRFormat(record.c_account)}</p>
+            <p>Tatalaksana : {IDRFormat(record.c_gov)}</p>
             <p>Materai : {IDRFormat(record.c_stamps)}</p>
-            <p>Flagging : {IDRFormat(record.c_flagging)}</p>
-            <p>Informasi : {IDRFormat(record.c_information)}</p>
-            <p>BOP Area : {IDRFormat(record.c_bop_area)}</p>
+          </div>
+        );
+      },
+    },
+    {
+      title: "Lain-Lain",
+      dataIndex: "lain",
+      key: "lain",
+      render(value, record, index) {
+        return (
+          <div className="text-xs text-blue-400">
+            <p>Tamb Asuransi : {IDRFormat(record.c_flagging)}</p>
+            <p>Data Informasi : {IDRFormat(record.c_information)}</p>
+            <p>Banpot : {record.fee_banpot}%</p>
+            <p>NED : {IDRFormat(record.c_ned)}</p>
           </div>
         );
       },
@@ -276,6 +256,9 @@ export default function Page() {
               <FileProtectOutlined /> {record.contract_no}
             </div>
             <div>
+              <FileProtectOutlined /> {record.contract_no2}
+            </div>
+            <div>
               <CalendarOutlined />{" "}
               {moment(record.contract_date).format("DD/MM/YYYY")}
             </div>
@@ -283,26 +266,6 @@ export default function Page() {
         );
       },
     },
-    // {
-    //   title: "Berkas-berkas",
-    //   dataIndex: "files",
-    //   key: "files",
-    //   render(value, record, index) {
-    //     const files = ParseStrToFiles(record.file);
-    //     return (
-    //       <div className="flex flex-wrap gap-2 max-w-50">
-    //         {files &&
-    //           files.map((f) => (
-    //             <a href={f.url} target="_blank text-xs">
-    //               <Tag color={"blue"}>
-    //                 <FileTextOutlined /> {f.name}
-    //               </Tag>
-    //             </a>
-    //           ))}
-    //       </div>
-    //     );
-    //   },
-    // },
     {
       title: "Aksi",
       key: "action",
@@ -689,7 +652,7 @@ function UpsertSumdan({
                         setData({ ...data, c_account_sumdan: IDRToNumber(e) }),
                     }}
                   />
-                  <FormInput
+                  {/* <FormInput
                     data={{
                       label: "Provisi %",
                       mode: "horizontal",
@@ -701,20 +664,7 @@ function UpsertSumdan({
                           c_provisi_sumdan: parseFloat(e || "0"),
                         }),
                     }}
-                  />
-                  <FormInput
-                    data={{
-                      label: "Pembulatan Mitra",
-                      mode: "horizontal",
-                      type: "text",
-                      value: IDRFormat(data.rounded_sumdan || 0),
-                      onChange: (e: any) =>
-                        setData({
-                          ...data,
-                          rounded_sumdan: IDRToNumber(e || "0"),
-                        }),
-                    }}
-                  />
+                  /> */}
                   <FormInput
                     data={{
                       label: "DSR/DBR %",
@@ -771,48 +721,29 @@ function UpsertSumdan({
                         setData({ ...data, c_adm: parseFloat(e) }),
                     }}
                   />
-                  <FormInput
+                  {/* <FormInput
                     data={{
-                      label: "Admin Mitra %",
-                      mode: "horizontal",
-                      type: "number",
-                      value: data.c_adm_mitra,
-                      onChange: (e: any) =>
-                        setData({ ...data, c_adm_mitra: parseFloat(e) }),
-                    }}
-                  />
-                  <FormInput
-                    data={{
-                      label: "Admin FF %",
-                      mode: "horizontal",
-                      type: "number",
-                      value: data.c_adm_ff,
-                      onChange: (e: any) =>
-                        setData({ ...data, c_adm_ff: parseFloat(e) }),
-                    }}
-                  />
-                  <FormInput
-                    data={{
-                      label: "Total Admin %",
+                      label: "Provisi",
                       mode: "horizontal",
                       type: "text",
-                      disabled: true,
-                      value: `${data.c_adm_sumdan}% + ${data.c_adm + data.c_adm_mitra + data.c_adm_ff}% = ${data.c_adm_sumdan + data.c_adm + data.c_adm_mitra + data.c_adm_ff}%`,
+                      value: IDRFormat(data.c_provisi),
+                      onChange: (e: any) =>
+                        setData({ ...data, c_provisi: IDRToNumber(e) }),
                     }}
-                  />
+                  /> */}
                   <FormInput
                     data={{
-                      label: "Buka Rekening",
+                      label: "Tatalaksana",
                       mode: "horizontal",
                       type: "text",
-                      value: IDRFormat(data.c_account || 0),
+                      value: IDRFormat(data.c_gov),
                       onChange: (e: any) =>
-                        setData({ ...data, c_account: IDRToNumber(e) }),
+                        setData({ ...data, c_gov: IDRToNumber(e) }),
                     }}
                   />
                   <FormInput
                     data={{
-                      label: "Flagging",
+                      label: "Tambahan Asuransi",
                       mode: "horizontal",
                       type: "text",
                       value: IDRFormat(data.c_flagging),
@@ -842,74 +773,12 @@ function UpsertSumdan({
                   />
                   <FormInput
                     data={{
-                      label: "Fee AO %",
+                      label: "Fee Banpot %",
                       mode: "horizontal",
                       type: "number",
-                      value: data.c_fee_ao,
+                      value: data.fee_banpot,
                       onChange: (e: any) =>
-                        setData({ ...data, c_fee_ao: parseFloat(e) }),
-                    }}
-                  />
-                  <FormInput
-                    data={{
-                      label: "Fee Cabang %",
-                      mode: "horizontal",
-                      type: "number",
-                      value: data.c_fee_cabang,
-                      onChange: (e: any) =>
-                        setData({ ...data, c_fee_cabang: parseFloat(e) }),
-                    }}
-                  />
-                  <FormInput
-                    data={{
-                      label: "Fee Area %",
-                      mode: "horizontal",
-                      type: "number",
-                      value: data.c_fee_area,
-                      onChange: (e: any) =>
-                        setData({ ...data, c_fee_area: parseFloat(e) }),
-                    }}
-                  />
-                  <FormInput
-                    data={{
-                      label: "Fee BPP %",
-                      mode: "horizontal",
-                      type: "number",
-                      value: data.c_fee_bpp,
-                      onChange: (e: any) =>
-                        setData({ ...data, c_fee_bpp: parseFloat(e) }),
-                    }}
-                  />
-                  <FormInput
-                    data={{
-                      label: "Fee BPB %",
-                      mode: "horizontal",
-                      type: "number",
-                      value: data.c_fee_bpb,
-                      onChange: (e: any) =>
-                        setData({ ...data, c_fee_bpb: parseFloat(e) }),
-                    }}
-                  />
-                  <FormInput
-                    data={{
-                      label: "Total Provisi %",
-                      mode: "horizontal",
-                      type: "text",
-                      disabled: true,
-                      value: `${data.c_provisi_sumdan}% + ${
-                        data.c_fee_ao +
-                        data.c_fee_cabang +
-                        data.c_fee_area +
-                        data.c_fee_bpp +
-                        data.c_fee_bpb
-                      }% = ${
-                        data.c_provisi_sumdan +
-                        data.c_fee_ao +
-                        data.c_fee_cabang +
-                        data.c_fee_area +
-                        data.c_fee_bpp +
-                        data.c_fee_bpb
-                      }%`,
+                        setData({ ...data, fee_banpot: parseFloat(e) }),
                     }}
                   />
                   <FormInput
@@ -922,26 +791,16 @@ function UpsertSumdan({
                         setData({ ...data, c_ned: IDRToNumber(e || "0") }),
                     }}
                   />
-                  <FormInput
+                  {/* <FormInput
                     data={{
-                      label: "Maks BOP",
+                      label: "Maks BPP",
                       mode: "horizontal",
                       type: "text",
-                      value: IDRFormat(data.max_bop),
+                      value: IDRFormat(data.max_bpp),
                       onChange: (e: any) =>
-                        setData({ ...data, max_bop: IDRToNumber(e || "0") }),
+                        setData({ ...data, max_bpp: IDRToNumber(e || "0") }),
                     }}
-                  />
-                  <FormInput
-                    data={{
-                      label: "BOP Area %",
-                      mode: "horizontal",
-                      type: "number",
-                      value: data.c_bop_area,
-                      onChange: (e: any) =>
-                        setData({ ...data, c_bop_area: parseFloat(e || "0") }),
-                    }}
-                  />
+                  /> */}
                   <FormInput
                     data={{
                       label: "Pembulatan",
@@ -1050,7 +909,7 @@ export function DeleteSumdan({
             content: data.msg,
           });
           setOpen(false);
-          getData && (await getData());
+          getData && getData();
         } else {
           modal.error({
             title: "ERROR",
@@ -1286,7 +1145,7 @@ function UpsertProduk({
             content: `Data berhasil ${record ? "di Update" : "ditambahkan"}!`,
           });
           setOpen(false);
-          getData && (await getData());
+          getData && getData();
         } else {
           modal.error({
             title: "ERROR",
@@ -1547,28 +1406,20 @@ const defaultSumdan: ISumdan = {
   description: null,
   logo: null,
   tbo: 3,
-  rounded_sumdan: 1,
   c_adm_sumdan: 0,
   c_provisi_sumdan: 0,
   c_account_sumdan: 0,
   rounded: 1000,
   c_adm: 0,
-  c_adm_mitra: 0,
-  c_adm_ff: 0,
   c_margin: 0,
   c_gov: 0,
-  c_account: 0,
   c_stamps: 0,
+  c_provisi: 0,
   c_information: 0,
   c_flagging: 0,
-  c_fee_ao: 0,
-  c_fee_cabang: 0,
-  c_fee_area: 0,
-  c_fee_bpp: 0,
-  c_fee_bpb: 0,
   c_ned: 0,
-  max_bop: 0,
-  c_bop_area: 0,
+  fee_banpot: 0,
+  max_bpp: 0,
   dsr: 0,
   ProdukPembiayaans: [],
   pic: null,

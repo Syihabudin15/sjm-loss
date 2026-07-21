@@ -44,7 +44,7 @@ import {
   Jaminan,
   JenisPembiayaan,
   Pelunasan,
-} from "@prisma/client";
+} from "../../../generated/prisma/client";
 import {
   App,
   Button,
@@ -172,16 +172,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
         c_margin: find.c_margin,
         c_adm_sumdan: find.Sumdan.c_adm_sumdan,
         c_adm: find.Sumdan.c_adm,
-        c_adm_mitra: find.Sumdan.c_adm_mitra,
-        c_adm_ff: find.Sumdan.c_adm_ff,
         c_provisi_sumdan: find.Sumdan.c_provisi_sumdan,
-        c_fee_ao: find.Sumdan.c_fee_ao,
-        c_fee_cabang: find.Sumdan.c_fee_cabang,
-        c_fee_area: find.Sumdan.c_fee_area,
-        c_fee_bpp: find.Sumdan.c_fee_bpp,
-        c_fee_bpb: find.Sumdan.c_fee_bpb,
-        c_bop_area: find.Sumdan.c_bop_area,
-        c_account: find.Sumdan.c_account,
         c_account_sumdan: find.Sumdan.c_account_sumdan,
         c_gov: find.Sumdan.c_gov,
         c_stamp: find.Sumdan.c_stamps,
@@ -189,8 +180,8 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
         c_infomation: find.Sumdan.c_information,
         c_insurance: find.c_insurance,
         c_ned: find.Sumdan.c_ned,
+        fee_banpot: find.Sumdan.fee_banpot,
         rounded: find.Sumdan.rounded,
-        rounded_sumdan: find.Sumdan.rounded_sumdan,
         tbo: find.Sumdan.tbo,
         margin_type: find.margin_type,
       }));
@@ -248,7 +239,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
     data.c_margin,
     data.c_margin_sumdan,
     data.rounded,
-    data.rounded_sumdan,
     data.c_ned,
     data.c_takeover,
     data.c_blokir,
@@ -260,17 +250,9 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
     data.c_gov,
     data.c_adm,
     data.c_adm_sumdan,
-    data.c_adm_mitra,
-    data.c_adm_ff,
-    data.c_fee_ao,
-    data.c_fee_cabang,
-    data.c_fee_area,
     data.c_fee_bpp,
-    data.c_fee_bpb,
     data.c_account_sumdan,
-    data.c_account,
-    data.c_bop,
-    data.c_bop_area,
+    data.fee_banpot,
   ]);
 
   const handleOCR = async () => {
@@ -1430,14 +1412,18 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         data={{
                           mode: "vertical",
                           label: "Kantor Bayar Asal",
-                          type: "text",
+                          type: "select",
                           class: "flex-1",
                           required: true,
-                          value: data.prev_payoffice,
+                          options: payOffices.map((p) => ({
+                            label: p.code || p.name,
+                            value: p.id,
+                          })),
+                          value: data.prevPayOfficeId,
                           onChange: (e: string) =>
                             setData({
                               ...data,
-                              prev_payoffice: e,
+                              prevPayOfficeId: e,
                             }),
                         }}
                       />
@@ -1549,15 +1535,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                                 c_margin: find.c_margin,
                                 c_adm_sumdan: find.Sumdan.c_adm_sumdan,
                                 c_adm: find.Sumdan.c_adm,
-                                c_adm_mitra: find.Sumdan.c_adm_mitra,
-                                c_adm_ff: find.Sumdan.c_adm_ff,
                                 c_provisi_sumdan: find.Sumdan.c_provisi_sumdan,
-                                c_fee_ao: find.Sumdan.c_fee_ao,
-                                c_fee_cabang: find.Sumdan.c_fee_cabang,
-                                c_fee_area: find.Sumdan.c_fee_area,
-                                c_fee_bpp: find.Sumdan.c_fee_bpp,
-                                c_fee_bpb: find.Sumdan.c_fee_bpb,
-                                c_account: find.Sumdan.c_account,
                                 c_account_sumdan: find.Sumdan.c_account_sumdan,
                                 c_gov: find.Sumdan.c_gov,
                                 c_stamp: find.Sumdan.c_stamps,
@@ -1566,7 +1544,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                                 c_insurance: find.c_insurance,
                                 c_ned: find.Sumdan.c_ned,
                                 rounded: find.Sumdan.rounded,
-                                rounded_sumdan: find.Sumdan.rounded_sumdan,
                                 tbo: find.Sumdan.tbo,
                               });
                             }
@@ -1671,20 +1648,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                               setData({
                                 ...data,
                                 rounded: IDRToNumber(e || "0"),
-                              }),
-                          }}
-                        />
-                        <FormInput
-                          data={{
-                            mode: "vertical",
-                            label: "Pembulatan Mitra",
-                            type: "text",
-                            class: "flex-1",
-                            value: IDRFormat(data.rounded_sumdan),
-                            onChange: (e: string) =>
-                              setData({
-                                ...data,
-                                rounded_sumdan: IDRToNumber(e || "0"),
                               }),
                           }}
                         />
@@ -1825,34 +1788,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                             type="number"
                           />
                         </Tooltip>
-                        <Tooltip title="Adm Mitra">
-                          <Input
-                            size="small"
-                            style={{ width: 65 }}
-                            value={data.c_adm_mitra}
-                            onChange={(e) =>
-                              setData({
-                                ...data,
-                                c_adm_mitra: Number(e.target.value || 0),
-                              })
-                            }
-                            type="number"
-                          />
-                        </Tooltip>
-                        <Tooltip title="Adm FF">
-                          <Input
-                            size="small"
-                            style={{ width: 65 }}
-                            value={data.c_adm_ff}
-                            onChange={(e) =>
-                              setData({
-                                ...data,
-                                c_adm_ff: Number(e.target.value || 0),
-                              })
-                            }
-                            type="number"
-                          />
-                        </Tooltip>
                         <Input
                           size="small"
                           disabled
@@ -1866,137 +1801,22 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         />
                       </div>
                     </div>
-
-                    {/* Baris 2: Prov AO */}
                     <div className="flex items-center justify-between border-b border-dashed my-2 py-1">
                       <div className="w-1/3 text-gray-700 font-medium">
-                        Prov AO
+                        Provisi Koperasi
                       </div>
                       <div className="flex items-center gap-2 flex-1 justify-end">
-                        <Tooltip title="Fee AO">
-                          <Input
-                            size="small"
-                            style={{ width: 65 }}
-                            value={data.c_fee_ao}
-                            onChange={(e) =>
-                              setData({
-                                ...data,
-                                c_fee_ao: Number(e.target.value || 0),
-                              })
-                            }
-                            type="number"
-                          />
-                        </Tooltip>
-                        <Tooltip title="Fee Cabang">
-                          <Input
-                            size="small"
-                            style={{ width: 65 }}
-                            value={data.c_fee_cabang}
-                            onChange={(e) =>
-                              setData({
-                                ...data,
-                                c_fee_cabang: Number(e.target.value || 0),
-                              })
-                            }
-                            type="number"
-                          />
-                        </Tooltip>
-                        <Tooltip title="Fee Area">
-                          <Input
-                            size="small"
-                            style={{ width: 65 }}
-                            value={data.c_fee_area}
-                            onChange={(e) =>
-                              setData({
-                                ...data,
-                                c_fee_area: Number(e.target.value || 0),
-                              })
-                            }
-                            type="number"
-                          />
-                        </Tooltip>
-                        <Input
-                          size="small"
-                          disabled
-                          value={IDRFormat(
-                            details.detail.fee_ao +
-                              details.detail.fee_cabang +
-                              details.detail.fee_area,
-                          )}
-                          style={{
-                            textAlign: "right",
-                            color: "black",
-                            maxWidth: 150,
-                            flex: 1,
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Baris 3: Prov BPP & BPB */}
-                    <div className="flex items-center justify-between border-b border-dashed my-2 py-1">
-                      <div className="w-1/3 text-gray-700 font-medium">
-                        Prov BPP & BPB
-                      </div>
-                      <div className="flex items-center gap-2 flex-1 justify-end">
-                        <Tooltip title="Fee BPP">
-                          <Input
-                            size="small"
-                            style={{ width: 65 }}
-                            value={data.c_fee_bpp}
-                            onChange={(e) =>
-                              setData({
-                                ...data,
-                                c_fee_bpp: Number(e.target.value || 0),
-                              })
-                            }
-                            type="number"
-                          />
-                        </Tooltip>
-                        <Tooltip title="Fee BPB">
-                          <Input
-                            size="small"
-                            style={{ width: 65 }}
-                            value={data.c_fee_bpb}
-                            onChange={(e) =>
-                              setData({
-                                ...data,
-                                c_fee_bpb: Number(e.target.value || 0),
-                              })
-                            }
-                            type="number"
-                          />
-                        </Tooltip>
-                        {/* Spacer kosong agar input IDRFormat tetap sejajar dengan baris di atasnya */}
                         <div style={{ width: 65 }} />
                         <Input
                           size="small"
                           disabled
-                          value={IDRFormat(
-                            details.detail.fee_bpp + details.detail.fee_bpb,
-                          )}
+                          value={IDRFormat(data.c_provisi)}
                           style={{
                             textAlign: "right",
                             color: "black",
                             maxWidth: 150,
                             flex: 1,
                           }}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex justify-between border-b border-dashed my-2">
-                      <div className="flex-1">Rekening Koperasi</div>
-                      <div className="flex gap-2 flex-2">
-                        <Input
-                          size="small"
-                          value={IDRFormat(data.c_account)}
-                          style={{ textAlign: "right", color: "black" }}
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              c_account: IDRToNumber(e.target.value || "0"),
-                            })
-                          }
                         />
                       </div>
                     </div>
@@ -2065,46 +1885,20 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         />
                       </div>
                     </div>
-                    <div className="flex justify-between border-b border-dashed my-2">
-                      <div className="flex-1">BOP Pembiayaan Area</div>
-                      <div className="flex gap-2 flex-2">
-                        <Input
-                          size="small"
-                          style={{ width: 100 }}
-                          // suffix={
-                          //   <span className="text-xs italic opacity-70">%</span>
-                          // }
-                          value={data.c_bop_area}
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              c_bop_area: Number(e.target.value || 0),
-                            })
-                          }
-                          type={"number"}
-                        />
-                        <Input
-                          size="small"
-                          disabled
-                          value={IDRFormat(details.detail.bop_area)}
-                          style={{ textAlign: "right", color: "black" }}
-                        />
-                      </div>
-                    </div>
                     <div className="flex gap-2 justify-between items-center my-2">
-                      <div className="flex-1">BOP Pembiayaan</div>
+                      <div className="flex-1">BPP Pembiayaan</div>
                       <div className="flex gap-2 flex-2">
                         <Input
                           size="small"
-                          value={IDRFormat(data.c_bop || 0)}
+                          value={IDRFormat(data.c_fee_bpp || 0)}
                           style={{ textAlign: "right" }}
                           onChange={(e) =>
                             setData({
                               ...data,
-                              c_bop:
+                              c_fee_bpp:
                                 IDRToNumber(e.target.value || "0") >
-                                data.ProdukPembiayaan.Sumdan.max_bop
-                                  ? data.ProdukPembiayaan.Sumdan.max_bop
+                                data.ProdukPembiayaan.Sumdan.max_bpp
+                                  ? data.ProdukPembiayaan.Sumdan.max_bpp
                                   : IDRToNumber(e.target.value || "0"),
                             })
                           }
@@ -2118,7 +1912,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                       </div>
                     </div>
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 flex-col gap-1">
                     <div className="flex justify-between border-b border-dashed my-2">
                       <div className="flex-1">NED</div>
                       <div className="flex gap-2 flex-2">
@@ -2130,6 +1924,23 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                             setData({
                               ...data,
                               c_ned: IDRToNumber(e.target.value || "0"),
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div className="flex justify-between border-b border-dashed my-2">
+                      <div className="flex-1">Fee Banpot</div>
+                      <div className="flex gap-2 flex-2">
+                        <Input
+                          size="small"
+                          value={IDRFormat(data.fee_banpot)}
+                          style={{ textAlign: "right", color: "black" }}
+                          type={"number"}
+                          onChange={(e) =>
+                            setData({
+                              ...data,
+                              fee_banpot: Number(e.target.value || 0),
                             })
                           }
                         />
@@ -2297,24 +2108,10 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         })),
                         onChange: (e: string) => {
                           const find = users.find((u) => u.id === e);
-                          const AOCabang = find?.Cabang.HeadCabangs.find(
-                            (u) => u.status,
-                          );
-                          const AOArea = find?.Cabang.Area.HeadAreas.find(
-                            (u) => u.status,
-                          );
                           setData({
                             ...data,
                             AO: find || null,
                             aoId: e,
-                            ...(AOCabang && {
-                              aoCabangId: AOCabang.id,
-                              AOCabang: AOCabang.User,
-                            }),
-                            ...(AOArea && {
-                              aoAreaId: AOArea.id,
-                              AOArea: AOArea.User,
-                            }),
                           });
                         },
                       }}
@@ -2659,35 +2456,26 @@ const defaultData: IDapem = {
   c_margin_sumdan: 0,
   c_adm_sumdan: 0,
   c_adm: 0,
-  c_adm_mitra: 0,
-  c_adm_ff: 0,
   c_insurance: 0,
+  c_provisi: 0,
   c_gov: 0,
   c_stamp: 0,
   c_account_sumdan: 0,
-  c_account: 0,
   c_mutasi: 0,
   c_blokir: 0,
   c_takeover: 0,
   c_flagging: 0,
   c_infomation: 0,
   c_provisi_sumdan: 0,
-  c_fee_ao: 0,
-  c_fee_cabang: 0,
-  c_fee_area: 0,
   c_fee_bpp: 0,
-  c_fee_bpb: 0,
   c_ned: 0,
-  c_bop: 0,
-  c_bop_area: 0,
+  fee_banpot: 0,
   tbo: 0,
   rounded: 0,
-  rounded_sumdan: 0,
   margin_type: "ANUITAS",
   agentFrontingId: null,
   c_fee_fronting: 0,
 
-  prev_payoffice: null,
   takeover_from: null,
   takeover_date: null,
 
@@ -2744,10 +2532,6 @@ const defaultData: IDapem = {
   guarantee_desc: null,
   ao_fee_desc: null,
   ao_fee_status: "DRAFT",
-  ao_cabang_fee_desc: null,
-  ao_cabang_fee_status: "DRAFT",
-  ao_area_fee_desc: null,
-  ao_area_fee_status: "DRAFT",
 
   used_for: "",
   no_contract: "",
@@ -2787,6 +2571,7 @@ const defaultData: IDapem = {
   Jaminan: {} as Jaminan,
   Pelunasan: {} as Pelunasan,
   PayOffice: {} as IPayOffice,
+  PrevPayOffice: {} as IPayOffice,
   Insurance: {} as IInsurance,
   Angsurans: [],
   AgentFronting: null,
@@ -2803,6 +2588,7 @@ const defaultData: IDapem = {
   jaminanId: null,
   payOfficeId: null,
   insuranceId: null,
+  prevPayOfficeId: null,
 };
 
 interface ITemp {

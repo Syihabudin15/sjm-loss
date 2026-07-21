@@ -1,9 +1,9 @@
 import { serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { getSession } from "@/libs/Auth";
 import prisma from "@/libs/Prisma";
-import { Prisma } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { WheresDapem } from "../utils/wheres";
+import { Prisma } from "../../../generated/prisma/client";
 
 export const GET = async (request: NextRequest) => {
   const params = Object.fromEntries(request.nextUrl.searchParams);
@@ -41,7 +41,9 @@ export const GET = async (request: NextRequest) => {
       SumdanAgentFrontings: {
         some: {
           sumdanId: {
-            in: user.AgentFronting?.SumdanAgentFrontings.map((s) => s.sumdanId),
+            in: user.AgentFronting?.SumdanAgentFrontings.map(
+              (s: any) => s.sumdanId,
+            ),
           },
         },
       },
@@ -144,56 +146,6 @@ export const DELETE = async (request: NextRequest) => {
     });
   }
 };
-
-// export const PATCH = async (request: NextRequest) => {
-//   const page = request.nextUrl.searchParams.get("page") || "1";
-//   const limit = request.nextUrl.searchParams.get("limit") || "50";
-//   const search = request.nextUrl.searchParams.get("search") || "";
-//   const skip = (parseInt(page) - 1) * parseInt(limit);
-
-//   const session = await getSession();
-
-//   if (!session)
-//     return NextResponse.json({ data: [], status: 200 }, { status: 200 });
-//   const user = await prisma.user.findFirst({ where: { id: session.user.id } });
-//   if (!user)
-//     return NextResponse.json({ data: [], status: 200 }, { status: 200 });
-
-//   const where: Prisma.SumdanWhereInput = {
-//     ...(search && {
-//       OR: [
-//         { name: { contains: search } },
-//         { code: { contains: search } },
-//         { contract_no: { contains: search } },
-//         { email: { contains: search } },
-//         { phone: { contains: search } },
-//       ],
-//     }),
-//     ...(user.sumdanId && { id: user.sumdanId }),
-//     status: true,
-//   };
-
-//   const [data, total] = await Promise.all([
-//     prisma.sumdan.findMany({
-//       where,
-//       skip: skip,
-//       take: parseInt(limit),
-//       include: {
-//         ProdukPembiayaans: {
-//           where: { status: true },
-//           include: { Sumdan: true },
-//         },
-//       },
-//     }),
-//     prisma.sumdan.count({ where }),
-//   ]);
-
-//   return NextResponse.json({
-//     status: 200,
-//     data: serializeForApi(data),
-//     total: total,
-//   });
-// };
 
 export const PATCH = async (request: NextRequest) => {
   const id = request.nextUrl.searchParams.get("id");

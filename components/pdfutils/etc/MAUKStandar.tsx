@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  GetDapem,
   GetDetailDapem,
   GetRoman,
   IDRFormat,
@@ -173,7 +172,7 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                     data={[
                       {
                         key: "Kantor Bayar Asal",
-                        value: data.prev_payoffice,
+                        value: data.PrevPayOffice.name,
                       },
                       {
                         key: "Kantor Bayar Tujuan",
@@ -323,11 +322,6 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                         currency: true,
                       },
                       {
-                        key: "Biaya Tatalaksana",
-                        value: IDRFormat(detail.tatalaksana + detail.provisi),
-                        currency: true,
-                      },
-                      {
                         key: "Biaya Provisi",
                         value: IDRFormat(
                           detail.detail.provisi_sumdan +
@@ -338,6 +332,31 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                       {
                         key: "Biaya Buka Rekening",
                         value: IDRFormat(data.c_account_sumdan),
+                        currency: true,
+                      },
+                      {
+                        key: "Biaya Tatalaksana",
+                        value: IDRFormat(data.c_gov),
+                        currency: true,
+                      },
+                      {
+                        key: "Biaya Flagging",
+                        value: IDRFormat(data.c_flagging),
+                        currency: true,
+                      },
+                      {
+                        key: "Biaya Data Informasi",
+                        value: IDRFormat(data.c_infomation),
+                        currency: true,
+                      },
+                      {
+                        key: "Biaya Materai",
+                        value: IDRFormat(data.c_stamp),
+                        currency: true,
+                      },
+                      {
+                        key: "Biaya Bpp",
+                        value: IDRFormat(data.c_fee_bpp),
                         currency: true,
                       },
                       {

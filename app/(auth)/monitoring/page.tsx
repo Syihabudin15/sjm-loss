@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import moment from "moment";
-import { JenisPembiayaan, Sumdan } from "@prisma/client";
+import { JenisPembiayaan, Sumdan } from "../../../generated/prisma/client";
 import {
   App,
   Button,
@@ -35,8 +35,6 @@ import {
   SwapOutlined,
 } from "@ant-design/icons";
 
-// import { FormInput, ViewFiles } from "@/components";
-// import { printForm } from "@/components/pdfutils/etc/printForm";
 import { printContract } from "@/components/pdfutils/akad/Akad";
 import { printMonitoring } from "@/components/pdfutils/etc/printMonitoring";
 import { useUser } from "@/components/UserContext";
@@ -63,7 +61,6 @@ import {
 } from "@/libs/IInterfaces";
 import { useAccess } from "@/libs/Permission";
 const { Paragraph } = Typography;
-// import { DetailDapem } from "@/components/utils/LayoutUtils";
 import dayjs from "dayjs";
 import dynamic from "next/dynamic";
 const { RangePicker } = DatePicker;
@@ -482,7 +479,7 @@ export default function Page() {
               <div style={{ fontSize: 9 }}>
                 <SwapOutlined />{" "}
                 <Tag style={{ fontSize: 9 }} color="red">
-                  {record.prev_payoffice}
+                  {record.PrevPayOffice.code}
                 </Tag>{" "}
                 <ArrowRightOutlined style={{ fontSize: 9 }} />{" "}
                 <Tag style={{ fontSize: 9 }} color="blue">
