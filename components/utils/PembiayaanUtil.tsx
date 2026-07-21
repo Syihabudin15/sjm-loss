@@ -157,9 +157,9 @@ export const GetDetailDapem = (dapem: IDapem): IOutputDapemDetail => {
     dapem.c_gov +
     lainlain;
   const biayakop = adm + provisi + dapem.c_gov + asuransi + lainlain;
-  const angs =
-    Math.ceil(angsuran / dapem.rounded) * dapem.rounded + dapem.c_ned;
-  const angsurantotal = angs + (angs * dapem.fee_banpot) / 100;
+  const angs = Math.ceil(angsuran / dapem.rounded) * dapem.rounded;
+  const feebanpot = angs * (dapem.fee_banpot / 100);
+  const angsurantotal = angs + dapem.c_ned + feebanpot;
 
   return {
     detail: {
@@ -170,7 +170,9 @@ export const GetDetailDapem = (dapem: IDapem): IOutputDapemDetail => {
       provisi,
       angsuran,
       angsuran_sumdan,
-      fee_banpot: dapem.fee_banpot,
+      fee_banpot: feebanpot,
+      angsuranasli: angsuran,
+      angsuranrounded: angs,
     },
     angsuran: angsurantotal,
     administrasi: adm + adm_sumdan,
@@ -213,7 +215,7 @@ const AngsuranFlat = (dapem: IDapem, sumdan?: boolean) => {
     : dapem.c_margin + dapem.c_margin_sumdan;
   const margin = (dapem.plafond * (r / 100)) / 12;
   const angs = pokok + margin;
-  return Math.ceil(angs / dapem.rounded) * dapem.rounded;
+  return angs;
 };
 
 export const GetSisaPokokMargin = (data: IDapem) => {
@@ -292,6 +294,8 @@ export const getInitialDapemDetail = (): IOutputDapemDetail => ({
     angsuran: 0,
     angsuran_sumdan: 0,
     fee_banpot: 0,
+    angsuranasli: 0,
+    angsuranrounded: 0,
   },
   angsuran: 0,
   provisi: 0,

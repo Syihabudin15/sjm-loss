@@ -123,7 +123,7 @@ export default function Page() {
         GetMaxPlafond(
           data.c_margin + data.c_margin_sumdan,
           data.tenor,
-          ((data.Debitur.salary - data.c_ned) * data.Sumdan.dsr) / 100,
+          ((data.Debitur.salary - 100000) * data.Sumdan.dsr) / 100,
         ),
       ),
     );
@@ -136,7 +136,10 @@ export default function Page() {
     const detailDapem = GetDetailDapem(data);
     setDetails(detailDapem);
 
-    if (detailDapem.angsuran > data.Debitur.salary * (data.Sumdan.dsr / 100)) {
+    if (
+      detailDapem.detail.angsuranrounded >
+      data.Debitur.salary * (data.Sumdan.dsr / 100)
+    ) {
       message.error(
         "Angsuran lebih dari 95%, mohon sesuaikan kembali pembiayaan!",
       );
@@ -484,7 +487,10 @@ export default function Page() {
           <div className="flex-1 flex gap-2">
             <div className="flex-1">
               <div>Angsuran</div>
-              <Input value={IDRFormat(details.angsuran || 0)} disabled />
+              <Input
+                value={IDRFormat(details.detail.angsuranrounded || 0)}
+                disabled
+              />
             </div>
             <div className="flex-1">
               <div>Max Angsuran</div>
@@ -891,13 +897,28 @@ export default function Page() {
         <Divider style={{ marginBottom: 5 }}>Informasi Tambahan</Divider>
         <div className="italic">
           <div className="flex justify-between border-b border-dashed">
+            <div>Angsuran</div>
+            <div>{IDRFormat(details.detail.angsuranrounded)}</div>
+          </div>
+          <div className="flex justify-between border-b border-dashed">
+            <div>NED+Fee</div>
+            <div>{IDRFormat(details.detail.fee_banpot + data.c_ned)}</div>
+          </div>
+          <div className="flex justify-between border-b border-dashed">
+            <div>Total angsuran</div>
+            <div>{IDRFormat(details.angsuran)}</div>
+          </div>
+          <div className="flex justify-between border-b border-dashed">
             <div>Sisa Gaji</div>
             <div>{IDRFormat(data.Debitur.salary - details.angsuran)}</div>
           </div>
           <div className="flex justify-between border-b border-dashed">
-            <div>Debt Service Ratio</div>
+            <div>DBR (%)</div>
             <div>
-              {((details.angsuran / data.Debitur.salary) * 100 || 0).toFixed(2)}{" "}
+              {(
+                (details.detail.angsuranrounded / data.Debitur.salary) * 100 ||
+                0
+              ).toFixed(2)}{" "}
               % / {data.Sumdan.dsr} %
             </div>
           </div>
@@ -1085,6 +1106,14 @@ const ModalDetailPembiayaan = ({
             <div className="italic mb-1 border-b rounded p-1">
               <div className="flex justify-between border-b border-dashed">
                 <div>Angsuran</div>
+                <div>{IDRFormat(detail.detail.angsuranrounded)}</div>
+              </div>
+              <div className="flex justify-between border-b border-dashed">
+                <div>NED+Fee</div>
+                <div>{IDRFormat(detail.detail.fee_banpot + data.c_ned)}</div>
+              </div>
+              <div className="flex justify-between border-b border-dashed">
+                <div>Total Angsuran</div>
                 <div>{IDRFormat(detail.angsuran)}</div>
               </div>
               <div className="flex justify-between border-b border-dashed">
@@ -1094,8 +1123,11 @@ const ModalDetailPembiayaan = ({
               <div className="flex justify-between">
                 <div>Debt Service Ratio</div>
                 <div>
-                  {((detail.angsuran / data.Debitur.salary) * 100).toFixed(2)}%
-                  / {data.Sumdan.dsr}%
+                  {(
+                    (detail.detail.angsuranrounded / data.Debitur.salary) *
+                    100
+                  ).toFixed(2)}
+                  % / {data.Sumdan.dsr}%
                 </div>
               </div>
             </div>

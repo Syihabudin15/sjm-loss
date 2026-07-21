@@ -30,7 +30,7 @@ import {
   PrinterOutlined,
   SwapOutlined,
 } from "@ant-design/icons";
-import { JenisPembiayaan, Sumdan } from "../../../generated/prisma/client";
+import type { JenisPembiayaan, Sumdan } from "../../../generated/prisma/client";
 import {
   Button,
   Card,

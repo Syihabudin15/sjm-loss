@@ -201,6 +201,8 @@ export interface IOutputDapemDetail {
     angsuran: number;
     fee_banpot: number;
     angsuran_sumdan: number;
+    angsuranasli: number;
+    angsuranrounded: number;
   };
   angsuran: number;
   provisi: number;
