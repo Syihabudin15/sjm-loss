@@ -185,19 +185,19 @@ export const listMenuServer: { key: string; needaccess: boolean }[] = [
     needaccess: true,
   },
   {
-    key: "/tppb/print",
+    key: "/ttpb/print",
     needaccess: true,
   },
   {
-    key: "/tppb/dropping",
+    key: "/ttpb/dropping",
     needaccess: true,
   },
   {
-    key: "/tppj/print",
+    key: "/ttpj/print",
     needaccess: true,
   },
   {
-    key: "/tppj/dropping",
+    key: "/ttpj/dropping",
     needaccess: true,
   },
   {
