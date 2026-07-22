@@ -159,8 +159,10 @@ function GenerateAnuitas(dapem: Dapem): Angsuran[] {
     // const bungaBulan = Math.ceil(
     //   sisa * ((dapem.c_margin + dapem.c_margin_sumdan) / 12 / 100),
     // );
-    const bungaBulan = Math.round(sisa * (dapem.c_margin_sumdan / 12 / 100));
-    const pokok = detail.detail.angsuran_sumdan - bungaBulan;
+    const bungaBulan = Math.round(
+      sisa * ((dapem.c_margin + dapem.c_margin_sumdan) / 12 / 100),
+    );
+    const pokok = detail.detail.angsuranrounded - bungaBulan;
     sisa -= pokok;
 
     if (sisa < 0) sisa = 0;
@@ -178,7 +180,7 @@ function GenerateAnuitas(dapem: Dapem): Angsuran[] {
       dapemId: dapem.id,
       inst_sumdan: detail.detail.angsuran_sumdan,
       c_ned: dapem.c_ned,
-      fee_banpot: 0,
+      fee_banpot: detail.detail.fee_banpot,
     });
   }
   return angsurans;

@@ -1125,7 +1125,7 @@ const PrintContractSubmission = ({
                 onClick={() =>
                   setTemp((prev) => ({
                     ...prev,
-                    no_contract: `${data.id.replace("P", "")}/${process.env.NEXT_PUBLIC_APP_CODE_FILE || "MANTARA"}-${data.ProdukPembiayaan.Sumdan.code === "VIMA" ? "PTBPRVIMA" : data.ProdukPembiayaan.Sumdan.code.replace(" ", "").replace("BPR", "").replace("BANK", "")}/${moment(prev.date_contract || new Date()).format("DD-YYYY")}`,
+                    no_contract: `${data.id.replace("P", "")}/${process.env.NEXT_PUBLIC_APP_CODE_FILE || "SJM"}-${data.ProdukPembiayaan.Sumdan.code.replace(" ", "").replace("BPR", "").replace("BANK", "")}/${moment(prev.date_contract || new Date()).format("DD-YYYY")}`,
                   }))
                 }
               />

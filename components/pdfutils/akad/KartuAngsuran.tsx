@@ -9,7 +9,7 @@ export const JadwalAngsuran = (record: IDapem, sub?: string) => {
   const ao = record.AO || record.AOCabang || record.AOArea;
 
   return `
-  ${Header("KARTU ANGSURAN", record.no_contract, sub, record.ProdukPembiayaan.Sumdan.logo, undefined)}
+  ${Header("KARTU ANGSURAN", record.no_contract, sub, process.env.NEXT_PUBLIC_APP_LOGO || record.ProdukPembiayaan.Sumdan.logo, undefined)}
   
   <div class="mt-4 flex gap-4">
     <div class="flex-1">
@@ -43,12 +43,12 @@ export const JadwalAngsuran = (record: IDapem, sub?: string) => {
       <div class="flex gap-2">
         <div class="w-32">Suku Bunga</div>
         <div class="w-4">:</div>
-        <div>${((sub === "DEBITUR" ? record.c_margin : 0) + record.c_margin_sumdan).toFixed(2)}% /tahun</div>
+        <div>${(record.c_margin + record.c_margin_sumdan).toFixed(2)}% /tahun</div>
       </div>
       <div class="flex gap-2">
         <div class="w-32">Angsuran</div>
         <div class="w-4">:</div>
-        <div>Rp. ${IDRFormat(sub === "DEBITUR" ? detail.angsuran : detail.detail.angsuran_sumdan)}</div>
+        <div>Rp. ${IDRFormat(detail.angsuran)}</div>
       </div>
       <div class="flex gap-2">
         <div class="w-32">Account Officer</div>
@@ -80,7 +80,7 @@ export const JadwalAngsuran = (record: IDapem, sub?: string) => {
           <th class="border border-gray-400 border-dashed p-1">Total Angsuran</th>
           <th class="border border-gray-400 border-dashed p-1">Pokok</th>
           <th class="border border-gray-400 border-dashed p-1">Magin</th>
-          <th class="border border-gray-400 border-dashed p-1">Adm. Angsuran</th>
+          <th class="border border-gray-400 border-dashed p-1">NED+Fee</th>
           <th class="border border-gray-400 border-dashed p-1">Sisa Pokok</th>
         </tr>
       </thead>
@@ -90,27 +90,16 @@ export const JadwalAngsuran = (record: IDapem, sub?: string) => {
           <tr>
             <td class="border border-gray-400 border-dashed p-1 text-center">${r.counter}</td>
             <td class="border border-gray-400 border-dashed p-1 text-center">${moment(r.date_pay).format("DD-MM-YYYY")}</td>
-            <td class="border border-gray-400 border-dashed p-1 text-right">${r.counter === 0 ? "0" : sub === "DEBITUR" ? IDRFormat(detail.angsuran) : IDRFormat(detail.detail.angsuran_sumdan)}</td>
+            <td class="border border-gray-400 border-dashed p-1 text-right">${r.counter === 0 ? "0" : IDRFormat(detail.angsuran)}</td>
             <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.principal)}</td>
             <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.margin)}</td>
-            <td class="border border-gray-400 border-dashed p-1 text-right">${r.counter === 0 ? "0" : sub === "DEBITUR" ? IDRFormat(detail.angsuran - detail.detail.angsuran_sumdan) : "0"}</td>
+            <td class="border border-gray-400 border-dashed p-1 text-right">${r.counter === 0 ? "0" : IDRFormat(r.fee_banpot + r.c_ned)}</td>
             <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.remaining)}</td>
           </tr>
         `,
         ).join("")}
       </tbody>
     </table>
-  </div>
-
-  <div class="mt-4">
-    <p class="font-bold">Keterangan</p>
-      <ul class="list-inside list-decimal">
-        <li>Jadwal angsuran ini merupakan rincian pembayaran pinjaman/pembiayaan per bulan.</li>
-        <li>Pembayaran angsuran dilakukan setiap bulan sesuai tanggal jatuh tempo setiap tanggal.</li>
-        <li>Keterlambatan pembayaran dapat dikenakan denda sesuai ketentuan yang berlaku.</li>
-        <li>Pelunasan dipercepat dapat dilakukan sesuai syarat dan ketentuan lembaga pembiayaan.</li>
-        <li>Apabila terdapat perbedaan data, maka catatan administrasi lembaga yang berlaku.</li>
-      </ul>
   </div>
 `;
 };
