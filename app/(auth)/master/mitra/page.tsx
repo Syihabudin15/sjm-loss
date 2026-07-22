@@ -776,6 +776,16 @@ function UpsertSumdan({
                   />
                   <FormInput
                     data={{
+                      label: "Maks Tatalaksana",
+                      mode: "horizontal",
+                      type: "text",
+                      value: IDRFormat(data.max_bpp),
+                      onChange: (e: any) =>
+                        setData({ ...data, max_bpp: IDRToNumber(e || "0") }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
                       label: "Fee Banpot %",
                       mode: "horizontal",
                       type: "number",
@@ -794,16 +804,6 @@ function UpsertSumdan({
                         setData({ ...data, c_ned: IDRToNumber(e || "0") }),
                     }}
                   />
-                  {/* <FormInput
-                    data={{
-                      label: "Maks BPP",
-                      mode: "horizontal",
-                      type: "text",
-                      value: IDRFormat(data.max_bpp),
-                      onChange: (e: any) =>
-                        setData({ ...data, max_bpp: IDRToNumber(e || "0") }),
-                    }}
-                  /> */}
                   <FormInput
                     data={{
                       label: "Pembulatan",

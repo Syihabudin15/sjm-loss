@@ -644,7 +644,10 @@ export default function Page() {
                   onChange={(e) =>
                     setData((prev) => ({
                       ...prev,
-                      c_gov: IDRToNumber(e.target.value || "0"),
+                      c_gov:
+                        IDRToNumber(e.target.value || "0") > data.Sumdan.max_bpp
+                          ? data.Sumdan.max_bpp
+                          : IDRToNumber(e.target.value || "0"),
                     }))
                   }
                 />
@@ -666,7 +669,7 @@ export default function Page() {
                 />
               </div>
             </div>
-            <div className="flex gap-2 justify-between items-center py-1 border-b border-dashed flex-wrap">
+            {/* <div className="flex gap-2 justify-between items-center py-1 border-b border-dashed flex-wrap">
               <div className="w-[150]">Materai</div>
               <div className="flex-1 flex gap-2 justify-end">
                 <Input
@@ -681,7 +684,7 @@ export default function Page() {
                   }
                 />
               </div>
-            </div>
+            </div> */}
             <div className="flex gap-2 justify-between items-center py-1 border-b border-dashed flex-wrap">
               <div className="w-[150]">Mutasi & Flagging</div>
               <div className="flex-1 flex gap-2 justify-end">
@@ -780,7 +783,10 @@ export default function Page() {
                   onChange={(e) =>
                     setData((prev) => ({
                       ...prev,
-                      c_gov: IDRToNumber(e.target.value || "0"),
+                      c_gov:
+                        IDRToNumber(e.target.value || "0") > data.Sumdan.max_bpp
+                          ? data.Sumdan.max_bpp
+                          : IDRToNumber(e.target.value || "0"),
                     }))
                   }
                 />
@@ -803,7 +809,10 @@ export default function Page() {
                 />
               </div>
             </div>
-            <div className="flex gap-2 justify-between items-center my-1 border-b border-dashed">
+            {/* <div
+              className="flex gap-2 justify-between items-center my-1 border-b border-dashed"
+              hidden
+            >
               <div className="flex-1">Biaya Metarai</div>
               <div className="flex gap-2 flex-2">
                 <Input
@@ -819,7 +828,7 @@ export default function Page() {
                   }
                 />
               </div>
-            </div>
+            </div> */}
             <div className="flex gap-2 justify-between items-center my-1 border-b border-dashed">
               <div className="flex-1">Biaya Mutasi</div>
               <div className="flex gap-2 flex-2">
@@ -1088,10 +1097,10 @@ const ModalDetailPembiayaan = ({
                 <span>Data Informasi</span>
                 <span>{IDRFormat(data.c_infomation)}</span>
               </div>
-              <div className="flex justify-between gap-2 border-b border-dashed">
+              {/* <div className="flex justify-between gap-2 border-b border-dashed">
                 <span>Materai</span>
                 <span>{IDRFormat(data.c_stamp)}</span>
-              </div>
+              </div> */}
               <div className="flex justify-between gap-2 border-b border-dashed">
                 <span>Data Mutasi</span>
                 <span>{IDRFormat(data.c_mutasi)}</span>
@@ -1121,7 +1130,7 @@ const ModalDetailPembiayaan = ({
                 <div>{IDRFormat(data.Debitur.salary - detail.angsuran)}</div>
               </div>
               <div className="flex justify-between">
-                <div>Debt Service Ratio</div>
+                <div>DBR (%)</div>
                 <div>
                   {(
                     (detail.detail.angsuranrounded / data.Debitur.salary) *

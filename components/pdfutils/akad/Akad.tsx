@@ -9,15 +9,7 @@ import { Pemotongan } from "./Pemotongan";
 import { Kesanggupan } from "./Kesanggupan";
 import { PenyerahanJaminan } from "./PenyerahanJaminan";
 import { FormCeklist1 } from "./FormCeklist1";
-// import { PersetujuanPencairan } from "./PersetujuanPencairan";
-// import { BPK } from "./BPK";
-// import { SPK } from "./SPK";
 import { FLagging } from "./Flagging";
-// import { PernyataanKuasa } from "./PernyataanKuasa";
-// import { TTPJ } from "./TTPJ";
-// import { DocChecklist1 } from "./DC1";
-// import { DocChecklist2 } from "./DC2";
-// import { PK } from "./PK";
 
 moment.locale("id");
 
