@@ -102,7 +102,7 @@ export const GET = async (req: NextRequest) => {
           dropping_status: "PROSES",
           approv_status: "DISETUJUI",
           file_contract: { not: null },
-          video_contract: { not: null },
+          // video_contract: { not: null },
           droppingId: null,
           ...where,
         },

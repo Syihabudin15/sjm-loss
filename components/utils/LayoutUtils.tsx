@@ -973,8 +973,11 @@ export const DetailDapem = ({
                 <div className="w-[40%]">Debt Service Ratio</div>
                 <div className="w-[5%]">:</div>
                 <div className="flex-1 justify-end text-right">
-                  {((detail.angsuran / data.Debitur.salary) * 100).toFixed(2)}%
-                  / {data.ProdukPembiayaan.Sumdan.dsr}%
+                  {(
+                    (detail.detail.angsuranrounded / data.Debitur.salary) *
+                    100
+                  ).toFixed(2)}
+                  % / {data.ProdukPembiayaan.Sumdan.dsr}%
                 </div>
               </div>
             </div>
@@ -990,7 +993,7 @@ export const DetailDapem = ({
                   {IDRFormat(detail.detail.adm_sumdan)}
                 </div>
               </div>
-              <div className="my-1 flex">
+              {/* <div className="my-1 flex">
                 <div className="w-[40%]">
                   Provisi Sumdan ({data.c_provisi_sumdan}%)
                 </div>
@@ -998,7 +1001,7 @@ export const DetailDapem = ({
                 <div className="flex-1 justify-end text-right">
                   {IDRFormat(detail.detail.provisi_sumdan)}
                 </div>
-              </div>
+              </div> */}
               <div className="my-1 flex">
                 <div className="w-[40%]">Buka Rekening</div>
                 <div className="w-[5%]">:</div>
@@ -1007,7 +1010,9 @@ export const DetailDapem = ({
                 </div>
               </div>
               <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Asuransi ({data.c_insurance}%)</div>
+                <div className="w-[40%]">
+                  Asuransi ({data.c_insurance}% + {IDRFormat(data.c_flagging)})
+                </div>
                 <div className="w-[5%]">:</div>
                 <div className="flex-1 justify-end text-right">
                   {IDRFormat(detail.asuransi)}
@@ -1020,48 +1025,25 @@ export const DetailDapem = ({
                   {IDRFormat(detail.detail.adm)}
                 </div>
               </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">
-                  Provisi Koperasi ({data.c_provisi}%)
-                </div>
+              <div className="my-1 flex border-b border-dashed">
+                <div className="w-[40%]">Tatalaksana</div>
                 <div className="w-[5%]">:</div>
                 <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.provisi)}
+                  {IDRFormat(data.c_gov)}
                 </div>
               </div>
               <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Flagging</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_flagging)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Sistem Informasi</div>
+                <div className="w-[40%]">Data Informasi</div>
                 <div className="w-[5%]">:</div>
                 <div className="flex-1 justify-end text-right">
                   {IDRFormat(data.c_infomation)}
                 </div>
               </div>
               <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Materai</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_stamp)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Mutasi</div>
+                <div className="w-[40%]">Mutasi & Flagging</div>
                 <div className="w-[5%]">:</div>
                 <div className="flex-1 justify-end text-right">
                   {IDRFormat(data.c_mutasi)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Bpp</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_fee_bpp)}
                 </div>
               </div>
               <div className="my-1 flex border-b border-dashed text-red-500 font-bold mt-2">

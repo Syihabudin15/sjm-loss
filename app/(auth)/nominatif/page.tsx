@@ -544,7 +544,7 @@ export default function Page() {
         dataIndex: "biaya_sumdan",
         key: "biaya_sumdan",
         render(value, record) {
-          const asuransi = record.plafond * (record.c_insurance / 100);
+          const asuransi = GetDetailDapem(record).asuransi;
           return (
             <div className="text-xs text-right">
               <span>{IDRFormat(asuransi)}</span>
@@ -576,7 +576,6 @@ export default function Page() {
           const tatalaksana =
             record.c_gov +
             record.c_stamp +
-            record.c_flagging +
             record.c_infomation +
             record.c_mutasi;
           return (
@@ -670,22 +669,11 @@ export default function Page() {
       prov_sumdan = 0;
     let rek_sumdan = 0,
       adm = 0,
-      adm_mitra = 0,
-      adm_ff = 0,
       asuransi = 0;
     let tatalaksana = 0,
-      materai = 0,
-      flagging = 0,
       inform = 0,
       mutasi = 0;
-    let rek = 0,
-      fee_ao = 0,
-      fee_cabang = 0,
-      fee_area = 0,
-      fee_bpp = 0;
-    let fee_bpb = 0,
-      bop = 0,
-      takeover = 0,
+    let takeover = 0,
       blokir = 0;
 
     for (let i = 0; i < pageProps.data.length; i++) {
@@ -705,12 +693,8 @@ export default function Page() {
       asuransi += p * curr.c_insurance;
 
       tatalaksana += curr.c_gov;
-      materai += curr.c_stamp;
-      flagging += curr.c_flagging;
       inform += curr.c_infomation;
       mutasi += curr.c_mutasi;
-
-      fee_bpp += p * curr.c_fee_bpp;
 
       takeover += curr.c_takeover;
       blokir += curr.c_blokir * detailDapem.angsuran;
@@ -722,10 +706,8 @@ export default function Page() {
       angsSumdan,
       admAngsuran: Math.ceil(angs - angsSumdan),
       sumdanTotal: adm_sumdan + prov_sumdan + rek_sumdan,
-      koperasiTotal: adm + adm_mitra + adm_ff,
-      provTotal: fee_ao + fee_cabang + fee_area + fee_bpp + fee_bpb,
-      laksanaTotal:
-        tatalaksana + rek + materai + flagging + inform + mutasi + bop,
+      koperasiTotal: adm,
+      laksanaTotal: tatalaksana + inform + mutasi,
       asuransi,
       takeover,
       blokir,
@@ -1011,11 +993,11 @@ export default function Page() {
                   {IDRFormat(tableSummaryData.koperasiTotal)}
                 </div>
               </Table.Summary.Cell>
-              <Table.Summary.Cell index={16} className="font-bold">
+              {/* <Table.Summary.Cell index={16} className="font-bold">
                 <div className="text-right">
                   {IDRFormat(tableSummaryData.provTotal)}
                 </div>
-              </Table.Summary.Cell>
+              </Table.Summary.Cell> */}
               <Table.Summary.Cell index={17} className="font-bold">
                 <div className="text-right">
                   {IDRFormat(tableSummaryData.laksanaTotal)}

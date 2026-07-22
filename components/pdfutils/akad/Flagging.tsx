@@ -1,12 +1,9 @@
 import { IDapem } from "@/libs/IInterfaces";
 import moment from "moment";
 import { ListNonStyle, ListStyle } from "../utils";
-// import { GetDetailDapem } from "@/components/utils/PembiayaanUtil";
 moment.locale("id");
 
 export const FLagging = (record: IDapem) => {
-  // const angsuran = GetDetailDapem(record).angsuran;
-
   return `
   
   <div class="flex justify-between gap-8 items-center">

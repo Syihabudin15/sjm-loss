@@ -265,8 +265,13 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                         currency: true,
                       },
                       {
-                        key: "Adm Angsuran",
-                        value: `${IDRFormat(detail.angsuran - detail.detail.angsuran_sumdan)}`,
+                        key: "Angsuran Koperasi",
+                        value: `${IDRFormat(detail.angsuran - (detail.detail.angsuran_sumdan + detail.detail.fee_banpot + data.c_ned))}`,
+                        currency: true,
+                      },
+                      {
+                        key: "NED + Fee",
+                        value: `${IDRFormat(detail.detail.fee_banpot + data.c_ned)}`,
                         currency: true,
                       },
                       {
@@ -281,7 +286,7 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                       },
                       {
                         key: "DBR/DSR",
-                        value: `${((detail.angsuran / data.Debitur.salary) * 100).toFixed(2)}%`,
+                        value: `${((detail.detail.angsuranrounded / data.Debitur.salary) * 100).toFixed(2)}%`,
                       },
                       {
                         key: "Pembulatan",
@@ -322,14 +327,6 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                         currency: true,
                       },
                       {
-                        key: "Biaya Provisi",
-                        value: IDRFormat(
-                          detail.detail.provisi_sumdan +
-                            detail.detail.adm_sumdan,
-                        ),
-                        currency: true,
-                      },
-                      {
                         key: "Biaya Buka Rekening",
                         value: IDRFormat(data.c_account_sumdan),
                         currency: true,
@@ -340,23 +337,13 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                         currency: true,
                       },
                       {
-                        key: "Biaya Flagging",
-                        value: IDRFormat(data.c_flagging),
-                        currency: true,
-                      },
-                      {
                         key: "Biaya Data Informasi",
                         value: IDRFormat(data.c_infomation),
                         currency: true,
                       },
                       {
-                        key: "Biaya Materai",
-                        value: IDRFormat(data.c_stamp),
-                        currency: true,
-                      },
-                      {
-                        key: "Biaya Bpp",
-                        value: IDRFormat(data.c_fee_bpp),
+                        key: "Biaya Mutasi & Flagging",
+                        value: IDRFormat(data.c_mutasi),
                         currency: true,
                       },
                       {

@@ -65,7 +65,7 @@ export const GET = async (req: NextRequest) => {
               where: {
                 dropping_status: "PROSES",
                 droppingId: null,
-                video_contract: { not: null },
+                // video_contract: { not: null },
                 file_contract: { not: null },
                 ...whereFunc,
               },

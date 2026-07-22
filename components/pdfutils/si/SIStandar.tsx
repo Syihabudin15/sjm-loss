@@ -1,25 +1,54 @@
 import moment from "moment";
 import { IDropping } from "@/libs/IInterfaces";
 import { Header } from "../utils";
-import { GetAngsuran, IDRFormat } from "@/components/utils/PembiayaanUtil";
+import { GetDetailDapem, IDRFormat } from "@/components/utils/PembiayaanUtil";
 
 moment.locale("id");
 
 const generateSI = (record: IDropping) => {
   const hasProvisi = record.Dapems.some((d) => d.c_provisi_sumdan !== 0);
-  const angs = record.Dapems.reduce(
-    (acc, curr) =>
-      acc +
-      curr.c_blokir *
-        GetAngsuran(
-          curr.plafond,
-          curr.tenor,
-          curr.c_margin_sumdan,
-          curr.margin_type,
-          curr.rounded,
-        ).angsuran,
+
+  // Pre-calculate data per dapem untuk efisiensi dan konsistensi perhitungan
+  const dapemProcessed = record.Dapems.map((curr) => {
+    const detailDapem = GetDetailDapem(curr).detail;
+    const adm = curr.plafond * (curr.c_adm_sumdan / 100);
+    const provisi = curr.plafond * (curr.c_provisi_sumdan / 100);
+    const angsuranBlokir = curr.c_blokir * detailDapem.angsuran_sumdan;
+    const dropping =
+      curr.plafond - (adm + provisi + curr.c_account_sumdan + angsuranBlokir);
+
+    return {
+      ...curr,
+      adm,
+      provisi,
+      angsuranBlokir,
+      dropping,
+    };
+  });
+
+  // Total kalkulasi dari data yang sudah diproses
+  const totalPlafond = dapemProcessed.reduce(
+    (acc, curr) => acc + curr.plafond,
     0,
   );
+  const totalAdm = dapemProcessed.reduce((acc, curr) => acc + curr.adm, 0);
+  const totalProvisi = dapemProcessed.reduce(
+    (acc, curr) => acc + curr.provisi,
+    0,
+  );
+  const totalAccount = dapemProcessed.reduce(
+    (acc, curr) => acc + curr.c_account_sumdan,
+    0,
+  );
+  const totalAngsuranBlokir = dapemProcessed.reduce(
+    (acc, curr) => acc + curr.angsuranBlokir,
+    0,
+  );
+  const totalDropping = dapemProcessed.reduce(
+    (acc, curr) => acc + curr.dropping,
+    0,
+  );
+
   const html = `
   <!doctype html>
   <html>
@@ -51,8 +80,8 @@ const generateSI = (record: IDropping) => {
           @media print {
             .page {
               position: relative;
-              min-height: 95vh;    /* atau height A4 jika untuk print */
-              padding-top: 80px;    /* ruang untuk header */
+              min-height: 95vh;
+              padding-top: 80px;
               page-break-after: always;
             }
     
@@ -108,12 +137,12 @@ const generateSI = (record: IDropping) => {
         <div class="flex gap-2 ml-3">
           <p class="w-44">Jumlah Plafond</p>
           <p class="w-4">:</p>
-          <p class="flex-1">Rp. ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.plafond, 0))}</p>
+          <p class="flex-1">Rp. ${IDRFormat(totalPlafond)}</p>
         </div>
         <div class="mb-4 flex gap-2 ml-3">
           <p class="w-44">Jumlah Dropping</p>
           <p class="w-4">:</p>
-          <p class="flex-1">Rp. ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.plafond - (curr.plafond * (curr.c_adm_sumdan / 100) + curr.plafond * (curr.c_provisi_sumdan / 100) + angs), 0))}</p>
+          <p class="flex-1">Rp. ${IDRFormat(totalDropping)}</p>
         </div>
 
         <p>Sehubungan dengan hal tersebut, kami menginstruksikan kepada ${record.Sumdan.name} untuk melakukan pencairan (dropping) dana sebesar tersebut di atas ke rekening berikut :</p>
@@ -153,7 +182,6 @@ const generateSI = (record: IDropping) => {
     <div class="page" style="font-size: 12px;">
       ${Header("LAMPIRAN PERMOHONAN DROPPING", record.id, undefined, process.env.NEXT_PUBLIC_APP_LOGO, record.Sumdan.logo)}
 
-
       <div class="mt-20">
         <table class="w-full border-collapse border border-gray-400 border-dashed text-sm mb-4">
           <thead>
@@ -169,57 +197,52 @@ const generateSI = (record: IDropping) => {
             </tr>
           </thead>
           <tbody>
-            ${record.Dapems.map(
-              (r, i) => `
+            ${dapemProcessed
+              .map(
+                (r, i) => `
               <tr>
                 <td class="border border-gray-400 border-dashed p-1 text-center">${i + 1}</td>
                 <td class="border border-gray-400 border-dashed p-1">
-                  <div>
-                    ${r.Debitur.fullname}
-                  </div>
-                  <div class="text-xs opacity-70">
-                    ${r.Debitur.nopen}
-                  </div>
+                  <div>${r.Debitur.fullname}</div>
+                  <div class="text-xs opacity-70">${r.Debitur.nopen}</div>
                 </td>
                 <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.plafond)}</td>
-                <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.plafond * (r.c_adm_sumdan / 100))}</td>
-                ${hasProvisi ? `<td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.plafond * (r.c_provisi_sumdan / 100))}</td>` : ""}
+                <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.adm)}</td>
+                ${hasProvisi ? `<td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.provisi)}</td>` : ""}
                 <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.c_account_sumdan)}</td>
-                <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.c_blokir * GetAngsuran(r.plafond, r.tenor, r.c_margin_sumdan, r.margin_type, r.rounded).angsuran)}</td>
-                <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.plafond - (r.plafond * (r.c_adm_sumdan / 100) + r.plafond * (r.c_provisi_sumdan / 100) + r.c_account_sumdan))}</td>
+                <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.angsuranBlokir)}</td>
+                <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.dropping)}</td>
               </tr>
             `,
-            ).join("")}
+              )
+              .join("")}
           </tbody>
           <tfoot>
             <tr class="bg-gray-100 font-semibold italic">
-              <td
-                colspan="2"
-                class="border border-gray-400 p-2 text-center border-dashed"
-              >
+              <td colspan="2" class="border border-gray-400 p-2 text-center border-dashed">
                 JUMLAH
               </td>
               <td class="border border-gray-400 p-2 text-right border-dashed">
-                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.plafond, 0))}
+                ${IDRFormat(totalPlafond)}
               </td>
               <td class="border border-gray-400 p-2 text-right border-dashed">
-                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.plafond * (curr.c_adm_sumdan / 100), 0))}
+                ${IDRFormat(totalAdm)}
               </td>
               ${
                 hasProvisi
                   ? `<td class="border border-gray-400 p-2 text-right border-dashed">
-                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.c_account_sumdan, 0))}
+                ${IDRFormat(totalProvisi)}
               </td>`
                   : ""
               }
               <td class="border border-gray-400 p-2 text-right border-dashed">
-                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.c_account_sumdan, 0))}
+                ${IDRFormat(totalAccount)}
               </td>
               <td class="border border-gray-400 p-2 text-right border-dashed">
-                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + curr.c_blokir * GetAngsuran(curr.plafond, curr.tenor, curr.c_margin_sumdan, curr.margin_type, curr.rounded).angsuran, 0))}
+                ${IDRFormat(totalAngsuranBlokir)}
               </td>
               <td class="border border-gray-400 p-2 text-right border-dashed">
-                ${IDRFormat(record.Dapems.reduce((acc, curr) => acc + (curr.plafond - (curr.plafond * (curr.c_adm_sumdan / 100) + curr.c_account_sumdan + curr.plafond * (curr.c_provisi_sumdan / 100)) + curr.c_blokir * GetAngsuran(curr.plafond, curr.tenor, curr.c_margin_sumdan, curr.margin_type, curr.rounded).angsuran), 0))}
+                ${IDRFormat(totalDropping)}
               </td>
             </tr>
           </tfoot>

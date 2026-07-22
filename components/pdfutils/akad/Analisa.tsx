@@ -83,12 +83,12 @@ export const AnalisaPerhitungan = (record: IDapem) => {
         },
         {
           key: "Angsuran",
-          value: IDRFormat(detail.angsuran - record.c_ned),
+          value: IDRFormat(detail.detail.angsuranrounded),
           currency: true,
         },
         {
-          key: "NED",
-          value: IDRFormat(record.c_ned),
+          key: "NED + Fee",
+          value: IDRFormat(record.c_ned + detail.detail.fee_banpot),
           currency: true,
         },
         {
@@ -102,8 +102,8 @@ export const AnalisaPerhitungan = (record: IDapem) => {
           currency: true,
         },
         {
-          key: "Debt Service Ratio",
-          value: `${((detail.angsuran / record.Debitur.salary) * 100).toFixed(2)}% / ${record.ProdukPembiayaan.Sumdan.dsr.toFixed(2)}%`,
+          key: "DBR (%)",
+          value: `${((detail.detail.angsuranrounded / record.Debitur.salary) * 100).toFixed(2)}% / ${record.ProdukPembiayaan.Sumdan.dsr.toFixed(2)}%`,
         },
       ])}
     </div>
@@ -167,43 +167,43 @@ export const AnalisaPerhitungan = (record: IDapem) => {
             value: IDRFormat(detail.asuransi),
             currency: true,
           },
-          {
-            key: "Biaya Provisi",
-            value: IDRFormat(
-              detail.detail.provisi_sumdan + detail.detail.adm_sumdan,
-            ),
-            currency: true,
-          },
+          // {
+          //   key: "Biaya Provisi",
+          //   value: IDRFormat(
+          //     detail.detail.provisi_sumdan + detail.detail.adm_sumdan,
+          //   ),
+          //   currency: true,
+          // },
           {
             key: "Biaya Tatalaksana",
             value: IDRFormat(record.c_gov),
             currency: true,
           },
-          {
-            key: "Biaya Flagging",
-            value: IDRFormat(record.c_flagging),
-            currency: true,
-          },
+          // {
+          //   key: "Biaya Flagging",
+          //   value: IDRFormat(record.c_flagging),
+          //   currency: true,
+          // },
           {
             key: "Biaya Data Informasi",
             value: IDRFormat(record.c_infomation),
             currency: true,
           },
+          // {
+          //   key: "Biaya Materai",
+          //   value: IDRFormat(record.c_stamp),
+          //   currency: true,
+          // },
           {
-            key: "Biaya Materai",
-            value: IDRFormat(record.c_stamp),
-            currency: true,
-          },
-          {
-            key: "Biaya Mutasi",
+            key: "Biaya Mutasi & Flagging",
             value: IDRFormat(record.c_mutasi),
             currency: true,
           },
-          {
-            key: "Biaya Bpp",
-            value: IDRFormat(record.c_fee_bpp),
-            currency: true,
-          },
+          // {
+          //   key: "Biaya Bpp",
+          //   value: IDRFormat(record.c_fee_bpp),
+          //   currency: true,
+          // },
           {
             key: "Total Biaya",
             value: IDRFormat(detail.biaya),

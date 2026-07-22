@@ -1,8 +1,4 @@
-import {
-  GetDapem,
-  GetDetailDapem,
-  IDRFormat,
-} from "@/components/utils/PembiayaanUtil";
+import { GetDetailDapem, IDRFormat } from "@/components/utils/PembiayaanUtil";
 import { IDapem } from "@/libs/IInterfaces";
 import moment from "moment";
 import { Header, ListStyle, NumberToWordsID } from "../utils";
@@ -10,23 +6,6 @@ moment.locale("id");
 
 export const PerjanjianKredit = (record: IDapem) => {
   const detail = GetDetailDapem(record);
-  // const angsuran = GetAngsuran(
-  //   record.plafond,
-  //   record.tenor,
-  //   record.c_margin + record.c_margin_sumdan,
-  //   record.margin_type,
-  //   record.rounded,
-  //   record.c_ned,
-  // ).angsuran;
-  // const angsuranSumdan = GetAngsuran(
-  //   record.plafond,
-  //   record.tenor,
-  //   record.c_margin_sumdan,
-  //   record.margin_type,
-  //   record.rounded,
-  // ).angsuran;
-
-  const dapem = GetDapem(record);
 
   return `
   ${Header("PERJANJIAN KREDIT", record.no_contract, undefined, undefined, undefined)}
@@ -135,13 +114,13 @@ export const PerjanjianKredit = (record: IDapem) => {
       <p class="w-4">2.</p>
       <p class="w-44">Angsuran Perbulan</p>
       <p class="w-4">:</p>
-      <p class="flex-1">Rp. ${IDRFormat(detail.detail.angsuran_sumdan)}</p>
+      <p class="flex-1">Rp. ${IDRFormat(detail.detail.angsuranrounded)}</p>
     </div>
     <div class="flex gap-2">
       <p class="w-4">3.</p>
-      <p class="w-44">Adm Angsuran</p>
+      <p class="w-44">NED + Fee</p>
       <p class="w-4">:</p>
-      <p class="flex-1">Rp. ${IDRFormat(detail.angsuran - detail.detail.angsuran_sumdan)}</p>
+      <p class="flex-1">Rp. ${IDRFormat(detail.detail.fee_banpot + record.c_ned)}</p>
     </div>
     <div class="flex gap-2">
       <p class="w-4">4.</p>
@@ -183,7 +162,7 @@ export const PerjanjianKredit = (record: IDapem) => {
           <p class="w-4">:</p>
           <div class="w-28 flex justify-between gap-2">
             <p class="w-4">Rp. </p>
-            <p class="flex-1 text-right">${IDRFormat(record.plafond * ((record.c_adm + record.c_adm_sumdan) / 100))}</p>
+            <p class="flex-1 text-right">${IDRFormat(detail.administrasi)}</p>
           </div>
         </div>
         <div class="flex gap-2 ml-10">
@@ -192,20 +171,11 @@ export const PerjanjianKredit = (record: IDapem) => {
           <p class="w-4">:</p>
           <div class="w-28 flex justify-between gap-2">
             <p class="w-4">Rp. </p>
-            <p class="flex-1 text-right">${IDRFormat(record.plafond * (record.c_insurance / 100))}</p>
+            <p class="flex-1 text-right">${IDRFormat(detail.asuransi)}</p>
           </div>
         </div>
         <div class="flex gap-2 ml-10">
           <p class="w-4">c.</p>
-          <p class="w-44">Provisi</p>
-          <p class="w-4">:</p>
-          <div class="w-28 flex justify-between gap-2">
-            <p class="w-4">Rp. </p>
-            <p class="flex-1 text-right">${IDRFormat(record.plafond * ((record.c_provisi_sumdan + record.c_fee_bpp) / 100))}</p>
-          </div>
-        </div>
-        <div class="flex gap-2 ml-10">
-          <p class="w-4">d.</p>
           <p class="w-44">Tatalaksana</p>
           <p class="w-4">:</p>
           <div class="w-28 flex justify-between gap-2">
@@ -214,7 +184,7 @@ export const PerjanjianKredit = (record: IDapem) => {
           </div>
         </div>
         <div class="flex gap-2 ml-10">
-          <p class="w-4">e.</p>
+          <p class="w-4">d.</p>
           <p class="w-44">Buka Rekening</p>
           <p class="w-4">:</p>
           <div class="w-28 flex justify-between gap-2">
@@ -223,17 +193,8 @@ export const PerjanjianKredit = (record: IDapem) => {
           </div>
         </div>
         <div class="flex gap-2 ml-10">
-          <p class="w-4">f.</p>
-          <p class="w-44">Flagging</p>
-          <p class="w-4">:</p>
-          <div class="w-28 flex justify-between gap-2">
-            <p class="w-4">Rp. </p>
-            <p class="flex-1 text-right">${IDRFormat(record.c_flagging)}</p>
-          </div>
-        </div>
-        <div class="flex gap-2 ml-10">
-          <p class="w-4">g.</p>
-          <p class="w-44">Sistem Informasi</p>
+          <p class="w-4">e.</p>
+          <p class="w-44">Data Informasi</p>
           <p class="w-4">:</p>
           <div class="w-28 flex justify-between gap-2">
             <p class="w-4">Rp. </p>
@@ -241,30 +202,12 @@ export const PerjanjianKredit = (record: IDapem) => {
           </div>
         </div>
         <div class="flex gap-2 ml-10">
-          <p class="w-4">h.</p>
-          <p class="w-44">Materai</p>
-          <p class="w-4">:</p>
-          <div class="w-28 flex justify-between gap-2">
-            <p class="w-4">Rp. </p>
-            <p class="flex-1 text-right">${IDRFormat(record.c_stamp)}</p>
-          </div>
-        </div>
-        <div class="flex gap-2 ml-10">
-          <p class="w-4">i.</p>
-          <p class="w-44">Mutasi</p>
+          <p class="w-4">f.</p>
+          <p class="w-44">Mutasi & Flagging</p>
           <p class="w-4">:</p>
           <div class="w-28 flex justify-between gap-2">
             <p class="w-4">Rp. </p>
             <p class="flex-1 text-right">${IDRFormat(record.c_mutasi)}</p>
-          </div>
-        </div>
-        <div class="flex gap-2 ml-10">
-          <p class="w-4">j.</p>
-          <p class="w-44">Bpp</p>
-          <p class="w-4">:</p>
-          <div class="w-28 flex justify-between gap-2">
-            <p class="w-4">Rp. </p>
-            <p class="flex-1 text-right">${IDRFormat(record.c_fee_bpp)}</p>
           </div>
         </div>
         <div class="flex gap-2 ml-10 font-bold">
@@ -273,7 +216,7 @@ export const PerjanjianKredit = (record: IDapem) => {
           <p class="w-4">:</p>
           <div class="w-28 border-t border-dashed flex justify-between gap-2">
             <p class="w-4">Rp. </p>
-            <p class="flex-1 text-right">${IDRFormat(dapem.biaya)}</p>
+            <p class="flex-1 text-right">${IDRFormat(detail.biaya)}</p>
           </div>
         </div>
       </div>

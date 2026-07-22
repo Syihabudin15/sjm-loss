@@ -176,7 +176,6 @@ export default function Page() {
       render(value, record, index) {
         return (
           <div className="text-xs text-blue-400">
-            <p>Margin : {record.c_margin}%</p>
             <p>Admin : {record.c_adm}%</p>
             <p>Tatalaksana : {IDRFormat(record.c_gov)}</p>
             <p>Materai : {IDRFormat(record.c_stamps)}</p>

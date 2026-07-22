@@ -1,24 +1,12 @@
-import {
-  GetAngsuran,
-  GetDapem,
-  IDRFormat,
-} from "@/components/utils/PembiayaanUtil";
+import { GetDetailDapem, IDRFormat } from "@/components/utils/PembiayaanUtil";
 import { IDapem } from "@/libs/IInterfaces";
 import moment from "moment";
 import { Header, ListNonStyle } from "../utils";
 moment.locale("id");
 
 export const BuktiPencairan = (record: IDapem, isFor: string) => {
-  const angsuran = GetAngsuran(
-    record.plafond,
-    record.tenor,
-    record.c_margin + record.c_margin_sumdan,
-    record.margin_type,
-    record.rounded,
-    record.c_ned,
-  ).angsuran;
-  const dapem = GetDapem(record);
   const ao = record.AO || record.AOCabang || record.AOArea;
+  const detail = GetDetailDapem(record);
 
   return `
   ${Header("BUKTI PENCAIRAN PEMBIAYAAN", isFor, record.no_contract, process.env.NEXT_PUBLIC_APP_LOGO, record.ProdukPembiayaan.Sumdan.logo)}
@@ -72,7 +60,7 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
         key: "Bunga",
         value: `${(record.c_margin + record.c_margin_sumdan).toFixed(2)}% /Tahun`,
       },
-      { key: "Angsuran", value: IDRFormat(angsuran), currency: true },
+      { key: "Angsuran", value: IDRFormat(detail.angsuran), currency: true },
     ])}
   </div>
 
@@ -83,9 +71,7 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
         ${ListNonStyle([
           {
             key: "Biaya Administrasi",
-            value: IDRFormat(
-              record.plafond * ((record.c_adm + record.c_adm_sumdan) / 100),
-            ),
+            value: IDRFormat(detail.administrasi),
             currency: true,
           },
           {
@@ -95,32 +81,36 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
           },
           {
             key: "Biaya Asuransi",
-            value: IDRFormat(record.plafond * (record.c_insurance / 100)),
+            value: IDRFormat(detail.asuransi),
             currency: true,
           },
-          {
-            key: "Biaya Provisi",
-            value: IDRFormat(
-              record.plafond *
-                ((record.c_provisi_sumdan + record.c_fee_bpp) / 100),
-            ),
-            currency: true,
-          },
+          // {
+          //   key: "Biaya Provisi",
+          //   value: IDRFormat(
+          //     record.plafond *
+          //       ((record.c_provisi_sumdan + record.c_fee_bpp) / 100),
+          //   ),
+          //   currency: true,
+          // },
           {
             key: "Biaya Tatalaksana",
-            value: IDRFormat(
-              record.c_gov +
-                record.c_flagging +
-                record.c_infomation +
-                record.c_stamp +
-                record.c_mutasi,
-            ),
+            value: IDRFormat(record.c_gov),
+            currency: true,
+          },
+          {
+            key: "Biaya Data Informasi",
+            value: IDRFormat(record.c_infomation),
+            currency: true,
+          },
+          {
+            key: "Biaya Mutasi & Flagging",
+            value: IDRFormat(record.c_mutasi),
             currency: true,
           },
 
           {
             key: "TOTAL BIAYA",
-            value: IDRFormat(dapem.biaya),
+            value: IDRFormat(detail.biaya),
             classStyle: "font-bold text-red-500 border-t border-dashed",
             currency: true,
           },
@@ -130,7 +120,7 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
       ${ListNonStyle([
         {
           key: "Terima Kotor",
-          value: IDRFormat(record.plafond - dapem.biaya),
+          value: IDRFormat(detail.tk),
           classStyle: "font-bold",
           currency: true,
         },
@@ -141,12 +131,12 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
         },
         {
           key: `Blokir Angsuran ${record.c_blokir}x`,
-          value: IDRFormat(dapem.blok),
+          value: IDRFormat(detail.angsuran * record.c_blokir),
           currency: true,
         },
         {
           key: "TERIMA BERSIH",
-          value: IDRFormat(dapem.tb),
+          value: IDRFormat(detail.tb),
           classStyle: "font-bold text-green-500 border-t border-dashed",
           currency: true,
         },
