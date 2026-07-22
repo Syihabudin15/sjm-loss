@@ -24,7 +24,7 @@ export const AnalisaPerhitungan = (record: IDapem) => {
   const ao = record.AO || record.AOCabang || record.AOArea;
 
   return `
-  ${Header("ANALISA PERHITUNGAN PEMBIAYAAN", record.no_contract, undefined, record.ProdukPembiayaan.Sumdan.logo, undefined)}
+  ${Header("ANALISA PERHITUNGAN PEMBIAYAAN", record.no_contract, undefined, process.env.NEXT_PUBLIC_APP_LOGO || record.ProdukPembiayaan.Sumdan.logo, undefined)}
   
   <div class="mt-4 flex gap-4">
     <div class="flex-1">
