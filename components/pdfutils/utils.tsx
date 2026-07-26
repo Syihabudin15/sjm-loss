@@ -173,7 +173,7 @@ export const FormList = (
             ${d.option
               .map(
                 (op) => `<div class="flex-1 flex gap-1 items-center">
-              <div class="border h-5 w-5 flex justify-center items-center">${op.toLowerCase().includes(d.value.toLowerCase()) ? "x" : ""}</div>
+              <div class="border h-5 w-5 flex justify-center items-center">${d.value && op.toLowerCase().includes(d.value.toLowerCase()) ? "x" : ""}</div>
               <p>${op}</p>
             </div>`,
               )

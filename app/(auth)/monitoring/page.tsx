@@ -37,6 +37,7 @@ import {
 
 import { printContract } from "@/components/pdfutils/akad/Akad";
 import { printMonitoring } from "@/components/pdfutils/etc/printMonitoring";
+import { printForm } from "@/components/pdfutils/etc/printForm";
 import { useUser } from "@/components/UserContext";
 import {
   ExportToExcel,
@@ -518,14 +519,13 @@ export default function Page() {
         width: 100,
         render: (_, record) => (
           <div className="flex gap-1 flex-wrap justify-center">
-            {/* {hasAccess("write") && (
+            {hasAccess("write") && (
               <Button
                 icon={<PrinterOutlined />}
-                type="primary"
                 size="small"
                 onClick={() => printForm(record)}
               />
-            )} */}
+            )}
             {hasAccess("update") && (
               <Link href={`/monitoring/upsert/${record.id}`}>
                 <Button icon={<EditOutlined />} size="small" type="primary" />
@@ -763,23 +763,21 @@ export default function Page() {
           <Button
             icon={<PrinterOutlined />}
             size="small"
-            type="primary"
             onClick={() =>
               printMonitoring(pageProps.data, sumdans, pageProps.backdate)
             }
           >
             PDF
           </Button>
-          {/* {hasAccess("write") && (
+          {hasAccess("write") && (
             <Button
               icon={<PrinterOutlined />}
-              type="primary"
               size="small"
               onClick={() => printForm()}
             >
               Form
             </Button>
-          )} */}
+          )}
           <Input.Search
             size="small"
             style={{ width: 170 }}

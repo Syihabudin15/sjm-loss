@@ -1,10 +1,11 @@
 import { IDapem } from "@/libs/IInterfaces";
 import { FormList } from "../../utils";
 import moment from "moment";
-import { GetAngsuran, IDRFormat } from "@/components/utils/PembiayaanUtil";
+import { GetDetailDapem, IDRFormat } from "@/components/utils/PembiayaanUtil";
 
 export const FormPermohonan = (record?: IDapem) => {
   const ao = record?.AO || record?.AOCabang || record?.AOArea;
+  const detail = record ? GetDetailDapem(record) : null;
   return `<div class="flex justify-between gap-4 items-center p-1" style="background:blue;">
       <div class="bg-white p-1 h-16 w-20">
         <img src="${process.env.NEXT_PUBLIC_APP_LOGO || ""}" alt="Logo" class="w-full h-full" />
@@ -272,19 +273,7 @@ export const FormPermohonan = (record?: IDapem) => {
           },
           {
             key: "Angsuran Perbulan",
-            value: record
-              ? "Rp.  " +
-                IDRFormat(
-                  GetAngsuran(
-                    record.plafond,
-                    record.tenor,
-                    record.c_margin + record.c_margin_sumdan,
-                    record.margin_type,
-                    record.rounded,
-                    record.c_ned,
-                  ).angsuran,
-                )
-              : "",
+            value: detail ? `Rp. ${IDRFormat(detail.angsuran)}` : "",
           },
         ])}
       </div>

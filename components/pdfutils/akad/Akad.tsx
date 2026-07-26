@@ -5,7 +5,6 @@ import { JadwalAngsuran } from "./KartuAngsuran";
 import { PerjanjianKredit } from "./PerjanjianKredit";
 import { SPKDR } from "./SKPDR";
 import { BuktiPencairan } from "./BuktiPencairan";
-import { Pemotongan } from "./Pemotongan";
 import { Kesanggupan } from "./Kesanggupan";
 import { PenyerahanJaminan } from "./PenyerahanJaminan";
 import { FormCeklist1 } from "./FormCeklist1";
@@ -87,16 +86,10 @@ const generateContractHtml = (record: IDapem) => {
         ${BuktiPencairan(record, "DEBITUR")}
       </div>
       <div class="page pt-0 text-justify" style="font-size: 12px;">
-        ${Pemotongan(record)}
-      </div>
-      <div class="page pt-0 text-justify" style="font-size: 12px;">
       ${Kesanggupan(record, "DEBITUR")}
       </div>
       <div class="page pt-0 text-justify" style="font-size: 12px;">
         ${SPKDR(record)}
-      </div>
-      <div class="page pt-0 text-justify" style="font-size: 12px;">
-        ${PenyerahanJaminan(record)}
       </div>
       <div class="page pt-0 text-justify" style="font-size: 12px;">
         ${FLagging(record)}

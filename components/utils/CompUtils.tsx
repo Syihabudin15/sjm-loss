@@ -283,7 +283,6 @@ export const FilterData = ({
         icon={<FilterOutlined />}
         size="small"
         onClick={() => setOpen(true)}
-        type="primary"
       >
         Filter
       </Button>
