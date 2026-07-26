@@ -24,7 +24,7 @@ export const PerjanjianKredit = (record: IDapem) => {
         <div class="w-4">:</div>
         <div class="flex-1">${process.env.NEXT_PUBLIC_APP_AKAD_POSITION}</div>
       </div>
-      <p>Berkedudukan di ${process.env.NEXT_PUBLIC_APP_COMPANY_ADDRESS_SK} Dalam hal ini bertindak untuk dan atas nama Pemberi Kuasa ${record.ProdukPembiayaan.Sumdan.name}, berdasarkan Surat Kuasa No ${record.ProdukPembiayaan.Sumdan.sk_no} tertanggal ${moment(record.ProdukPembiayaan.Sumdan.sk_date).format("DD MMMM YYYY")}, oleh karenanya berhak dan sah mewakilkan ${record.ProdukPembiayaan.Sumdan.name} yang berkedudukan di ${record.ProdukPembiayaan.Sumdan.address} berdasarkan Perjanjian Kerjasama Penerusan Pinjaman Nomor ${record.ProdukPembiayaan.Sumdan.contract_no} tangal ${moment(record.ProdukPembiayaan.Sumdan.contract_date).format("DD MMMM YYYY")} yang selanjutnya disebut <span class="font-bold">“BANK”</span></p>
+      <p>Dalam hal ini bertindak untuk dan atas nama ${record.ProdukPembiayaan.Sumdan.name}, berdasarkan Perjanjian Kerjasama Penerusan Pinjaman Nomor ${record.ProdukPembiayaan.Sumdan.contract_no} dan Nomor ${record.ProdukPembiayaan.Sumdan.contract_no2} tangal ${moment(record.ProdukPembiayaan.Sumdan.contract_date).format("DD MMMM YYYY")}, oleh karenanya berhak dan sah mewakilkan ${record.ProdukPembiayaan.Sumdan.name} yang berkedudukan di ${record.ProdukPembiayaan.Sumdan.address}, yang selanjutnya disebut <span class="font-bold">“BANK”</span></p>
     </div>
   </div>
   <div class="my-2 ml-2 flex gap-2">
