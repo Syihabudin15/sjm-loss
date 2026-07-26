@@ -135,7 +135,7 @@ export const AnalisaPerhitungan = (record: IDapem) => {
   <p class="font-bold text-lg mb-2">Petugas dan Unit Pelayanan</p>
   ${ListNonStyle([
     {
-      key: "Account Officer",
+      key: "AO/SPV",
       value: `${ao?.fullname} (${ao?.nip})`,
     },
     {
@@ -258,7 +258,7 @@ export const AnalisaPerhitungan = (record: IDapem) => {
       <p>Penerima Pembiayaan</p>
     </div>
     <div class="flex-1 text-center">
-      <p>Account Officer</p>
+      <p>AO/SPV</p>
       <div class="h-28"></div>
       <p class="border-b font-bold">${ao?.fullname}</p>
       <p>${ao?.position}</p>

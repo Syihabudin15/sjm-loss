@@ -196,7 +196,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
         GetMaxPlafond(
           data.c_margin + data.c_margin_sumdan,
           data.tenor,
-          ((data.Debitur.salary - data.c_ned) *
+          ((data.Debitur.salary - 100000) *
             (data.ProdukPembiayaan.Sumdan?.dsr || 0)) /
             100,
         ),
@@ -1957,7 +1957,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                       </span>
                     </div>
                     <div className="flex justify-between my-2 border-b rounded italic">
-                      <span>Debt Service Ratio</span>
+                      <span>DBR</span>
                       <span>
                         {(temp.angsuran / (data.Debitur.salary / 100)).toFixed(
                           2,

@@ -64,7 +64,7 @@ export const FormDSR = (record?: IDapem) => {
           <p>Mengetahui</p>
           <div class="h-36"></div>
           <p class="border-b h-5">${ao?.fullname || ""}</p>
-          <p class="h-5">MOC/SPV/KORWIL</p>
+          <p class="h-5">AO/SPV</p>
         </div>
       </div>
     </div>

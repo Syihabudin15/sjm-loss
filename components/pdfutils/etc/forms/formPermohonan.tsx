@@ -286,7 +286,7 @@ export const FormPermohonan = (record?: IDapem) => {
 
     <div class="flex gap-4 text-center font-bold">
       <div class="flex-1">
-        <p>MOC</p>
+        <p>AO</p>
         <div class="h-24"></div>
         <div class="border-b h-5"></div>
       </div>

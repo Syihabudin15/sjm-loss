@@ -141,7 +141,7 @@ const generateSJ = (record: IDocument) => {
           <p>${process.env.NEXT_PUBLIC_APP_COMPANY_CITY}, ${moment(record.created_at).format("DD-MM-YYYY")}</p>
           <p>Yang Menyerahkan</p>
           <div class="h-28"></div>
-          <p class="border-b">${process.env.NEXT_PUBLIC_APP_PB_NAME}</p>
+          <p class="border-b h-5">${process.env.NEXT_PUBLIC_APP_PB_NAME}</p>
           <p>${process.env.NEXT_PUBLIC_APP_PB_POSITION}</p>
         </div>
         <div class="w-96 text-center">

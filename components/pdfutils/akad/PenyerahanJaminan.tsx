@@ -138,7 +138,7 @@ export const PenyerahanJaminan = (record: IDapem) => {
       </div>
       <div class="flex-1">
         <div class="h-12"></div>
-        <p class="border-t">Kepala Unit Layanan</p>
+        <div class="w-32 border-t"></div>
       </div>
     </div>
   </div>
@@ -152,7 +152,7 @@ export const PenyerahanJaminan = (record: IDapem) => {
       </div>
       <div class="flex-1">
         <div class="h-12"></div>
-        <p class="border-t">Kepala Unit Layanan</p>
+        <div class="w-32 border-t">Kepala Unit Layanan</div>
       </div>
     </div>
   </div>

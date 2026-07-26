@@ -159,15 +159,15 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
       <p>Diperiksa oleh</p>
       <div class="h-28"></div>
       <p class="border-b">${ao?.fullname}</p>
-      <p>Account Officer</p>
+      <p>${ao?.fullname}</p>
     </div>
   </div>
   <div class="mt-10 flex justify-around gap-10 items-end text-center">
     <div class="flex-1">
       <p>Diperiksa oleh</p>
       <div class="h-28"></div>
-      <p class="border-b">${process.env.NEXT_PUBLIC_APP_SI_NAME}</p>
-      <p>${process.env.NEXT_PUBLIC_APP_SI_POSITION}</p>
+      <p class="border-b">${process.env.NEXT_PUBLIC_APP_OPS_NAME}</p>
+      <p>${process.env.NEXT_PUBLIC_APP_OPS_POSITION}</p>
     </div>
     <div class="flex-1">
       <p>Diotorisasi oleh</p>
