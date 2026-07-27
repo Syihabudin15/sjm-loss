@@ -35,7 +35,7 @@ export const FormPermohonan = (record?: IDapem) => {
       <div class="flex-1">
         ${FormList([
           {
-            key: "MOC/SPV/KORWIL",
+            key: "AO/SPV",
             value: record ? `${ao?.fullname} (${ao?.nip})` : "",
           },
           {

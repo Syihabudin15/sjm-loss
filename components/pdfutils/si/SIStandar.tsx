@@ -13,15 +13,12 @@ const generateSI = (record: IDropping) => {
     const detailDapem = GetDetailDapem(curr).detail;
     const adm = curr.plafond * (curr.c_adm_sumdan / 100);
     const provisi = curr.plafond * (curr.c_provisi_sumdan / 100);
-    const angsuranBlokir = curr.c_blokir * detailDapem.angsuran_sumdan;
-    const dropping =
-      curr.plafond - (adm + provisi + curr.c_account_sumdan + angsuranBlokir);
+    const dropping = curr.plafond - (adm + provisi + curr.c_account_sumdan);
 
     return {
       ...curr,
       adm,
       provisi,
-      angsuranBlokir,
       dropping,
     };
   });
@@ -38,10 +35,6 @@ const generateSI = (record: IDropping) => {
   );
   const totalAccount = dapemProcessed.reduce(
     (acc, curr) => acc + curr.c_account_sumdan,
-    0,
-  );
-  const totalAngsuranBlokir = dapemProcessed.reduce(
-    (acc, curr) => acc + curr.angsuranBlokir,
     0,
   );
   const totalDropping = dapemProcessed.reduce(
@@ -192,7 +185,6 @@ const generateSI = (record: IDropping) => {
               <th class="border border-gray-400 border-dashed p-1">Adm Bank</th>
               ${hasProvisi ? `<th class="border border-gray-400 border-dashed p-1">Provisi Bank</th>` : ""}
               <th class="border border-gray-400 border-dashed p-1">Buka Tabungan</th>
-              <th class="border border-gray-400 border-dashed p-1">Blokir Angsuran</th>
               <th class="border border-gray-400 border-dashed p-1">Dropping</th>
             </tr>
           </thead>
@@ -210,7 +202,6 @@ const generateSI = (record: IDropping) => {
                 <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.adm)}</td>
                 ${hasProvisi ? `<td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.provisi)}</td>` : ""}
                 <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.c_account_sumdan)}</td>
-                <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.angsuranBlokir)}</td>
                 <td class="border border-gray-400 border-dashed p-1 text-right">${IDRFormat(r.dropping)}</td>
               </tr>
             `,
@@ -237,9 +228,6 @@ const generateSI = (record: IDropping) => {
               }
               <td class="border border-gray-400 p-2 text-right border-dashed">
                 ${IDRFormat(totalAccount)}
-              </td>
-              <td class="border border-gray-400 p-2 text-right border-dashed">
-                ${IDRFormat(totalAngsuranBlokir)}
               </td>
               <td class="border border-gray-400 p-2 text-right border-dashed">
                 ${IDRFormat(totalDropping)}
