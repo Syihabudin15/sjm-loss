@@ -104,7 +104,13 @@ export const GET = async (req: NextRequest) => {
                 Sumdan: { select: { code: true, name: true, address: true } },
               },
             },
-            JenisPembiayaan: { select: { name: true } },
+            JenisPembiayaan: {
+              select: {
+                name: true,
+                status_mutasi: true,
+                status_takeover: true,
+              },
+            },
             AO: {
               include: {
                 Cabang: { include: { Area: { select: { name: true } } } },
