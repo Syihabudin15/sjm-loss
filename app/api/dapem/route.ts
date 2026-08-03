@@ -149,6 +149,8 @@ export const GET = async (request: NextRequest) => {
                 contract_no: true,
                 contract_no2: true,
                 address: true,
+                pic: true,
+                email: true,
               },
             },
           },
