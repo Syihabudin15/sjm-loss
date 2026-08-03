@@ -1885,7 +1885,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         />
                       </div>
                     </div>
-                    <div className="flex gap-2 justify-between items-center my-2">
+                    {/* <div className="flex gap-2 justify-between items-center my-2">
                       <div className="flex-1">BPP Pembiayaan</div>
                       <div className="flex gap-2 flex-2">
                         <Input
@@ -1904,7 +1904,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                           }
                         />
                       </div>
-                    </div>
+                    </div> */}
                     <div className="flex justify-between border-t mt-3 text-red-500 font-bold">
                       <div className="flex-1">Total Biaya</div>
                       <div className="text-right">
@@ -1914,35 +1914,15 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                   </div>
                   <div className="flex-1 flex-col gap-1">
                     <div className="flex justify-between border-b border-dashed my-2">
-                      <div className="flex-1">NED</div>
+                      <div className="flex-1">NED+Fee Banpot</div>
                       <div className="flex gap-2 flex-2">
                         <Input
                           size="small"
-                          value={IDRFormat(data.c_ned)}
+                          value={IDRFormat(
+                            details.detail.fee_banpot + data.c_ned,
+                          )}
                           style={{ textAlign: "right", color: "black" }}
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              c_ned: IDRToNumber(e.target.value || "0"),
-                            })
-                          }
-                        />
-                      </div>
-                    </div>
-                    <div className="flex justify-between border-b border-dashed my-2">
-                      <div className="flex-1">Fee Banpot</div>
-                      <div className="flex gap-2 flex-2">
-                        <Input
-                          size="small"
-                          value={IDRFormat(data.fee_banpot)}
-                          style={{ textAlign: "right", color: "black" }}
-                          type={"number"}
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              fee_banpot: Number(e.target.value || 0),
-                            })
-                          }
+                          disabled
                         />
                       </div>
                     </div>

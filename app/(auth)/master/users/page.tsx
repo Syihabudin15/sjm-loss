@@ -571,196 +571,205 @@ function UpsertUser({
       width={1200}
       destroyOnHidden
     >
-      <div className="flex gap-4 flex-wrap">
-        <div className="flex-1 flex flex-col gap-3">
-          <div className="hidden">
+      <form
+        autoComplete="off"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSave();
+        }}
+      >
+        <div className="flex gap-4 flex-wrap">
+          <div className="flex-1 flex flex-col gap-3">
+            <div className="hidden">
+              <FormInput
+                data={{
+                  label: "USER ID",
+                  mode: "horizontal",
+                  type: "text",
+                  value: data.id,
+                  onChange: (e: string) => setData({ ...data, id: e }),
+                }}
+              />
+            </div>
             <FormInput
               data={{
-                label: "USER ID",
+                label: "Role User",
+                mode: "horizontal",
+                required: true,
+                type: "select",
+                value: data.roleId,
+                onChange: (e: string) => setData({ ...data, roleId: e }),
+                options: roles.map((r) => ({ label: r.name, value: r.id })),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Cabang",
+                mode: "horizontal",
+                required: true,
+                type: "select",
+                value: data.cabangId,
+                onChange: (e: string) => setData({ ...data, cabangId: e }),
+                options: cabangs.map((r) => ({ label: r.name, value: r.id })),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Mitra",
+                mode: "horizontal",
+                type: "select",
+                value: data.sumdanId,
+                onChange: (e: string) => setData({ ...data, sumdanId: e }),
+                options: sumdans.map((r) => ({ label: r.name, value: r.id })),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Agent Fronting",
+                mode: "horizontal",
+                type: "select",
+                value: data.agentFrontingId,
+                onChange: (e: string) =>
+                  setData({ ...data, agentFrontingId: e }),
+                options: agents.map((r) => ({ label: r.name, value: r.id })),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Nama Lengkap",
+                mode: "horizontal",
+                required: true,
+                type: "text",
+                value: data.fullname,
+                onChange: (e: string) => setData({ ...data, fullname: e }),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Nomor NIK",
                 mode: "horizontal",
                 type: "text",
-                value: data.id,
-                onChange: (e: string) => setData({ ...data, id: e }),
+                value: data.nik,
+                onChange: (e: string) => setData({ ...data, nik: e }),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Username",
+                mode: "horizontal",
+                required: true,
+                type: "text",
+                value: data.username,
+                onChange: (e: string) => setData({ ...data, username: e }),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Email",
+                mode: "horizontal",
+                type: "text",
+                value: data.email,
+                onChange: (e: string) => setData({ ...data, email: e }),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Password",
+                mode: "horizontal",
+                type: "password",
+                required: true,
+                value: data.password,
+                onChange: (e: string) => setData({ ...data, password: e }),
               }}
             />
           </div>
-          <FormInput
-            data={{
-              label: "Role User",
-              mode: "horizontal",
-              required: true,
-              type: "select",
-              value: data.roleId,
-              onChange: (e: string) => setData({ ...data, roleId: e }),
-              options: roles.map((r) => ({ label: r.name, value: r.id })),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Cabang",
-              mode: "horizontal",
-              required: true,
-              type: "select",
-              value: data.cabangId,
-              onChange: (e: string) => setData({ ...data, cabangId: e }),
-              options: cabangs.map((r) => ({ label: r.name, value: r.id })),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Mitra",
-              mode: "horizontal",
-              type: "select",
-              value: data.sumdanId,
-              onChange: (e: string) => setData({ ...data, sumdanId: e }),
-              options: sumdans.map((r) => ({ label: r.name, value: r.id })),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Agent Fronting",
-              mode: "horizontal",
-              type: "select",
-              value: data.agentFrontingId,
-              onChange: (e: string) => setData({ ...data, agentFrontingId: e }),
-              options: agents.map((r) => ({ label: r.name, value: r.id })),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Nama Lengkap",
-              mode: "horizontal",
-              required: true,
-              type: "text",
-              value: data.fullname,
-              onChange: (e: string) => setData({ ...data, fullname: e }),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Nomor NIK",
-              mode: "horizontal",
-              type: "text",
-              value: data.nik,
-              onChange: (e: string) => setData({ ...data, nik: e }),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Username",
-              mode: "horizontal",
-              required: true,
-              type: "text",
-              value: data.username,
-              onChange: (e: string) => setData({ ...data, username: e }),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Email",
-              mode: "horizontal",
-              type: "text",
-              value: data.email,
-              onChange: (e: string) => setData({ ...data, email: e }),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Password",
-              mode: "horizontal",
-              type: "password",
-              required: true,
-              value: data.password,
-              onChange: (e: string) => setData({ ...data, password: e }),
-            }}
-          />
+          <div className="flex-1 flex flex-col gap-3">
+            <FormInput
+              data={{
+                label: "No Telepon",
+                mode: "horizontal",
+                type: "text",
+                value: data.phone,
+                onChange: (e: string) => setData({ ...data, phone: e }),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Posisi",
+                mode: "horizontal",
+                type: "text",
+                value: data.position,
+                onChange: (e: string) => setData({ ...data, position: e }),
+                // options: [
+                //   { label: "MOC", value: "MOC" },
+                //   { label: "SPV", value: "SPV" },
+                //   { label: "KORWIL", value: "KORWIL" },
+                //   { label: "ADMIN", value: "ADMIN" },
+                //   { label: "KEPALA OPERASIONAL", value: "KEPALA OPERASIONAL" },
+                //   { label: "STAFF OPERASIONAL", value: "STAFF OPERASIONAL" },
+                //   { label: "KEPALA BISNIS", value: "KEPALA BISNIS" },
+                //   { label: "STAFF BISNIS", value: "STAFF BISNIS" },
+                //   { label: "MANAJER KEUANGAN", value: "MANAJER KEUANGAN" },
+                //   { label: "STAFF KEUANGAN", value: "STAFF KEUANGAN" },
+                //   { label: "KEPALA VERIFIKASI", value: "KEPALA VERIFIKASI" },
+                //   { label: "STAFF VERIFIKASI", value: "STAFF VERIFIKASI" },
+                //   { label: "KEPALA DOKUMEN", value: "KEPALA DOKUMEN" },
+                //   { label: "STAFF DOKUMEN", value: "STAFF DOKUMEN" },
+                //   { label: "KEPALA IT", value: "KEPALA IT" },
+                //   { label: "STAFF IT", value: "STAFF IT" },
+                //   { label: "FUNDING", value: "FUNDING" },
+                //   { label: "GENERAL AFFAIRS", value: "GENERAL AFFAIRS" },
+                // ],
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Target Perbulan",
+                mode: "horizontal",
+                type: "text",
+                value: IDRFormat(data.target),
+                onChange: (e: string) =>
+                  setData({ ...data, target: IDRToNumber(e || "0") }),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Status PKWT",
+                mode: "horizontal",
+                type: "select",
+                options: [
+                  { label: "TIERING", value: "TIERING" },
+                  { label: "BARU", value: "BARU" },
+                  { label: "LANJUT", value: "LANJUT" },
+                  { label: "TETAP", value: "TETAP" },
+                ],
+                value: data.pkwt_status,
+                onChange: (e: string) => setData({ ...data, pkwt_status: e }),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Awal PKWT",
+                mode: "horizontal",
+                type: "date",
+                value: moment(data.start_pkwt).format("YYYY-MM-DD"),
+                onChange: (e: string) =>
+                  setData({ ...data, start_pkwt: new Date(e) }),
+              }}
+            />
+            <FormInput
+              data={{
+                label: "Akhir PKWT",
+                mode: "horizontal",
+                type: "date",
+                value: moment(data.end_pkwt).format("YYYY-MM-DD"),
+                onChange: (e: string) =>
+                  setData({ ...data, end_pkwt: new Date(e) }),
+              }}
+            />
+          </div>
         </div>
-        <div className="flex-1 flex flex-col gap-3">
-          <FormInput
-            data={{
-              label: "No Telepon",
-              mode: "horizontal",
-              type: "text",
-              value: data.phone,
-              onChange: (e: string) => setData({ ...data, phone: e }),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Posisi",
-              mode: "horizontal",
-              type: "text",
-              value: data.position,
-              onChange: (e: string) => setData({ ...data, position: e }),
-              // options: [
-              //   { label: "MOC", value: "MOC" },
-              //   { label: "SPV", value: "SPV" },
-              //   { label: "KORWIL", value: "KORWIL" },
-              //   { label: "ADMIN", value: "ADMIN" },
-              //   { label: "KEPALA OPERASIONAL", value: "KEPALA OPERASIONAL" },
-              //   { label: "STAFF OPERASIONAL", value: "STAFF OPERASIONAL" },
-              //   { label: "KEPALA BISNIS", value: "KEPALA BISNIS" },
-              //   { label: "STAFF BISNIS", value: "STAFF BISNIS" },
-              //   { label: "MANAJER KEUANGAN", value: "MANAJER KEUANGAN" },
-              //   { label: "STAFF KEUANGAN", value: "STAFF KEUANGAN" },
-              //   { label: "KEPALA VERIFIKASI", value: "KEPALA VERIFIKASI" },
-              //   { label: "STAFF VERIFIKASI", value: "STAFF VERIFIKASI" },
-              //   { label: "KEPALA DOKUMEN", value: "KEPALA DOKUMEN" },
-              //   { label: "STAFF DOKUMEN", value: "STAFF DOKUMEN" },
-              //   { label: "KEPALA IT", value: "KEPALA IT" },
-              //   { label: "STAFF IT", value: "STAFF IT" },
-              //   { label: "FUNDING", value: "FUNDING" },
-              //   { label: "GENERAL AFFAIRS", value: "GENERAL AFFAIRS" },
-              // ],
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Target Perbulan",
-              mode: "horizontal",
-              type: "text",
-              value: IDRFormat(data.target),
-              onChange: (e: string) =>
-                setData({ ...data, target: IDRToNumber(e || "0") }),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Status PKWT",
-              mode: "horizontal",
-              type: "select",
-              options: [
-                { label: "TIERING", value: "TIERING" },
-                { label: "BARU", value: "BARU" },
-                { label: "LANJUT", value: "LANJUT" },
-                { label: "TETAP", value: "TETAP" },
-              ],
-              value: data.pkwt_status,
-              onChange: (e: string) => setData({ ...data, pkwt_status: e }),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Awal PKWT",
-              mode: "horizontal",
-              type: "date",
-              value: moment(data.start_pkwt).format("YYYY-MM-DD"),
-              onChange: (e: string) =>
-                setData({ ...data, start_pkwt: new Date(e) }),
-            }}
-          />
-          <FormInput
-            data={{
-              label: "Akhir PKWT",
-              mode: "horizontal",
-              type: "date",
-              value: moment(data.end_pkwt).format("YYYY-MM-DD"),
-              onChange: (e: string) =>
-                setData({ ...data, end_pkwt: new Date(e) }),
-            }}
-          />
-        </div>
-      </div>
+      </form>
       <div className="flex justify-end gap-4">
         <Button onClick={() => setOpen(false)}>Cancel</Button>
         <Button

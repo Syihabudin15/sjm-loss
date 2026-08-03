@@ -64,6 +64,7 @@ export default function Page() {
     const params = new URLSearchParams({
       page: pageProps.page.toString(),
       limit: pageProps.limit.toString(),
+      includes: "true",
       ...(pageProps.search && { search: pageProps.search }),
     });
     const res = await fetch(`/api/agent?${params.toString()}`);

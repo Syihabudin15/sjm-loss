@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 
 export const FormIdentitas = (record?: IDapem) => {
   return `
-    <div>
+    <div class="p-4">
       ${Header("SURAT KETERANGAN", "PERBEDAAN IDENTITAS", undefined, process.env.NEXT_PUBLIC_APP_LOGO, undefined)}
       <p class="mt-3">Yang bertanda tangan dibawah ini :</p>
       <div class="my-5">

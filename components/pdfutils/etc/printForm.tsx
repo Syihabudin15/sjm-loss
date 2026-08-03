@@ -2,9 +2,10 @@ import moment from "moment";
 import { IDapem } from "@/libs/IInterfaces";
 import { FormPermohonan } from "./forms/formPermohonan";
 import { FormDSR } from "./forms/formDSR";
-import { FormIdeb } from "./forms/formIdeb";
 import { FormIdentitas } from "./forms/formIdentitas";
 import { FormMutasiTaspen } from "./forms/formMutasiTaspen";
+import { KuasaMutasi } from "./forms/kuasaMutasi";
+import { PersetujuanAW } from "./forms/PersetujuanAW";
 
 moment.locale("id");
 
@@ -62,17 +63,21 @@ const generateForm = (record?: IDapem) => {
         ${FormPermohonan(record)} 
       </div>
       <div class="page-break" style="font-size: 12px;margin: 10mm;">
-        ${FormIdeb(record)}
-      </div>
-      <div class="page-break" style="font-size: 12px;margin: 10mm;">
         ${FormDSR(record)}
       </div>
       <div class="page-break" style="font-size: 12px;margin: 10mm;">
         ${FormIdentitas(record)}
       </div>
       <div class="page-break" style="font-size: 12px;margin: 10mm;">
+        ${PersetujuanAW(record)}
+      </div>
+      <div class="page-break" style="font-size: 12px;margin: 10mm;">
+        ${KuasaMutasi(record)}
+      </div>
+      <div class="page-break" style="font-size: 12px;margin: 10mm;">
         ${FormMutasiTaspen(record)}
       </div>
+      
     </body>
   </html>
   `;

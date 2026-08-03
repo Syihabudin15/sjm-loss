@@ -45,6 +45,7 @@ import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 
 export default function Page() {
+  const [tglLahirStr, setTglLahirStr] = useState("");
   const [data, setData] = useState<IDapemSimulasi>(defaultData);
   const [jenis, setJenis] = useState<JenisPembiayaan[]>([]);
   const [sumdan, setSumdan] = useState<ISumdan[]>([]);
@@ -180,6 +181,18 @@ export default function Page() {
     data.c_takeover,
   ]);
 
+  useEffect(() => {
+    if (data.Debitur.birthdate) {
+      setTglLahirStr(moment(data.Debitur.birthdate).format("DD/MM/YYYY"));
+    }
+  }, [data.Debitur.birthdate]);
+  const autoFormatDate = (val: string) => {
+    const v = val.replace(/\D/g, ""); // Hanya izinkan angka
+    if (v.length <= 2) return v;
+    if (v.length <= 4) return `${v.slice(0, 2)}/${v.slice(2)}`;
+    return `${v.slice(0, 2)}/${v.slice(2, 4)}/${v.slice(4, 8)}`;
+  };
+
   const handleSearch = async () => {
     setLoading(true);
     await fetch("/api/debitur?nopen=" + data.nopen, { method: "PATCH" })
@@ -266,15 +279,29 @@ export default function Page() {
           <FormInput
             data={{
               label: "Tanggal Lahir",
-              type: "date",
+              type: "text",
               mode: "vertical",
               class: "flex-1",
-              value: moment(data.Debitur.birthdate).format("YYYY-MM-DD"),
-              onChange: (e: string) =>
-                setData({
-                  ...data,
-                  Debitur: { ...data.Debitur, birthdate: new Date(e) },
-                }),
+              value: tglLahirStr,
+              onChange: (e: string) => {
+                // 1. Format text secara visual
+                const formatted = autoFormatDate(e);
+                setTglLahirStr(formatted);
+
+                // 2. Update data tanggal UTAMA hanya ketika input sudah lengkap (10 karakter)
+                if (formatted.length === 10) {
+                  const parsedDate = moment(formatted, "DD/MM/YYYY");
+                  if (parsedDate.isValid()) {
+                    setData({
+                      ...data,
+                      Debitur: {
+                        ...data.Debitur,
+                        birthdate: parsedDate.toDate(),
+                      },
+                    });
+                  }
+                }
+              },
             }}
           />
           {data.Debitur.birthdate &&

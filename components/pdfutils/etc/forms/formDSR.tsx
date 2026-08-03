@@ -5,7 +5,7 @@ import moment from "moment";
 export const FormDSR = (record?: IDapem) => {
   const ao = record?.AO || record?.AOCabang || record?.AOArea;
   return `
-    <div>
+    <div class="p-4">
       ${Header("SURAT PERNYATAN", "PEMOTONGAN GAJI DIATAS 70%", undefined, process.env.NEXT_PUBLIC_APP_LOGO, process.env.NEXT_PUBLIC_APP_LOGO)}
       <p class="mt-3">Yang bertanda tangan dibawah ini :</p>
       <div class="my-5">

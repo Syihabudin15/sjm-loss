@@ -188,11 +188,7 @@ export default function Page() {
           <div className="text-xs">
             <div className="flex justify-between gap-4">
               <span className="w-20">Admin :</span>
-              <span>{IDRFormat(adm)}</span>
-            </div>
-            <div className="flex justify-between gap-4">
-              <span className="w-20">Provisi :</span>
-              <span>{IDRFormat(provisi)}</span>
+              <span>{IDRFormat(adm + provisi)}</span>
             </div>
             <div className="flex justify-between gap-4">
               <span className="w-20">Rek :</span>
@@ -497,11 +493,7 @@ export default function Page() {
               <Table.Summary.Cell index={6} className="text-right font-bold">
                 <div className="flex justify-between gap-2">
                   <div>Admin :</div>
-                  <div className="text-right">{IDRFormat(adm)}</div>
-                </div>
-                <div className="flex justify-between gap-2">
-                  <div>Provisi :</div>
-                  <div className="text-right">{IDRFormat(provisi)}</div>
+                  <div className="text-right">{IDRFormat(adm + provisi)}</div>
                 </div>
                 <div className="flex justify-between gap-2">
                   <div>Rek :</div>

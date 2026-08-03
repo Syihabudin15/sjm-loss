@@ -176,12 +176,14 @@ export const PUT = async (req: NextRequest) => {
           where: { id: dpm.id },
           data: {
             ...dpmData,
-            takeover_status: JenisPembiayaan.status_takeover
-              ? "DRAFT"
-              : "DISETUJUI",
-            mutasi_status: JenisPembiayaan.status_mutasi
-              ? "DRAFT"
-              : "DISETUJUI",
+            ...(!dpmData.status && {
+              takeover_status: JenisPembiayaan.status_takeover
+                ? "DRAFT"
+                : "DISETUJUI",
+              mutasi_status: JenisPembiayaan.status_mutasi
+                ? "DRAFT"
+                : "DISETUJUI",
+            }),
           },
         });
       }

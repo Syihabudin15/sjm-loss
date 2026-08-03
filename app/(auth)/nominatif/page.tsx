@@ -577,6 +577,7 @@ export default function Page() {
             record.c_gov +
             record.c_stamp +
             record.c_infomation +
+            record.c_fee_bpp +
             record.c_mutasi;
           return (
             <div className="text-xs text-right">
@@ -664,15 +665,10 @@ export default function Page() {
 
     let totalPlafond = 0,
       angs = 0,
-      angsSumdan = 0,
-      adm_sumdan = 0,
-      prov_sumdan = 0;
-    let rek_sumdan = 0,
-      adm = 0,
+      angsSumdan = 0;
+    let bySumdan = 0,
+      byKop = 0,
       asuransi = 0;
-    let tatalaksana = 0,
-      inform = 0,
-      mutasi = 0;
     let takeover = 0,
       blokir = 0;
 
@@ -685,17 +681,10 @@ export default function Page() {
       angsSumdan += detailDapem.detail.angsuran_sumdan;
 
       const p = curr.plafond / 100;
-      adm_sumdan += p * curr.c_adm_sumdan;
-      prov_sumdan += p * curr.c_provisi_sumdan;
-      rek_sumdan += curr.c_account_sumdan;
 
-      adm += p * curr.c_adm;
       asuransi += p * curr.c_insurance;
-
-      tatalaksana += curr.c_gov;
-      inform += curr.c_infomation;
-      mutasi += curr.c_mutasi;
-
+      bySumdan += detailDapem.by_sumdan;
+      byKop += detailDapem.biayakop - p * curr.c_insurance;
       takeover += curr.c_takeover;
       blokir += curr.c_blokir * detailDapem.angsuran;
     }
@@ -705,9 +694,8 @@ export default function Page() {
       angs,
       angsSumdan,
       admAngsuran: Math.ceil(angs - angsSumdan),
-      sumdanTotal: adm_sumdan + prov_sumdan + rek_sumdan,
-      koperasiTotal: adm,
-      laksanaTotal: tatalaksana + inform + mutasi,
+      sumdanTotal: bySumdan,
+      koperasiTotal: byKop,
       asuransi,
       takeover,
       blokir,
@@ -975,7 +963,7 @@ export default function Page() {
               </Table.Summary.Cell>
               <Table.Summary.Cell
                 index={5}
-                colSpan={8}
+                colSpan={10}
                 className="text-center font-bold"
               />
               <Table.Summary.Cell index={12} className="font-bold">
@@ -991,16 +979,6 @@ export default function Page() {
               <Table.Summary.Cell index={15} className="font-bold">
                 <div className="text-right">
                   {IDRFormat(tableSummaryData.koperasiTotal)}
-                </div>
-              </Table.Summary.Cell>
-              {/* <Table.Summary.Cell index={16} className="font-bold">
-                <div className="text-right">
-                  {IDRFormat(tableSummaryData.provTotal)}
-                </div>
-              </Table.Summary.Cell> */}
-              <Table.Summary.Cell index={17} className="font-bold">
-                <div className="text-right">
-                  {IDRFormat(tableSummaryData.laksanaTotal)}
                 </div>
               </Table.Summary.Cell>
               <Table.Summary.Cell index={18} className="font-bold">
