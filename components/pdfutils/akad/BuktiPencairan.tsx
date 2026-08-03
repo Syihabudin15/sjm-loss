@@ -5,6 +5,7 @@ import { Header, ListNonStyle } from "../utils";
 moment.locale("id");
 
 export const BuktiPencairan = (record: IDapem, isFor: string) => {
+  const ao = record.AO || record.AOCabang || record.AOArea;
   const detail = GetDetailDapem(record);
 
   return `
@@ -157,8 +158,8 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
     <div class="flex-1">
       <p>Diperiksa oleh</p>
       <div class="h-28"></div>
-      <p class="border-b h-5"></p>
-      <p></p>
+      <p class="border-b">${ao?.fullname}</p>
+      <p>AO/SPV</p>
     </div>
   </div>
   <div class="mt-10 flex justify-around gap-10 items-end text-center">
