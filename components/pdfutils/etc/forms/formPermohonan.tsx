@@ -245,7 +245,7 @@ export const FormPermohonan = (record?: IDapem) => {
         },
         {
           key: "Nominal Takeover",
-          value: record?.takeover_from
+          value: record?.c_takeover
             ? "Rp.  " + IDRFormat(record.c_takeover)
             : "",
         },
