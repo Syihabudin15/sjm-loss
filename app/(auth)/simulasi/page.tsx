@@ -179,6 +179,7 @@ export default function Page() {
     data.c_margin,
     data.fee_banpot,
     data.c_takeover,
+    data.c_ned,
   ]);
 
   useEffect(() => {

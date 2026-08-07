@@ -178,7 +178,7 @@ export default function Page() {
           <div className="text-xs text-blue-400">
             <p>Admin : {record.c_adm}%</p>
             <p>Tatalaksana : {IDRFormat(record.c_gov)}</p>
-            <p>Materai : {IDRFormat(record.c_stamps)}</p>
+            {/* <p>Materai : {IDRFormat(record.c_stamps)}</p> */}
           </div>
         );
       },
@@ -763,7 +763,7 @@ function UpsertSumdan({
                         setData({ ...data, c_information: IDRToNumber(e) }),
                     }}
                   />
-                  <FormInput
+                  {/* <FormInput
                     data={{
                       label: "Materai",
                       mode: "horizontal",
@@ -772,7 +772,7 @@ function UpsertSumdan({
                       onChange: (e: any) =>
                         setData({ ...data, c_stamps: IDRToNumber(e) }),
                     }}
-                  />
+                  /> */}
                   <FormInput
                     data={{
                       label: "Maks Tatalaksana",

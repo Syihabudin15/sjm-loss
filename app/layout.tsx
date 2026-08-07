@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { App, ConfigProvider } from "antd";
 import { UserProvider } from "@/components/UserContext";
 import "@/app/globals.css";
+import locale from "antd/locale/id_ID";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
               fontSize: 13,
             },
           }}
+          locale={locale}
         >
           <App>
             <UserProvider>{children}</UserProvider>

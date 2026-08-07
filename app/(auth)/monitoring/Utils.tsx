@@ -1542,6 +1542,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                                 c_flagging: find.Sumdan.c_flagging,
                                 c_infomation: find.Sumdan.c_information,
                                 c_insurance: find.c_insurance,
+                                fee_banpot: find.Sumdan.fee_banpot,
                                 c_ned: find.Sumdan.c_ned,
                                 rounded: find.Sumdan.rounded,
                                 tbo: find.Sumdan.tbo,
@@ -1679,9 +1680,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         <Input
                           size="small"
                           style={{ width: 100 }}
-                          // suffix={
-                          //   <span className="text-xs italic opacity-70">%</span>
-                          // }
                           value={data.c_adm_sumdan}
                           onChange={(e) =>
                             setData({
@@ -1695,32 +1693,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                           size="small"
                           disabled
                           value={IDRFormat(details.detail.adm_sumdan)}
-                          style={{ textAlign: "right", color: "black" }}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex justify-between border-b border-dashed my-2">
-                      <div className="flex-1">Provisi Sumdan</div>
-                      <div className="flex gap-2 flex-2">
-                        <Input
-                          size="small"
-                          style={{ width: 100 }}
-                          // suffix={
-                          //   <span className="text-xs italic opacity-70">%</span>
-                          // }
-                          value={data.c_provisi_sumdan}
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              c_provisi_sumdan: Number(e.target.value || 0),
-                            })
-                          }
-                          type={"number"}
-                        />
-                        <Input
-                          size="small"
-                          disabled
-                          value={IDRFormat(details.detail.provisi_sumdan)}
                           style={{ textAlign: "right", color: "black" }}
                         />
                       </div>
@@ -1749,9 +1721,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         <Input
                           size="small"
                           style={{ width: 100 }}
-                          // suffix={
-                          //   <span className="text-xs italic opacity-70">%</span>
-                          // }
                           value={data.c_insurance}
                           onChange={(e) =>
                             setData({
@@ -1801,36 +1770,17 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between border-b border-dashed my-2 py-1">
-                      <div className="w-1/3 text-gray-700 font-medium">
-                        Provisi Koperasi
-                      </div>
-                      <div className="flex items-center gap-2 flex-1 justify-end">
-                        <div style={{ width: 65 }} />
-                        <Input
-                          size="small"
-                          disabled
-                          value={IDRFormat(data.c_provisi)}
-                          style={{
-                            textAlign: "right",
-                            color: "black",
-                            maxWidth: 150,
-                            flex: 1,
-                          }}
-                        />
-                      </div>
-                    </div>
                     <div className="flex justify-between border-b border-dashed my-2">
-                      <div className="flex-1">Flagging</div>
+                      <div className="flex-1">Tatalaksana</div>
                       <div className="flex gap-2 flex-2">
                         <Input
                           size="small"
-                          value={IDRFormat(data.c_flagging)}
+                          value={IDRFormat(data.c_gov)}
                           style={{ textAlign: "right", color: "black" }}
                           onChange={(e) =>
                             setData({
                               ...data,
-                              c_flagging: IDRToNumber(e.target.value || "0"),
+                              c_gov: IDRToNumber(e.target.value || "0"),
                             })
                           }
                         />
@@ -1853,23 +1803,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                       </div>
                     </div>
                     <div className="flex justify-between border-b border-dashed my-2">
-                      <div className="flex-1">Materai</div>
-                      <div className="flex gap-2 flex-2">
-                        <Input
-                          size="small"
-                          value={IDRFormat(data.c_stamp)}
-                          style={{ textAlign: "right", color: "black" }}
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              c_stamp: IDRToNumber(e.target.value || "0"),
-                            })
-                          }
-                        />
-                      </div>
-                    </div>
-                    <div className="flex justify-between border-b border-dashed my-2">
-                      <div className="flex-1">Mutasi</div>
+                      <div className="flex-1">Mutasi & Flagging</div>
                       <div className="flex gap-2 flex-2">
                         <Input
                           size="small"
@@ -1885,26 +1819,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         />
                       </div>
                     </div>
-                    {/* <div className="flex gap-2 justify-between items-center my-2">
-                      <div className="flex-1">BPP Pembiayaan</div>
-                      <div className="flex gap-2 flex-2">
-                        <Input
-                          size="small"
-                          value={IDRFormat(data.c_fee_bpp || 0)}
-                          style={{ textAlign: "right" }}
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              c_fee_bpp:
-                                IDRToNumber(e.target.value || "0") >
-                                data.ProdukPembiayaan.Sumdan.max_bpp
-                                  ? data.ProdukPembiayaan.Sumdan.max_bpp
-                                  : IDRToNumber(e.target.value || "0"),
-                            })
-                          }
-                        />
-                      </div>
-                    </div> */}
                     <div className="flex justify-between border-t mt-3 text-red-500 font-bold">
                       <div className="flex-1">Total Biaya</div>
                       <div className="text-right">
