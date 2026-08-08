@@ -130,6 +130,9 @@ export default function Page() {
         limit: pageProps.limit.toString(),
         ...(pageProps.search && { search: pageProps.search }),
         ...(pageProps.sumdanId && { sumdanId: pageProps.sumdanId }),
+        ...(pageProps.dropping_status && {
+          dropping_status: pageProps.dropping_status,
+        }),
         ...(pageProps.backdate && { backdate: pageProps.backdate }),
         ...(pageProps.jenisPembiayaanId && {
           jenisPembiayaanId: pageProps.jenisPembiayaanId,
@@ -633,6 +636,7 @@ export default function Page() {
       sumdanId: "",
       jenisPembiayaanId: "",
       agentFrontingId: "",
+      dropping_status: "",
       backdate: "",
       page: 1,
     }));
@@ -755,7 +759,7 @@ export default function Page() {
                   </label>
                   <Select
                     size="small"
-                    placeholder="Agent..."
+                    placeholder="Status..."
                     options={[
                       { label: "DRAFT", value: "DRAFT" },
                       { label: "PENDING", value: "PENDING" },
