@@ -557,9 +557,7 @@ export default function Page() {
         dataIndex: "biaya_sumdan",
         key: "biaya_sumdan",
         render(value, record) {
-          const adm = record.plafond * (record.c_adm_sumdan / 100);
-          const provisi = record.plafond * (record.c_provisi_sumdan / 100);
-          const total = adm + provisi + record.c_account_sumdan;
+          const total = GetDetailDapem(record).by_sumdan;
           return (
             <div className="text-xs text-right">
               <span>{IDRFormat(total)}</span>
@@ -572,16 +570,11 @@ export default function Page() {
         dataIndex: "biaya",
         key: "biaya",
         render(value, record) {
-          const adm = record.plafond * (record.c_adm / 100);
-          const tatalaksana =
-            record.c_gov +
-            record.c_stamp +
-            record.c_infomation +
-            record.c_fee_bpp +
-            record.c_mutasi;
+          const dapem = GetDetailDapem(record);
+          const bykop = dapem.biayakop - dapem.asuransi;
           return (
             <div className="text-xs text-right">
-              <span>{IDRFormat(adm + tatalaksana)}</span>
+              <span>{IDRFormat(bykop)}</span>
             </div>
           );
         },
@@ -599,17 +592,35 @@ export default function Page() {
         },
       },
       {
-        title: "Blokir Angsuran",
+        title: "Blokir Angsuran Sumdan",
         dataIndex: "blokir",
         key: "blokir",
         render(value, record) {
-          const angs = GetDetailDapem(record).angsuran;
+          const angs = GetDetailDapem(record).detail.angsuran_sumdan;
           return (
             <div className="text-xs text-right">
               <p>
                 {record.c_blokir} x {IDRFormat(angs)}
               </p>
               <p>{IDRFormat(record.c_blokir * angs)}</p>
+            </div>
+          );
+        },
+      },
+      {
+        title: "Blokir Angsuran Kop",
+        dataIndex: "blokir",
+        key: "blokir",
+        render(value, record) {
+          const angs = GetDetailDapem(record);
+          const sumdan = angs.detail.angsuran_sumdan;
+          const kop = angs.angsuran - sumdan;
+          return (
+            <div className="text-xs text-right">
+              <p>
+                {record.c_blokir} x {IDRFormat(kop)}
+              </p>
+              <p>{IDRFormat(record.c_blokir * kop)}</p>
             </div>
           );
         },
@@ -632,7 +643,7 @@ export default function Page() {
       {
         title: "Aksi",
         key: "action",
-        width: 100,
+        width: 80,
         render: (_, record) => (
           <div className="flex gap-2">
             <Tooltip
@@ -670,7 +681,8 @@ export default function Page() {
       byKop = 0,
       asuransi = 0;
     let takeover = 0,
-      blokir = 0;
+      blokirsumdan = 0,
+      blokirkop = 0;
 
     for (let i = 0; i < pageProps.data.length; i++) {
       const curr = pageProps.data[i];
@@ -682,11 +694,14 @@ export default function Page() {
 
       const p = curr.plafond / 100;
 
-      asuransi += p * curr.c_insurance;
+      asuransi += detailDapem.asuransi;
       bySumdan += detailDapem.by_sumdan;
-      byKop += detailDapem.biayakop - p * curr.c_insurance;
+      byKop += detailDapem.biayakop - detailDapem.asuransi;
       takeover += curr.c_takeover;
-      blokir += curr.c_blokir * detailDapem.angsuran;
+      blokirsumdan += curr.c_blokir * detailDapem.detail.angsuran_sumdan;
+      blokirkop +=
+        curr.c_blokir *
+        (detailDapem.angsuran - detailDapem.detail.angsuran_sumdan);
     }
 
     return {
@@ -698,7 +713,8 @@ export default function Page() {
       koperasiTotal: byKop,
       asuransi,
       takeover,
-      blokir,
+      blokirsumdan,
+      blokirkop,
     };
   }, [pageProps.data]);
 
@@ -988,7 +1004,12 @@ export default function Page() {
               </Table.Summary.Cell>
               <Table.Summary.Cell index={19} className="font-bold">
                 <div className="text-right">
-                  {IDRFormat(tableSummaryData.blokir)}
+                  {IDRFormat(tableSummaryData.blokirsumdan)}
+                </div>
+              </Table.Summary.Cell>
+              <Table.Summary.Cell index={20} className="font-bold">
+                <div className="text-right">
+                  {IDRFormat(tableSummaryData.blokirkop)}
                 </div>
               </Table.Summary.Cell>
             </Table.Summary.Row>

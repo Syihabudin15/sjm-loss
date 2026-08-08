@@ -57,7 +57,7 @@ export const GET = async (request: NextRequest) => {
   const where: Prisma.DapemWhereInput = {
     ...(search && ORDapem(search)),
     ...(dropping_status
-      ? dropping_status === "final"
+      ? dropping_status === "FINAL"
         ? { dropping_status: { in: ["DISETUJUI", "PROSES", "LUNAS"] } }
         : {
             dropping_status: dropping_status as EDapemStatus,

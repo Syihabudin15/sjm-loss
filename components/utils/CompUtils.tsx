@@ -21,7 +21,7 @@ import {
 import { HookAPI } from "antd/es/modal/useModal";
 import { useState } from "react";
 import { FormInput } from "./FormUtils";
-import { GetAngsuran, IDRFormat } from "./PembiayaanUtil";
+import { GetAngsuran, GetDetailDapem, IDRFormat } from "./PembiayaanUtil";
 import * as XLSX from "xlsx";
 import moment from "moment";
 import {
@@ -411,21 +411,10 @@ export const MappingToProsesDapem = (data: IDapem[]) => {
 
 export const MappingToTagihan = (data: IDapem[], periode?: string) => {
   return data.map((d, i) => {
-    const angs = GetAngsuran(
-      d.plafond,
-      d.tenor,
-      d.c_margin + d.c_margin_sumdan,
-      d.margin_type,
-      d.rounded,
-      d.c_ned,
-    ).angsuran;
-    const angsSumdan = GetAngsuran(
-      d.plafond,
-      d.tenor,
-      d.c_margin_sumdan,
-      d.margin_type,
-      d.rounded,
-    ).angsuran;
+    const detail = GetDetailDapem(d);
+    const find = d.Angsurans.find((a) =>
+      moment(a.date_pay).isSame(periode || new Date(), "month"),
+    );
 
     return {
       NO: i + 1,
@@ -435,23 +424,15 @@ export const MappingToTagihan = (data: IDapem[], periode?: string) => {
       "TANGGAL AKAD": d.date_contract,
       PLAFOND: d.plafond,
       TENOR: d.tenor,
-      ANGSURAN_SUMDAN: angsSumdan,
-      ANGSURAN_KOPERASI: angs - angsSumdan,
-      NOMINAL_ANGSURAN: angs,
-      ANGSURAN_KE: d.Angsurans.find((a) =>
-        moment(a.date_pay).isSame(periode || new Date(), "month"),
-      )?.counter,
-      POKOK: d.Angsurans.find((a) =>
-        moment(a.date_pay).isSame(periode || new Date(), "month"),
-      )?.principal,
-      MARGIN: d.Angsurans.find((a) =>
-        moment(a.date_pay).isSame(periode || new Date(), "month"),
-      )?.margin,
-      STATUS: d.Angsurans.find((a) =>
-        moment(a.date_pay).isSame(periode || new Date(), "month"),
-      )?.date_paid
-        ? "DIBAYAR"
-        : "BELUMBAYAR",
+      ANGSURAN_MITRA: detail.detail.angsuran_sumdan,
+      ANGSURAN_KOPERASI: detail.angsuran - detail.detail.angsuran_sumdan,
+      NOMINAL_ANGSURAN: detail.angsuran,
+      ANGSURAN_KE: find?.counter,
+      POKOK: find?.principal,
+      MARGIN: find?.margin,
+      NED: find?.c_ned,
+      FEE_BANPOT: detail.detail.fee_banpot,
+      STATUS: find?.date_paid ? "DIBAYAR" : "BELUMBAYAR",
     };
   });
 };

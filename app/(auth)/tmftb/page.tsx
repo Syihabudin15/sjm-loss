@@ -48,7 +48,6 @@ import {
 } from "@/components/utils/CompUtils";
 import { DetailDapem } from "@/components/utils/LayoutUtils";
 import {
-  GetDapem,
   GetDetailDapem,
   IDRFormat,
   IDRToNumber,
@@ -539,7 +538,7 @@ export default function Page() {
             ? JSON.parse(record.cash_desc)
             : [];
           const total = desc.reduce((acc, curr) => acc + curr.amount, 0);
-          const tb = GetDapem(record).tb;
+          const tb = GetDetailDapem(record).tb;
           const percent = tb > 0 ? ((total / tb) * 100).toFixed(2) : "0.00";
 
           return (
@@ -851,50 +850,64 @@ export default function Page() {
       <div className="flex justify-between my-1 gap-2 overflow-auto">
         <div className="flex gap-2">
           <FilterData clearfilter={handleClearFilter}>
-            <div className="my-2">
-              <p>Periode :</p>
-              <RangePicker
-                size="small"
-                value={
-                  Array.isArray(pageProps.backdate) &&
-                  pageProps.backdate.length === 2
-                    ? [
-                        dayjs(pageProps.backdate[0]),
-                        dayjs(pageProps.backdate[1]),
-                      ]
-                    : null
-                }
-                onChange={(_, dateStr) =>
-                  setPageProps((prev) => ({
-                    ...prev,
-                    backdate: dateStr,
-                    page: 1,
-                  }))
-                }
-                style={{ width: "100%" }}
-              />
+            <div className="p-1">
+              <div className="grid grid-cols-2 gap-x-3 gap-y-3.5">
+                <div className="col-span-2 flex flex-col space-y-1">
+                  <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide">
+                    Periode
+                  </label>
+                  <RangePicker
+                    size="small"
+                    value={
+                      Array.isArray(pageProps.backdate) &&
+                      pageProps.backdate.length === 2
+                        ? [
+                            dayjs(pageProps.backdate[0]),
+                            dayjs(pageProps.backdate[1]),
+                          ]
+                        : null
+                    }
+                    onChange={(date, dateStr) =>
+                      setPageProps((prev) => ({
+                        ...prev,
+                        backdate: dateStr,
+                        page: 1,
+                      }))
+                    }
+                    style={{ width: "100%" }}
+                  />
+                </div>
+              </div>
             </div>
             {user && !user.sumdanId && (
-              <div className="my-2">
-                <p>Mitra pembiayaan :</p>
+              <div className="flex flex-col space-y-1">
+                <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                  Mitra Pembiayaan
+                </label>
                 <Select
                   size="small"
-                  placeholder="Pilih Mitra..."
+                  placeholder="Mitra..."
                   options={sumdanOptions}
                   value={pageProps.sumdanId}
                   onChange={(e) =>
-                    setPageProps((prev) => ({ ...prev, sumdanId: e, page: 1 }))
+                    setPageProps((prev) => ({
+                      ...prev,
+                      sumdanId: e,
+                      page: 1,
+                    }))
                   }
                   allowClear
                   style={{ width: "100%" }}
                 />
               </div>
             )}
-            <div className="my-2">
-              <p>Jenis Pembiayaan :</p>
+            <div className="flex flex-col space-y-1">
+              <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                Jenis Pembiayaan
+              </label>
               <Select
                 size="small"
-                placeholder="Pilih Jenis..."
+                placeholder="Jenis..."
                 options={jenisOptions}
                 value={pageProps.jenisPembiayaanId}
                 onChange={(e) =>
@@ -908,25 +921,14 @@ export default function Page() {
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="my-2">
-              <p>Kantor Bayar :</p>
+
+            <div className="flex flex-col space-y-1">
+              <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                Agent Fronting
+              </label>
               <Select
                 size="small"
-                placeholder="Pilih Kantor Bayar..."
-                options={payOptions}
-                value={pageProps.payOfficeId}
-                onChange={(e) =>
-                  setPageProps((prev) => ({ ...prev, payOfficeId: e, page: 1 }))
-                }
-                allowClear
-                style={{ width: "100%" }}
-              />
-            </div>
-            <div className="my-2">
-              <p>Agent Fronting :</p>
-              <Select
-                size="small"
-                placeholder="Pilih Agent..."
+                placeholder="Agent..."
                 options={agentOptions}
                 value={pageProps.agentFrontingId}
                 onChange={(e) =>
@@ -940,17 +942,19 @@ export default function Page() {
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="my-2">
-              <p>Status Dropping :</p>
+            <div className="flex flex-col space-y-1">
+              <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                Kantor Bayar
+              </label>
               <Select
                 size="small"
-                placeholder="Status Dropping..."
-                value={pageProps.dropping_status}
-                options={DROPPING_OPTIONS}
+                placeholder="Kantor Bayar..."
+                options={payOptions}
+                value={pageProps.payOfficeId}
                 onChange={(e) =>
                   setPageProps((prev) => ({
                     ...prev,
-                    dropping_status: e,
+                    payOfficeId: e,
                     page: 1,
                   }))
                 }
@@ -958,13 +962,38 @@ export default function Page() {
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="my-2">
-              <p>Status Takeover :</p>
+            <div className="flex flex-col space-y-1">
+              <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                Status Pembiayaan
+              </label>
               <Select
                 size="small"
-                placeholder="Status Takeover..."
-                value={pageProps.takeover_status}
+                placeholder="Status Pembiayaan..."
+                options={[
+                  { label: "DISETUJUI", value: "DISETUJUI" },
+                  { label: "LUNAS", value: "LUNAS" },
+                ]}
+                value={pageProps.agentFrontingId}
+                onChange={(e) =>
+                  setPageProps((prev) => ({
+                    ...prev,
+                    agentFrontingId: e,
+                    page: 1,
+                  }))
+                }
+                allowClear
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div className="flex flex-col space-y-1">
+              <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                Status Takeover
+              </label>
+              <Select
+                size="small"
+                placeholder="Takeover..."
                 options={GENERAL_STATUS_OPTIONS}
+                value={pageProps.takeover_status}
                 onChange={(e) =>
                   setPageProps((prev) => ({
                     ...prev,
@@ -976,13 +1005,15 @@ export default function Page() {
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="my-2">
-              <p>Status Mutasi :</p>
+            <div className="flex flex-col space-y-1">
+              <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                Status Mutasi
+              </label>
               <Select
                 size="small"
-                placeholder="Status Mutasi..."
-                value={pageProps.mutasi_status}
+                placeholder="Mutasi..."
                 options={GENERAL_STATUS_OPTIONS}
+                value={pageProps.mutasi_status}
                 onChange={(e) =>
                   setPageProps((prev) => ({
                     ...prev,
@@ -994,11 +1025,13 @@ export default function Page() {
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="my-2">
-              <p>Status Flagging : </p>
+            <div className="flex flex-col space-y-1">
+              <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                Status Flagging
+              </label>
               <Select
                 size="small"
-                placeholder="Status Flagging..."
+                placeholder="Flagging..."
                 options={GENERAL_STATUS_OPTIONS}
                 value={pageProps.flagging_status}
                 onChange={(e) =>
@@ -1012,15 +1045,21 @@ export default function Page() {
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="my-2">
-              <p>Status Terima Bersih : </p>
+            <div className="flex flex-col space-y-1">
+              <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                Status Terima Bersih
+              </label>
               <Select
                 size="small"
-                placeholder="Status TB..."
-                value={pageProps.cash_status}
+                placeholder="TB Status..."
                 options={GENERAL_STATUS_OPTIONS}
+                value={pageProps.cash_status}
                 onChange={(e) =>
-                  setPageProps((prev) => ({ ...prev, cash_status: e, page: 1 }))
+                  setPageProps((prev) => ({
+                    ...prev,
+                    cash_status: e,
+                    page: 1,
+                  }))
                 }
                 allowClear
                 style={{ width: "100%" }}

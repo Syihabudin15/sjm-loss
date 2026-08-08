@@ -1130,7 +1130,7 @@ const ModalDetailPembiayaan = ({
                 <span>{IDRFormat(data.c_stamp)}</span>
               </div> */}
               <div className="flex justify-between gap-2 border-b border-dashed">
-                <span>Data Mutasi</span>
+                <span>Mutasi & Flagging</span>
                 <span>{IDRFormat(data.c_mutasi)}</span>
               </div>
               <div className="flex justify-between gap-2 font-bold text-red-500 border-t mt-2">

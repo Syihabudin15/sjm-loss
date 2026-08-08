@@ -747,6 +747,35 @@ export default function Page() {
                     style={{ width: "100%" }}
                   />
                 </div>
+                <div className="flex flex-col space-y-1">
+                  <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                    Status Pembiayaan
+                  </label>
+                  <Select
+                    size="small"
+                    placeholder="Agent..."
+                    options={[
+                      { label: "DRAFT", value: "DRAFT" },
+                      { label: "PENDING", value: "PENDING" },
+                      { label: "PROSES", value: "PROSES" },
+                      { label: "DISETUJUI", value: "DISETUJUI" },
+                      { label: "DITOLAK", value: "DITOLAK" },
+                      { label: "BATAL", value: "BATAL" },
+                      { label: "FINAL", value: "FINAL" },
+                      { label: "LUNAS", value: "LUNAS" },
+                    ]}
+                    value={pageProps.agentFrontingId}
+                    onChange={(e) =>
+                      setPageProps((prev) => ({
+                        ...prev,
+                        agentFrontingId: e,
+                        page: 1,
+                      }))
+                    }
+                    allowClear
+                    style={{ width: "100%" }}
+                  />
+                </div>
               </div>
             </div>
           </FilterData>
