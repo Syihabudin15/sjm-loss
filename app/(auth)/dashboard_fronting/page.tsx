@@ -22,6 +22,7 @@ export default function Page() {
     setLoading(true);
     const params = new URLSearchParams({
       limit: pageProps.limit.toString(),
+      includes: "true",
       ...(pageProps.backdate && { backdate: pageProps.backdate }),
     });
 
