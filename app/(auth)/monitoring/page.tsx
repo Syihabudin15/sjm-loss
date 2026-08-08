@@ -159,6 +159,7 @@ export default function Page() {
     pageProps.sumdanId,
     pageProps.jenisPembiayaanId,
     pageProps.agentFrontingId,
+    pageProps.dropping_status,
     pageProps.backdate,
   ]);
 
