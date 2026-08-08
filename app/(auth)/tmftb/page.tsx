@@ -973,11 +973,11 @@ export default function Page() {
                   { label: "DISETUJUI", value: "DISETUJUI" },
                   { label: "LUNAS", value: "LUNAS" },
                 ]}
-                value={pageProps.agentFrontingId}
+                value={pageProps.dropping_status}
                 onChange={(e) =>
                   setPageProps((prev) => ({
                     ...prev,
-                    agentFrontingId: e,
+                    dropping_status: e,
                     page: 1,
                   }))
                 }

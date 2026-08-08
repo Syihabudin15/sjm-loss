@@ -99,6 +99,7 @@ export default function Page() {
     sumdanId: "",
     jenisPembiayaanId: "",
     agentFrontingId: "",
+    dropping_status: "",
     backdate: "",
   });
   const [loading, setLoading] = useState(false);
@@ -764,11 +765,11 @@ export default function Page() {
                       { label: "FINAL", value: "FINAL" },
                       { label: "LUNAS", value: "LUNAS" },
                     ]}
-                    value={pageProps.agentFrontingId}
+                    value={pageProps.dropping_status}
                     onChange={(e) =>
                       setPageProps((prev) => ({
                         ...prev,
-                        agentFrontingId: e,
+                        dropping_status: e,
                         page: 1,
                       }))
                     }
