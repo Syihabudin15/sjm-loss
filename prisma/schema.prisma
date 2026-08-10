@@ -206,12 +206,13 @@ model ProdukPembiayaan {
   max_paid    Int
   margin_type EMarginType
 
-  status     Boolean  @default(true)
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
-  Sumdan     Sumdan   @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
-  sumdanId   String
-  Dapems     Dapem[]
+  status        Boolean        @default(true)
+  created_at    DateTime       @default(now())
+  updated_at    DateTime       @default(now())
+  Sumdan        Sumdan         @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
+  sumdanId      String
+  Dapems        Dapem[]
+  dataSimulasis DataSimulasi[]
 
   @@index([name])
 }
@@ -222,12 +223,13 @@ model JenisPembiayaan {
   c_blokir Int
   c_mutasi Int    @default(0)
 
-  status_takeover Boolean  @default(false)
-  status_mutasi   Boolean  @default(false)
-  status          Boolean  @default(true)
-  created_at      DateTime @default(now())
-  updated_at      DateTime @default(now())
+  status_takeover Boolean        @default(false)
+  status_mutasi   Boolean        @default(false)
+  status          Boolean        @default(true)
+  created_at      DateTime       @default(now())
+  updated_at      DateTime       @default(now())
   Dapems          Dapem[]
+  dataSimulasis   DataSimulasi[]
 
   @@index([name])
 }
@@ -284,6 +286,7 @@ model Dapem {
   id               String @id @default(uuid())
   tenor            Int
   plafond          Int
+  salary           Int    @default(0)
   c_margin_sumdan  Float
   c_account_sumdan Int
   c_adm_sumdan     Float
@@ -364,6 +367,9 @@ model Dapem {
   guarantee_desc    String?            @db.Text
   ao_fee_status     EDapemStatus       @default(DRAFT)
   ao_fee_desc       String?            @db.Text
+  dev_status        Boolean            @default(false)
+  deviasi_note      String?            @db.Text
+  note              String?            @db.Text
 
   used_for      String
   no_contract   String
@@ -398,6 +404,7 @@ model Dapem {
   AgentFronting    AgentFronting?   @relation(fields: [agentFrontingId], references: [id], onUpdate: Cascade)
   User             User             @relation(fields: [userId], references: [id])
   PrevPayOffice    PayOffice?       @relation("PrevPayOffice", fields: [prevPayOfficeId], references: [id])
+  DPKStatus        DPKStatus?       @relation(fields: [dPKStatusId], references: [id])
   prevPayOfficeId  String?
 
   nopen              String
@@ -418,6 +425,7 @@ model Dapem {
   insuranceId        String?
   Aianalyses         AIAnalysis[]
   userId             String
+  dPKStatusId        String?
 
   @@index([dropping_status])
   @@index([document_status])
@@ -464,12 +472,13 @@ model PayOffice {
   logo          String?
   mitra         Boolean   @default(false)
 
-  status         Boolean   @default(true)
-  created_at     DateTime  @default(now())
-  updated_at     DateTime  @default(now())
+  status         Boolean        @default(true)
+  created_at     DateTime       @default(now())
+  updated_at     DateTime       @default(now())
   Dapems         Dapem[]
-  PrevPayOffices Dapem[]   @relation("PrevPayOffice")
+  PrevPayOffices Dapem[]        @relation("PrevPayOffice")
   Debiturs       Debitur[]
+  dataSimulasis  DataSimulasi[]
 
   @@index([name])
   @@index([code])
@@ -659,4 +668,49 @@ model SumdanAgentFronting {
   sumdanId        String
   AgentFronting   AgentFronting @relation(fields: [agentFrontingId], references: [id], onUpdate: Cascade)
   agentFrontingId String
+}
+
+model DataSimulasi {
+  int                String           @id @default(uuid())
+  nopen              String
+  fullname           String
+  birtdate           DateTime
+  salary             Int
+  tenor              Int
+  plafond            Int
+  margin_sumdan      Int
+  margin             Int
+  c_adm_sumdan       Int
+  c_adm              Int
+  c_account          Int
+  c_provisi          Int
+  c_insurance        Int
+  c_flagging         Int
+  c_gov              Int
+  c_information      Int
+  c_mutasi           Int
+  c_ned              Int
+  c_fee_banpot       Int
+  c_blokir           Int
+  c_takeover         Int
+  note               String?
+  status             Boolean          @default(true)
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @default(now())
+  Product            ProdukPembiayaan @relation(fields: [produkPembiayaanId], references: [id])
+  JenisPembiayaan    JenisPembiayaan  @relation(fields: [jenisPembiayaanId], references: [id])
+  PayOffice          PayOffice?       @relation(fields: [payOfficeId], references: [id])
+  produkPembiayaanId String
+  jenisPembiayaanId  String
+  payOfficeId        String?
+}
+
+model DPKStatus {
+  id          String   @id @default(uuid())
+  name        String?
+  description String?  @db.Text
+  status      Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
+  dapems      Dapem[]
 }

@@ -1196,6 +1196,12 @@ const ModalDetailPembiayaan = ({
               >
                 {IDRFormat(detail.tb)}
               </Descriptions.Item>
+              <Descriptions.Item
+                label="Keterangan"
+                style={{ fontWeight: "bold", color: "green", padding: 5 }}
+              >
+                <Input.TextArea/>
+              </Descriptions.Item>
             </Descriptions>
           </div>
         </div>
