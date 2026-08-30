@@ -9,7 +9,6 @@ import {
   KeyOutlined,
   PlusCircleFilled,
 } from "@ant-design/icons";
-import { EDataStatus } from "../../../../generated/prisma/client";
 import type { Role } from "../../../../generated/prisma/client";
 import {
   App,
@@ -388,17 +387,17 @@ export function UpsertRole({
           </p>
           <Select
             options={[
-              { label: EDataStatus.SEMUA, value: EDataStatus.SEMUA },
-              { label: EDataStatus.AREA, value: EDataStatus.AREA },
-              { label: EDataStatus.CABANG, value: EDataStatus.CABANG },
-              { label: EDataStatus.USER, value: EDataStatus.USER },
+              { label: "SEMUA", value: "SEMUA" },
+              { label: "AREA", value: "AREA" },
+              { label: "CABANG", value: "CABANG" },
+              { label: "USER", value: "USER" },
             ]}
             style={{ width: "100%" }}
             value={data.data_status}
             onChange={(e) =>
               setData((prev: Role) => ({
                 ...prev,
-                data_status: e as EDataStatus,
+                data_status: e,
               }))
             }
           />
