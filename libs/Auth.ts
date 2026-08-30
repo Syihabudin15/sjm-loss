@@ -5,7 +5,7 @@ import { JwtPayload } from "jsonwebtoken";
 import { IUser } from "./IInterfaces";
 import prisma from "./Prisma";
 import { getAccessForPath } from "./AccessUtils";
-import { Role } from "@/generated/prisma";
+import { Role } from "../generated/prisma/client";
 import { clearCacheHash, getCacheJSON, setCacheJSON } from "./redisservice";
 
 const secretKey = new TextEncoder().encode(process.env.APP_KEY || "secretcode");
