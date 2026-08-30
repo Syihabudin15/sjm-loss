@@ -1,4 +1,8 @@
-import { GetAngsuran, GetDetailDapem } from "@/components/utils/PembiayaanUtil";
+import {
+  GetAngsuran,
+  GetDetailDapem,
+  serializeForApi,
+} from "@/components/utils/PembiayaanUtil";
 import { IDapem } from "@/libs/IInterfaces";
 import prisma from "@/libs/Prisma";
 import { Angsuran, Dapem, Prisma } from "../../../generated/prisma/client";
@@ -117,8 +121,8 @@ export const POST = async (req: NextRequest) => {
       {
         msg: "Berhasil memperbarui data akad!",
         status: 200,
-        data: result,
-        dapem: find,
+        data: serializeForApi(result),
+        dapem: serializeForApi(find),
       },
       { status: 200 },
     );
