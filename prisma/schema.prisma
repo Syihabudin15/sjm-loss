@@ -75,6 +75,7 @@ model Role {
 
   @@index([name])
   @@index([data_status])
+  @@map("role")
 }
 
 model Sumdan {
@@ -126,6 +127,7 @@ model Sumdan {
 
   @@index([name])
   @@index([code])
+  @@map("sumdan")
 }
 
 model Area {
@@ -137,6 +139,7 @@ model Area {
   Cabangs    Cabang[]
 
   @@index([name])
+  @@map("area")
 }
 
 model Cabang {
@@ -153,6 +156,7 @@ model Cabang {
   Users      User[]
 
   @@index([name])
+  @@map("cabang")
 }
 
 model User {
@@ -194,6 +198,7 @@ model User {
   @@index([phone])
   @@index([end_pkwt])
   @@index([pkwt_status])
+  @@map("user")
 }
 
 model ProdukPembiayaan {
@@ -218,6 +223,7 @@ model ProdukPembiayaan {
   dataSimulasis DataSimulasi[]
 
   @@index([name])
+  @@map("produkpembiayaan")
 }
 
 model JenisPembiayaan {
@@ -235,6 +241,7 @@ model JenisPembiayaan {
   dataSimulasis   DataSimulasi[]
 
   @@index([name])
+  @@map("jenispembiayaan")
 }
 
 model Debitur {
@@ -285,6 +292,7 @@ model Debitur {
   @@index([district])
   @@index([ward])
   @@index([pos_code])
+  @@map("debitur")
 }
 
 model Dapem {
@@ -462,6 +470,7 @@ model Dapem {
   @@index([no_contract])
   @@index([date_contract])
   @@index([date_end])
+  @@map("dapem")
 }
 
 model AIAnalysis {
@@ -477,6 +486,8 @@ model AIAnalysis {
   updated_at DateTime @updatedAt
   Dapem      Dapem    @relation(fields: [dapemId], references: [id])
   dapemId    String
+
+  @@map("aianalysis")
 }
 
 model PayOffice {
@@ -501,6 +512,7 @@ model PayOffice {
 
   @@index([name])
   @@index([code])
+  @@map("payyoffice")
 }
 
 model Insurance {
@@ -521,6 +533,7 @@ model Insurance {
 
   @@index([name])
   @@index([code])
+  @@map("insurance")
 }
 
 model Dropping {
@@ -537,6 +550,7 @@ model Dropping {
   @@index([process_at])
   @@index([created_at])
   @@index([status])
+  @@map("dropping")
 }
 
 model Berkas {
@@ -553,6 +567,7 @@ model Berkas {
   @@index([process_at])
   @@index([created_at])
   @@index([status])
+  @@map("berkas")
 }
 
 model Jaminan {
@@ -569,6 +584,7 @@ model Jaminan {
   @@index([process_at])
   @@index([created_at])
   @@index([status])
+  @@map("jaminan")
 }
 
 model Pelunasan {
@@ -593,6 +609,7 @@ model Pelunasan {
   @@index([status_paid])
   @@index([process_at])
   @@index([created_at])
+  @@map("pelunasan")
 }
 
 model Angsuran {
@@ -611,6 +628,7 @@ model Angsuran {
   note        String?   @db.Text
 
   @@index([date_pay])
+  @@map("angsuran")
 }
 
 // AKUNTING
@@ -634,6 +652,7 @@ model CategoryOfAccount {
 
   @@index([name])
   @@index([type])
+  @@map("categoryofaccount")
 }
 
 model JournalEntry {
@@ -643,6 +662,7 @@ model JournalEntry {
   JournalDetails JournalDetail[]
 
   @@index([date])
+  @@map("journalentry")
 }
 
 model JournalDetail {
@@ -657,6 +677,8 @@ model JournalDetail {
   journalEntryId      String
   categoryOfAccountId String
   userId              String?
+
+  @@map("journaldetail")
 }
 
 model AgentFronting {
@@ -681,6 +703,7 @@ model AgentFronting {
 
   @@index([name])
   @@index([code])
+  @@map("agentfronting")
 }
 
 model SumdanAgentFronting {
@@ -689,6 +712,8 @@ model SumdanAgentFronting {
   sumdanId        String
   AgentFronting   AgentFronting @relation(fields: [agentFrontingId], references: [id], onUpdate: Cascade)
   agentFrontingId String
+
+  @@map("sumdanagentfronting")
 }
 
 model DataSimulasi {
@@ -729,6 +754,8 @@ model DataSimulasi {
   jenisPembiayaanId  String
   payOfficeId        String?
   userId             String
+
+  @@map("datasimulasi")
 }
 
 model DPKStatus {
@@ -739,4 +766,6 @@ model DPKStatus {
   created_at  DateTime @default(now())
   updated_at  DateTime @default(now())
   dapems      Dapem[]
+
+  @@map("dpkstatus")
 }
