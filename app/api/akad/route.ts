@@ -10,7 +10,50 @@ export const POST = async (req: NextRequest) => {
     await req.json();
   const find = await prisma.dapem.findFirst({
     where: { id: data.id },
-    include: { Angsurans: true },
+    include: {
+      Debitur: true,
+      ProdukPembiayaan: { include: { Sumdan: true } },
+      JenisPembiayaan: true,
+      User: {
+        include: {
+          Cabang: {
+            include: {
+              Area: true,
+            },
+          },
+        },
+      },
+      AO: {
+        include: {
+          Cabang: {
+            include: {
+              Area: true,
+            },
+          },
+        },
+      },
+      AOCabang: {
+        include: {
+          Cabang: {
+            include: {
+              Area: true,
+            },
+          },
+        },
+      },
+      AOArea: {
+        include: {
+          Cabang: {
+            include: {
+              Area: true,
+            },
+          },
+        },
+      },
+      Angsurans: true,
+      PayOffice: true,
+      PrevPayOffice: true,
+    },
   });
 
   if (!find)
