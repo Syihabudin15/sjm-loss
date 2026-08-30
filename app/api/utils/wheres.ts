@@ -1,5 +1,5 @@
-import { Cabang, Role, User } from "../../../generated/prisma";
-import { Prisma } from "../../../generated/prisma";
+import { Cabang, Role, User } from "../../../generated/prisma/client";
+import { Prisma } from "../../../generated/prisma/client";
 import prisma from "@/libs/Prisma";
 import {
   getCacheJSON,
