@@ -1,7 +1,7 @@
 import { useUser } from "@/components/UserContext";
 import { useCallback, useMemo } from "react";
 import { getAccessForPath } from "./AccessUtils";
-import { Role } from "@/generated/prisma";
+import { Role } from "../generated/prisma/client";
 
 export function getUserAccess(role: Role, path: string): string[] {
   try {
