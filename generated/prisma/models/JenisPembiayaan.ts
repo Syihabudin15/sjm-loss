@@ -253,6 +253,7 @@ export type JenisPembiayaanWhereInput = {
   created_at?: Prisma.DateTimeFilter<"JenisPembiayaan"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"JenisPembiayaan"> | Date | string
   Dapems?: Prisma.DapemListRelationFilter
+  dataSimulasis?: Prisma.DataSimulasiListRelationFilter
 }
 
 export type JenisPembiayaanOrderByWithRelationInput = {
@@ -266,6 +267,7 @@ export type JenisPembiayaanOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   Dapems?: Prisma.DapemOrderByRelationAggregateInput
+  dataSimulasis?: Prisma.DataSimulasiOrderByRelationAggregateInput
   _relevance?: Prisma.JenisPembiayaanOrderByRelevanceInput
 }
 
@@ -283,6 +285,7 @@ export type JenisPembiayaanWhereUniqueInput = Prisma.AtLeast<{
   created_at?: Prisma.DateTimeFilter<"JenisPembiayaan"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"JenisPembiayaan"> | Date | string
   Dapems?: Prisma.DapemListRelationFilter
+  dataSimulasis?: Prisma.DataSimulasiListRelationFilter
 }, "id">
 
 export type JenisPembiayaanOrderByWithAggregationInput = {
@@ -328,6 +331,7 @@ export type JenisPembiayaanCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   Dapems?: Prisma.DapemCreateNestedManyWithoutJenisPembiayaanInput
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutJenisPembiayaanInput
 }
 
 export type JenisPembiayaanUncheckedCreateInput = {
@@ -341,6 +345,7 @@ export type JenisPembiayaanUncheckedCreateInput = {
   created_at?: Date | string
   updated_at?: Date | string
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutJenisPembiayaanInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutJenisPembiayaanInput
 }
 
 export type JenisPembiayaanUpdateInput = {
@@ -354,6 +359,7 @@ export type JenisPembiayaanUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUpdateManyWithoutJenisPembiayaanNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutJenisPembiayaanNestedInput
 }
 
 export type JenisPembiayaanUncheckedUpdateInput = {
@@ -367,6 +373,7 @@ export type JenisPembiayaanUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutJenisPembiayaanNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutJenisPembiayaanNestedInput
 }
 
 export type JenisPembiayaanCreateManyInput = {
@@ -476,6 +483,20 @@ export type JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.JenisPembiayaanUpdateToOneWithWhereWithoutDapemsInput, Prisma.JenisPembiayaanUpdateWithoutDapemsInput>, Prisma.JenisPembiayaanUncheckedUpdateWithoutDapemsInput>
 }
 
+export type JenisPembiayaanCreateNestedOneWithoutDataSimulasisInput = {
+  create?: Prisma.XOR<Prisma.JenisPembiayaanCreateWithoutDataSimulasisInput, Prisma.JenisPembiayaanUncheckedCreateWithoutDataSimulasisInput>
+  connectOrCreate?: Prisma.JenisPembiayaanCreateOrConnectWithoutDataSimulasisInput
+  connect?: Prisma.JenisPembiayaanWhereUniqueInput
+}
+
+export type JenisPembiayaanUpdateOneRequiredWithoutDataSimulasisNestedInput = {
+  create?: Prisma.XOR<Prisma.JenisPembiayaanCreateWithoutDataSimulasisInput, Prisma.JenisPembiayaanUncheckedCreateWithoutDataSimulasisInput>
+  connectOrCreate?: Prisma.JenisPembiayaanCreateOrConnectWithoutDataSimulasisInput
+  upsert?: Prisma.JenisPembiayaanUpsertWithoutDataSimulasisInput
+  connect?: Prisma.JenisPembiayaanWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.JenisPembiayaanUpdateToOneWithWhereWithoutDataSimulasisInput, Prisma.JenisPembiayaanUpdateWithoutDataSimulasisInput>, Prisma.JenisPembiayaanUncheckedUpdateWithoutDataSimulasisInput>
+}
+
 export type JenisPembiayaanCreateWithoutDapemsInput = {
   id: string
   name: string
@@ -486,6 +507,7 @@ export type JenisPembiayaanCreateWithoutDapemsInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutJenisPembiayaanInput
 }
 
 export type JenisPembiayaanUncheckedCreateWithoutDapemsInput = {
@@ -498,6 +520,7 @@ export type JenisPembiayaanUncheckedCreateWithoutDapemsInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutJenisPembiayaanInput
 }
 
 export type JenisPembiayaanCreateOrConnectWithoutDapemsInput = {
@@ -526,6 +549,7 @@ export type JenisPembiayaanUpdateWithoutDapemsInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutJenisPembiayaanNestedInput
 }
 
 export type JenisPembiayaanUncheckedUpdateWithoutDapemsInput = {
@@ -538,6 +562,75 @@ export type JenisPembiayaanUncheckedUpdateWithoutDapemsInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutJenisPembiayaanNestedInput
+}
+
+export type JenisPembiayaanCreateWithoutDataSimulasisInput = {
+  id: string
+  name: string
+  c_blokir: number
+  c_mutasi?: number
+  status_takeover?: boolean
+  status_mutasi?: boolean
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Dapems?: Prisma.DapemCreateNestedManyWithoutJenisPembiayaanInput
+}
+
+export type JenisPembiayaanUncheckedCreateWithoutDataSimulasisInput = {
+  id: string
+  name: string
+  c_blokir: number
+  c_mutasi?: number
+  status_takeover?: boolean
+  status_mutasi?: boolean
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutJenisPembiayaanInput
+}
+
+export type JenisPembiayaanCreateOrConnectWithoutDataSimulasisInput = {
+  where: Prisma.JenisPembiayaanWhereUniqueInput
+  create: Prisma.XOR<Prisma.JenisPembiayaanCreateWithoutDataSimulasisInput, Prisma.JenisPembiayaanUncheckedCreateWithoutDataSimulasisInput>
+}
+
+export type JenisPembiayaanUpsertWithoutDataSimulasisInput = {
+  update: Prisma.XOR<Prisma.JenisPembiayaanUpdateWithoutDataSimulasisInput, Prisma.JenisPembiayaanUncheckedUpdateWithoutDataSimulasisInput>
+  create: Prisma.XOR<Prisma.JenisPembiayaanCreateWithoutDataSimulasisInput, Prisma.JenisPembiayaanUncheckedCreateWithoutDataSimulasisInput>
+  where?: Prisma.JenisPembiayaanWhereInput
+}
+
+export type JenisPembiayaanUpdateToOneWithWhereWithoutDataSimulasisInput = {
+  where?: Prisma.JenisPembiayaanWhereInput
+  data: Prisma.XOR<Prisma.JenisPembiayaanUpdateWithoutDataSimulasisInput, Prisma.JenisPembiayaanUncheckedUpdateWithoutDataSimulasisInput>
+}
+
+export type JenisPembiayaanUpdateWithoutDataSimulasisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
+  c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
+  status_takeover?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status_mutasi?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Dapems?: Prisma.DapemUpdateManyWithoutJenisPembiayaanNestedInput
+}
+
+export type JenisPembiayaanUncheckedUpdateWithoutDataSimulasisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
+  c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
+  status_takeover?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status_mutasi?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Dapems?: Prisma.DapemUncheckedUpdateManyWithoutJenisPembiayaanNestedInput
 }
 
 
@@ -547,10 +640,12 @@ export type JenisPembiayaanUncheckedUpdateWithoutDapemsInput = {
 
 export type JenisPembiayaanCountOutputType = {
   Dapems: number
+  dataSimulasis: number
 }
 
 export type JenisPembiayaanCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Dapems?: boolean | JenisPembiayaanCountOutputTypeCountDapemsArgs
+  dataSimulasis?: boolean | JenisPembiayaanCountOutputTypeCountDataSimulasisArgs
 }
 
 /**
@@ -570,6 +665,13 @@ export type JenisPembiayaanCountOutputTypeCountDapemsArgs<ExtArgs extends runtim
   where?: Prisma.DapemWhereInput
 }
 
+/**
+ * JenisPembiayaanCountOutputType without action
+ */
+export type JenisPembiayaanCountOutputTypeCountDataSimulasisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DataSimulasiWhereInput
+}
+
 
 export type JenisPembiayaanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -582,6 +684,7 @@ export type JenisPembiayaanSelect<ExtArgs extends runtime.Types.Extensions.Inter
   created_at?: boolean
   updated_at?: boolean
   Dapems?: boolean | Prisma.JenisPembiayaan$DapemsArgs<ExtArgs>
+  dataSimulasis?: boolean | Prisma.JenisPembiayaan$dataSimulasisArgs<ExtArgs>
   _count?: boolean | Prisma.JenisPembiayaanCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["jenisPembiayaan"]>
 
@@ -602,6 +705,7 @@ export type JenisPembiayaanSelectScalar = {
 export type JenisPembiayaanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "c_blokir" | "c_mutasi" | "status_takeover" | "status_mutasi" | "status" | "created_at" | "updated_at", ExtArgs["result"]["jenisPembiayaan"]>
 export type JenisPembiayaanInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Dapems?: boolean | Prisma.JenisPembiayaan$DapemsArgs<ExtArgs>
+  dataSimulasis?: boolean | Prisma.JenisPembiayaan$dataSimulasisArgs<ExtArgs>
   _count?: boolean | Prisma.JenisPembiayaanCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -609,6 +713,7 @@ export type $JenisPembiayaanPayload<ExtArgs extends runtime.Types.Extensions.Int
   name: "JenisPembiayaan"
   objects: {
     Dapems: Prisma.$DapemPayload<ExtArgs>[]
+    dataSimulasis: Prisma.$DataSimulasiPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -961,6 +1066,7 @@ readonly fields: JenisPembiayaanFieldRefs;
 export interface Prisma__JenisPembiayaanClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   Dapems<T extends Prisma.JenisPembiayaan$DapemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.JenisPembiayaan$DapemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DapemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  dataSimulasis<T extends Prisma.JenisPembiayaan$dataSimulasisArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.JenisPembiayaan$dataSimulasisArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DataSimulasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1368,6 +1474,30 @@ export type JenisPembiayaan$DapemsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.DapemScalarFieldEnum | Prisma.DapemScalarFieldEnum[]
+}
+
+/**
+ * JenisPembiayaan.dataSimulasis
+ */
+export type JenisPembiayaan$dataSimulasisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DataSimulasi
+   */
+  select?: Prisma.DataSimulasiSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DataSimulasi
+   */
+  omit?: Prisma.DataSimulasiOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DataSimulasiInclude<ExtArgs> | null
+  where?: Prisma.DataSimulasiWhereInput
+  orderBy?: Prisma.DataSimulasiOrderByWithRelationInput | Prisma.DataSimulasiOrderByWithRelationInput[]
+  cursor?: Prisma.DataSimulasiWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DataSimulasiScalarFieldEnum | Prisma.DataSimulasiScalarFieldEnum[]
 }
 
 /**

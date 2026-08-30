@@ -223,9 +223,7 @@ export default function Page() {
         const ao = record.AO || record.AOCabang || record.AOArea;
         return (
           <div>
-            <div>
-              {ao?.fullname} ({ao?.position})
-            </div>
+            <div>{ao?.fullname}</div>
             <div className="text-xs opacity-80">
               {ao?.Cabang.name} | {ao?.Cabang.Area.name}
             </div>
@@ -581,7 +579,7 @@ export default function Page() {
           setOpen={(val: boolean) =>
             setSelected({ ...selected, selected: undefined, upsert: val })
           }
-          data={selected.selected}
+          record={selected.selected}
           key={"detail" + selected.selected.id}
         />
       )}

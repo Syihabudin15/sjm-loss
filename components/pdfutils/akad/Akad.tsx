@@ -1,3 +1,5 @@
+"use client";
+
 import moment from "moment";
 import { AnalisaPerhitungan } from "./Analisa";
 import { IDapem } from "@/libs/IInterfaces";
@@ -9,10 +11,23 @@ import { Kesanggupan } from "./Kesanggupan";
 import { PenyerahanJaminan } from "./PenyerahanJaminan";
 import { FormCeklist1 } from "./FormCeklist1";
 import { FLagging } from "./Flagging";
+import { KuasaMutasi } from "../etc/forms/kuasaMutasi";
+import { FormMutasiTaspen } from "../etc/forms/formMutasiTaspen";
+import { FormKuasaDebet } from "../etc/formhm/formKuasaDebet";
+import { PKHM } from "../etc/formhm/PKHM";
 
 moment.locale("id");
 
 const generateContractHtml = (record: IDapem) => {
+  const handlePK = () => {
+    switch (record.ProdukPembiayaan.Sumdan.code) {
+      case "BPR HM":
+        return PKHM(record);
+      default:
+        return PerjanjianKredit(record);
+    }
+  };
+
   const html = `
   <!doctype html>
   <html>
@@ -72,16 +87,21 @@ const generateContractHtml = (record: IDapem) => {
       <div class="page" style="font-size: 12px;">
         ${AnalisaPerhitungan(record)}
       </div>
-
-      <div class="page" style="font-size: 11px;">
-        ${JadwalAngsuran(record, "DEBITUR")}
-      </div>
+      
       <div class="page" style="font-size: 11px;">
         ${JadwalAngsuran(record, record.ProdukPembiayaan.Sumdan.name)}
       </div>
       <div class="page text-justify" style="font-size: 12px;">
-        ${PerjanjianKredit(record)}
+        ${handlePK()}
       </div>
+      ${
+        record.ProdukPembiayaan.Sumdan.code === "BPR HM"
+          ? `
+      <div class="page text-justify" style="font-size: 12px;">
+        ${FormKuasaDebet(record)}
+      </div>`
+          : ""
+      }
       <div class="page pt-0 text-justify" style="font-size: 12px;">
         ${BuktiPencairan(record, "DEBITUR")}
       </div>
@@ -96,6 +116,12 @@ const generateContractHtml = (record: IDapem) => {
       </div>
       <div class="page text-justify" style="font-size: 11px;">
         ${PenyerahanJaminan(record)}
+      </div>
+      <div class="page text-justify" style="font-size: 11px;">
+        ${KuasaMutasi(record)}
+      </div>
+      <div class="page text-justify" style="font-size: 11px;">
+        ${FormMutasiTaspen(record)}
       </div>
       <div class="page text-justify" style="font-size: 11px;">
         ${FormCeklist1(record)}

@@ -135,7 +135,7 @@ export const PerjanjianKredit = (record: IDapem) => {
       <p class="flex-1">${(record.c_margin + record.c_margin_sumdan).toFixed(2)}% /tahun</p>
     </div>
     <div class="flex gap-2">
-      <p class="w-4">7.</p>
+      <p class="w-4">6.</p>
       <p class="w-44">Tujuan Penggunaan</p>
       <p class="w-4">:</p>
       <p class="flex-1">${record.used_for}</p>
@@ -346,7 +346,7 @@ export const PerjanjianKredit = (record: IDapem) => {
     </div>
     <div class="flex gap-2">
       <p class="w-4">3.</p>
-      <p class="flex-1">Setiap perubahan besarnya pembayaran bunga pinjaman selalu akan diberitahukan secara tertulis oleh BANK kepada DEBITUR. Dan surat pemberitahuan perubahan suku bunga tersebut, dan/atau jadwal angsuran pinjaman pokok dan bunga pinjaman, merupakan satu kesatuan dan tidak terpisahkan dari perjanjian ini, serta DEBITUR tidak akan menyangkal dalam bentuk apapun juga atas perubahan suku bunga tersebutnga, maka DEBITUR wajib menandatangani perpanjangan Perjanjian Kredit.</p>
+      <p class="flex-1">Setiap perubahan besarnya pembayaran bunga pinjaman selalu akan diberitahukan secara tertulis oleh BANK kepada DEBITUR. Dan surat pemberitahuan perubahan suku bunga tersebut, dan/atau jadwal angsuran pinjaman pokok dan bunga pinjaman, merupakan satu kesatuan dan tidak terpisahkan dari perjanjian ini, serta DEBITUR tidak akan menyangkal dalam bentuk apapun juga atas perubahan suku bunga tersebut.</p>
     </div>
     <div class="flex gap-2">
       <p class="w-4">4.</p>

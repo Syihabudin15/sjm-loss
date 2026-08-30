@@ -161,9 +161,8 @@ export default function Page() {
       render(value, record, index) {
         return (
           <div className="text-xs text-blue-400">
-            <p>Margin : {record.c_margin}%</p>
             <p>Admin : {record.c_adm_sumdan}%</p>
-            {/* <p>Provisi : {record.c_provisi_sumdan}%</p> */}
+            <p>Provisi : {record.c_provisi_sumdan}%</p>
             <p>Rekening : {IDRFormat(record.c_account_sumdan)}</p>
           </div>
         );
@@ -1019,7 +1018,8 @@ function TableProduk({
         return (
           <div className="text-xs text-blue-400">
             <div>
-              Margin : {record.c_margin}% ({record.c_margin + records.c_margin}
+              Margin : {record.c_margin}%+{record.c_margin_sumdan} (
+              {record.c_margin + record.c_margin_sumdan}
               %)
             </div>
             <div>Asuransi : {record.c_insurance}%</div>
@@ -1260,12 +1260,23 @@ function UpsertProduk({
         <div className="flex-1 flex flex-col gap-1">
           <FormInput
             data={{
+              label: "Margin Mitra",
+              mode: "horizontal",
+              type: "number",
+              required: true,
+              value: data.c_margin_sumdan,
+              onChange: (e: any) =>
+                setData({ ...data, c_margin_sumdan: parseFloat(e || "0") }),
+            }}
+          />
+          <FormInput
+            data={{
               label: "Margin",
               mode: "horizontal",
               type: "number",
               required: true,
               value: data.c_margin,
-              suffix: `${sumdan.c_margin + data.c_margin}%`,
+              suffix: `${data.c_margin_sumdan + data.c_margin}%`,
               onChange: (e: any) =>
                 setData({ ...data, c_margin: parseFloat(e || "0") }),
             }}
@@ -1384,6 +1395,7 @@ const defaultProduk: ProdukPembiayaan = {
   id: "",
   name: "",
   c_margin: 0,
+  c_margin_sumdan: 0,
   min_age: 0,
   max_age: 0,
   max_paid: 0,
@@ -1434,6 +1446,7 @@ const defaultSumdan: ISumdan = {
   sk_akad: "",
   limit: BigInt(0),
 
+  fronting: false,
   status: true,
   created_at: new Date(),
   updated_at: new Date(),

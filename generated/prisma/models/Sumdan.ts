@@ -100,6 +100,7 @@ export type SumdanMinAggregateOutputType = {
   pic: string | null
   file: string | null
   sk_akad: string | null
+  fronting: boolean | null
   status: boolean | null
   created_at: Date | null
   updated_at: Date | null
@@ -139,6 +140,7 @@ export type SumdanMaxAggregateOutputType = {
   pic: string | null
   file: string | null
   sk_akad: string | null
+  fronting: boolean | null
   status: boolean | null
   created_at: Date | null
   updated_at: Date | null
@@ -178,6 +180,7 @@ export type SumdanCountAggregateOutputType = {
   pic: number
   file: number
   sk_akad: number
+  fronting: number
   status: number
   created_at: number
   updated_at: number
@@ -259,6 +262,7 @@ export type SumdanMinAggregateInputType = {
   pic?: true
   file?: true
   sk_akad?: true
+  fronting?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -298,6 +302,7 @@ export type SumdanMaxAggregateInputType = {
   pic?: true
   file?: true
   sk_akad?: true
+  fronting?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -337,6 +342,7 @@ export type SumdanCountAggregateInputType = {
   pic?: true
   file?: true
   sk_akad?: true
+  fronting?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -463,6 +469,7 @@ export type SumdanGroupByOutputType = {
   pic: string | null
   file: string | null
   sk_akad: string | null
+  fronting: boolean
   status: boolean
   created_at: Date
   updated_at: Date
@@ -525,6 +532,7 @@ export type SumdanWhereInput = {
   pic?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   file?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   sk_akad?: Prisma.StringNullableFilter<"Sumdan"> | string | null
+  fronting?: Prisma.BoolFilter<"Sumdan"> | boolean
   status?: Prisma.BoolFilter<"Sumdan"> | boolean
   created_at?: Prisma.DateTimeFilter<"Sumdan"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Sumdan"> | Date | string
@@ -570,6 +578,7 @@ export type SumdanOrderByWithRelationInput = {
   pic?: Prisma.SortOrderInput | Prisma.SortOrder
   file?: Prisma.SortOrderInput | Prisma.SortOrder
   sk_akad?: Prisma.SortOrderInput | Prisma.SortOrder
+  fronting?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -619,6 +628,7 @@ export type SumdanWhereUniqueInput = Prisma.AtLeast<{
   pic?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   file?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   sk_akad?: Prisma.StringNullableFilter<"Sumdan"> | string | null
+  fronting?: Prisma.BoolFilter<"Sumdan"> | boolean
   status?: Prisma.BoolFilter<"Sumdan"> | boolean
   created_at?: Prisma.DateTimeFilter<"Sumdan"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Sumdan"> | Date | string
@@ -664,6 +674,7 @@ export type SumdanOrderByWithAggregationInput = {
   pic?: Prisma.SortOrderInput | Prisma.SortOrder
   file?: Prisma.SortOrderInput | Prisma.SortOrder
   sk_akad?: Prisma.SortOrderInput | Prisma.SortOrder
+  fronting?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -711,6 +722,7 @@ export type SumdanScalarWhereWithAggregatesInput = {
   pic?: Prisma.StringNullableWithAggregatesFilter<"Sumdan"> | string | null
   file?: Prisma.StringNullableWithAggregatesFilter<"Sumdan"> | string | null
   sk_akad?: Prisma.StringNullableWithAggregatesFilter<"Sumdan"> | string | null
+  fronting?: Prisma.BoolWithAggregatesFilter<"Sumdan"> | boolean
   status?: Prisma.BoolWithAggregatesFilter<"Sumdan"> | boolean
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Sumdan"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Sumdan"> | Date | string
@@ -750,6 +762,7 @@ export type SumdanCreateInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -795,6 +808,7 @@ export type SumdanUncheckedCreateInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -840,6 +854,7 @@ export type SumdanUpdateInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -885,6 +900,7 @@ export type SumdanUncheckedUpdateInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -930,6 +946,7 @@ export type SumdanCreateManyInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -969,6 +986,7 @@ export type SumdanUpdateManyMutationInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1008,6 +1026,7 @@ export type SumdanUncheckedUpdateManyInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1053,6 +1072,7 @@ export type SumdanCountOrderByAggregateInput = {
   pic?: Prisma.SortOrder
   file?: Prisma.SortOrder
   sk_akad?: Prisma.SortOrder
+  fronting?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -1112,6 +1132,7 @@ export type SumdanMaxOrderByAggregateInput = {
   pic?: Prisma.SortOrder
   file?: Prisma.SortOrder
   sk_akad?: Prisma.SortOrder
+  fronting?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -1151,6 +1172,7 @@ export type SumdanMinOrderByAggregateInput = {
   pic?: Prisma.SortOrder
   file?: Prisma.SortOrder
   sk_akad?: Prisma.SortOrder
+  fronting?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -1338,6 +1360,7 @@ export type SumdanCreateWithoutUsersInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1382,6 +1405,7 @@ export type SumdanUncheckedCreateWithoutUsersInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1442,6 +1466,7 @@ export type SumdanUpdateWithoutUsersInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1486,6 +1511,7 @@ export type SumdanUncheckedUpdateWithoutUsersInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1530,6 +1556,7 @@ export type SumdanCreateWithoutProdukPembiayaansInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1574,6 +1601,7 @@ export type SumdanUncheckedCreateWithoutProdukPembiayaansInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1634,6 +1662,7 @@ export type SumdanUpdateWithoutProdukPembiayaansInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1678,6 +1707,7 @@ export type SumdanUncheckedUpdateWithoutProdukPembiayaansInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1722,6 +1752,7 @@ export type SumdanCreateWithoutDroppingsInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1766,6 +1797,7 @@ export type SumdanUncheckedCreateWithoutDroppingsInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1826,6 +1858,7 @@ export type SumdanUpdateWithoutDroppingsInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1870,6 +1903,7 @@ export type SumdanUncheckedUpdateWithoutDroppingsInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1914,6 +1948,7 @@ export type SumdanCreateWithoutBerkassInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1958,6 +1993,7 @@ export type SumdanUncheckedCreateWithoutBerkassInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2018,6 +2054,7 @@ export type SumdanUpdateWithoutBerkassInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2062,6 +2099,7 @@ export type SumdanUncheckedUpdateWithoutBerkassInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2106,6 +2144,7 @@ export type SumdanCreateWithoutJaminansInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2150,6 +2189,7 @@ export type SumdanUncheckedCreateWithoutJaminansInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2210,6 +2250,7 @@ export type SumdanUpdateWithoutJaminansInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2254,6 +2295,7 @@ export type SumdanUncheckedUpdateWithoutJaminansInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2298,6 +2340,7 @@ export type SumdanCreateWithoutSumdanAgentFrontingsInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2342,6 +2385,7 @@ export type SumdanUncheckedCreateWithoutSumdanAgentFrontingsInput = {
   pic?: string | null
   file?: string | null
   sk_akad?: string | null
+  fronting?: boolean
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2402,6 +2446,7 @@ export type SumdanUpdateWithoutSumdanAgentFrontingsInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2446,6 +2491,7 @@ export type SumdanUncheckedUpdateWithoutSumdanAgentFrontingsInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2566,6 +2612,7 @@ export type SumdanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   pic?: boolean
   file?: boolean
   sk_akad?: boolean
+  fronting?: boolean
   status?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -2614,12 +2661,13 @@ export type SumdanSelectScalar = {
   pic?: boolean
   file?: boolean
   sk_akad?: boolean
+  fronting?: boolean
   status?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type SumdanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "description" | "logo" | "address" | "phone" | "email" | "tbo" | "limit" | "c_margin" | "c_adm_sumdan" | "c_account_sumdan" | "c_provisi_sumdan" | "c_adm" | "c_provisi" | "c_gov" | "c_stamps" | "c_flagging" | "c_information" | "c_ned" | "fee_banpot" | "max_bpp" | "rounded" | "dsr" | "contract_no" | "contract_no2" | "contract_date" | "sk_no" | "sk_date" | "pic" | "file" | "sk_akad" | "status" | "created_at" | "updated_at", ExtArgs["result"]["sumdan"]>
+export type SumdanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "description" | "logo" | "address" | "phone" | "email" | "tbo" | "limit" | "c_margin" | "c_adm_sumdan" | "c_account_sumdan" | "c_provisi_sumdan" | "c_adm" | "c_provisi" | "c_gov" | "c_stamps" | "c_flagging" | "c_information" | "c_ned" | "fee_banpot" | "max_bpp" | "rounded" | "dsr" | "contract_no" | "contract_no2" | "contract_date" | "sk_no" | "sk_date" | "pic" | "file" | "sk_akad" | "fronting" | "status" | "created_at" | "updated_at", ExtArgs["result"]["sumdan"]>
 export type SumdanInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Users?: boolean | Prisma.Sumdan$UsersArgs<ExtArgs>
   ProdukPembiayaans?: boolean | Prisma.Sumdan$ProdukPembiayaansArgs<ExtArgs>
@@ -2674,6 +2722,7 @@ export type $SumdanPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     pic: string | null
     file: string | null
     sk_akad: string | null
+    fronting: boolean
     status: boolean
     created_at: Date
     updated_at: Date
@@ -3085,6 +3134,7 @@ export interface SumdanFieldRefs {
   readonly pic: Prisma.FieldRef<"Sumdan", 'String'>
   readonly file: Prisma.FieldRef<"Sumdan", 'String'>
   readonly sk_akad: Prisma.FieldRef<"Sumdan", 'String'>
+  readonly fronting: Prisma.FieldRef<"Sumdan", 'Boolean'>
   readonly status: Prisma.FieldRef<"Sumdan", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"Sumdan", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Sumdan", 'DateTime'>

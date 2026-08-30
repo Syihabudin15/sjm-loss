@@ -72,7 +72,9 @@ export const ModelName = {
   JournalEntry: 'JournalEntry',
   JournalDetail: 'JournalDetail',
   AgentFronting: 'AgentFronting',
-  SumdanAgentFronting: 'SumdanAgentFronting'
+  SumdanAgentFronting: 'SumdanAgentFronting',
+  DataSimulasi: 'DataSimulasi',
+  DPKStatus: 'DPKStatus'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -138,6 +140,7 @@ export const SumdanScalarFieldEnum = {
   pic: 'pic',
   file: 'file',
   sk_akad: 'sk_akad',
+  fronting: 'fronting',
   status: 'status',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -201,6 +204,7 @@ export const ProdukPembiayaanScalarFieldEnum = {
   id: 'id',
   name: 'name',
   c_margin: 'c_margin',
+  c_margin_sumdan: 'c_margin_sumdan',
   c_insurance: 'c_insurance',
   max_tenor: 'max_tenor',
   max_plafond: 'max_plafond',
@@ -259,6 +263,8 @@ export const DebiturScalarFieldEnum = {
   group_skep: 'group_skep',
   soul_code: 'soul_code',
   job_year: 'job_year',
+  id_publisher: 'id_publisher',
+  id_end: 'id_end',
   mother_name: 'mother_name',
   account_name: 'account_name',
   account_number: 'account_number',
@@ -272,6 +278,7 @@ export const DapemScalarFieldEnum = {
   id: 'id',
   tenor: 'tenor',
   plafond: 'plafond',
+  salary: 'salary',
   c_margin_sumdan: 'c_margin_sumdan',
   c_account_sumdan: 'c_account_sumdan',
   c_adm_sumdan: 'c_adm_sumdan',
@@ -318,10 +325,24 @@ export const DapemScalarFieldEnum = {
   aw_address: 'aw_address',
   aw_relate: 'aw_relate',
   aw_phone: 'aw_phone',
+  aw_rt: 'aw_rt',
+  aw_rw: 'aw_rw',
+  aw_ward: 'aw_ward',
+  aw_district: 'aw_district',
+  aw_city: 'aw_city',
+  aw_province: 'aw_province',
+  aw_pos_code: 'aw_pos_code',
   f_name: 'f_name',
   f_relate: 'f_relate',
   f_phone: 'f_phone',
   f_address: 'f_address',
+  f_rt: 'f_rt',
+  f_rw: 'f_rw',
+  f_ward: 'f_ward',
+  f_district: 'f_district',
+  f_city: 'f_city',
+  f_province: 'f_province',
+  f_pos_code: 'f_pos_code',
   dropping_status: 'dropping_status',
   verif_status: 'verif_status',
   verif_desc: 'verif_desc',
@@ -346,6 +367,9 @@ export const DapemScalarFieldEnum = {
   guarantee_desc: 'guarantee_desc',
   ao_fee_status: 'ao_fee_status',
   ao_fee_desc: 'ao_fee_desc',
+  dev_status: 'dev_status',
+  deviasi_note: 'deviasi_note',
+  note: 'note',
   used_for: 'used_for',
   no_contract: 'no_contract',
   date_contract: 'date_contract',
@@ -378,7 +402,8 @@ export const DapemScalarFieldEnum = {
   agentFrontingId: 'agentFrontingId',
   payOfficeId: 'payOfficeId',
   insuranceId: 'insuranceId',
-  userId: 'userId'
+  userId: 'userId',
+  dPKStatusId: 'dPKStatusId'
 } as const
 
 export type DapemScalarFieldEnum = (typeof DapemScalarFieldEnum)[keyof typeof DapemScalarFieldEnum]
@@ -506,7 +531,8 @@ export const AngsuranScalarFieldEnum = {
   inst_sumdan: 'inst_sumdan',
   fee_banpot: 'fee_banpot',
   c_ned: 'c_ned',
-  dapemId: 'dapemId'
+  dapemId: 'dapemId',
+  note: 'note'
 } as const
 
 export type AngsuranScalarFieldEnum = (typeof AngsuranScalarFieldEnum)[keyof typeof AngsuranScalarFieldEnum]
@@ -555,6 +581,7 @@ export const AgentFrontingScalarFieldEnum = {
   pic: 'pic',
   target: 'target',
   c_fee: 'c_fee',
+  c_gov: 'c_gov',
   status: 'status',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -570,6 +597,57 @@ export const SumdanAgentFrontingScalarFieldEnum = {
 } as const
 
 export type SumdanAgentFrontingScalarFieldEnum = (typeof SumdanAgentFrontingScalarFieldEnum)[keyof typeof SumdanAgentFrontingScalarFieldEnum]
+
+
+export const DataSimulasiScalarFieldEnum = {
+  id: 'id',
+  nopen: 'nopen',
+  fullname: 'fullname',
+  birtdate: 'birtdate',
+  salary: 'salary',
+  tenor: 'tenor',
+  plafond: 'plafond',
+  c_margin_sumdan: 'c_margin_sumdan',
+  c_margin: 'c_margin',
+  c_adm_sumdan: 'c_adm_sumdan',
+  c_adm: 'c_adm',
+  c_account: 'c_account',
+  c_provisi: 'c_provisi',
+  c_provisi_sumdan: 'c_provisi_sumdan',
+  c_insurance: 'c_insurance',
+  c_flagging: 'c_flagging',
+  c_stamp: 'c_stamp',
+  c_gov: 'c_gov',
+  c_information: 'c_information',
+  c_mutasi: 'c_mutasi',
+  c_ned: 'c_ned',
+  c_fee_banpot: 'c_fee_banpot',
+  c_blokir: 'c_blokir',
+  c_takeover: 'c_takeover',
+  margin_type: 'margin_type',
+  note: 'note',
+  status: 'status',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId',
+  payOfficeId: 'payOfficeId',
+  userId: 'userId'
+} as const
+
+export type DataSimulasiScalarFieldEnum = (typeof DataSimulasiScalarFieldEnum)[keyof typeof DataSimulasiScalarFieldEnum]
+
+
+export const DPKStatusScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  status: 'status',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type DPKStatusScalarFieldEnum = (typeof DPKStatusScalarFieldEnum)[keyof typeof DPKStatusScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -694,6 +772,7 @@ export const DebiturOrderByRelevanceFieldEnum = {
   rank_skep: 'rank_skep',
   publisher_skep: 'publisher_skep',
   group_skep: 'group_skep',
+  id_publisher: 'id_publisher',
   mother_name: 'mother_name',
   account_name: 'account_name',
   account_number: 'account_number',
@@ -725,10 +804,24 @@ export const DapemOrderByRelevanceFieldEnum = {
   aw_address: 'aw_address',
   aw_relate: 'aw_relate',
   aw_phone: 'aw_phone',
+  aw_rt: 'aw_rt',
+  aw_rw: 'aw_rw',
+  aw_ward: 'aw_ward',
+  aw_district: 'aw_district',
+  aw_city: 'aw_city',
+  aw_province: 'aw_province',
+  aw_pos_code: 'aw_pos_code',
   f_name: 'f_name',
   f_relate: 'f_relate',
   f_phone: 'f_phone',
   f_address: 'f_address',
+  f_rt: 'f_rt',
+  f_rw: 'f_rw',
+  f_ward: 'f_ward',
+  f_district: 'f_district',
+  f_city: 'f_city',
+  f_province: 'f_province',
+  f_pos_code: 'f_pos_code',
   verif_desc: 'verif_desc',
   slik_desc: 'slik_desc',
   approv_desc: 'approv_desc',
@@ -739,6 +832,8 @@ export const DapemOrderByRelevanceFieldEnum = {
   document_desc: 'document_desc',
   guarantee_desc: 'guarantee_desc',
   ao_fee_desc: 'ao_fee_desc',
+  deviasi_note: 'deviasi_note',
+  note: 'note',
   used_for: 'used_for',
   no_contract: 'no_contract',
   file_slik: 'file_slik',
@@ -765,7 +860,8 @@ export const DapemOrderByRelevanceFieldEnum = {
   agentFrontingId: 'agentFrontingId',
   payOfficeId: 'payOfficeId',
   insuranceId: 'insuranceId',
-  userId: 'userId'
+  userId: 'userId',
+  dPKStatusId: 'dPKStatusId'
 } as const
 
 export type DapemOrderByRelevanceFieldEnum = (typeof DapemOrderByRelevanceFieldEnum)[keyof typeof DapemOrderByRelevanceFieldEnum]
@@ -856,7 +952,8 @@ export type PelunasanOrderByRelevanceFieldEnum = (typeof PelunasanOrderByRelevan
 
 export const AngsuranOrderByRelevanceFieldEnum = {
   id: 'id',
-  dapemId: 'dapemId'
+  dapemId: 'dapemId',
+  note: 'note'
 } as const
 
 export type AngsuranOrderByRelevanceFieldEnum = (typeof AngsuranOrderByRelevanceFieldEnum)[keyof typeof AngsuranOrderByRelevanceFieldEnum]
@@ -909,4 +1006,26 @@ export const SumdanAgentFrontingOrderByRelevanceFieldEnum = {
 } as const
 
 export type SumdanAgentFrontingOrderByRelevanceFieldEnum = (typeof SumdanAgentFrontingOrderByRelevanceFieldEnum)[keyof typeof SumdanAgentFrontingOrderByRelevanceFieldEnum]
+
+
+export const DataSimulasiOrderByRelevanceFieldEnum = {
+  nopen: 'nopen',
+  fullname: 'fullname',
+  note: 'note',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId',
+  payOfficeId: 'payOfficeId',
+  userId: 'userId'
+} as const
+
+export type DataSimulasiOrderByRelevanceFieldEnum = (typeof DataSimulasiOrderByRelevanceFieldEnum)[keyof typeof DataSimulasiOrderByRelevanceFieldEnum]
+
+
+export const DPKStatusOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description'
+} as const
+
+export type DPKStatusOrderByRelevanceFieldEnum = (typeof DPKStatusOrderByRelevanceFieldEnum)[keyof typeof DPKStatusOrderByRelevanceFieldEnum]
 

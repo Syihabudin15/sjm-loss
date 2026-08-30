@@ -68,6 +68,7 @@ export const POST = async (req: NextRequest) => {
       inst_sumdan: 0,
       c_ned: 0,
       fee_banpot: 0,
+      note: "",
     });
     return NextResponse.json(
       { msg: "Berhasil memperbarui data akad!", status: 200, data: result },
@@ -181,6 +182,7 @@ function GenerateAnuitas(dapem: Dapem): Angsuran[] {
       inst_sumdan: detail.detail.angsuran_sumdan,
       c_ned: dapem.c_ned,
       fee_banpot: detail.detail.fee_banpot,
+      note: "",
     });
   }
   return angsurans;
@@ -228,6 +230,7 @@ function GenerateFlat(dapem: Dapem): Angsuran[] {
       inst_sumdan: angsudan,
       c_ned: dapem.c_ned,
       fee_banpot: 0,
+      note: "",
     });
   }
   return angsurans;

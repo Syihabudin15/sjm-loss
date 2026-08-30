@@ -249,6 +249,7 @@ export type PayOfficeWhereInput = {
   Dapems?: Prisma.DapemListRelationFilter
   PrevPayOffices?: Prisma.DapemListRelationFilter
   Debiturs?: Prisma.DebiturListRelationFilter
+  dataSimulasis?: Prisma.DataSimulasiListRelationFilter
 }
 
 export type PayOfficeOrderByWithRelationInput = {
@@ -268,6 +269,7 @@ export type PayOfficeOrderByWithRelationInput = {
   Dapems?: Prisma.DapemOrderByRelationAggregateInput
   PrevPayOffices?: Prisma.DapemOrderByRelationAggregateInput
   Debiturs?: Prisma.DebiturOrderByRelationAggregateInput
+  dataSimulasis?: Prisma.DataSimulasiOrderByRelationAggregateInput
   _relevance?: Prisma.PayOfficeOrderByRelevanceInput
 }
 
@@ -291,6 +293,7 @@ export type PayOfficeWhereUniqueInput = Prisma.AtLeast<{
   Dapems?: Prisma.DapemListRelationFilter
   PrevPayOffices?: Prisma.DapemListRelationFilter
   Debiturs?: Prisma.DebiturListRelationFilter
+  dataSimulasis?: Prisma.DataSimulasiListRelationFilter
 }, "id">
 
 export type PayOfficeOrderByWithAggregationInput = {
@@ -348,6 +351,7 @@ export type PayOfficeCreateInput = {
   Dapems?: Prisma.DapemCreateNestedManyWithoutPayOfficeInput
   PrevPayOffices?: Prisma.DapemCreateNestedManyWithoutPrevPayOfficeInput
   Debiturs?: Prisma.DebiturCreateNestedManyWithoutPayOfficeInput
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutPayOfficeInput
 }
 
 export type PayOfficeUncheckedCreateInput = {
@@ -367,6 +371,7 @@ export type PayOfficeUncheckedCreateInput = {
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutPayOfficeInput
   PrevPayOffices?: Prisma.DapemUncheckedCreateNestedManyWithoutPrevPayOfficeInput
   Debiturs?: Prisma.DebiturUncheckedCreateNestedManyWithoutPayOfficeInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutPayOfficeInput
 }
 
 export type PayOfficeUpdateInput = {
@@ -386,6 +391,7 @@ export type PayOfficeUpdateInput = {
   Dapems?: Prisma.DapemUpdateManyWithoutPayOfficeNestedInput
   PrevPayOffices?: Prisma.DapemUpdateManyWithoutPrevPayOfficeNestedInput
   Debiturs?: Prisma.DebiturUpdateManyWithoutPayOfficeNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutPayOfficeNestedInput
 }
 
 export type PayOfficeUncheckedUpdateInput = {
@@ -405,6 +411,7 @@ export type PayOfficeUncheckedUpdateInput = {
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutPayOfficeNestedInput
   PrevPayOffices?: Prisma.DapemUncheckedUpdateManyWithoutPrevPayOfficeNestedInput
   Debiturs?: Prisma.DebiturUncheckedUpdateManyWithoutPayOfficeNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutPayOfficeNestedInput
 }
 
 export type PayOfficeCreateManyInput = {
@@ -562,6 +569,22 @@ export type PayOfficeUpdateOneWithoutDapemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PayOfficeUpdateToOneWithWhereWithoutDapemsInput, Prisma.PayOfficeUpdateWithoutDapemsInput>, Prisma.PayOfficeUncheckedUpdateWithoutDapemsInput>
 }
 
+export type PayOfficeCreateNestedOneWithoutDataSimulasisInput = {
+  create?: Prisma.XOR<Prisma.PayOfficeCreateWithoutDataSimulasisInput, Prisma.PayOfficeUncheckedCreateWithoutDataSimulasisInput>
+  connectOrCreate?: Prisma.PayOfficeCreateOrConnectWithoutDataSimulasisInput
+  connect?: Prisma.PayOfficeWhereUniqueInput
+}
+
+export type PayOfficeUpdateOneWithoutDataSimulasisNestedInput = {
+  create?: Prisma.XOR<Prisma.PayOfficeCreateWithoutDataSimulasisInput, Prisma.PayOfficeUncheckedCreateWithoutDataSimulasisInput>
+  connectOrCreate?: Prisma.PayOfficeCreateOrConnectWithoutDataSimulasisInput
+  upsert?: Prisma.PayOfficeUpsertWithoutDataSimulasisInput
+  disconnect?: Prisma.PayOfficeWhereInput | boolean
+  delete?: Prisma.PayOfficeWhereInput | boolean
+  connect?: Prisma.PayOfficeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PayOfficeUpdateToOneWithWhereWithoutDataSimulasisInput, Prisma.PayOfficeUpdateWithoutDataSimulasisInput>, Prisma.PayOfficeUncheckedUpdateWithoutDataSimulasisInput>
+}
+
 export type PayOfficeCreateWithoutDebitursInput = {
   id?: string
   name: string
@@ -578,6 +601,7 @@ export type PayOfficeCreateWithoutDebitursInput = {
   updated_at?: Date | string
   Dapems?: Prisma.DapemCreateNestedManyWithoutPayOfficeInput
   PrevPayOffices?: Prisma.DapemCreateNestedManyWithoutPrevPayOfficeInput
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutPayOfficeInput
 }
 
 export type PayOfficeUncheckedCreateWithoutDebitursInput = {
@@ -596,6 +620,7 @@ export type PayOfficeUncheckedCreateWithoutDebitursInput = {
   updated_at?: Date | string
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutPayOfficeInput
   PrevPayOffices?: Prisma.DapemUncheckedCreateNestedManyWithoutPrevPayOfficeInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutPayOfficeInput
 }
 
 export type PayOfficeCreateOrConnectWithoutDebitursInput = {
@@ -630,6 +655,7 @@ export type PayOfficeUpdateWithoutDebitursInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUpdateManyWithoutPayOfficeNestedInput
   PrevPayOffices?: Prisma.DapemUpdateManyWithoutPrevPayOfficeNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutPayOfficeNestedInput
 }
 
 export type PayOfficeUncheckedUpdateWithoutDebitursInput = {
@@ -648,6 +674,7 @@ export type PayOfficeUncheckedUpdateWithoutDebitursInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutPayOfficeNestedInput
   PrevPayOffices?: Prisma.DapemUncheckedUpdateManyWithoutPrevPayOfficeNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutPayOfficeNestedInput
 }
 
 export type PayOfficeCreateWithoutPrevPayOfficesInput = {
@@ -666,6 +693,7 @@ export type PayOfficeCreateWithoutPrevPayOfficesInput = {
   updated_at?: Date | string
   Dapems?: Prisma.DapemCreateNestedManyWithoutPayOfficeInput
   Debiturs?: Prisma.DebiturCreateNestedManyWithoutPayOfficeInput
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutPayOfficeInput
 }
 
 export type PayOfficeUncheckedCreateWithoutPrevPayOfficesInput = {
@@ -684,6 +712,7 @@ export type PayOfficeUncheckedCreateWithoutPrevPayOfficesInput = {
   updated_at?: Date | string
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutPayOfficeInput
   Debiturs?: Prisma.DebiturUncheckedCreateNestedManyWithoutPayOfficeInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutPayOfficeInput
 }
 
 export type PayOfficeCreateOrConnectWithoutPrevPayOfficesInput = {
@@ -707,6 +736,7 @@ export type PayOfficeCreateWithoutDapemsInput = {
   updated_at?: Date | string
   PrevPayOffices?: Prisma.DapemCreateNestedManyWithoutPrevPayOfficeInput
   Debiturs?: Prisma.DebiturCreateNestedManyWithoutPayOfficeInput
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutPayOfficeInput
 }
 
 export type PayOfficeUncheckedCreateWithoutDapemsInput = {
@@ -725,6 +755,7 @@ export type PayOfficeUncheckedCreateWithoutDapemsInput = {
   updated_at?: Date | string
   PrevPayOffices?: Prisma.DapemUncheckedCreateNestedManyWithoutPrevPayOfficeInput
   Debiturs?: Prisma.DebiturUncheckedCreateNestedManyWithoutPayOfficeInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutPayOfficeInput
 }
 
 export type PayOfficeCreateOrConnectWithoutDapemsInput = {
@@ -759,6 +790,7 @@ export type PayOfficeUpdateWithoutPrevPayOfficesInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUpdateManyWithoutPayOfficeNestedInput
   Debiturs?: Prisma.DebiturUpdateManyWithoutPayOfficeNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutPayOfficeNestedInput
 }
 
 export type PayOfficeUncheckedUpdateWithoutPrevPayOfficesInput = {
@@ -777,6 +809,7 @@ export type PayOfficeUncheckedUpdateWithoutPrevPayOfficesInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutPayOfficeNestedInput
   Debiturs?: Prisma.DebiturUncheckedUpdateManyWithoutPayOfficeNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutPayOfficeNestedInput
 }
 
 export type PayOfficeUpsertWithoutDapemsInput = {
@@ -806,6 +839,7 @@ export type PayOfficeUpdateWithoutDapemsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   PrevPayOffices?: Prisma.DapemUpdateManyWithoutPrevPayOfficeNestedInput
   Debiturs?: Prisma.DebiturUpdateManyWithoutPayOfficeNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutPayOfficeNestedInput
 }
 
 export type PayOfficeUncheckedUpdateWithoutDapemsInput = {
@@ -824,6 +858,99 @@ export type PayOfficeUncheckedUpdateWithoutDapemsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   PrevPayOffices?: Prisma.DapemUncheckedUpdateManyWithoutPrevPayOfficeNestedInput
   Debiturs?: Prisma.DebiturUncheckedUpdateManyWithoutPayOfficeNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutPayOfficeNestedInput
+}
+
+export type PayOfficeCreateWithoutDataSimulasisInput = {
+  id?: string
+  name: string
+  code?: string | null
+  description?: string | null
+  no_contract?: string | null
+  date_contract?: Date | string | null
+  file?: string | null
+  pic?: string | null
+  logo?: string | null
+  mitra?: boolean
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Dapems?: Prisma.DapemCreateNestedManyWithoutPayOfficeInput
+  PrevPayOffices?: Prisma.DapemCreateNestedManyWithoutPrevPayOfficeInput
+  Debiturs?: Prisma.DebiturCreateNestedManyWithoutPayOfficeInput
+}
+
+export type PayOfficeUncheckedCreateWithoutDataSimulasisInput = {
+  id?: string
+  name: string
+  code?: string | null
+  description?: string | null
+  no_contract?: string | null
+  date_contract?: Date | string | null
+  file?: string | null
+  pic?: string | null
+  logo?: string | null
+  mitra?: boolean
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutPayOfficeInput
+  PrevPayOffices?: Prisma.DapemUncheckedCreateNestedManyWithoutPrevPayOfficeInput
+  Debiturs?: Prisma.DebiturUncheckedCreateNestedManyWithoutPayOfficeInput
+}
+
+export type PayOfficeCreateOrConnectWithoutDataSimulasisInput = {
+  where: Prisma.PayOfficeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PayOfficeCreateWithoutDataSimulasisInput, Prisma.PayOfficeUncheckedCreateWithoutDataSimulasisInput>
+}
+
+export type PayOfficeUpsertWithoutDataSimulasisInput = {
+  update: Prisma.XOR<Prisma.PayOfficeUpdateWithoutDataSimulasisInput, Prisma.PayOfficeUncheckedUpdateWithoutDataSimulasisInput>
+  create: Prisma.XOR<Prisma.PayOfficeCreateWithoutDataSimulasisInput, Prisma.PayOfficeUncheckedCreateWithoutDataSimulasisInput>
+  where?: Prisma.PayOfficeWhereInput
+}
+
+export type PayOfficeUpdateToOneWithWhereWithoutDataSimulasisInput = {
+  where?: Prisma.PayOfficeWhereInput
+  data: Prisma.XOR<Prisma.PayOfficeUpdateWithoutDataSimulasisInput, Prisma.PayOfficeUncheckedUpdateWithoutDataSimulasisInput>
+}
+
+export type PayOfficeUpdateWithoutDataSimulasisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  no_contract?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Dapems?: Prisma.DapemUpdateManyWithoutPayOfficeNestedInput
+  PrevPayOffices?: Prisma.DapemUpdateManyWithoutPrevPayOfficeNestedInput
+  Debiturs?: Prisma.DebiturUpdateManyWithoutPayOfficeNestedInput
+}
+
+export type PayOfficeUncheckedUpdateWithoutDataSimulasisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  no_contract?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Dapems?: Prisma.DapemUncheckedUpdateManyWithoutPayOfficeNestedInput
+  PrevPayOffices?: Prisma.DapemUncheckedUpdateManyWithoutPrevPayOfficeNestedInput
+  Debiturs?: Prisma.DebiturUncheckedUpdateManyWithoutPayOfficeNestedInput
 }
 
 
@@ -835,12 +962,14 @@ export type PayOfficeCountOutputType = {
   Dapems: number
   PrevPayOffices: number
   Debiturs: number
+  dataSimulasis: number
 }
 
 export type PayOfficeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Dapems?: boolean | PayOfficeCountOutputTypeCountDapemsArgs
   PrevPayOffices?: boolean | PayOfficeCountOutputTypeCountPrevPayOfficesArgs
   Debiturs?: boolean | PayOfficeCountOutputTypeCountDebitursArgs
+  dataSimulasis?: boolean | PayOfficeCountOutputTypeCountDataSimulasisArgs
 }
 
 /**
@@ -874,6 +1003,13 @@ export type PayOfficeCountOutputTypeCountDebitursArgs<ExtArgs extends runtime.Ty
   where?: Prisma.DebiturWhereInput
 }
 
+/**
+ * PayOfficeCountOutputType without action
+ */
+export type PayOfficeCountOutputTypeCountDataSimulasisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DataSimulasiWhereInput
+}
+
 
 export type PayOfficeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -892,6 +1028,7 @@ export type PayOfficeSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   Dapems?: boolean | Prisma.PayOffice$DapemsArgs<ExtArgs>
   PrevPayOffices?: boolean | Prisma.PayOffice$PrevPayOfficesArgs<ExtArgs>
   Debiturs?: boolean | Prisma.PayOffice$DebitursArgs<ExtArgs>
+  dataSimulasis?: boolean | Prisma.PayOffice$dataSimulasisArgs<ExtArgs>
   _count?: boolean | Prisma.PayOfficeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["payOffice"]>
 
@@ -918,6 +1055,7 @@ export type PayOfficeInclude<ExtArgs extends runtime.Types.Extensions.InternalAr
   Dapems?: boolean | Prisma.PayOffice$DapemsArgs<ExtArgs>
   PrevPayOffices?: boolean | Prisma.PayOffice$PrevPayOfficesArgs<ExtArgs>
   Debiturs?: boolean | Prisma.PayOffice$DebitursArgs<ExtArgs>
+  dataSimulasis?: boolean | Prisma.PayOffice$dataSimulasisArgs<ExtArgs>
   _count?: boolean | Prisma.PayOfficeCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -927,6 +1065,7 @@ export type $PayOfficePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     Dapems: Prisma.$DapemPayload<ExtArgs>[]
     PrevPayOffices: Prisma.$DapemPayload<ExtArgs>[]
     Debiturs: Prisma.$DebiturPayload<ExtArgs>[]
+    dataSimulasis: Prisma.$DataSimulasiPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1285,6 +1424,7 @@ export interface Prisma__PayOfficeClient<T, Null = never, ExtArgs extends runtim
   Dapems<T extends Prisma.PayOffice$DapemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PayOffice$DapemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DapemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   PrevPayOffices<T extends Prisma.PayOffice$PrevPayOfficesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PayOffice$PrevPayOfficesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DapemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Debiturs<T extends Prisma.PayOffice$DebitursArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PayOffice$DebitursArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DebiturPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  dataSimulasis<T extends Prisma.PayOffice$dataSimulasisArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PayOffice$dataSimulasisArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DataSimulasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1744,6 +1884,30 @@ export type PayOffice$DebitursArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.DebiturScalarFieldEnum | Prisma.DebiturScalarFieldEnum[]
+}
+
+/**
+ * PayOffice.dataSimulasis
+ */
+export type PayOffice$dataSimulasisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DataSimulasi
+   */
+  select?: Prisma.DataSimulasiSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DataSimulasi
+   */
+  omit?: Prisma.DataSimulasiOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DataSimulasiInclude<ExtArgs> | null
+  where?: Prisma.DataSimulasiWhereInput
+  orderBy?: Prisma.DataSimulasiOrderByWithRelationInput | Prisma.DataSimulasiOrderByWithRelationInput[]
+  cursor?: Prisma.DataSimulasiWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DataSimulasiScalarFieldEnum | Prisma.DataSimulasiScalarFieldEnum[]
 }
 
 /**

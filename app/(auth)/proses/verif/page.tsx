@@ -218,6 +218,22 @@ export default function Page() {
       },
     },
     {
+      title: "AO & UP",
+      dataIndex: "aoup",
+      key: "aoup",
+      render(value, record, index) {
+        const ao = record.AO || record.AOCabang || record.AOArea;
+        return (
+          <div>
+            <div>{ao?.fullname}</div>
+            <div className="text-xs opacity-80">
+              {ao?.Cabang.name} | {ao?.Cabang.Area.name}
+            </div>
+          </div>
+        );
+      },
+    },
+    {
       title: "Status SLIK",
       dataIndex: "slik_status",
       key: "slik_status",
@@ -568,7 +584,7 @@ export default function Page() {
           setOpen={(val: boolean) =>
             setSelected({ ...selected, selected: undefined, upsert: val })
           }
-          data={selected.selected}
+          record={selected.selected}
           key={"detail" + selected.selected.id}
         />
       )}

@@ -58,6 +58,7 @@ export type AngsuranMinAggregateOutputType = {
   fee_banpot: number | null
   c_ned: number | null
   dapemId: string | null
+  note: string | null
 }
 
 export type AngsuranMaxAggregateOutputType = {
@@ -72,6 +73,7 @@ export type AngsuranMaxAggregateOutputType = {
   fee_banpot: number | null
   c_ned: number | null
   dapemId: string | null
+  note: string | null
 }
 
 export type AngsuranCountAggregateOutputType = {
@@ -86,6 +88,7 @@ export type AngsuranCountAggregateOutputType = {
   fee_banpot: number
   c_ned: number
   dapemId: number
+  note: number
   _all: number
 }
 
@@ -122,6 +125,7 @@ export type AngsuranMinAggregateInputType = {
   fee_banpot?: true
   c_ned?: true
   dapemId?: true
+  note?: true
 }
 
 export type AngsuranMaxAggregateInputType = {
@@ -136,6 +140,7 @@ export type AngsuranMaxAggregateInputType = {
   fee_banpot?: true
   c_ned?: true
   dapemId?: true
+  note?: true
 }
 
 export type AngsuranCountAggregateInputType = {
@@ -150,6 +155,7 @@ export type AngsuranCountAggregateInputType = {
   fee_banpot?: true
   c_ned?: true
   dapemId?: true
+  note?: true
   _all?: true
 }
 
@@ -251,6 +257,7 @@ export type AngsuranGroupByOutputType = {
   fee_banpot: number
   c_ned: number
   dapemId: string
+  note: string | null
   _count: AngsuranCountAggregateOutputType | null
   _avg: AngsuranAvgAggregateOutputType | null
   _sum: AngsuranSumAggregateOutputType | null
@@ -288,6 +295,7 @@ export type AngsuranWhereInput = {
   fee_banpot?: Prisma.IntFilter<"Angsuran"> | number
   c_ned?: Prisma.IntFilter<"Angsuran"> | number
   dapemId?: Prisma.StringFilter<"Angsuran"> | string
+  note?: Prisma.StringNullableFilter<"Angsuran"> | string | null
   Dapem?: Prisma.XOR<Prisma.DapemScalarRelationFilter, Prisma.DapemWhereInput>
 }
 
@@ -303,6 +311,7 @@ export type AngsuranOrderByWithRelationInput = {
   fee_banpot?: Prisma.SortOrder
   c_ned?: Prisma.SortOrder
   dapemId?: Prisma.SortOrder
+  note?: Prisma.SortOrderInput | Prisma.SortOrder
   Dapem?: Prisma.DapemOrderByWithRelationInput
   _relevance?: Prisma.AngsuranOrderByRelevanceInput
 }
@@ -322,6 +331,7 @@ export type AngsuranWhereUniqueInput = Prisma.AtLeast<{
   fee_banpot?: Prisma.IntFilter<"Angsuran"> | number
   c_ned?: Prisma.IntFilter<"Angsuran"> | number
   dapemId?: Prisma.StringFilter<"Angsuran"> | string
+  note?: Prisma.StringNullableFilter<"Angsuran"> | string | null
   Dapem?: Prisma.XOR<Prisma.DapemScalarRelationFilter, Prisma.DapemWhereInput>
 }, "id">
 
@@ -337,6 +347,7 @@ export type AngsuranOrderByWithAggregationInput = {
   fee_banpot?: Prisma.SortOrder
   c_ned?: Prisma.SortOrder
   dapemId?: Prisma.SortOrder
+  note?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.AngsuranCountOrderByAggregateInput
   _avg?: Prisma.AngsuranAvgOrderByAggregateInput
   _max?: Prisma.AngsuranMaxOrderByAggregateInput
@@ -359,6 +370,7 @@ export type AngsuranScalarWhereWithAggregatesInput = {
   fee_banpot?: Prisma.IntWithAggregatesFilter<"Angsuran"> | number
   c_ned?: Prisma.IntWithAggregatesFilter<"Angsuran"> | number
   dapemId?: Prisma.StringWithAggregatesFilter<"Angsuran"> | string
+  note?: Prisma.StringNullableWithAggregatesFilter<"Angsuran"> | string | null
 }
 
 export type AngsuranCreateInput = {
@@ -372,6 +384,7 @@ export type AngsuranCreateInput = {
   inst_sumdan?: number
   fee_banpot?: number
   c_ned?: number
+  note?: string | null
   Dapem: Prisma.DapemCreateNestedOneWithoutAngsuransInput
 }
 
@@ -387,6 +400,7 @@ export type AngsuranUncheckedCreateInput = {
   fee_banpot?: number
   c_ned?: number
   dapemId: string
+  note?: string | null
 }
 
 export type AngsuranUpdateInput = {
@@ -400,6 +414,7 @@ export type AngsuranUpdateInput = {
   inst_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Dapem?: Prisma.DapemUpdateOneRequiredWithoutAngsuransNestedInput
 }
 
@@ -415,6 +430,7 @@ export type AngsuranUncheckedUpdateInput = {
   fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
   dapemId?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AngsuranCreateManyInput = {
@@ -429,6 +445,7 @@ export type AngsuranCreateManyInput = {
   fee_banpot?: number
   c_ned?: number
   dapemId: string
+  note?: string | null
 }
 
 export type AngsuranUpdateManyMutationInput = {
@@ -442,6 +459,7 @@ export type AngsuranUpdateManyMutationInput = {
   inst_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AngsuranUncheckedUpdateManyInput = {
@@ -456,6 +474,7 @@ export type AngsuranUncheckedUpdateManyInput = {
   fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
   dapemId?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AngsuranListRelationFilter = {
@@ -486,6 +505,7 @@ export type AngsuranCountOrderByAggregateInput = {
   fee_banpot?: Prisma.SortOrder
   c_ned?: Prisma.SortOrder
   dapemId?: Prisma.SortOrder
+  note?: Prisma.SortOrder
 }
 
 export type AngsuranAvgOrderByAggregateInput = {
@@ -510,6 +530,7 @@ export type AngsuranMaxOrderByAggregateInput = {
   fee_banpot?: Prisma.SortOrder
   c_ned?: Prisma.SortOrder
   dapemId?: Prisma.SortOrder
+  note?: Prisma.SortOrder
 }
 
 export type AngsuranMinOrderByAggregateInput = {
@@ -524,6 +545,7 @@ export type AngsuranMinOrderByAggregateInput = {
   fee_banpot?: Prisma.SortOrder
   c_ned?: Prisma.SortOrder
   dapemId?: Prisma.SortOrder
+  note?: Prisma.SortOrder
 }
 
 export type AngsuranSumOrderByAggregateInput = {
@@ -589,6 +611,7 @@ export type AngsuranCreateWithoutDapemInput = {
   inst_sumdan?: number
   fee_banpot?: number
   c_ned?: number
+  note?: string | null
 }
 
 export type AngsuranUncheckedCreateWithoutDapemInput = {
@@ -602,6 +625,7 @@ export type AngsuranUncheckedCreateWithoutDapemInput = {
   inst_sumdan?: number
   fee_banpot?: number
   c_ned?: number
+  note?: string | null
 }
 
 export type AngsuranCreateOrConnectWithoutDapemInput = {
@@ -645,6 +669,7 @@ export type AngsuranScalarWhereInput = {
   fee_banpot?: Prisma.IntFilter<"Angsuran"> | number
   c_ned?: Prisma.IntFilter<"Angsuran"> | number
   dapemId?: Prisma.StringFilter<"Angsuran"> | string
+  note?: Prisma.StringNullableFilter<"Angsuran"> | string | null
 }
 
 export type AngsuranCreateManyDapemInput = {
@@ -658,6 +683,7 @@ export type AngsuranCreateManyDapemInput = {
   inst_sumdan?: number
   fee_banpot?: number
   c_ned?: number
+  note?: string | null
 }
 
 export type AngsuranUpdateWithoutDapemInput = {
@@ -671,6 +697,7 @@ export type AngsuranUpdateWithoutDapemInput = {
   inst_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AngsuranUncheckedUpdateWithoutDapemInput = {
@@ -684,6 +711,7 @@ export type AngsuranUncheckedUpdateWithoutDapemInput = {
   inst_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AngsuranUncheckedUpdateManyWithoutDapemInput = {
@@ -697,6 +725,7 @@ export type AngsuranUncheckedUpdateManyWithoutDapemInput = {
   inst_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -713,6 +742,7 @@ export type AngsuranSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   fee_banpot?: boolean
   c_ned?: boolean
   dapemId?: boolean
+  note?: boolean
   Dapem?: boolean | Prisma.DapemDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["angsuran"]>
 
@@ -730,9 +760,10 @@ export type AngsuranSelectScalar = {
   fee_banpot?: boolean
   c_ned?: boolean
   dapemId?: boolean
+  note?: boolean
 }
 
-export type AngsuranOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "counter" | "principal" | "margin" | "date_pay" | "date_paid" | "remaining" | "inst_sumdan" | "fee_banpot" | "c_ned" | "dapemId", ExtArgs["result"]["angsuran"]>
+export type AngsuranOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "counter" | "principal" | "margin" | "date_pay" | "date_paid" | "remaining" | "inst_sumdan" | "fee_banpot" | "c_ned" | "dapemId" | "note", ExtArgs["result"]["angsuran"]>
 export type AngsuranInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Dapem?: boolean | Prisma.DapemDefaultArgs<ExtArgs>
 }
@@ -754,6 +785,7 @@ export type $AngsuranPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     fee_banpot: number
     c_ned: number
     dapemId: string
+    note: string | null
   }, ExtArgs["result"]["angsuran"]>
   composites: {}
 }
@@ -1135,6 +1167,7 @@ export interface AngsuranFieldRefs {
   readonly fee_banpot: Prisma.FieldRef<"Angsuran", 'Int'>
   readonly c_ned: Prisma.FieldRef<"Angsuran", 'Int'>
   readonly dapemId: Prisma.FieldRef<"Angsuran", 'String'>
+  readonly note: Prisma.FieldRef<"Angsuran", 'String'>
 }
     
 

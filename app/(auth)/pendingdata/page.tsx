@@ -771,7 +771,7 @@ export default function Page() {
           setOpen={(val: boolean) =>
             setSelected({ ...selected, selected: undefined, upsert: val })
           }
-          data={selected.selected}
+          record={selected.selected}
           key={"detail" + selected.selected.id}
           allowprogres
         />

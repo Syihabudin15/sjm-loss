@@ -41,7 +41,7 @@ export const PersetujuanAW = (record?: IDapem) => {
           },
           {
             key: "Alamat",
-            value: record?.aw_address || "",
+            value: `${record?.aw_address}, KELURAHAN ${record?.aw_ward}, KECAMATAN ${record?.aw_district}, ${record?.aw_city}, ${record?.aw_province} ${record?.aw_pos_code}`,
             ...(!record && {
               valuStyle: "border-b border-dashed border-gray-600",
             }),

@@ -2,21 +2,14 @@ import { cookies } from "next/headers";
 import { jwtVerify, SignJWT } from "jose";
 import { NextRequest, NextResponse } from "next/server";
 import { JwtPayload } from "jsonwebtoken";
-// import { hasAccess } from "./Permission";
 import { IUser } from "./IInterfaces";
-// import { listMenuServer } from "@/components/IMenu";
 import prisma from "./Prisma";
-import { Role } from "../generated/prisma/client";
 import { getAccessForPath } from "./AccessUtils";
+import { Role } from "@/generated/prisma";
+import { clearCacheHash, getCacheJSON, setCacheJSON } from "./redisservice";
 
 const secretKey = new TextEncoder().encode(process.env.APP_KEY || "secretcode");
-const globalForCache = globalThis as unknown as {
-  roleCache: Map<string, { permission: any; createdAt: number }>;
-};
-
-const roleCache = globalForCache.roleCache || new Map();
-if (process.env.NODE_ENV !== "production") globalForCache.roleCache = roleCache;
-const CACHE_TTL = 5 * 60 * 60 * 1000;
+const CACHE_TTL = 5 * 60 * 60; // 5 jam dalam detik untuk Redis
 
 export async function encrypt(payload: JwtPayload) {
   return new SignJWT(payload)
@@ -98,37 +91,37 @@ export async function refreshToken(request: NextRequest) {
 
   return NextResponse.next();
 }
-async function getRoleWithCache(roleId: string) {
-  const now = Date.now();
-  const cached = roleCache.get(roleId);
 
-  // Jika data ada di cache dan belum kedaluwarsa, ambil dari cache (Secepat Redis!)
-  if (cached && now - cached.createdAt < CACHE_TTL) {
+async function getRoleWithCache(roleId: string) {
+  // Cek Redis cache terlebih dahulu
+  const cached = await getCacheJSON<{ permission: string }>(`role:${roleId}`);
+
+  if (cached) {
     return cached.permission;
   }
 
-  // Jika tidak ada di cache / sudah kedaluwarsa, ambil dari Database
+  // Jika tidak ada di cache, ambil dari Database
   const role = await prisma.role.findUnique({
     where: { id: roleId },
     select: { permission: true },
   });
 
   if (role) {
-    // Simpan ke cache untuk request berikutnya
-    roleCache.set(roleId, {
-      permission: role.permission,
-      createdAt: now,
-    });
+    // Simpan ke Redis cache untuk request berikutnya
+    await setCacheJSON(`role:${roleId}`, role, CACHE_TTL);
     return role.permission;
   }
 
   return null;
 }
-export function clearRoleCache(roleId?: string) {
+
+export async function clearRoleCache(roleId?: string) {
   if (roleId) {
-    roleCache.delete(roleId);
+    await clearCacheHash(`role:${roleId}`, "");
   } else {
-    roleCache.clear();
+    // Untuk menghapus semua role cache, gunakan clearCachePrefix
+    const { clearCachePrefix } = await import("./redisservice");
+    await clearCachePrefix("role:");
   }
 }
 

@@ -29,11 +29,13 @@ export type AggregateAgentFronting = {
 export type AgentFrontingAvgAggregateOutputType = {
   target: number | null
   c_fee: number | null
+  c_gov: number | null
 }
 
 export type AgentFrontingSumAggregateOutputType = {
   target: number | null
   c_fee: number | null
+  c_gov: number | null
 }
 
 export type AgentFrontingMinAggregateOutputType = {
@@ -47,6 +49,7 @@ export type AgentFrontingMinAggregateOutputType = {
   pic: string | null
   target: number | null
   c_fee: number | null
+  c_gov: number | null
   status: boolean | null
   created_at: Date | null
   updated_at: Date | null
@@ -63,6 +66,7 @@ export type AgentFrontingMaxAggregateOutputType = {
   pic: string | null
   target: number | null
   c_fee: number | null
+  c_gov: number | null
   status: boolean | null
   created_at: Date | null
   updated_at: Date | null
@@ -79,6 +83,7 @@ export type AgentFrontingCountAggregateOutputType = {
   pic: number
   target: number
   c_fee: number
+  c_gov: number
   status: number
   created_at: number
   updated_at: number
@@ -89,11 +94,13 @@ export type AgentFrontingCountAggregateOutputType = {
 export type AgentFrontingAvgAggregateInputType = {
   target?: true
   c_fee?: true
+  c_gov?: true
 }
 
 export type AgentFrontingSumAggregateInputType = {
   target?: true
   c_fee?: true
+  c_gov?: true
 }
 
 export type AgentFrontingMinAggregateInputType = {
@@ -107,6 +114,7 @@ export type AgentFrontingMinAggregateInputType = {
   pic?: true
   target?: true
   c_fee?: true
+  c_gov?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -123,6 +131,7 @@ export type AgentFrontingMaxAggregateInputType = {
   pic?: true
   target?: true
   c_fee?: true
+  c_gov?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -139,6 +148,7 @@ export type AgentFrontingCountAggregateInputType = {
   pic?: true
   target?: true
   c_fee?: true
+  c_gov?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -242,6 +252,7 @@ export type AgentFrontingGroupByOutputType = {
   pic: string | null
   target: number
   c_fee: number
+  c_gov: number
   status: boolean
   created_at: Date
   updated_at: Date
@@ -281,6 +292,7 @@ export type AgentFrontingWhereInput = {
   pic?: Prisma.StringNullableFilter<"AgentFronting"> | string | null
   target?: Prisma.IntFilter<"AgentFronting"> | number
   c_fee?: Prisma.FloatFilter<"AgentFronting"> | number
+  c_gov?: Prisma.FloatFilter<"AgentFronting"> | number
   status?: Prisma.BoolFilter<"AgentFronting"> | boolean
   created_at?: Prisma.DateTimeFilter<"AgentFronting"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"AgentFronting"> | Date | string
@@ -300,6 +312,7 @@ export type AgentFrontingOrderByWithRelationInput = {
   pic?: Prisma.SortOrderInput | Prisma.SortOrder
   target?: Prisma.SortOrder
   c_fee?: Prisma.SortOrder
+  c_gov?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -323,6 +336,7 @@ export type AgentFrontingWhereUniqueInput = Prisma.AtLeast<{
   pic?: Prisma.StringNullableFilter<"AgentFronting"> | string | null
   target?: Prisma.IntFilter<"AgentFronting"> | number
   c_fee?: Prisma.FloatFilter<"AgentFronting"> | number
+  c_gov?: Prisma.FloatFilter<"AgentFronting"> | number
   status?: Prisma.BoolFilter<"AgentFronting"> | boolean
   created_at?: Prisma.DateTimeFilter<"AgentFronting"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"AgentFronting"> | Date | string
@@ -342,6 +356,7 @@ export type AgentFrontingOrderByWithAggregationInput = {
   pic?: Prisma.SortOrderInput | Prisma.SortOrder
   target?: Prisma.SortOrder
   c_fee?: Prisma.SortOrder
+  c_gov?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -366,6 +381,7 @@ export type AgentFrontingScalarWhereWithAggregatesInput = {
   pic?: Prisma.StringNullableWithAggregatesFilter<"AgentFronting"> | string | null
   target?: Prisma.IntWithAggregatesFilter<"AgentFronting"> | number
   c_fee?: Prisma.FloatWithAggregatesFilter<"AgentFronting"> | number
+  c_gov?: Prisma.FloatWithAggregatesFilter<"AgentFronting"> | number
   status?: Prisma.BoolWithAggregatesFilter<"AgentFronting"> | boolean
   created_at?: Prisma.DateTimeWithAggregatesFilter<"AgentFronting"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"AgentFronting"> | Date | string
@@ -382,6 +398,7 @@ export type AgentFrontingCreateInput = {
   pic?: string | null
   target?: number
   c_fee?: number
+  c_gov?: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -401,6 +418,7 @@ export type AgentFrontingUncheckedCreateInput = {
   pic?: string | null
   target?: number
   c_fee?: number
+  c_gov?: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -420,6 +438,7 @@ export type AgentFrontingUpdateInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -439,6 +458,7 @@ export type AgentFrontingUncheckedUpdateInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -458,6 +478,7 @@ export type AgentFrontingCreateManyInput = {
   pic?: string | null
   target?: number
   c_fee?: number
+  c_gov?: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -474,6 +495,7 @@ export type AgentFrontingUpdateManyMutationInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -490,6 +512,7 @@ export type AgentFrontingUncheckedUpdateManyInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -517,6 +540,7 @@ export type AgentFrontingCountOrderByAggregateInput = {
   pic?: Prisma.SortOrder
   target?: Prisma.SortOrder
   c_fee?: Prisma.SortOrder
+  c_gov?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -525,6 +549,7 @@ export type AgentFrontingCountOrderByAggregateInput = {
 export type AgentFrontingAvgOrderByAggregateInput = {
   target?: Prisma.SortOrder
   c_fee?: Prisma.SortOrder
+  c_gov?: Prisma.SortOrder
 }
 
 export type AgentFrontingMaxOrderByAggregateInput = {
@@ -538,6 +563,7 @@ export type AgentFrontingMaxOrderByAggregateInput = {
   pic?: Prisma.SortOrder
   target?: Prisma.SortOrder
   c_fee?: Prisma.SortOrder
+  c_gov?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -554,6 +580,7 @@ export type AgentFrontingMinOrderByAggregateInput = {
   pic?: Prisma.SortOrder
   target?: Prisma.SortOrder
   c_fee?: Prisma.SortOrder
+  c_gov?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -562,6 +589,7 @@ export type AgentFrontingMinOrderByAggregateInput = {
 export type AgentFrontingSumOrderByAggregateInput = {
   target?: Prisma.SortOrder
   c_fee?: Prisma.SortOrder
+  c_gov?: Prisma.SortOrder
 }
 
 export type AgentFrontingScalarRelationFilter = {
@@ -626,6 +654,7 @@ export type AgentFrontingCreateWithoutUsersInput = {
   pic?: string | null
   target?: number
   c_fee?: number
+  c_gov?: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -644,6 +673,7 @@ export type AgentFrontingUncheckedCreateWithoutUsersInput = {
   pic?: string | null
   target?: number
   c_fee?: number
+  c_gov?: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -678,6 +708,7 @@ export type AgentFrontingUpdateWithoutUsersInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -696,6 +727,7 @@ export type AgentFrontingUncheckedUpdateWithoutUsersInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -714,6 +746,7 @@ export type AgentFrontingCreateWithoutDapemsInput = {
   pic?: string | null
   target?: number
   c_fee?: number
+  c_gov?: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -732,6 +765,7 @@ export type AgentFrontingUncheckedCreateWithoutDapemsInput = {
   pic?: string | null
   target?: number
   c_fee?: number
+  c_gov?: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -766,6 +800,7 @@ export type AgentFrontingUpdateWithoutDapemsInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -784,6 +819,7 @@ export type AgentFrontingUncheckedUpdateWithoutDapemsInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -802,6 +838,7 @@ export type AgentFrontingCreateWithoutSumdanAgentFrontingsInput = {
   pic?: string | null
   target?: number
   c_fee?: number
+  c_gov?: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -820,6 +857,7 @@ export type AgentFrontingUncheckedCreateWithoutSumdanAgentFrontingsInput = {
   pic?: string | null
   target?: number
   c_fee?: number
+  c_gov?: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -854,6 +892,7 @@ export type AgentFrontingUpdateWithoutSumdanAgentFrontingsInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -872,6 +911,7 @@ export type AgentFrontingUncheckedUpdateWithoutSumdanAgentFrontingsInput = {
   pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   target?: Prisma.IntFieldUpdateOperationsInput | number
   c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -939,6 +979,7 @@ export type AgentFrontingSelect<ExtArgs extends runtime.Types.Extensions.Interna
   pic?: boolean
   target?: boolean
   c_fee?: boolean
+  c_gov?: boolean
   status?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -961,12 +1002,13 @@ export type AgentFrontingSelectScalar = {
   pic?: boolean
   target?: boolean
   c_fee?: boolean
+  c_gov?: boolean
   status?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type AgentFrontingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "description" | "file" | "contract_no" | "contract_date" | "pic" | "target" | "c_fee" | "status" | "created_at" | "updated_at", ExtArgs["result"]["agentFronting"]>
+export type AgentFrontingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "description" | "file" | "contract_no" | "contract_date" | "pic" | "target" | "c_fee" | "c_gov" | "status" | "created_at" | "updated_at", ExtArgs["result"]["agentFronting"]>
 export type AgentFrontingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   SumdanAgentFrontings?: boolean | Prisma.AgentFronting$SumdanAgentFrontingsArgs<ExtArgs>
   Users?: boolean | Prisma.AgentFronting$UsersArgs<ExtArgs>
@@ -992,6 +1034,7 @@ export type $AgentFrontingPayload<ExtArgs extends runtime.Types.Extensions.Inter
     pic: string | null
     target: number
     c_fee: number
+    c_gov: number
     status: boolean
     created_at: Date
     updated_at: Date
@@ -1377,6 +1420,7 @@ export interface AgentFrontingFieldRefs {
   readonly pic: Prisma.FieldRef<"AgentFronting", 'String'>
   readonly target: Prisma.FieldRef<"AgentFronting", 'Int'>
   readonly c_fee: Prisma.FieldRef<"AgentFronting", 'Float'>
+  readonly c_gov: Prisma.FieldRef<"AgentFronting", 'Float'>
   readonly status: Prisma.FieldRef<"AgentFronting", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"AgentFronting", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"AgentFronting", 'DateTime'>

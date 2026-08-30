@@ -1119,7 +1119,7 @@ export default function Page() {
               upsert: val,
             }))
           }
-          data={selected.selected}
+          record={selected.selected}
           key={`detail${selected.selected.id}`}
           allowprogres
         />

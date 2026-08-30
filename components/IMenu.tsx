@@ -28,6 +28,7 @@ import {
   TeamOutlined,
   TransactionOutlined,
 } from "@ant-design/icons";
+import { Banknote } from "lucide-react";
 
 export interface IMenu {
   label: string | React.ReactNode;
@@ -68,6 +69,13 @@ export const listMenuUI: IMenuType[] = [
     icon: <CalculatorOutlined />,
     needaccess: true,
     availableAccess: ["read", "update", "showpercent", "update_bop", "deviasi"],
+  },
+  {
+    label: "Data Simulasi",
+    key: "/data_simulasi",
+    icon: <CalculatorOutlined />,
+    needaccess: true,
+    availableAccess: ["read", "update", "delete"],
   },
   {
     label: "Monitoring Pembiayaan",
@@ -326,6 +334,13 @@ export const listMenuUI: IMenuType[] = [
         availableAccess: ["read", "write", "update", "delete"],
       },
       {
+        label: "Produk Agent",
+        key: "/master/mitra_front",
+        icon: <Banknote />,
+        needaccess: true,
+        availableAccess: ["read", "write", "update", "delete"],
+      },
+      {
         label: "Kantor Bayar",
         key: "/master/payoffice",
         icon: <TagOutlined />,
@@ -362,6 +377,10 @@ export const listMenuServer: { key: string; needaccess: boolean }[] = [
   },
   {
     key: "/simulasi",
+    needaccess: true,
+  },
+  {
+    key: "/data_simulasi",
     needaccess: true,
   },
   {
@@ -482,6 +501,10 @@ export const listMenuServer: { key: string; needaccess: boolean }[] = [
   },
   {
     key: "/master/agent",
+    needaccess: true,
+  },
+  {
+    key: "/master/mitra_front",
     needaccess: true,
   },
   {

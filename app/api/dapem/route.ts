@@ -10,12 +10,7 @@ import {
 } from "../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
-import {
-  AOInclude,
-  GetUserSession,
-  ORDapem,
-  WheresDapem,
-} from "../utils/wheres";
+import { GetUserSession, ORDapem, WheresDapem } from "../utils/wheres";
 
 export const GET = async (request: NextRequest) => {
   const params = Object.fromEntries(request.nextUrl.searchParams);
@@ -125,6 +120,58 @@ export const GET = async (request: NextRequest) => {
   };
 
   const [data, total] = await Promise.all([
+    // prisma.dapem.findMany({
+    //   where,
+    //   skip: skip,
+    //   take: parseInt(limit),
+    //   orderBy: {
+    //     created_at: "desc",
+    //   },
+    //   include: {
+    //     // ...(includes && {
+    //     Debitur: true,
+    //     ProdukPembiayaan: {
+    //       include: {
+    //         Sumdan: {
+    //           select: {
+    //             name: true,
+    //             code: true,
+    //             dsr: true,
+    //             logo: true,
+    //             sk_date: true,
+    //             sk_no: true,
+    //             contract_date: true,
+    //             contract_no: true,
+    //             contract_no2: true,
+    //             address: true,
+    //             pic: true,
+    //             phone: true,
+    //             email: true,
+    //           },
+    //         },
+    //       },
+    //     },
+    //     PayOffice: { select: { name: true, code: true, logo: true } },
+    //     PrevPayOffice: { select: { name: true, code: true, logo: true } },
+    //     JenisPembiayaan: {
+    //       select: { name: true, status_mutasi: true, status_takeover: true },
+    //     },
+    //     // Angsurans: true,
+    //     ...(includes && {
+    //       Angsurans: {
+    //         select: { id: true },
+    //         where: { date_paid: { not: null } },
+    //       },
+    //     }),
+    //     User: AOInclude(),
+    //     AO: AOInclude(),
+    //     AOCabang: AOInclude(),
+    //     AOArea: AOInclude(),
+    //     Dropping: true,
+    //     // }),
+    //     AgentFronting: { select: { code: true, name: true, pic: true } },
+    //   },
+    // }),
     prisma.dapem.findMany({
       where,
       skip: skip,
@@ -132,48 +179,99 @@ export const GET = async (request: NextRequest) => {
       orderBy: {
         created_at: "desc",
       },
-      include: {
-        // ...(includes && {
-        Debitur: true,
-        ProdukPembiayaan: {
-          include: {
-            Sumdan: {
-              select: {
-                name: true,
-                code: true,
-                dsr: true,
-                logo: true,
-                sk_date: true,
-                sk_no: true,
-                contract_date: true,
-                contract_no: true,
-                contract_no2: true,
-                address: true,
-                pic: true,
-                email: true,
+      select: {
+        id: true,
+        nopen: true,
+        salary: true,
+        plafond: true,
+        tenor: true,
+        slik_status: true,
+        slik_desc: true,
+        verif_status: true,
+        verif_desc: true,
+        approv_status: true,
+        approv_desc: true,
+        dropping_status: true,
+        no_contract: true,
+        date_contract: true,
+        created_at: true,
+        updated_at: true,
+        file_contract: true,
+        c_margin: true,
+        c_margin_sumdan: true,
+        rounded: true,
+        tbo: true,
+        tbo_date: true,
+        fee_banpot: true,
+        c_ned: true,
+        c_insurance: true,
+        c_mutasi: true,
+        c_account_sumdan: true,
+        c_adm: true,
+        c_adm_sumdan: true,
+        c_blokir: true,
+        c_flagging: true,
+        c_gov: true,
+        c_infomation: true,
+        c_provisi: true,
+        c_provisi_sumdan: true,
+        c_stamp: true,
+        c_takeover: true,
+        c_fee_bpp: true,
+        c_fee_fronting: true,
+        takeover_from: true,
+        takeover_status: true,
+        takeover_date: true,
+        mutasi_status: true,
+        margin_type: true,
+        ...(includes && {
+          takeover_date_exc: true,
+          takeover_desc: true,
+          mutasi_date_exc: true,
+          mutasi_desc: true,
+          guarantee_status: true,
+          guarantee_desc: true,
+          document_status: true,
+          document_desc: true,
+          flagging_status: true,
+          flagging_desc: true,
+          flagging_date_exc: true,
+          cash_status: true,
+          cash_desc: true,
+          Angsurans: {
+            select: { id: true },
+            where: {
+              date_pay: {
+                gte: moment().startOf("month").toDate(),
+                lte: moment().endOf("month").toDate(),
               },
             },
           },
+        }),
+        PrevPayOffice: { select: { name: true, code: true } },
+        PayOffice: { select: { name: true, code: true } },
+        Debitur: true,
+        ProdukPembiayaan: {
+          select: {
+            id: true,
+            name: true,
+            sumdanId: true,
+            Sumdan: { select: { code: true, id: true, name: true } },
+          },
         },
-        PayOffice: { select: { name: true, code: true, logo: true } },
-        PrevPayOffice: { select: { name: true, code: true, logo: true } },
         JenisPembiayaan: {
           select: { name: true, status_mutasi: true, status_takeover: true },
         },
-        // Angsurans: true,
-        ...(includes && {
-          Angsurans: {
-            select: { id: true },
-            where: { date_paid: { not: null } },
+        User: { select: { fullname: true } },
+        AO: {
+          select: {
+            fullname: true,
+            Cabang: {
+              select: { name: true, Area: { select: { name: true } } },
+            },
           },
-        }),
-        User: AOInclude(),
-        AO: AOInclude(),
-        AOCabang: AOInclude(),
-        AOArea: AOInclude(),
-        Dropping: true,
-        // }),
-        AgentFronting: { select: { code: true, name: true, pic: true } },
+        },
+        Dropping: { select: { process_at: true } },
       },
     }),
     prisma.dapem.count({ where }),
@@ -359,6 +457,7 @@ export const PATCH = async (req: NextRequest) => {
       Pelunasan: true,
       AgentFronting: true,
       PayOffice: true,
+      PrevPayOffice: true,
       Insurance: true,
     },
   });

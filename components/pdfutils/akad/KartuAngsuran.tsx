@@ -72,7 +72,7 @@ export const JadwalAngsuran = (record: IDapem, sub?: string) => {
   </div>
 
   <div class="mt-4">
-    <table class="w-full border-collapse border border-gray-400 border-dashed text-sm mb-4">
+    <table class="w-full border-collapse border border-gray-400 border-dashed text-xs mb-4">
       <thead>
         <tr class="bg-gray-200">
           <th class="border border-gray-400 border-dashed p-1">Periode</th>

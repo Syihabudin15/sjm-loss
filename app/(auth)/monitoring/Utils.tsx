@@ -87,6 +87,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
         if (res.status === 200) {
           setData({
             ...data,
+            salary: res.salary,
             Debitur: { ...data.Debitur, ...res.data },
             // mutasi_from: res.data.pay_office,
           });
@@ -112,6 +113,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
           modal.success({
             title: "BERHASIL",
             content: "Data Pembiayaan berhasil ditambahkan",
+            onOk: () => window.location.replace("/monitoring"),
           });
         } else {
           modal.error({ title: "ERROR!!", content: res.msg });
@@ -168,7 +170,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
         ...prev,
         ProdukPembiayaan: find,
         produkPembiayaanId: find.id,
-        c_margin_sumdan: find.Sumdan.c_margin,
+        c_margin_sumdan: find.c_margin_sumdan,
         c_margin: find.c_margin,
         c_adm_sumdan: find.Sumdan.c_adm_sumdan,
         c_adm: find.Sumdan.c_adm,
@@ -196,8 +198,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
         GetMaxPlafond(
           data.c_margin + data.c_margin_sumdan,
           data.tenor,
-          ((data.Debitur.salary - 100000) *
-            (data.ProdukPembiayaan.Sumdan?.dsr || 0)) /
+          ((data.salary - 100000) * (data.ProdukPembiayaan.Sumdan?.dsr || 0)) /
             100,
         ),
       ),
@@ -233,7 +234,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
     data.plafond,
     data.tenor,
     data.Debitur.birthdate,
-    data.Debitur.salary,
+    data.salary,
     data.produkPembiayaanId,
     data.margin_type,
     data.c_margin,
@@ -279,6 +280,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
       setData((prev) => ({
         ...prev,
         nopen: data.nopen,
+        salary: Number(data.salary ?? 0),
         Debitur: {
           ...prev.Debitur,
           fullname: data.fullname,
@@ -484,13 +486,14 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                       type: "text",
                       class: "flex-1",
                       required: true,
-                      value: IDRFormat(data.Debitur.salary || 0),
+                      value: IDRFormat(data.salary || 0),
                       onChange: (e: string) =>
                         setData({
                           ...data,
+                          salary: IDRToNumber(e || "0"),
                           Debitur: {
                             ...data.Debitur,
-                            salary: IDRToNumber(e || "0"),
+                            ...(!record && { salary: IDRToNumber(e || "0") }),
                           },
                         }),
                     }}
@@ -593,6 +596,36 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         setData({
                           ...data,
                           Debitur: { ...data.Debitur, npwp: e },
+                        }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      mode: "vertical",
+                      label: "Kota Terbit KTP",
+                      type: "text",
+                      class: "flex-1",
+                      required: true,
+                      value: data.Debitur.id_publisher,
+                      onChange: (e: string) =>
+                        setData({
+                          ...data,
+                          Debitur: { ...data.Debitur, id_publisher: e },
+                        }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      mode: "vertical",
+                      label: "Masa KTP",
+                      type: "date",
+                      class: "flex-1",
+                      required: true,
+                      value: data.Debitur.id_end,
+                      onChange: (e: string) =>
+                        setData({
+                          ...data,
+                          Debitur: { ...data.Debitur, id_end: new Date(e) },
                         }),
                     }}
                   />
@@ -860,7 +893,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                     <FormInput
                       data={{
                         mode: "vertical",
-                        label: "Tahun Menempati",
+                        label: "Lama Menempati (Tahun)",
                         type: "number",
                         class: "flex-1",
                         required: true,
@@ -1056,6 +1089,21 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                     <FormInput
                       data={{
                         mode: "vertical",
+                        label: "Hubungan",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.aw_relate,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            aw_relate: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
                         label: "Alamat",
                         type: "textarea",
                         class: "flex-1",
@@ -1071,15 +1119,75 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                     <FormInput
                       data={{
                         mode: "vertical",
-                        label: "Hubungan",
+                        label: "Kelurahan",
                         type: "text",
                         class: "flex-1",
                         required: true,
-                        value: data.aw_relate,
+                        value: data.aw_ward,
                         onChange: (e: string) =>
                           setData({
                             ...data,
-                            aw_relate: e,
+                            aw_ward: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Kecamatan",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.aw_district,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            aw_district: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Kota",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.aw_city,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            aw_city: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Provinsi",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.aw_province,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            aw_province: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Kodepos",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.aw_pos_code,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            aw_pos_code: e,
                           }),
                       }}
                     />
@@ -1119,6 +1227,21 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                     <FormInput
                       data={{
                         mode: "vertical",
+                        label: "Hubungan",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.f_relate,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            f_relate: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
                         label: "Alamat",
                         type: "textarea",
                         class: "flex-1",
@@ -1131,19 +1254,78 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                           }),
                       }}
                     />
-
                     <FormInput
                       data={{
                         mode: "vertical",
-                        label: "Hubungan",
+                        label: "Kelurahan",
                         type: "text",
                         class: "flex-1",
                         required: true,
-                        value: data.f_relate,
+                        value: data.f_ward,
                         onChange: (e: string) =>
                           setData({
                             ...data,
-                            f_relate: e,
+                            f_ward: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Kecamatan",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.f_district,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            f_district: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Kota",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.f_city,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            f_city: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Provinsi",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.f_province,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            f_province: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Kodepos",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.f_pos_code,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            f_pos_code: e,
                           }),
                       }}
                     />
@@ -1511,10 +1693,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         <p>Produk Pembiayaan</p>
                         <Select
                           className="w-full"
-                          options={(sumdanAv.length !== 0
-                            ? sumdanAv
-                            : sumdan
-                          ).map((j) => ({
+                          options={sumdanAv.map((j) => ({
                             label: j.name,
                             options: j.ProdukPembiayaans.map((p) => ({
                               label: `${p.name} - ${p.Sumdan?.code || ""}`,
@@ -1531,7 +1710,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                                 ...data,
                                 ProdukPembiayaan: find,
                                 produkPembiayaanId: find.id,
-                                c_margin_sumdan: find.Sumdan.c_margin,
+                                c_margin_sumdan: find.c_margin_sumdan,
                                 c_margin: find.c_margin,
                                 c_adm_sumdan: find.Sumdan.c_adm_sumdan,
                                 c_adm: find.Sumdan.c_adm,
@@ -1732,6 +1911,18 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         />
                         <Input
                           size="small"
+                          style={{ width: 200 }}
+                          value={data.c_flagging}
+                          onChange={(e) =>
+                            setData({
+                              ...data,
+                              c_flagging: Number(e.target.value || 0),
+                            })
+                          }
+                          type={"number"}
+                        />
+                        <Input
+                          size="small"
                           disabled
                           value={IDRFormat(details.asuransi)}
                           style={{ textAlign: "right", color: "black" }}
@@ -1846,17 +2037,13 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                     </div>
                     <div className="flex justify-between my-2 italic">
                       <span>Sisa Gaji</span>
-                      <span>
-                        {IDRFormat(data.Debitur.salary - temp.angsuran)}
-                      </span>
+                      <span>{IDRFormat(data.salary - temp.angsuran)}</span>
                     </div>
                     <div className="flex justify-between my-2 border-b rounded italic">
                       <span>DBR</span>
                       <span>
-                        {(temp.angsuran / (data.Debitur.salary / 100)).toFixed(
-                          2,
-                        )}
-                        % / {data.ProdukPembiayaan?.Sumdan?.dsr ?? 0}%
+                        {(temp.angsuran / (data.salary / 100)).toFixed(2)}% /{" "}
+                        {data.ProdukPembiayaan?.Sumdan?.dsr ?? 0}%
                       </span>
                     </div>
                     <div className="my-5"></div>
@@ -2286,6 +2473,40 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         setData({ ...data, video_contract: e }),
                     }}
                   />
+                  <FormInput
+                    data={{
+                      label: "Keterangan",
+                      type: "textarea",
+                      class: "flex-1",
+                      value: data.note,
+                      onChange: (e: string) => setData({ ...data, note: e }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      label: "Status Deviasi",
+                      type: "select",
+                      options: [
+                        { label: "Tidak Deviasi", value: false },
+                        { label: "Deviasi", value: true },
+                      ],
+                      class: "flex-1",
+                      value: data.dev_status,
+                      onChange: (e: boolean) =>
+                        setData({ ...data, dev_status: e }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      label: "Keterangan Deviasi",
+                      type: "textarea",
+                      class: "flex-1",
+                      value: data.deviasi_note,
+                      onChange: (e: string) =>
+                        setData({ ...data, deviasi_note: e }),
+                      hidden: !data.dev_status,
+                    }}
+                  />
                   <div className="my-4" hidden>
                     <div className="flex gap-2">
                       <p>Generate OCR</p>
@@ -2331,7 +2552,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
             !data.aw_name ||
             !data.f_name ||
             !data.Debitur.address ||
-            !data.Debitur.salary ||
+            !data.salary ||
             !(data.AO || data.AOCabang || data.AOArea)
           }
         >
@@ -2483,6 +2704,25 @@ const defaultData: IDapem = {
   payOfficeId: null,
   insuranceId: null,
   prevPayOfficeId: null,
+  salary: 0,
+  dev_status: false,
+  deviasi_note: "",
+  note: "",
+  dPKStatusId: null,
+  aw_rt: null,
+  aw_rw: null,
+  aw_ward: null,
+  aw_district: null,
+  aw_city: null,
+  aw_province: null,
+  aw_pos_code: null,
+  f_rt: null,
+  f_rw: null,
+  f_ward: null,
+  f_district: null,
+  f_city: null,
+  f_province: null,
+  f_pos_code: null,
 };
 
 interface ITemp {

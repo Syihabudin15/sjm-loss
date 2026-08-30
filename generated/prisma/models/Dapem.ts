@@ -29,6 +29,7 @@ export type AggregateDapem = {
 export type DapemAvgAggregateOutputType = {
   tenor: number | null
   plafond: number | null
+  salary: number | null
   c_margin_sumdan: number | null
   c_account_sumdan: number | null
   c_adm_sumdan: number | null
@@ -55,6 +56,7 @@ export type DapemAvgAggregateOutputType = {
 export type DapemSumAggregateOutputType = {
   tenor: number | null
   plafond: number | null
+  salary: number | null
   c_margin_sumdan: number | null
   c_account_sumdan: number | null
   c_adm_sumdan: number | null
@@ -82,6 +84,7 @@ export type DapemMinAggregateOutputType = {
   id: string | null
   tenor: number | null
   plafond: number | null
+  salary: number | null
   c_margin_sumdan: number | null
   c_account_sumdan: number | null
   c_adm_sumdan: number | null
@@ -128,10 +131,24 @@ export type DapemMinAggregateOutputType = {
   aw_address: string | null
   aw_relate: string | null
   aw_phone: string | null
+  aw_rt: string | null
+  aw_rw: string | null
+  aw_ward: string | null
+  aw_district: string | null
+  aw_city: string | null
+  aw_province: string | null
+  aw_pos_code: string | null
   f_name: string | null
   f_relate: string | null
   f_phone: string | null
   f_address: string | null
+  f_rt: string | null
+  f_rw: string | null
+  f_ward: string | null
+  f_district: string | null
+  f_city: string | null
+  f_province: string | null
+  f_pos_code: string | null
   dropping_status: $Enums.EDapemStatus | null
   verif_status: $Enums.ESubmissionStatus | null
   verif_desc: string | null
@@ -156,6 +173,9 @@ export type DapemMinAggregateOutputType = {
   guarantee_desc: string | null
   ao_fee_status: $Enums.EDapemStatus | null
   ao_fee_desc: string | null
+  dev_status: boolean | null
+  deviasi_note: string | null
+  note: string | null
   used_for: string | null
   no_contract: string | null
   date_contract: Date | null
@@ -189,12 +209,14 @@ export type DapemMinAggregateOutputType = {
   payOfficeId: string | null
   insuranceId: string | null
   userId: string | null
+  dPKStatusId: string | null
 }
 
 export type DapemMaxAggregateOutputType = {
   id: string | null
   tenor: number | null
   plafond: number | null
+  salary: number | null
   c_margin_sumdan: number | null
   c_account_sumdan: number | null
   c_adm_sumdan: number | null
@@ -241,10 +263,24 @@ export type DapemMaxAggregateOutputType = {
   aw_address: string | null
   aw_relate: string | null
   aw_phone: string | null
+  aw_rt: string | null
+  aw_rw: string | null
+  aw_ward: string | null
+  aw_district: string | null
+  aw_city: string | null
+  aw_province: string | null
+  aw_pos_code: string | null
   f_name: string | null
   f_relate: string | null
   f_phone: string | null
   f_address: string | null
+  f_rt: string | null
+  f_rw: string | null
+  f_ward: string | null
+  f_district: string | null
+  f_city: string | null
+  f_province: string | null
+  f_pos_code: string | null
   dropping_status: $Enums.EDapemStatus | null
   verif_status: $Enums.ESubmissionStatus | null
   verif_desc: string | null
@@ -269,6 +305,9 @@ export type DapemMaxAggregateOutputType = {
   guarantee_desc: string | null
   ao_fee_status: $Enums.EDapemStatus | null
   ao_fee_desc: string | null
+  dev_status: boolean | null
+  deviasi_note: string | null
+  note: string | null
   used_for: string | null
   no_contract: string | null
   date_contract: Date | null
@@ -302,12 +341,14 @@ export type DapemMaxAggregateOutputType = {
   payOfficeId: string | null
   insuranceId: string | null
   userId: string | null
+  dPKStatusId: string | null
 }
 
 export type DapemCountAggregateOutputType = {
   id: number
   tenor: number
   plafond: number
+  salary: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -354,10 +395,24 @@ export type DapemCountAggregateOutputType = {
   aw_address: number
   aw_relate: number
   aw_phone: number
+  aw_rt: number
+  aw_rw: number
+  aw_ward: number
+  aw_district: number
+  aw_city: number
+  aw_province: number
+  aw_pos_code: number
   f_name: number
   f_relate: number
   f_phone: number
   f_address: number
+  f_rt: number
+  f_rw: number
+  f_ward: number
+  f_district: number
+  f_city: number
+  f_province: number
+  f_pos_code: number
   dropping_status: number
   verif_status: number
   verif_desc: number
@@ -382,6 +437,9 @@ export type DapemCountAggregateOutputType = {
   guarantee_desc: number
   ao_fee_status: number
   ao_fee_desc: number
+  dev_status: number
+  deviasi_note: number
+  note: number
   used_for: number
   no_contract: number
   date_contract: number
@@ -415,6 +473,7 @@ export type DapemCountAggregateOutputType = {
   payOfficeId: number
   insuranceId: number
   userId: number
+  dPKStatusId: number
   _all: number
 }
 
@@ -422,6 +481,7 @@ export type DapemCountAggregateOutputType = {
 export type DapemAvgAggregateInputType = {
   tenor?: true
   plafond?: true
+  salary?: true
   c_margin_sumdan?: true
   c_account_sumdan?: true
   c_adm_sumdan?: true
@@ -448,6 +508,7 @@ export type DapemAvgAggregateInputType = {
 export type DapemSumAggregateInputType = {
   tenor?: true
   plafond?: true
+  salary?: true
   c_margin_sumdan?: true
   c_account_sumdan?: true
   c_adm_sumdan?: true
@@ -475,6 +536,7 @@ export type DapemMinAggregateInputType = {
   id?: true
   tenor?: true
   plafond?: true
+  salary?: true
   c_margin_sumdan?: true
   c_account_sumdan?: true
   c_adm_sumdan?: true
@@ -521,10 +583,24 @@ export type DapemMinAggregateInputType = {
   aw_address?: true
   aw_relate?: true
   aw_phone?: true
+  aw_rt?: true
+  aw_rw?: true
+  aw_ward?: true
+  aw_district?: true
+  aw_city?: true
+  aw_province?: true
+  aw_pos_code?: true
   f_name?: true
   f_relate?: true
   f_phone?: true
   f_address?: true
+  f_rt?: true
+  f_rw?: true
+  f_ward?: true
+  f_district?: true
+  f_city?: true
+  f_province?: true
+  f_pos_code?: true
   dropping_status?: true
   verif_status?: true
   verif_desc?: true
@@ -549,6 +625,9 @@ export type DapemMinAggregateInputType = {
   guarantee_desc?: true
   ao_fee_status?: true
   ao_fee_desc?: true
+  dev_status?: true
+  deviasi_note?: true
+  note?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -582,12 +661,14 @@ export type DapemMinAggregateInputType = {
   payOfficeId?: true
   insuranceId?: true
   userId?: true
+  dPKStatusId?: true
 }
 
 export type DapemMaxAggregateInputType = {
   id?: true
   tenor?: true
   plafond?: true
+  salary?: true
   c_margin_sumdan?: true
   c_account_sumdan?: true
   c_adm_sumdan?: true
@@ -634,10 +715,24 @@ export type DapemMaxAggregateInputType = {
   aw_address?: true
   aw_relate?: true
   aw_phone?: true
+  aw_rt?: true
+  aw_rw?: true
+  aw_ward?: true
+  aw_district?: true
+  aw_city?: true
+  aw_province?: true
+  aw_pos_code?: true
   f_name?: true
   f_relate?: true
   f_phone?: true
   f_address?: true
+  f_rt?: true
+  f_rw?: true
+  f_ward?: true
+  f_district?: true
+  f_city?: true
+  f_province?: true
+  f_pos_code?: true
   dropping_status?: true
   verif_status?: true
   verif_desc?: true
@@ -662,6 +757,9 @@ export type DapemMaxAggregateInputType = {
   guarantee_desc?: true
   ao_fee_status?: true
   ao_fee_desc?: true
+  dev_status?: true
+  deviasi_note?: true
+  note?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -695,12 +793,14 @@ export type DapemMaxAggregateInputType = {
   payOfficeId?: true
   insuranceId?: true
   userId?: true
+  dPKStatusId?: true
 }
 
 export type DapemCountAggregateInputType = {
   id?: true
   tenor?: true
   plafond?: true
+  salary?: true
   c_margin_sumdan?: true
   c_account_sumdan?: true
   c_adm_sumdan?: true
@@ -747,10 +847,24 @@ export type DapemCountAggregateInputType = {
   aw_address?: true
   aw_relate?: true
   aw_phone?: true
+  aw_rt?: true
+  aw_rw?: true
+  aw_ward?: true
+  aw_district?: true
+  aw_city?: true
+  aw_province?: true
+  aw_pos_code?: true
   f_name?: true
   f_relate?: true
   f_phone?: true
   f_address?: true
+  f_rt?: true
+  f_rw?: true
+  f_ward?: true
+  f_district?: true
+  f_city?: true
+  f_province?: true
+  f_pos_code?: true
   dropping_status?: true
   verif_status?: true
   verif_desc?: true
@@ -775,6 +889,9 @@ export type DapemCountAggregateInputType = {
   guarantee_desc?: true
   ao_fee_status?: true
   ao_fee_desc?: true
+  dev_status?: true
+  deviasi_note?: true
+  note?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -808,6 +925,7 @@ export type DapemCountAggregateInputType = {
   payOfficeId?: true
   insuranceId?: true
   userId?: true
+  dPKStatusId?: true
   _all?: true
 }
 
@@ -901,6 +1019,7 @@ export type DapemGroupByOutputType = {
   id: string
   tenor: number
   plafond: number
+  salary: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -947,10 +1066,24 @@ export type DapemGroupByOutputType = {
   aw_address: string | null
   aw_relate: string | null
   aw_phone: string | null
+  aw_rt: string | null
+  aw_rw: string | null
+  aw_ward: string | null
+  aw_district: string | null
+  aw_city: string | null
+  aw_province: string | null
+  aw_pos_code: string | null
   f_name: string | null
   f_relate: string | null
   f_phone: string | null
   f_address: string | null
+  f_rt: string | null
+  f_rw: string | null
+  f_ward: string | null
+  f_district: string | null
+  f_city: string | null
+  f_province: string | null
+  f_pos_code: string | null
   dropping_status: $Enums.EDapemStatus
   verif_status: $Enums.ESubmissionStatus | null
   verif_desc: string | null
@@ -975,6 +1108,9 @@ export type DapemGroupByOutputType = {
   guarantee_desc: string | null
   ao_fee_status: $Enums.EDapemStatus
   ao_fee_desc: string | null
+  dev_status: boolean
+  deviasi_note: string | null
+  note: string | null
   used_for: string
   no_contract: string
   date_contract: Date | null
@@ -1008,6 +1144,7 @@ export type DapemGroupByOutputType = {
   payOfficeId: string | null
   insuranceId: string | null
   userId: string
+  dPKStatusId: string | null
   _count: DapemCountAggregateOutputType | null
   _avg: DapemAvgAggregateOutputType | null
   _sum: DapemSumAggregateOutputType | null
@@ -1037,6 +1174,7 @@ export type DapemWhereInput = {
   id?: Prisma.StringFilter<"Dapem"> | string
   tenor?: Prisma.IntFilter<"Dapem"> | number
   plafond?: Prisma.IntFilter<"Dapem"> | number
+  salary?: Prisma.IntFilter<"Dapem"> | number
   c_margin_sumdan?: Prisma.FloatFilter<"Dapem"> | number
   c_account_sumdan?: Prisma.IntFilter<"Dapem"> | number
   c_adm_sumdan?: Prisma.FloatFilter<"Dapem"> | number
@@ -1083,10 +1221,24 @@ export type DapemWhereInput = {
   aw_address?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_relate?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_phone?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_rt?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_rw?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_ward?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_district?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_city?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_province?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_pos_code?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_relate?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_phone?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_address?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_rt?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_rw?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_ward?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_district?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_city?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_province?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_pos_code?: Prisma.StringNullableFilter<"Dapem"> | string | null
   dropping_status?: Prisma.EnumEDapemStatusFilter<"Dapem"> | $Enums.EDapemStatus
   verif_status?: Prisma.EnumESubmissionStatusNullableFilter<"Dapem"> | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
@@ -1111,6 +1263,9 @@ export type DapemWhereInput = {
   guarantee_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFilter<"Dapem"> | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  dev_status?: Prisma.BoolFilter<"Dapem"> | boolean
+  deviasi_note?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  note?: Prisma.StringNullableFilter<"Dapem"> | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -1144,6 +1299,7 @@ export type DapemWhereInput = {
   payOfficeId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   insuranceId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   userId?: Prisma.StringFilter<"Dapem"> | string
+  dPKStatusId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   Debitur?: Prisma.XOR<Prisma.DebiturScalarRelationFilter, Prisma.DebiturWhereInput>
   ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
   JenisPembiayaan?: Prisma.XOR<Prisma.JenisPembiayaanScalarRelationFilter, Prisma.JenisPembiayaanWhereInput>
@@ -1156,6 +1312,7 @@ export type DapemWhereInput = {
   AgentFronting?: Prisma.XOR<Prisma.AgentFrontingNullableScalarRelationFilter, Prisma.AgentFrontingWhereInput> | null
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   PrevPayOffice?: Prisma.XOR<Prisma.PayOfficeNullableScalarRelationFilter, Prisma.PayOfficeWhereInput> | null
+  DPKStatus?: Prisma.XOR<Prisma.DPKStatusNullableScalarRelationFilter, Prisma.DPKStatusWhereInput> | null
   Angsurans?: Prisma.AngsuranListRelationFilter
   Pelunasan?: Prisma.XOR<Prisma.PelunasanNullableScalarRelationFilter, Prisma.PelunasanWhereInput> | null
   PayOffice?: Prisma.XOR<Prisma.PayOfficeNullableScalarRelationFilter, Prisma.PayOfficeWhereInput> | null
@@ -1167,6 +1324,7 @@ export type DapemOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   tenor?: Prisma.SortOrder
   plafond?: Prisma.SortOrder
+  salary?: Prisma.SortOrder
   c_margin_sumdan?: Prisma.SortOrder
   c_account_sumdan?: Prisma.SortOrder
   c_adm_sumdan?: Prisma.SortOrder
@@ -1213,10 +1371,24 @@ export type DapemOrderByWithRelationInput = {
   aw_address?: Prisma.SortOrderInput | Prisma.SortOrder
   aw_relate?: Prisma.SortOrderInput | Prisma.SortOrder
   aw_phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_rt?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_rw?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_ward?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_district?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_city?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_province?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_pos_code?: Prisma.SortOrderInput | Prisma.SortOrder
   f_name?: Prisma.SortOrderInput | Prisma.SortOrder
   f_relate?: Prisma.SortOrderInput | Prisma.SortOrder
   f_phone?: Prisma.SortOrderInput | Prisma.SortOrder
   f_address?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_rt?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_rw?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_ward?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_district?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_city?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_province?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_pos_code?: Prisma.SortOrderInput | Prisma.SortOrder
   dropping_status?: Prisma.SortOrder
   verif_status?: Prisma.SortOrderInput | Prisma.SortOrder
   verif_desc?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1241,6 +1413,9 @@ export type DapemOrderByWithRelationInput = {
   guarantee_desc?: Prisma.SortOrderInput | Prisma.SortOrder
   ao_fee_status?: Prisma.SortOrder
   ao_fee_desc?: Prisma.SortOrderInput | Prisma.SortOrder
+  dev_status?: Prisma.SortOrder
+  deviasi_note?: Prisma.SortOrderInput | Prisma.SortOrder
+  note?: Prisma.SortOrderInput | Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1274,6 +1449,7 @@ export type DapemOrderByWithRelationInput = {
   payOfficeId?: Prisma.SortOrderInput | Prisma.SortOrder
   insuranceId?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
+  dPKStatusId?: Prisma.SortOrderInput | Prisma.SortOrder
   Debitur?: Prisma.DebiturOrderByWithRelationInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanOrderByWithRelationInput
   JenisPembiayaan?: Prisma.JenisPembiayaanOrderByWithRelationInput
@@ -1286,6 +1462,7 @@ export type DapemOrderByWithRelationInput = {
   AgentFronting?: Prisma.AgentFrontingOrderByWithRelationInput
   User?: Prisma.UserOrderByWithRelationInput
   PrevPayOffice?: Prisma.PayOfficeOrderByWithRelationInput
+  DPKStatus?: Prisma.DPKStatusOrderByWithRelationInput
   Angsurans?: Prisma.AngsuranOrderByRelationAggregateInput
   Pelunasan?: Prisma.PelunasanOrderByWithRelationInput
   PayOffice?: Prisma.PayOfficeOrderByWithRelationInput
@@ -1301,6 +1478,7 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.DapemWhereInput | Prisma.DapemWhereInput[]
   tenor?: Prisma.IntFilter<"Dapem"> | number
   plafond?: Prisma.IntFilter<"Dapem"> | number
+  salary?: Prisma.IntFilter<"Dapem"> | number
   c_margin_sumdan?: Prisma.FloatFilter<"Dapem"> | number
   c_account_sumdan?: Prisma.IntFilter<"Dapem"> | number
   c_adm_sumdan?: Prisma.FloatFilter<"Dapem"> | number
@@ -1347,10 +1525,24 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   aw_address?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_relate?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_phone?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_rt?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_rw?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_ward?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_district?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_city?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_province?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_pos_code?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_relate?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_phone?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_address?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_rt?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_rw?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_ward?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_district?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_city?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_province?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_pos_code?: Prisma.StringNullableFilter<"Dapem"> | string | null
   dropping_status?: Prisma.EnumEDapemStatusFilter<"Dapem"> | $Enums.EDapemStatus
   verif_status?: Prisma.EnumESubmissionStatusNullableFilter<"Dapem"> | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
@@ -1375,6 +1567,9 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   guarantee_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFilter<"Dapem"> | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  dev_status?: Prisma.BoolFilter<"Dapem"> | boolean
+  deviasi_note?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  note?: Prisma.StringNullableFilter<"Dapem"> | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -1408,6 +1603,7 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   payOfficeId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   insuranceId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   userId?: Prisma.StringFilter<"Dapem"> | string
+  dPKStatusId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   Debitur?: Prisma.XOR<Prisma.DebiturScalarRelationFilter, Prisma.DebiturWhereInput>
   ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
   JenisPembiayaan?: Prisma.XOR<Prisma.JenisPembiayaanScalarRelationFilter, Prisma.JenisPembiayaanWhereInput>
@@ -1420,6 +1616,7 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   AgentFronting?: Prisma.XOR<Prisma.AgentFrontingNullableScalarRelationFilter, Prisma.AgentFrontingWhereInput> | null
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   PrevPayOffice?: Prisma.XOR<Prisma.PayOfficeNullableScalarRelationFilter, Prisma.PayOfficeWhereInput> | null
+  DPKStatus?: Prisma.XOR<Prisma.DPKStatusNullableScalarRelationFilter, Prisma.DPKStatusWhereInput> | null
   Angsurans?: Prisma.AngsuranListRelationFilter
   Pelunasan?: Prisma.XOR<Prisma.PelunasanNullableScalarRelationFilter, Prisma.PelunasanWhereInput> | null
   PayOffice?: Prisma.XOR<Prisma.PayOfficeNullableScalarRelationFilter, Prisma.PayOfficeWhereInput> | null
@@ -1431,6 +1628,7 @@ export type DapemOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   tenor?: Prisma.SortOrder
   plafond?: Prisma.SortOrder
+  salary?: Prisma.SortOrder
   c_margin_sumdan?: Prisma.SortOrder
   c_account_sumdan?: Prisma.SortOrder
   c_adm_sumdan?: Prisma.SortOrder
@@ -1477,10 +1675,24 @@ export type DapemOrderByWithAggregationInput = {
   aw_address?: Prisma.SortOrderInput | Prisma.SortOrder
   aw_relate?: Prisma.SortOrderInput | Prisma.SortOrder
   aw_phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_rt?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_rw?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_ward?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_district?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_city?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_province?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_pos_code?: Prisma.SortOrderInput | Prisma.SortOrder
   f_name?: Prisma.SortOrderInput | Prisma.SortOrder
   f_relate?: Prisma.SortOrderInput | Prisma.SortOrder
   f_phone?: Prisma.SortOrderInput | Prisma.SortOrder
   f_address?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_rt?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_rw?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_ward?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_district?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_city?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_province?: Prisma.SortOrderInput | Prisma.SortOrder
+  f_pos_code?: Prisma.SortOrderInput | Prisma.SortOrder
   dropping_status?: Prisma.SortOrder
   verif_status?: Prisma.SortOrderInput | Prisma.SortOrder
   verif_desc?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1505,6 +1717,9 @@ export type DapemOrderByWithAggregationInput = {
   guarantee_desc?: Prisma.SortOrderInput | Prisma.SortOrder
   ao_fee_status?: Prisma.SortOrder
   ao_fee_desc?: Prisma.SortOrderInput | Prisma.SortOrder
+  dev_status?: Prisma.SortOrder
+  deviasi_note?: Prisma.SortOrderInput | Prisma.SortOrder
+  note?: Prisma.SortOrderInput | Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1538,6 +1753,7 @@ export type DapemOrderByWithAggregationInput = {
   payOfficeId?: Prisma.SortOrderInput | Prisma.SortOrder
   insuranceId?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
+  dPKStatusId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.DapemCountOrderByAggregateInput
   _avg?: Prisma.DapemAvgOrderByAggregateInput
   _max?: Prisma.DapemMaxOrderByAggregateInput
@@ -1552,6 +1768,7 @@ export type DapemScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   tenor?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
   plafond?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
+  salary?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
   c_margin_sumdan?: Prisma.FloatWithAggregatesFilter<"Dapem"> | number
   c_account_sumdan?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
   c_adm_sumdan?: Prisma.FloatWithAggregatesFilter<"Dapem"> | number
@@ -1598,10 +1815,24 @@ export type DapemScalarWhereWithAggregatesInput = {
   aw_address?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   aw_relate?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   aw_phone?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  aw_rt?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  aw_rw?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  aw_ward?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  aw_district?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  aw_city?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  aw_province?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  aw_pos_code?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   f_name?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   f_relate?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   f_phone?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   f_address?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  f_rt?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  f_rw?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  f_ward?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  f_district?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  f_city?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  f_province?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  f_pos_code?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   dropping_status?: Prisma.EnumEDapemStatusWithAggregatesFilter<"Dapem"> | $Enums.EDapemStatus
   verif_status?: Prisma.EnumESubmissionStatusNullableWithAggregatesFilter<"Dapem"> | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
@@ -1626,6 +1857,9 @@ export type DapemScalarWhereWithAggregatesInput = {
   guarantee_desc?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusWithAggregatesFilter<"Dapem"> | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  dev_status?: Prisma.BoolWithAggregatesFilter<"Dapem"> | boolean
+  deviasi_note?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  note?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   used_for?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   no_contract?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableWithAggregatesFilter<"Dapem"> | Date | string | null
@@ -1659,12 +1893,14 @@ export type DapemScalarWhereWithAggregatesInput = {
   payOfficeId?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   insuranceId?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   userId?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
+  dPKStatusId?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
 }
 
 export type DapemCreateInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -1711,10 +1947,24 @@ export type DapemCreateInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -1739,6 +1989,9 @@ export type DapemCreateInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -1770,6 +2023,7 @@ export type DapemCreateInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -1781,6 +2035,7 @@ export type DapemUncheckedCreateInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -1827,10 +2082,24 @@ export type DapemUncheckedCreateInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -1855,6 +2124,9 @@ export type DapemUncheckedCreateInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -1888,6 +2160,7 @@ export type DapemUncheckedCreateInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -1897,6 +2170,7 @@ export type DapemUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1943,10 +2217,24 @@ export type DapemUpdateInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1971,6 +2259,9 @@ export type DapemUpdateInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2002,6 +2293,7 @@ export type DapemUpdateInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -2013,6 +2305,7 @@ export type DapemUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -2059,10 +2352,24 @@ export type DapemUncheckedUpdateInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2087,6 +2394,9 @@ export type DapemUncheckedUpdateInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2120,6 +2430,7 @@ export type DapemUncheckedUpdateInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -2129,6 +2440,7 @@ export type DapemCreateManyInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -2175,10 +2487,24 @@ export type DapemCreateManyInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -2203,6 +2529,9 @@ export type DapemCreateManyInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2236,12 +2565,14 @@ export type DapemCreateManyInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -2288,10 +2619,24 @@ export type DapemUpdateManyMutationInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2316,6 +2661,9 @@ export type DapemUpdateManyMutationInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2341,6 +2689,7 @@ export type DapemUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -2387,10 +2736,24 @@ export type DapemUncheckedUpdateManyInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2415,6 +2778,9 @@ export type DapemUncheckedUpdateManyInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2448,6 +2814,7 @@ export type DapemUncheckedUpdateManyInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemListRelationFilter = {
@@ -2470,6 +2837,7 @@ export type DapemCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   tenor?: Prisma.SortOrder
   plafond?: Prisma.SortOrder
+  salary?: Prisma.SortOrder
   c_margin_sumdan?: Prisma.SortOrder
   c_account_sumdan?: Prisma.SortOrder
   c_adm_sumdan?: Prisma.SortOrder
@@ -2516,10 +2884,24 @@ export type DapemCountOrderByAggregateInput = {
   aw_address?: Prisma.SortOrder
   aw_relate?: Prisma.SortOrder
   aw_phone?: Prisma.SortOrder
+  aw_rt?: Prisma.SortOrder
+  aw_rw?: Prisma.SortOrder
+  aw_ward?: Prisma.SortOrder
+  aw_district?: Prisma.SortOrder
+  aw_city?: Prisma.SortOrder
+  aw_province?: Prisma.SortOrder
+  aw_pos_code?: Prisma.SortOrder
   f_name?: Prisma.SortOrder
   f_relate?: Prisma.SortOrder
   f_phone?: Prisma.SortOrder
   f_address?: Prisma.SortOrder
+  f_rt?: Prisma.SortOrder
+  f_rw?: Prisma.SortOrder
+  f_ward?: Prisma.SortOrder
+  f_district?: Prisma.SortOrder
+  f_city?: Prisma.SortOrder
+  f_province?: Prisma.SortOrder
+  f_pos_code?: Prisma.SortOrder
   dropping_status?: Prisma.SortOrder
   verif_status?: Prisma.SortOrder
   verif_desc?: Prisma.SortOrder
@@ -2544,6 +2926,9 @@ export type DapemCountOrderByAggregateInput = {
   guarantee_desc?: Prisma.SortOrder
   ao_fee_status?: Prisma.SortOrder
   ao_fee_desc?: Prisma.SortOrder
+  dev_status?: Prisma.SortOrder
+  deviasi_note?: Prisma.SortOrder
+  note?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -2577,11 +2962,13 @@ export type DapemCountOrderByAggregateInput = {
   payOfficeId?: Prisma.SortOrder
   insuranceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  dPKStatusId?: Prisma.SortOrder
 }
 
 export type DapemAvgOrderByAggregateInput = {
   tenor?: Prisma.SortOrder
   plafond?: Prisma.SortOrder
+  salary?: Prisma.SortOrder
   c_margin_sumdan?: Prisma.SortOrder
   c_account_sumdan?: Prisma.SortOrder
   c_adm_sumdan?: Prisma.SortOrder
@@ -2609,6 +2996,7 @@ export type DapemMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   tenor?: Prisma.SortOrder
   plafond?: Prisma.SortOrder
+  salary?: Prisma.SortOrder
   c_margin_sumdan?: Prisma.SortOrder
   c_account_sumdan?: Prisma.SortOrder
   c_adm_sumdan?: Prisma.SortOrder
@@ -2655,10 +3043,24 @@ export type DapemMaxOrderByAggregateInput = {
   aw_address?: Prisma.SortOrder
   aw_relate?: Prisma.SortOrder
   aw_phone?: Prisma.SortOrder
+  aw_rt?: Prisma.SortOrder
+  aw_rw?: Prisma.SortOrder
+  aw_ward?: Prisma.SortOrder
+  aw_district?: Prisma.SortOrder
+  aw_city?: Prisma.SortOrder
+  aw_province?: Prisma.SortOrder
+  aw_pos_code?: Prisma.SortOrder
   f_name?: Prisma.SortOrder
   f_relate?: Prisma.SortOrder
   f_phone?: Prisma.SortOrder
   f_address?: Prisma.SortOrder
+  f_rt?: Prisma.SortOrder
+  f_rw?: Prisma.SortOrder
+  f_ward?: Prisma.SortOrder
+  f_district?: Prisma.SortOrder
+  f_city?: Prisma.SortOrder
+  f_province?: Prisma.SortOrder
+  f_pos_code?: Prisma.SortOrder
   dropping_status?: Prisma.SortOrder
   verif_status?: Prisma.SortOrder
   verif_desc?: Prisma.SortOrder
@@ -2683,6 +3085,9 @@ export type DapemMaxOrderByAggregateInput = {
   guarantee_desc?: Prisma.SortOrder
   ao_fee_status?: Prisma.SortOrder
   ao_fee_desc?: Prisma.SortOrder
+  dev_status?: Prisma.SortOrder
+  deviasi_note?: Prisma.SortOrder
+  note?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -2716,12 +3121,14 @@ export type DapemMaxOrderByAggregateInput = {
   payOfficeId?: Prisma.SortOrder
   insuranceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  dPKStatusId?: Prisma.SortOrder
 }
 
 export type DapemMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   tenor?: Prisma.SortOrder
   plafond?: Prisma.SortOrder
+  salary?: Prisma.SortOrder
   c_margin_sumdan?: Prisma.SortOrder
   c_account_sumdan?: Prisma.SortOrder
   c_adm_sumdan?: Prisma.SortOrder
@@ -2768,10 +3175,24 @@ export type DapemMinOrderByAggregateInput = {
   aw_address?: Prisma.SortOrder
   aw_relate?: Prisma.SortOrder
   aw_phone?: Prisma.SortOrder
+  aw_rt?: Prisma.SortOrder
+  aw_rw?: Prisma.SortOrder
+  aw_ward?: Prisma.SortOrder
+  aw_district?: Prisma.SortOrder
+  aw_city?: Prisma.SortOrder
+  aw_province?: Prisma.SortOrder
+  aw_pos_code?: Prisma.SortOrder
   f_name?: Prisma.SortOrder
   f_relate?: Prisma.SortOrder
   f_phone?: Prisma.SortOrder
   f_address?: Prisma.SortOrder
+  f_rt?: Prisma.SortOrder
+  f_rw?: Prisma.SortOrder
+  f_ward?: Prisma.SortOrder
+  f_district?: Prisma.SortOrder
+  f_city?: Prisma.SortOrder
+  f_province?: Prisma.SortOrder
+  f_pos_code?: Prisma.SortOrder
   dropping_status?: Prisma.SortOrder
   verif_status?: Prisma.SortOrder
   verif_desc?: Prisma.SortOrder
@@ -2796,6 +3217,9 @@ export type DapemMinOrderByAggregateInput = {
   guarantee_desc?: Prisma.SortOrder
   ao_fee_status?: Prisma.SortOrder
   ao_fee_desc?: Prisma.SortOrder
+  dev_status?: Prisma.SortOrder
+  deviasi_note?: Prisma.SortOrder
+  note?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -2829,11 +3253,13 @@ export type DapemMinOrderByAggregateInput = {
   payOfficeId?: Prisma.SortOrder
   insuranceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  dPKStatusId?: Prisma.SortOrder
 }
 
 export type DapemSumOrderByAggregateInput = {
   tenor?: Prisma.SortOrder
   plafond?: Prisma.SortOrder
+  salary?: Prisma.SortOrder
   c_margin_sumdan?: Prisma.SortOrder
   c_account_sumdan?: Prisma.SortOrder
   c_adm_sumdan?: Prisma.SortOrder
@@ -3508,10 +3934,53 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingNestedInput = {
   deleteMany?: Prisma.DapemScalarWhereInput | Prisma.DapemScalarWhereInput[]
 }
 
+export type DapemCreateNestedManyWithoutDPKStatusInput = {
+  create?: Prisma.XOR<Prisma.DapemCreateWithoutDPKStatusInput, Prisma.DapemUncheckedCreateWithoutDPKStatusInput> | Prisma.DapemCreateWithoutDPKStatusInput[] | Prisma.DapemUncheckedCreateWithoutDPKStatusInput[]
+  connectOrCreate?: Prisma.DapemCreateOrConnectWithoutDPKStatusInput | Prisma.DapemCreateOrConnectWithoutDPKStatusInput[]
+  createMany?: Prisma.DapemCreateManyDPKStatusInputEnvelope
+  connect?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+}
+
+export type DapemUncheckedCreateNestedManyWithoutDPKStatusInput = {
+  create?: Prisma.XOR<Prisma.DapemCreateWithoutDPKStatusInput, Prisma.DapemUncheckedCreateWithoutDPKStatusInput> | Prisma.DapemCreateWithoutDPKStatusInput[] | Prisma.DapemUncheckedCreateWithoutDPKStatusInput[]
+  connectOrCreate?: Prisma.DapemCreateOrConnectWithoutDPKStatusInput | Prisma.DapemCreateOrConnectWithoutDPKStatusInput[]
+  createMany?: Prisma.DapemCreateManyDPKStatusInputEnvelope
+  connect?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+}
+
+export type DapemUpdateManyWithoutDPKStatusNestedInput = {
+  create?: Prisma.XOR<Prisma.DapemCreateWithoutDPKStatusInput, Prisma.DapemUncheckedCreateWithoutDPKStatusInput> | Prisma.DapemCreateWithoutDPKStatusInput[] | Prisma.DapemUncheckedCreateWithoutDPKStatusInput[]
+  connectOrCreate?: Prisma.DapemCreateOrConnectWithoutDPKStatusInput | Prisma.DapemCreateOrConnectWithoutDPKStatusInput[]
+  upsert?: Prisma.DapemUpsertWithWhereUniqueWithoutDPKStatusInput | Prisma.DapemUpsertWithWhereUniqueWithoutDPKStatusInput[]
+  createMany?: Prisma.DapemCreateManyDPKStatusInputEnvelope
+  set?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+  disconnect?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+  delete?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+  connect?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+  update?: Prisma.DapemUpdateWithWhereUniqueWithoutDPKStatusInput | Prisma.DapemUpdateWithWhereUniqueWithoutDPKStatusInput[]
+  updateMany?: Prisma.DapemUpdateManyWithWhereWithoutDPKStatusInput | Prisma.DapemUpdateManyWithWhereWithoutDPKStatusInput[]
+  deleteMany?: Prisma.DapemScalarWhereInput | Prisma.DapemScalarWhereInput[]
+}
+
+export type DapemUncheckedUpdateManyWithoutDPKStatusNestedInput = {
+  create?: Prisma.XOR<Prisma.DapemCreateWithoutDPKStatusInput, Prisma.DapemUncheckedCreateWithoutDPKStatusInput> | Prisma.DapemCreateWithoutDPKStatusInput[] | Prisma.DapemUncheckedCreateWithoutDPKStatusInput[]
+  connectOrCreate?: Prisma.DapemCreateOrConnectWithoutDPKStatusInput | Prisma.DapemCreateOrConnectWithoutDPKStatusInput[]
+  upsert?: Prisma.DapemUpsertWithWhereUniqueWithoutDPKStatusInput | Prisma.DapemUpsertWithWhereUniqueWithoutDPKStatusInput[]
+  createMany?: Prisma.DapemCreateManyDPKStatusInputEnvelope
+  set?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+  disconnect?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+  delete?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+  connect?: Prisma.DapemWhereUniqueInput | Prisma.DapemWhereUniqueInput[]
+  update?: Prisma.DapemUpdateWithWhereUniqueWithoutDPKStatusInput | Prisma.DapemUpdateWithWhereUniqueWithoutDPKStatusInput[]
+  updateMany?: Prisma.DapemUpdateManyWithWhereWithoutDPKStatusInput | Prisma.DapemUpdateManyWithWhereWithoutDPKStatusInput[]
+  deleteMany?: Prisma.DapemScalarWhereInput | Prisma.DapemScalarWhereInput[]
+}
+
 export type DapemCreateWithoutAOInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -3558,10 +4027,24 @@ export type DapemCreateWithoutAOInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -3586,6 +4069,9 @@ export type DapemCreateWithoutAOInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -3616,6 +4102,7 @@ export type DapemCreateWithoutAOInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -3627,6 +4114,7 @@ export type DapemUncheckedCreateWithoutAOInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -3673,10 +4161,24 @@ export type DapemUncheckedCreateWithoutAOInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -3701,6 +4203,9 @@ export type DapemUncheckedCreateWithoutAOInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -3733,6 +4238,7 @@ export type DapemUncheckedCreateWithoutAOInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -3752,6 +4258,7 @@ export type DapemCreateWithoutAOCabangInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -3798,10 +4305,24 @@ export type DapemCreateWithoutAOCabangInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -3826,6 +4347,9 @@ export type DapemCreateWithoutAOCabangInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -3856,6 +4380,7 @@ export type DapemCreateWithoutAOCabangInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -3867,6 +4392,7 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -3913,10 +4439,24 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -3941,6 +4481,9 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -3973,6 +4516,7 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -3992,6 +4536,7 @@ export type DapemCreateWithoutAOAreaInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -4038,10 +4583,24 @@ export type DapemCreateWithoutAOAreaInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -4066,6 +4625,9 @@ export type DapemCreateWithoutAOAreaInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4096,6 +4658,7 @@ export type DapemCreateWithoutAOAreaInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -4107,6 +4670,7 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -4153,10 +4717,24 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -4181,6 +4759,9 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4213,6 +4794,7 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -4232,6 +4814,7 @@ export type DapemCreateWithoutUserInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -4278,10 +4861,24 @@ export type DapemCreateWithoutUserInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -4306,6 +4903,9 @@ export type DapemCreateWithoutUserInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4336,6 +4936,7 @@ export type DapemCreateWithoutUserInput = {
   Jaminan?: Prisma.JaminanCreateNestedOneWithoutDapemsInput
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -4347,6 +4948,7 @@ export type DapemUncheckedCreateWithoutUserInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -4393,10 +4995,24 @@ export type DapemUncheckedCreateWithoutUserInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -4421,6 +5037,9 @@ export type DapemUncheckedCreateWithoutUserInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4453,6 +5072,7 @@ export type DapemUncheckedCreateWithoutUserInput = {
   agentFrontingId?: string | null
   payOfficeId?: string | null
   insuranceId?: string | null
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -4491,6 +5111,7 @@ export type DapemScalarWhereInput = {
   id?: Prisma.StringFilter<"Dapem"> | string
   tenor?: Prisma.IntFilter<"Dapem"> | number
   plafond?: Prisma.IntFilter<"Dapem"> | number
+  salary?: Prisma.IntFilter<"Dapem"> | number
   c_margin_sumdan?: Prisma.FloatFilter<"Dapem"> | number
   c_account_sumdan?: Prisma.IntFilter<"Dapem"> | number
   c_adm_sumdan?: Prisma.FloatFilter<"Dapem"> | number
@@ -4537,10 +5158,24 @@ export type DapemScalarWhereInput = {
   aw_address?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_relate?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_phone?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_rt?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_rw?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_ward?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_district?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_city?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_province?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_pos_code?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_relate?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_phone?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_address?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_rt?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_rw?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_ward?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_district?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_city?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_province?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  f_pos_code?: Prisma.StringNullableFilter<"Dapem"> | string | null
   dropping_status?: Prisma.EnumEDapemStatusFilter<"Dapem"> | $Enums.EDapemStatus
   verif_status?: Prisma.EnumESubmissionStatusNullableFilter<"Dapem"> | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
@@ -4565,6 +5200,9 @@ export type DapemScalarWhereInput = {
   guarantee_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFilter<"Dapem"> | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  dev_status?: Prisma.BoolFilter<"Dapem"> | boolean
+  deviasi_note?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  note?: Prisma.StringNullableFilter<"Dapem"> | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -4598,6 +5236,7 @@ export type DapemScalarWhereInput = {
   payOfficeId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   insuranceId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   userId?: Prisma.StringFilter<"Dapem"> | string
+  dPKStatusId?: Prisma.StringNullableFilter<"Dapem"> | string | null
 }
 
 export type DapemUpsertWithWhereUniqueWithoutAOCabangInput = {
@@ -4652,6 +5291,7 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -4698,10 +5338,24 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -4726,6 +5380,9 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4756,6 +5413,7 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -4767,6 +5425,7 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -4813,10 +5472,24 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -4841,6 +5514,9 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4873,6 +5549,7 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -4908,6 +5585,7 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -4954,10 +5632,24 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -4982,6 +5674,9 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5012,6 +5707,7 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -5023,6 +5719,7 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -5069,10 +5766,24 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -5097,6 +5808,9 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5129,6 +5843,7 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -5164,6 +5879,7 @@ export type DapemCreateWithoutDebiturInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -5210,10 +5926,24 @@ export type DapemCreateWithoutDebiturInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -5238,6 +5968,9 @@ export type DapemCreateWithoutDebiturInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5268,6 +6001,7 @@ export type DapemCreateWithoutDebiturInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -5279,6 +6013,7 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -5325,10 +6060,24 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -5353,6 +6102,9 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5385,6 +6137,7 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -5420,6 +6173,7 @@ export type DapemCreateWithoutAianalysesInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -5466,10 +6220,24 @@ export type DapemCreateWithoutAianalysesInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -5494,6 +6262,9 @@ export type DapemCreateWithoutAianalysesInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5525,6 +6296,7 @@ export type DapemCreateWithoutAianalysesInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -5535,6 +6307,7 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -5581,10 +6354,24 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -5609,6 +6396,9 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5642,6 +6432,7 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
 }
@@ -5666,6 +6457,7 @@ export type DapemUpdateWithoutAianalysesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -5712,10 +6504,24 @@ export type DapemUpdateWithoutAianalysesInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5740,6 +6546,9 @@ export type DapemUpdateWithoutAianalysesInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -5771,6 +6580,7 @@ export type DapemUpdateWithoutAianalysesInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -5781,6 +6591,7 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -5827,10 +6638,24 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5855,6 +6680,9 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -5888,6 +6716,7 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
 }
@@ -5896,6 +6725,7 @@ export type DapemCreateWithoutPayOfficeInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -5942,10 +6772,24 @@ export type DapemCreateWithoutPayOfficeInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -5970,6 +6814,9 @@ export type DapemCreateWithoutPayOfficeInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6001,6 +6848,7 @@ export type DapemCreateWithoutPayOfficeInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   Insurance?: Prisma.InsuranceCreateNestedOneWithoutDapemsInput
@@ -6011,6 +6859,7 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -6057,10 +6906,24 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -6085,6 +6948,9 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6117,6 +6983,7 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   agentFrontingId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6136,6 +7003,7 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -6182,10 +7050,24 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -6210,6 +7092,9 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6240,6 +7125,7 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   Jaminan?: Prisma.JaminanCreateNestedOneWithoutDapemsInput
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -6251,6 +7137,7 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -6297,10 +7184,24 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -6325,6 +7226,9 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6357,6 +7261,7 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6408,6 +7313,7 @@ export type DapemCreateWithoutInsuranceInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -6454,10 +7360,24 @@ export type DapemCreateWithoutInsuranceInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -6482,6 +7402,9 @@ export type DapemCreateWithoutInsuranceInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6513,6 +7436,7 @@ export type DapemCreateWithoutInsuranceInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -6523,6 +7447,7 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -6569,10 +7494,24 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -6597,6 +7536,9 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6629,6 +7571,7 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   agentFrontingId?: string | null
   payOfficeId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6664,6 +7607,7 @@ export type DapemCreateWithoutDroppingInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -6710,10 +7654,24 @@ export type DapemCreateWithoutDroppingInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -6738,6 +7696,9 @@ export type DapemCreateWithoutDroppingInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6768,6 +7729,7 @@ export type DapemCreateWithoutDroppingInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -6779,6 +7741,7 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -6825,10 +7788,24 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -6853,6 +7830,9 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6885,6 +7865,7 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6920,6 +7901,7 @@ export type DapemCreateWithoutBerkasInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -6966,10 +7948,24 @@ export type DapemCreateWithoutBerkasInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -6994,6 +7990,9 @@ export type DapemCreateWithoutBerkasInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7024,6 +8023,7 @@ export type DapemCreateWithoutBerkasInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -7035,6 +8035,7 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -7081,10 +8082,24 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -7109,6 +8124,9 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7141,6 +8159,7 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -7176,6 +8195,7 @@ export type DapemCreateWithoutJaminanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -7222,10 +8242,24 @@ export type DapemCreateWithoutJaminanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -7250,6 +8284,9 @@ export type DapemCreateWithoutJaminanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7280,6 +8317,7 @@ export type DapemCreateWithoutJaminanInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -7291,6 +8329,7 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -7337,10 +8376,24 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -7365,6 +8418,9 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7397,6 +8453,7 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -7432,6 +8489,7 @@ export type DapemCreateWithoutPelunasanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -7478,10 +8536,24 @@ export type DapemCreateWithoutPelunasanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -7506,6 +8578,9 @@ export type DapemCreateWithoutPelunasanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7537,6 +8612,7 @@ export type DapemCreateWithoutPelunasanInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
   Insurance?: Prisma.InsuranceCreateNestedOneWithoutDapemsInput
@@ -7547,6 +8623,7 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -7593,10 +8670,24 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -7621,6 +8712,9 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7654,6 +8748,7 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
 }
@@ -7678,6 +8773,7 @@ export type DapemUpdateWithoutPelunasanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -7724,10 +8820,24 @@ export type DapemUpdateWithoutPelunasanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7752,6 +8862,9 @@ export type DapemUpdateWithoutPelunasanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7783,6 +8896,7 @@ export type DapemUpdateWithoutPelunasanInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
   Insurance?: Prisma.InsuranceUpdateOneWithoutDapemsNestedInput
@@ -7793,6 +8907,7 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -7839,10 +8954,24 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7867,6 +8996,9 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7900,6 +9032,7 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
 }
@@ -7908,6 +9041,7 @@ export type DapemCreateWithoutAngsuransInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -7954,10 +9088,24 @@ export type DapemCreateWithoutAngsuransInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -7982,6 +9130,9 @@ export type DapemCreateWithoutAngsuransInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8013,6 +9164,7 @@ export type DapemCreateWithoutAngsuransInput = {
   AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
   Insurance?: Prisma.InsuranceCreateNestedOneWithoutDapemsInput
@@ -8023,6 +9175,7 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -8069,10 +9222,24 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -8097,6 +9264,9 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8130,6 +9300,7 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
 }
@@ -8154,6 +9325,7 @@ export type DapemUpdateWithoutAngsuransInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -8200,10 +9372,24 @@ export type DapemUpdateWithoutAngsuransInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8228,6 +9414,9 @@ export type DapemUpdateWithoutAngsuransInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8259,6 +9448,7 @@ export type DapemUpdateWithoutAngsuransInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
   Insurance?: Prisma.InsuranceUpdateOneWithoutDapemsNestedInput
@@ -8269,6 +9459,7 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -8315,10 +9506,24 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8343,6 +9548,9 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8376,6 +9584,7 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
 }
@@ -8384,6 +9593,7 @@ export type DapemCreateWithoutAgentFrontingInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -8430,10 +9640,24 @@ export type DapemCreateWithoutAgentFrontingInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -8458,6 +9682,9 @@ export type DapemCreateWithoutAgentFrontingInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8488,6 +9715,7 @@ export type DapemCreateWithoutAgentFrontingInput = {
   Jaminan?: Prisma.JaminanCreateNestedOneWithoutDapemsInput
   User: Prisma.UserCreateNestedOneWithoutDapemsInput
   PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  DPKStatus?: Prisma.DPKStatusCreateNestedOneWithoutDapemsInput
   Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
@@ -8499,6 +9727,7 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -8545,10 +9774,24 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -8573,6 +9816,9 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8605,6 +9851,7 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -8636,10 +9883,11 @@ export type DapemUpdateManyWithWhereWithoutAgentFrontingInput = {
   data: Prisma.XOR<Prisma.DapemUpdateManyMutationInput, Prisma.DapemUncheckedUpdateManyWithoutAgentFrontingInput>
 }
 
-export type DapemCreateManyAOInput = {
+export type DapemCreateWithoutDPKStatusInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -8686,10 +9934,24 @@ export type DapemCreateManyAOInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -8714,6 +9976,303 @@ export type DapemCreateManyAOInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
+  used_for: string
+  no_contract: string
+  date_contract?: Date | string | null
+  date_end?: Date | string | null
+  tbo_date?: Date | string | null
+  file_slik?: string | null
+  file_proses?: string | null
+  file_submission?: string | null
+  video_interview?: string | null
+  video_insurance?: string | null
+  video_contract?: string | null
+  file_contract?: string | null
+  file_takeover?: string | null
+  file_mutasi?: string | null
+  file_flagging?: string | null
+  file_skep?: string | null
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
+  ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
+  JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
+  AO?: Prisma.UserCreateNestedOneWithoutAOsInput
+  AOCabang?: Prisma.UserCreateNestedOneWithoutAOCabangsInput
+  AOArea?: Prisma.UserCreateNestedOneWithoutAOAreasInput
+  Dropping?: Prisma.DroppingCreateNestedOneWithoutDapemsInput
+  Berkas?: Prisma.BerkasCreateNestedOneWithoutDapemsInput
+  Jaminan?: Prisma.JaminanCreateNestedOneWithoutDapemsInput
+  AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutDapemsInput
+  User: Prisma.UserCreateNestedOneWithoutDapemsInput
+  PrevPayOffice?: Prisma.PayOfficeCreateNestedOneWithoutPrevPayOfficesInput
+  Angsurans?: Prisma.AngsuranCreateNestedManyWithoutDapemInput
+  Pelunasan?: Prisma.PelunasanCreateNestedOneWithoutDapemInput
+  PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDapemsInput
+  Insurance?: Prisma.InsuranceCreateNestedOneWithoutDapemsInput
+  Aianalyses?: Prisma.AIAnalysisCreateNestedManyWithoutDapemInput
+}
+
+export type DapemUncheckedCreateWithoutDPKStatusInput = {
+  id?: string
+  tenor: number
+  plafond: number
+  salary?: number
+  c_margin_sumdan: number
+  c_account_sumdan: number
+  c_adm_sumdan: number
+  c_provisi_sumdan?: number
+  c_margin: number
+  c_adm: number
+  c_insurance: number
+  c_provisi: number
+  c_gov: number
+  c_stamp: number
+  c_flagging: number
+  c_infomation: number
+  c_mutasi: number
+  c_blokir: number
+  c_fee_bpp?: number
+  c_fee_fronting?: number
+  c_ned?: number
+  fee_banpot?: number
+  c_takeover: number
+  tbo: number
+  rounded: number
+  margin_type: $Enums.EMarginType
+  takeover_from?: string | null
+  takeover_date?: Date | string | null
+  dom_status: boolean
+  address: string
+  ward: string
+  district: string
+  city: string
+  province?: string | null
+  pos_code?: string | null
+  geolocation?: string | null
+  house_status?: string | null
+  house_year?: string | null
+  job?: string | null
+  job_address?: string | null
+  business?: string | null
+  marriage_status?: $Enums.EMarriageStatus
+  aw_name?: string | null
+  aw_nik?: string | null
+  aw_birthdate?: Date | string | null
+  aw_birthplace?: string | null
+  aw_job?: string | null
+  aw_address?: string | null
+  aw_relate?: string | null
+  aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
+  f_name?: string | null
+  f_relate?: string | null
+  f_phone?: string | null
+  f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
+  dropping_status?: $Enums.EDapemStatus
+  verif_status?: $Enums.ESubmissionStatus | null
+  verif_desc?: string | null
+  slik_status?: $Enums.ESubmissionStatus | null
+  slik_desc?: string | null
+  approv_status?: $Enums.ESubmissionStatus | null
+  approv_desc?: string | null
+  takeover_status?: $Enums.EDapemStatus
+  takeover_desc?: string | null
+  takeover_date_exc?: Date | string | null
+  mutasi_status?: $Enums.EDapemStatus
+  mutasi_desc?: string | null
+  mutasi_date_exc?: Date | string | null
+  flagging_status?: $Enums.EDapemStatus
+  flagging_desc?: string | null
+  flagging_date_exc?: Date | string | null
+  cash_status?: $Enums.EDapemStatus
+  cash_desc?: string | null
+  document_status?: $Enums.EDocStatus
+  document_desc?: string | null
+  guarantee_status?: $Enums.EDocStatus
+  guarantee_desc?: string | null
+  ao_fee_status?: $Enums.EDapemStatus
+  ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
+  used_for: string
+  no_contract: string
+  date_contract?: Date | string | null
+  date_end?: Date | string | null
+  tbo_date?: Date | string | null
+  file_slik?: string | null
+  file_proses?: string | null
+  file_submission?: string | null
+  video_interview?: string | null
+  video_insurance?: string | null
+  video_contract?: string | null
+  file_contract?: string | null
+  file_takeover?: string | null
+  file_mutasi?: string | null
+  file_flagging?: string | null
+  file_skep?: string | null
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  prevPayOfficeId?: string | null
+  nopen: string
+  produkPembiayaanId: string
+  jenisPembiayaanId: string
+  aoId?: string | null
+  aoCabangId?: string | null
+  aoAreaId?: string | null
+  droppingId?: string | null
+  berkasId?: string | null
+  jaminanId?: string | null
+  agentFrontingId?: string | null
+  payOfficeId?: string | null
+  insuranceId?: string | null
+  userId: string
+  Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
+  Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
+  Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
+}
+
+export type DapemCreateOrConnectWithoutDPKStatusInput = {
+  where: Prisma.DapemWhereUniqueInput
+  create: Prisma.XOR<Prisma.DapemCreateWithoutDPKStatusInput, Prisma.DapemUncheckedCreateWithoutDPKStatusInput>
+}
+
+export type DapemCreateManyDPKStatusInputEnvelope = {
+  data: Prisma.DapemCreateManyDPKStatusInput | Prisma.DapemCreateManyDPKStatusInput[]
+  skipDuplicates?: boolean
+}
+
+export type DapemUpsertWithWhereUniqueWithoutDPKStatusInput = {
+  where: Prisma.DapemWhereUniqueInput
+  update: Prisma.XOR<Prisma.DapemUpdateWithoutDPKStatusInput, Prisma.DapemUncheckedUpdateWithoutDPKStatusInput>
+  create: Prisma.XOR<Prisma.DapemCreateWithoutDPKStatusInput, Prisma.DapemUncheckedCreateWithoutDPKStatusInput>
+}
+
+export type DapemUpdateWithWhereUniqueWithoutDPKStatusInput = {
+  where: Prisma.DapemWhereUniqueInput
+  data: Prisma.XOR<Prisma.DapemUpdateWithoutDPKStatusInput, Prisma.DapemUncheckedUpdateWithoutDPKStatusInput>
+}
+
+export type DapemUpdateManyWithWhereWithoutDPKStatusInput = {
+  where: Prisma.DapemScalarWhereInput
+  data: Prisma.XOR<Prisma.DapemUpdateManyMutationInput, Prisma.DapemUncheckedUpdateManyWithoutDPKStatusInput>
+}
+
+export type DapemCreateManyAOInput = {
+  id?: string
+  tenor: number
+  plafond: number
+  salary?: number
+  c_margin_sumdan: number
+  c_account_sumdan: number
+  c_adm_sumdan: number
+  c_provisi_sumdan?: number
+  c_margin: number
+  c_adm: number
+  c_insurance: number
+  c_provisi: number
+  c_gov: number
+  c_stamp: number
+  c_flagging: number
+  c_infomation: number
+  c_mutasi: number
+  c_blokir: number
+  c_fee_bpp?: number
+  c_fee_fronting?: number
+  c_ned?: number
+  fee_banpot?: number
+  c_takeover: number
+  tbo: number
+  rounded: number
+  margin_type: $Enums.EMarginType
+  takeover_from?: string | null
+  takeover_date?: Date | string | null
+  dom_status: boolean
+  address: string
+  ward: string
+  district: string
+  city: string
+  province?: string | null
+  pos_code?: string | null
+  geolocation?: string | null
+  house_status?: string | null
+  house_year?: string | null
+  job?: string | null
+  job_address?: string | null
+  business?: string | null
+  marriage_status?: $Enums.EMarriageStatus
+  aw_name?: string | null
+  aw_nik?: string | null
+  aw_birthdate?: Date | string | null
+  aw_birthplace?: string | null
+  aw_job?: string | null
+  aw_address?: string | null
+  aw_relate?: string | null
+  aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
+  f_name?: string | null
+  f_relate?: string | null
+  f_phone?: string | null
+  f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
+  dropping_status?: $Enums.EDapemStatus
+  verif_status?: $Enums.ESubmissionStatus | null
+  verif_desc?: string | null
+  slik_status?: $Enums.ESubmissionStatus | null
+  slik_desc?: string | null
+  approv_status?: $Enums.ESubmissionStatus | null
+  approv_desc?: string | null
+  takeover_status?: $Enums.EDapemStatus
+  takeover_desc?: string | null
+  takeover_date_exc?: Date | string | null
+  mutasi_status?: $Enums.EDapemStatus
+  mutasi_desc?: string | null
+  mutasi_date_exc?: Date | string | null
+  flagging_status?: $Enums.EDapemStatus
+  flagging_desc?: string | null
+  flagging_date_exc?: Date | string | null
+  cash_status?: $Enums.EDapemStatus
+  cash_desc?: string | null
+  document_status?: $Enums.EDocStatus
+  document_desc?: string | null
+  guarantee_status?: $Enums.EDocStatus
+  guarantee_desc?: string | null
+  ao_fee_status?: $Enums.EDapemStatus
+  ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8746,12 +10305,14 @@ export type DapemCreateManyAOInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemCreateManyAOCabangInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -8798,10 +10359,24 @@ export type DapemCreateManyAOCabangInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -8826,6 +10401,9 @@ export type DapemCreateManyAOCabangInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8858,12 +10436,14 @@ export type DapemCreateManyAOCabangInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemCreateManyAOAreaInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -8910,10 +10490,24 @@ export type DapemCreateManyAOAreaInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -8938,6 +10532,9 @@ export type DapemCreateManyAOAreaInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8970,12 +10567,14 @@ export type DapemCreateManyAOAreaInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemCreateManyUserInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -9022,10 +10621,24 @@ export type DapemCreateManyUserInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -9050,6 +10663,9 @@ export type DapemCreateManyUserInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9082,12 +10698,14 @@ export type DapemCreateManyUserInput = {
   agentFrontingId?: string | null
   payOfficeId?: string | null
   insuranceId?: string | null
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutAOInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -9134,10 +10752,24 @@ export type DapemUpdateWithoutAOInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9162,6 +10794,9 @@ export type DapemUpdateWithoutAOInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9192,6 +10827,7 @@ export type DapemUpdateWithoutAOInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -9203,6 +10839,7 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -9249,10 +10886,24 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9277,6 +10928,9 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9309,6 +10963,7 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -9318,6 +10973,7 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -9364,10 +11020,24 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9392,6 +11062,9 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9424,12 +11097,14 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutAOCabangInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -9476,10 +11151,24 @@ export type DapemUpdateWithoutAOCabangInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9504,6 +11193,9 @@ export type DapemUpdateWithoutAOCabangInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9534,6 +11226,7 @@ export type DapemUpdateWithoutAOCabangInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -9545,6 +11238,7 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -9591,10 +11285,24 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9619,6 +11327,9 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9651,6 +11362,7 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -9660,6 +11372,7 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -9706,10 +11419,24 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9734,6 +11461,9 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9766,12 +11496,14 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutAOAreaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -9818,10 +11550,24 @@ export type DapemUpdateWithoutAOAreaInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9846,6 +11592,9 @@ export type DapemUpdateWithoutAOAreaInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9876,6 +11625,7 @@ export type DapemUpdateWithoutAOAreaInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -9887,6 +11637,7 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -9933,10 +11684,24 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9961,6 +11726,9 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9993,6 +11761,7 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -10002,6 +11771,7 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -10048,10 +11818,24 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10076,6 +11860,9 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10108,12 +11895,14 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -10160,10 +11949,24 @@ export type DapemUpdateWithoutUserInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10188,6 +11991,9 @@ export type DapemUpdateWithoutUserInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10218,6 +12024,7 @@ export type DapemUpdateWithoutUserInput = {
   Jaminan?: Prisma.JaminanUpdateOneWithoutDapemsNestedInput
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -10229,6 +12036,7 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -10275,10 +12083,24 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10303,6 +12125,9 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10335,6 +12160,7 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   agentFrontingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -10344,6 +12170,7 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -10390,10 +12217,24 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10418,6 +12259,9 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10450,12 +12294,14 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   agentFrontingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyProdukPembiayaanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -10502,10 +12348,24 @@ export type DapemCreateManyProdukPembiayaanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -10530,6 +12390,9 @@ export type DapemCreateManyProdukPembiayaanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10562,12 +12425,14 @@ export type DapemCreateManyProdukPembiayaanInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutProdukPembiayaanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -10614,10 +12479,24 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10642,6 +12521,9 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10672,6 +12554,7 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -10683,6 +12566,7 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -10729,10 +12613,24 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10757,6 +12655,9 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10789,6 +12690,7 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -10798,6 +12700,7 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -10844,10 +12747,24 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10872,6 +12789,9 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10904,12 +12824,14 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyJenisPembiayaanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -10956,10 +12878,24 @@ export type DapemCreateManyJenisPembiayaanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -10984,6 +12920,9 @@ export type DapemCreateManyJenisPembiayaanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -11016,12 +12955,14 @@ export type DapemCreateManyJenisPembiayaanInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutJenisPembiayaanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -11068,10 +13009,24 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11096,6 +13051,9 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11126,6 +13084,7 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -11137,6 +13096,7 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -11183,10 +13143,24 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11211,6 +13185,9 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11243,6 +13220,7 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -11252,6 +13230,7 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -11298,10 +13277,24 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11326,6 +13319,9 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11358,12 +13354,14 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyDebiturInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -11410,10 +13408,24 @@ export type DapemCreateManyDebiturInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -11438,6 +13450,9 @@ export type DapemCreateManyDebiturInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -11470,12 +13485,14 @@ export type DapemCreateManyDebiturInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutDebiturInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -11522,10 +13539,24 @@ export type DapemUpdateWithoutDebiturInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11550,6 +13581,9 @@ export type DapemUpdateWithoutDebiturInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11580,6 +13614,7 @@ export type DapemUpdateWithoutDebiturInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -11591,6 +13626,7 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -11637,10 +13673,24 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11665,6 +13715,9 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11697,6 +13750,7 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -11706,6 +13760,7 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -11752,10 +13807,24 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11780,6 +13849,9 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11812,12 +13884,14 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyPayOfficeInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -11864,10 +13938,24 @@ export type DapemCreateManyPayOfficeInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -11892,6 +13980,9 @@ export type DapemCreateManyPayOfficeInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -11924,12 +14015,14 @@ export type DapemCreateManyPayOfficeInput = {
   agentFrontingId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemCreateManyPrevPayOfficeInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -11976,10 +14069,24 @@ export type DapemCreateManyPrevPayOfficeInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -12004,6 +14111,9 @@ export type DapemCreateManyPrevPayOfficeInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -12036,12 +14146,14 @@ export type DapemCreateManyPrevPayOfficeInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutPayOfficeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -12088,10 +14200,24 @@ export type DapemUpdateWithoutPayOfficeInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12116,6 +14242,9 @@ export type DapemUpdateWithoutPayOfficeInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12147,6 +14276,7 @@ export type DapemUpdateWithoutPayOfficeInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   Insurance?: Prisma.InsuranceUpdateOneWithoutDapemsNestedInput
@@ -12157,6 +14287,7 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -12203,10 +14334,24 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12231,6 +14376,9 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12263,6 +14411,7 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   agentFrontingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -12272,6 +14421,7 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -12318,10 +14468,24 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12346,6 +14510,9 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12378,12 +14545,14 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   agentFrontingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutPrevPayOfficeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -12430,10 +14599,24 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12458,6 +14641,9 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12488,6 +14674,7 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   Jaminan?: Prisma.JaminanUpdateOneWithoutDapemsNestedInput
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -12499,6 +14686,7 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -12545,10 +14733,24 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12573,6 +14775,9 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12605,6 +14810,7 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -12614,6 +14820,7 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -12660,10 +14867,24 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12688,6 +14909,9 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12720,12 +14944,14 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyInsuranceInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -12772,10 +14998,24 @@ export type DapemCreateManyInsuranceInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -12800,6 +15040,9 @@ export type DapemCreateManyInsuranceInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -12832,12 +15075,14 @@ export type DapemCreateManyInsuranceInput = {
   agentFrontingId?: string | null
   payOfficeId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutInsuranceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -12884,10 +15129,24 @@ export type DapemUpdateWithoutInsuranceInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12912,6 +15171,9 @@ export type DapemUpdateWithoutInsuranceInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12943,6 +15205,7 @@ export type DapemUpdateWithoutInsuranceInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -12953,6 +15216,7 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -12999,10 +15263,24 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13027,6 +15305,9 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13059,6 +15340,7 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   agentFrontingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -13068,6 +15350,7 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -13114,10 +15397,24 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13142,6 +15439,9 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13174,12 +15474,14 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   agentFrontingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyDroppingInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -13226,10 +15528,24 @@ export type DapemCreateManyDroppingInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -13254,6 +15570,9 @@ export type DapemCreateManyDroppingInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -13286,12 +15605,14 @@ export type DapemCreateManyDroppingInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutDroppingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -13338,10 +15659,24 @@ export type DapemUpdateWithoutDroppingInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13366,6 +15701,9 @@ export type DapemUpdateWithoutDroppingInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13396,6 +15734,7 @@ export type DapemUpdateWithoutDroppingInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -13407,6 +15746,7 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -13453,10 +15793,24 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13481,6 +15835,9 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13513,6 +15870,7 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -13522,6 +15880,7 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -13568,10 +15927,24 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13596,6 +15969,9 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13628,12 +16004,14 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyBerkasInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -13680,10 +16058,24 @@ export type DapemCreateManyBerkasInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -13708,6 +16100,9 @@ export type DapemCreateManyBerkasInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -13740,12 +16135,14 @@ export type DapemCreateManyBerkasInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutBerkasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -13792,10 +16189,24 @@ export type DapemUpdateWithoutBerkasInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13820,6 +16231,9 @@ export type DapemUpdateWithoutBerkasInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13850,6 +16264,7 @@ export type DapemUpdateWithoutBerkasInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -13861,6 +16276,7 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -13907,10 +16323,24 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13935,6 +16365,9 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13967,6 +16400,7 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -13976,6 +16410,7 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -14022,10 +16457,24 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14050,6 +16499,9 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14082,12 +16534,14 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyJaminanInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -14134,10 +16588,24 @@ export type DapemCreateManyJaminanInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -14162,6 +16630,9 @@ export type DapemCreateManyJaminanInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -14194,12 +16665,14 @@ export type DapemCreateManyJaminanInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutJaminanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -14246,10 +16719,24 @@ export type DapemUpdateWithoutJaminanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14274,6 +16761,9 @@ export type DapemUpdateWithoutJaminanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14304,6 +16794,7 @@ export type DapemUpdateWithoutJaminanInput = {
   AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -14315,6 +16806,7 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -14361,10 +16853,24 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14389,6 +16895,9 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14421,6 +16930,7 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -14430,6 +16940,7 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -14476,10 +16987,24 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14504,6 +17029,9 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14536,12 +17064,14 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyAgentFrontingInput = {
   id?: string
   tenor: number
   plafond: number
+  salary?: number
   c_margin_sumdan: number
   c_account_sumdan: number
   c_adm_sumdan: number
@@ -14588,10 +17118,24 @@ export type DapemCreateManyAgentFrontingInput = {
   aw_address?: string | null
   aw_relate?: string | null
   aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
   f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
   dropping_status?: $Enums.EDapemStatus
   verif_status?: $Enums.ESubmissionStatus | null
   verif_desc?: string | null
@@ -14616,6 +17160,9 @@ export type DapemCreateManyAgentFrontingInput = {
   guarantee_desc?: string | null
   ao_fee_status?: $Enums.EDapemStatus
   ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -14648,12 +17195,14 @@ export type DapemCreateManyAgentFrontingInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  dPKStatusId?: string | null
 }
 
 export type DapemUpdateWithoutAgentFrontingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -14700,10 +17249,24 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14728,6 +17291,9 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14758,6 +17324,7 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   Jaminan?: Prisma.JaminanUpdateOneWithoutDapemsNestedInput
   User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
   PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  DPKStatus?: Prisma.DPKStatusUpdateOneWithoutDapemsNestedInput
   Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
@@ -14769,6 +17336,7 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -14815,10 +17383,24 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14843,6 +17425,9 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14875,6 +17460,7 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -14884,6 +17470,7 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
   c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
   c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -14930,10 +17517,24 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
   verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14958,6 +17559,9 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14987,6 +17591,537 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   droppingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   berkasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   jaminanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type DapemCreateManyDPKStatusInput = {
+  id?: string
+  tenor: number
+  plafond: number
+  salary?: number
+  c_margin_sumdan: number
+  c_account_sumdan: number
+  c_adm_sumdan: number
+  c_provisi_sumdan?: number
+  c_margin: number
+  c_adm: number
+  c_insurance: number
+  c_provisi: number
+  c_gov: number
+  c_stamp: number
+  c_flagging: number
+  c_infomation: number
+  c_mutasi: number
+  c_blokir: number
+  c_fee_bpp?: number
+  c_fee_fronting?: number
+  c_ned?: number
+  fee_banpot?: number
+  c_takeover: number
+  tbo: number
+  rounded: number
+  margin_type: $Enums.EMarginType
+  takeover_from?: string | null
+  takeover_date?: Date | string | null
+  dom_status: boolean
+  address: string
+  ward: string
+  district: string
+  city: string
+  province?: string | null
+  pos_code?: string | null
+  geolocation?: string | null
+  house_status?: string | null
+  house_year?: string | null
+  job?: string | null
+  job_address?: string | null
+  business?: string | null
+  marriage_status?: $Enums.EMarriageStatus
+  aw_name?: string | null
+  aw_nik?: string | null
+  aw_birthdate?: Date | string | null
+  aw_birthplace?: string | null
+  aw_job?: string | null
+  aw_address?: string | null
+  aw_relate?: string | null
+  aw_phone?: string | null
+  aw_rt?: string | null
+  aw_rw?: string | null
+  aw_ward?: string | null
+  aw_district?: string | null
+  aw_city?: string | null
+  aw_province?: string | null
+  aw_pos_code?: string | null
+  f_name?: string | null
+  f_relate?: string | null
+  f_phone?: string | null
+  f_address?: string | null
+  f_rt?: string | null
+  f_rw?: string | null
+  f_ward?: string | null
+  f_district?: string | null
+  f_city?: string | null
+  f_province?: string | null
+  f_pos_code?: string | null
+  dropping_status?: $Enums.EDapemStatus
+  verif_status?: $Enums.ESubmissionStatus | null
+  verif_desc?: string | null
+  slik_status?: $Enums.ESubmissionStatus | null
+  slik_desc?: string | null
+  approv_status?: $Enums.ESubmissionStatus | null
+  approv_desc?: string | null
+  takeover_status?: $Enums.EDapemStatus
+  takeover_desc?: string | null
+  takeover_date_exc?: Date | string | null
+  mutasi_status?: $Enums.EDapemStatus
+  mutasi_desc?: string | null
+  mutasi_date_exc?: Date | string | null
+  flagging_status?: $Enums.EDapemStatus
+  flagging_desc?: string | null
+  flagging_date_exc?: Date | string | null
+  cash_status?: $Enums.EDapemStatus
+  cash_desc?: string | null
+  document_status?: $Enums.EDocStatus
+  document_desc?: string | null
+  guarantee_status?: $Enums.EDocStatus
+  guarantee_desc?: string | null
+  ao_fee_status?: $Enums.EDapemStatus
+  ao_fee_desc?: string | null
+  dev_status?: boolean
+  deviasi_note?: string | null
+  note?: string | null
+  used_for: string
+  no_contract: string
+  date_contract?: Date | string | null
+  date_end?: Date | string | null
+  tbo_date?: Date | string | null
+  file_slik?: string | null
+  file_proses?: string | null
+  file_submission?: string | null
+  video_interview?: string | null
+  video_insurance?: string | null
+  video_contract?: string | null
+  file_contract?: string | null
+  file_takeover?: string | null
+  file_mutasi?: string | null
+  file_flagging?: string | null
+  file_skep?: string | null
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  prevPayOfficeId?: string | null
+  nopen: string
+  produkPembiayaanId: string
+  jenisPembiayaanId: string
+  aoId?: string | null
+  aoCabangId?: string | null
+  aoAreaId?: string | null
+  droppingId?: string | null
+  berkasId?: string | null
+  jaminanId?: string | null
+  agentFrontingId?: string | null
+  payOfficeId?: string | null
+  insuranceId?: string | null
+  userId: string
+}
+
+export type DapemUpdateWithoutDPKStatusInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.IntFieldUpdateOperationsInput | number
+  c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
+  c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
+  c_infomation?: Prisma.IntFieldUpdateOperationsInput | number
+  c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
+  c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_bpp?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_fronting?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
+  tbo?: Prisma.IntFieldUpdateOperationsInput | number
+  rounded?: Prisma.IntFieldUpdateOperationsInput | number
+  margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  ward?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  geolocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  house_status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  house_year?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  job?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  job_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  business?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  marriage_status?: Prisma.EnumEMarriageStatusFieldUpdateOperationsInput | $Enums.EMarriageStatus
+  aw_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_nik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_birthdate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  aw_birthplace?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_job?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
+  verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slik_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
+  slik_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approv_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
+  approv_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  takeover_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  takeover_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  takeover_date_exc?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mutasi_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  mutasi_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mutasi_date_exc?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  flagging_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  flagging_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  flagging_date_exc?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cash_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  cash_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  document_status?: Prisma.EnumEDocStatusFieldUpdateOperationsInput | $Enums.EDocStatus
+  document_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guarantee_status?: Prisma.EnumEDocStatusFieldUpdateOperationsInput | $Enums.EDocStatus
+  guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  used_for?: Prisma.StringFieldUpdateOperationsInput | string
+  no_contract?: Prisma.StringFieldUpdateOperationsInput | string
+  date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  date_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tbo_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  file_slik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_proses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_submission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_interview?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_contract?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_contract?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_takeover?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_mutasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_flagging?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
+  ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
+  JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
+  AO?: Prisma.UserUpdateOneWithoutAOsNestedInput
+  AOCabang?: Prisma.UserUpdateOneWithoutAOCabangsNestedInput
+  AOArea?: Prisma.UserUpdateOneWithoutAOAreasNestedInput
+  Dropping?: Prisma.DroppingUpdateOneWithoutDapemsNestedInput
+  Berkas?: Prisma.BerkasUpdateOneWithoutDapemsNestedInput
+  Jaminan?: Prisma.JaminanUpdateOneWithoutDapemsNestedInput
+  AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutDapemsNestedInput
+  User?: Prisma.UserUpdateOneRequiredWithoutDapemsNestedInput
+  PrevPayOffice?: Prisma.PayOfficeUpdateOneWithoutPrevPayOfficesNestedInput
+  Angsurans?: Prisma.AngsuranUpdateManyWithoutDapemNestedInput
+  Pelunasan?: Prisma.PelunasanUpdateOneWithoutDapemNestedInput
+  PayOffice?: Prisma.PayOfficeUpdateOneWithoutDapemsNestedInput
+  Insurance?: Prisma.InsuranceUpdateOneWithoutDapemsNestedInput
+  Aianalyses?: Prisma.AIAnalysisUpdateManyWithoutDapemNestedInput
+}
+
+export type DapemUncheckedUpdateWithoutDPKStatusInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.IntFieldUpdateOperationsInput | number
+  c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
+  c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
+  c_infomation?: Prisma.IntFieldUpdateOperationsInput | number
+  c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
+  c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_bpp?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_fronting?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
+  tbo?: Prisma.IntFieldUpdateOperationsInput | number
+  rounded?: Prisma.IntFieldUpdateOperationsInput | number
+  margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  ward?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  geolocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  house_status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  house_year?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  job?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  job_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  business?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  marriage_status?: Prisma.EnumEMarriageStatusFieldUpdateOperationsInput | $Enums.EMarriageStatus
+  aw_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_nik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_birthdate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  aw_birthplace?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_job?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
+  verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slik_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
+  slik_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approv_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
+  approv_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  takeover_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  takeover_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  takeover_date_exc?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mutasi_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  mutasi_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mutasi_date_exc?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  flagging_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  flagging_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  flagging_date_exc?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cash_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  cash_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  document_status?: Prisma.EnumEDocStatusFieldUpdateOperationsInput | $Enums.EDocStatus
+  document_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guarantee_status?: Prisma.EnumEDocStatusFieldUpdateOperationsInput | $Enums.EDocStatus
+  guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  used_for?: Prisma.StringFieldUpdateOperationsInput | string
+  no_contract?: Prisma.StringFieldUpdateOperationsInput | string
+  date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  date_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tbo_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  file_slik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_proses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_submission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_interview?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_contract?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_contract?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_takeover?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_mutasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_flagging?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prevPayOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nopen?: Prisma.StringFieldUpdateOperationsInput | string
+  produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  aoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aoCabangId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aoAreaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  droppingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  berkasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jaminanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agentFrontingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
+  Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
+  Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
+}
+
+export type DapemUncheckedUpdateManyWithoutDPKStatusInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.IntFieldUpdateOperationsInput | number
+  c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
+  c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
+  c_infomation?: Prisma.IntFieldUpdateOperationsInput | number
+  c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
+  c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_bpp?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_fronting?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
+  tbo?: Prisma.IntFieldUpdateOperationsInput | number
+  rounded?: Prisma.IntFieldUpdateOperationsInput | number
+  margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  ward?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  geolocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  house_status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  house_year?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  job?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  job_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  business?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  marriage_status?: Prisma.EnumEMarriageStatusFieldUpdateOperationsInput | $Enums.EMarriageStatus
+  aw_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_nik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_birthdate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  aw_birthplace?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_job?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_rw?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  f_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dropping_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  verif_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
+  verif_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slik_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
+  slik_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approv_status?: Prisma.NullableEnumESubmissionStatusFieldUpdateOperationsInput | $Enums.ESubmissionStatus | null
+  approv_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  takeover_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  takeover_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  takeover_date_exc?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mutasi_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  mutasi_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mutasi_date_exc?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  flagging_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  flagging_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  flagging_date_exc?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cash_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  cash_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  document_status?: Prisma.EnumEDocStatusFieldUpdateOperationsInput | $Enums.EDocStatus
+  document_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guarantee_status?: Prisma.EnumEDocStatusFieldUpdateOperationsInput | $Enums.EDocStatus
+  guarantee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ao_fee_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
+  ao_fee_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  used_for?: Prisma.StringFieldUpdateOperationsInput | string
+  no_contract?: Prisma.StringFieldUpdateOperationsInput | string
+  date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  date_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tbo_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  file_slik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_proses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_submission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_interview?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_insurance?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_contract?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_contract?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_takeover?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_mutasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_flagging?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prevPayOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nopen?: Prisma.StringFieldUpdateOperationsInput | string
+  produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  aoId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aoCabangId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aoAreaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  droppingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  berkasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jaminanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agentFrontingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -15036,6 +18171,7 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   tenor?: boolean
   plafond?: boolean
+  salary?: boolean
   c_margin_sumdan?: boolean
   c_account_sumdan?: boolean
   c_adm_sumdan?: boolean
@@ -15082,10 +18218,24 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   aw_address?: boolean
   aw_relate?: boolean
   aw_phone?: boolean
+  aw_rt?: boolean
+  aw_rw?: boolean
+  aw_ward?: boolean
+  aw_district?: boolean
+  aw_city?: boolean
+  aw_province?: boolean
+  aw_pos_code?: boolean
   f_name?: boolean
   f_relate?: boolean
   f_phone?: boolean
   f_address?: boolean
+  f_rt?: boolean
+  f_rw?: boolean
+  f_ward?: boolean
+  f_district?: boolean
+  f_city?: boolean
+  f_province?: boolean
+  f_pos_code?: boolean
   dropping_status?: boolean
   verif_status?: boolean
   verif_desc?: boolean
@@ -15110,6 +18260,9 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   guarantee_desc?: boolean
   ao_fee_status?: boolean
   ao_fee_desc?: boolean
+  dev_status?: boolean
+  deviasi_note?: boolean
+  note?: boolean
   used_for?: boolean
   no_contract?: boolean
   date_contract?: boolean
@@ -15143,6 +18296,7 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   payOfficeId?: boolean
   insuranceId?: boolean
   userId?: boolean
+  dPKStatusId?: boolean
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
   JenisPembiayaan?: boolean | Prisma.JenisPembiayaanDefaultArgs<ExtArgs>
@@ -15155,6 +18309,7 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   AgentFronting?: boolean | Prisma.Dapem$AgentFrontingArgs<ExtArgs>
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   PrevPayOffice?: boolean | Prisma.Dapem$PrevPayOfficeArgs<ExtArgs>
+  DPKStatus?: boolean | Prisma.Dapem$DPKStatusArgs<ExtArgs>
   Angsurans?: boolean | Prisma.Dapem$AngsuransArgs<ExtArgs>
   Pelunasan?: boolean | Prisma.Dapem$PelunasanArgs<ExtArgs>
   PayOffice?: boolean | Prisma.Dapem$PayOfficeArgs<ExtArgs>
@@ -15169,6 +18324,7 @@ export type DapemSelectScalar = {
   id?: boolean
   tenor?: boolean
   plafond?: boolean
+  salary?: boolean
   c_margin_sumdan?: boolean
   c_account_sumdan?: boolean
   c_adm_sumdan?: boolean
@@ -15215,10 +18371,24 @@ export type DapemSelectScalar = {
   aw_address?: boolean
   aw_relate?: boolean
   aw_phone?: boolean
+  aw_rt?: boolean
+  aw_rw?: boolean
+  aw_ward?: boolean
+  aw_district?: boolean
+  aw_city?: boolean
+  aw_province?: boolean
+  aw_pos_code?: boolean
   f_name?: boolean
   f_relate?: boolean
   f_phone?: boolean
   f_address?: boolean
+  f_rt?: boolean
+  f_rw?: boolean
+  f_ward?: boolean
+  f_district?: boolean
+  f_city?: boolean
+  f_province?: boolean
+  f_pos_code?: boolean
   dropping_status?: boolean
   verif_status?: boolean
   verif_desc?: boolean
@@ -15243,6 +18413,9 @@ export type DapemSelectScalar = {
   guarantee_desc?: boolean
   ao_fee_status?: boolean
   ao_fee_desc?: boolean
+  dev_status?: boolean
+  deviasi_note?: boolean
+  note?: boolean
   used_for?: boolean
   no_contract?: boolean
   date_contract?: boolean
@@ -15276,9 +18449,10 @@ export type DapemSelectScalar = {
   payOfficeId?: boolean
   insuranceId?: boolean
   userId?: boolean
+  dPKStatusId?: boolean
 }
 
-export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "f_name" | "f_relate" | "f_phone" | "f_address" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId", ExtArgs["result"]["dapem"]>
+export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId", ExtArgs["result"]["dapem"]>
 export type DapemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
@@ -15292,6 +18466,7 @@ export type DapemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   AgentFronting?: boolean | Prisma.Dapem$AgentFrontingArgs<ExtArgs>
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   PrevPayOffice?: boolean | Prisma.Dapem$PrevPayOfficeArgs<ExtArgs>
+  DPKStatus?: boolean | Prisma.Dapem$DPKStatusArgs<ExtArgs>
   Angsurans?: boolean | Prisma.Dapem$AngsuransArgs<ExtArgs>
   Pelunasan?: boolean | Prisma.Dapem$PelunasanArgs<ExtArgs>
   PayOffice?: boolean | Prisma.Dapem$PayOfficeArgs<ExtArgs>
@@ -15315,6 +18490,7 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     AgentFronting: Prisma.$AgentFrontingPayload<ExtArgs> | null
     User: Prisma.$UserPayload<ExtArgs>
     PrevPayOffice: Prisma.$PayOfficePayload<ExtArgs> | null
+    DPKStatus: Prisma.$DPKStatusPayload<ExtArgs> | null
     Angsurans: Prisma.$AngsuranPayload<ExtArgs>[]
     Pelunasan: Prisma.$PelunasanPayload<ExtArgs> | null
     PayOffice: Prisma.$PayOfficePayload<ExtArgs> | null
@@ -15325,6 +18501,7 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     tenor: number
     plafond: number
+    salary: number
     c_margin_sumdan: number
     c_account_sumdan: number
     c_adm_sumdan: number
@@ -15371,10 +18548,24 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     aw_address: string | null
     aw_relate: string | null
     aw_phone: string | null
+    aw_rt: string | null
+    aw_rw: string | null
+    aw_ward: string | null
+    aw_district: string | null
+    aw_city: string | null
+    aw_province: string | null
+    aw_pos_code: string | null
     f_name: string | null
     f_relate: string | null
     f_phone: string | null
     f_address: string | null
+    f_rt: string | null
+    f_rw: string | null
+    f_ward: string | null
+    f_district: string | null
+    f_city: string | null
+    f_province: string | null
+    f_pos_code: string | null
     dropping_status: $Enums.EDapemStatus
     verif_status: $Enums.ESubmissionStatus | null
     verif_desc: string | null
@@ -15399,6 +18590,9 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     guarantee_desc: string | null
     ao_fee_status: $Enums.EDapemStatus
     ao_fee_desc: string | null
+    dev_status: boolean
+    deviasi_note: string | null
+    note: string | null
     used_for: string
     no_contract: string
     date_contract: Date | null
@@ -15432,6 +18626,7 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     payOfficeId: string | null
     insuranceId: string | null
     userId: string
+    dPKStatusId: string | null
   }, ExtArgs["result"]["dapem"]>
   composites: {}
 }
@@ -15784,6 +18979,7 @@ export interface Prisma__DapemClient<T, Null = never, ExtArgs extends runtime.Ty
   AgentFronting<T extends Prisma.Dapem$AgentFrontingArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Dapem$AgentFrontingArgs<ExtArgs>>): Prisma.Prisma__AgentFrontingClient<runtime.Types.Result.GetResult<Prisma.$AgentFrontingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   User<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   PrevPayOffice<T extends Prisma.Dapem$PrevPayOfficeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Dapem$PrevPayOfficeArgs<ExtArgs>>): Prisma.Prisma__PayOfficeClient<runtime.Types.Result.GetResult<Prisma.$PayOfficePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  DPKStatus<T extends Prisma.Dapem$DPKStatusArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Dapem$DPKStatusArgs<ExtArgs>>): Prisma.Prisma__DPKStatusClient<runtime.Types.Result.GetResult<Prisma.$DPKStatusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   Angsurans<T extends Prisma.Dapem$AngsuransArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Dapem$AngsuransArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AngsuranPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Pelunasan<T extends Prisma.Dapem$PelunasanArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Dapem$PelunasanArgs<ExtArgs>>): Prisma.Prisma__PelunasanClient<runtime.Types.Result.GetResult<Prisma.$PelunasanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   PayOffice<T extends Prisma.Dapem$PayOfficeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Dapem$PayOfficeArgs<ExtArgs>>): Prisma.Prisma__PayOfficeClient<runtime.Types.Result.GetResult<Prisma.$PayOfficePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -15821,6 +19017,7 @@ export interface DapemFieldRefs {
   readonly id: Prisma.FieldRef<"Dapem", 'String'>
   readonly tenor: Prisma.FieldRef<"Dapem", 'Int'>
   readonly plafond: Prisma.FieldRef<"Dapem", 'Int'>
+  readonly salary: Prisma.FieldRef<"Dapem", 'Int'>
   readonly c_margin_sumdan: Prisma.FieldRef<"Dapem", 'Float'>
   readonly c_account_sumdan: Prisma.FieldRef<"Dapem", 'Int'>
   readonly c_adm_sumdan: Prisma.FieldRef<"Dapem", 'Float'>
@@ -15867,10 +19064,24 @@ export interface DapemFieldRefs {
   readonly aw_address: Prisma.FieldRef<"Dapem", 'String'>
   readonly aw_relate: Prisma.FieldRef<"Dapem", 'String'>
   readonly aw_phone: Prisma.FieldRef<"Dapem", 'String'>
+  readonly aw_rt: Prisma.FieldRef<"Dapem", 'String'>
+  readonly aw_rw: Prisma.FieldRef<"Dapem", 'String'>
+  readonly aw_ward: Prisma.FieldRef<"Dapem", 'String'>
+  readonly aw_district: Prisma.FieldRef<"Dapem", 'String'>
+  readonly aw_city: Prisma.FieldRef<"Dapem", 'String'>
+  readonly aw_province: Prisma.FieldRef<"Dapem", 'String'>
+  readonly aw_pos_code: Prisma.FieldRef<"Dapem", 'String'>
   readonly f_name: Prisma.FieldRef<"Dapem", 'String'>
   readonly f_relate: Prisma.FieldRef<"Dapem", 'String'>
   readonly f_phone: Prisma.FieldRef<"Dapem", 'String'>
   readonly f_address: Prisma.FieldRef<"Dapem", 'String'>
+  readonly f_rt: Prisma.FieldRef<"Dapem", 'String'>
+  readonly f_rw: Prisma.FieldRef<"Dapem", 'String'>
+  readonly f_ward: Prisma.FieldRef<"Dapem", 'String'>
+  readonly f_district: Prisma.FieldRef<"Dapem", 'String'>
+  readonly f_city: Prisma.FieldRef<"Dapem", 'String'>
+  readonly f_province: Prisma.FieldRef<"Dapem", 'String'>
+  readonly f_pos_code: Prisma.FieldRef<"Dapem", 'String'>
   readonly dropping_status: Prisma.FieldRef<"Dapem", 'EDapemStatus'>
   readonly verif_status: Prisma.FieldRef<"Dapem", 'ESubmissionStatus'>
   readonly verif_desc: Prisma.FieldRef<"Dapem", 'String'>
@@ -15895,6 +19106,9 @@ export interface DapemFieldRefs {
   readonly guarantee_desc: Prisma.FieldRef<"Dapem", 'String'>
   readonly ao_fee_status: Prisma.FieldRef<"Dapem", 'EDapemStatus'>
   readonly ao_fee_desc: Prisma.FieldRef<"Dapem", 'String'>
+  readonly dev_status: Prisma.FieldRef<"Dapem", 'Boolean'>
+  readonly deviasi_note: Prisma.FieldRef<"Dapem", 'String'>
+  readonly note: Prisma.FieldRef<"Dapem", 'String'>
   readonly used_for: Prisma.FieldRef<"Dapem", 'String'>
   readonly no_contract: Prisma.FieldRef<"Dapem", 'String'>
   readonly date_contract: Prisma.FieldRef<"Dapem", 'DateTime'>
@@ -15928,6 +19142,7 @@ export interface DapemFieldRefs {
   readonly payOfficeId: Prisma.FieldRef<"Dapem", 'String'>
   readonly insuranceId: Prisma.FieldRef<"Dapem", 'String'>
   readonly userId: Prisma.FieldRef<"Dapem", 'String'>
+  readonly dPKStatusId: Prisma.FieldRef<"Dapem", 'String'>
 }
     
 
@@ -16425,6 +19640,25 @@ export type Dapem$PrevPayOfficeArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   include?: Prisma.PayOfficeInclude<ExtArgs> | null
   where?: Prisma.PayOfficeWhereInput
+}
+
+/**
+ * Dapem.DPKStatus
+ */
+export type Dapem$DPKStatusArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DPKStatus
+   */
+  select?: Prisma.DPKStatusSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DPKStatus
+   */
+  omit?: Prisma.DPKStatusOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DPKStatusInclude<ExtArgs> | null
+  where?: Prisma.DPKStatusWhereInput
 }
 
 /**

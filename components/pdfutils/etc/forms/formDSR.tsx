@@ -5,7 +5,7 @@ import moment from "moment";
 export const FormDSR = (record?: IDapem) => {
   const ao = record?.AO || record?.AOCabang || record?.AOArea;
   return `
-    <div class="p-4">
+    <div class="p-10">
       ${Header("SURAT PERNYATAN", "PEMOTONGAN GAJI DIATAS 70%", undefined, process.env.NEXT_PUBLIC_APP_LOGO, process.env.NEXT_PUBLIC_APP_LOGO)}
       <p class="mt-3">Yang bertanda tangan dibawah ini :</p>
       <div class="my-5">
@@ -22,7 +22,7 @@ export const FormDSR = (record?: IDapem) => {
           {
             key: "Alamat",
             value: record
-              ? `${record?.Debitur.address}, KELURAHAN ${record?.Debitur.ward} KECAMATAN ${record?.Debitur.district}, ${record?.Debitur.city} ${record?.Debitur.province} ${record?.Debitur.pos_code}`
+              ? `${record?.Debitur.address}, KELURAHAN ${record?.Debitur.ward}, KECAMATAN ${record?.Debitur.district}, ${record?.Debitur.city}, ${record?.Debitur.province} ${record?.Debitur.pos_code}`
               : "",
           },
         ])}

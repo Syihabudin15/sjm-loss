@@ -6,6 +6,7 @@ import {
   Cabang,
   CategoryOfAccount,
   Dapem,
+  DataSimulasi,
   Debitur,
   Dropping,
   Insurance,
@@ -171,6 +172,11 @@ export interface IPayOffice extends PayOffice {
 }
 export interface IInsurance extends Insurance {
   Dapems: IDapem[];
+}
+export interface IDataSimulasi extends DataSimulasi {
+  JenisPembiayaan: JenisPembiayaan;
+  Product: ProdukPembiayaan;
+  User: User;
 }
 // End Models
 

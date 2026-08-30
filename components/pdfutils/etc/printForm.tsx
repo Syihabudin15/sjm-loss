@@ -1,11 +1,12 @@
+"use client";
+
 import moment from "moment";
 import { IDapem } from "@/libs/IInterfaces";
 import { FormPermohonan } from "./forms/formPermohonan";
 import { FormDSR } from "./forms/formDSR";
-import { FormIdentitas } from "./forms/formIdentitas";
-import { FormMutasiTaspen } from "./forms/formMutasiTaspen";
-import { KuasaMutasi } from "./forms/kuasaMutasi";
 import { PersetujuanAW } from "./forms/PersetujuanAW";
+import { FormHM } from "./formhm/formHM";
+import { FormIdeb } from "./forms/formIdeb";
 
 moment.locale("id");
 
@@ -20,7 +21,7 @@ const generateForm = (record?: IDapem) => {
       <style>
         @page {
           size: A4;
-          margin: 1mm;
+          margin: 2mm;
         }
 
         html, body {
@@ -59,24 +60,28 @@ const generateForm = (record?: IDapem) => {
       </style>
     </head>
     <body class="bg-white text-gray-800 leading-relaxed p-2">
-      <div class="page" style="font-size: 11px;">
+    ${
+      record && record.ProdukPembiayaan.Sumdan.code === "BPR HM"
+        ? FormHM(record)
+        : ""
+    }
+      <div class="page-break" style="font-size: 11px;">
         ${FormPermohonan(record)} 
       </div>
-      <div class="page-break" style="font-size: 12px;margin: 10mm;">
+      <div class="page-break" style="font-size: 12px;padding:40px">
+        ${FormIdeb(record)}
+      </div>
+      <div class="page-break" style="font-size: 12px;">
         ${FormDSR(record)}
       </div>
-      <div class="page-break" style="font-size: 12px;margin: 10mm;">
-        ${FormIdentitas(record)}
-      </div>
-      <div class="page-break" style="font-size: 12px;margin: 10mm;">
-        ${PersetujuanAW(record)}
-      </div>
-      <div class="page-break" style="font-size: 12px;margin: 10mm;">
-        ${KuasaMutasi(record)}
-      </div>
-      <div class="page-break" style="font-size: 12px;margin: 10mm;">
-        ${FormMutasiTaspen(record)}
-      </div>
+      ${
+        record && record.ProdukPembiayaan.Sumdan.code === "BPR DFG"
+          ? `<div class="page-break" style="font-size: 12px;">
+          ${PersetujuanAW(record)}
+        </div>`
+          : ""
+      }
+      
       
     </body>
   </html>

@@ -167,7 +167,7 @@ export const FormList = (
       <div class="flex gap-2">
         <p class="${w ? w : "w-32"} ${nobold ? "" : "font-bold"}">${d.key}</p>
         <p class="w-3">:</p>
-        <div class="flex-1 border-b border-dashed ${d.option ? "flex justify-between gap-2" : ""}">${
+        <div class="flex-1 border-b border-dashed border-gray-700 ${d.option ? "flex justify-between gap-2" : ""}">${
           d.option
             ? `
             ${d.option

@@ -39,7 +39,7 @@ export const AnalisaPerhitungan = (record: IDapem) => {
         { key: "Produk Pembiayaan", value: record.ProdukPembiayaan.name },
         {
           key: "Gaji Pensiun",
-          value: IDRFormat(record.Debitur.salary),
+          value: IDRFormat(record.salary || record.Debitur.salary),
           currency: true,
         },
       ])}
@@ -98,12 +98,12 @@ export const AnalisaPerhitungan = (record: IDapem) => {
         },
         {
           key: "Sisa Gaji",
-          value: IDRFormat(record.Debitur.salary - detail.angsuran),
+          value: IDRFormat(record.salary - detail.angsuran),
           currency: true,
         },
         {
           key: "DBR (%)",
-          value: `${((detail.detail.angsuranrounded / record.Debitur.salary) * 100).toFixed(2)}% / ${record.ProdukPembiayaan.Sumdan.dsr.toFixed(2)}%`,
+          value: `${((detail.detail.angsuranrounded / record.salary) * 100).toFixed(2)}% / ${record.ProdukPembiayaan.Sumdan.dsr.toFixed(2)}%`,
         },
       ])}
     </div>
@@ -261,7 +261,7 @@ export const AnalisaPerhitungan = (record: IDapem) => {
       <p>AO/SPV</p>
       <div class="h-28"></div>
       <p class="border-b font-bold">${ao?.fullname}</p>
-      <p>${ao?.position}</p>
+      <p>AO/SPV</p>
     </div>
   </div>
     `;

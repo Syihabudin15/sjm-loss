@@ -20,6 +20,7 @@ import { useAccess } from "@/libs/Permission";
 import {
   HistoryOutlined,
   PrinterOutlined,
+  SaveOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
 import type {
@@ -36,6 +37,7 @@ import {
   Divider,
   Input,
   Modal,
+  notification,
   Select,
   Tooltip,
 } from "antd";
@@ -77,9 +79,9 @@ export default function Page() {
         ...defaultData,
         Debitur: {
           birthdate: data.Debitur.birthdate,
-          salary: data.Debitur.salary,
         } as IDebitur,
         created_at: data.created_at,
+        salary: data.salary,
       });
       return;
     }
@@ -97,7 +99,7 @@ export default function Page() {
         produkPembiayaanId: find.id,
         ProdukPembiayaan: find,
         Sumdan: findSumdan,
-        c_margin_sumdan: findSumdan.c_margin,
+        c_margin_sumdan: find.c_margin_sumdan,
         c_adm_sumdan: findSumdan.c_adm_sumdan,
         c_provisi_sumdan: findSumdan.c_provisi_sumdan,
         c_account_sumdan: findSumdan.c_account_sumdan,
@@ -124,7 +126,7 @@ export default function Page() {
         GetMaxPlafond(
           data.c_margin + data.c_margin_sumdan,
           data.tenor,
-          ((data.Debitur.salary - 100000) * data.Sumdan.dsr) / 100,
+          ((data.salary - 100000) * data.Sumdan.dsr) / 100,
         ),
       ),
     );
@@ -139,7 +141,7 @@ export default function Page() {
 
     if (
       detailDapem.detail.angsuranrounded >
-      data.Debitur.salary * (data.Sumdan.dsr / 100)
+      data.salary * (data.Sumdan.dsr / 100)
     ) {
       message.error(
         "Angsuran lebih dari 95%, mohon sesuaikan kembali pembiayaan!",
@@ -159,7 +161,7 @@ export default function Page() {
     data.plafond,
     data.tenor,
     data.Debitur.birthdate,
-    data.Debitur.salary,
+    data.salary,
     data.margin_type,
     data.ProdukPembiayaan,
     data.c_margin_sumdan,
@@ -202,6 +204,7 @@ export default function Page() {
         if (res.status === 200) {
           setData({
             ...data,
+            salary: res.data.salary,
             Debitur: { ...data.Debitur, ...res.data },
           });
         }
@@ -349,11 +352,11 @@ export default function Page() {
               type: "text",
               mode: "vertical",
               class: "flex-1",
-              value: IDRFormat(data.Debitur.salary),
+              value: IDRFormat(data.salary),
               onChange: (e: string) =>
                 setData({
                   ...data,
-                  Debitur: { ...data.Debitur, salary: IDRToNumber(e || "0") },
+                  salary: IDRToNumber(e || "0"),
                 }),
             }}
           />
@@ -403,7 +406,7 @@ export default function Page() {
                       Sumdan: findSumdan as Sumdan,
                       ProdukPembiayaan: find,
                       produkPembiayaanId: find.id,
-                      c_margin_sumdan: findSumdan.c_margin,
+                      c_margin_sumdan: find.c_margin_sumdan,
                       c_margin: find.c_margin,
                       c_adm_sumdan: findSumdan.c_adm_sumdan,
                       c_adm: findSumdan.c_adm,
@@ -523,9 +526,7 @@ export default function Page() {
             <div className="flex-1">
               <div>Max Angsuran</div>
               <Input
-                value={IDRFormat(
-                  (data.Debitur.salary * data.Sumdan.dsr) / 100 || 0,
-                )}
+                value={IDRFormat((data.salary * data.Sumdan.dsr) / 100 || 0)}
                 disabled
               />
             </div>
@@ -656,6 +657,17 @@ export default function Page() {
                 />
                 <Input
                   size="small"
+                  style={{ flex: 1, minWidth: 50 }}
+                  value={IDRFormat(data.c_flagging || 0)}
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      c_flagging: parseFloat(e.target.value || "0"),
+                    }))
+                  }
+                />
+                <Input
+                  size="small"
                   disabled
                   value={IDRFormat(details.asuransi)}
                   style={{ textAlign: "right", color: "black", width: 130 }}
@@ -667,7 +679,7 @@ export default function Page() {
               <div className="flex-1 flex gap-2 justify-end">
                 <Input
                   size="small"
-                  value={IDRFormat(data.c_gov)}
+                  value={IDRFormat(data.c_gov || 0)}
                   style={{ textAlign: "right", color: "black", width: 130 }}
                   onChange={(e) =>
                     setData((prev) => ({
@@ -686,7 +698,7 @@ export default function Page() {
               <div className="flex-1 flex gap-2 justify-end">
                 <Input
                   size="small"
-                  value={IDRFormat(data.c_infomation)}
+                  value={IDRFormat(data.c_infomation || 0)}
                   style={{ textAlign: "right", color: "black", width: 130 }}
                   onChange={(e) =>
                     setData((prev) => ({
@@ -718,7 +730,7 @@ export default function Page() {
               <div className="flex-1 flex gap-2 justify-end">
                 <Input
                   size="small"
-                  value={IDRFormat(data.c_mutasi)}
+                  value={IDRFormat(data.c_mutasi || 0)}
                   style={{ textAlign: "right", color: "black", width: 130 }}
                   onChange={(e) =>
                     setData((prev) => ({
@@ -741,9 +753,10 @@ export default function Page() {
                   disabled
                   suffix={<span className="text-xs italic opacity-70">%</span>}
                   value={
-                    data.c_adm + data.c_adm_sumdan
-                    // data.c_provisi +
-                    // data.c_provisi_sumdan
+                    data.c_adm +
+                    data.c_adm_sumdan +
+                    data.c_provisi_sumdan +
+                    data.c_provisi
                   }
                   type={"number"}
                   // hidden={!hasAccess("showpercent")}
@@ -806,7 +819,7 @@ export default function Page() {
                 <Input
                   size="small"
                   disabled={!hasAccess("update")}
-                  value={IDRFormat(data.c_gov)}
+                  value={IDRFormat(data.c_gov || 0)}
                   style={{ textAlign: "right", color: "black" }}
                   onChange={(e) =>
                     setData((prev) => ({
@@ -826,7 +839,7 @@ export default function Page() {
                 <Input
                   size="small"
                   disabled={!hasAccess("update")}
-                  value={IDRFormat(data.c_infomation)}
+                  value={IDRFormat(data.c_infomation || 0)}
                   style={{ textAlign: "right", color: "black" }}
                   onChange={(e) =>
                     setData((prev) => ({
@@ -863,7 +876,7 @@ export default function Page() {
                 <Input
                   size="small"
                   disabled={!hasAccess("update")}
-                  value={IDRFormat(data.c_mutasi)}
+                  value={IDRFormat(data.c_mutasi || 0)}
                   style={{ textAlign: "right", color: "black" }}
                   onChange={(e) =>
                     setData((prev) => ({
@@ -892,7 +905,7 @@ export default function Page() {
           <div className="flex gap-2 flex-2">
             <Input
               size="small"
-              value={IDRFormat(data.c_takeover)}
+              value={IDRFormat(data.c_takeover || 0)}
               style={{ textAlign: "right", color: "black" }}
               onChange={(e) =>
                 setData((prev) => ({
@@ -947,14 +960,13 @@ export default function Page() {
           </div>
           <div className="flex justify-between border-b border-dashed">
             <div>Sisa Gaji</div>
-            <div>{IDRFormat(data.Debitur.salary - details.angsuran)}</div>
+            <div>{IDRFormat(data.salary - details.angsuran)}</div>
           </div>
           <div className="flex justify-between border-b border-dashed">
             <div>DBR (%)</div>
             <div>
               {(
-                (details.detail.angsuranrounded / data.Debitur.salary) * 100 ||
-                0
+                (details.detail.angsuranrounded / data.salary) * 100 || 0
               ).toFixed(2)}{" "}
               % / {data.Sumdan.dsr} %
             </div>
@@ -1000,6 +1012,35 @@ const ModalDetailPembiayaan = ({
 }) => {
   const printRef = useRef<HTMLDivElement>(null);
 
+  const handleSave = async () => {
+    try {
+      await fetch("/api/simulasi", {
+        method: "POST",
+        body: JSON.stringify({
+          ...data,
+          fullname: data.Debitur.fullname,
+          birtdate: data.Debitur.birthdate,
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.status === 201) {
+            notification.success({ title: res.msg });
+            window.location.reload();
+          } else {
+            notification.error({ title: res.msg });
+          }
+        })
+        .catch((err) => {
+          notification.error({
+            title: "ERROR",
+            message: err.msg || err.response.message || err.response.msg,
+          });
+        });
+    } catch (err) {
+      console.error("Gagal menyimpan simulasi", err);
+    }
+  };
   const handleDownloadImage = async () => {
     if (printRef.current === null) return;
 
@@ -1044,7 +1085,7 @@ const ModalDetailPembiayaan = ({
                 {data.Debitur.fullname}
               </Descriptions.Item>
               <Descriptions.Item label="Gaji Pensiun" style={{ padding: 5 }}>
-                {IDRFormat(data.Debitur.salary)}
+                {IDRFormat(data.salary)}
               </Descriptions.Item>
               <Descriptions.Item label="Tanggal Lahir" style={{ padding: 5 }}>
                 {moment(data.Debitur.birthdate).format("DD/MM/YYYY")}
@@ -1155,13 +1196,13 @@ const ModalDetailPembiayaan = ({
               </div>
               <div className="flex justify-between border-b border-dashed">
                 <div>Sisa Gaji</div>
-                <div>{IDRFormat(data.Debitur.salary - detail.angsuran)}</div>
+                <div>{IDRFormat(data.salary - detail.angsuran)}</div>
               </div>
               <div className="flex justify-between">
                 <div>DBR (%)</div>
                 <div>
                   {(
-                    (detail.detail.angsuranrounded / data.Debitur.salary) *
+                    (detail.detail.angsuranrounded / data.salary) *
                     100
                   ).toFixed(2)}
                   % / {data.Sumdan.dsr}%
@@ -1200,13 +1241,16 @@ const ModalDetailPembiayaan = ({
                 label="Keterangan"
                 style={{ fontWeight: "bold", color: "green", padding: 5 }}
               >
-                <Input.TextArea/>
+                <Input.TextArea />
               </Descriptions.Item>
             </Descriptions>
           </div>
         </div>
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-2">
+        <Button icon={<SaveOutlined />} onClick={() => handleSave()}>
+          Simpan
+        </Button>
         <Button
           type="primary"
           icon={<PrinterOutlined />}
@@ -1235,6 +1279,7 @@ const defaultData: IDapemSimulasi = {
   c_margin_sumdan: 0,
   c_adm_sumdan: 0,
   c_adm: 0,
+  c_provisi_sumdan: 0,
   c_provisi: 0,
   c_insurance: 0,
   c_gov: 0,
@@ -1249,6 +1294,7 @@ const defaultData: IDapemSimulasi = {
   max_tenor: 0,
   c_fee_bpp: 0,
   c_ned: 0,
+  salary: 0,
   fee_banpot: 0,
   margin_type: "ANUITAS",
   created_at: new Date(),

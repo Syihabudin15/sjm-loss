@@ -112,6 +112,7 @@ model Sumdan {
   pic           String?
   file          String?   @db.Text
   sk_akad       String?   @db.Text
+  fronting      Boolean   @default(false)
 
   status               Boolean               @default(true)
   created_at           DateTime              @default(now())
@@ -185,6 +186,7 @@ model User {
   sumdanId        String?
   JournalDetails  JournalDetail[]
   agentFrontingId String?
+  DataSimulasi    DataSimulasi[]
 
   @@index([nip])
   @@index([fullname])
@@ -195,16 +197,17 @@ model User {
 }
 
 model ProdukPembiayaan {
-  id          String      @id @default(uuid())
-  name        String
-  c_margin    Float
-  c_insurance Float
-  max_tenor   Int
-  max_plafond Int
-  min_age     Int
-  max_age     Int
-  max_paid    Int
-  margin_type EMarginType
+  id              String      @id @default(uuid())
+  name            String
+  c_margin        Float
+  c_margin_sumdan Float       @default(0)
+  c_insurance     Float
+  max_tenor       Int
+  max_plafond     Int
+  min_age         Int
+  max_age         Int
+  max_paid        Int
+  margin_type     EMarginType
 
   status        Boolean        @default(true)
   created_at    DateTime       @default(now())
@@ -262,6 +265,8 @@ model Debitur {
   group_skep     String?
   soul_code      Int?
   job_year       Int?
+  id_publisher   String?
+  id_end         DateTime?
 
   mother_name    String?
   account_name   String?
@@ -337,11 +342,25 @@ model Dapem {
   aw_address      String?
   aw_relate       String?
   aw_phone        String?
+  aw_rt           String?
+  aw_rw           String?
+  aw_ward         String?
+  aw_district     String?
+  aw_city         String?
+  aw_province     String?
+  aw_pos_code     String?
 
-  f_name    String?
-  f_relate  String?
-  f_phone   String?
-  f_address String?
+  f_name     String?
+  f_relate   String?
+  f_phone    String?
+  f_address  String?
+  f_rt       String?
+  f_rw       String?
+  f_ward     String?
+  f_district String?
+  f_city     String?
+  f_province String?
+  f_pos_code String?
 
   dropping_status   EDapemStatus       @default(DRAFT)
   verif_status      ESubmissionStatus?
@@ -589,6 +608,7 @@ model Angsuran {
   c_ned       Int       @default(0)
   Dapem       Dapem     @relation(fields: [dapemId], references: [id], onUpdate: Cascade)
   dapemId     String
+  note        String?   @db.Text
 
   @@index([date_pay])
 }
@@ -650,6 +670,7 @@ model AgentFronting {
   pic           String?
   target        Int       @default(0)
   c_fee         Float     @default(0)
+  c_gov         Float     @default(0)
 
   status               Boolean               @default(true)
   created_at           DateTime              @default(now())
@@ -671,21 +692,23 @@ model SumdanAgentFronting {
 }
 
 model DataSimulasi {
-  int                String           @id @default(uuid())
+  id                 Int              @id @default(autoincrement())
   nopen              String
   fullname           String
   birtdate           DateTime
   salary             Int
   tenor              Int
   plafond            Int
-  margin_sumdan      Int
-  margin             Int
+  c_margin_sumdan    Int
+  c_margin           Int
   c_adm_sumdan       Int
   c_adm              Int
   c_account          Int
   c_provisi          Int
+  c_provisi_sumdan   Int
   c_insurance        Int
   c_flagging         Int
+  c_stamp            Int
   c_gov              Int
   c_information      Int
   c_mutasi           Int
@@ -693,6 +716,7 @@ model DataSimulasi {
   c_fee_banpot       Int
   c_blokir           Int
   c_takeover         Int
+  margin_type        EMarginType      @default(ANUITAS)
   note               String?
   status             Boolean          @default(true)
   created_at         DateTime         @default(now())
@@ -700,9 +724,11 @@ model DataSimulasi {
   Product            ProdukPembiayaan @relation(fields: [produkPembiayaanId], references: [id])
   JenisPembiayaan    JenisPembiayaan  @relation(fields: [jenisPembiayaanId], references: [id])
   PayOffice          PayOffice?       @relation(fields: [payOfficeId], references: [id])
+  User               User             @relation(fields: [userId], references: [id])
   produkPembiayaanId String
   jenisPembiayaanId  String
   payOfficeId        String?
+  userId             String
 }
 
 model DPKStatus {

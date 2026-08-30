@@ -5,7 +5,7 @@ import prisma from "@/libs/Prisma";
 import { Prisma } from "../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
-import { ORDapem, WheresDapem } from "../utils/wheres";
+import { GetUserSession, ORDapem, WheresDapem } from "../utils/wheres";
 
 export const GET = async (req: NextRequest) => {
   const page = req.nextUrl.searchParams.get("page") || "1";
@@ -22,10 +22,11 @@ export const GET = async (req: NextRequest) => {
       { data: [], total: 0, status: 200 },
       { status: 200 },
     );
-  const user = await prisma.user.findFirst({
-    where: { id: session.user.id },
-    include: { Role: true, Cabang: true },
-  });
+  // const user = await prisma.user.findFirst({
+  //   where: { id: session.user.id },
+  //   include: { Role: true, Cabang: true },
+  // });
+  const user = await GetUserSession(session);
   if (!user)
     return NextResponse.json(
       { data: [], total: 0, status: 200 },

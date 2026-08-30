@@ -36,7 +36,6 @@ CREATE TABLE `Sumdan` (
     `c_stamps` INTEGER NOT NULL,
     `c_flagging` INTEGER NOT NULL,
     `c_information` INTEGER NOT NULL,
-    `c_fee_bpp` DOUBLE NOT NULL DEFAULT 0,
     `c_ned` INTEGER NOT NULL DEFAULT 0,
     `fee_banpot` DOUBLE NOT NULL DEFAULT 0,
     `max_bpp` INTEGER NOT NULL,
@@ -50,6 +49,7 @@ CREATE TABLE `Sumdan` (
     `pic` VARCHAR(191) NULL,
     `file` TEXT NULL,
     `sk_akad` TEXT NULL,
+    `fronting` BOOLEAN NOT NULL DEFAULT false,
     `status` BOOLEAN NOT NULL DEFAULT true,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
@@ -124,6 +124,7 @@ CREATE TABLE `ProdukPembiayaan` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `c_margin` DOUBLE NOT NULL,
+    `c_margin_sumdan` DOUBLE NOT NULL DEFAULT 0,
     `c_insurance` DOUBLE NOT NULL,
     `max_tenor` INTEGER NOT NULL,
     `max_plafond` INTEGER NOT NULL,
@@ -184,6 +185,8 @@ CREATE TABLE `Debitur` (
     `group_skep` VARCHAR(191) NULL,
     `soul_code` INTEGER NULL,
     `job_year` INTEGER NULL,
+    `id_publisher` VARCHAR(191) NULL,
+    `id_end` DATETIME(3) NULL,
     `mother_name` VARCHAR(191) NULL,
     `account_name` VARCHAR(191) NULL,
     `account_number` VARCHAR(191) NULL,
@@ -207,6 +210,7 @@ CREATE TABLE `Dapem` (
     `id` VARCHAR(191) NOT NULL,
     `tenor` INTEGER NOT NULL,
     `plafond` INTEGER NOT NULL,
+    `salary` INTEGER NOT NULL DEFAULT 0,
     `c_margin_sumdan` DOUBLE NOT NULL,
     `c_account_sumdan` INTEGER NOT NULL,
     `c_adm_sumdan` DOUBLE NOT NULL,
@@ -221,7 +225,7 @@ CREATE TABLE `Dapem` (
     `c_infomation` INTEGER NOT NULL,
     `c_mutasi` INTEGER NOT NULL,
     `c_blokir` INTEGER NOT NULL,
-    `c_fee_bpp` DOUBLE NOT NULL DEFAULT 0,
+    `c_fee_bpp` INTEGER NOT NULL DEFAULT 0,
     `c_fee_fronting` DOUBLE NOT NULL DEFAULT 0,
     `c_ned` INTEGER NOT NULL DEFAULT 0,
     `fee_banpot` DOUBLE NOT NULL DEFAULT 0,
@@ -253,10 +257,24 @@ CREATE TABLE `Dapem` (
     `aw_address` VARCHAR(191) NULL,
     `aw_relate` VARCHAR(191) NULL,
     `aw_phone` VARCHAR(191) NULL,
+    `aw_rt` VARCHAR(191) NULL,
+    `aw_rw` VARCHAR(191) NULL,
+    `aw_ward` VARCHAR(191) NULL,
+    `aw_district` VARCHAR(191) NULL,
+    `aw_city` VARCHAR(191) NULL,
+    `aw_province` VARCHAR(191) NULL,
+    `aw_pos_code` VARCHAR(191) NULL,
     `f_name` VARCHAR(191) NULL,
     `f_relate` VARCHAR(191) NULL,
     `f_phone` VARCHAR(191) NULL,
     `f_address` VARCHAR(191) NULL,
+    `f_rt` VARCHAR(191) NULL,
+    `f_rw` VARCHAR(191) NULL,
+    `f_ward` VARCHAR(191) NULL,
+    `f_district` VARCHAR(191) NULL,
+    `f_city` VARCHAR(191) NULL,
+    `f_province` VARCHAR(191) NULL,
+    `f_pos_code` VARCHAR(191) NULL,
     `dropping_status` ENUM('DRAFT', 'BATAL', 'PENDING', 'PROSES', 'DISETUJUI', 'DITOLAK', 'LUNAS') NOT NULL DEFAULT 'DRAFT',
     `verif_status` ENUM('PENDING', 'DISETUJUI', 'DITOLAK') NULL,
     `verif_desc` TEXT NULL,
@@ -281,6 +299,9 @@ CREATE TABLE `Dapem` (
     `guarantee_desc` TEXT NULL,
     `ao_fee_status` ENUM('DRAFT', 'BATAL', 'PENDING', 'PROSES', 'DISETUJUI', 'DITOLAK', 'LUNAS') NOT NULL DEFAULT 'DRAFT',
     `ao_fee_desc` TEXT NULL,
+    `dev_status` BOOLEAN NOT NULL DEFAULT false,
+    `deviasi_note` TEXT NULL,
+    `note` TEXT NULL,
     `used_for` VARCHAR(191) NOT NULL,
     `no_contract` VARCHAR(191) NOT NULL,
     `date_contract` DATETIME(3) NULL,
@@ -314,6 +335,7 @@ CREATE TABLE `Dapem` (
     `payOfficeId` VARCHAR(191) NULL,
     `insuranceId` VARCHAR(191) NULL,
     `userId` VARCHAR(191) NOT NULL,
+    `dPKStatusId` VARCHAR(191) NULL,
 
     INDEX `Dapem_dropping_status_idx`(`dropping_status`),
     INDEX `Dapem_document_status_idx`(`document_status`),
@@ -477,6 +499,7 @@ CREATE TABLE `Angsuran` (
     `fee_banpot` INTEGER NOT NULL DEFAULT 0,
     `c_ned` INTEGER NOT NULL DEFAULT 0,
     `dapemId` VARCHAR(191) NOT NULL,
+    `note` TEXT NULL,
 
     INDEX `Angsuran_date_pay_idx`(`date_pay`),
     PRIMARY KEY (`id`)
@@ -529,6 +552,7 @@ CREATE TABLE `AgentFronting` (
     `pic` VARCHAR(191) NULL,
     `target` INTEGER NOT NULL DEFAULT 0,
     `c_fee` DOUBLE NOT NULL DEFAULT 0,
+    `c_gov` DOUBLE NOT NULL DEFAULT 0,
     `status` BOOLEAN NOT NULL DEFAULT true,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
@@ -543,6 +567,57 @@ CREATE TABLE `SumdanAgentFronting` (
     `id` VARCHAR(191) NOT NULL,
     `sumdanId` VARCHAR(191) NOT NULL,
     `agentFrontingId` VARCHAR(191) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `DataSimulasi` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `nopen` VARCHAR(191) NOT NULL,
+    `fullname` VARCHAR(191) NOT NULL,
+    `birtdate` DATETIME(3) NOT NULL,
+    `salary` INTEGER NOT NULL,
+    `tenor` INTEGER NOT NULL,
+    `plafond` INTEGER NOT NULL,
+    `c_margin_sumdan` INTEGER NOT NULL,
+    `c_margin` INTEGER NOT NULL,
+    `c_adm_sumdan` INTEGER NOT NULL,
+    `c_adm` INTEGER NOT NULL,
+    `c_account` INTEGER NOT NULL,
+    `c_provisi` INTEGER NOT NULL,
+    `c_provisi_sumdan` INTEGER NOT NULL,
+    `c_insurance` INTEGER NOT NULL,
+    `c_flagging` INTEGER NOT NULL,
+    `c_stamp` INTEGER NOT NULL,
+    `c_gov` INTEGER NOT NULL,
+    `c_information` INTEGER NOT NULL,
+    `c_mutasi` INTEGER NOT NULL,
+    `c_ned` INTEGER NOT NULL,
+    `c_fee_banpot` INTEGER NOT NULL,
+    `c_blokir` INTEGER NOT NULL,
+    `c_takeover` INTEGER NOT NULL,
+    `margin_type` ENUM('FLAT', 'ANUITAS') NOT NULL DEFAULT 'ANUITAS',
+    `note` VARCHAR(191) NULL,
+    `status` BOOLEAN NOT NULL DEFAULT true,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `produkPembiayaanId` VARCHAR(191) NOT NULL,
+    `jenisPembiayaanId` VARCHAR(191) NOT NULL,
+    `payOfficeId` VARCHAR(191) NULL,
+    `userId` VARCHAR(191) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `DPKStatus` (
+    `id` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NULL,
+    `description` TEXT NULL,
+    `status` BOOLEAN NOT NULL DEFAULT true,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -605,6 +680,9 @@ ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_userId_fkey` FOREIGN KEY (`userId`) RE
 ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_prevPayOfficeId_fkey` FOREIGN KEY (`prevPayOfficeId`) REFERENCES `PayOffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_dPKStatusId_fkey` FOREIGN KEY (`dPKStatusId`) REFERENCES `DPKStatus`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_payOfficeId_fkey` FOREIGN KEY (`payOfficeId`) REFERENCES `PayOffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -645,3 +723,15 @@ ALTER TABLE `SumdanAgentFronting` ADD CONSTRAINT `SumdanAgentFronting_sumdanId_f
 
 -- AddForeignKey
 ALTER TABLE `SumdanAgentFronting` ADD CONSTRAINT `SumdanAgentFronting_agentFrontingId_fkey` FOREIGN KEY (`agentFrontingId`) REFERENCES `AgentFronting`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `DataSimulasi` ADD CONSTRAINT `DataSimulasi_produkPembiayaanId_fkey` FOREIGN KEY (`produkPembiayaanId`) REFERENCES `ProdukPembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `DataSimulasi` ADD CONSTRAINT `DataSimulasi_jenisPembiayaanId_fkey` FOREIGN KEY (`jenisPembiayaanId`) REFERENCES `JenisPembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `DataSimulasi` ADD CONSTRAINT `DataSimulasi_payOfficeId_fkey` FOREIGN KEY (`payOfficeId`) REFERENCES `PayOffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `DataSimulasi` ADD CONSTRAINT `DataSimulasi_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

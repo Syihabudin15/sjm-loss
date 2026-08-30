@@ -556,6 +556,7 @@ export default function Page() {
         title: "Biaya Sumdan",
         dataIndex: "biaya_sumdan",
         key: "biaya_sumdan",
+        width: 120,
         render(value, record) {
           const total = GetDetailDapem(record).by_sumdan;
           return (
@@ -592,9 +593,10 @@ export default function Page() {
         },
       },
       {
-        title: "Blokir Angsuran Sumdan",
+        title: "Blok Angs Sumdan",
         dataIndex: "blokir",
         key: "blokir",
+        width: 150,
         render(value, record) {
           const angs = GetDetailDapem(record).detail.angsuran_sumdan;
           return (
@@ -608,9 +610,10 @@ export default function Page() {
         },
       },
       {
-        title: "Blokir Angsuran Kop",
+        title: "Blok Angs Kop",
         dataIndex: "blokir",
         key: "blokir",
+        width: 150,
         render(value, record) {
           const angs = GetDetailDapem(record);
           const sumdan = angs.detail.angsuran_sumdan;
@@ -1027,7 +1030,7 @@ export default function Page() {
               upsert: val,
             }))
           }
-          data={selected.selected}
+          record={selected.selected}
           key={"detail" + selected.selected.id}
           allowprogres={true}
         />

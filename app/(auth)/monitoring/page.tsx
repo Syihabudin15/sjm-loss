@@ -27,6 +27,7 @@ import {
   EditOutlined,
   FileFilled,
   FolderOutlined,
+  LoadingOutlined,
   PayCircleOutlined,
   PlusCircleOutlined,
   PrinterOutlined,
@@ -113,7 +114,7 @@ export default function Page() {
   const [sumdans, setSumdans] = useState<Sumdan[]>([]);
   const [jeniss, setJeniss] = useState<JenisPembiayaan[]>([]);
   const [agents, setAgents] = useState<IAgentFronting[]>([]);
-  const { modal } = App.useApp();
+  const { modal, notification } = App.useApp();
 
   const currentPath =
     typeof window !== "undefined" ? window.location.pathname : "/pendingdata";
@@ -140,7 +141,6 @@ export default function Page() {
         ...(pageProps.agentFrontingId && {
           agentFrontingId: pageProps.agentFrontingId,
         }),
-        includes: "true",
       });
 
       const res = await fetch(`/api/dapem?${params.toString()}`);
@@ -180,7 +180,7 @@ export default function Page() {
     (async () => {
       try {
         const [resSumdan, resJenis, resAgent] = await Promise.all([
-          fetch("/api/sumdan?limit=500").then((res) => res.json()),
+          fetch("/api/sumdan?limit=100").then((res) => res.json()),
           fetch("/api/jenis?limit=50").then((res) => res.json()),
           fetch("/api/agent?limit=100").then((res) => res.json()),
         ]);
@@ -230,6 +230,21 @@ export default function Page() {
     return { angsuran, angsuran_sumdan, plafond };
   }, [pageProps.data]);
 
+  const handlePrintForm = async (record: IDapem) => {
+    notification.open({
+      key: record.id,
+      title: (
+        <>
+          Generating... <LoadingOutlined />
+        </>
+      ),
+    });
+    const res = await fetch("/api/dapem?id=" + record.id, { method: "PATCH" });
+    const result = await res.json();
+    notification.destroy(record.id);
+    printForm(result.data);
+  };
+
   // 4. Bersihkan dependensi `selected` dari useMemo columns agar table tidak re-render radikal saat modal dibuka/ditutup
   const columns: TableProps<IDapem>["columns"] = useMemo(() => {
     return [
@@ -251,7 +266,11 @@ export default function Page() {
         fixed: window && window.innerWidth > 600 ? "left" : false,
         render: (_, record) => (
           <div>
-            <p className="font-bold">{record.Debitur.fullname}</p>
+            <p
+              className={`font-bold ${record.dropping_status === "DITOLAK" ? "text-red-400" : ""}`}
+            >
+              {record.Debitur.fullname}
+            </p>
             <div className="text-xs opacity-80">
               <p>@{record.Debitur.nopen}</p>
             </div>
@@ -345,7 +364,8 @@ export default function Page() {
                 >
                   {temp.desc}
                   <p>
-                    (By {temp.name} at {moment(temp.date).format("DD/MM/YYYY")})
+                    (By {temp.name} at{" "}
+                    {moment(temp.date).format("DD/MM/YYYY HH:mm")})
                   </p>
                 </Paragraph>
               )}
@@ -372,7 +392,8 @@ export default function Page() {
                 >
                   {temp.desc}
                   <p>
-                    (By {temp.name} at {moment(temp.date).format("DD/MM/YYYY")})
+                    (By {temp.name} at{" "}
+                    {moment(temp.date).format("DD/MM/YYYY HH:mm")})
                   </p>
                 </Paragraph>
               )}
@@ -399,7 +420,8 @@ export default function Page() {
                 >
                   {temp.desc}
                   <p>
-                    (By {temp.name} at {moment(temp.date).format("DD/MM/YYYY")})
+                    (By {temp.name} at{" "}
+                    {moment(temp.date).format("DD/MM/YYYY HH:mm")})
                   </p>
                 </Paragraph>
               )}
@@ -528,7 +550,7 @@ export default function Page() {
               <Button
                 icon={<PrinterOutlined />}
                 size="small"
-                onClick={() => printForm(record)}
+                onClick={() => handlePrintForm(record)}
               />
             )}
             {hasAccess("update") && (
@@ -908,7 +930,7 @@ export default function Page() {
               upsert: val,
             }))
           }
-          data={selected.selected}
+          record={selected.selected}
           key={"detail" + selected.selected.id}
           allowprogres
         />
@@ -1158,7 +1180,7 @@ const PrintContractSubmission = ({
                 onClick={() =>
                   setTemp((prev) => ({
                     ...prev,
-                    no_contract: `${data.id.replace("P", "")}/${process.env.NEXT_PUBLIC_APP_CODE_FILE || "SJM"}-${data.ProdukPembiayaan.Sumdan.code.replace(" ", "").replace("BPR", "").replace("BANK", "")}/${moment(prev.date_contract || new Date()).format("DD-YYYY")}`,
+                    no_contract: `${data.id.replace("P", "")}/${process.env.NEXT_PUBLIC_APP_CODE_FILE || "SJM"}-${data.ProdukPembiayaan.Sumdan.code.replace(" ", "").replace("BPR", "").replace("BANK", "")}/${moment(prev.date_contract || new Date()).format("MM-YYYY")}`,
                   }))
                 }
               />

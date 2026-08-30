@@ -9,6 +9,7 @@ import {
 import {
   GetAngsuran,
   GetDapem,
+  GetDetailDapem,
   GetSisaPokokMargin,
   IDRFormat,
 } from "@/components/utils/PembiayaanUtil";
@@ -48,20 +49,23 @@ const hitungPendingTerimaBersih = (droppingall: IDapem[]) => {
   );
 
   return dataTb.reduce((acc, curr) => {
-    const angs = GetAngsuran(
-      curr.plafond,
-      curr.tenor,
-      curr.c_margin + curr.c_margin_sumdan,
-      curr.margin_type,
-      curr.rounded,
-      curr.c_ned,
-    ).angsuran;
+    // const angs = GetAngsuran(
+    //   curr.plafond,
+    //   curr.tenor,
+    //   curr.c_margin + curr.c_margin_sumdan,
+    //   curr.margin_type,
+    //   curr.rounded,
+    //   curr.c_ned,
+    // ).angsuran;
 
+    // const biaya =
+    //   GetDapem(curr as IDapem).biaya +
+    //   curr.c_takeover +
+    //   curr.c_fee_bpp +
+    //   curr.c_blokir * angs;
+    const detail = GetDetailDapem(curr);
     const biaya =
-      GetDapem(curr as IDapem).biaya +
-      curr.c_takeover +
-      curr.c_fee_bpp +
-      curr.c_blokir * angs;
+      detail.biaya + curr.c_takeover + detail.angsuran * curr.c_blokir;
 
     const tbDiberikan = curr.cash_desc
       ? (JSON.parse(curr.cash_desc) as ICashDesc[])

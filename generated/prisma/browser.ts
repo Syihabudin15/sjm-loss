@@ -127,3 +127,13 @@ export type AgentFronting = Prisma.AgentFrontingModel
  * 
  */
 export type SumdanAgentFronting = Prisma.SumdanAgentFrontingModel
+/**
+ * Model DataSimulasi
+ * 
+ */
+export type DataSimulasi = Prisma.DataSimulasiModel
+/**
+ * Model DPKStatus
+ * 
+ */
+export type DPKStatus = Prisma.DPKStatusModel

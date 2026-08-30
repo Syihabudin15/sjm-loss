@@ -122,7 +122,7 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                     },
                     {
                       key: "Alamat",
-                      value: data.aw_address,
+                      value: `${data.aw_address}, KELURAHAN ${data.aw_ward}, KECAMATAN ${data.aw_district}, ${data.aw_city}, ${data.aw_province} ${data.aw_pos_code}`,
                     },
                   ]}
                 />
@@ -256,7 +256,7 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                     data={[
                       {
                         key: "Gaji Pensiun",
-                        value: `${IDRFormat(data.Debitur.salary)}`,
+                        value: `${IDRFormat(data.salary || data.Debitur.salary)}`,
                         currency: true,
                       },
                       {
@@ -281,12 +281,12 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                       },
                       {
                         key: "Sisa Gaji",
-                        value: `${IDRFormat(data.Debitur.salary - detail.angsuran)}`,
+                        value: `${IDRFormat((data.salary || data.Debitur.salary) - detail.angsuran)}`,
                         currency: true,
                       },
                       {
                         key: "DBR/DSR",
-                        value: `${((detail.detail.angsuranrounded / data.Debitur.salary) * 100).toFixed(2)}%`,
+                        value: `${((detail.detail.angsuranrounded / (data.salary || data.Debitur.salary)) * 100).toFixed(2)}%`,
                       },
                       {
                         key: "Pembulatan",

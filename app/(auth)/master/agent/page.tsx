@@ -79,7 +79,7 @@ export default function Page() {
 
   useEffect(() => {
     (async () => {
-      await fetch("/api/sumdan?limit=1000")
+      await fetch("/api/sumdan?limit=100&front=true")
         .then((res) => res.json())
         .then((res) => setSumdans(res.data));
     })();
@@ -419,6 +419,16 @@ function UpsertData({
           />
           <FormInput
             data={{
+              label: "Tatalaksana",
+              mode: "horizontal",
+              type: "text",
+              value: IDRFormat(data.c_gov),
+              onChange: (e: string) =>
+                setData({ ...data, c_gov: IDRToNumber(e || "0") }),
+            }}
+          />
+          <FormInput
+            data={{
               label: "File PKS",
               mode: "horizontal",
               required: true,
@@ -554,6 +564,7 @@ const defaultJenis: IAgentFronting = {
   contract_date: null,
   contract_no: null,
   c_fee: 0,
+  c_gov: 0,
   Users: [],
   Dapems: [],
   SumdanAgentFrontings: [],

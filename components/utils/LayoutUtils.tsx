@@ -1,12 +1,13 @@
 "use client";
 
-import { Divider, Modal, Steps, StepsProps, Tabs } from "antd";
+import { Descriptions, Modal, Steps, StepsProps, Tabs } from "antd";
 import Link from "next/link";
 import moment from "moment";
 import { IDapem, IViewFiles } from "@/libs/IInterfaces";
-import { FormInput } from "..";
 import { GetDetailDapem, GetFullAge, IDRFormat } from "./PembiayaanUtil";
 import {
+  BranchesOutlined,
+  CalculatorOutlined,
   DollarCircleOutlined,
   FolderOpenOutlined,
   KeyOutlined,
@@ -15,8 +16,11 @@ import {
   PayCircleOutlined,
   SecurityScanOutlined,
   SwapOutlined,
+  TeamOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 const MAUKStandar = dynamic(
   () =>
     import("@/components/pdfutils/etc/MAUKStandar").then((d) => d.MAUKStandar),
@@ -187,1044 +191,543 @@ export const TabsFiles = ({
 export const DetailDapem = ({
   open,
   setOpen,
-  data,
+  record,
   allowprogres,
 }: {
   open: boolean;
   setOpen: Function;
-  data: IDapem;
+  record: IDapem;
   allowprogres?: boolean;
 }) => {
-  const detail = GetDetailDapem(data);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<IDapem | undefined>();
+  const detail = GetDetailDapem(record);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const res = await fetch("/api/dapem?id=" + record.id, {
+        method: "PATCH",
+      });
+      const result = await res.json();
+      setData(result.data);
+      setLoading(false);
+    })();
+  }, []);
 
   return (
     <Modal
       open={open}
-      onCancel={() => setOpen(false)}
-      title={"Detail Data Pembiayaan " + data.id}
+      onCancel={() => {
+        setData(undefined);
+        setOpen(false);
+      }}
+      title={"Detail Data Pembiayaan " + record.id}
       footer={[]}
       width={1300}
       style={{ top: 10 }}
+      loading={loading}
+      destroyOnHidden
     >
-      <div className="flex flex-col sm:flex-row gap-4 sm:h-[80vh]">
-        <div className="w-full sm:w-[42%] min-h-[300] h-full overflow-auto">
-          {/* <div className="bg-white p-4 rounded-lg border">
-            <Descriptions
-              title={
-                <div>
-                  <UserOutlined /> Data Debitur
-                </div>
-              }
-              bordered
-              size="small"
-              column={1}
-              labelStyle={{ width: 180 }}
-            >
-              <Descriptions.Item label="Nama Pemohon">
-                {data.Debitur.fullname}
-              </Descriptions.Item>
-              <Descriptions.Item label="NIK">
-                {data.Debitur.nik}
-              </Descriptions.Item>
-              <Descriptions.Item label="Tempat Tgl Lahir">
-                {data.Debitur.birthplace},{" "}
-                {dayjs(data.Debitur.birthdate).format("DD-MM-YYYY")}
-              </Descriptions.Item>
-              <Descriptions.Item label="Telepon">
-                {data.Debitur.phone}
-              </Descriptions.Item>
-              <Descriptions.Item label="Alamat">
-                {data.Debitur.address}
-              </Descriptions.Item>
-            </Descriptions>
-          </div> */}
-          <div className="p-2 rounded bg-gray-800 text-gray-50 font-bold my-2">
-            Data Debitur
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            <FormInput
-              data={{
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                label: "Nama Pemohon",
-                disabled: true,
-                value: data.Debitur.fullname,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nomor NIK",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.nik,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Tempat, Tgl Lahir",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: `${data.Debitur.birthplace}, ${moment(data.Debitur.birthdate).format("DD-MM-YYYY")}`,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Jenis Kelamin",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.gender,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Agama",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.religion,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Pendidikan Terakhir",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.education,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nomor Telepon",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.phone,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nomor NPWP",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.npwp,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Ibu Kandung",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.mother_name,
-              }}
-            />
-            <Divider style={{ fontSize: 12 }}>Alamat Lengkap</Divider>
-            <FormInput
-              data={{
-                label: "Alamat",
-                mode: "vertical",
-                type: "textarea",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.address,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Kelurahan",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.ward,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Kecamatan",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.district,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Kota/Kab.",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.city,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Provinsi",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.province,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Kode Pos",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.pos_code,
-              }}
-            />
-            <div className="w-full flex justify-between italic font-bold">
-              <span>Status Alamat Domisili</span> <span>:</span>{" "}
-              <span>
-                {data.dom_status ? "Sama Dengan KTP" : "Berbeda Dengan KTP"}
-              </span>
+      {data ? (
+        <div className="flex flex-col sm:flex-row gap-4 sm:h-[80vh]">
+          <div className="w-full sm:w-[42%] min-h-[300] h-full overflow-auto">
+            <div className="p-2 rounded-lg border">
+              <Descriptions
+                title={
+                  <div>
+                    <UserOutlined /> Data Debitur
+                  </div>
+                }
+                bordered
+                size="small"
+                column={1}
+                styles={{
+                  label: { width: 180, fontSize: 13 },
+                  content: { fontSize: 12 },
+                }}
+              >
+                <Descriptions.Item label="Nama Pemohon">
+                  {data.Debitur.fullname}
+                </Descriptions.Item>
+                <Descriptions.Item label="NIK">
+                  {data.Debitur.nik}
+                </Descriptions.Item>
+                <Descriptions.Item label="Nopen">
+                  {data.Debitur.nopen}
+                </Descriptions.Item>
+                <Descriptions.Item label="Tempat Tgl Lahir">
+                  {data.Debitur.birthplace},{" "}
+                  {moment(data.Debitur.birthdate).format("DD-MM-YYYY")}
+                </Descriptions.Item>
+                <Descriptions.Item label="Jenis Kelamin">
+                  {data.Debitur.gender}
+                </Descriptions.Item>
+                <Descriptions.Item label="Alamat KTP">
+                  {data.Debitur.address}, KELURAHAN {data.Debitur.ward},
+                  KECAMATAN {data.Debitur.district}, {data.Debitur.city},{" "}
+                  {data.Debitur.province} {data.Debitur.pos_code}
+                </Descriptions.Item>
+                <Descriptions.Item label="Alamat Domisili">
+                  {data.address || data.Debitur.address}, KELURAHAN{" "}
+                  {data.ward || data.Debitur.ward}, KECAMATAN{" "}
+                  {data.district || data.Debitur.district},{" "}
+                  {data.city || data.Debitur.city},{" "}
+                  {data.province || data.Debitur.province}{" "}
+                  {data.pos_code || data.Debitur.pos_code}
+                </Descriptions.Item>
+                <Descriptions.Item label="Agama">
+                  {data.Debitur.religion}
+                </Descriptions.Item>
+                <Descriptions.Item label="Status Kawin">
+                  {data.marriage_status.replace("_", " ")}
+                </Descriptions.Item>
+                <Descriptions.Item label="Pekerjaan">
+                  {data.job}
+                </Descriptions.Item>
+                <Descriptions.Item label="Pendidikan">
+                  {data.Debitur.education}
+                </Descriptions.Item>
+                <Descriptions.Item label="Nama Ibu Kandung">
+                  {data.Debitur.mother_name}
+                </Descriptions.Item>
+                <Descriptions.Item label="NPWP">
+                  {data.Debitur.npwp}
+                </Descriptions.Item>
+                <Descriptions.Item label="Telepon">
+                  {data.Debitur.phone}
+                </Descriptions.Item>
+                <Descriptions.Item label="Geo Location">
+                  {data.geolocation}
+                </Descriptions.Item>
+              </Descriptions>
             </div>
-            {!data.dom_status && (
-              <Divider style={{ fontSize: 12 }} titlePlacement="left">
-                Alamat Domisili
-              </Divider>
-            )}
-            {!data.dom_status && (
-              <FormInput
-                data={{
-                  label: "Alamat",
-                  mode: "vertical",
-                  type: "textarea",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.address,
-                }}
-              />
-            )}
-            {!data.dom_status && (
-              <FormInput
-                data={{
-                  label: "Kelurahan",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.ward,
-                }}
-              />
-            )}
-            {!data.dom_status && (
-              <FormInput
-                data={{
-                  label: "Kecamatan",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.district,
-                }}
-              />
-            )}
-            {!data.dom_status && (
-              <FormInput
-                data={{
-                  label: "Kota/Kab.",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.city,
-                }}
-              />
-            )}
-            {!data.dom_status && (
-              <FormInput
-                data={{
-                  label: "Provinsi",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.province,
-                }}
-              />
-            )}
-            {!data.dom_status && (
-              <FormInput
-                data={{
-                  label: "Kode Pos",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.pos_code,
-                }}
-              />
-            )}
-            <FormInput
-              data={{
-                label: "Geo Location",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.geolocation,
-              }}
-            />
-          </div>
-          <div className="p-2 rounded bg-gray-800 text-gray-50 font-bold my-2">
-            Data Rumah & Pekerjaan
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            <FormInput
-              data={{
-                label: "Status Rumah",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.house_status,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Tahun Menempati",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.house_year,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Lama Menempati",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: `${
-                  new Date(data.created_at).getFullYear() -
-                  new Date(
-                    data.house_year ? `${data.house_year}-11-11` : new Date(),
-                  ).getFullYear()
-                } Tahun`,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Pekerjaan",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.job,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Alamat Pekerjaan",
-                mode: "vertical",
-                type: "textarea",
-                class: "flex-1",
-                disabled: true,
-                value: data.job_address,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Jenis Usaha",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.business,
-              }}
-            />
-          </div>
 
-          <div className="p-2 rounded bg-gray-800 text-gray-50 font-bold my-2">
-            Data Keluarga
-          </div>
-          <div className="">
-            <FormInput
-              data={{
-                label: "Status Perkawinan",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.marriage_status,
-              }}
-            />
-            <Divider style={{ fontSize: 12 }}>Ahli Waris</Divider>
-            <div className="flex gap-2 flex-wrap">
-              <FormInput
-                data={{
-                  label: "Nama Lengkap",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.aw_name,
+            <div className="p-2 rounded-lg border mt-2">
+              <Descriptions
+                title={
+                  <div>
+                    <TeamOutlined /> Data Rumah dan Keluarga
+                  </div>
+                }
+                bordered
+                size="small"
+                column={1}
+                styles={{
+                  label: { width: 180, fontSize: 13 },
+                  content: { fontSize: 12 },
                 }}
-              />
-
-              <FormInput
-                data={{
-                  label: "Nomor NIK",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.aw_nik,
+              >
+                <Descriptions.Item label="Status Rumah">
+                  {data.house_status}
+                </Descriptions.Item>
+                <Descriptions.Item label="Lama Menempati">
+                  {data.house_year} Tahun
+                </Descriptions.Item>
+              </Descriptions>
+              <Descriptions
+                title={
+                  <div className="mt-4 text-center text-gray-500 border-b border-gray-400">
+                    Ahliwaris
+                  </div>
+                }
+                bordered
+                size="small"
+                column={1}
+                styles={{
+                  label: { width: 180, fontSize: 13 },
+                  content: { fontSize: 12 },
                 }}
-              />
-              <FormInput
-                data={{
-                  label: "Tempat Tgl Lahir",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: `${data.aw_birthplace}, ${moment(data.aw_birthdate).format("DD-MM-YYYY")}`,
+              >
+                <Descriptions.Item label="Nama Lengkap">
+                  {data.aw_name}
+                </Descriptions.Item>
+                <Descriptions.Item label="NIK">{data.aw_nik}</Descriptions.Item>
+                <Descriptions.Item label="Tempat, Tgl Lahir">
+                  {data.aw_birthplace},{" "}
+                  {moment(data.aw_birthdate).format("DD-MM-YYYY")}
+                </Descriptions.Item>
+                <Descriptions.Item label="Alamat">
+                  {data.aw_address}, KELURAHAN {data.aw_ward}, KECAMATAN{" "}
+                  {data.aw_district}, {data.aw_city}, {data.aw_province}{" "}
+                  {data.aw_pos_code}
+                </Descriptions.Item>
+                <Descriptions.Item label="Pekerjaan">
+                  {data.aw_job}
+                </Descriptions.Item>
+                <Descriptions.Item label="No Telepon">
+                  {data.aw_phone}
+                </Descriptions.Item>
+                <Descriptions.Item label="Hubungan">
+                  {data.aw_relate}
+                </Descriptions.Item>
+              </Descriptions>
+              <Descriptions
+                title={
+                  <div className="mt-4 text-center text-gray-500 border-b border-gray-400">
+                    Kontak Darurat
+                  </div>
+                }
+                bordered
+                size="small"
+                column={1}
+                styles={{
+                  label: { width: 180, fontSize: 13 },
+                  content: { fontSize: 12 },
                 }}
-              />
-              <FormInput
-                data={{
-                  label: "Pekerjaan",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: `${data.aw_job}`,
-                }}
-              />
-              <FormInput
-                data={{
-                  label: "Nomor Telepon",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.aw_phone,
-                }}
-              />
-              <FormInput
-                data={{
-                  label: "Hubungan",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.aw_relate,
-                }}
-              />
-              <FormInput
-                data={{
-                  label: "Alamat",
-                  mode: "vertical",
-                  type: "textarea",
-                  class: "flex-1",
-                  disabled: true,
-                  value: `${data.aw_address}`,
-                }}
-              />
+              >
+                <Descriptions.Item label="Nama Lengkap">
+                  {data.f_name}
+                </Descriptions.Item>
+                <Descriptions.Item label="Alamat">
+                  {data.f_address}, KELURAHAN {data.f_ward}, KECAMATAN{" "}
+                  {data.f_district}, {data.f_city}, {data.f_province}{" "}
+                  {data.f_pos_code}
+                </Descriptions.Item>
+                <Descriptions.Item label="No Telepon">
+                  {data.f_phone}
+                </Descriptions.Item>
+                <Descriptions.Item label="Hubungan">
+                  {data.f_relate}
+                </Descriptions.Item>
+              </Descriptions>
             </div>
-            <Divider style={{ fontSize: 12 }}>Keluarga Tidak Serumah</Divider>
-            <div className="flex gap-2 flex-wrap">
-              <FormInput
-                data={{
-                  label: "Nama Lengkap",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.f_name,
+
+            <div className="p-2 rounded-lg border mt-2">
+              <Descriptions
+                title={
+                  <div>
+                    <SecurityScanOutlined /> Data Pensiun
+                  </div>
+                }
+                bordered
+                size="small"
+                column={1}
+                styles={{
+                  label: { width: 180, fontSize: 13 },
+                  content: { fontSize: 12 },
                 }}
-              />
-              <FormInput
-                data={{
-                  label: "Nomor Telepon",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.f_phone,
-                }}
-              />
-              <FormInput
-                data={{
-                  label: "Hubungan",
-                  mode: "vertical",
-                  type: "text",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.f_relate,
-                }}
-              />
-              <FormInput
-                data={{
-                  label: "Alamat",
-                  mode: "vertical",
-                  type: "textarea",
-                  class: "flex-1",
-                  disabled: true,
-                  value: data.f_address,
-                }}
-              />
+              >
+                <Descriptions.Item label="Kelompok Pensiun">
+                  {data.Debitur.group_skep}
+                </Descriptions.Item>
+                <Descriptions.Item label="Nomor Pensiun">
+                  {data.nopen}
+                </Descriptions.Item>
+                <Descriptions.Item label="Nama SKEP">
+                  {data.Debitur.name_skep}
+                </Descriptions.Item>
+                <Descriptions.Item label="Nomor SKEP">
+                  {data.Debitur.no_skep}
+                </Descriptions.Item>
+                <Descriptions.Item label="Kode Jiwa">
+                  {data.Debitur.soul_code}
+                </Descriptions.Item>
+                <Descriptions.Item label="Masa Kerja">
+                  {data.Debitur.job_year}
+                </Descriptions.Item>
+                <Descriptions.Item label="Pangkat">
+                  {data.Debitur.rank_skep}
+                </Descriptions.Item>
+                <Descriptions.Item label="Tanggal SKEP">
+                  {moment(data.Debitur.date_skep).format("DD-MM-YYYY")}
+                </Descriptions.Item>
+                <Descriptions.Item label="TMT Pensiun">
+                  {moment(data.Debitur.tmt_skep).format("DD-MM-YYYY")}
+                </Descriptions.Item>
+                <Descriptions.Item label="Penerbit SKEP">
+                  {data.Debitur.publisher_skep}
+                </Descriptions.Item>
+              </Descriptions>
             </div>
-          </div>
 
-          <div className="p-2 rounded bg-gray-800 text-gray-50 font-bold my-2">
-            Data Pensiun
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            <FormInput
-              data={{
-                label: "Nama SKEP",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.name_skep,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nomor Pensiun",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.nopen,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nomor SKEP",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.no_skep,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Tanggal SKEP",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: moment(data.Debitur.date_skep).format("DD-MM-YYYY"),
-              }}
-            />
-            <FormInput
-              data={{
-                label: "TMT SKEP",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: moment(data.Debitur.tmt_skep).format("DD-MM-YYYY"),
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Penerbit SKEP",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.publisher_skep,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Kode Jiwa",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.soul_code,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Masa Kerja",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.job_year,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Pangkat Pensiun",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.rank_skep,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Kelompok Pensiun",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.group_skep,
-              }}
-            />
-          </div>
+            <div className="p-2 rounded-lg border mt-2">
+              <Descriptions
+                title={
+                  <div>
+                    <BranchesOutlined /> Data AO & Agent
+                  </div>
+                }
+                bordered
+                size="small"
+                column={1}
+                styles={{
+                  label: { width: 180, fontSize: 13 },
+                  content: { fontSize: 12 },
+                }}
+              >
+                <Descriptions.Item label="Agent Fronting">
+                  {data.AgentFronting && data.AgentFronting.code}{" "}
+                  {data.AgentFronting && `(${data.AgentFronting.pic})`}
+                </Descriptions.Item>
+                <Descriptions.Item label="AO">
+                  {data.AO?.fullname} ({data.AO?.phone})
+                </Descriptions.Item>
+                <Descriptions.Item label="SPV">
+                  {data.AOCabang?.fullname} ({data.AOCabang?.phone})
+                </Descriptions.Item>
+                <Descriptions.Item label="Area">
+                  {data.AOArea?.fullname} ({data.AOArea?.phone})
+                </Descriptions.Item>
+              </Descriptions>
+            </div>
 
-          <div className="p-2 rounded bg-gray-800 text-gray-50 font-bold my-2">
-            Data Pembiayaan
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            <FormInput
-              data={{
-                label: "Tanggal Permohonan",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: moment(data.created_at).format("DD-MM-YYYY"),
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Tanggal Lahir",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: moment(data.Debitur.birthdate).format("DD-MM-YYYY"),
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Usia Pemohon",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: (() => {
-                  const { year, month, day } = GetFullAge(
-                    data.Debitur.birthdate,
-                    data.created_at,
-                  );
-                  return `${year} Thn ${month} Bln ${day} Hr`;
-                })(),
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Gaji Pensiun",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: IDRFormat(data.Debitur.salary),
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Jenis Pembiayaan",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.JenisPembiayaan.name,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Kantor Bayar",
-                mode: "vertical",
-                type: "textarea",
-                class: "flex-1",
-                disabled: true,
-                value: `${data.PrevPayOffice.code} ${data.JenisPembiayaan.status_mutasi ? "-> " + (data.PayOffice.code || data.PayOffice.name) : ""}`,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Produk Pembiayaan",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: `${data.ProdukPembiayaan.name} (${data.ProdukPembiayaan.Sumdan.code})`,
-              }}
-            />
-
-            <FormInput
-              data={{
-                label: "Instansi Takeover",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: `${data.takeover_from || ""} (${data.takeover_date ? moment(data.takeover_date).format("DD/MM/YYYY") : ""})`,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nomor Rekening",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.account_number,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nama Bank",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.Debitur.account_name,
-              }}
-            />
-            <div className="w-full">
-              <Divider dashed style={{ fontSize: 12 }}>
-                Permohonan Pembiayaan
-              </Divider>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Tenor</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {data.tenor} Bulan
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Plafond</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
+            <div className="p-2 rounded-lg border mt-2">
+              <Descriptions
+                title={
+                  <div>
+                    <CalculatorOutlined /> Data Pembiayaan
+                  </div>
+                }
+                bordered
+                size="small"
+                column={1}
+                styles={{
+                  label: { width: 180, fontSize: 13 },
+                  content: { fontSize: 12 },
+                }}
+              >
+                <Descriptions.Item label="Tanggal Permohonan">
+                  {moment(data.created_at).format("DD-MM-YYYY")}
+                </Descriptions.Item>
+                <Descriptions.Item label="Usia Pengajuan">
+                  {(() => {
+                    const { year, month, day } = GetFullAge(
+                      data.Debitur.birthdate,
+                      data.created_at,
+                    );
+                    return `${year} Thn ${month} Bln ${day} Hr`;
+                  })()}
+                </Descriptions.Item>
+                <Descriptions.Item label="Gaji/Pendapatan">
+                  {IDRFormat(data.salary || data.Debitur.salary)}
+                </Descriptions.Item>
+                <Descriptions.Item label="Plafond Pinjaman">
                   {IDRFormat(data.plafond)}
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Margin</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {data.c_margin + data.c_margin_sumdan}% ({data.margin_type})
-                </div>
-              </div>
-              <div className="my-1 flex italic text-xs text-blue-500 opacity-70">
-                <div className="w-[40%]"></div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-xs text-right">
-                  Mitra: {data.c_margin_sumdan}% |: Selisih {data.c_margin}%
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Pembulatan</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.rounded)}
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Angsuran</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
+                </Descriptions.Item>
+                <Descriptions.Item label="Jangka Waktu">
+                  {data.tenor} Bulan
+                </Descriptions.Item>
+                <Descriptions.Item label="Suku Bunga">
+                  <div className="flex justify-between">
+                    <span>
+                      {(data.c_margin + data.c_margin_sumdan).toFixed(2)}%/Tahun
+                    </span>{" "}
+                    <span className="text-gray-400" style={{ fontSize: 10 }}>
+                      ({data.c_margin_sumdan.toFixed(2)}% +{" "}
+                      {data.c_margin.toFixed(2)}%)
+                    </span>
+                  </div>
+                </Descriptions.Item>
+                <Descriptions.Item label="Angsuran">
+                  <div className="flex justify-between">
+                    <span>{IDRFormat(detail.detail.angsuran)}</span>{" "}
+                    <span className="text-gray-400" style={{ fontSize: 10 }}>
+                      ({IDRFormat(detail.detail.angsuran_sumdan)} +{" "}
+                      {IDRFormat(detail.angsuran - detail.detail.angsuran)})
+                    </span>
+                  </div>
+                </Descriptions.Item>
+                <Descriptions.Item label="NED + Fee Tagihan">
+                  <div className="flex justify-between">
+                    <span>
+                      {IDRFormat(data.c_ned + detail.detail.fee_banpot)}
+                    </span>{" "}
+                    <span className="text-gray-400" style={{ fontSize: 10 }}>
+                      ({IDRFormat(data.c_ned)} +{" "}
+                      {IDRFormat(detail.detail.fee_banpot)})
+                    </span>
+                  </div>
+                </Descriptions.Item>
+                <Descriptions.Item label="Total Angsuran">
                   {IDRFormat(detail.angsuran)}
+                </Descriptions.Item>
+                <Descriptions.Item label="Sisa Gaji">
+                  <div className="flex justify-between">
+                    <span>
+                      {IDRFormat(
+                        (data.salary || data.Debitur.salary) - detail.angsuran,
+                      )}
+                    </span>{" "}
+                    <span className="text-gray-400" style={{ fontSize: 10 }}>
+                      ( A
+                      {(
+                        (detail.detail.angsuran /
+                          (data.salary || data.Debitur.salary)) *
+                        100
+                      ).toFixed(2)}
+                      % / B
+                      {(
+                        (detail.angsuran /
+                          (data.salary || data.Debitur.salary)) *
+                        100
+                      ).toFixed(2)}
+                      % )
+                    </span>
+                  </div>
+                </Descriptions.Item>
+                <Descriptions.Item label="Produk Pembiayaan">
+                  {data.ProdukPembiayaan.name} (
+                  {data.ProdukPembiayaan.Sumdan.code})
+                </Descriptions.Item>
+                <Descriptions.Item label="Jenis Pembiayaan">
+                  {data.JenisPembiayaan.name}
+                </Descriptions.Item>
+                <Descriptions.Item label="Kantor Bayar">
+                  {data.PrevPayOffice.code}{" "}
+                  {data.JenisPembiayaan.status_mutasi && (
+                    <>
+                      <SwapOutlined /> {data.PayOffice.code}
+                    </>
+                  )}
+                </Descriptions.Item>
+                <Descriptions.Item label="Takeover">
+                  {data.takeover_from ? (
+                    <>
+                      {data.takeover_from}{" "}
+                      <span style={{ fontSize: 10 }} className="text-gray-400">
+                        (
+                        {data.takeover_date
+                          ? moment(data.takeover_date).format("DD/MM/YYYY")
+                          : ""}
+                        )
+                      </span>
+                    </>
+                  ) : (
+                    "-"
+                  )}
+                </Descriptions.Item>
+                <Descriptions.Item label="Rekening">
+                  {data.Debitur.account_number} ({data.Debitur.account_name})
+                </Descriptions.Item>
+              </Descriptions>
+
+              <p className="mt-4 mx-2 font-bold">Rincian Biaya</p>
+              <div className="p-2 flex flex-col gap-2">
+                <div className="flex justify-between border-b border-gray-400 border-dashed">
+                  <div className="w-48">
+                    Adm Sumdan{" "}
+                    <span className="text-gray-400" style={{ fontSize: 10 }}>
+                      ({data.c_adm_sumdan.toFixed(2)}%)
+                    </span>
+                  </div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(detail.detail.adm_sumdan)}
+                  </div>
+                </div>
+                <div className="flex justify-between border-b border-gray-400 border-dashed">
+                  <div className="w-48">Buka Rekening</div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(data.c_account_sumdan)}
+                  </div>
+                </div>
+                <div className="flex justify-between border-b border-gray-400 border-dashed">
+                  <div className="w-48">
+                    Adm Koperasi{" "}
+                    <span className="text-gray-400" style={{ fontSize: 10 }}>
+                      ({data.c_adm.toFixed(2)}%)
+                    </span>
+                  </div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(detail.detail.adm)}
+                  </div>
+                </div>
+                <div className="flex justify-between border-b border-gray-400 border-dashed">
+                  <div className="w-48">
+                    Asuransi{" "}
+                    <span className="text-gray-400" style={{ fontSize: 10 }}>
+                      ({data.c_insurance.toFixed(2)}% +{" "}
+                      {IDRFormat(data.c_flagging)})
+                    </span>
+                  </div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(detail.asuransi)}
+                  </div>
+                </div>
+                <div className="flex justify-between border-b border-gray-400 border-dashed">
+                  <div className="w-48">Tatalaksana</div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(data.c_gov)}
+                  </div>
+                </div>
+                <div className="flex justify-between border-b border-gray-400 border-dashed">
+                  <div className="w-48">Data Informasi</div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(data.c_infomation)}
+                  </div>
+                </div>
+                <div className="flex justify-between border-b border-gray-400 border-dashed">
+                  <div className="w-48">Mutasi & Flagging</div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(data.c_mutasi)}
+                  </div>
+                </div>
+                <div className="flex justify-between  text-red-400 font-bold">
+                  <div className="w-48">Total Biaya</div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(detail.biaya)}
+                  </div>
+                </div>
+                <div className="flex justify-between  text-blue-400 font-bold">
+                  <div className="w-48">Terima Kotor</div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(detail.tk)}
+                  </div>
                 </div>
               </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Angsuran Mitra</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.angsuran_sumdan)}
+
+              <div className="p-2 flex flex-col gap-2 mt-2">
+                <div className="flex justify-between border-b border-gray-400 border-dashed">
+                  <div className="w-48">Nominal Takeover</div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(data.c_takeover)}
+                  </div>
                 </div>
-              </div>
-              <div className="my-1 flex italic text-xs text-blue-500 opacity-70">
-                <div className="w-[40%]"></div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-xs text-right">
-                  Selisih{" "}
-                  {IDRFormat(detail.angsuran - detail.detail.angsuran_sumdan)}
+                <div className="flex justify-between border-b border-gray-400 border-dashed">
+                  <div className="w-48">
+                    Blokir Angsuran{" "}
+                    <span className="text-gray-400" style={{ fontSize: 10 }}>
+                      ({data.c_blokir}x)
+                    </span>
+                  </div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(detail.angsuran * data.c_blokir)}
+                  </div>
                 </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Debt Service Ratio</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {(
-                    (detail.detail.angsuranrounded / data.Debitur.salary) *
-                    100
-                  ).toFixed(2)}
-                  % / {data.ProdukPembiayaan.Sumdan.dsr}%
+                <div className="flex justify-between border-b border-gray-400 border-dashed text-green-400 font-bold">
+                  <div className="w-48">Terima Bersih</div>
+                  <div className="flex-1 text-right">
+                    {IDRFormat(detail.tb)}
+                  </div>
                 </div>
               </div>
             </div>
-
-            <div className="w-full">
-              <Divider dashed style={{ fontSize: 12 }}>
-                Rincian Biaya
-              </Divider>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Adm Sumdan ({data.c_adm_sumdan}%)</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.adm_sumdan)}
-                </div>
-              </div>
-              {/* <div className="my-1 flex">
-                <div className="w-[40%]">
-                  Provisi Sumdan ({data.c_provisi_sumdan}%)
-                </div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.provisi_sumdan)}
-                </div>
-              </div> */}
-              <div className="my-1 flex">
-                <div className="w-[40%]">Buka Rekening</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_account_sumdan)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">
-                  Asuransi ({data.c_insurance}% + {IDRFormat(data.c_flagging)})
-                </div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.asuransi)}
-                </div>
-              </div>
-              <div className="my-1 flex">
-                <div className="w-[40%]">Adm Koperasi ({data.c_adm}%)</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.detail.adm)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Tatalaksana</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_gov)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Data Informasi</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_infomation)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Mutasi & Flagging</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_mutasi)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed text-red-500 font-bold mt-2">
-                <div className="w-[40%]">Total Biaya</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.biaya)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed text-blue-500 font-bold mt-5">
-                <div className="w-[40%]">Terima Kotor</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.tk)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">Nominal Takeover</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(data.c_takeover)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed">
-                <div className="w-[40%]">
-                  Blokir Angsuran ({data.c_blokir}x)
-                </div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.angsuran * data.c_blokir)}
-                </div>
-              </div>
-              <div className="my-1 flex border-b border-dashed text-green-500 font-bold">
-                <div className="w-[40%]">Terima Bersih</div>
-                <div className="w-[5%]">:</div>
-                <div className="flex-1 justify-end text-right">
-                  {IDRFormat(detail.tb)}
-                </div>
-              </div>
-            </div>
           </div>
-
-          <div className="p-2 rounded bg-gray-800 text-gray-50 font-bold my-2">
-            Data Account Officer & Agent Fronting
-          </div>
-          <Divider
-            size="small"
-            style={{ opacity: 50, fontSize: 12 }}
-            titlePlacement="left"
-          >
-            Agent Fronting
-          </Divider>
-          <div className="flex gap-2 flex-wrap">
-            <FormInput
+          <div className="flex-1">
+            <TabsFiles
               data={{
-                label: "Agent Fronting",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.AgentFronting?.name,
+                open: true,
+                data: [
+                  { name: "SLIK", url: data.file_slik || "" },
+                  { name: "PENGAJUAN", url: data.file_submission || "" },
+                  { name: "WAWANCARA", url: data.video_interview || "" },
+                  { name: "ASURANSI", url: data.video_insurance || "" },
+                  { name: "AKAD", url: data.file_contract || "" },
+                  // { name: "VIDEO AKAD", url: data.video_contract || "" },
+                  { name: "BANK", url: data.file_proses || "" },
+                ],
               }}
-            />
-            <FormInput
-              data={{
-                label: "Penanggun Jawab",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.AgentFronting?.pic,
-              }}
-            />
-          </div>
-          <Divider
-            size="small"
-            style={{ opacity: 50, fontSize: 12 }}
-            titlePlacement="left"
-          >
-            AO
-          </Divider>
-          <div className="flex gap-2 flex-wrap">
-            <FormInput
-              data={{
-                label: "Nama Lengkap",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: `${data.AO?.fullname || ""} (${data.AO?.Cabang.name || ""})`,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nomor Telepon",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.AO?.phone,
-              }}
-            />
-          </div>
-          <Divider
-            size="small"
-            style={{ opacity: 50, fontSize: 12 }}
-            titlePlacement="left"
-          >
-            AO Cabang
-          </Divider>
-          <div className="flex gap-2 flex-wrap">
-            <FormInput
-              data={{
-                label: "Nama Lengkap",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: `${data.AOCabang?.fullname || ""} (${data.AOCabang?.Cabang.name || ""})`,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nomor Telepon",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.AOCabang?.phone,
-              }}
-            />
-          </div>
-          <Divider
-            size="small"
-            style={{ opacity: 50, fontSize: 12 }}
-            titlePlacement="left"
-          >
-            AO Area
-          </Divider>
-          <div className="flex gap-2 flex-wrap">
-            <FormInput
-              data={{
-                label: "Nama Lengkap",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: `${data.AOArea?.fullname || ""} (${data.AOArea?.Cabang.name || ""})`,
-              }}
-            />
-            <FormInput
-              data={{
-                label: "Nomor Telepon",
-                mode: "vertical",
-                type: "text",
-                class: "flex-1",
-                disabled: true,
-                value: data.AOArea?.phone,
-              }}
+              allowprogres={allowprogres}
+              dapem={data}
             />
           </div>
         </div>
-        <div className="flex-1">
-          <TabsFiles
-            data={{
-              open: true,
-              data: [
-                { name: "SLIK", url: data.file_slik || "" },
-                { name: "PENGAJUAN", url: data.file_submission || "" },
-                { name: "WAWANCARA", url: data.video_interview || "" },
-                { name: "ASURANSI", url: data.video_insurance || "" },
-                { name: "AKAD", url: data.file_contract || "" },
-                // { name: "VIDEO AKAD", url: data.video_contract || "" },
-                { name: "BANK", url: data.file_proses || "" },
-              ],
-            }}
-            allowprogres={allowprogres}
-            dapem={data}
-          />
+      ) : (
+        <div>
+          Mengambil data ...
+          <LoadingOutlined />
         </div>
-      </div>
+      )}
     </Modal>
   );
 };

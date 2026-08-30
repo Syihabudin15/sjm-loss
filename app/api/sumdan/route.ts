@@ -2,26 +2,37 @@ import { serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { getSession } from "@/libs/Auth";
 import prisma from "@/libs/Prisma";
 import { NextRequest, NextResponse } from "next/server";
-import { WheresDapem } from "../utils/wheres";
+import { GetUserSession, WheresDapem } from "../utils/wheres";
 import { Prisma } from "../../../generated/prisma/client";
 
 export const GET = async (request: NextRequest) => {
   const params = Object.fromEntries(request.nextUrl.searchParams);
-  const { page = "1", limit = "50", search, includes, includeproduct } = params;
+  const {
+    page = "1",
+    limit = "50",
+    search,
+    includes,
+    includeproduct,
+    front,
+  } = params;
   const skip = (parseInt(page) - 1) * parseInt(limit);
 
   const session = await getSession();
+  const user = await GetUserSession(session);
 
   if (!session)
     return NextResponse.json({ data: [], status: 200 }, { status: 200 });
-  const user = await prisma.user.findFirst({
-    where: { id: session.user.id },
-    include: {
-      AgentFronting: { include: { SumdanAgentFrontings: true } },
-      Role: true,
-      Cabang: true,
-    },
-  });
+  // const user = await prisma.user.findFirst({
+  //   where: { id: session.user.id },
+  //   include: {
+  //     Role: { select: { data_status: true } },
+  //     AgentFronting: {
+  //       select: {
+  //         SumdanAgentFrontings: { select: { id: true, sumdanId: true } },
+  //       },
+  //     },
+  //   },
+  // });
   if (!user)
     return NextResponse.json({ data: [], status: 200 }, { status: 200 });
 
@@ -48,6 +59,7 @@ export const GET = async (request: NextRequest) => {
         },
       },
     }),
+    fronting: front || user.agentFrontingId ? true : false,
     status: true,
   };
 

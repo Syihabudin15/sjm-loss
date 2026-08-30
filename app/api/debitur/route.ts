@@ -3,7 +3,7 @@ import { getSession } from "@/libs/Auth";
 import prisma from "@/libs/Prisma";
 import { Prisma } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { WheresDapem } from "../utils/wheres";
+import { GetUserSession, WheresDapem } from "../utils/wheres";
 
 export const GET = async (request: NextRequest) => {
   const params = Object.fromEntries(request.nextUrl.searchParams);
@@ -21,10 +21,11 @@ export const GET = async (request: NextRequest) => {
 
   if (!session)
     return NextResponse.json({ data: [], status: 200 }, { status: 200 });
-  const user = await prisma.user.findFirst({
-    where: { id: session.user.id },
-    include: { Role: true, Cabang: true },
-  });
+  // const user = await prisma.user.findFirst({
+  //   where: { id: session.user.id },
+  //   include: { Role: true, Cabang: true },
+  // });
+  const user = await GetUserSession(session);
   if (!user)
     return NextResponse.json({ data: [], status: 200 }, { status: 200 });
 

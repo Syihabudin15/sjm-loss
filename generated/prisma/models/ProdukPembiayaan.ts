@@ -28,6 +28,7 @@ export type AggregateProdukPembiayaan = {
 
 export type ProdukPembiayaanAvgAggregateOutputType = {
   c_margin: number | null
+  c_margin_sumdan: number | null
   c_insurance: number | null
   max_tenor: number | null
   max_plafond: number | null
@@ -38,6 +39,7 @@ export type ProdukPembiayaanAvgAggregateOutputType = {
 
 export type ProdukPembiayaanSumAggregateOutputType = {
   c_margin: number | null
+  c_margin_sumdan: number | null
   c_insurance: number | null
   max_tenor: number | null
   max_plafond: number | null
@@ -50,6 +52,7 @@ export type ProdukPembiayaanMinAggregateOutputType = {
   id: string | null
   name: string | null
   c_margin: number | null
+  c_margin_sumdan: number | null
   c_insurance: number | null
   max_tenor: number | null
   max_plafond: number | null
@@ -67,6 +70,7 @@ export type ProdukPembiayaanMaxAggregateOutputType = {
   id: string | null
   name: string | null
   c_margin: number | null
+  c_margin_sumdan: number | null
   c_insurance: number | null
   max_tenor: number | null
   max_plafond: number | null
@@ -84,6 +88,7 @@ export type ProdukPembiayaanCountAggregateOutputType = {
   id: number
   name: number
   c_margin: number
+  c_margin_sumdan: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -101,6 +106,7 @@ export type ProdukPembiayaanCountAggregateOutputType = {
 
 export type ProdukPembiayaanAvgAggregateInputType = {
   c_margin?: true
+  c_margin_sumdan?: true
   c_insurance?: true
   max_tenor?: true
   max_plafond?: true
@@ -111,6 +117,7 @@ export type ProdukPembiayaanAvgAggregateInputType = {
 
 export type ProdukPembiayaanSumAggregateInputType = {
   c_margin?: true
+  c_margin_sumdan?: true
   c_insurance?: true
   max_tenor?: true
   max_plafond?: true
@@ -123,6 +130,7 @@ export type ProdukPembiayaanMinAggregateInputType = {
   id?: true
   name?: true
   c_margin?: true
+  c_margin_sumdan?: true
   c_insurance?: true
   max_tenor?: true
   max_plafond?: true
@@ -140,6 +148,7 @@ export type ProdukPembiayaanMaxAggregateInputType = {
   id?: true
   name?: true
   c_margin?: true
+  c_margin_sumdan?: true
   c_insurance?: true
   max_tenor?: true
   max_plafond?: true
@@ -157,6 +166,7 @@ export type ProdukPembiayaanCountAggregateInputType = {
   id?: true
   name?: true
   c_margin?: true
+  c_margin_sumdan?: true
   c_insurance?: true
   max_tenor?: true
   max_plafond?: true
@@ -261,6 +271,7 @@ export type ProdukPembiayaanGroupByOutputType = {
   id: string
   name: string
   c_margin: number
+  c_margin_sumdan: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -301,6 +312,7 @@ export type ProdukPembiayaanWhereInput = {
   id?: Prisma.StringFilter<"ProdukPembiayaan"> | string
   name?: Prisma.StringFilter<"ProdukPembiayaan"> | string
   c_margin?: Prisma.FloatFilter<"ProdukPembiayaan"> | number
+  c_margin_sumdan?: Prisma.FloatFilter<"ProdukPembiayaan"> | number
   c_insurance?: Prisma.FloatFilter<"ProdukPembiayaan"> | number
   max_tenor?: Prisma.IntFilter<"ProdukPembiayaan"> | number
   max_plafond?: Prisma.IntFilter<"ProdukPembiayaan"> | number
@@ -314,12 +326,14 @@ export type ProdukPembiayaanWhereInput = {
   sumdanId?: Prisma.StringFilter<"ProdukPembiayaan"> | string
   Sumdan?: Prisma.XOR<Prisma.SumdanScalarRelationFilter, Prisma.SumdanWhereInput>
   Dapems?: Prisma.DapemListRelationFilter
+  dataSimulasis?: Prisma.DataSimulasiListRelationFilter
 }
 
 export type ProdukPembiayaanOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   c_margin?: Prisma.SortOrder
+  c_margin_sumdan?: Prisma.SortOrder
   c_insurance?: Prisma.SortOrder
   max_tenor?: Prisma.SortOrder
   max_plafond?: Prisma.SortOrder
@@ -333,6 +347,7 @@ export type ProdukPembiayaanOrderByWithRelationInput = {
   sumdanId?: Prisma.SortOrder
   Sumdan?: Prisma.SumdanOrderByWithRelationInput
   Dapems?: Prisma.DapemOrderByRelationAggregateInput
+  dataSimulasis?: Prisma.DataSimulasiOrderByRelationAggregateInput
   _relevance?: Prisma.ProdukPembiayaanOrderByRelevanceInput
 }
 
@@ -343,6 +358,7 @@ export type ProdukPembiayaanWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ProdukPembiayaanWhereInput | Prisma.ProdukPembiayaanWhereInput[]
   name?: Prisma.StringFilter<"ProdukPembiayaan"> | string
   c_margin?: Prisma.FloatFilter<"ProdukPembiayaan"> | number
+  c_margin_sumdan?: Prisma.FloatFilter<"ProdukPembiayaan"> | number
   c_insurance?: Prisma.FloatFilter<"ProdukPembiayaan"> | number
   max_tenor?: Prisma.IntFilter<"ProdukPembiayaan"> | number
   max_plafond?: Prisma.IntFilter<"ProdukPembiayaan"> | number
@@ -356,12 +372,14 @@ export type ProdukPembiayaanWhereUniqueInput = Prisma.AtLeast<{
   sumdanId?: Prisma.StringFilter<"ProdukPembiayaan"> | string
   Sumdan?: Prisma.XOR<Prisma.SumdanScalarRelationFilter, Prisma.SumdanWhereInput>
   Dapems?: Prisma.DapemListRelationFilter
+  dataSimulasis?: Prisma.DataSimulasiListRelationFilter
 }, "id">
 
 export type ProdukPembiayaanOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   c_margin?: Prisma.SortOrder
+  c_margin_sumdan?: Prisma.SortOrder
   c_insurance?: Prisma.SortOrder
   max_tenor?: Prisma.SortOrder
   max_plafond?: Prisma.SortOrder
@@ -387,6 +405,7 @@ export type ProdukPembiayaanScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"ProdukPembiayaan"> | string
   name?: Prisma.StringWithAggregatesFilter<"ProdukPembiayaan"> | string
   c_margin?: Prisma.FloatWithAggregatesFilter<"ProdukPembiayaan"> | number
+  c_margin_sumdan?: Prisma.FloatWithAggregatesFilter<"ProdukPembiayaan"> | number
   c_insurance?: Prisma.FloatWithAggregatesFilter<"ProdukPembiayaan"> | number
   max_tenor?: Prisma.IntWithAggregatesFilter<"ProdukPembiayaan"> | number
   max_plafond?: Prisma.IntWithAggregatesFilter<"ProdukPembiayaan"> | number
@@ -404,6 +423,7 @@ export type ProdukPembiayaanCreateInput = {
   id?: string
   name: string
   c_margin: number
+  c_margin_sumdan?: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -416,12 +436,14 @@ export type ProdukPembiayaanCreateInput = {
   updated_at?: Date | string
   Sumdan: Prisma.SumdanCreateNestedOneWithoutProdukPembiayaansInput
   Dapems?: Prisma.DapemCreateNestedManyWithoutProdukPembiayaanInput
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutProductInput
 }
 
 export type ProdukPembiayaanUncheckedCreateInput = {
   id?: string
   name: string
   c_margin: number
+  c_margin_sumdan?: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -434,12 +456,14 @@ export type ProdukPembiayaanUncheckedCreateInput = {
   updated_at?: Date | string
   sumdanId: string
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutProdukPembiayaanInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProdukPembiayaanUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
   max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
@@ -452,12 +476,14 @@ export type ProdukPembiayaanUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutProdukPembiayaansNestedInput
   Dapems?: Prisma.DapemUpdateManyWithoutProdukPembiayaanNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutProductNestedInput
 }
 
 export type ProdukPembiayaanUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
   max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
@@ -470,12 +496,14 @@ export type ProdukPembiayaanUncheckedUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProdukPembiayaanCreateManyInput = {
   id?: string
   name: string
   c_margin: number
+  c_margin_sumdan?: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -493,6 +521,7 @@ export type ProdukPembiayaanUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
   max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
@@ -509,6 +538,7 @@ export type ProdukPembiayaanUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
   max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
@@ -542,6 +572,7 @@ export type ProdukPembiayaanCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   c_margin?: Prisma.SortOrder
+  c_margin_sumdan?: Prisma.SortOrder
   c_insurance?: Prisma.SortOrder
   max_tenor?: Prisma.SortOrder
   max_plafond?: Prisma.SortOrder
@@ -557,6 +588,7 @@ export type ProdukPembiayaanCountOrderByAggregateInput = {
 
 export type ProdukPembiayaanAvgOrderByAggregateInput = {
   c_margin?: Prisma.SortOrder
+  c_margin_sumdan?: Prisma.SortOrder
   c_insurance?: Prisma.SortOrder
   max_tenor?: Prisma.SortOrder
   max_plafond?: Prisma.SortOrder
@@ -569,6 +601,7 @@ export type ProdukPembiayaanMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   c_margin?: Prisma.SortOrder
+  c_margin_sumdan?: Prisma.SortOrder
   c_insurance?: Prisma.SortOrder
   max_tenor?: Prisma.SortOrder
   max_plafond?: Prisma.SortOrder
@@ -586,6 +619,7 @@ export type ProdukPembiayaanMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   c_margin?: Prisma.SortOrder
+  c_margin_sumdan?: Prisma.SortOrder
   c_insurance?: Prisma.SortOrder
   max_tenor?: Prisma.SortOrder
   max_plafond?: Prisma.SortOrder
@@ -601,6 +635,7 @@ export type ProdukPembiayaanMinOrderByAggregateInput = {
 
 export type ProdukPembiayaanSumOrderByAggregateInput = {
   c_margin?: Prisma.SortOrder
+  c_margin_sumdan?: Prisma.SortOrder
   c_insurance?: Prisma.SortOrder
   max_tenor?: Prisma.SortOrder
   max_plafond?: Prisma.SortOrder
@@ -674,10 +709,25 @@ export type ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProdukPembiayaanUpdateToOneWithWhereWithoutDapemsInput, Prisma.ProdukPembiayaanUpdateWithoutDapemsInput>, Prisma.ProdukPembiayaanUncheckedUpdateWithoutDapemsInput>
 }
 
+export type ProdukPembiayaanCreateNestedOneWithoutDataSimulasisInput = {
+  create?: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutDataSimulasisInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutDataSimulasisInput>
+  connectOrCreate?: Prisma.ProdukPembiayaanCreateOrConnectWithoutDataSimulasisInput
+  connect?: Prisma.ProdukPembiayaanWhereUniqueInput
+}
+
+export type ProdukPembiayaanUpdateOneRequiredWithoutDataSimulasisNestedInput = {
+  create?: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutDataSimulasisInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutDataSimulasisInput>
+  connectOrCreate?: Prisma.ProdukPembiayaanCreateOrConnectWithoutDataSimulasisInput
+  upsert?: Prisma.ProdukPembiayaanUpsertWithoutDataSimulasisInput
+  connect?: Prisma.ProdukPembiayaanWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProdukPembiayaanUpdateToOneWithWhereWithoutDataSimulasisInput, Prisma.ProdukPembiayaanUpdateWithoutDataSimulasisInput>, Prisma.ProdukPembiayaanUncheckedUpdateWithoutDataSimulasisInput>
+}
+
 export type ProdukPembiayaanCreateWithoutSumdanInput = {
   id?: string
   name: string
   c_margin: number
+  c_margin_sumdan?: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -689,12 +739,14 @@ export type ProdukPembiayaanCreateWithoutSumdanInput = {
   created_at?: Date | string
   updated_at?: Date | string
   Dapems?: Prisma.DapemCreateNestedManyWithoutProdukPembiayaanInput
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutProductInput
 }
 
 export type ProdukPembiayaanUncheckedCreateWithoutSumdanInput = {
   id?: string
   name: string
   c_margin: number
+  c_margin_sumdan?: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -706,6 +758,7 @@ export type ProdukPembiayaanUncheckedCreateWithoutSumdanInput = {
   created_at?: Date | string
   updated_at?: Date | string
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutProdukPembiayaanInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProdukPembiayaanCreateOrConnectWithoutSumdanInput = {
@@ -741,6 +794,7 @@ export type ProdukPembiayaanScalarWhereInput = {
   id?: Prisma.StringFilter<"ProdukPembiayaan"> | string
   name?: Prisma.StringFilter<"ProdukPembiayaan"> | string
   c_margin?: Prisma.FloatFilter<"ProdukPembiayaan"> | number
+  c_margin_sumdan?: Prisma.FloatFilter<"ProdukPembiayaan"> | number
   c_insurance?: Prisma.FloatFilter<"ProdukPembiayaan"> | number
   max_tenor?: Prisma.IntFilter<"ProdukPembiayaan"> | number
   max_plafond?: Prisma.IntFilter<"ProdukPembiayaan"> | number
@@ -758,6 +812,7 @@ export type ProdukPembiayaanCreateWithoutDapemsInput = {
   id?: string
   name: string
   c_margin: number
+  c_margin_sumdan?: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -769,12 +824,14 @@ export type ProdukPembiayaanCreateWithoutDapemsInput = {
   created_at?: Date | string
   updated_at?: Date | string
   Sumdan: Prisma.SumdanCreateNestedOneWithoutProdukPembiayaansInput
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutProductInput
 }
 
 export type ProdukPembiayaanUncheckedCreateWithoutDapemsInput = {
   id?: string
   name: string
   c_margin: number
+  c_margin_sumdan?: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -786,6 +843,7 @@ export type ProdukPembiayaanUncheckedCreateWithoutDapemsInput = {
   created_at?: Date | string
   updated_at?: Date | string
   sumdanId: string
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProdukPembiayaanCreateOrConnectWithoutDapemsInput = {
@@ -808,6 +866,7 @@ export type ProdukPembiayaanUpdateWithoutDapemsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
   max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
@@ -819,12 +878,14 @@ export type ProdukPembiayaanUpdateWithoutDapemsInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutProdukPembiayaansNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutProductNestedInput
 }
 
 export type ProdukPembiayaanUncheckedUpdateWithoutDapemsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
   max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
@@ -836,12 +897,106 @@ export type ProdukPembiayaanUncheckedUpdateWithoutDapemsInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutProductNestedInput
+}
+
+export type ProdukPembiayaanCreateWithoutDataSimulasisInput = {
+  id?: string
+  name: string
+  c_margin: number
+  c_margin_sumdan?: number
+  c_insurance: number
+  max_tenor: number
+  max_plafond: number
+  min_age: number
+  max_age: number
+  max_paid: number
+  margin_type: $Enums.EMarginType
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Sumdan: Prisma.SumdanCreateNestedOneWithoutProdukPembiayaansInput
+  Dapems?: Prisma.DapemCreateNestedManyWithoutProdukPembiayaanInput
+}
+
+export type ProdukPembiayaanUncheckedCreateWithoutDataSimulasisInput = {
+  id?: string
+  name: string
+  c_margin: number
+  c_margin_sumdan?: number
+  c_insurance: number
+  max_tenor: number
+  max_plafond: number
+  min_age: number
+  max_age: number
+  max_paid: number
+  margin_type: $Enums.EMarginType
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  sumdanId: string
+  Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutProdukPembiayaanInput
+}
+
+export type ProdukPembiayaanCreateOrConnectWithoutDataSimulasisInput = {
+  where: Prisma.ProdukPembiayaanWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutDataSimulasisInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutDataSimulasisInput>
+}
+
+export type ProdukPembiayaanUpsertWithoutDataSimulasisInput = {
+  update: Prisma.XOR<Prisma.ProdukPembiayaanUpdateWithoutDataSimulasisInput, Prisma.ProdukPembiayaanUncheckedUpdateWithoutDataSimulasisInput>
+  create: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutDataSimulasisInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutDataSimulasisInput>
+  where?: Prisma.ProdukPembiayaanWhereInput
+}
+
+export type ProdukPembiayaanUpdateToOneWithWhereWithoutDataSimulasisInput = {
+  where?: Prisma.ProdukPembiayaanWhereInput
+  data: Prisma.XOR<Prisma.ProdukPembiayaanUpdateWithoutDataSimulasisInput, Prisma.ProdukPembiayaanUncheckedUpdateWithoutDataSimulasisInput>
+}
+
+export type ProdukPembiayaanUpdateWithoutDataSimulasisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  min_age?: Prisma.IntFieldUpdateOperationsInput | number
+  max_age?: Prisma.IntFieldUpdateOperationsInput | number
+  max_paid?: Prisma.IntFieldUpdateOperationsInput | number
+  margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutProdukPembiayaansNestedInput
+  Dapems?: Prisma.DapemUpdateManyWithoutProdukPembiayaanNestedInput
+}
+
+export type ProdukPembiayaanUncheckedUpdateWithoutDataSimulasisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  min_age?: Prisma.IntFieldUpdateOperationsInput | number
+  max_age?: Prisma.IntFieldUpdateOperationsInput | number
+  max_paid?: Prisma.IntFieldUpdateOperationsInput | number
+  margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
+  Dapems?: Prisma.DapemUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
 }
 
 export type ProdukPembiayaanCreateManySumdanInput = {
   id?: string
   name: string
   c_margin: number
+  c_margin_sumdan?: number
   c_insurance: number
   max_tenor: number
   max_plafond: number
@@ -858,6 +1013,7 @@ export type ProdukPembiayaanUpdateWithoutSumdanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
   max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
@@ -869,12 +1025,14 @@ export type ProdukPembiayaanUpdateWithoutSumdanInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUpdateManyWithoutProdukPembiayaanNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutProductNestedInput
 }
 
 export type ProdukPembiayaanUncheckedUpdateWithoutSumdanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
   max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
@@ -886,12 +1044,14 @@ export type ProdukPembiayaanUncheckedUpdateWithoutSumdanInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProdukPembiayaanUncheckedUpdateManyWithoutSumdanInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
   c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
   max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
@@ -911,10 +1071,12 @@ export type ProdukPembiayaanUncheckedUpdateManyWithoutSumdanInput = {
 
 export type ProdukPembiayaanCountOutputType = {
   Dapems: number
+  dataSimulasis: number
 }
 
 export type ProdukPembiayaanCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Dapems?: boolean | ProdukPembiayaanCountOutputTypeCountDapemsArgs
+  dataSimulasis?: boolean | ProdukPembiayaanCountOutputTypeCountDataSimulasisArgs
 }
 
 /**
@@ -934,11 +1096,19 @@ export type ProdukPembiayaanCountOutputTypeCountDapemsArgs<ExtArgs extends runti
   where?: Prisma.DapemWhereInput
 }
 
+/**
+ * ProdukPembiayaanCountOutputType without action
+ */
+export type ProdukPembiayaanCountOutputTypeCountDataSimulasisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DataSimulasiWhereInput
+}
+
 
 export type ProdukPembiayaanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   c_margin?: boolean
+  c_margin_sumdan?: boolean
   c_insurance?: boolean
   max_tenor?: boolean
   max_plafond?: boolean
@@ -952,6 +1122,7 @@ export type ProdukPembiayaanSelect<ExtArgs extends runtime.Types.Extensions.Inte
   sumdanId?: boolean
   Sumdan?: boolean | Prisma.SumdanDefaultArgs<ExtArgs>
   Dapems?: boolean | Prisma.ProdukPembiayaan$DapemsArgs<ExtArgs>
+  dataSimulasis?: boolean | Prisma.ProdukPembiayaan$dataSimulasisArgs<ExtArgs>
   _count?: boolean | Prisma.ProdukPembiayaanCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["produkPembiayaan"]>
 
@@ -961,6 +1132,7 @@ export type ProdukPembiayaanSelectScalar = {
   id?: boolean
   name?: boolean
   c_margin?: boolean
+  c_margin_sumdan?: boolean
   c_insurance?: boolean
   max_tenor?: boolean
   max_plafond?: boolean
@@ -974,10 +1146,11 @@ export type ProdukPembiayaanSelectScalar = {
   sumdanId?: boolean
 }
 
-export type ProdukPembiayaanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "c_margin" | "c_insurance" | "max_tenor" | "max_plafond" | "min_age" | "max_age" | "max_paid" | "margin_type" | "status" | "created_at" | "updated_at" | "sumdanId", ExtArgs["result"]["produkPembiayaan"]>
+export type ProdukPembiayaanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "c_margin" | "c_margin_sumdan" | "c_insurance" | "max_tenor" | "max_plafond" | "min_age" | "max_age" | "max_paid" | "margin_type" | "status" | "created_at" | "updated_at" | "sumdanId", ExtArgs["result"]["produkPembiayaan"]>
 export type ProdukPembiayaanInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Sumdan?: boolean | Prisma.SumdanDefaultArgs<ExtArgs>
   Dapems?: boolean | Prisma.ProdukPembiayaan$DapemsArgs<ExtArgs>
+  dataSimulasis?: boolean | Prisma.ProdukPembiayaan$dataSimulasisArgs<ExtArgs>
   _count?: boolean | Prisma.ProdukPembiayaanCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -986,11 +1159,13 @@ export type $ProdukPembiayaanPayload<ExtArgs extends runtime.Types.Extensions.In
   objects: {
     Sumdan: Prisma.$SumdanPayload<ExtArgs>
     Dapems: Prisma.$DapemPayload<ExtArgs>[]
+    dataSimulasis: Prisma.$DataSimulasiPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
     c_margin: number
+    c_margin_sumdan: number
     c_insurance: number
     max_tenor: number
     max_plafond: number
@@ -1344,6 +1519,7 @@ export interface Prisma__ProdukPembiayaanClient<T, Null = never, ExtArgs extends
   readonly [Symbol.toStringTag]: "PrismaPromise"
   Sumdan<T extends Prisma.SumdanDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SumdanDefaultArgs<ExtArgs>>): Prisma.Prisma__SumdanClient<runtime.Types.Result.GetResult<Prisma.$SumdanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   Dapems<T extends Prisma.ProdukPembiayaan$DapemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProdukPembiayaan$DapemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DapemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  dataSimulasis<T extends Prisma.ProdukPembiayaan$dataSimulasisArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProdukPembiayaan$dataSimulasisArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DataSimulasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1376,6 +1552,7 @@ export interface ProdukPembiayaanFieldRefs {
   readonly id: Prisma.FieldRef<"ProdukPembiayaan", 'String'>
   readonly name: Prisma.FieldRef<"ProdukPembiayaan", 'String'>
   readonly c_margin: Prisma.FieldRef<"ProdukPembiayaan", 'Float'>
+  readonly c_margin_sumdan: Prisma.FieldRef<"ProdukPembiayaan", 'Float'>
   readonly c_insurance: Prisma.FieldRef<"ProdukPembiayaan", 'Float'>
   readonly max_tenor: Prisma.FieldRef<"ProdukPembiayaan", 'Int'>
   readonly max_plafond: Prisma.FieldRef<"ProdukPembiayaan", 'Int'>
@@ -1756,6 +1933,30 @@ export type ProdukPembiayaan$DapemsArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.DapemScalarFieldEnum | Prisma.DapemScalarFieldEnum[]
+}
+
+/**
+ * ProdukPembiayaan.dataSimulasis
+ */
+export type ProdukPembiayaan$dataSimulasisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DataSimulasi
+   */
+  select?: Prisma.DataSimulasiSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DataSimulasi
+   */
+  omit?: Prisma.DataSimulasiOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DataSimulasiInclude<ExtArgs> | null
+  where?: Prisma.DataSimulasiWhereInput
+  orderBy?: Prisma.DataSimulasiOrderByWithRelationInput | Prisma.DataSimulasiOrderByWithRelationInput[]
+  cursor?: Prisma.DataSimulasiWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DataSimulasiScalarFieldEnum | Prisma.DataSimulasiScalarFieldEnum[]
 }
 
 /**

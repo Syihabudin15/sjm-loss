@@ -2,15 +2,17 @@ import { getSession } from "@/libs/Auth";
 import prisma from "@/libs/Prisma";
 import { Prisma } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import { GetUserSession } from "../utils/wheres";
 
 export const GET = async (req: NextRequest) => {
   const session = await getSession();
   if (!session)
     return NextResponse.json({ data: null, status: 400 }, { status: 400 });
-  const user = await prisma.user.findFirst({
-    where: { id: session.user.id },
-    include: { Role: true, Cabang: true },
-  });
+  // const user = await prisma.user.findFirst({
+  //   where: { id: session.user.id },
+  //   include: { Role: true, Cabang: true },
+  // });
+  const user = await GetUserSession(session);
   if (!user)
     return NextResponse.json({ data: null, status: 400 }, { status: 400 });
 

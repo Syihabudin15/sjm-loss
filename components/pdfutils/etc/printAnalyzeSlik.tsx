@@ -1,3 +1,5 @@
+"use client";
+
 const formatRp = (val: number) =>
   "Rp " + Number(val || 0).toLocaleString("id-ID");
 

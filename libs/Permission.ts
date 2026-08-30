@@ -1,7 +1,7 @@
 import { useUser } from "@/components/UserContext";
-import { Role } from "../generated/prisma/client";
 import { useCallback, useMemo } from "react";
 import { getAccessForPath } from "./AccessUtils";
+import { Role } from "@/generated/prisma";
 
 export function getUserAccess(role: Role, path: string): string[] {
   try {
@@ -17,31 +17,6 @@ export function getUserAccess(role: Role, path: string): string[] {
 export function hasAccess(role: Role, path: string, action: string): boolean {
   return getUserAccess(role, path).includes(action);
 }
-
-// export function useAccess(path: string) {
-//   const user = useUser();
-//   const role = user?.Role ?? null;
-
-//   const access = useMemo(() => {
-//     if (!role) return [];
-//     return getUserAccess(role, path);
-//   }, [role, path]);
-
-//   const hasAccess = useMemo(
-//     () => (action: string) => access.includes(action),
-//     [access],
-//   );
-//   const crossAccess = useMemo(
-//     // eslint-disable-next-line react-hooks/preserve-manual-memoization
-//     () => (action: string, currPath: string) => {
-//       const currAccess = getUserAccess(role!, currPath);
-//       return currAccess.includes(action);
-//     },
-//     [access],
-//   );
-
-//   return { access, hasAccess, crossAccess };
-// }
 
 export function useAccess(path: string) {
   const user = useUser();

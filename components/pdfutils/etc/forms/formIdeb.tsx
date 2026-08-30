@@ -6,8 +6,8 @@ import { IDRFormat } from "@/components/utils/PembiayaanUtil";
 export const FormIdeb = (record?: IDapem) => {
   return `
   <div class="page-header"></div>
-    <div class="border rounded">
-      <div class="border border-b p-4 font-bold text-center text-lg">FORM PERMOHONAN IDEB SLIK OJК</div>
+    <div class="border rounded border-gray-800">
+      <div class="border border-b border-gray-800 p-4 font-bold text-center text-lg">FORM PERMOHONAN IDEB SLIK OJК</div>
       <div class="p-4">
         ${FormList(
           [
@@ -30,9 +30,13 @@ export const FormIdeb = (record?: IDapem) => {
               value: record?.Debitur.npwp || "",
             },
             {
+              key: "Nama Ibu Kandung",
+              value: record?.Debitur.mother_name || "",
+            },
+            {
               key: "Alamat KTP",
               value: record
-                ? `${record.Debitur.address}, Kel. ${record.Debitur.ward} Kec. ${record.Debitur.district}, ${record.Debitur.city} ${record.Debitur.province} ${record.Debitur.pos_code}`
+                ? `${record.Debitur.address}, Kel. ${record.Debitur.ward}, Kec. ${record.Debitur.district}, ${record.Debitur.city}, ${record.Debitur.province} ${record.Debitur.pos_code}`
                 : "",
             },
             {

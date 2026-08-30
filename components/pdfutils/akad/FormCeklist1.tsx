@@ -142,7 +142,6 @@ const listBerkas = [
   "Slip Gaji/Mutasi Rekening 3 bulan",
   "Simulasi Pembiayaan",
   "Form Permohonan",
-  "Surat Keterangan Perbedaan Identitas",
   "Foto Debitur",
   "Analisa Pembiayaan",
   "Kartu Angsuran",

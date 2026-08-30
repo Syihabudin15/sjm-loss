@@ -1,3 +1,4 @@
+"use client";
 import { IDapem } from "@/libs/IInterfaces";
 import { FormList } from "../../utils";
 import moment from "moment";
@@ -149,7 +150,7 @@ export const FormPermohonan = (record?: IDapem) => {
           ],
         },
         {
-          key: "Tahun Menempati",
+          key: "Lama Menempati",
           value: record?.house_year || "",
         },
         { key: "No Telepon", value: record?.Debitur.phone || "" },
@@ -166,7 +167,10 @@ export const FormPermohonan = (record?: IDapem) => {
               value: record?.aw_name || "",
             },
             { key: "No Telepon", value: record?.aw_phone || "" },
-            { key: "Alamat", value: record?.aw_address || "" },
+            {
+              key: "Alamat",
+              value: `${record?.aw_address}, KELURAHAN ${record?.aw_ward}, KECAMATAN ${record?.aw_district}, ${record?.aw_city}, ${record?.aw_province} ${record?.aw_pos_code}`,
+            },
             { key: "Hubungan", value: record?.aw_relate || "" },
           ])}
         </div>
@@ -177,7 +181,10 @@ export const FormPermohonan = (record?: IDapem) => {
               value: record?.f_name || "",
             },
             { key: "No Telepon", value: record?.f_phone || "" },
-            { key: "Alamat", value: record?.f_address || "" },
+            {
+              key: "Alamat",
+              value: `${record?.f_address}, KELURAHAN ${record?.f_ward}, KECAMATAN ${record?.f_district}, ${record?.f_city}, ${record?.f_province} ${record?.f_pos_code}`,
+            },
             { key: "Hubungan", value: record?.f_relate || "" },
           ])}
         </div>
@@ -287,22 +294,22 @@ export const FormPermohonan = (record?: IDapem) => {
     <div class="flex gap-4 text-center font-bold">
       <div class="flex-1">
         <p>AO</p>
-        <div class="h-24"></div>
+        <div class="h-20"></div>
         <div class="border-b h-5"></div>
       </div>
       <div class="flex-1">
         <p>SPV</p>
-        <div class="h-24"></div>
+        <div class="h-20"></div>
         <div class="border-b h-5"></div>
       </div>
       <div class="flex-1">
         <p>Pemohon</p>
-        <div class="h-24"></div>
+        <div class="h-20"></div>
         <div class="border-b h-5">${record?.Debitur.fullname || ""}</div>
       </div>
       <div class="flex-1">
         <p>Ahli waris</p>
-        <div class="h-24"></div>
+        <div class="h-20"></div>
         <div class="border-b h-5">${record?.aw_name || ""}</div>
       </div>
     </div>
