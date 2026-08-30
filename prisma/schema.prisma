@@ -512,7 +512,7 @@ model PayOffice {
 
   @@index([name])
   @@index([code])
-  @@map("payyoffice")
+  @@map("payoffice")
 }
 
 model Insurance {
