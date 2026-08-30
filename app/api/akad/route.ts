@@ -114,7 +114,12 @@ export const POST = async (req: NextRequest) => {
       note: "",
     });
     return NextResponse.json(
-      { msg: "Berhasil memperbarui data akad!", status: 200, data: result },
+      {
+        msg: "Berhasil memperbarui data akad!",
+        status: 200,
+        data: result,
+        dapem: find,
+      },
       { status: 200 },
     );
   } catch (error) {

@@ -1125,8 +1125,10 @@ const PrintContractSubmission = ({
         printContract({ ...res.dapem, Angsurans: res.data } as IDapem);
       } else {
         hook.error({ content: res.msg });
+        console.log(res);
       }
-    } catch {
+    } catch (err) {
+      console.log(err);
       hook.error({ content: `Internal Server Error!!. Generate PK gagal` });
     } finally {
       setLoading(false);
