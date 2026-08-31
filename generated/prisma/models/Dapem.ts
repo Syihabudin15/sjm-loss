@@ -51,6 +51,7 @@ export type DapemAvgAggregateOutputType = {
   c_takeover: number | null
   tbo: number | null
   rounded: number | null
+  cost_month: number | null
 }
 
 export type DapemSumAggregateOutputType = {
@@ -78,6 +79,7 @@ export type DapemSumAggregateOutputType = {
   c_takeover: number | null
   tbo: number | null
   rounded: number | null
+  cost_month: number | null
 }
 
 export type DapemMinAggregateOutputType = {
@@ -107,6 +109,7 @@ export type DapemMinAggregateOutputType = {
   tbo: number | null
   rounded: number | null
   margin_type: $Enums.EMarginType | null
+  cost_month: number | null
   takeover_from: string | null
   takeover_date: Date | null
   dom_status: boolean | null
@@ -138,6 +141,7 @@ export type DapemMinAggregateOutputType = {
   aw_city: string | null
   aw_province: string | null
   aw_pos_code: string | null
+  aw_education: string | null
   f_name: string | null
   f_relate: string | null
   f_phone: string | null
@@ -239,6 +243,7 @@ export type DapemMaxAggregateOutputType = {
   tbo: number | null
   rounded: number | null
   margin_type: $Enums.EMarginType | null
+  cost_month: number | null
   takeover_from: string | null
   takeover_date: Date | null
   dom_status: boolean | null
@@ -270,6 +275,7 @@ export type DapemMaxAggregateOutputType = {
   aw_city: string | null
   aw_province: string | null
   aw_pos_code: string | null
+  aw_education: string | null
   f_name: string | null
   f_relate: string | null
   f_phone: string | null
@@ -371,6 +377,7 @@ export type DapemCountAggregateOutputType = {
   tbo: number
   rounded: number
   margin_type: number
+  cost_month: number
   takeover_from: number
   takeover_date: number
   dom_status: number
@@ -402,6 +409,7 @@ export type DapemCountAggregateOutputType = {
   aw_city: number
   aw_province: number
   aw_pos_code: number
+  aw_education: number
   f_name: number
   f_relate: number
   f_phone: number
@@ -503,6 +511,7 @@ export type DapemAvgAggregateInputType = {
   c_takeover?: true
   tbo?: true
   rounded?: true
+  cost_month?: true
 }
 
 export type DapemSumAggregateInputType = {
@@ -530,6 +539,7 @@ export type DapemSumAggregateInputType = {
   c_takeover?: true
   tbo?: true
   rounded?: true
+  cost_month?: true
 }
 
 export type DapemMinAggregateInputType = {
@@ -559,6 +569,7 @@ export type DapemMinAggregateInputType = {
   tbo?: true
   rounded?: true
   margin_type?: true
+  cost_month?: true
   takeover_from?: true
   takeover_date?: true
   dom_status?: true
@@ -590,6 +601,7 @@ export type DapemMinAggregateInputType = {
   aw_city?: true
   aw_province?: true
   aw_pos_code?: true
+  aw_education?: true
   f_name?: true
   f_relate?: true
   f_phone?: true
@@ -691,6 +703,7 @@ export type DapemMaxAggregateInputType = {
   tbo?: true
   rounded?: true
   margin_type?: true
+  cost_month?: true
   takeover_from?: true
   takeover_date?: true
   dom_status?: true
@@ -722,6 +735,7 @@ export type DapemMaxAggregateInputType = {
   aw_city?: true
   aw_province?: true
   aw_pos_code?: true
+  aw_education?: true
   f_name?: true
   f_relate?: true
   f_phone?: true
@@ -823,6 +837,7 @@ export type DapemCountAggregateInputType = {
   tbo?: true
   rounded?: true
   margin_type?: true
+  cost_month?: true
   takeover_from?: true
   takeover_date?: true
   dom_status?: true
@@ -854,6 +869,7 @@ export type DapemCountAggregateInputType = {
   aw_city?: true
   aw_province?: true
   aw_pos_code?: true
+  aw_education?: true
   f_name?: true
   f_relate?: true
   f_phone?: true
@@ -1042,6 +1058,7 @@ export type DapemGroupByOutputType = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month: number
   takeover_from: string | null
   takeover_date: Date | null
   dom_status: boolean
@@ -1073,6 +1090,7 @@ export type DapemGroupByOutputType = {
   aw_city: string | null
   aw_province: string | null
   aw_pos_code: string | null
+  aw_education: string | null
   f_name: string | null
   f_relate: string | null
   f_phone: string | null
@@ -1197,6 +1215,7 @@ export type DapemWhereInput = {
   tbo?: Prisma.IntFilter<"Dapem"> | number
   rounded?: Prisma.IntFilter<"Dapem"> | number
   margin_type?: Prisma.EnumEMarginTypeFilter<"Dapem"> | $Enums.EMarginType
+  cost_month?: Prisma.IntFilter<"Dapem"> | number
   takeover_from?: Prisma.StringNullableFilter<"Dapem"> | string | null
   takeover_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   dom_status?: Prisma.BoolFilter<"Dapem"> | boolean
@@ -1228,6 +1247,7 @@ export type DapemWhereInput = {
   aw_city?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_province?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_pos_code?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_education?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_relate?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_phone?: Prisma.StringNullableFilter<"Dapem"> | string | null
@@ -1347,6 +1367,7 @@ export type DapemOrderByWithRelationInput = {
   tbo?: Prisma.SortOrder
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
+  cost_month?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrderInput | Prisma.SortOrder
   takeover_date?: Prisma.SortOrderInput | Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -1378,6 +1399,7 @@ export type DapemOrderByWithRelationInput = {
   aw_city?: Prisma.SortOrderInput | Prisma.SortOrder
   aw_province?: Prisma.SortOrderInput | Prisma.SortOrder
   aw_pos_code?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_education?: Prisma.SortOrderInput | Prisma.SortOrder
   f_name?: Prisma.SortOrderInput | Prisma.SortOrder
   f_relate?: Prisma.SortOrderInput | Prisma.SortOrder
   f_phone?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1501,6 +1523,7 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   tbo?: Prisma.IntFilter<"Dapem"> | number
   rounded?: Prisma.IntFilter<"Dapem"> | number
   margin_type?: Prisma.EnumEMarginTypeFilter<"Dapem"> | $Enums.EMarginType
+  cost_month?: Prisma.IntFilter<"Dapem"> | number
   takeover_from?: Prisma.StringNullableFilter<"Dapem"> | string | null
   takeover_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   dom_status?: Prisma.BoolFilter<"Dapem"> | boolean
@@ -1532,6 +1555,7 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   aw_city?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_province?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_pos_code?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_education?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_relate?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_phone?: Prisma.StringNullableFilter<"Dapem"> | string | null
@@ -1651,6 +1675,7 @@ export type DapemOrderByWithAggregationInput = {
   tbo?: Prisma.SortOrder
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
+  cost_month?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrderInput | Prisma.SortOrder
   takeover_date?: Prisma.SortOrderInput | Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -1682,6 +1707,7 @@ export type DapemOrderByWithAggregationInput = {
   aw_city?: Prisma.SortOrderInput | Prisma.SortOrder
   aw_province?: Prisma.SortOrderInput | Prisma.SortOrder
   aw_pos_code?: Prisma.SortOrderInput | Prisma.SortOrder
+  aw_education?: Prisma.SortOrderInput | Prisma.SortOrder
   f_name?: Prisma.SortOrderInput | Prisma.SortOrder
   f_relate?: Prisma.SortOrderInput | Prisma.SortOrder
   f_phone?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1791,6 +1817,7 @@ export type DapemScalarWhereWithAggregatesInput = {
   tbo?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
   rounded?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
   margin_type?: Prisma.EnumEMarginTypeWithAggregatesFilter<"Dapem"> | $Enums.EMarginType
+  cost_month?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
   takeover_from?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   takeover_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Dapem"> | Date | string | null
   dom_status?: Prisma.BoolWithAggregatesFilter<"Dapem"> | boolean
@@ -1822,6 +1849,7 @@ export type DapemScalarWhereWithAggregatesInput = {
   aw_city?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   aw_province?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   aw_pos_code?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  aw_education?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   f_name?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   f_relate?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   f_phone?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
@@ -1923,6 +1951,7 @@ export type DapemCreateInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -1954,6 +1983,7 @@ export type DapemCreateInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -2058,6 +2088,7 @@ export type DapemUncheckedCreateInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -2089,6 +2120,7 @@ export type DapemUncheckedCreateInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -2193,6 +2225,7 @@ export type DapemUpdateInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2224,6 +2257,7 @@ export type DapemUpdateInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2328,6 +2362,7 @@ export type DapemUncheckedUpdateInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2359,6 +2394,7 @@ export type DapemUncheckedUpdateInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2463,6 +2499,7 @@ export type DapemCreateManyInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -2494,6 +2531,7 @@ export type DapemCreateManyInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -2595,6 +2633,7 @@ export type DapemUpdateManyMutationInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2626,6 +2665,7 @@ export type DapemUpdateManyMutationInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2712,6 +2752,7 @@ export type DapemUncheckedUpdateManyInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2743,6 +2784,7 @@ export type DapemUncheckedUpdateManyInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2860,6 +2902,7 @@ export type DapemCountOrderByAggregateInput = {
   tbo?: Prisma.SortOrder
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
+  cost_month?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrder
   takeover_date?: Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -2891,6 +2934,7 @@ export type DapemCountOrderByAggregateInput = {
   aw_city?: Prisma.SortOrder
   aw_province?: Prisma.SortOrder
   aw_pos_code?: Prisma.SortOrder
+  aw_education?: Prisma.SortOrder
   f_name?: Prisma.SortOrder
   f_relate?: Prisma.SortOrder
   f_phone?: Prisma.SortOrder
@@ -2990,6 +3034,7 @@ export type DapemAvgOrderByAggregateInput = {
   c_takeover?: Prisma.SortOrder
   tbo?: Prisma.SortOrder
   rounded?: Prisma.SortOrder
+  cost_month?: Prisma.SortOrder
 }
 
 export type DapemMaxOrderByAggregateInput = {
@@ -3019,6 +3064,7 @@ export type DapemMaxOrderByAggregateInput = {
   tbo?: Prisma.SortOrder
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
+  cost_month?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrder
   takeover_date?: Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -3050,6 +3096,7 @@ export type DapemMaxOrderByAggregateInput = {
   aw_city?: Prisma.SortOrder
   aw_province?: Prisma.SortOrder
   aw_pos_code?: Prisma.SortOrder
+  aw_education?: Prisma.SortOrder
   f_name?: Prisma.SortOrder
   f_relate?: Prisma.SortOrder
   f_phone?: Prisma.SortOrder
@@ -3151,6 +3198,7 @@ export type DapemMinOrderByAggregateInput = {
   tbo?: Prisma.SortOrder
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
+  cost_month?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrder
   takeover_date?: Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -3182,6 +3230,7 @@ export type DapemMinOrderByAggregateInput = {
   aw_city?: Prisma.SortOrder
   aw_province?: Prisma.SortOrder
   aw_pos_code?: Prisma.SortOrder
+  aw_education?: Prisma.SortOrder
   f_name?: Prisma.SortOrder
   f_relate?: Prisma.SortOrder
   f_phone?: Prisma.SortOrder
@@ -3281,6 +3330,7 @@ export type DapemSumOrderByAggregateInput = {
   c_takeover?: Prisma.SortOrder
   tbo?: Prisma.SortOrder
   rounded?: Prisma.SortOrder
+  cost_month?: Prisma.SortOrder
 }
 
 export type DapemScalarRelationFilter = {
@@ -4003,6 +4053,7 @@ export type DapemCreateWithoutAOInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4034,6 +4085,7 @@ export type DapemCreateWithoutAOInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -4137,6 +4189,7 @@ export type DapemUncheckedCreateWithoutAOInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4168,6 +4221,7 @@ export type DapemUncheckedCreateWithoutAOInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -4281,6 +4335,7 @@ export type DapemCreateWithoutAOCabangInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4312,6 +4367,7 @@ export type DapemCreateWithoutAOCabangInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -4415,6 +4471,7 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4446,6 +4503,7 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -4559,6 +4617,7 @@ export type DapemCreateWithoutAOAreaInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4590,6 +4649,7 @@ export type DapemCreateWithoutAOAreaInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -4693,6 +4753,7 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4724,6 +4785,7 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -4837,6 +4899,7 @@ export type DapemCreateWithoutUserInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4868,6 +4931,7 @@ export type DapemCreateWithoutUserInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -4971,6 +5035,7 @@ export type DapemUncheckedCreateWithoutUserInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5002,6 +5067,7 @@ export type DapemUncheckedCreateWithoutUserInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -5134,6 +5200,7 @@ export type DapemScalarWhereInput = {
   tbo?: Prisma.IntFilter<"Dapem"> | number
   rounded?: Prisma.IntFilter<"Dapem"> | number
   margin_type?: Prisma.EnumEMarginTypeFilter<"Dapem"> | $Enums.EMarginType
+  cost_month?: Prisma.IntFilter<"Dapem"> | number
   takeover_from?: Prisma.StringNullableFilter<"Dapem"> | string | null
   takeover_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   dom_status?: Prisma.BoolFilter<"Dapem"> | boolean
@@ -5165,6 +5232,7 @@ export type DapemScalarWhereInput = {
   aw_city?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_province?: Prisma.StringNullableFilter<"Dapem"> | string | null
   aw_pos_code?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  aw_education?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_relate?: Prisma.StringNullableFilter<"Dapem"> | string | null
   f_phone?: Prisma.StringNullableFilter<"Dapem"> | string | null
@@ -5314,6 +5382,7 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5345,6 +5414,7 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -5448,6 +5518,7 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5479,6 +5550,7 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -5608,6 +5680,7 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5639,6 +5712,7 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -5742,6 +5816,7 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5773,6 +5848,7 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -5902,6 +5978,7 @@ export type DapemCreateWithoutDebiturInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5933,6 +6010,7 @@ export type DapemCreateWithoutDebiturInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -6036,6 +6114,7 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6067,6 +6146,7 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -6196,6 +6276,7 @@ export type DapemCreateWithoutAianalysesInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6227,6 +6308,7 @@ export type DapemCreateWithoutAianalysesInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -6330,6 +6412,7 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6361,6 +6444,7 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -6480,6 +6564,7 @@ export type DapemUpdateWithoutAianalysesInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -6511,6 +6596,7 @@ export type DapemUpdateWithoutAianalysesInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6614,6 +6700,7 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -6645,6 +6732,7 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6748,6 +6836,7 @@ export type DapemCreateWithoutPayOfficeInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6779,6 +6868,7 @@ export type DapemCreateWithoutPayOfficeInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -6882,6 +6972,7 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6913,6 +7004,7 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -7026,6 +7118,7 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7057,6 +7150,7 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -7160,6 +7254,7 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7191,6 +7286,7 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -7336,6 +7432,7 @@ export type DapemCreateWithoutInsuranceInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7367,6 +7464,7 @@ export type DapemCreateWithoutInsuranceInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -7470,6 +7568,7 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7501,6 +7600,7 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -7630,6 +7730,7 @@ export type DapemCreateWithoutDroppingInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7661,6 +7762,7 @@ export type DapemCreateWithoutDroppingInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -7764,6 +7866,7 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7795,6 +7898,7 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -7924,6 +8028,7 @@ export type DapemCreateWithoutBerkasInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7955,6 +8060,7 @@ export type DapemCreateWithoutBerkasInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -8058,6 +8164,7 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8089,6 +8196,7 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -8218,6 +8326,7 @@ export type DapemCreateWithoutJaminanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8249,6 +8358,7 @@ export type DapemCreateWithoutJaminanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -8352,6 +8462,7 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8383,6 +8494,7 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -8512,6 +8624,7 @@ export type DapemCreateWithoutPelunasanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8543,6 +8656,7 @@ export type DapemCreateWithoutPelunasanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -8646,6 +8760,7 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8677,6 +8792,7 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -8796,6 +8912,7 @@ export type DapemUpdateWithoutPelunasanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -8827,6 +8944,7 @@ export type DapemUpdateWithoutPelunasanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8930,6 +9048,7 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -8961,6 +9080,7 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9064,6 +9184,7 @@ export type DapemCreateWithoutAngsuransInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -9095,6 +9216,7 @@ export type DapemCreateWithoutAngsuransInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -9198,6 +9320,7 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -9229,6 +9352,7 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -9348,6 +9472,7 @@ export type DapemUpdateWithoutAngsuransInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -9379,6 +9504,7 @@ export type DapemUpdateWithoutAngsuransInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9482,6 +9608,7 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -9513,6 +9640,7 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9616,6 +9744,7 @@ export type DapemCreateWithoutAgentFrontingInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -9647,6 +9776,7 @@ export type DapemCreateWithoutAgentFrontingInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -9750,6 +9880,7 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -9781,6 +9912,7 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -9910,6 +10042,7 @@ export type DapemCreateWithoutDPKStatusInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -9941,6 +10074,7 @@ export type DapemCreateWithoutDPKStatusInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -10044,6 +10178,7 @@ export type DapemUncheckedCreateWithoutDPKStatusInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10075,6 +10210,7 @@ export type DapemUncheckedCreateWithoutDPKStatusInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -10204,6 +10340,7 @@ export type DapemCreateManyAOInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10235,6 +10372,7 @@ export type DapemCreateManyAOInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -10335,6 +10473,7 @@ export type DapemCreateManyAOCabangInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10366,6 +10505,7 @@ export type DapemCreateManyAOCabangInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -10466,6 +10606,7 @@ export type DapemCreateManyAOAreaInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10497,6 +10638,7 @@ export type DapemCreateManyAOAreaInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -10597,6 +10739,7 @@ export type DapemCreateManyUserInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10628,6 +10771,7 @@ export type DapemCreateManyUserInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -10728,6 +10872,7 @@ export type DapemUpdateWithoutAOInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -10759,6 +10904,7 @@ export type DapemUpdateWithoutAOInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10862,6 +11008,7 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -10893,6 +11040,7 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10996,6 +11144,7 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11027,6 +11176,7 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11127,6 +11277,7 @@ export type DapemUpdateWithoutAOCabangInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11158,6 +11309,7 @@ export type DapemUpdateWithoutAOCabangInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11261,6 +11413,7 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11292,6 +11445,7 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11395,6 +11549,7 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11426,6 +11581,7 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11526,6 +11682,7 @@ export type DapemUpdateWithoutAOAreaInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11557,6 +11714,7 @@ export type DapemUpdateWithoutAOAreaInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11660,6 +11818,7 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11691,6 +11850,7 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11794,6 +11954,7 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11825,6 +11986,7 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11925,6 +12087,7 @@ export type DapemUpdateWithoutUserInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11956,6 +12119,7 @@ export type DapemUpdateWithoutUserInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12059,6 +12223,7 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12090,6 +12255,7 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12193,6 +12359,7 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12224,6 +12391,7 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12324,6 +12492,7 @@ export type DapemCreateManyProdukPembiayaanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -12355,6 +12524,7 @@ export type DapemCreateManyProdukPembiayaanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -12455,6 +12625,7 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12486,6 +12657,7 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12589,6 +12761,7 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12620,6 +12793,7 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12723,6 +12897,7 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12754,6 +12929,7 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12854,6 +13030,7 @@ export type DapemCreateManyJenisPembiayaanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -12885,6 +13062,7 @@ export type DapemCreateManyJenisPembiayaanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -12985,6 +13163,7 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13016,6 +13195,7 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13119,6 +13299,7 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13150,6 +13331,7 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13253,6 +13435,7 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13284,6 +13467,7 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13384,6 +13568,7 @@ export type DapemCreateManyDebiturInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -13415,6 +13600,7 @@ export type DapemCreateManyDebiturInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -13515,6 +13701,7 @@ export type DapemUpdateWithoutDebiturInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13546,6 +13733,7 @@ export type DapemUpdateWithoutDebiturInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13649,6 +13837,7 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13680,6 +13869,7 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13783,6 +13973,7 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13814,6 +14005,7 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13914,6 +14106,7 @@ export type DapemCreateManyPayOfficeInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -13945,6 +14138,7 @@ export type DapemCreateManyPayOfficeInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -14045,6 +14239,7 @@ export type DapemCreateManyPrevPayOfficeInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -14076,6 +14271,7 @@ export type DapemCreateManyPrevPayOfficeInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -14176,6 +14372,7 @@ export type DapemUpdateWithoutPayOfficeInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14207,6 +14404,7 @@ export type DapemUpdateWithoutPayOfficeInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14310,6 +14508,7 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14341,6 +14540,7 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14444,6 +14644,7 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14475,6 +14676,7 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14575,6 +14777,7 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14606,6 +14809,7 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14709,6 +14913,7 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14740,6 +14945,7 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14843,6 +15049,7 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14874,6 +15081,7 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14974,6 +15182,7 @@ export type DapemCreateManyInsuranceInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -15005,6 +15214,7 @@ export type DapemCreateManyInsuranceInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -15105,6 +15315,7 @@ export type DapemUpdateWithoutInsuranceInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15136,6 +15347,7 @@ export type DapemUpdateWithoutInsuranceInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15239,6 +15451,7 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15270,6 +15483,7 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15373,6 +15587,7 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15404,6 +15619,7 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15504,6 +15720,7 @@ export type DapemCreateManyDroppingInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -15535,6 +15752,7 @@ export type DapemCreateManyDroppingInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -15635,6 +15853,7 @@ export type DapemUpdateWithoutDroppingInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15666,6 +15885,7 @@ export type DapemUpdateWithoutDroppingInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15769,6 +15989,7 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15800,6 +16021,7 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15903,6 +16125,7 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15934,6 +16157,7 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16034,6 +16258,7 @@ export type DapemCreateManyBerkasInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -16065,6 +16290,7 @@ export type DapemCreateManyBerkasInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -16165,6 +16391,7 @@ export type DapemUpdateWithoutBerkasInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16196,6 +16423,7 @@ export type DapemUpdateWithoutBerkasInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16299,6 +16527,7 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16330,6 +16559,7 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16433,6 +16663,7 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16464,6 +16695,7 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16564,6 +16796,7 @@ export type DapemCreateManyJaminanInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -16595,6 +16828,7 @@ export type DapemCreateManyJaminanInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -16695,6 +16929,7 @@ export type DapemUpdateWithoutJaminanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16726,6 +16961,7 @@ export type DapemUpdateWithoutJaminanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16829,6 +17065,7 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16860,6 +17097,7 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16963,6 +17201,7 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16994,6 +17233,7 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17094,6 +17334,7 @@ export type DapemCreateManyAgentFrontingInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -17125,6 +17366,7 @@ export type DapemCreateManyAgentFrontingInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -17225,6 +17467,7 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17256,6 +17499,7 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17359,6 +17603,7 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17390,6 +17635,7 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17493,6 +17739,7 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17524,6 +17771,7 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17624,6 +17872,7 @@ export type DapemCreateManyDPKStatusInput = {
   tbo: number
   rounded: number
   margin_type: $Enums.EMarginType
+  cost_month?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -17655,6 +17904,7 @@ export type DapemCreateManyDPKStatusInput = {
   aw_city?: string | null
   aw_province?: string | null
   aw_pos_code?: string | null
+  aw_education?: string | null
   f_name?: string | null
   f_relate?: string | null
   f_phone?: string | null
@@ -17755,6 +18005,7 @@ export type DapemUpdateWithoutDPKStatusInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17786,6 +18037,7 @@ export type DapemUpdateWithoutDPKStatusInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17889,6 +18141,7 @@ export type DapemUncheckedUpdateWithoutDPKStatusInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17920,6 +18173,7 @@ export type DapemUncheckedUpdateWithoutDPKStatusInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18023,6 +18277,7 @@ export type DapemUncheckedUpdateManyWithoutDPKStatusInput = {
   tbo?: Prisma.IntFieldUpdateOperationsInput | number
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  cost_month?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -18054,6 +18309,7 @@ export type DapemUncheckedUpdateManyWithoutDPKStatusInput = {
   aw_city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aw_pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aw_education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_relate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   f_phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18194,6 +18450,7 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   tbo?: boolean
   rounded?: boolean
   margin_type?: boolean
+  cost_month?: boolean
   takeover_from?: boolean
   takeover_date?: boolean
   dom_status?: boolean
@@ -18225,6 +18482,7 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   aw_city?: boolean
   aw_province?: boolean
   aw_pos_code?: boolean
+  aw_education?: boolean
   f_name?: boolean
   f_relate?: boolean
   f_phone?: boolean
@@ -18347,6 +18605,7 @@ export type DapemSelectScalar = {
   tbo?: boolean
   rounded?: boolean
   margin_type?: boolean
+  cost_month?: boolean
   takeover_from?: boolean
   takeover_date?: boolean
   dom_status?: boolean
@@ -18378,6 +18637,7 @@ export type DapemSelectScalar = {
   aw_city?: boolean
   aw_province?: boolean
   aw_pos_code?: boolean
+  aw_education?: boolean
   f_name?: boolean
   f_relate?: boolean
   f_phone?: boolean
@@ -18452,7 +18712,7 @@ export type DapemSelectScalar = {
   dPKStatusId?: boolean
 }
 
-export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId", ExtArgs["result"]["dapem"]>
+export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "cost_month" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "aw_education" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId", ExtArgs["result"]["dapem"]>
 export type DapemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
@@ -18524,6 +18784,7 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     tbo: number
     rounded: number
     margin_type: $Enums.EMarginType
+    cost_month: number
     takeover_from: string | null
     takeover_date: Date | null
     dom_status: boolean
@@ -18555,6 +18816,7 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     aw_city: string | null
     aw_province: string | null
     aw_pos_code: string | null
+    aw_education: string | null
     f_name: string | null
     f_relate: string | null
     f_phone: string | null
@@ -19040,6 +19302,7 @@ export interface DapemFieldRefs {
   readonly tbo: Prisma.FieldRef<"Dapem", 'Int'>
   readonly rounded: Prisma.FieldRef<"Dapem", 'Int'>
   readonly margin_type: Prisma.FieldRef<"Dapem", 'EMarginType'>
+  readonly cost_month: Prisma.FieldRef<"Dapem", 'Int'>
   readonly takeover_from: Prisma.FieldRef<"Dapem", 'String'>
   readonly takeover_date: Prisma.FieldRef<"Dapem", 'DateTime'>
   readonly dom_status: Prisma.FieldRef<"Dapem", 'Boolean'>
@@ -19071,6 +19334,7 @@ export interface DapemFieldRefs {
   readonly aw_city: Prisma.FieldRef<"Dapem", 'String'>
   readonly aw_province: Prisma.FieldRef<"Dapem", 'String'>
   readonly aw_pos_code: Prisma.FieldRef<"Dapem", 'String'>
+  readonly aw_education: Prisma.FieldRef<"Dapem", 'String'>
   readonly f_name: Prisma.FieldRef<"Dapem", 'String'>
   readonly f_relate: Prisma.FieldRef<"Dapem", 'String'>
   readonly f_phone: Prisma.FieldRef<"Dapem", 'String'>

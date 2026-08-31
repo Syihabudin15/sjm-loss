@@ -77,7 +77,7 @@ export const FormKuasaDebet = (record: IDapem) => {
       </div>
       <div class="w-60 flex flex-col items-center justify-center gap-24">
         <div class="w-full">
-          <p>${record.Debitur.city?.toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.created_at).format("DD-MM-YYYY")}</p>
+          <p>${record.Debitur.city?.toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.date_contract).format("DD-MM-YYYY")}</p>
           <p>Yang memberi kuasa</p>
         </div>
         <div class="w-full">

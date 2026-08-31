@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE `Role` (
+CREATE TABLE `role` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `data_status` ENUM('USER', 'CABANG', 'AREA', 'SEMUA') NOT NULL DEFAULT 'SEMUA',
@@ -8,14 +8,14 @@ CREATE TABLE `Role` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    UNIQUE INDEX `Role_name_key`(`name`),
-    INDEX `Role_name_idx`(`name`),
-    INDEX `Role_data_status_idx`(`data_status`),
+    UNIQUE INDEX `role_name_key`(`name`),
+    INDEX `role_name_idx`(`name`),
+    INDEX `role_data_status_idx`(`data_status`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Sumdan` (
+CREATE TABLE `sumdan` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `code` VARCHAR(191) NOT NULL,
@@ -54,25 +54,25 @@ CREATE TABLE `Sumdan` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `Sumdan_name_idx`(`name`),
-    INDEX `Sumdan_code_idx`(`code`),
+    INDEX `sumdan_name_idx`(`name`),
+    INDEX `sumdan_code_idx`(`code`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Area` (
+CREATE TABLE `area` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `status` BOOLEAN NOT NULL DEFAULT true,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `Area_name_idx`(`name`),
+    INDEX `area_name_idx`(`name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Cabang` (
+CREATE TABLE `cabang` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `address` TEXT NULL,
@@ -82,12 +82,12 @@ CREATE TABLE `Cabang` (
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `areaId` VARCHAR(191) NOT NULL,
 
-    INDEX `Cabang_name_idx`(`name`),
+    INDEX `cabang_name_idx`(`name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `User` (
+CREATE TABLE `user` (
     `id` VARCHAR(191) NOT NULL,
     `nip` VARCHAR(191) NULL,
     `fullname` VARCHAR(191) NOT NULL,
@@ -109,18 +109,18 @@ CREATE TABLE `User` (
     `sumdanId` VARCHAR(191) NULL,
     `agentFrontingId` VARCHAR(191) NULL,
 
-    UNIQUE INDEX `User_username_key`(`username`),
-    INDEX `User_nip_idx`(`nip`),
-    INDEX `User_fullname_idx`(`fullname`),
-    INDEX `User_email_idx`(`email`),
-    INDEX `User_phone_idx`(`phone`),
-    INDEX `User_end_pkwt_idx`(`end_pkwt`),
-    INDEX `User_pkwt_status_idx`(`pkwt_status`),
+    UNIQUE INDEX `user_username_key`(`username`),
+    INDEX `user_nip_idx`(`nip`),
+    INDEX `user_fullname_idx`(`fullname`),
+    INDEX `user_email_idx`(`email`),
+    INDEX `user_phone_idx`(`phone`),
+    INDEX `user_end_pkwt_idx`(`end_pkwt`),
+    INDEX `user_pkwt_status_idx`(`pkwt_status`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `ProdukPembiayaan` (
+CREATE TABLE `produkpembiayaan` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `c_margin` DOUBLE NOT NULL,
@@ -137,12 +137,12 @@ CREATE TABLE `ProdukPembiayaan` (
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `sumdanId` VARCHAR(191) NOT NULL,
 
-    INDEX `ProdukPembiayaan_name_idx`(`name`),
+    INDEX `produkpembiayaan_name_idx`(`name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `JenisPembiayaan` (
+CREATE TABLE `jenispembiayaan` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `c_blokir` INTEGER NOT NULL,
@@ -153,12 +153,12 @@ CREATE TABLE `JenisPembiayaan` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `JenisPembiayaan_name_idx`(`name`),
+    INDEX `jenispembiayaan_name_idx`(`name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Debitur` (
+CREATE TABLE `debitur` (
     `nopen` VARCHAR(191) NOT NULL,
     `salary` INTEGER NOT NULL,
     `fullname` VARCHAR(191) NOT NULL,
@@ -192,21 +192,21 @@ CREATE TABLE `Debitur` (
     `account_number` VARCHAR(191) NULL,
     `payOfficeId` VARCHAR(191) NULL,
 
-    UNIQUE INDEX `Debitur_nopen_key`(`nopen`),
-    INDEX `Debitur_fullname_idx`(`fullname`),
-    INDEX `Debitur_nik_idx`(`nik`),
-    INDEX `Debitur_name_skep_idx`(`name_skep`),
-    INDEX `Debitur_no_skep_idx`(`no_skep`),
-    INDEX `Debitur_account_number_idx`(`account_number`),
-    INDEX `Debitur_province_idx`(`province`),
-    INDEX `Debitur_city_idx`(`city`),
-    INDEX `Debitur_district_idx`(`district`),
-    INDEX `Debitur_ward_idx`(`ward`),
-    INDEX `Debitur_pos_code_idx`(`pos_code`)
+    UNIQUE INDEX `debitur_nopen_key`(`nopen`),
+    INDEX `debitur_fullname_idx`(`fullname`),
+    INDEX `debitur_nik_idx`(`nik`),
+    INDEX `debitur_name_skep_idx`(`name_skep`),
+    INDEX `debitur_no_skep_idx`(`no_skep`),
+    INDEX `debitur_account_number_idx`(`account_number`),
+    INDEX `debitur_province_idx`(`province`),
+    INDEX `debitur_city_idx`(`city`),
+    INDEX `debitur_district_idx`(`district`),
+    INDEX `debitur_ward_idx`(`ward`),
+    INDEX `debitur_pos_code_idx`(`pos_code`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Dapem` (
+CREATE TABLE `dapem` (
     `id` VARCHAR(191) NOT NULL,
     `tenor` INTEGER NOT NULL,
     `plafond` INTEGER NOT NULL,
@@ -337,27 +337,27 @@ CREATE TABLE `Dapem` (
     `userId` VARCHAR(191) NOT NULL,
     `dPKStatusId` VARCHAR(191) NULL,
 
-    INDEX `Dapem_dropping_status_idx`(`dropping_status`),
-    INDEX `Dapem_document_status_idx`(`document_status`),
-    INDEX `Dapem_guarantee_status_idx`(`guarantee_status`),
-    INDEX `Dapem_slik_status_idx`(`slik_status`),
-    INDEX `Dapem_verif_status_idx`(`verif_status`),
-    INDEX `Dapem_approv_status_idx`(`approv_status`),
-    INDEX `Dapem_created_at_idx`(`created_at`),
-    INDEX `Dapem_takeover_date_idx`(`takeover_date`),
-    INDEX `Dapem_takeover_status_idx`(`takeover_status`),
-    INDEX `Dapem_mutasi_status_idx`(`mutasi_status`),
-    INDEX `Dapem_flagging_status_idx`(`flagging_status`),
-    INDEX `Dapem_cash_status_idx`(`cash_status`),
-    INDEX `Dapem_tbo_date_idx`(`tbo_date`),
-    INDEX `Dapem_no_contract_idx`(`no_contract`),
-    INDEX `Dapem_date_contract_idx`(`date_contract`),
-    INDEX `Dapem_date_end_idx`(`date_end`),
+    INDEX `dapem_dropping_status_idx`(`dropping_status`),
+    INDEX `dapem_document_status_idx`(`document_status`),
+    INDEX `dapem_guarantee_status_idx`(`guarantee_status`),
+    INDEX `dapem_slik_status_idx`(`slik_status`),
+    INDEX `dapem_verif_status_idx`(`verif_status`),
+    INDEX `dapem_approv_status_idx`(`approv_status`),
+    INDEX `dapem_created_at_idx`(`created_at`),
+    INDEX `dapem_takeover_date_idx`(`takeover_date`),
+    INDEX `dapem_takeover_status_idx`(`takeover_status`),
+    INDEX `dapem_mutasi_status_idx`(`mutasi_status`),
+    INDEX `dapem_flagging_status_idx`(`flagging_status`),
+    INDEX `dapem_cash_status_idx`(`cash_status`),
+    INDEX `dapem_tbo_date_idx`(`tbo_date`),
+    INDEX `dapem_no_contract_idx`(`no_contract`),
+    INDEX `dapem_date_contract_idx`(`date_contract`),
+    INDEX `dapem_date_end_idx`(`date_end`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `AIAnalysis` (
+CREATE TABLE `aianalysis` (
     `id` VARCHAR(191) NOT NULL,
     `submission_data` TEXT NOT NULL,
     `slik_data` TEXT NOT NULL,
@@ -373,7 +373,7 @@ CREATE TABLE `AIAnalysis` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `PayOffice` (
+CREATE TABLE `payoffice` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `code` VARCHAR(191) NULL,
@@ -388,13 +388,13 @@ CREATE TABLE `PayOffice` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `PayOffice_name_idx`(`name`),
-    INDEX `PayOffice_code_idx`(`code`),
+    INDEX `payoffice_name_idx`(`name`),
+    INDEX `payoffice_code_idx`(`code`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Insurance` (
+CREATE TABLE `insurance` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `code` VARCHAR(191) NULL,
@@ -408,13 +408,13 @@ CREATE TABLE `Insurance` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `Insurance_name_idx`(`name`),
-    INDEX `Insurance_code_idx`(`code`),
+    INDEX `insurance_name_idx`(`name`),
+    INDEX `insurance_code_idx`(`code`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Dropping` (
+CREATE TABLE `dropping` (
     `id` VARCHAR(191) NOT NULL,
     `file_sub` VARCHAR(191) NULL,
     `file_proof` TEXT NULL,
@@ -423,14 +423,14 @@ CREATE TABLE `Dropping` (
     `created_at` DATETIME(3) NOT NULL,
     `sumdanId` VARCHAR(191) NOT NULL,
 
-    INDEX `Dropping_process_at_idx`(`process_at`),
-    INDEX `Dropping_created_at_idx`(`created_at`),
-    INDEX `Dropping_status_idx`(`status`),
+    INDEX `dropping_process_at_idx`(`process_at`),
+    INDEX `dropping_created_at_idx`(`created_at`),
+    INDEX `dropping_status_idx`(`status`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Berkas` (
+CREATE TABLE `berkas` (
     `id` VARCHAR(191) NOT NULL,
     `file_sub` VARCHAR(191) NULL,
     `file_proof` VARCHAR(191) NULL,
@@ -439,14 +439,14 @@ CREATE TABLE `Berkas` (
     `created_at` DATETIME(3) NOT NULL,
     `sumdanId` VARCHAR(191) NOT NULL,
 
-    INDEX `Berkas_process_at_idx`(`process_at`),
-    INDEX `Berkas_created_at_idx`(`created_at`),
-    INDEX `Berkas_status_idx`(`status`),
+    INDEX `berkas_process_at_idx`(`process_at`),
+    INDEX `berkas_created_at_idx`(`created_at`),
+    INDEX `berkas_status_idx`(`status`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Jaminan` (
+CREATE TABLE `jaminan` (
     `id` VARCHAR(191) NOT NULL,
     `file_sub` VARCHAR(191) NULL,
     `file_proof` VARCHAR(191) NULL,
@@ -455,14 +455,14 @@ CREATE TABLE `Jaminan` (
     `created_at` DATETIME(3) NOT NULL,
     `sumdanId` VARCHAR(191) NOT NULL,
 
-    INDEX `Jaminan_process_at_idx`(`process_at`),
-    INDEX `Jaminan_created_at_idx`(`created_at`),
-    INDEX `Jaminan_status_idx`(`status`),
+    INDEX `jaminan_process_at_idx`(`process_at`),
+    INDEX `jaminan_created_at_idx`(`created_at`),
+    INDEX `jaminan_status_idx`(`status`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Pelunasan` (
+CREATE TABLE `pelunasan` (
     `id` VARCHAR(191) NOT NULL,
     `amount` INTEGER NOT NULL,
     `amount_sumdan` INTEGER NOT NULL,
@@ -477,17 +477,17 @@ CREATE TABLE `Pelunasan` (
     `created_at` DATETIME(3) NOT NULL,
     `dapemId` VARCHAR(191) NOT NULL,
 
-    UNIQUE INDEX `Pelunasan_dapemId_key`(`dapemId`),
-    INDEX `Pelunasan_type_idx`(`type`),
-    INDEX `Pelunasan_guarantee_status_idx`(`guarantee_status`),
-    INDEX `Pelunasan_status_paid_idx`(`status_paid`),
-    INDEX `Pelunasan_process_at_idx`(`process_at`),
-    INDEX `Pelunasan_created_at_idx`(`created_at`),
+    UNIQUE INDEX `pelunasan_dapemId_key`(`dapemId`),
+    INDEX `pelunasan_type_idx`(`type`),
+    INDEX `pelunasan_guarantee_status_idx`(`guarantee_status`),
+    INDEX `pelunasan_status_paid_idx`(`status_paid`),
+    INDEX `pelunasan_process_at_idx`(`process_at`),
+    INDEX `pelunasan_created_at_idx`(`created_at`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Angsuran` (
+CREATE TABLE `angsuran` (
     `id` VARCHAR(191) NOT NULL,
     `counter` INTEGER NOT NULL,
     `principal` INTEGER NOT NULL,
@@ -501,34 +501,34 @@ CREATE TABLE `Angsuran` (
     `dapemId` VARCHAR(191) NOT NULL,
     `note` TEXT NULL,
 
-    INDEX `Angsuran_date_pay_idx`(`date_pay`),
+    INDEX `angsuran_date_pay_idx`(`date_pay`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `CategoryOfAccount` (
+CREATE TABLE `categoryofaccount` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `type` ENUM('ASSET', 'KEWAJIBAN', 'MODAL', 'PENDAPATAN', 'BEBAN') NOT NULL,
     `status` BOOLEAN NOT NULL DEFAULT true,
     `parentId` VARCHAR(191) NULL,
 
-    INDEX `CategoryOfAccount_name_idx`(`name`),
-    INDEX `CategoryOfAccount_type_idx`(`type`),
+    INDEX `categoryofaccount_name_idx`(`name`),
+    INDEX `categoryofaccount_type_idx`(`type`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `JournalEntry` (
+CREATE TABLE `journalentry` (
     `id` VARCHAR(191) NOT NULL,
     `date` DATETIME(3) NOT NULL,
 
-    INDEX `JournalEntry_date_idx`(`date`),
+    INDEX `journalentry_date_idx`(`date`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `JournalDetail` (
+CREATE TABLE `journaldetail` (
     `id` VARCHAR(191) NOT NULL,
     `debit` INTEGER NOT NULL DEFAULT 0,
     `credit` INTEGER NOT NULL DEFAULT 0,
@@ -541,7 +541,7 @@ CREATE TABLE `JournalDetail` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `AgentFronting` (
+CREATE TABLE `agentfronting` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `code` VARCHAR(191) NULL,
@@ -557,13 +557,13 @@ CREATE TABLE `AgentFronting` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `AgentFronting_name_idx`(`name`),
-    INDEX `AgentFronting_code_idx`(`code`),
+    INDEX `agentfronting_name_idx`(`name`),
+    INDEX `agentfronting_code_idx`(`code`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `SumdanAgentFronting` (
+CREATE TABLE `sumdanagentfronting` (
     `id` VARCHAR(191) NOT NULL,
     `sumdanId` VARCHAR(191) NOT NULL,
     `agentFrontingId` VARCHAR(191) NOT NULL,
@@ -572,7 +572,7 @@ CREATE TABLE `SumdanAgentFronting` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `DataSimulasi` (
+CREATE TABLE `datasimulasi` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nopen` VARCHAR(191) NOT NULL,
     `fullname` VARCHAR(191) NOT NULL,
@@ -611,7 +611,7 @@ CREATE TABLE `DataSimulasi` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `DPKStatus` (
+CREATE TABLE `dpkstatus` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NULL,
     `description` TEXT NULL,
@@ -623,115 +623,115 @@ CREATE TABLE `DPKStatus` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Cabang` ADD CONSTRAINT `Cabang_areaId_fkey` FOREIGN KEY (`areaId`) REFERENCES `Area`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `cabang` ADD CONSTRAINT `cabang_areaId_fkey` FOREIGN KEY (`areaId`) REFERENCES `area`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `User` ADD CONSTRAINT `User_roleId_fkey` FOREIGN KEY (`roleId`) REFERENCES `Role`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `user` ADD CONSTRAINT `user_roleId_fkey` FOREIGN KEY (`roleId`) REFERENCES `role`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `User` ADD CONSTRAINT `User_cabangId_fkey` FOREIGN KEY (`cabangId`) REFERENCES `Cabang`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `user` ADD CONSTRAINT `user_cabangId_fkey` FOREIGN KEY (`cabangId`) REFERENCES `cabang`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `User` ADD CONSTRAINT `User_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `Sumdan`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `user` ADD CONSTRAINT `user_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `sumdan`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `User` ADD CONSTRAINT `User_agentFrontingId_fkey` FOREIGN KEY (`agentFrontingId`) REFERENCES `AgentFronting`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `user` ADD CONSTRAINT `user_agentFrontingId_fkey` FOREIGN KEY (`agentFrontingId`) REFERENCES `agentfronting`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `ProdukPembiayaan` ADD CONSTRAINT `ProdukPembiayaan_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `Sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `produkpembiayaan` ADD CONSTRAINT `produkpembiayaan_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Debitur` ADD CONSTRAINT `Debitur_payOfficeId_fkey` FOREIGN KEY (`payOfficeId`) REFERENCES `PayOffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `debitur` ADD CONSTRAINT `debitur_payOfficeId_fkey` FOREIGN KEY (`payOfficeId`) REFERENCES `payoffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_nopen_fkey` FOREIGN KEY (`nopen`) REFERENCES `Debitur`(`nopen`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_nopen_fkey` FOREIGN KEY (`nopen`) REFERENCES `debitur`(`nopen`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_produkPembiayaanId_fkey` FOREIGN KEY (`produkPembiayaanId`) REFERENCES `ProdukPembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_produkPembiayaanId_fkey` FOREIGN KEY (`produkPembiayaanId`) REFERENCES `produkpembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_jenisPembiayaanId_fkey` FOREIGN KEY (`jenisPembiayaanId`) REFERENCES `JenisPembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_jenisPembiayaanId_fkey` FOREIGN KEY (`jenisPembiayaanId`) REFERENCES `jenispembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_aoId_fkey` FOREIGN KEY (`aoId`) REFERENCES `User`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_aoId_fkey` FOREIGN KEY (`aoId`) REFERENCES `user`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_aoCabangId_fkey` FOREIGN KEY (`aoCabangId`) REFERENCES `User`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_aoCabangId_fkey` FOREIGN KEY (`aoCabangId`) REFERENCES `user`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_aoAreaId_fkey` FOREIGN KEY (`aoAreaId`) REFERENCES `User`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_aoAreaId_fkey` FOREIGN KEY (`aoAreaId`) REFERENCES `user`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_droppingId_fkey` FOREIGN KEY (`droppingId`) REFERENCES `Dropping`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_droppingId_fkey` FOREIGN KEY (`droppingId`) REFERENCES `dropping`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_berkasId_fkey` FOREIGN KEY (`berkasId`) REFERENCES `Berkas`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_berkasId_fkey` FOREIGN KEY (`berkasId`) REFERENCES `berkas`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_jaminanId_fkey` FOREIGN KEY (`jaminanId`) REFERENCES `Jaminan`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_jaminanId_fkey` FOREIGN KEY (`jaminanId`) REFERENCES `jaminan`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_agentFrontingId_fkey` FOREIGN KEY (`agentFrontingId`) REFERENCES `AgentFronting`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_agentFrontingId_fkey` FOREIGN KEY (`agentFrontingId`) REFERENCES `agentfronting`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_prevPayOfficeId_fkey` FOREIGN KEY (`prevPayOfficeId`) REFERENCES `PayOffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_prevPayOfficeId_fkey` FOREIGN KEY (`prevPayOfficeId`) REFERENCES `payoffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_dPKStatusId_fkey` FOREIGN KEY (`dPKStatusId`) REFERENCES `DPKStatus`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_dPKStatusId_fkey` FOREIGN KEY (`dPKStatusId`) REFERENCES `dpkstatus`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_payOfficeId_fkey` FOREIGN KEY (`payOfficeId`) REFERENCES `PayOffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_payOfficeId_fkey` FOREIGN KEY (`payOfficeId`) REFERENCES `payoffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dapem` ADD CONSTRAINT `Dapem_insuranceId_fkey` FOREIGN KEY (`insuranceId`) REFERENCES `Insurance`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `dapem` ADD CONSTRAINT `dapem_insuranceId_fkey` FOREIGN KEY (`insuranceId`) REFERENCES `insurance`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `AIAnalysis` ADD CONSTRAINT `AIAnalysis_dapemId_fkey` FOREIGN KEY (`dapemId`) REFERENCES `Dapem`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `aianalysis` ADD CONSTRAINT `aianalysis_dapemId_fkey` FOREIGN KEY (`dapemId`) REFERENCES `dapem`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Dropping` ADD CONSTRAINT `Dropping_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `Sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `dropping` ADD CONSTRAINT `dropping_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Berkas` ADD CONSTRAINT `Berkas_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `Sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `berkas` ADD CONSTRAINT `berkas_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Jaminan` ADD CONSTRAINT `Jaminan_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `Sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `jaminan` ADD CONSTRAINT `jaminan_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Pelunasan` ADD CONSTRAINT `Pelunasan_dapemId_fkey` FOREIGN KEY (`dapemId`) REFERENCES `Dapem`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `pelunasan` ADD CONSTRAINT `pelunasan_dapemId_fkey` FOREIGN KEY (`dapemId`) REFERENCES `dapem`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Angsuran` ADD CONSTRAINT `Angsuran_dapemId_fkey` FOREIGN KEY (`dapemId`) REFERENCES `Dapem`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `angsuran` ADD CONSTRAINT `angsuran_dapemId_fkey` FOREIGN KEY (`dapemId`) REFERENCES `dapem`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `CategoryOfAccount` ADD CONSTRAINT `CategoryOfAccount_parentId_fkey` FOREIGN KEY (`parentId`) REFERENCES `CategoryOfAccount`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `categoryofaccount` ADD CONSTRAINT `categoryofaccount_parentId_fkey` FOREIGN KEY (`parentId`) REFERENCES `categoryofaccount`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `JournalDetail` ADD CONSTRAINT `JournalDetail_journalEntryId_fkey` FOREIGN KEY (`journalEntryId`) REFERENCES `JournalEntry`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `journaldetail` ADD CONSTRAINT `journaldetail_journalEntryId_fkey` FOREIGN KEY (`journalEntryId`) REFERENCES `journalentry`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `JournalDetail` ADD CONSTRAINT `JournalDetail_categoryOfAccountId_fkey` FOREIGN KEY (`categoryOfAccountId`) REFERENCES `CategoryOfAccount`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `journaldetail` ADD CONSTRAINT `journaldetail_categoryOfAccountId_fkey` FOREIGN KEY (`categoryOfAccountId`) REFERENCES `categoryofaccount`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `JournalDetail` ADD CONSTRAINT `JournalDetail_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `journaldetail` ADD CONSTRAINT `journaldetail_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `SumdanAgentFronting` ADD CONSTRAINT `SumdanAgentFronting_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `Sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `sumdanagentfronting` ADD CONSTRAINT `sumdanagentfronting_sumdanId_fkey` FOREIGN KEY (`sumdanId`) REFERENCES `sumdan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `SumdanAgentFronting` ADD CONSTRAINT `SumdanAgentFronting_agentFrontingId_fkey` FOREIGN KEY (`agentFrontingId`) REFERENCES `AgentFronting`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `sumdanagentfronting` ADD CONSTRAINT `sumdanagentfronting_agentFrontingId_fkey` FOREIGN KEY (`agentFrontingId`) REFERENCES `agentfronting`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `DataSimulasi` ADD CONSTRAINT `DataSimulasi_produkPembiayaanId_fkey` FOREIGN KEY (`produkPembiayaanId`) REFERENCES `ProdukPembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `datasimulasi` ADD CONSTRAINT `datasimulasi_produkPembiayaanId_fkey` FOREIGN KEY (`produkPembiayaanId`) REFERENCES `produkpembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `DataSimulasi` ADD CONSTRAINT `DataSimulasi_jenisPembiayaanId_fkey` FOREIGN KEY (`jenisPembiayaanId`) REFERENCES `JenisPembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `datasimulasi` ADD CONSTRAINT `datasimulasi_jenisPembiayaanId_fkey` FOREIGN KEY (`jenisPembiayaanId`) REFERENCES `jenispembiayaan`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `DataSimulasi` ADD CONSTRAINT `DataSimulasi_payOfficeId_fkey` FOREIGN KEY (`payOfficeId`) REFERENCES `PayOffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `datasimulasi` ADD CONSTRAINT `datasimulasi_payOfficeId_fkey` FOREIGN KEY (`payOfficeId`) REFERENCES `payoffice`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `DataSimulasi` ADD CONSTRAINT `DataSimulasi_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `datasimulasi` ADD CONSTRAINT `datasimulasi_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

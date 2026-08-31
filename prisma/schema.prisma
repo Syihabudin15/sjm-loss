@@ -323,6 +323,7 @@ model Dapem {
   tbo            Int
   rounded        Int
   margin_type    EMarginType
+  cost_month     Int         @default(0)
 
   takeover_from String?
   takeover_date DateTime?
@@ -357,6 +358,7 @@ model Dapem {
   aw_city         String?
   aw_province     String?
   aw_pos_code     String?
+  aw_education    String?
 
   f_name     String?
   f_relate   String?

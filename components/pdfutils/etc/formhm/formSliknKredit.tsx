@@ -324,11 +324,11 @@ export const FormSliknKredit = (record: IDapem) => {
           <p class="w-36">Pendidikan</p>
           <p class="w-2">:</p>
           <div class="flex-1 flex gap-4 items-center">
-            <div class="w-28 flex gap-2 items-center">${FormCheck(false)} SD</div>
-            <div class="w-28 flex gap-2 items-center">${FormCheck(false)} SMP</div>
-            <div class="w-28 flex gap-2 items-center">${FormCheck(false)} SMA</div>
-            <div class="flex gap-2 items-center">${FormCheck(false)} D1-D3</div>
-            <div class="flex gap-2 items-center">${FormCheck(false)} S1-S3</div>
+            <div class="w-28 flex gap-2 items-center">${FormCheck(record.marriage_status === "KAWIN" && record.aw_education === "SD")} SD</div>
+            <div class="w-28 flex gap-2 items-center">${FormCheck(record.marriage_status === "KAWIN" && record.aw_education === "SMP")} SMP</div>
+            <div class="w-28 flex gap-2 items-center">${FormCheck(record.marriage_status === "KAWIN" && record.aw_education === "SMA")} SMA</div>
+            <div class="flex gap-2 items-center">${FormCheck(["D1", "D2", "D3"].includes(record.aw_education || ""))} D1-D3</div>
+            <div class="flex gap-2 items-center">${FormCheck(["S1", "S2", "S3"].includes(record.aw_education || ""))} S1-S3</div>
           </div>
         </div>
       </div>
@@ -338,10 +338,15 @@ export const FormSliknKredit = (record: IDapem) => {
           <p class="w-2">:</p>
           <div class="flex-1 flex flex-col gap-1">
             <div class="flex gap-6 items-center">
-              ${["Wiraswasta", "Pegawai Negeri Sipil", "Pegawai BUMN", "TNI/POLRI"].map((p, i) => `<div class="flex gap-1">${FormCheck(p.toLowerCase().includes(record.job?.toLowerCase() || ""))} ${p}</div>`).join("")}
+              <div class="flex gap-1">${FormCheck(record.marriage_status === "KAWIN" && record.aw_job?.toLowerCase() === "wiraswasta")} Wiraswasta</div>
+              <div class="flex gap-1">${FormCheck(record.marriage_status === "KAWIN" && record.aw_job?.toLowerCase().replace(" (pns)", "") === "pegawai negeri sipil")} Pegawai Negeri Sipil</div>
+              <div class="flex gap-1">${FormCheck(record.marriage_status === "KAWIN" && record.aw_job?.toLowerCase() === "pegawai bumn")} Pegawai BUMN</div>
+              <div class="flex gap-1">${FormCheck(record.marriage_status === "KAWIN" && record.aw_job?.toLowerCase().replace("/", "") === "tnipolri")} TNI/POLRI</div>
             </div>
             <div class="flex gap-6 items-center">
-              ${["Pegawai Swasta", "Ibu Rumah Tangga", "Lainnya __________"].map((p, i) => `<div class="flex gap-1">${FormCheck(p.toLowerCase().includes(record.job?.toLowerCase() || ""))} ${p}</div>`).join("")}
+              <div class="flex gap-1">${FormCheck(record.marriage_status === "KAWIN" && record.aw_job?.toLowerCase() === "pegawai swasta")} Pegawai Swasta</div>
+              <div class="flex gap-1">${FormCheck(record.marriage_status === "KAWIN" && record.aw_job?.toLowerCase().replace("ibu ", "") === "rumah tangga")} Ibu Rumah Tanggah</div>
+              <div class="flex gap-1">${FormCheck(record.marriage_status === "KAWIN" && !["pegawai swasta", "rumah tangga", "wiraswasta", "pegawai negeri sipil", "pegawa bumn", "tnipolri"].includes(record.aw_job?.toLowerCase().replace("ibu ", "").replace("/", "").replace(" (pns)", "") || ""))} Lainnya, ${record.marriage_status === "KAWIN" && !["pegawai swasta", "rumah tangga", "wiraswasta", "pegawai negeri sipil", "pegawa bumn", "tnipolri"].includes(record.aw_job?.toLowerCase().replace("ibu ", "").replace("/", "").replace(" (pns)", "") || "") ? `<span class="underline">${record.aw_job}</span>` : "____________________"}</div>
             </div>
           </div>
         </div>
@@ -425,7 +430,7 @@ export const FormSliknKredit = (record: IDapem) => {
         <p class="w-1/2">Pengeluaran</p>
         <p class="w-2">:</p>
         <div class="flex-1 ">
-          ${FormCheck(false, "w-full", "Rp. ", "flex items-center pl-3", true)}
+          ${FormCheck(false, "w-full", `Rp. ${IDRFormat(record.cost_month)}`, "flex items-center pl-3", true)}
         </div>
       </div>
       <div class="w-full flex gap-2">
@@ -467,14 +472,14 @@ export const FormSliknKredit = (record: IDapem) => {
         <p class="w-1/2">Jumlah Pengeluaran</p>
         <p class="w-2">:</p>
         <div class="flex-1 ">
-          ${FormCheck(false, "w-full", "Rp. ", "flex items-center pl-3", true)}
+          ${FormCheck(false, "w-full", `Rp. ${IDRFormat(record.cost_month)}`, "flex items-center pl-3", true)}
         </div>
       </div>
       <div class="w-full flex gap-2 mt-2 font-bold">
         <p class="w-1/2">Sisa Penghasilan</p>
         <p class="w-2">:</p>
         <div class="flex-1 ">
-          ${FormCheck(false, "w-full", "Rp. ", "flex items-center pl-3", true)}
+          ${FormCheck(false, "w-full", `Rp. ${IDRFormat((record.salary || record.Debitur.salary) - record.cost_month)}`, "flex items-center pl-3", true)}
         </div>
       </div>
     </div>

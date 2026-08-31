@@ -501,6 +501,21 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                   <FormInput
                     data={{
                       mode: "vertical",
+                      label: "Pengeluaran Perbulan",
+                      type: "text",
+                      class: "flex-1",
+                      required: true,
+                      value: IDRFormat(data.cost_month || 0),
+                      onChange: (e: string) =>
+                        setData({
+                          ...data,
+                          cost_month: IDRToNumber(e || "0"),
+                        }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      mode: "vertical",
                       label: "Jenis Kelamin",
                       type: "select",
                       class: "flex-1",
@@ -620,7 +635,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                       label: "Masa KTP",
                       type: "date",
                       class: "flex-1",
-                      required: true,
                       value: data.Debitur.id_end,
                       onChange: (e: string) =>
                         setData({
@@ -1188,6 +1202,21 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                           setData({
                             ...data,
                             aw_pos_code: e,
+                          }),
+                      }}
+                    />
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Pendidikan",
+                        type: "text",
+                        class: "flex-1",
+                        required: true,
+                        value: data.aw_education,
+                        onChange: (e: string) =>
+                          setData({
+                            ...data,
+                            aw_education: e,
                           }),
                       }}
                     />
@@ -2723,6 +2752,8 @@ const defaultData: IDapem = {
   f_city: null,
   f_province: null,
   f_pos_code: null,
+  aw_education: null,
+  cost_month: 0,
 };
 
 interface ITemp {

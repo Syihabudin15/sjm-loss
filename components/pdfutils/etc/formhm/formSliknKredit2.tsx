@@ -3,6 +3,7 @@ import { IDapem } from "@/libs/IInterfaces";
 import moment from "moment";
 
 export const FormSliknKredit2 = (record: IDapem) => {
+  const ao = record.AO || record.AOCabang || record.AOArea;
   return `
   <div class="px-8 py-5">
 
@@ -322,7 +323,7 @@ export const FormSliknKredit2 = (record: IDapem) => {
     </div>
     <div class="mt-16 flex justify-evenly items-center text-center gap-4">
       <div class="w-36 flex flex-col justify-end">
-        <p class="h-4"></p>
+        <p class="">${ao ? ao.fullname : ""}</p>
         <p class="w-full border-t border-gray-800">AO/MARKETING/LAINNYA</p>
       </div>
       <div class="w-36 flex flex-col justify-end">
@@ -330,8 +331,8 @@ export const FormSliknKredit2 = (record: IDapem) => {
         <p class="w-full border-t border-gray-800">Pemohon</p>
       </div>
       <div class="w-36 flex flex-col justify-end">
-        <p>${record.marriage_status === "KAWIN" ? record.aw_name : ""}</p>
-        <p class="w-full border-t border-gray-800">Istri/Suami Pemohon</p>
+        <p>${record.aw_name}</p>
+        <p class="w-full border-t border-gray-800">${record.marriage_status === "KAWIN" ? "Istri/Suami Pemohon" : "Ahliwaris"}</p>
       </div>
     </div>
 

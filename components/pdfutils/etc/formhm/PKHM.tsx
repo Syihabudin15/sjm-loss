@@ -18,7 +18,13 @@ export const PKHM = (record: IDapem) => {
       <p>Tabanan 82113</p>
     </div>
   </div>
-  <p>Yang bertanda tangan dibawah ini :</p>
+  
+  <div class="w-full my-2 text-center">
+    <p class="text-lg underline font-bold">PERJANJIAN KREDIT</p>
+    <p class="">No. : ${record.no_contract}</p>
+  </div>
+  
+  <p class="mt-2">Yang bertanda tangan dibawah ini :</p>
   <div class="my-2 ml-2 flex gap-2">
     <div class="w-5">I.</div>
     <div>
@@ -32,7 +38,7 @@ export const PKHM = (record: IDapem) => {
         <div class="w-4">:</div>
         <div class="flex-1">${process.env.NEXT_PUBLIC_APP_AKAD_POSITION}</div>
       </div>
-      <p>Berkedudukan di ${process.env.NEXT_PUBLIC_APP_COMPANY_ADDRESS_SK}. Dalam hal ini bertindak untuk dan atas nama pemberi kuasa ${record.ProdukPembiayaan.Sumdan.name}, berdasarkan Surat Kuasa No. ${record.ProdukPembiayaan.Sumdan.contract_no2} tertanggal ${moment(record.ProdukPembiayaan.Sumdan.contract_date).format("DD MMMM YYYY")}, oleh karenanya berhak dan sah mewakilkan ${record.ProdukPembiayaan.Sumdan.name} yang berkedudukan di ${record.ProdukPembiayaan.Sumdan.address}, yang selanjutnya disebut <span class="font-bold">“BANK”</span></p>
+      <p>Berkedudukan di ${process.env.NEXT_PUBLIC_APP_COMPANY_ADDRESS_SK}. Dalam hal ini bertindak untuk dan atas nama pemberi kuasa ${record.ProdukPembiayaan.Sumdan.name}, berdasarkan Surat Kuasa No. ${record.ProdukPembiayaan.Sumdan.contract_no} tertanggal ${moment(record.ProdukPembiayaan.Sumdan.contract_date).format("DD MMMM YYYY")}, oleh karenanya berhak dan sah mewakilkan ${record.ProdukPembiayaan.Sumdan.name} yang berkedudukan di ${record.ProdukPembiayaan.Sumdan.address}, yang selanjutnya disebut <span class="font-bold">“BANK”</span></p>
     </div>
   </div>
   <div class="my-2 ml-2 flex gap-2">
@@ -431,7 +437,16 @@ export const PKHM = (record: IDapem) => {
       <div class="flex gap-2">
         <p class="w-44">Up</p>
         <p class="w-4">:</p>
-        <p class="flex-1">${record.ProdukPembiayaan.Sumdan.pic}</p>
+        <div class="flex-1 flex flex-col gap-1">
+          ${
+            record.ProdukPembiayaan.Sumdan.pic
+              ? record.ProdukPembiayaan.Sumdan.pic
+                  .split(",")
+                  .map((pic) => `<div>${pic}</div>`)
+                  .join("")
+              : ""
+          }
+        </div>
       </div>
       <div class="flex gap-2">
         <p class="w-44">Alamat</p>
