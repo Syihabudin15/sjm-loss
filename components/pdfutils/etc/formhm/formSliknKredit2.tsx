@@ -305,8 +305,8 @@ export const FormSliknKredit2 = (record: IDapem) => {
     <div class="border-t border-b border-gray-800 py-1 my-2 font-bold text-center">
       <p>PERNYATAAN PEMOHON</p>
     </div>
-    <div class="my-2">
-      <p>Semua informasi dalam formulir ini adalah lengkap dan benar. Dengan menandatangani formulir ini, Saya mengijinkan kepada PT. BPR HARTA MULIAuntuk melakukan verifikasi SLIK ataupun verifikasi kepada pihak pihak terkait yg dipandang perlu dan memeriksa semua data dengan cara bagaimanapun yang layak menurut PT. BPR HARTA MULIA. Saya terikat dengan syarat - syarat dan ketentuan PT. BPR HARTA MULIA dan bertanggung jawab sepenuhnya untuk membayar semua kewajiban yang muncul dengan disetujuinya pinjaman ini. Saya memahami bahwa PT. BPR HARTA MULIA berhak untuk menolak permohonan ini tanpa harus memberikan alasan apapun. Berkas yang diberikan tidak dapat ditarik kembali.</p>
+    <div class="my-1" style="line-height: 1.3">
+      <p>Semua informasi dalam formulir ini adalah lengkap dan benar. Dengan menandatangani formulir ini, Saya mengijinkan kepada PT. BPR HARTA MULIA untuk melakukan verifikasi SLIK ataupun verifikasi kepada pihak pihak terkait yg dipandang perlu dan memeriksa semua data dengan cara bagaimanapun yang layak menurut PT. BPR HARTA MULIA. Saya terikat dengan syarat - syarat dan ketentuan PT. BPR HARTA MULIA dan bertanggung jawab sepenuhnya untuk membayar semua kewajiban yang muncul dengan disetujuinya pinjaman ini. Saya memahami bahwa PT. BPR HARTA MULIA berhak untuk menolak permohonan ini tanpa harus memberikan alasan apapun. Berkas yang diberikan tidak dapat ditarik kembali.</p>
     </div>
 
     
