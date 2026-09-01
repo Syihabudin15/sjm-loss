@@ -132,7 +132,7 @@ export const PKHM = (record: IDapem) => {
     </div>
     <div class="flex gap-2">
       <p class="w-4">3.</p>
-      <p class="w-44">Fee Collection</p>
+      <p class="w-44">NED + Fee Banpot</p>
       <p class="w-4">:</p>
       <p class="flex-1">Rp. ${IDRFormat(detail.detail.fee_banpot + record.c_ned)}</p>
     </div>
@@ -437,7 +437,7 @@ export const PKHM = (record: IDapem) => {
       <div class="flex gap-2">
         <p class="w-44">Up</p>
         <p class="w-4">:</p>
-        <div class="flex-1 flex flex-col gap-1">
+        <div class="flex-1 flex flex-col">
           ${
             record.ProdukPembiayaan.Sumdan.pic
               ? record.ProdukPembiayaan.Sumdan.pic
