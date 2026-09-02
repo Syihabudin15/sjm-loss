@@ -41,7 +41,9 @@ export const FormIdeb = (record?: IDapem) => {
             },
             {
               key: "Gaji",
-              value: record ? `Rp. ${IDRFormat(record.Debitur.salary)}` : "",
+              value: record
+                ? `Rp. ${IDRFormat(record.salary || record.Debitur.salary)}`
+                : "",
             },
             {
               key: "Pengajuan",

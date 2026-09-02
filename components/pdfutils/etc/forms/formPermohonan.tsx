@@ -268,7 +268,9 @@ export const FormPermohonan = (record?: IDapem) => {
         ${FormList([
           {
             key: "Gaji Pensiun",
-            value: record ? "Rp.  " + IDRFormat(record.Debitur.salary) : "",
+            value: record
+              ? "Rp.  " + IDRFormat(record.salary || record.Debitur.salary)
+              : "",
           },
           {
             key: "Plafond Pembiayaan",

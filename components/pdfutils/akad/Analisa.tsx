@@ -98,12 +98,14 @@ export const AnalisaPerhitungan = (record: IDapem) => {
         },
         {
           key: "Sisa Gaji",
-          value: IDRFormat(record.salary - detail.angsuran),
+          value: IDRFormat(
+            (record.salary || record.Debitur.salary) - detail.angsuran,
+          ),
           currency: true,
         },
         {
           key: "DBR (%)",
-          value: `${((detail.detail.angsuranrounded / record.salary) * 100).toFixed(2)}% / ${record.ProdukPembiayaan.Sumdan.dsr.toFixed(2)}%`,
+          value: `${((detail.detail.angsuranrounded / (record.salary || record.Debitur.salary)) * 100).toFixed(2)}% / ${record.ProdukPembiayaan.Sumdan.dsr.toFixed(2)}%`,
         },
       ])}
     </div>
