@@ -25,7 +25,7 @@ export const FormPermohonan = (record?: IDapem) => {
         ${FormList([
           {
             key: "Tanggal Permohonan",
-            value: record ? moment(record.created_at).format("DD-MM-YYY") : "",
+            value: record ? moment(record.created_at).format("DD-MM-YYYY") : "",
           },
           {
             key: "Unit Pelayanan",
