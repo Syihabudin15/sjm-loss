@@ -136,7 +136,10 @@ export const GetDapem = (data: IDapem) => {
   return { biaya, blok, lastbiaya, tb };
 };
 
-export const GetDetailDapem = (dapem: IDapem): IOutputDapemDetail => {
+export const GetDetailDapem = (
+  dapem: IDapem,
+  rounded?: boolean,
+): IOutputDapemDetail => {
   const adm_sumdan = dapem.plafond * (dapem.c_adm_sumdan / 100);
   const provisi_sumdan = dapem.plafond * (dapem.c_provisi_sumdan / 100);
   const asuransi = dapem.plafond * (dapem.c_insurance / 100) + dapem.c_flagging;
@@ -157,7 +160,9 @@ export const GetDetailDapem = (dapem: IDapem): IOutputDapemDetail => {
     dapem.c_gov +
     lainlain;
   const biayakop = adm + provisi + dapem.c_gov + asuransi + lainlain;
-  const angs = Math.ceil(angsuran / dapem.rounded) * dapem.rounded;
+  const angs = rounded
+    ? Math.ceil(angsuran / dapem.rounded) * dapem.rounded
+    : Math.round(angsuran / dapem.rounded) * dapem.rounded;
   const feebanpot = angs * (dapem.fee_banpot / 100);
   const angsurantotal = angs + dapem.c_ned + feebanpot;
 
