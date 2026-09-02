@@ -159,7 +159,7 @@ export const GetDetailDapem = (dapem: IDapem): IOutputDapemDetail => {
   const biayakop = adm + provisi + dapem.c_gov + asuransi + lainlain;
   const angs = dapem.rounded
     ? Math.ceil(angsuran / dapem.rounded) * dapem.rounded
-    : angsuran;
+    : Math.round(angsuran);
   const feebanpot = angs * (dapem.fee_banpot / 100);
   const angsurantotal = angs + dapem.c_ned + feebanpot;
 
