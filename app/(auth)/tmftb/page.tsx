@@ -595,7 +595,9 @@ export default function Page() {
               <Button
                 size="small"
                 icon={<FileFilled />}
-                disabled={!record.Berkas?.file_sub}
+                disabled={
+                  !record.Berkas?.file_sub || !record.Berkas?.file_proof
+                }
                 onClick={() =>
                   setViews({
                     open: true,
@@ -646,7 +648,9 @@ export default function Page() {
                 <Button
                   size="small"
                   icon={<FileFilled />}
-                  disabled={!record.Jaminan?.file_sub}
+                  disabled={
+                    !record.Jaminan?.file_sub || !record.Jaminan?.file_proof
+                  }
                   onClick={() =>
                     setViews({
                       open: true,

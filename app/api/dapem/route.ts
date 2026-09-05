@@ -238,6 +238,9 @@ export const GET = async (request: NextRequest) => {
           flagging_date_exc: true,
           cash_status: true,
           cash_desc: true,
+          file_mutasi: true,
+          file_takeover: true,
+          file_flagging: true,
           Angsurans: {
             select: { id: true },
             where: {
@@ -245,6 +248,24 @@ export const GET = async (request: NextRequest) => {
                 gte: moment().startOf("month").toDate(),
                 lte: moment().endOf("month").toDate(),
               },
+            },
+          },
+          Berkas: {
+            select: {
+              process_at: true,
+              created_at: true,
+              status: true,
+              file_sub: true,
+              file_proof: true,
+            },
+          },
+          Jaminan: {
+            select: {
+              process_at: true,
+              created_at: true,
+              status: true,
+              file_sub: true,
+              file_proof: true,
             },
           },
         }),

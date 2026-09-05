@@ -122,7 +122,17 @@ export const POST = async (req: NextRequest) => {
         msg: "Berhasil memperbarui data akad!",
         status: 200,
         data: serializeForApi(result),
-        dapem: serializeForApi(find),
+        dapem: serializeForApi({
+          ...find,
+          date_contract: data.date_contract || new Date(),
+          no_contract: data.no_contract,
+          date_end: moment(data.date_contract || new Date())
+            .add(find.tenor, "month")
+            .toDate(),
+          tbo_date: moment(data.date_contract || new Date())
+            .add(find.tbo, "month")
+            .toDate(),
+        }),
       },
       { status: 200 },
     );
