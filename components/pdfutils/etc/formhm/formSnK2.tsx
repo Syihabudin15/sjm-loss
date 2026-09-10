@@ -291,7 +291,7 @@ export const FormSnK2 = (record: IDapem) => {
         <p>Dengan menandatangani ketentuan umum dan persyaratan pembukaan rekening ini, saya/kami menyatakan dengan ini menerima dan setuju mengikatkan diri pada semua syarat dan ketentuan umum Bank setta ketentuan lain yang merupakan satu kesatuan dan bagian yang tak terpisahkan dengan ketentuan umum dan persyaratan pembukaan rekening di Bank.</p>
         <div class="flex justify-end text-center mt-10">
           <div class="flex flex-col gap-20 items-center justify-center">
-            <div class="w-full border-b border-gray-800 border-dashed">${record.Debitur.city?.toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.created_at).format("DD-MM-YYYY")}</div>
+            <div class="w-full border-b border-gray-800 border-dashed">${(record.city || record.Debitur.city)?.toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.created_at).format("DD-MM-YYYY")}</div>
             <div>
               <p>${record.Debitur.fullname}</p>
               <p class="border-t border-dashed border-gray-800">Tanda Tangan Nasabah dan Nama Jelas</p>

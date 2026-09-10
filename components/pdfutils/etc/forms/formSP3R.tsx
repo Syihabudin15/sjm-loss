@@ -22,7 +22,7 @@ export const FormSP3R = (record?: IDapem) => {
           {
             key: "Alamat",
             value: record
-              ? `${record?.Debitur.address}, KELURAHAN ${record?.Debitur.ward} KECAMATAN ${record?.Debitur.district}, ${record?.Debitur.city} ${record?.Debitur.province} ${record?.Debitur.pos_code}`
+              ? `${record.address || record?.Debitur.address}, KELURAHAN ${record.ward || record?.Debitur.ward} KECAMATAN ${record.district || record?.Debitur.district}, ${record.city || record?.Debitur.city} ${record.province || record?.Debitur.province} ${record.pos_code || record?.Debitur.pos_code}`
               : "",
           },
         ])}
@@ -51,7 +51,7 @@ export const FormSP3R = (record?: IDapem) => {
 
       <div class="flex gap-4 justify-around font-bold text-center mt-10">
         <div class="w-52">
-          <p>${record ? record?.Debitur.city?.toLocaleLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase() : ".................."}, ${record ? moment(record?.created_at).format("DD-MM-YYYY") : "............................."}</p>
+          <p>${record ? (record.city || record?.Debitur.city)?.toLocaleLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase() : ".................."}, ${record ? moment(record?.created_at).format("DD-MM-YYYY") : "............................."}</p>
           <p>Yang membuat pernyataan</p>
           <div class="h-36 flex justify-center items-center">
             <p class="text-xs opacity-70">Materai</p>

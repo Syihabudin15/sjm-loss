@@ -253,7 +253,7 @@ export const AnalisaPerhitungan = (record: IDapem) => {
 
   <div class="flex gap-10 justify-around mt-5 items-end">
     <div class="flex-1 text-center">
-      <p>${(record.Debitur.city || "KOTA BANDUNG").toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.date_contract).format("DD-MM-YYYY")}</p>
+      <p>${(record.city || record.Debitur.city || "KOTA BANDUNG").toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.date_contract).format("DD-MM-YYYY")}</p>
       <p>DEBITUR</p>
       <div class="h-28"></div>
       <p class="border-b font-bold">${record.Debitur.fullname}</p>

@@ -257,7 +257,7 @@ export const FormCIF3 = (record: IDapem) => {
 
     <div class="flex justify-end mr-32">
       <div class="w-40 flex flex-col gap-14 items-center justify-center text-center">
-        <div class="w-full border-b border-gray-800 border-dashed">${record.Debitur.city?.toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.created_at).format("DD-MM-YYYY")}</div>
+        <div class="w-full border-b border-gray-800 border-dashed">${(record.city || record.Debitur.city)?.toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.created_at).format("DD-MM-YYYY")}</div>
         <div class="w-full">
           <div class="border-b border-gray-800">${record.Debitur.fullname}</div>
           <div>Tanda Tangan Nasabah dan Nama</div>

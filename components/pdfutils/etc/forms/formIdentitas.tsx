@@ -92,7 +92,7 @@ export const FormIdentitas = (record?: IDapem) => {
 
       <div class="flex gap-4 justify-end font-bold text-center mt-10">
         <div class="w-52">
-          <p>${record ? record?.Debitur.city?.toLocaleLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase() : ".................."}, ${record ? moment(record?.created_at).format("DD-MM-YYYY") : "............................."}</p>
+          <p>${record ? (record.city || record?.Debitur.city)?.toLocaleLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase() : ".................."}, ${record ? moment(record?.created_at).format("DD-MM-YYYY") : "............................."}</p>
           <p>Yang membuat pernyataan</p>
           <div class="h-36 flex justify-center items-center">
           </div>

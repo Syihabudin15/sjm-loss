@@ -36,7 +36,7 @@ export const FormIdeb = (record?: IDapem) => {
             {
               key: "Alamat KTP",
               value: record
-                ? `${record.Debitur.address}, Kel. ${record.Debitur.ward}, Kec. ${record.Debitur.district}, ${record.Debitur.city}, ${record.Debitur.province} ${record.Debitur.pos_code}`
+                ? `${record.address || record.Debitur.address}, Kel. ${record.ward || record.Debitur.ward}, Kec. ${record.district || record.Debitur.district}, ${record.city || record.Debitur.city}, ${record.province || record.Debitur.province} ${record.pos_code || record.Debitur.pos_code}`
                 : "",
             },
             {

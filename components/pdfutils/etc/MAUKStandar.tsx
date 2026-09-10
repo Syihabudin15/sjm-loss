@@ -102,7 +102,7 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                     },
                     {
                       key: "Alamat",
-                      value: `${data.Debitur.address}, KELURAHAN ${data.Debitur.ward} KECAMATAN ${data.Debitur.district}, ${data.Debitur.city} ${data.Debitur.province} ${data.Debitur.pos_code}`,
+                      value: `${data.address || data.Debitur.address}, KELURAHAN ${data.ward || data.Debitur.ward} KECAMATAN ${data.district || data.Debitur.district}, ${data.city || data.Debitur.city} ${data.province || data.Debitur.province} ${data.pos_code || data.Debitur.pos_code}`,
                     },
                   ]}
                 />

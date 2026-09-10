@@ -45,7 +45,7 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
     <div class="flex gap-2">
       <p class="w-52">Alamat</p>
       <p class="w-4">:</p>
-      <p class="flex-1">${record.Debitur.address}, KELURAHAN ${record.Debitur.ward} KECAMATAN ${record.Debitur.district}, ${record.Debitur.city} ${record.Debitur.province} ${record.Debitur.pos_code}</p>
+      <p class="flex-1">${record.city || record.Debitur.address}, KELURAHAN ${record.ward || record.Debitur.ward} KECAMATAN ${record.district || record.Debitur.district}, ${record.city || record.Debitur.city} ${record.province || record.Debitur.province} ${record.pos_code || record.Debitur.pos_code}</p>
     </div>
   </div>
   <div class="mt-5 mb-5">
@@ -149,7 +149,7 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
 
   <div class="my-5 flex justify-around gap-10 items-end text-center">
     <div class="flex-1">
-      <p>${record.Debitur.city?.toLocaleLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.date_contract).format("DD-MM-YYYY")}</p>
+      <p>${(record.city || record.Debitur.city)?.toLocaleLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.date_contract).format("DD-MM-YYYY")}</p>
       <p>Penerima Pembiayaan</p>
       <div class="h-28"></div>
       <p class="border-b">${record.Debitur.fullname}</p>

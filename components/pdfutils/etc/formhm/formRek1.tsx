@@ -62,7 +62,7 @@ export const FormRek1 = (record: IDapem) => {
         <div class="w-52 flex flex-col gap-14">
           <div>
             <p>Pemohon Tabungan Umum PT BPR Harta Mulia</p>
-            <div class="flex-1 border-b border-gray-800 border-dashed">${record.Debitur.city?.toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.created_at).format("DD-MM-YYYY")}</div>
+            <div class="flex-1 border-b border-gray-800 border-dashed">${(record.city || record.Debitur.city)?.toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.created_at).format("DD-MM-YYYY")}</div>
           </div>
           <div>
             <p>${record.Debitur.fullname}</p>

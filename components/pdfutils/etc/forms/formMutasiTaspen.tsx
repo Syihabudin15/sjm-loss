@@ -231,7 +231,7 @@ export const FormMutasiTaspen = (record?: IDapem) => {
 
         <div class="flex gap-4 justify-end font-bold text-center mt-20">
           <div class="w-62">
-            <p class="border-b border-dashed">${record ? record?.Debitur.city?.toLocaleLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase() : ".................."}, ${record ? moment(record?.created_at).format("DD-MM-YYYY") : "............................."}</p>
+            <p class="border-b border-dashed">${record ? (record.city || record?.Debitur.city)?.toLocaleLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase() : ".................."}, ${record ? moment(record?.created_at).format("DD-MM-YYYY") : "............................."}</p>
             <p>PEMOHON</p>
             <div class="h-36 flex justify-center items-center">
             </div>

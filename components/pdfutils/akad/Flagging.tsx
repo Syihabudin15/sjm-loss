@@ -33,12 +33,12 @@ export const FLagging = (record: IDapem) => {
         {
           key: "Alamat Lengkap",
           value: `
-          <p>${record.Debitur.address}</p>
-          <p>${record.Debitur.ward}</p>
-          <p>${record.Debitur.district}</p>
-          <p>${record.Debitur.city}</p>
-          <p>${record.Debitur.province}</p>
-          <p>${record.Debitur.pos_code}</p>
+          <p>${record.address || record.Debitur.address}</p>
+          <p>${record.ward || record.Debitur.ward}</p>
+          <p>${record.district || record.Debitur.district}</p>
+          <p>${record.city || record.Debitur.city}</p>
+          <p>${record.province || record.Debitur.province}</p>
+          <p>${record.pos_code || record.Debitur.pos_code}</p>
           `,
         },
       ])}`,
