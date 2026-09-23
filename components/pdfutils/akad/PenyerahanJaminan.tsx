@@ -4,7 +4,7 @@ moment.locale("id");
 
 export const PenyerahanJaminan = (record: IDapem) => {
   return `
-  <div class="flex items-center justify-between border-b pb-2">
+  <div class="flex items-center justify-between border-b pb-2 -mt-10">
     <img src="${process.env.NEXT_PUBLIC_APP_LOGO}" alt="Logo" class="h-16 mr-4" />
     <div class="text-center">
       <h2 class="text-center text-xl font-semibold mb-2 ">TANDA TERIMA PENYERAHAN JAMINAN</h2>
@@ -47,7 +47,7 @@ export const PenyerahanJaminan = (record: IDapem) => {
     <div class="flex gap-2">
       <p class="w-52">Alamat</p>
       <p class="w-4">:</p>
-      <p class="flex-1">${record.Debitur.address}, KELURAHAN ${record.Debitur.ward} KECAMATAN ${record.Debitur.district}, ${record.Debitur.city} ${record.Debitur.province} ${record.Debitur.pos_code}</p>
+      <p class="flex-1">${record.Debitur.address}, KELURAHAN ${record.Debitur.ward}, KECAMATAN ${record.Debitur.district}, ${record.Debitur.city}, ${record.Debitur.province} ${record.Debitur.pos_code}</p>
     </div>
   </div>
 
@@ -125,7 +125,7 @@ export const PenyerahanJaminan = (record: IDapem) => {
     <div class="flex gap-2">
       <p class="w-52">Alamat</p>
       <p class="w-4">:</p>
-      <p class="flex-1">${record.address || record.Debitur.address}, KELURAHAN ${record.ward || record.Debitur.ward} KECAMATAN ${record.district || record.Debitur.district}, ${record.city || record.Debitur.city} ${record.province || record.Debitur.province} ${record.pos_code || record.Debitur.pos_code}</p>
+      <p class="flex-1">${record.Debitur.address}, KELURAHAN ${record.Debitur.ward}, KECAMATAN ${record.Debitur.district}, ${record.Debitur.city}, ${record.Debitur.province} ${record.Debitur.pos_code}</p>
     </div>
   </div>
   <div class="my-4 text-center">

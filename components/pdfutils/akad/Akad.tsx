@@ -15,6 +15,8 @@ import { KuasaMutasi } from "../etc/forms/kuasaMutasi";
 import { FormMutasiTaspen } from "../etc/forms/formMutasiTaspen";
 import { FormKuasaDebet } from "../etc/formhm/formKuasaDebet";
 import { PKHM } from "../etc/formhm/PKHM";
+import { FLaggingAsabri } from "./FlaggingAsabri";
+import { SKPMantap } from "./SKPMantap";
 
 moment.locale("id");
 
@@ -25,6 +27,16 @@ const generateContractHtml = (record: IDapem) => {
         return PKHM(record);
       default:
         return PerjanjianKredit(record);
+    }
+  };
+  const handleGroupSKEP = () => {
+    switch (record.Debitur.group_skep) {
+      case "PT. TASPEN":
+        return FLagging(record);
+      case "PT. ASABRI":
+        return FLaggingAsabri(record);
+      default:
+        return FLagging(record);
     }
   };
 
@@ -109,10 +121,7 @@ const generateContractHtml = (record: IDapem) => {
       ${Kesanggupan(record, "DEBITUR")}
       </div>
       <div class="page pt-0 text-justify" style="font-size: 12px;">
-        ${SPKDR(record)}
-      </div>
-      <div class="page pt-0 text-justify" style="font-size: 12px;">
-        ${FLagging(record)}
+        ${handleGroupSKEP()}
       </div>
       <div class="page text-justify" style="font-size: 11px;">
         ${PenyerahanJaminan(record)}
@@ -123,6 +132,13 @@ const generateContractHtml = (record: IDapem) => {
       <div class="page text-justify" style="font-size: 11px;">
         ${FormMutasiTaspen(record)}
       </div>
+      ${
+        record.PayOffice.code === "BANK MANTAP"
+          ? `<div class="page text-justify" style="font-size: 12px;">
+        ${SKPMantap(record)}
+      </div>`
+          : ""
+      }
       <div class="page text-justify" style="font-size: 11px;">
         ${FormCeklist1(record)}
       </div>

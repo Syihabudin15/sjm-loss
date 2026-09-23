@@ -53,7 +53,7 @@ export const PerjanjianKredit = (record: IDapem) => {
       <div class="flex gap-2">
         <div class="w-44">Alamat</div>
         <div class="w-4">:</div>
-        <div class="flex-1">${record.address || record.Debitur.address} KELURAHAN ${record.ward || record.Debitur.ward} KECAMATAN ${record.district || record.Debitur.district} ${record.city || record.Debitur.city} ${record.province || record.Debitur.province} ${record.pos_code || record.Debitur.pos_code}</div>
+        <div class="flex-1">${record.Debitur.address}, KELURAHAN ${record.Debitur.ward}, KECAMATAN ${record.Debitur.district}, ${record.Debitur.city}, ${record.Debitur.province} ${record.Debitur.pos_code}</div>
       </div>
       <p>Dan untuk tindakan hukum ini telah mendapat persetujuan suami/isteri/ahli warisnya :</p>
       <div class="flex gap-2">

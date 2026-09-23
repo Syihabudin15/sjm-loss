@@ -327,8 +327,8 @@ export const FormSliknKredit = (record: IDapem) => {
             <div class="w-28 flex gap-2 items-center">${FormCheck(record.marriage_status === "KAWIN" && record.aw_education === "SD")} SD</div>
             <div class="w-28 flex gap-2 items-center">${FormCheck(record.marriage_status === "KAWIN" && record.aw_education === "SMP")} SMP</div>
             <div class="w-28 flex gap-2 items-center">${FormCheck(record.marriage_status === "KAWIN" && record.aw_education === "SMA")} SMA</div>
-            <div class="flex gap-2 items-center">${FormCheck(["D1", "D2", "D3"].includes(record.aw_education || ""))} D1-D3</div>
-            <div class="flex gap-2 items-center">${FormCheck(["S1", "S2", "S3"].includes(record.aw_education || ""))} S1-S3</div>
+            <div class="flex gap-2 items-center">${FormCheck(record.marriage_status === "KAWIN" && ["D1", "D2", "D3"].includes(record.aw_education || ""))} D1-D3</div>
+            <div class="flex gap-2 items-center">${record.marriage_status === "KAWIN" && FormCheck(["S1", "S2", "S3"].includes(record.aw_education || ""))} S1-S3</div>
           </div>
         </div>
       </div>

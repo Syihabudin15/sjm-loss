@@ -102,17 +102,37 @@ export const GET = async (request: NextRequest) => {
     ...(insuranceId && { insuranceId: insuranceId }),
     ...(backdate
       ? {
-          created_at: {
-            gte: moment(backdate.split(",")[0]).toDate(),
-            lte: moment(backdate.split(",")[1]).toDate(),
-          },
+          OR: [
+            {
+              date_contract: {
+                gte: moment(backdate.split(",")[0]).toDate(),
+                lte: moment(backdate.split(",")[1]).toDate(),
+              },
+            },
+            {
+              created_at: {
+                gte: moment(backdate.split(",")[0]).toDate(),
+                lte: moment(backdate.split(",")[1]).toDate(),
+              },
+            },
+          ],
         }
       : currmonth
         ? {
-            created_at: {
-              gte: moment().startOf("month").toDate(),
-              lte: moment().endOf("month").toDate(),
-            },
+            OR: [
+              {
+                date_contract: {
+                  gte: moment().startOf("month").toDate(),
+                  lte: moment().endOf("month").toDate(),
+                },
+              },
+              {
+                created_at: {
+                  gte: moment().startOf("month").toDate(),
+                  lte: moment().endOf("month").toDate(),
+                },
+              },
+            ],
           }
         : {}),
     ...whereFunc,

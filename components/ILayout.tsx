@@ -255,7 +255,7 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
                 listMenuUI,
                 JSON.parse(user.Role.permission || "").map((p: any) => p.path),
               )}
-              onClick={(e) => router.push(e.key)}
+              // onClick={(e) => router.push(e.key)}
             />
           </div>
         )}

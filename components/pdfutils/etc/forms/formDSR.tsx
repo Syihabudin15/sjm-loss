@@ -22,7 +22,7 @@ export const FormDSR = (record?: IDapem) => {
           {
             key: "Alamat",
             value: record
-              ? `${record.address || record?.Debitur.address}, KELURAHAN ${record.ward || record?.Debitur.ward}, KECAMATAN ${record.district || record?.Debitur.district}, ${record.city || record?.Debitur.city}, ${record.province || record?.Debitur.province} ${record.pos_code || record?.Debitur.pos_code}`
+              ? `${record?.Debitur.address}, KELURAHAN ${record?.Debitur.ward}, KECAMATAN ${record?.Debitur.district}, ${record?.Debitur.city}, ${record?.Debitur.province} ${record?.Debitur.pos_code}`
               : "",
           },
         ])}

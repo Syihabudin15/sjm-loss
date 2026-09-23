@@ -5,6 +5,7 @@ import { useUser } from "@/components/UserContext";
 import {
   ExportToExcel,
   FilterData,
+  GetDroppingStatusTag,
   MappingToTagihan,
 } from "@/components/utils/CompUtils";
 import {
@@ -263,6 +264,30 @@ export default function Page() {
       },
     },
     {
+      title: "Status Takeover",
+      dataIndex: "status_takeover",
+      key: "status_takeover",
+      render(value, record, index) {
+        return (
+          <div className="flex gap-1 items-center">
+            {GetDroppingStatusTag(record.takeover_status)}
+          </div>
+        );
+      },
+    },
+    {
+      title: "Status Mutasi",
+      dataIndex: "status_mutasi",
+      key: "status_mutasi",
+      render(value, record, index) {
+        return (
+          <div className="flex gap-1 items-center">
+            {GetDroppingStatusTag(record.mutasi_status)}
+          </div>
+        );
+      },
+    },
+    {
       title: "Status Tagih",
       dataIndex: "status",
       key: "status",
@@ -299,7 +324,14 @@ export default function Page() {
       key: "kabay",
       width: 150,
       render(value, record, index) {
-        return <div>{record.PayOffice.code || record.PayOffice.name}</div>;
+        return (
+          <div>
+            <div>{record.PayOffice.code || record.PayOffice.name}</div>
+            <div className="opacity-80 text-xs">
+              @{record.Debitur.account_number}
+            </div>
+          </div>
+        );
       },
     },
     {
@@ -434,7 +466,7 @@ export default function Page() {
             }
             children={
               <>
-                <div className="my-2">
+                <div className="my-2 ">
                   <p>Periode :</p>
                   <DatePicker
                     size="small"

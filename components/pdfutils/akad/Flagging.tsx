@@ -6,81 +6,165 @@ moment.locale("id");
 export const FLagging = (record: IDapem) => {
   return `
   
-  <div class="flex justify-between gap-8 items-center">
+  <div class="flex justify-between gap-8 items-center -mt-10" >
     <div class="flex-1">
       <img src="${record.PayOffice.logo}" alt="${record.PayOffice.name + ` Logo`}" class="h-16 mr-4"/>
     </div>
     <ul class="flex-1 list-item list-none">
       <li>Lampiran I</li>
-      <li>Perjanjian Kerja Sama antara PT TASPEN (PERSERO) dengan PT Bank Mandiri Taspen</li>
-      <li>Nomor JAN-292/DIR/2021</li>
-      <li>Nomor DIR.PKS/007/III/2021</li>
-      <li>Tanggal 23 Maret 2021</li>
+      <li>Perjanjian Kerja Sama antara</li>
+      <li>PT TASPEN (PERSERO) dengan PT Bank Mandiri Taspen</li>
+      <li>PT Bank Mandiri Taspen</li>
+      <li>Nomor : ..................................................................................................</li>
+      <li>Nomor :   ..................................................................................................</li>
+      <li>Tanggal :   ................................................................................................</li>
     </ul>
   </div>
 
-  <p class="font-bold text-lg text-center my-8">SURAT PERNYATAAN DEBITUR</p>
+  <p class="font-bold text-lg text-center mt-2">SURAT PERNYATAAN DEBITUR</p>
   
-  <div class="my-4">
+  <div class="my-2">
     <p>Yang bertandatangan di bawah ini  :</p>
   ${ListStyle(
     [
-      `${ListNonStyle([{ key: "Nama PNS / Pensiunan", value: record.Debitur.fullname }])}`,
-      `${ListNonStyle([{ key: "Nomor Induk Kependudukan", value: record.Debitur.nik }])}`,
-      `${ListNonStyle([{ key: "TUK/NRP/NIP/NPP/NOTAS", value: record.nopen }])}`,
-      `${ListNonStyle([{ key: "Tempat & Tanggal Lahir", value: `${record.Debitur.birthplace}, ${moment(record.Debitur.birthdate).format("DD-MM-YYYY")}` }])}`,
+      `${ListNonStyle([{ key: "Nama PNS / Pensiunan", value: record.Debitur.fullname, valuStyle: "border-b border-dashed border-gray-700" }])}`,
+      `${ListNonStyle([
+        {
+          key: "Nomor Induk Kependudukan",
+          value: `
+        <div class="flex gap-2">
+          <div class="w-56 border-b border-dashed border-gray-700">${record.Debitur.nik}</div>
+          <div class="flex-1 flex gap-2">
+            <div class="w-28">NIP/Notas</div>
+            <div class="w-2">:</div>
+            <div class="flex-1 border-b border-dashed border-gray-700">${record.Debitur.nopen}</div>
+          </div>
+        </div>
+        `,
+        },
+      ])}`,
+      `${ListNonStyle([{ key: "Tempat & Tanggal Lahir", value: `${record.Debitur.birthplace}, ${moment(record.Debitur.birthdate).format("DD-MM-YYYY")}`, valuStyle: "border-b border-dashed border-gray-700" }])}`,
       `${ListNonStyle([
         {
           key: "Alamat Lengkap",
-          value: `
-          <p>${record.address || record.Debitur.address}</p>
-          <p>${record.ward || record.Debitur.ward}</p>
-          <p>${record.district || record.Debitur.district}</p>
-          <p>${record.city || record.Debitur.city}</p>
-          <p>${record.province || record.Debitur.province}</p>
-          <p>${record.pos_code || record.Debitur.pos_code}</p>
-          `,
+          value: record.Debitur.address,
+          valuStyle: "border-b border-dashed border-gray-700",
         },
-      ])}`,
-      `${ListNonStyle([{ key: "No. Handphone", value: record.Debitur.phone }])}`,
+        {
+          key: "Kelurahan",
+          value: `
+        <div class="flex gap-2">
+          <div class="w-56 border-b border-dashed border-gray-700">${record.Debitur.ward}</div>
+          <div class="flex-1 flex gap-2">
+            <div class="w-28">Kecamatan</div>
+            <div class="w-2">:</div>
+            <div class="flex-1 border-b border-dashed border-gray-700">${record.Debitur.district}</div>
+          </div>
+        </div>
+        `,
+        },
+        {
+          key: "Kabupaten/Kodya",
+          value: `
+        <div class="flex gap-2">
+          <div class="w-56 border-b border-dashed border-gray-700">${record.Debitur.city}</div>
+          <div class="flex-1 flex gap-2">
+            <div class="w-28">Provinsi</div>
+            <div class="w-2">:</div>
+            <div class="flex-1 border-b border-dashed border-gray-700">${record.Debitur.province}</div>
+          </div>
+        </div>
+        `,
+        },
+        {
+          key: "Kode Pos",
+          value: `
+        <div class="flex gap-2">
+          <div class="w-56 border-b border-dashed border-gray-700">${record.Debitur.pos_code || ""}</div>
+          <div class="flex-1 flex gap-2">
+            <div class="w-28">No. Handphone</div>
+            <div class="w-2">:</div>
+            <div class="flex-1 border-b border-dashed border-gray-700">${record.Debitur.phone || ""}</div>
+          </div>
+        </div>
+        `,
+        },
+      ])}
+      
+      `,
     ],
     "lower",
   )}
   </div>
 
-  <div class="my-8">
-    <p>Sehubungan dengan saya mengambil fasilitas kredit pensiun pada ${record.PayOffice.name}, Kantor Cabang ${"....................."} dengan perjanjian kredit nomor <span class="font-bold">${"..............................................."}</span> maka dengan ini Saya menyatakan:</p>
+  <div class="my-2">
+    <p>Sehubungan dengan saya mengajukan fasilitas Kredit/Pembiayaan pensiun pada ${record.PayOffice.name}, Kantor Cabang ${"....................."} dengan perjanjian kredit nomor <span class="font-bold">${"..............................................."}</span> maka dengan ini Saya menyatakan:</p>
     ${ListStyle(
       [
-        `Pada saat menerima pembayaran Manfaat Tabungan Hari Tua (THT) dan/atau Pensiun saya setiap bulan dari ${record.Debitur.group_skep} (PERSERO), agar dibayarkan melalui rekening saya Nomor : ${"........................................."} atas Nama ${".............................."} pada ${record.PayOffice.name}, Kantor Cabang ${"....................."}sampai dengan kredit saya lunas`,
-        `Memberi kuasa kepada ${record.PayOffice.name}, Kantor Cabang ${"....................."} untuk melakukan Pengesahan Data kepesertaan Saya dan sekaligus untuk mendaftarkan Flagging Data Saya pada ${record.Debitur.group_skep} (PERSERO) selama jangka waktu kredit yang telah disetujui yaitu Tanggal ${"............"} Bulan ${"............"} Tahun ${".............."} sampai dengan Tanggal ${"............"} Bulan ${"............"} Tahun ${".............."}.`,
+        `Bahwa manfaat THT dan/atau Pensiun saya tidak sedang dijaminkan kepada lembaga pemberi kredit manapun.`,
+        `Saya dalam keadaan sadar telah mengajukan Kredit/Pembiayaan dan setuju menerima pencairan kredit dari ${record.PayOffice.name} sesuai perjanjian kredit yang sudah saya tandatangani.`,
+        `Memberi kuasa kepada ${record.PayOffice.name} Kantor Cabang ..................................... untuk dapat melakukan pengecekan Manfaat THT dan Pensiun saya pada ${record.Debitur.group_skep} (Persero) selama .................. saya menjadi Nasabah pada ${record.PayOffice.name}.`,
+        `Dengan mengisi dan menandatangani surat pernyataan ini, saya menyatakan telah membaca, memahami, dan menyutujui data pribadi saya diproses oleh ${record.Debitur.group_skep} (Persero) untuk keperluan verifikasi manfaat THT dan/atau Pensiun serta administrasi yang berkaitan dengan status saya sebagai Debitur, termasuk akses terbatas oleh ${record.PayOffice.name}  sebagai mitra Kredit/Pembiayaan, sepanjang diperlukan dan sesuai dengan ketentuan peraturan perundang-undangan yang berlaku. Saya juga memahami bahwa saya memiliki hak atas data pribadi saya sesuai ketentuan yang berlaku, termasuk hak untuk mengakses, memperbaiki, dan/atau menarik persetujuan sepanjang tidak bertentangan dengan kewajiban hukum.`,
+        `Saya mengetahui bahwa manfaat THT dan/atau Pensiun akan dibayarkan melalui Bank Mandiri Taspen dan tidak akan mengajukan permohonan pemindahan ke lembaga pemberi kredit lainnya kecuali saya melakukan pelunasan sebelum berakhirnya jangka waktu kredit atau sampai dengan kewajiban kredit lunas.`,
+        `Dalam hal pengajuan fasilitas Kredit/Pembiayaan saya diterima, maka pembayaran manfaat:
+        <div class="flex gap-8">
+          <div class="flex gap-2 items-center">
+            <div class="w-5 h-5 border border-gray-700"></div>
+            Tabungan Hari Tua (THT)
+          </div>
+          <div class="flex gap-2 items-center">
+            <div class="w-5 h-5 border border-gray-700"></div>
+            Pensiun
+          </div>
+        </div>
+        yang saya terima dari PT TASPEN (Persero), agar dibayarkan melalui rekening saya 
+        Nomor .......................................... atas Nama ........................................................................ pada ${record.PayOffice.name},  Kantor Cabang ................................... <span class="font-bold">sampai dengan Pembiayaan saya lunas/pada saat saya memasuki masa pensiun</span> (*) yaitu Tanggal ........ Bulan .............. Tahun ............. sampai dengan Tanggal ........ Bulan .............. Tahun .............
+        `,
       ],
       "number",
     )}
-    <p class="mt-2">Demikian surat pernyataan dan kuasa ini saya buat, untuk dipergunakan sebagaimana mestinya. </p>
+    <p class="mt-2">Demikian surat pernyataan dan kuasa ini saya buat, untuk dipergunakan sebagaimana mestinya.</p>
 
-  <div class="my-8 flex justify-around gap-10 items-end text-center">
-    <div class="flex-1"></div>
-    <div class="flex-1">
+  <div class="my-2 flex text-center border border-gray-700 p-2">
+    <div class="flex-1 border-r border-gray-700 px-10">
+      <p>Mengetahui,</p>
+      <p>Mitra Flagging</p>
+      <div class="h-28 flex flex-col items-center justify-center text-xs opacity-70">
+        <p></p>
+        <p></p>
+      </div>
+      <div class="border-b border-dashed border-gray-700 font-bold flex justify-between">
+        <p>(</p>
+        <p class="flex-1 "></p>
+        <p>)</p>
+      </div>
+      <p>Nama Terang & Tanda Tangan</p>
+    </div>
+    <div class="flex-1 px-10">
       <p>${"......................,....................................."}</p>
       <p>Yang menyatakan</p>
       <div class="h-28 flex flex-col items-center justify-center text-xs opacity-70">
         <p>Materai</p>
-        <p>Rp. 10.000,-</p>
+        <p>(Sesuai Ketentuan)</p>
       </div>
-      <p class="border-b font-bold">${record.Debitur.fullname}</p>
+      <div class="border-b border-dashed border-gray-700 font-bold flex justify-between">
+        <p>(</p>
+        <p class="flex-1 text-center">${record.Debitur.fullname}</p>
+        <p>)</p>
+      </div>
       <p>Nama Terang & Tanda Tangan</p>
     </div>
   </div>
 
-  <div class="">
+  <div class="text-xs">
     <p class="font-bold">Catatan : </p>
     <ul class="list-item list-none list-inside">
       <li>Lembar 1 untuk ${record.Debitur.group_skep} (PERSERO)</li>
-      <li>Lembar 2 untuk ${record.ProdukPembiayaan.Sumdan.name}</li>
+      <li>Lembar 2 untuk ${record.PayOffice.name}</li>
       <li>Lembar 3 untuk Debitur</li>
       <li>Lembar 4 untuk Arsip </li>
     </ul>
+    <p>(*) coret yang tidak perlu (sesuai jenis Flagging</p>
   </div>
 
 `;

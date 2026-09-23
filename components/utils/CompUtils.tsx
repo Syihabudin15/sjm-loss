@@ -206,16 +206,7 @@ export const ProsesPembiayaan = ({
           data={{
             label: "Angsuran",
             type: "text",
-            value: IDRFormat(
-              GetAngsuran(
-                data.plafond,
-                data.tenor,
-                data.c_margin + data.c_margin_sumdan,
-                data.margin_type,
-                data.rounded,
-                data.c_ned,
-              ).angsuran,
-            ),
+            value: IDRFormat(GetDetailDapem(data).angsuran),
             disabled: true,
           }}
         />
@@ -418,10 +409,11 @@ export const MappingToTagihan = (data: IDapem[], periode?: string) => {
 
     return {
       NO: i + 1,
-      PEMOHON: d.Debitur.fullname,
+      "NAMA DEBITUR": d.Debitur.fullname,
       NOPEN: d.nopen,
       "NOMOR AKAD": d.no_contract,
       "TANGGAL AKAD": d.date_contract,
+      "NO REKENING": d.Debitur.account_number,
       PLAFOND: d.plafond,
       TENOR: d.tenor,
       ANGSURAN_MITRA: detail.detail.angsuran_sumdan,
@@ -433,6 +425,10 @@ export const MappingToTagihan = (data: IDapem[], periode?: string) => {
       NED: find?.c_ned,
       FEE_BANPOT: detail.detail.fee_banpot,
       STATUS: find?.date_paid ? "DIBAYAR" : "BELUMBAYAR",
+      "AWAL KREDIT": moment(d.date_contract).format("YYYYMM"),
+      "AKHIR KREDIT": moment(d.date_contract)
+        .add(d.tenor, "month")
+        .format("YYYYMM"),
     };
   });
 };

@@ -2,7 +2,11 @@ import { serializeForApi } from "@/components/utils/PembiayaanUtil";
 import { getSession } from "@/libs/Auth";
 import { IAngsuran } from "@/libs/IInterfaces";
 import prisma from "@/libs/Prisma";
-import { Angsuran, Prisma } from "../../../generated/prisma/client";
+import {
+  Angsuran,
+  EDapemStatus,
+  Prisma,
+} from "../../../generated/prisma/client";
 import moment from "moment";
 import { NextRequest, NextResponse } from "next/server";
 import { GetUserSession, ORDapem, WheresDapem } from "../utils/wheres";
@@ -14,6 +18,8 @@ export const GET = async (req: NextRequest) => {
   const sumdanId = req.nextUrl.searchParams.get("sumdanId");
   const backdate = req.nextUrl.searchParams.get("backdate");
   const paid_status = req.nextUrl.searchParams.get("paid_status");
+  const takeover_status = req.nextUrl.searchParams.get("takeover_status");
+  const mutasi_status = req.nextUrl.searchParams.get("mutasi_status");
   const skip = (parseInt(page) - 1) * parseInt(limit);
 
   const session = await getSession();
@@ -33,6 +39,10 @@ export const GET = async (req: NextRequest) => {
     dropping_status: "DISETUJUI",
     ...(search && ORDapem(search)),
     ...(sumdanId && { ProdukPembiayaan: { sumdanId: sumdanId } }),
+    ...(takeover_status && {
+      takeover_status: takeover_status as EDapemStatus,
+    }),
+    ...(mutasi_status && { mutasi_status: mutasi_status as EDapemStatus }),
     ...whereFunc,
     Angsurans: {
       some: {

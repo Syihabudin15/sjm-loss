@@ -49,7 +49,7 @@ export const SPKDR = (record: IDapem) => {
     <div class="flex gap-2">
       <p class="w-52">Alamat</p>
       <p class="w-4">:</p>
-      <p class="flex-1">${record.address || record.Debitur.address}, KELURAHAN ${record.ward || record.Debitur.ward} KECAMATAN ${record.district || record.Debitur.district}, ${record.city || record.Debitur.city} ${record.province || record.Debitur.province} ${record.pos_code || record.Debitur.pos_code}</p>
+      <p class="flex-1">${record.Debitur.address}, KELURAHAN ${record.Debitur.ward}, KECAMATAN ${record.Debitur.district}, ${record.Debitur.city}, ${record.Debitur.province} ${record.Debitur.pos_code}</p>
     </div>
   </div>
   <p class="mt-2">Yang untuk melakukan tindakan hukum ini telah mendapat persetujuan dari suami/istri/ahli warisnya :</p>
@@ -77,7 +77,7 @@ export const SPKDR = (record: IDapem) => {
     <div class="flex gap-2">
       <p class="w-52">Alamat</p>
       <p class="w-4">:</p>
-      <p class="flex-1">${record.aw_address}</p>
+      <p class="flex-1">${record.aw_address}, KELURAHAN ${record.aw_ward}, KECAMATAN ${record.aw_district}, ${record.aw_city}, ${record.aw_province}, ${record.aw_pos_code}</p>
     </div>
   </div>
 

@@ -29,6 +29,7 @@ import {
   TransactionOutlined,
 } from "@ant-design/icons";
 import { Banknote } from "lucide-react";
+import Link from "next/link";
 
 export interface IMenu {
   label: string | React.ReactNode;
@@ -549,7 +550,10 @@ export const MenuPermission = (
         : allowedKeys.includes(item.key);
 
       if (isAllowed) {
-        return cleanItem;
+        return {
+          ...cleanItem,
+          label: <Link href={cleanItem.key}>{cleanItem.label}</Link>,
+        };
       }
 
       return null;
