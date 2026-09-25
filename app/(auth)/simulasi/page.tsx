@@ -662,7 +662,7 @@ export default function Page() {
                   onChange={(e) =>
                     setData((prev) => ({
                       ...prev,
-                      c_flagging: parseFloat(e.target.value || "0"),
+                      c_flagging: IDRToNumber(e.target.value || "0"),
                     }))
                   }
                 />
