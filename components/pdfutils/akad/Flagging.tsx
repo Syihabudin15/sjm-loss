@@ -89,7 +89,7 @@ export const FLagging = (record: IDapem) => {
   </div>
 
   <div class="my-2">
-    <p>Sehubungan dengan saya mengajukan fasilitas Kredit/Pembiayaan pensiun pada MITRA PT.BANK MANDIRI TASPEN, Kantor Cabang ${"................................"} dengan perjanjian Kredit/Pembiayaan nomor <span class="font-bold border-b border border-dashed border-gray-700">${record.no_contract}</span> maka dengan ini Saya menyatakan:</p>
+    <p>Sehubungan dengan saya mengajukan fasilitas Kredit/Pembiayaan pensiun pada MITRA PT.BANK MANDIRI TASPEN, Kantor Cabang ............................................... dengan perjanjian Kredit/Pembiayaan nomor <span class="font-bold border-b border-dashed border-gray-700">${record.no_contract}</span> maka dengan ini Saya menyatakan:</p>
     ${ListStyle(
       [
         `Bahwa manfaat THT dan/atau Pensiun saya tidak sedang dijaminkan kepada lembaga pemberi kredit manapun.`,
