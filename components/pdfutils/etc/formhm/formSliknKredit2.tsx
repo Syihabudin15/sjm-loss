@@ -46,6 +46,15 @@ export const FormSliknKredit2 = (record: IDapem) => {
         </div>
       </div>
       <div class="w-full flex gap-4">
+        <div class="flex-1 flex gap-2">
+          <p class="w-48">Tujuan penggunaan kredit</p>
+          <p class="w-2">:</p>
+          <div class="flex-1">
+            ${FormCheck(false, "w-full", record.used_for, "flex items-center pl-3", true)}
+          </div>
+        </div>
+      </div>
+      <div class="w-full flex gap-4">
         <div class="flex-1 flex gap-4">
           <p class="flex-1 ">Apakah anda pernah memiliki Pinjaman di BPR HARTA MULIA ?</p>
           <p class="w-4"></p>
