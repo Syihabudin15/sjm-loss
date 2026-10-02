@@ -7,6 +7,7 @@ import { FormDSR } from "./forms/formDSR";
 import { PersetujuanAW } from "./forms/PersetujuanAW";
 import { FormHM } from "./formhm/formHM";
 import { FormIdeb } from "./forms/formIdeb";
+import { FormKreditABS } from "./formabs/formKreditAbs";
 
 moment.locale("id");
 
@@ -68,6 +69,17 @@ const generateForm = (record?: IDapem) => {
       <div class="page-break" style="font-size: 11px;">
         ${FormPermohonan(record)} 
       </div>
+      ${
+        record
+          ? record.ProdukPembiayaan.Sumdan.code === "BPR ABS"
+            ? `<div class="page-break" style="font-size: 12px;">
+        ${FormKreditABS(record)} 
+      </div>`
+            : ""
+          : `<div class="page-break" style="font-size: 11px;">
+        ${FormKreditABS(record)} 
+      </div>`
+      }
       <div class="page-break" style="font-size: 12px;padding:40px">
         ${FormIdeb(record)}
       </div>
