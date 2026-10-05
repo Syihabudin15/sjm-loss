@@ -8,6 +8,8 @@ import { PersetujuanAW } from "./forms/PersetujuanAW";
 import { FormHM } from "./formhm/formHM";
 import { FormIdeb } from "./forms/formIdeb";
 import { FormKreditABS } from "./formabs/formKreditAbs";
+import { FormBBTMSlik } from "./formBbtm/formBBTMSlik";
+import { FormBBTMKuasa } from "./formBbtm/formBBTMKuasa";
 
 moment.locale("id");
 
@@ -72,12 +74,34 @@ const generateForm = (record?: IDapem) => {
       ${
         record
           ? record.ProdukPembiayaan.Sumdan.code === "BPR ABS"
-            ? `<div class="page-break" style="font-size: 12px;">
+            ? `<div class="page-break" style="font-size: 13px;">
         ${FormKreditABS(record)} 
       </div>`
             : ""
-          : `<div class="page-break" style="font-size: 11px;">
+          : `<div class="page-break" style="font-size: 13px;">
         ${FormKreditABS(record)} 
+      </div>`
+      }
+      ${
+        record
+          ? record.ProdukPembiayaan.Sumdan.code === "BPR BBTM"
+            ? `<div class="page-break" style="font-size: 14px;">
+        ${FormBBTMSlik(record)} 
+      </div>`
+            : ""
+          : `<div class="page-break" style="font-size: 14px;">
+        ${FormBBTMSlik(record)} 
+      </div>`
+      }
+      ${
+        record
+          ? record.ProdukPembiayaan.Sumdan.code === "BPR BBTM"
+            ? `<div class="page-break" style="font-size: 14px;">
+        ${FormBBTMKuasa(record)} 
+      </div>`
+            : ""
+          : `<div class="page-break" style="font-size: 14px;">
+        ${FormBBTMKuasa(record)} 
       </div>`
       }
       <div class="page-break" style="font-size: 12px;padding:40px">

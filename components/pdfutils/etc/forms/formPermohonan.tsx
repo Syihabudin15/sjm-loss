@@ -169,7 +169,7 @@ export const FormPermohonan = (record?: IDapem) => {
             { key: "No Telepon", value: record?.aw_phone || "" },
             {
               key: "Alamat",
-              value: `${record?.aw_address}, KELURAHAN ${record?.aw_ward}, KECAMATAN ${record?.aw_district}, ${record?.aw_city}, ${record?.aw_province} ${record?.aw_pos_code}`,
+              value: `${record?.aw_address || ""},  ${record?.aw_ward ? `KELURAHAN ${record?.aw_ward}, ` : ""}  ${record?.aw_district ? `KECAMATAN ${record?.aw_district}, ` : ""} ${record?.aw_city ? `${record?.aw_city}, ` : ""} ${record?.aw_province ? `${record?.aw_province}, ` : ""} ${record?.aw_pos_code ? ` ${record?.aw_pos_code}` : ""}`,
             },
             { key: "Hubungan", value: record?.aw_relate || "" },
           ])}
@@ -183,7 +183,7 @@ export const FormPermohonan = (record?: IDapem) => {
             { key: "No Telepon", value: record?.f_phone || "" },
             {
               key: "Alamat",
-              value: `${record?.f_address}, KELURAHAN ${record?.f_ward}, KECAMATAN ${record?.f_district}, ${record?.f_city}, ${record?.f_province} ${record?.f_pos_code}`,
+              value: `${record?.f_address || ""},  ${record?.f_ward ? `KELURAHAN ${record?.f_ward}, ` : ""}  ${record?.f_district ? `KECAMATAN ${record?.f_district}, ` : ""} ${record?.f_city ? `${record?.f_city}, ` : ""} ${record?.f_province ? `${record?.f_province}, ` : ""} ${record?.f_pos_code ? ` ${record?.f_pos_code}` : ""}`,
             },
             { key: "Hubungan", value: record?.f_relate || "" },
           ])}

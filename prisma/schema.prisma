@@ -274,6 +274,7 @@ model Debitur {
   job_year       Int?
   id_publisher   String?
   id_end         DateTime?
+  number_kk      String?
 
   mother_name    String?
   account_name   String?

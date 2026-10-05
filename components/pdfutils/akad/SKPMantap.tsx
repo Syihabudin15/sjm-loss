@@ -59,7 +59,7 @@ export const SKPMantap = (record: IDapem) => {
   <p class="mt-3">Berdasarkan hal-hal tersebut di atas, dengan ini saya memberi kuasa dengan hak substitusi kepada: </p>
   <p class="my-2 font-bold">PT Bank Mandiri Taspen (Bank Mantap) selaku kantor bayar uang pensiun saya.</p>
 
-  <div class="text-center font-bold my-4">--------------------------------------------------------------------------------- KHUSHS ---------------------------------------------------------------------------------</div>
+  <div class="text-center font-bold my-4">--------------------------------------------------------------------------------- KHUSUS ---------------------------------------------------------------------------------</div>
   
   <p class="">Untuk dan atas nama Pemberi Kuasa melakukan tindakan-tindakan sebagai berikut:</p>
   <div class="ml-1 mb-2">

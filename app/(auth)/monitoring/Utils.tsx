@@ -450,6 +450,21 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                   <FormInput
                     data={{
                       mode: "vertical",
+                      label: "Nomor KK",
+                      type: "text",
+                      class: "flex-1",
+                      required: true,
+                      value: data.Debitur.number_kk,
+                      onChange: (e: string) =>
+                        setData({
+                          ...data,
+                          Debitur: { ...data.Debitur, number_kk: e },
+                        }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      mode: "vertical",
                       label: "Tempat Lahir",
                       type: "text",
                       class: "flex-1",
