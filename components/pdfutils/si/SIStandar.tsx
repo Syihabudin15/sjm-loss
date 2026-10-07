@@ -10,7 +10,6 @@ const generateSI = (record: IDropping) => {
 
   // Pre-calculate data per dapem untuk efisiensi dan konsistensi perhitungan
   const dapemProcessed = record.Dapems.map((curr) => {
-    const detailDapem = GetDetailDapem(curr).detail;
     const adm = curr.plafond * (curr.c_adm_sumdan / 100);
     const provisi = curr.plafond * (curr.c_provisi_sumdan / 100);
     const dropping = curr.plafond - (adm + provisi + curr.c_account_sumdan);
