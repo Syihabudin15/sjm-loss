@@ -10,6 +10,7 @@ import { FormIdeb } from "./forms/formIdeb";
 import { FormKreditABS } from "./formabs/formKreditAbs";
 import { FormBBTMSlik } from "./formBbtm/formBBTMSlik";
 import { FormBBTMTabungan } from "./formBbtm/formBBTMTabungan";
+import { FormCIFABS } from "./formabs/formCIFABS";
 
 moment.locale("id");
 
@@ -80,6 +81,17 @@ const generateForm = (record?: IDapem) => {
             : ""
           : `<div class="page-break" style="font-size: 13px;">
         ${FormKreditABS(record)} 
+      </div>`
+      }
+      ${
+        record
+          ? record.ProdukPembiayaan.Sumdan.code === "BPR ABS"
+            ? `<div class="page-break" ">
+        ${FormCIFABS(record)} 
+      </div>`
+            : ""
+          : `<div class="page-break" >
+        ${FormCIFABS(record)} 
       </div>`
       }
       ${

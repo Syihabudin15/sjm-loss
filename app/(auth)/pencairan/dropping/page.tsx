@@ -128,7 +128,7 @@ export default function Page() {
             Agama: r.Debitur.religion,
             Status: r.marriage_status,
             Gelar: r.Debitur.education,
-            "No.ID": r.Debitur.nik,
+            "No. ID": r.Debitur.nik,
             NPWP: r.Debitur.npwp,
             Alamat: r.Debitur.address,
             Kota: r.Debitur.city,
@@ -150,24 +150,27 @@ export default function Page() {
       [
         {
           sheetname: "Page1",
-          data: record.map((r) => ({
-            nocif: r.nopen,
-            "no rekening": r.Debitur.account_number,
-            tgl_cair: r.Dropping
-              ? moment(r.Dropping?.process_at).format("DD/MM/YYYY")
-              : "",
-            plafond_pembiayaan: r.plafond,
-            jangka_waktu: r.tenor,
-            sifat_bunga: "EFEKTIF",
-            guna_debitur: r.used_for,
-            sektor_ekonomi: "PENSIUNAN",
-            golongan_debitur: "",
-            sumber_dana: "GAJI",
-            no_spk: r.no_contract,
-            provisi: r.c_provisi_sumdan + r.c_provisi,
-            rate: r.c_margin_sumdan + r.c_margin,
-            administrasi: r.c_adm_sumdan + r.c_adm,
-          })),
+          data: record.map((r) => {
+            const detail = GetDetailDapem(r);
+            return {
+              nocif: r.nopen,
+              "no rekening": `${r.ProdukPembiayaan.Sumdan.id.replace("MITRA", "").replace("-", "")}${r.id.replace("P", "")}`,
+              tgl_cair: r.Dropping
+                ? moment(r.Dropping?.created_at).format("DD/MM/YYYY")
+                : "",
+              plafond_pembiayaan: r.plafond,
+              jangka_waktu: r.tenor,
+              sifat_bunga: 4,
+              guna_debitur: 39,
+              sektor_ekonomi: "009000",
+              golongan_debitur: "874",
+              sumber_dana: 10,
+              no_spk: r.no_contract,
+              provisi: detail.detail.provisi_sumdan,
+              rate: r.c_margin_sumdan,
+              administrasi: detail.detail.adm_sumdan,
+            };
+          }),
         },
       ],
       "txt_cif",
