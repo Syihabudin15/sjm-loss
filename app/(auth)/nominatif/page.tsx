@@ -646,7 +646,6 @@ export default function Page() {
       {
         title: "Aksi",
         key: "action",
-        width: 80,
         render: (_, record) => (
           <div className="flex gap-2">
             <Tooltip

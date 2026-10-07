@@ -132,6 +132,11 @@ export const GET = async (request: NextRequest) => {
                   lte: moment().endOf("month").toDate(),
                 },
               },
+              {
+                dropping_status: {
+                  in: ["DRAFT", "PENDING", "PROSES", "DISETUJUI"],
+                },
+              },
             ],
           }
         : {}),

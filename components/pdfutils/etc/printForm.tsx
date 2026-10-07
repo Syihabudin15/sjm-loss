@@ -9,7 +9,7 @@ import { FormHM } from "./formhm/formHM";
 import { FormIdeb } from "./forms/formIdeb";
 import { FormKreditABS } from "./formabs/formKreditAbs";
 import { FormBBTMSlik } from "./formBbtm/formBBTMSlik";
-import { FormBBTMKuasa } from "./formBbtm/formBBTMKuasa";
+import { FormBBTMTabungan } from "./formBbtm/formBBTMTabungan";
 
 moment.locale("id");
 
@@ -96,12 +96,12 @@ const generateForm = (record?: IDapem) => {
       ${
         record
           ? record.ProdukPembiayaan.Sumdan.code === "BPR BBTM"
-            ? `<div class="page-break" style="font-size: 14px;">
-        ${FormBBTMKuasa(record)} 
+            ? `<div class="page-break" style="font-size: 12px;">
+        ${FormBBTMTabungan(record)} 
       </div>`
             : ""
-          : `<div class="page-break" style="font-size: 14px;">
-        ${FormBBTMKuasa(record)} 
+          : `<div class="page-break" style="font-size: 12px;">
+        ${FormBBTMTabungan(record)} 
       </div>`
       }
       <div class="page-break" style="font-size: 12px;padding:40px">

@@ -50,6 +50,7 @@ import {
 
 import {
   GetDetailDapem,
+  GetRoman,
   // GetRoman,
   IDRFormat,
 } from "@/components/utils/PembiayaanUtil";
@@ -1135,6 +1136,21 @@ const PrintContractSubmission = ({
     }
   };
 
+  const handleGeneratePK = () => {
+    let noPK = "";
+    switch (data.ProdukPembiayaan.Sumdan.code) {
+      case "BPR BBTM":
+        noPK = `${data.id.replace("P", "")}/SPK-BBTM/${process.env.NEXT_PUBLIC_APP_CODE_FILE || "SJM"}/${GetRoman(new Date(temp.date_contract || new Date()).getMonth() + 1)}/${moment(temp.date_contract || new Date()).format("YYYY")}`;
+        break;
+      default:
+        noPK = `${data.id.replace("P", "")}/${process.env.NEXT_PUBLIC_APP_CODE_FILE || "SJM"}-${data.ProdukPembiayaan.Sumdan.code.replace(" ", "").replace("BPR", "").replace("BANK", "")}/${moment(temp.date_contract || new Date()).format("MM-YYYY")}`;
+    }
+    setTemp((prev) => ({
+      ...prev,
+      no_contract: noPK,
+    }));
+  };
+
   return (
     <Modal
       open={open}
@@ -1179,12 +1195,7 @@ const PrintContractSubmission = ({
                 size="small"
                 icon={<RobotOutlined />}
                 type="primary"
-                onClick={() =>
-                  setTemp((prev) => ({
-                    ...prev,
-                    no_contract: `${data.id.replace("P", "")}/${process.env.NEXT_PUBLIC_APP_CODE_FILE || "SJM"}-${data.ProdukPembiayaan.Sumdan.code.replace(" ", "").replace("BPR", "").replace("BANK", "")}/${moment(prev.date_contract || new Date()).format("MM-YYYY")}`,
-                  }))
-                }
+                onClick={() => handleGeneratePK()}
               />
             ),
           }}

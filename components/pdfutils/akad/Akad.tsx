@@ -17,6 +17,7 @@ import { FormKuasaDebet } from "../etc/formhm/formKuasaDebet";
 import { PKHM } from "../etc/formhm/PKHM";
 import { FLaggingAsabri } from "./FlaggingAsabri";
 import { SKPMantap } from "./SKPMantap";
+import { PKBBTM } from "../etc/formBbtm/PKBBTM";
 
 moment.locale("id");
 
@@ -25,6 +26,8 @@ const generateContractHtml = (record: IDapem) => {
     switch (record.ProdukPembiayaan.Sumdan.code) {
       case "BPR HM":
         return PKHM(record);
+      case "BPR BBTM":
+        return PKBBTM(record);
       default:
         return PerjanjianKredit(record);
     }

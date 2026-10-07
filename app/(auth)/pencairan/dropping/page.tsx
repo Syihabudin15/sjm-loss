@@ -2,7 +2,7 @@
 
 import { FormInput, ViewFiles } from "@/components";
 import { printSIStandar } from "@/components/pdfutils/si/SIStandar";
-import { FilterData } from "@/components/utils/CompUtils";
+import { ExportToExcel, FilterData } from "@/components/utils/CompUtils";
 import {
   GetAngsuran,
   GetDetailDapem,
@@ -113,6 +113,66 @@ export default function Page() {
         .then((res) => setSumdans(res.data));
     })();
   }, []);
+
+  const handlePrintCIF = (record: IDapem[]) => {
+    ExportToExcel(
+      [
+        {
+          sheetname: "Page1",
+          data: record.map((r) => ({
+            "Nomor CIF": r.nopen,
+            "A/C No.": r.nopen,
+            FName: r.Debitur.fullname,
+            "Tempat Lahir": r.Debitur.birthplace,
+            "Tanggal Lahir": moment(r.Debitur.birthdate).format("DD/MM/YYYY"),
+            Agama: r.Debitur.religion,
+            Status: r.marriage_status,
+            Gelar: r.Debitur.education,
+            "No.ID": r.Debitur.nik,
+            NPWP: r.Debitur.npwp,
+            Alamat: r.Debitur.address,
+            Kota: r.Debitur.city,
+            "Kode Pos": r.Debitur.pos_code || "",
+            "Kode ID": "",
+            Kelurahan: r.Debitur.ward,
+            Kecamatan: r.Debitur.district,
+            "No Hp.": r.Debitur.phone,
+            "Nama Ibu Kandung": r.Debitur.mother_name,
+            Dati2: r.Debitur.city,
+          })),
+        },
+      ],
+      "txt_cif",
+    );
+  };
+  const handlePrintCredit = (record: IDapem[]) => {
+    ExportToExcel(
+      [
+        {
+          sheetname: "Page1",
+          data: record.map((r) => ({
+            nocif: r.nopen,
+            "no rekening": r.Debitur.account_number,
+            tgl_cair: r.Dropping
+              ? moment(r.Dropping?.process_at).format("DD/MM/YYYY")
+              : "",
+            plafond_pembiayaan: r.plafond,
+            jangka_waktu: r.tenor,
+            sifat_bunga: "EFEKTIF",
+            guna_debitur: r.used_for,
+            sektor_ekonomi: "PENSIUNAN",
+            golongan_debitur: "",
+            sumber_dana: "GAJI",
+            no_spk: r.no_contract,
+            provisi: r.c_provisi_sumdan + r.c_provisi,
+            rate: r.c_margin_sumdan + r.c_margin,
+            administrasi: r.c_adm_sumdan + r.c_adm,
+          })),
+        },
+      ],
+      "txt_cif",
+    );
+  };
 
   const columnDropping: TableProps<IDropping>["columns"] = [
     {
@@ -249,6 +309,37 @@ export default function Page() {
           </span>
         </div>
       ),
+    },
+    {
+      title: "Cetak Data",
+      key: "cetak",
+      dataIndex: "cetak",
+      render(value, record, index) {
+        return (
+          <div className="flex gap-2 items-center">
+            <Tooltip title={`Cetak CIF`}>
+              <Button
+                icon={<PrinterOutlined />}
+                type="primary"
+                size="small"
+                onClick={() => handlePrintCIF(record.Dapems)}
+              >
+                Kredit
+              </Button>
+            </Tooltip>
+            <Tooltip title={`Cetak Kredit`}>
+              <Button
+                icon={<PrinterOutlined />}
+                type="primary"
+                size="small"
+                onClick={() => handlePrintCredit(record.Dapems)}
+              >
+                CIF
+              </Button>
+            </Tooltip>
+          </div>
+        );
+      },
     },
     {
       title: "Created",
