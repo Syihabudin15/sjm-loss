@@ -102,7 +102,9 @@ export const GET = async (req: NextRequest) => {
             Debitur: true,
             ProdukPembiayaan: {
               include: {
-                Sumdan: { select: { code: true, name: true, address: true } },
+                Sumdan: {
+                  select: { code: true, name: true, address: true, id: true },
+                },
               },
             },
             JenisPembiayaan: {

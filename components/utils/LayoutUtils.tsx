@@ -612,7 +612,9 @@ export const DetailDapem = ({
                     </span>
                   </div>
                   <div className="flex-1 text-right">
-                    {IDRFormat(detail.detail.adm_sumdan)}
+                    {IDRFormat(
+                      detail.detail.adm_sumdan + detail.detail.provisi_sumdan,
+                    )}
                   </div>
                 </div>
                 <div className="flex justify-between border-b border-gray-400 border-dashed">
