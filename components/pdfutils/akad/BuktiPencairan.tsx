@@ -71,7 +71,9 @@ export const BuktiPencairan = (record: IDapem, isFor: string) => {
         ${ListNonStyle([
           {
             key: "Biaya Administrasi",
-            value: IDRFormat(detail.administrasi),
+            value: IDRFormat(
+              detail.administrasi + detail.detail.provisi_sumdan,
+            ),
             currency: true,
           },
           {

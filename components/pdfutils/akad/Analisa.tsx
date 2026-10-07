@@ -156,7 +156,9 @@ export const AnalisaPerhitungan = (record: IDapem) => {
         ${ListNonStyle([
           {
             key: "Biaya Administrasi",
-            value: IDRFormat(detail.administrasi),
+            value: IDRFormat(
+              detail.administrasi + detail.detail.provisi_sumdan,
+            ),
             currency: true,
           },
           {

@@ -162,7 +162,7 @@ export const PerjanjianKredit = (record: IDapem) => {
           <p class="w-4">:</p>
           <div class="w-28 flex justify-between gap-2">
             <p class="w-4">Rp. </p>
-            <p class="flex-1 text-right">${IDRFormat(detail.administrasi)}</p>
+            <p class="flex-1 text-right">${IDRFormat(detail.administrasi + detail.detail.provisi_sumdan)}</p>
           </div>
         </div>
         <div class="flex gap-2 ml-10">

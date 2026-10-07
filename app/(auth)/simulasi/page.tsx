@@ -563,7 +563,7 @@ export default function Page() {
                     }
                   />
                 </Tooltip>
-                {/* <Tooltip title="Provisi">
+                <Tooltip title="Provisi">
                   <Input
                     size="small"
                     style={{ flex: 1, minWidth: 50 }}
@@ -576,11 +576,13 @@ export default function Page() {
                       }))
                     }
                   />
-                </Tooltip> */}
+                </Tooltip>
                 <Input
                   size="small"
                   disabled
-                  value={IDRFormat(details.detail.adm_sumdan)}
+                  value={IDRFormat(
+                    details.detail.adm_sumdan + details.detail.provisi_sumdan,
+                  )}
                   style={{ textAlign: "right", color: "black", width: 130 }}
                 />
               </div>
@@ -765,7 +767,9 @@ export default function Page() {
                 <Input
                   size="small"
                   disabled
-                  value={IDRFormat(details.administrasi)}
+                  value={IDRFormat(
+                    details.administrasi + details.detail.provisi_sumdan,
+                  )}
                   style={{ textAlign: "right", color: "black" }}
                 />
               </div>
@@ -1148,7 +1152,11 @@ const ModalDetailPembiayaan = ({
             <div className="flex flex-col gap-1">
               <div className="flex justify-between gap-2 border-b border-dashed">
                 <span>Administrasi</span>
-                <span>{IDRFormat(detail.administrasi)}</span>
+                <span>
+                  {IDRFormat(
+                    detail.administrasi + detail.detail.provisi_sumdan,
+                  )}
+                </span>
               </div>
               <div className="flex justify-between gap-2 border-b border-dashed">
                 <span>Asuransi</span>

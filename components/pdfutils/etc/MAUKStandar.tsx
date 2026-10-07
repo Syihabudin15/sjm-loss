@@ -318,7 +318,9 @@ export const MAUKStandar = ({ data }: { data: IDapem }) => {
                     data={[
                       {
                         key: "Biaya Administrasi",
-                        value: IDRFormat(detail.administrasi),
+                        value: IDRFormat(
+                          detail.administrasi + detail.detail.provisi_sumdan,
+                        ),
                         currency: true,
                       },
                       {
