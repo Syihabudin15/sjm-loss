@@ -133,7 +133,7 @@ export default function Page() {
             Alamat: r.Debitur.address,
             Kota: r.Debitur.city,
             "Kode Pos": r.Debitur.pos_code || "",
-            "Kode ID": "",
+            "Kode ID": r.id,
             Kelurahan: r.Debitur.ward,
             Kecamatan: r.Debitur.district,
             "No Hp.": r.Debitur.phone,
