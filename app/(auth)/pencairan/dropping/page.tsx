@@ -327,7 +327,7 @@ export default function Page() {
                 size="small"
                 onClick={() => handlePrintCIF(record.Dapems)}
               >
-                CIR
+                CIF
               </Button>
             </Tooltip>
             <Tooltip title={`Cetak Kredit`}>
