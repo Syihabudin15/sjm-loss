@@ -331,15 +331,15 @@ export const FormSliknKredit2 = (record: IDapem) => {
       <p class="">Pemohon</p>
     </div>
     <div class="mt-16 flex justify-evenly items-center text-center gap-4">
-      <div class="w-44 flex flex-col justify-end">
+      <div class="w-64 flex flex-col justify-end">
         <p class="">${ao ? ao.fullname : ""}</p>
         <p class="w-full border-t border-gray-800">AO/MARKETING/LAINNYA</p>
       </div>
-      <div class="w-44 flex flex-col justify-end">
+      <div class="w-64 flex flex-col justify-end">
         <p>${record.Debitur.fullname}</p>
         <p class="w-full border-t border-gray-800">Pemohon</p>
       </div>
-      <div class="w-44 flex flex-col justify-end">
+      <div class="w-64 flex flex-col justify-end">
         <p>${record.aw_name}</p>
         <p class="w-full border-t border-gray-800">${record.marriage_status === "KAWIN" ? "Istri/Suami Pemohon" : "Ahliwaris"}</p>
       </div>
