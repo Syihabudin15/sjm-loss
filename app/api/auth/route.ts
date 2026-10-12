@@ -19,6 +19,7 @@ export const POST = async (req: NextRequest) => {
       include: {
         Role: true,
         Sumdan: true,
+        status: true,
         Cabang: { include: { Area: true } },
       },
     });
