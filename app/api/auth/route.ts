@@ -15,11 +15,10 @@ export const POST = async (req: NextRequest) => {
 
   try {
     const find = await prisma.user.findFirst({
-      where: { username: username },
+      where: { username: username, status: true },
       include: {
         Role: true,
         Sumdan: true,
-        status: true,
         Cabang: { include: { Area: true } },
       },
     });
