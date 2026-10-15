@@ -180,8 +180,8 @@ const generateSI = (record: IDropping) => {
             <tr class="bg-gray-200">
               <th class="border border-gray-400 border-dashed p-1">NO</th>
               <th class="border border-gray-400 border-dashed p-1">Debitur</th>
-              <th class="border border-gray-400 border-dashed p-1">Plafond</th>
               <th class="border border-gray-400 border-dashed p-1">Produk</th>
+              <th class="border border-gray-400 border-dashed p-1">Plafond</th>
               <th class="border border-gray-400 border-dashed p-1">Adm Bank</th>
               ${hasProvisi ? `<th class="border border-gray-400 border-dashed p-1">Provisi Bank</th>` : ""}
               <th class="border border-gray-400 border-dashed p-1">Buka Tabungan</th>
@@ -214,7 +214,7 @@ const generateSI = (record: IDropping) => {
           </tbody>
           <tfoot>
             <tr class="bg-gray-100 font-semibold italic">
-              <td colspan="2" class="border border-gray-400 p-2 text-center border-dashed">
+              <td colspan="3" class="border border-gray-400 p-2 text-center border-dashed">
                 JUMLAH
               </td>
               <td class="border border-gray-400 p-2 text-right border-dashed">
