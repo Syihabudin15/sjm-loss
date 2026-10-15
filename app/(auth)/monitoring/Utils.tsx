@@ -178,6 +178,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
         c_adm_sumdan: find.Sumdan.c_adm_sumdan,
         c_adm: find.Sumdan.c_adm,
         c_provisi_sumdan: find.Sumdan.c_provisi_sumdan,
+        c_provisi: find.Sumdan.c_provisi,
         c_account_sumdan: find.Sumdan.c_account_sumdan,
         c_gov: find.Sumdan.c_gov,
         c_stamp: find.Sumdan.c_stamps,
@@ -257,6 +258,8 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
     data.c_fee_bpp,
     data.c_account_sumdan,
     data.fee_banpot,
+    data.c_provisi,
+    data.c_provisi_sumdan,
   ]);
 
   const handleOCR = async () => {

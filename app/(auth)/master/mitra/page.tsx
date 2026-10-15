@@ -176,6 +176,7 @@ export default function Page() {
         return (
           <div className="text-xs text-blue-400">
             <p>Admin : {record.c_adm}%</p>
+            <p>Provisi : {record.c_provisi}%</p>
             <p>Tatalaksana : {IDRFormat(record.c_gov)}</p>
             {/* <p>Materai : {IDRFormat(record.c_stamps)}</p> */}
           </div>
@@ -657,7 +658,7 @@ function UpsertSumdan({
                     data={{
                       label: "Provisi %",
                       mode: "horizontal",
-                      type: "text",
+                      type: "number",
                       value: data.c_provisi_sumdan,
                       onChange: (e: any) =>
                         setData({
@@ -726,7 +727,7 @@ function UpsertSumdan({
                     data={{
                       label: "Provisi",
                       mode: "horizontal",
-                      type: "text",
+                      type: "number",
                       value: IDRFormat(data.c_provisi),
                       onChange: (e: any) =>
                         setData({ ...data, c_provisi: IDRToNumber(e) }),
