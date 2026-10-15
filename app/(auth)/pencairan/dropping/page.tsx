@@ -42,6 +42,7 @@ import {
 import { HookAPI } from "antd/es/modal/useModal";
 import moment from "moment";
 import { useEffect, useState } from "react";
+import { printSIABS } from "@/components/pdfutils/si/SIStandarABS";
 const { RangePicker } = DatePicker;
 
 export default function Page() {
@@ -113,6 +114,19 @@ export default function Page() {
         .then((res) => setSumdans(res.data));
     })();
   }, []);
+
+  const printSI = (record: IDropping) => {
+    switch (record.Sumdan.code) {
+      case "BPR ABS": {
+        printSIABS(record);
+        break;
+      }
+      default: {
+        printSIStandar(record);
+        break;
+      }
+    }
+  };
 
   const handlePrintCIF = (record: IDapem[]) => {
     ExportToExcel(
@@ -368,7 +382,7 @@ export default function Page() {
                 icon={<PrinterOutlined />}
                 size="small"
                 type="primary"
-                onClick={() => printSIStandar(record)}
+                onClick={() => printSI(record)}
               ></Button>
             </Tooltip>
             <Tooltip title="Berkas Akad & Dropping">
