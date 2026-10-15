@@ -449,7 +449,7 @@ export default function Page() {
                 </div>
               </div>
               <div className="flex-1">
-                <div>Margin Sumdan</div>
+                <div>Margin Koperasi</div>
                 <div>
                   <Input
                     value={data.c_margin || 0}
@@ -620,7 +620,7 @@ export default function Page() {
                     }
                   />
                 </Tooltip>
-                {/* <Tooltip title="Provisi Kop">
+                <Tooltip title="Provisi Kop">
                   <Input
                     size="small"
                     style={{ flex: 1, minWidth: 50 }}
@@ -633,11 +633,11 @@ export default function Page() {
                       }))
                     }
                   />
-                </Tooltip> */}
+                </Tooltip>
                 <Input
                   size="small"
                   disabled
-                  value={IDRFormat(details.detail.adm)}
+                  value={IDRFormat(details.detail.adm + details.detail.provisi)}
                   style={{ textAlign: "right", color: "black", width: 130 }}
                 />
               </div>
@@ -767,9 +767,7 @@ export default function Page() {
                 <Input
                   size="small"
                   disabled
-                  value={IDRFormat(
-                    details.administrasi + details.detail.provisi_sumdan,
-                  )}
+                  value={IDRFormat(details.administrasi + details.provisi)}
                   style={{ textAlign: "right", color: "black" }}
                 />
               </div>

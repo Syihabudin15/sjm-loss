@@ -1772,6 +1772,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                                 c_ned: find.Sumdan.c_ned,
                                 rounded: find.Sumdan.rounded,
                                 tbo: find.Sumdan.tbo,
+                                c_provisi: find.Sumdan.c_provisi,
                               });
                             }
                           }}
@@ -2014,10 +2015,26 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                             type="number"
                           />
                         </Tooltip>
+                        <Tooltip title="Provisi Koperasi">
+                          <Input
+                            size="small"
+                            style={{ width: 65 }}
+                            value={data.c_provisi}
+                            onChange={(e) =>
+                              setData({
+                                ...data,
+                                c_provisi: Number(e.target.value || 0),
+                              })
+                            }
+                            type="number"
+                          />
+                        </Tooltip>
                         <Input
                           size="small"
                           disabled
-                          value={IDRFormat(details.detail.adm)}
+                          value={IDRFormat(
+                            details.detail.adm + details.detail.provisi,
+                          )}
                           style={{
                             textAlign: "right",
                             color: "black",
