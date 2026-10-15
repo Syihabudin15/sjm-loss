@@ -221,6 +221,22 @@ export default function Page() {
       },
     },
     {
+      title: "AO & UP",
+      dataIndex: "aoup",
+      key: "aoup",
+      render: (_, record) => {
+        const ao = record.AO || record.AOCabang || record.AOArea;
+        return (
+          <div>
+            <div>{ao?.fullname}</div>
+            <div className="text-xs opacity-80">
+              {ao?.Cabang.name} | {ao?.Cabang.Area.name}
+            </div>
+          </div>
+        );
+      },
+    },
+    {
       title: "Angsuran",
       dataIndex: "angsuran",
       key: "angsuran",

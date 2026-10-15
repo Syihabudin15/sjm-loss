@@ -653,7 +653,7 @@ function UpsertSumdan({
                         setData({ ...data, c_account_sumdan: IDRToNumber(e) }),
                     }}
                   />
-                  {/* <FormInput
+                  <FormInput
                     data={{
                       label: "Provisi %",
                       mode: "horizontal",
@@ -665,7 +665,7 @@ function UpsertSumdan({
                           c_provisi_sumdan: parseFloat(e || "0"),
                         }),
                     }}
-                  /> */}
+                  />
                   <FormInput
                     data={{
                       label: "DSR/DBR %",
@@ -722,7 +722,7 @@ function UpsertSumdan({
                         setData({ ...data, c_adm: parseFloat(e) }),
                     }}
                   />
-                  {/* <FormInput
+                  <FormInput
                     data={{
                       label: "Provisi",
                       mode: "horizontal",
@@ -731,7 +731,7 @@ function UpsertSumdan({
                       onChange: (e: any) =>
                         setData({ ...data, c_provisi: IDRToNumber(e) }),
                     }}
-                  /> */}
+                  />
                   <FormInput
                     data={{
                       label: "Tatalaksana",

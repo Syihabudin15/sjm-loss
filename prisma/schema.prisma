@@ -400,6 +400,10 @@ model Dapem {
   dev_status        Boolean            @default(false)
   deviasi_note      String?            @db.Text
   note              String?            @db.Text
+  audit_status      Boolean            @default(false)
+  audit_desc        String?
+  audit_name        String?
+  audit_date        DateTime?
 
   used_for      String
   no_contract   String

@@ -22,6 +22,7 @@ import {
   IUserDapem,
 } from "@/libs/IInterfaces";
 import {
+  AuditOutlined,
   BranchesOutlined,
   CalculatorOutlined,
   DollarCircleOutlined,
@@ -102,7 +103,9 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
       return;
     }
     setLoading(true);
-    data.userId = user.id;
+    if (!record || !record.userId) {
+      data.userId = user.id;
+    }
     await fetch("/api/dapem", {
       method: record ? "PUT" : "POST",
       body: JSON.stringify(data),
@@ -1914,9 +1917,28 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         />
                         <Input
                           size="small"
+                          style={{ width: 100 }}
+                          value={data.c_provisi_sumdan}
+                          onChange={(e) =>
+                            setData({
+                              ...data,
+                              c_provisi_sumdan: Number(e.target.value || 0),
+                            })
+                          }
+                          type={"number"}
+                        />
+                        <Input
+                          size="small"
                           disabled
-                          value={IDRFormat(details.detail.adm_sumdan)}
-                          style={{ textAlign: "right", color: "black" }}
+                          value={IDRFormat(
+                            details.detail.adm_sumdan +
+                              details.detail.provisi_sumdan,
+                          )}
+                          style={{
+                            textAlign: "right",
+                            color: "black",
+                            flex: "flex-1",
+                          }}
                         />
                       </div>
                     </div>
@@ -1995,7 +2017,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                         <Input
                           size="small"
                           disabled
-                          value={IDRFormat(details.administrasi)}
+                          value={IDRFormat(details.detail.adm)}
                           style={{
                             textAlign: "right",
                             color: "black",
@@ -2160,6 +2182,37 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                 <Card
                   title={
                     <div>
+                      <UserOutlined /> Admin Input
+                    </div>
+                  }
+                  style={{ marginTop: 5 }}
+                  loading={loading}
+                >
+                  <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Admin Input",
+                        type: "select",
+                        class: "flex-1",
+                        value: data.userId,
+                        options: users.map((u) => ({
+                          label: `${u.fullname} (${u.position})`,
+                          value: u.id,
+                        })),
+                        onChange: (e: string | null) => {
+                          setData({
+                            ...data,
+                            userId: e || user?.id || "",
+                          });
+                        },
+                      }}
+                    />
+                  </div>
+                </Card>
+                <Card
+                  title={
+                    <div>
                       <SignatureOutlined /> Agent Fronting
                     </div>
                   }
@@ -2167,6 +2220,26 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                   loading={loading}
                 >
                   <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
+                    <FormInput
+                      data={{
+                        mode: "vertical",
+                        label: "Admin Input",
+                        type: "select",
+                        class: "flex-1",
+                        value: data.userId,
+                        options: users.map((u) => ({
+                          label: `${u.fullname} (${u.position})`,
+                          value: u.id,
+                        })),
+                        onChange: (e: string | null) => {
+                          const find = users.find((u) => u.id === e);
+                          setData({
+                            ...data,
+                            userId: e || user?.id || "",
+                          });
+                        },
+                      }}
+                    />
                     <FormInput
                       data={{
                         mode: "vertical",
@@ -2573,6 +2646,95 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
               </Card>
             ),
           },
+          {
+            key: "audit",
+            label: (
+              <div className="flex items-center gap-2">
+                <AuditOutlined />
+                <span>Audit</span>
+              </div>
+            ),
+            children: (
+              <Card
+                title={
+                  <div>
+                    <AuditOutlined /> Report Audit
+                  </div>
+                }
+                style={{ marginTop: 5 }}
+                loading={loading}
+              >
+                <div className="flex flex-col gap-3">
+                  <FormInput
+                    data={{
+                      mode: "vertical",
+                      label: "User Audit",
+                      type: "text",
+                      class: "flex-1",
+                      required: true,
+                      value: data.audit_name,
+                      onChange: (e: string) =>
+                        setData({
+                          ...data,
+                          audit_name: e,
+                        }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      mode: "vertical",
+                      label: "Tanggal Audit",
+                      type: "date",
+                      class: "flex-1",
+                      required: true,
+                      value: data.audit_date
+                        ? moment(data.audit_date).format("YYYY-MM-DD")
+                        : null,
+                      onChange: (e: any) =>
+                        setData({
+                          ...data,
+                          audit_date: e ? new Date(e) : null,
+                        }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      mode: "vertical",
+                      label: "Status Audit",
+                      type: "select",
+                      class: "flex-1",
+                      required: true,
+                      value: data.audit_status,
+                      onChange: (e: boolean) =>
+                        setData({
+                          ...data,
+                          audit_status: e,
+                        }),
+                      options: [
+                        { label: "PENDING", value: false },
+                        { label: "AUDITED", value: true },
+                      ],
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      mode: "vertical",
+                      label: "Keterangan",
+                      type: "textarea",
+                      class: "flex-1",
+                      required: true,
+                      value: data.audit_desc,
+                      onChange: (e: string) =>
+                        setData({
+                          ...data,
+                          audit_desc: e,
+                        }),
+                    }}
+                  />
+                </div>
+              </Card>
+            ),
+          },
         ]}
       />
       <div className="flex justify-end gap-4 mt-6">
@@ -2769,6 +2931,10 @@ const defaultData: IDapem = {
   f_pos_code: null,
   aw_education: null,
   cost_month: 0,
+  audit_status: false,
+  audit_date: null,
+  audit_name: null,
+  audit_desc: null,
 };
 
 interface ITemp {

@@ -120,25 +120,27 @@ export default function Page() {
         {
           sheetname: "Page1",
           data: record.map((r) => ({
-            "Nomor CIF": r.nopen,
-            "A/C No.": r.nopen,
-            FName: r.Debitur.fullname,
-            "Tempat Lahir": r.Debitur.birthplace,
-            "Tanggal Lahir": moment(r.Debitur.birthdate).format("DD/MM/YYYY"),
-            Agama: r.Debitur.religion,
-            Status: r.marriage_status,
-            Gelar: r.Debitur.education,
-            "No. ID": r.Debitur.nik,
-            NPWP: r.Debitur.npwp,
-            Alamat: r.Debitur.address,
-            Kota: r.Debitur.city,
-            "Kode Pos": r.Debitur.pos_code || "",
-            "Kode ID": r.id,
-            Kelurahan: r.Debitur.ward,
-            Kecamatan: r.Debitur.district,
-            "No Hp.": r.Debitur.phone,
-            "Nama Ibu Kandung": r.Debitur.mother_name,
-            Dati2: r.Debitur.city,
+            "Nomor CIF": String(r.nopen ?? ""),
+            "A/C No.": String(r.nopen ?? ""),
+            FName: String(r.Debitur?.fullname ?? ""),
+            "Tempat Lahir": String(r.Debitur?.birthplace ?? ""),
+            "Tanggal Lahir": r.Debitur?.birthdate
+              ? moment(r.Debitur.birthdate).format("DD/MM/YYYY")
+              : "",
+            Agama: String(r.Debitur?.religion ?? ""),
+            Status: String(r.marriage_status ?? ""),
+            Gelar: String(r.Debitur?.education ?? ""),
+            "No. ID": String(r.Debitur?.nik ?? ""),
+            NPWP: String(r.Debitur?.npwp ?? ""),
+            Alamat: String(r.Debitur?.address ?? ""),
+            Kota: String(r.Debitur?.city ?? ""),
+            "Kode Pos": String(r.Debitur?.pos_code ?? ""),
+            "Kode ID": String(r.id ?? ""),
+            Kelurahan: String(r.Debitur?.ward ?? ""),
+            Kecamatan: String(r.Debitur?.district ?? ""),
+            "No Hp.": String(r.Debitur?.phone ?? ""),
+            "Nama Ibu Kandung": String(r.Debitur?.mother_name ?? ""),
+            Dati2: String(r.Debitur?.city ?? ""),
           })),
         },
       ],
@@ -153,27 +155,29 @@ export default function Page() {
           data: record.map((r) => {
             const detail = GetDetailDapem(r);
             return {
-              nocif: r.nopen,
-              "no rekening": `${r.ProdukPembiayaan.Sumdan.id.replace("MITRA", "").replace("-", "")}${r.id.replace("P", "")}`,
-              tgl_cair: r.Dropping
-                ? moment(r.Dropping?.created_at).format("DD/MM/YYYY")
+              nocif: String(r.nopen ?? ""),
+              "no rekening": `${r.ProdukPembiayaan?.Sumdan?.id?.replace("MITRA", "").replace("-", "") ?? ""}${r.id?.replace("P", "") ?? ""}`,
+              tgl_cair: r.Dropping?.created_at
+                ? moment(r.Dropping.created_at).format("DD/MM/YYYY")
                 : "",
-              plafond_pembiayaan: r.plafond,
-              jangka_waktu: r.tenor,
-              sifat_bunga: 4,
-              guna_debitur: 39,
-              sektor_ekonomi: "009000",
-              golongan_debitur: "874",
-              sumber_dana: 10,
-              no_spk: r.no_contract,
-              provisi: detail.detail.provisi_sumdan,
-              rate: r.c_margin_sumdan,
-              administrasi: detail.detail.adm_sumdan,
+              // Jika plafond ingin dianggap teks, gunakan String(r.plafond ?? 0).
+              // Biarkan number jika ingin tetap bisa dihitung/di-sum di Excel:
+              plafond_pembiayaan: r.plafond ?? 0,
+              jangka_waktu: r.tenor ?? 0,
+              sifat_bunga: String(3),
+              guna_debitur: String(39),
+              sektor_ekonomi: String("009000"), // Diawali 0, wajib string agar 0 tidak hilang
+              golongan_debitur: String("874"),
+              sumber_dana: String(10),
+              no_spk: String(r.no_contract ?? ""),
+              provisi: detail?.detail?.provisi_sumdan ?? 0,
+              rate: r.c_margin_sumdan ?? 0,
+              administrasi: detail?.detail?.adm_sumdan ?? 0,
             };
           }),
         },
       ],
-      "txt_cif",
+      "txt_cif", // Catatan: nama file ini masih "txt_cif", sesuaikan jika ingin diganti misal "txt_credit"
     );
   };
 

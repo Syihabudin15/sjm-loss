@@ -38,6 +38,9 @@ export const GET = async (request: NextRequest) => {
     payOfficeId,
     insuranceId,
     includes,
+    group_skep,
+    audit_status,
+    dev_status,
   } = params;
   const skip = (parseInt(page) - 1) * parseInt(limit);
 
@@ -100,6 +103,11 @@ export const GET = async (request: NextRequest) => {
     ...(agentFrontingId && { agentFrontingId: agentFrontingId }),
     ...(payOfficeId && { payOfficeId: payOfficeId }),
     ...(insuranceId && { insuranceId: insuranceId }),
+    ...(group_skep && { Debitur: { group_skep } }),
+    ...(dev_status && { dev_status: dev_status === "true" ? true : false }),
+    ...(audit_status && {
+      audit_status: audit_status === "true" ? true : false,
+    }),
     ...(backdate
       ? {
           OR: [
@@ -249,6 +257,13 @@ export const GET = async (request: NextRequest) => {
         takeover_date: true,
         mutasi_status: true,
         margin_type: true,
+        dev_status: true,
+        deviasi_note: true,
+        note: true,
+        audit_status: true,
+        audit_desc: true,
+        audit_name: true,
+        audit_date: true,
         ...(includes && {
           takeover_date_exc: true,
           takeover_desc: true,

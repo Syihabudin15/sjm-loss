@@ -45,6 +45,8 @@ import {
   FilterData,
   GetDroppingStatusTag,
   GetStatusTag,
+  GetStatusTagAudit,
+  GetStatusTagDeviasi,
   MappingToExcelDapem,
 } from "@/components/utils/CompUtils";
 
@@ -102,6 +104,9 @@ export default function Page() {
     jenisPembiayaanId: "",
     agentFrontingId: "",
     dropping_status: "",
+    audit_status: "",
+    group_skep: "",
+    dev_status: "",
     backdate: "",
   });
   const [loading, setLoading] = useState(false);
@@ -142,6 +147,9 @@ export default function Page() {
         ...(pageProps.agentFrontingId && {
           agentFrontingId: pageProps.agentFrontingId,
         }),
+        ...(pageProps.audit_status && { audit_status: pageProps.audit_status }),
+        ...(pageProps.group_skep && { group_skep: pageProps.group_skep }),
+        ...(pageProps.dev_status && { dev_status: pageProps.dev_status }),
       });
 
       const res = await fetch(`/api/dapem?${params.toString()}`);
@@ -164,6 +172,9 @@ export default function Page() {
     pageProps.jenisPembiayaanId,
     pageProps.agentFrontingId,
     pageProps.dropping_status,
+    pageProps.audit_status,
+    pageProps.group_skep,
+    pageProps.dev_status,
     pageProps.backdate,
   ]);
 
@@ -529,6 +540,55 @@ export default function Page() {
         ),
       },
       {
+        title: "Status Audit",
+        dataIndex: "audit_status",
+        key: "audit_status",
+        width: 250,
+        hidden: user?.sumdanId ? true : false,
+        render: (_, record) => {
+          return (
+            <div className="flex gap-1">
+              {GetStatusTagAudit(record.audit_status)}
+              <Paragraph
+                ellipsis={{ rows: 2, expandable: "collapsible" }}
+                style={{ fontSize: 11 }}
+              >
+                {record.audit_desc}
+                {record.audit_name && (
+                  <p>
+                    (By {record.audit_name} at{" "}
+                    {record.audit_date
+                      ? moment(record.audit_date).format("DD/MM/YYYY HH:mm")
+                      : ""}
+                    )
+                  </p>
+                )}
+              </Paragraph>
+            </div>
+          );
+        },
+      },
+      {
+        title: "Status Deviasi",
+        dataIndex: "dev_status",
+        key: "dev_status",
+        width: 250,
+        hidden: user?.sumdanId ? true : false,
+        render: (_, record) => {
+          return (
+            <div className="flex gap-1">
+              {GetStatusTagDeviasi(record.dev_status)}
+              <Paragraph
+                ellipsis={{ rows: 2, expandable: "collapsible" }}
+                style={{ fontSize: 11 }}
+              >
+                {record.deviasi_note}
+              </Paragraph>
+            </div>
+          );
+        },
+      },
+      {
         title: "Created",
         dataIndex: "created_at",
         key: "created_at",
@@ -660,6 +720,9 @@ export default function Page() {
       jenisPembiayaanId: "",
       agentFrontingId: "",
       dropping_status: "",
+      audit_status: "",
+      dev_status: "",
+      group_skep: "",
       backdate: "",
       page: 1,
     }));
@@ -798,6 +861,75 @@ export default function Page() {
                       setPageProps((prev) => ({
                         ...prev,
                         dropping_status: e,
+                        page: 1,
+                      }))
+                    }
+                    allowClear
+                    style={{ width: "100%" }}
+                  />
+                </div>
+                <div className="flex flex-col space-y-1">
+                  <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                    Status Audit
+                  </label>
+                  <Select
+                    size="small"
+                    placeholder="AUDITED..."
+                    options={[
+                      { label: "AUDITED", value: "true" },
+                      { label: "PENDING", value: "false" },
+                    ]}
+                    value={pageProps.audit_status}
+                    onChange={(e) =>
+                      setPageProps((prev) => ({
+                        ...prev,
+                        audit_status: e,
+                        page: 1,
+                      }))
+                    }
+                    allowClear
+                    style={{ width: "100%" }}
+                  />
+                </div>
+                <div className="flex flex-col space-y-1">
+                  <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                    Status Deviasi
+                  </label>
+                  <Select
+                    size="small"
+                    placeholder="Deviasi..."
+                    options={[
+                      { label: "DEVIASI", value: "true" },
+                      { label: "NOT DEVIASI", value: "false" },
+                    ]}
+                    value={pageProps.dev_status}
+                    onChange={(e) =>
+                      setPageProps((prev) => ({
+                        ...prev,
+                        dev_status: e,
+                        page: 1,
+                      }))
+                    }
+                    allowClear
+                    style={{ width: "100%" }}
+                  />
+                </div>
+                <div className="flex flex-col space-y-1">
+                  <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                    Group SKEP
+                  </label>
+                  <Select
+                    size="small"
+                    placeholder="PT. TASPEN..."
+                    options={[
+                      { label: "PT. TASPEN", value: "PT. TASPEN" },
+                      { label: "PT. ASABRI", value: "PT. ASABRI" },
+                    ]}
+                    value={pageProps.group_skep}
+                    onChange={(e) =>
+                      setPageProps((prev) => ({
+                        ...prev,
+                        group_skep: e,
                         page: 1,
                       }))
                     }

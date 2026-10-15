@@ -50,6 +50,21 @@ export const GetStatusTag = (status: ESubmissionStatus | undefined | null) => {
   return <div></div>;
 };
 
+export const GetStatusTagAudit = (status: boolean) => {
+  return (
+    <Tag color={status ? "green" : "orange"} variant="solid">
+      {status ? "AUDITED" : "PENDING"}
+    </Tag>
+  );
+};
+export const GetStatusTagDeviasi = (status: boolean) => {
+  return (
+    <Tag color={status ? "red" : "orange"} variant="solid">
+      {status ? "DEVIASI" : "-"}
+    </Tag>
+  );
+};
+
 export const GetDroppingStatusTag = (
   status: EDapemStatus | undefined | null,
 ) => {

@@ -180,6 +180,10 @@ export type DapemMinAggregateOutputType = {
   dev_status: boolean | null
   deviasi_note: string | null
   note: string | null
+  audit_status: boolean | null
+  audit_desc: string | null
+  audit_name: string | null
+  audit_date: Date | null
   used_for: string | null
   no_contract: string | null
   date_contract: Date | null
@@ -314,6 +318,10 @@ export type DapemMaxAggregateOutputType = {
   dev_status: boolean | null
   deviasi_note: string | null
   note: string | null
+  audit_status: boolean | null
+  audit_desc: string | null
+  audit_name: string | null
+  audit_date: Date | null
   used_for: string | null
   no_contract: string | null
   date_contract: Date | null
@@ -448,6 +456,10 @@ export type DapemCountAggregateOutputType = {
   dev_status: number
   deviasi_note: number
   note: number
+  audit_status: number
+  audit_desc: number
+  audit_name: number
+  audit_date: number
   used_for: number
   no_contract: number
   date_contract: number
@@ -640,6 +652,10 @@ export type DapemMinAggregateInputType = {
   dev_status?: true
   deviasi_note?: true
   note?: true
+  audit_status?: true
+  audit_desc?: true
+  audit_name?: true
+  audit_date?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -774,6 +790,10 @@ export type DapemMaxAggregateInputType = {
   dev_status?: true
   deviasi_note?: true
   note?: true
+  audit_status?: true
+  audit_desc?: true
+  audit_name?: true
+  audit_date?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -908,6 +928,10 @@ export type DapemCountAggregateInputType = {
   dev_status?: true
   deviasi_note?: true
   note?: true
+  audit_status?: true
+  audit_desc?: true
+  audit_name?: true
+  audit_date?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -1129,6 +1153,10 @@ export type DapemGroupByOutputType = {
   dev_status: boolean
   deviasi_note: string | null
   note: string | null
+  audit_status: boolean
+  audit_desc: string | null
+  audit_name: string | null
+  audit_date: Date | null
   used_for: string
   no_contract: string
   date_contract: Date | null
@@ -1286,6 +1314,10 @@ export type DapemWhereInput = {
   dev_status?: Prisma.BoolFilter<"Dapem"> | boolean
   deviasi_note?: Prisma.StringNullableFilter<"Dapem"> | string | null
   note?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  audit_status?: Prisma.BoolFilter<"Dapem"> | boolean
+  audit_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  audit_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  audit_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -1438,6 +1470,10 @@ export type DapemOrderByWithRelationInput = {
   dev_status?: Prisma.SortOrder
   deviasi_note?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  audit_status?: Prisma.SortOrder
+  audit_desc?: Prisma.SortOrderInput | Prisma.SortOrder
+  audit_name?: Prisma.SortOrderInput | Prisma.SortOrder
+  audit_date?: Prisma.SortOrderInput | Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1594,6 +1630,10 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   dev_status?: Prisma.BoolFilter<"Dapem"> | boolean
   deviasi_note?: Prisma.StringNullableFilter<"Dapem"> | string | null
   note?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  audit_status?: Prisma.BoolFilter<"Dapem"> | boolean
+  audit_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  audit_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  audit_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -1746,6 +1786,10 @@ export type DapemOrderByWithAggregationInput = {
   dev_status?: Prisma.SortOrder
   deviasi_note?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  audit_status?: Prisma.SortOrder
+  audit_desc?: Prisma.SortOrderInput | Prisma.SortOrder
+  audit_name?: Prisma.SortOrderInput | Prisma.SortOrder
+  audit_date?: Prisma.SortOrderInput | Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1888,6 +1932,10 @@ export type DapemScalarWhereWithAggregatesInput = {
   dev_status?: Prisma.BoolWithAggregatesFilter<"Dapem"> | boolean
   deviasi_note?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   note?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  audit_status?: Prisma.BoolWithAggregatesFilter<"Dapem"> | boolean
+  audit_desc?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  audit_name?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  audit_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Dapem"> | Date | string | null
   used_for?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   no_contract?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableWithAggregatesFilter<"Dapem"> | Date | string | null
@@ -2022,6 +2070,10 @@ export type DapemCreateInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2159,6 +2211,10 @@ export type DapemUncheckedCreateInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2296,6 +2352,10 @@ export type DapemUpdateInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2433,6 +2493,10 @@ export type DapemUncheckedUpdateInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2570,6 +2634,10 @@ export type DapemCreateManyInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2704,6 +2772,10 @@ export type DapemUpdateManyMutationInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2823,6 +2895,10 @@ export type DapemUncheckedUpdateManyInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2973,6 +3049,10 @@ export type DapemCountOrderByAggregateInput = {
   dev_status?: Prisma.SortOrder
   deviasi_note?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  audit_status?: Prisma.SortOrder
+  audit_desc?: Prisma.SortOrder
+  audit_name?: Prisma.SortOrder
+  audit_date?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -3135,6 +3215,10 @@ export type DapemMaxOrderByAggregateInput = {
   dev_status?: Prisma.SortOrder
   deviasi_note?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  audit_status?: Prisma.SortOrder
+  audit_desc?: Prisma.SortOrder
+  audit_name?: Prisma.SortOrder
+  audit_date?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -3269,6 +3353,10 @@ export type DapemMinOrderByAggregateInput = {
   dev_status?: Prisma.SortOrder
   deviasi_note?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  audit_status?: Prisma.SortOrder
+  audit_desc?: Prisma.SortOrder
+  audit_name?: Prisma.SortOrder
+  audit_date?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -4124,6 +4212,10 @@ export type DapemCreateWithoutAOInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4260,6 +4352,10 @@ export type DapemUncheckedCreateWithoutAOInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4406,6 +4502,10 @@ export type DapemCreateWithoutAOCabangInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4542,6 +4642,10 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4688,6 +4792,10 @@ export type DapemCreateWithoutAOAreaInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4824,6 +4932,10 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4970,6 +5082,10 @@ export type DapemCreateWithoutUserInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5106,6 +5222,10 @@ export type DapemUncheckedCreateWithoutUserInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5271,6 +5391,10 @@ export type DapemScalarWhereInput = {
   dev_status?: Prisma.BoolFilter<"Dapem"> | boolean
   deviasi_note?: Prisma.StringNullableFilter<"Dapem"> | string | null
   note?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  audit_status?: Prisma.BoolFilter<"Dapem"> | boolean
+  audit_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  audit_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  audit_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -5453,6 +5577,10 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5589,6 +5717,10 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5751,6 +5883,10 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5887,6 +6023,10 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6049,6 +6189,10 @@ export type DapemCreateWithoutDebiturInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6185,6 +6329,10 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6347,6 +6495,10 @@ export type DapemCreateWithoutAianalysesInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6483,6 +6635,10 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6635,6 +6791,10 @@ export type DapemUpdateWithoutAianalysesInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6771,6 +6931,10 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6907,6 +7071,10 @@ export type DapemCreateWithoutPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7043,6 +7211,10 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7189,6 +7361,10 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7325,6 +7501,10 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7503,6 +7683,10 @@ export type DapemCreateWithoutInsuranceInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7639,6 +7823,10 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7801,6 +7989,10 @@ export type DapemCreateWithoutDroppingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7937,6 +8129,10 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8099,6 +8295,10 @@ export type DapemCreateWithoutBerkasInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8235,6 +8435,10 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8397,6 +8601,10 @@ export type DapemCreateWithoutJaminanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8533,6 +8741,10 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8695,6 +8907,10 @@ export type DapemCreateWithoutPelunasanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8831,6 +9047,10 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8983,6 +9203,10 @@ export type DapemUpdateWithoutPelunasanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9119,6 +9343,10 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9255,6 +9483,10 @@ export type DapemCreateWithoutAngsuransInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9391,6 +9623,10 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9543,6 +9779,10 @@ export type DapemUpdateWithoutAngsuransInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9679,6 +9919,10 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9815,6 +10059,10 @@ export type DapemCreateWithoutAgentFrontingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9951,6 +10199,10 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10113,6 +10365,10 @@ export type DapemCreateWithoutDPKStatusInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10249,6 +10505,10 @@ export type DapemUncheckedCreateWithoutDPKStatusInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10411,6 +10671,10 @@ export type DapemCreateManyAOInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10544,6 +10808,10 @@ export type DapemCreateManyAOCabangInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10677,6 +10945,10 @@ export type DapemCreateManyAOAreaInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10810,6 +11082,10 @@ export type DapemCreateManyUserInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10943,6 +11219,10 @@ export type DapemUpdateWithoutAOInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11079,6 +11359,10 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11215,6 +11499,10 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11348,6 +11636,10 @@ export type DapemUpdateWithoutAOCabangInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11484,6 +11776,10 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11620,6 +11916,10 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11753,6 +12053,10 @@ export type DapemUpdateWithoutAOAreaInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11889,6 +12193,10 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12025,6 +12333,10 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12158,6 +12470,10 @@ export type DapemUpdateWithoutUserInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12294,6 +12610,10 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12430,6 +12750,10 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12563,6 +12887,10 @@ export type DapemCreateManyProdukPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -12696,6 +13024,10 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12832,6 +13164,10 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12968,6 +13304,10 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13101,6 +13441,10 @@ export type DapemCreateManyJenisPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -13234,6 +13578,10 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13370,6 +13718,10 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13506,6 +13858,10 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13639,6 +13995,10 @@ export type DapemCreateManyDebiturInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -13772,6 +14132,10 @@ export type DapemUpdateWithoutDebiturInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13908,6 +14272,10 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14044,6 +14412,10 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14177,6 +14549,10 @@ export type DapemCreateManyPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -14310,6 +14686,10 @@ export type DapemCreateManyPrevPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -14443,6 +14823,10 @@ export type DapemUpdateWithoutPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14579,6 +14963,10 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14715,6 +15103,10 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14848,6 +15240,10 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14984,6 +15380,10 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15120,6 +15520,10 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15253,6 +15657,10 @@ export type DapemCreateManyInsuranceInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -15386,6 +15794,10 @@ export type DapemUpdateWithoutInsuranceInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15522,6 +15934,10 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15658,6 +16074,10 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15791,6 +16211,10 @@ export type DapemCreateManyDroppingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -15924,6 +16348,10 @@ export type DapemUpdateWithoutDroppingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16060,6 +16488,10 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16196,6 +16628,10 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16329,6 +16765,10 @@ export type DapemCreateManyBerkasInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -16462,6 +16902,10 @@ export type DapemUpdateWithoutBerkasInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16598,6 +17042,10 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16734,6 +17182,10 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16867,6 +17319,10 @@ export type DapemCreateManyJaminanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -17000,6 +17456,10 @@ export type DapemUpdateWithoutJaminanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17136,6 +17596,10 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17272,6 +17736,10 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17405,6 +17873,10 @@ export type DapemCreateManyAgentFrontingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -17538,6 +18010,10 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17674,6 +18150,10 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17810,6 +18290,10 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17943,6 +18427,10 @@ export type DapemCreateManyDPKStatusInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
+  audit_status?: boolean
+  audit_desc?: string | null
+  audit_name?: string | null
+  audit_date?: Date | string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -18076,6 +18564,10 @@ export type DapemUpdateWithoutDPKStatusInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18212,6 +18704,10 @@ export type DapemUncheckedUpdateWithoutDPKStatusInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18348,6 +18844,10 @@ export type DapemUncheckedUpdateManyWithoutDPKStatusInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18521,6 +19021,10 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   dev_status?: boolean
   deviasi_note?: boolean
   note?: boolean
+  audit_status?: boolean
+  audit_desc?: boolean
+  audit_name?: boolean
+  audit_date?: boolean
   used_for?: boolean
   no_contract?: boolean
   date_contract?: boolean
@@ -18676,6 +19180,10 @@ export type DapemSelectScalar = {
   dev_status?: boolean
   deviasi_note?: boolean
   note?: boolean
+  audit_status?: boolean
+  audit_desc?: boolean
+  audit_name?: boolean
+  audit_date?: boolean
   used_for?: boolean
   no_contract?: boolean
   date_contract?: boolean
@@ -18712,7 +19220,7 @@ export type DapemSelectScalar = {
   dPKStatusId?: boolean
 }
 
-export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "cost_month" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "aw_education" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId", ExtArgs["result"]["dapem"]>
+export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "cost_month" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "aw_education" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "audit_status" | "audit_desc" | "audit_name" | "audit_date" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId", ExtArgs["result"]["dapem"]>
 export type DapemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
@@ -18855,6 +19363,10 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     dev_status: boolean
     deviasi_note: string | null
     note: string | null
+    audit_status: boolean
+    audit_desc: string | null
+    audit_name: string | null
+    audit_date: Date | null
     used_for: string
     no_contract: string
     date_contract: Date | null
@@ -19373,6 +19885,10 @@ export interface DapemFieldRefs {
   readonly dev_status: Prisma.FieldRef<"Dapem", 'Boolean'>
   readonly deviasi_note: Prisma.FieldRef<"Dapem", 'String'>
   readonly note: Prisma.FieldRef<"Dapem", 'String'>
+  readonly audit_status: Prisma.FieldRef<"Dapem", 'Boolean'>
+  readonly audit_desc: Prisma.FieldRef<"Dapem", 'String'>
+  readonly audit_name: Prisma.FieldRef<"Dapem", 'String'>
+  readonly audit_date: Prisma.FieldRef<"Dapem", 'DateTime'>
   readonly used_for: Prisma.FieldRef<"Dapem", 'String'>
   readonly no_contract: Prisma.FieldRef<"Dapem", 'String'>
   readonly date_contract: Prisma.FieldRef<"Dapem", 'DateTime'>
