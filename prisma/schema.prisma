@@ -325,6 +325,8 @@ model Dapem {
   rounded        Int
   margin_type    EMarginType
   cost_month     Int         @default(0)
+  max_tenor      Int         @default(120)
+  max_plafond    Int         @default(200000000)
 
   takeover_from String?
   takeover_date DateTime?

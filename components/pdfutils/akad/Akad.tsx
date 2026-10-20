@@ -5,7 +5,7 @@ import { AnalisaPerhitungan } from "./Analisa";
 import { IDapem } from "@/libs/IInterfaces";
 import { JadwalAngsuran } from "./KartuAngsuran";
 import { PerjanjianKredit } from "./PerjanjianKredit";
-import { SPKDR } from "./SKPDR";
+// import { SPKDR } from "./SKPDR";
 import { BuktiPencairan } from "./BuktiPencairan";
 import { Kesanggupan } from "./Kesanggupan";
 import { PenyerahanJaminan } from "./PenyerahanJaminan";
@@ -15,7 +15,7 @@ import { KuasaMutasi } from "../etc/forms/kuasaMutasi";
 import { FormMutasiTaspen } from "../etc/forms/formMutasiTaspen";
 import { FormKuasaDebet } from "../etc/formhm/formKuasaDebet";
 import { PKHM } from "../etc/formhm/PKHM";
-import { FLaggingAsabri } from "./FlaggingAsabri";
+// import { FLaggingAsabri } from "./FlaggingAsabri";
 import { SKPMantap } from "./SKPMantap";
 import { PKBBTM } from "../etc/formBbtm/PKBBTM";
 
@@ -32,16 +32,16 @@ const generateContractHtml = (record: IDapem) => {
         return PerjanjianKredit(record);
     }
   };
-  const handleGroupSKEP = () => {
-    switch (record.Debitur.group_skep) {
-      case "PT. TASPEN":
-        return FLagging(record);
-      case "PT. ASABRI":
-        return FLaggingAsabri(record);
-      default:
-        return FLagging(record);
-    }
-  };
+  // const handleGroupSKEP = () => {
+  //   switch (record.Debitur.group_skep) {
+  //     case "PT. TASPEN":
+  //       return FLagging(record);
+  //     case "PT. ASABRI":
+  //       return FLaggingAsabri(record);
+  //     default:
+  //       return FLagging(record);
+  //   }
+  // };
 
   const html = `
   <!doctype html>
@@ -124,7 +124,7 @@ const generateContractHtml = (record: IDapem) => {
       ${Kesanggupan(record, "DEBITUR")}
       </div>
       <div class="page pt-0 text-justify" style="font-size: 12px;">
-        ${handleGroupSKEP()}
+        ${FLagging(record)}
       </div>
       <div class="page text-justify" style="font-size: 11px;">
         ${PenyerahanJaminan(record)}
