@@ -37,7 +37,6 @@ import {
   Printer,
 } from "lucide-react";
 
-import { printAnalyzeSlik } from "@/components/pdfutils/etc/printAnalyzeSlik";
 
 export interface ApiResponse {
   msg: string;
@@ -646,9 +645,16 @@ export const SlikAnalyzer: React.FC = () => {
               icon={<Printer className="w-4 h-4" />}
               size="large"
               className="bg-emerald-600 hover:bg-emerald-700 border-none flex items-center gap-2"
-              onClick={() =>
-                printAnalyzeSlik(result.data, result.score, result.rulesmessage)
-              }
+              onClick={async () => {
+                const { printAnalyzeSlik } = await import(
+                  "@/components/pdfutils/etc/printAnalyzeSlik"
+                );
+                printAnalyzeSlik(
+                  result.data,
+                  result.score,
+                  result.rulesmessage,
+                );
+              }}
             >
               Cetak Hasil Analisa SLIK
             </Button>

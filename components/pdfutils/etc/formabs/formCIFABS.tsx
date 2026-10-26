@@ -97,6 +97,23 @@ export const FormCIFABS = (record?: IDapem) => {
             </div>
           </div>
         </div>
+        <div class="flex gap-2">
+          <div class="flex-1">
+            <p>Data Pribadi</p>
+            <div class="border border-gray-700">
+              <div class="flex gap-4">
+                <p class="w-40">Nama Lengkap</p>
+                <p class="flex-1 border-b border-gray-700">${record?.Debitur.fullname}</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <p>Informasi Alamat</p>
+            <div class="border border-gray-700">
+              <p>Alamat tempat tinggal (jika sama dengan identitas, tidak perlu diisi)</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

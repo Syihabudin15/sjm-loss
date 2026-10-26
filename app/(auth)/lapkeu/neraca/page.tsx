@@ -1,6 +1,5 @@
 "use client";
 
-import { printNeraca } from "@/components/pdfutils/lapkeu/printNeraca";
 import { IDRFormat } from "@/components/utils/PembiayaanUtil";
 import { ICategoryOfAccount, IJournalDetail } from "@/libs/IInterfaces";
 import { PrinterOutlined } from "@ant-design/icons";
@@ -128,7 +127,12 @@ export default function NeracaPage() {
             <Button
               type="primary"
               icon={<PrinterOutlined />}
-              onClick={() => printNeraca(data, backdate.join(" - "))}
+              onClick={async () => {
+                const { printNeraca } = await import(
+                  "@/components/pdfutils/lapkeu/printNeraca"
+                );
+                printNeraca(data, backdate.join(" - "));
+              }}
             >
               Cetak PDF
             </Button>

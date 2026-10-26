@@ -31,7 +31,7 @@ import {
 } from "@ant-design/icons";
 import { Col, Row, Spin } from "antd";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 interface IDashboard {
   alldata: IDapem[];
@@ -115,52 +115,55 @@ export default function Page() {
     0,
   );
 
-  const totalOutstanding = data.droppingall
-    .filter((f) => f.dropping_status === "DISETUJUI")
-    .reduce(
-      (acc, curr) => acc + GetSisaPokokMargin(curr as IDapem).principal,
-      0,
-    );
+  const approvedDapemStats = useMemo(
+    () =>
+      data.droppingall
+        .filter((dapem) => dapem.dropping_status === "DISETUJUI")
+        .map((dapem) => ({
+          dapem,
+          repayment: GetSisaPokokMargin(dapem as IDapem),
+        })),
+    [data.droppingall],
+  );
 
-  const tunggakanValue = data.droppingall
-    .filter((d) => d.dropping_status === "DISETUJUI")
-    .reduce(
-      (acc, curr) => acc + GetSisaPokokMargin(curr as IDapem).prevvalueall,
-      0,
-    );
-
-  const tunggakanCount = data.droppingall
-    .filter((d) => d.dropping_status === "DISETUJUI")
-    .reduce(
-      (acc, curr) => acc + GetSisaPokokMargin(curr as IDapem).prevcount,
-      0,
-    );
-
-  const tagihanBulanIniValue = data.droppingall
-    .filter((d) => d.dropping_status === "DISETUJUI")
-    .reduce((acc, curr) => acc + GetSisaPokokMargin(curr as IDapem).install, 0);
-  const totalTagihan = data.droppingall
-    .filter((d) => d.dropping_status === "DISETUJUI")
-    .reduce(
+  const totalOutstanding = approvedDapemStats.reduce(
+    (acc, curr) => acc + curr.repayment.principal,
+    0,
+  );
+  const tunggakanValue = approvedDapemStats.reduce(
+    (acc, curr) => acc + curr.repayment.prevvalueall,
+    0,
+  );
+  const tunggakanCount = approvedDapemStats.reduce(
+    (acc, curr) => acc + curr.repayment.prevcount,
+    0,
+  );
+  const tagihanBulanIniValue = approvedDapemStats.reduce(
+    (acc, curr) => acc + curr.repayment.install,
+    0,
+  );
+  const totalTagihan = approvedDapemStats.reduce(
       (acc, curr) =>
         acc +
         GetAngsuran(
-          curr.plafond,
-          curr.tenor,
-          curr.c_margin + curr.c_margin_sumdan,
-          curr.margin_type,
-          curr.rounded,
-          curr.c_ned,
+          curr.dapem.plafond,
+          curr.dapem.tenor,
+          curr.dapem.c_margin + curr.dapem.c_margin_sumdan,
+          curr.dapem.margin_type,
+          curr.dapem.rounded,
+          curr.dapem.c_ned,
         ).angsuran,
       0,
     );
 
-  const totalPendingTakeover = data.droppingall
-    .filter(
-      (f) =>
-        f.takeover_status !== "DISETUJUI" && f.dropping_status === "DISETUJUI",
-    )
-    .reduce((acc, curr) => acc + curr.c_takeover, 0);
+  const totalPendingTakeover = approvedDapemStats.reduce(
+    (acc, curr) =>
+      acc +
+      (curr.dapem.takeover_status !== "DISETUJUI"
+        ? curr.dapem.c_takeover
+        : 0),
+    0,
+  );
 
   return (
     <Spin spinning={loading} size="large">

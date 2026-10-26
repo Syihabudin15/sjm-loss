@@ -1,9 +1,7 @@
 "use client";
 
 import { FormInput, ViewFiles } from "@/components";
-import { printContract } from "@/components/pdfutils/akad/Akad";
 // import { printForm } from "@/components/pdfutils/etc/printForm";
-import { printMonitoring } from "@/components/pdfutils/etc/printMonitoring";
 import { useUser } from "@/components/UserContext";
 import {
   ExportToExcel,
@@ -645,9 +643,12 @@ export default function Page() {
             icon={<PrinterOutlined />}
             size="small"
             type="primary"
-            onClick={() =>
-              printMonitoring(pageProps.data, sumdans, pageProps.backdate)
-            }
+            onClick={async () => {
+              const { printMonitoring } = await import(
+                "@/components/pdfutils/etc/printMonitoring"
+              );
+              printMonitoring(pageProps.data, sumdans, pageProps.backdate);
+            }}
           >
             PDF
           </Button>
@@ -960,6 +961,9 @@ const PrintContractSubmission = ({
         const { msg, status, data } = res;
         if (status === 200) {
           await getData();
+          const { printContract } = await import(
+            "@/components/pdfutils/akad/Akad"
+          );
           printContract({ ...temp, Angsuran: data } as IDapem);
         } else {
           hook.error({ content: msg });

@@ -1,7 +1,6 @@
 "use client";
 
 import { FormInput, ViewFiles } from "@/components";
-import { printSJStandar } from "@/components/pdfutils/si/SJStandar";
 import { GetAngsuran, IDRFormat } from "@/components/utils/PembiayaanUtil";
 import {
   IActionTable,
@@ -213,7 +212,12 @@ export default function Page() {
                 icon={<PrinterOutlined />}
                 size="small"
                 type="primary"
-                onClick={() => printSJStandar(record)}
+                onClick={async () => {
+                  const { printSJStandar } = await import(
+                    "@/components/pdfutils/si/SJStandar"
+                  );
+                  printSJStandar(record);
+                }}
               ></Button>
             </Tooltip>
             <Tooltip title="Berkas Akad & TTPJ">

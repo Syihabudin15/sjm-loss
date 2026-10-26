@@ -9,8 +9,8 @@ CREATE TABLE `role` (
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `role_name_key`(`name`),
-    INDEX `role_name_idx`(`name`),
-    INDEX `role_data_status_idx`(`data_status`),
+    INDEX `role_status_data_status_name_idx`(`status`, `data_status`, `name`),
+    INDEX `role_status_name_data_status_idx`(`status`, `name`, `data_status`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -54,8 +54,8 @@ CREATE TABLE `sumdan` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `sumdan_name_idx`(`name`),
-    INDEX `sumdan_code_idx`(`code`),
+    INDEX `sumdan_status_fronting_code_name_idx`(`status`, `fronting`, `code`, `name`),
+    INDEX `sumdan_status_code_name_idx`(`status`, `code`, `name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -82,7 +82,8 @@ CREATE TABLE `cabang` (
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `areaId` VARCHAR(191) NOT NULL,
 
-    INDEX `cabang_name_idx`(`name`),
+    INDEX `cabang_status_name_idx`(`status`, `name`),
+    INDEX `cabang_status_areaId_name_idx`(`status`, `areaId`, `name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -110,12 +111,11 @@ CREATE TABLE `user` (
     `agentFrontingId` VARCHAR(191) NULL,
 
     UNIQUE INDEX `user_username_key`(`username`),
-    INDEX `user_nip_idx`(`nip`),
-    INDEX `user_fullname_idx`(`fullname`),
-    INDEX `user_email_idx`(`email`),
-    INDEX `user_phone_idx`(`phone`),
-    INDEX `user_end_pkwt_idx`(`end_pkwt`),
-    INDEX `user_pkwt_status_idx`(`pkwt_status`),
+    INDEX `user_status_fullname_idx`(`status`, `fullname`),
+    INDEX `user_status_cabangId_fullname_idx`(`status`, `cabangId`, `fullname`),
+    INDEX `user_status_sumdanId_fullname_idx`(`status`, `sumdanId`, `fullname`),
+    INDEX `user_status_end_pkwt_idx`(`status`, `end_pkwt`),
+    INDEX `user_status_pkwt_status_idx`(`status`, `pkwt_status`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -137,7 +137,8 @@ CREATE TABLE `produkpembiayaan` (
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `sumdanId` VARCHAR(191) NOT NULL,
 
-    INDEX `produkpembiayaan_name_idx`(`name`),
+    INDEX `produkpembiayaan_status_name_idx`(`status`, `name`),
+    INDEX `produkpembiayaan_status_sumdanId_name_idx`(`status`, `sumdanId`, `name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -153,7 +154,7 @@ CREATE TABLE `jenispembiayaan` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `jenispembiayaan_name_idx`(`name`),
+    INDEX `jenispembiayaan_status_name_idx`(`status`, `name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -187,22 +188,15 @@ CREATE TABLE `debitur` (
     `job_year` INTEGER NULL,
     `id_publisher` VARCHAR(191) NULL,
     `id_end` DATETIME(3) NULL,
+    `number_kk` VARCHAR(191) NULL,
     `mother_name` VARCHAR(191) NULL,
     `account_name` VARCHAR(191) NULL,
     `account_number` VARCHAR(191) NULL,
     `payOfficeId` VARCHAR(191) NULL,
 
     UNIQUE INDEX `debitur_nopen_key`(`nopen`),
-    INDEX `debitur_fullname_idx`(`fullname`),
-    INDEX `debitur_nik_idx`(`nik`),
-    INDEX `debitur_name_skep_idx`(`name_skep`),
-    INDEX `debitur_no_skep_idx`(`no_skep`),
-    INDEX `debitur_account_number_idx`(`account_number`),
-    INDEX `debitur_province_idx`(`province`),
-    INDEX `debitur_city_idx`(`city`),
-    INDEX `debitur_district_idx`(`district`),
-    INDEX `debitur_ward_idx`(`ward`),
-    INDEX `debitur_pos_code_idx`(`pos_code`)
+    INDEX `debitur_group_skep_idx`(`group_skep`),
+    INDEX `debitur_payOfficeId_idx`(`payOfficeId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
@@ -233,6 +227,9 @@ CREATE TABLE `dapem` (
     `tbo` INTEGER NOT NULL,
     `rounded` INTEGER NOT NULL,
     `margin_type` ENUM('FLAT', 'ANUITAS') NOT NULL,
+    `cost_month` INTEGER NOT NULL DEFAULT 0,
+    `max_tenor` INTEGER NOT NULL DEFAULT 120,
+    `max_plafond` INTEGER NOT NULL DEFAULT 250000000,
     `takeover_from` VARCHAR(191) NULL,
     `takeover_date` DATETIME(3) NULL,
     `dom_status` BOOLEAN NOT NULL,
@@ -264,6 +261,7 @@ CREATE TABLE `dapem` (
     `aw_city` VARCHAR(191) NULL,
     `aw_province` VARCHAR(191) NULL,
     `aw_pos_code` VARCHAR(191) NULL,
+    `aw_education` VARCHAR(191) NULL,
     `f_name` VARCHAR(191) NULL,
     `f_relate` VARCHAR(191) NULL,
     `f_phone` VARCHAR(191) NULL,
@@ -302,6 +300,11 @@ CREATE TABLE `dapem` (
     `dev_status` BOOLEAN NOT NULL DEFAULT false,
     `deviasi_note` TEXT NULL,
     `note` TEXT NULL,
+    `audit_status` ENUM('DRAFT', 'BATAL', 'PENDING', 'PROSES', 'DISETUJUI', 'DITOLAK', 'LUNAS') NOT NULL DEFAULT 'PENDING',
+    `audit_desc` VARCHAR(191) NULL,
+    `audit_name` VARCHAR(191) NULL,
+    `audit_date` DATETIME(3) NULL,
+    `kc_pay_office` VARCHAR(191) NULL,
     `used_for` VARCHAR(191) NOT NULL,
     `no_contract` VARCHAR(191) NOT NULL,
     `date_contract` DATETIME(3) NULL,
@@ -337,22 +340,28 @@ CREATE TABLE `dapem` (
     `userId` VARCHAR(191) NOT NULL,
     `dPKStatusId` VARCHAR(191) NULL,
 
-    INDEX `dapem_dropping_status_idx`(`dropping_status`),
-    INDEX `dapem_document_status_idx`(`document_status`),
-    INDEX `dapem_guarantee_status_idx`(`guarantee_status`),
-    INDEX `dapem_slik_status_idx`(`slik_status`),
-    INDEX `dapem_verif_status_idx`(`verif_status`),
-    INDEX `dapem_approv_status_idx`(`approv_status`),
-    INDEX `dapem_created_at_idx`(`created_at`),
-    INDEX `dapem_takeover_date_idx`(`takeover_date`),
-    INDEX `dapem_takeover_status_idx`(`takeover_status`),
-    INDEX `dapem_mutasi_status_idx`(`mutasi_status`),
-    INDEX `dapem_flagging_status_idx`(`flagging_status`),
-    INDEX `dapem_cash_status_idx`(`cash_status`),
-    INDEX `dapem_tbo_date_idx`(`tbo_date`),
-    INDEX `dapem_no_contract_idx`(`no_contract`),
-    INDEX `dapem_date_contract_idx`(`date_contract`),
-    INDEX `dapem_date_end_idx`(`date_end`),
+    INDEX `dapem_status_dropping_status_idx`(`status`, `dropping_status`),
+    INDEX `dapem_status_document_status_idx`(`status`, `document_status`),
+    INDEX `dapem_status_guarantee_status_idx`(`status`, `guarantee_status`),
+    INDEX `dapem_status_document_status_guarantee_status_idx`(`status`, `document_status`, `guarantee_status`),
+    INDEX `dapem_status_slik_status_idx`(`status`, `slik_status`),
+    INDEX `dapem_status_verif_status_idx`(`status`, `verif_status`),
+    INDEX `dapem_status_approv_status_idx`(`status`, `approv_status`),
+    INDEX `dapem_status_created_at_idx`(`status`, `created_at`),
+    INDEX `dapem_status_date_contract_idx`(`status`, `date_contract`),
+    INDEX `dapem_status_takeover_status_idx`(`status`, `takeover_status`),
+    INDEX `dapem_status_mutasi_status_idx`(`status`, `mutasi_status`),
+    INDEX `dapem_status_flagging_status_idx`(`status`, `flagging_status`),
+    INDEX `dapem_status_cash_status_idx`(`status`, `cash_status`),
+    INDEX `dapem_status_payOfficeId_idx`(`status`, `payOfficeId`),
+    INDEX `dapem_status_prevPayOfficeId_idx`(`status`, `prevPayOfficeId`),
+    INDEX `dapem_status_agentFrontingId_idx`(`status`, `agentFrontingId`),
+    INDEX `dapem_status_userId_idx`(`status`, `userId`),
+    INDEX `dapem_status_aoId_idx`(`status`, `aoId`),
+    INDEX `dapem_status_aoCabangId_idx`(`status`, `aoCabangId`),
+    INDEX `dapem_status_aoAreaId_idx`(`status`, `aoAreaId`),
+    INDEX `dapem_status_jenisPembiayaanId_idx`(`status`, `jenisPembiayaanId`),
+    INDEX `dapem_status_takeover_status_mutasi_status_flagging_status_idx`(`status`, `takeover_status`, `mutasi_status`, `flagging_status`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -388,8 +397,7 @@ CREATE TABLE `payoffice` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `payoffice_name_idx`(`name`),
-    INDEX `payoffice_code_idx`(`code`),
+    INDEX `payoffice_status_name_code_idx`(`status`, `name`, `code`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -408,8 +416,7 @@ CREATE TABLE `insurance` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `insurance_name_idx`(`name`),
-    INDEX `insurance_code_idx`(`code`),
+    INDEX `insurance_status_name_code_idx`(`status`, `name`, `code`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -423,9 +430,9 @@ CREATE TABLE `dropping` (
     `created_at` DATETIME(3) NOT NULL,
     `sumdanId` VARCHAR(191) NOT NULL,
 
-    INDEX `dropping_process_at_idx`(`process_at`),
-    INDEX `dropping_created_at_idx`(`created_at`),
-    INDEX `dropping_status_idx`(`status`),
+    INDEX `dropping_status_process_at_idx`(`status`, `process_at`),
+    INDEX `dropping_status_created_at_idx`(`status`, `created_at`),
+    INDEX `dropping_status_sumdanId_process_at_idx`(`status`, `sumdanId`, `process_at`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -439,9 +446,9 @@ CREATE TABLE `berkas` (
     `created_at` DATETIME(3) NOT NULL,
     `sumdanId` VARCHAR(191) NOT NULL,
 
-    INDEX `berkas_process_at_idx`(`process_at`),
-    INDEX `berkas_created_at_idx`(`created_at`),
-    INDEX `berkas_status_idx`(`status`),
+    INDEX `berkas_status_process_at_idx`(`status`, `process_at`),
+    INDEX `berkas_status_created_at_idx`(`status`, `created_at`),
+    INDEX `berkas_status_sumdanId_process_at_idx`(`status`, `sumdanId`, `process_at`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -455,9 +462,9 @@ CREATE TABLE `jaminan` (
     `created_at` DATETIME(3) NOT NULL,
     `sumdanId` VARCHAR(191) NOT NULL,
 
-    INDEX `jaminan_process_at_idx`(`process_at`),
-    INDEX `jaminan_created_at_idx`(`created_at`),
-    INDEX `jaminan_status_idx`(`status`),
+    INDEX `jaminan_status_process_at_idx`(`status`, `process_at`),
+    INDEX `jaminan_status_created_at_idx`(`status`, `created_at`),
+    INDEX `jaminan_status_sumdanId_process_at_idx`(`status`, `sumdanId`, `process_at`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -481,7 +488,6 @@ CREATE TABLE `pelunasan` (
     INDEX `pelunasan_type_idx`(`type`),
     INDEX `pelunasan_guarantee_status_idx`(`guarantee_status`),
     INDEX `pelunasan_status_paid_idx`(`status_paid`),
-    INDEX `pelunasan_process_at_idx`(`process_at`),
     INDEX `pelunasan_created_at_idx`(`created_at`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -502,6 +508,8 @@ CREATE TABLE `angsuran` (
     `note` TEXT NULL,
 
     INDEX `angsuran_date_pay_idx`(`date_pay`),
+    INDEX `angsuran_dapemId_date_paid_idx`(`dapemId`, `date_paid`),
+    INDEX `angsuran_date_paid_dapemId_idx`(`date_paid`, `dapemId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -513,8 +521,8 @@ CREATE TABLE `categoryofaccount` (
     `status` BOOLEAN NOT NULL DEFAULT true,
     `parentId` VARCHAR(191) NULL,
 
-    INDEX `categoryofaccount_name_idx`(`name`),
-    INDEX `categoryofaccount_type_idx`(`type`),
+    INDEX `categoryofaccount_type_name_idx`(`type`, `name`),
+    INDEX `categoryofaccount_parentId_idx`(`parentId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -537,6 +545,8 @@ CREATE TABLE `journaldetail` (
     `categoryOfAccountId` VARCHAR(191) NOT NULL,
     `userId` VARCHAR(191) NULL,
 
+    INDEX `journaldetail_categoryOfAccountId_idx`(`categoryOfAccountId`),
+    INDEX `journaldetail_journalEntryId_idx`(`journalEntryId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -557,8 +567,7 @@ CREATE TABLE `agentfronting` (
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    INDEX `agentfronting_name_idx`(`name`),
-    INDEX `agentfronting_code_idx`(`code`),
+    INDEX `agentfronting_status_name_code_idx`(`status`, `name`, `code`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

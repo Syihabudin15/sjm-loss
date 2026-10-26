@@ -36,9 +36,6 @@ import {
   SwapOutlined,
 } from "@ant-design/icons";
 
-import { printContract } from "@/components/pdfutils/akad/Akad";
-import { printMonitoring } from "@/components/pdfutils/etc/printMonitoring";
-import { printForm } from "@/components/pdfutils/etc/printForm";
 import { useUser } from "@/components/UserContext";
 import {
   ExportToExcel,
@@ -254,6 +251,7 @@ export default function Page() {
     const res = await fetch("/api/dapem?id=" + record.id, { method: "PATCH" });
     const result = await res.json();
     notification.destroy(record.id);
+    const { printForm } = await import("@/components/pdfutils/etc/printForm");
     printForm(result.data);
   };
 
@@ -279,7 +277,7 @@ export default function Page() {
         render: (_, record) => (
           <div>
             <p
-              className={`font-bold ${record.dropping_status === "DITOLAK" ? "text-red-400" : ""}`}
+              className={`font-bold ${["DITOLAK", "BATAL"].includes(record.dropping_status) ? "text-red-400" : ""}`}
             >
               {record.Debitur.fullname}
             </p>
@@ -876,8 +874,9 @@ export default function Page() {
                     size="small"
                     placeholder="AUDITED..."
                     options={[
-                      { label: "AUDITED", value: "true" },
-                      { label: "PENDING", value: "false" },
+                      { label: "PENDING", value: "PENDING" },
+                      { label: "AUDITED", value: "DISETUJUI" },
+                      { label: "DITOLAK", value: "DITOLAK" },
                     ]}
                     value={pageProps.audit_status}
                     onChange={(e) =>
@@ -953,9 +952,11 @@ export default function Page() {
           <Button
             icon={<PrinterOutlined />}
             size="small"
-            onClick={() =>
-              printMonitoring(pageProps.data, sumdans, pageProps.backdate)
-            }
+            onClick={async () => {
+              const { printMonitoring } =
+                await import("@/components/pdfutils/etc/printMonitoring");
+              printMonitoring(pageProps.data, sumdans, pageProps.backdate);
+            }}
           >
             PDF
           </Button>
@@ -963,7 +964,11 @@ export default function Page() {
             <Button
               icon={<PrinterOutlined />}
               size="small"
-              onClick={() => printForm()}
+              onClick={async () => {
+                const { printForm } =
+                  await import("@/components/pdfutils/etc/printForm");
+                printForm();
+              }}
             >
               Form
             </Button>
@@ -1255,6 +1260,8 @@ const PrintContractSubmission = ({
       }).then((r) => r.json());
       if (res.status === 200) {
         await getData();
+        const { printContract } =
+          await import("@/components/pdfutils/akad/Akad");
         printContract({ ...res.dapem, Angsurans: res.data } as IDapem);
       } else {
         hook.error({ content: res.msg });

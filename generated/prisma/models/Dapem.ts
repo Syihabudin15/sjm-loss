@@ -52,6 +52,8 @@ export type DapemAvgAggregateOutputType = {
   tbo: number | null
   rounded: number | null
   cost_month: number | null
+  max_tenor: number | null
+  max_plafond: number | null
 }
 
 export type DapemSumAggregateOutputType = {
@@ -80,6 +82,8 @@ export type DapemSumAggregateOutputType = {
   tbo: number | null
   rounded: number | null
   cost_month: number | null
+  max_tenor: number | null
+  max_plafond: number | null
 }
 
 export type DapemMinAggregateOutputType = {
@@ -110,6 +114,8 @@ export type DapemMinAggregateOutputType = {
   rounded: number | null
   margin_type: $Enums.EMarginType | null
   cost_month: number | null
+  max_tenor: number | null
+  max_plafond: number | null
   takeover_from: string | null
   takeover_date: Date | null
   dom_status: boolean | null
@@ -180,10 +186,11 @@ export type DapemMinAggregateOutputType = {
   dev_status: boolean | null
   deviasi_note: string | null
   note: string | null
-  audit_status: boolean | null
+  audit_status: $Enums.EDapemStatus | null
   audit_desc: string | null
   audit_name: string | null
   audit_date: Date | null
+  kc_pay_office: string | null
   used_for: string | null
   no_contract: string | null
   date_contract: Date | null
@@ -248,6 +255,8 @@ export type DapemMaxAggregateOutputType = {
   rounded: number | null
   margin_type: $Enums.EMarginType | null
   cost_month: number | null
+  max_tenor: number | null
+  max_plafond: number | null
   takeover_from: string | null
   takeover_date: Date | null
   dom_status: boolean | null
@@ -318,10 +327,11 @@ export type DapemMaxAggregateOutputType = {
   dev_status: boolean | null
   deviasi_note: string | null
   note: string | null
-  audit_status: boolean | null
+  audit_status: $Enums.EDapemStatus | null
   audit_desc: string | null
   audit_name: string | null
   audit_date: Date | null
+  kc_pay_office: string | null
   used_for: string | null
   no_contract: string | null
   date_contract: Date | null
@@ -386,6 +396,8 @@ export type DapemCountAggregateOutputType = {
   rounded: number
   margin_type: number
   cost_month: number
+  max_tenor: number
+  max_plafond: number
   takeover_from: number
   takeover_date: number
   dom_status: number
@@ -460,6 +472,7 @@ export type DapemCountAggregateOutputType = {
   audit_desc: number
   audit_name: number
   audit_date: number
+  kc_pay_office: number
   used_for: number
   no_contract: number
   date_contract: number
@@ -524,6 +537,8 @@ export type DapemAvgAggregateInputType = {
   tbo?: true
   rounded?: true
   cost_month?: true
+  max_tenor?: true
+  max_plafond?: true
 }
 
 export type DapemSumAggregateInputType = {
@@ -552,6 +567,8 @@ export type DapemSumAggregateInputType = {
   tbo?: true
   rounded?: true
   cost_month?: true
+  max_tenor?: true
+  max_plafond?: true
 }
 
 export type DapemMinAggregateInputType = {
@@ -582,6 +599,8 @@ export type DapemMinAggregateInputType = {
   rounded?: true
   margin_type?: true
   cost_month?: true
+  max_tenor?: true
+  max_plafond?: true
   takeover_from?: true
   takeover_date?: true
   dom_status?: true
@@ -656,6 +675,7 @@ export type DapemMinAggregateInputType = {
   audit_desc?: true
   audit_name?: true
   audit_date?: true
+  kc_pay_office?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -720,6 +740,8 @@ export type DapemMaxAggregateInputType = {
   rounded?: true
   margin_type?: true
   cost_month?: true
+  max_tenor?: true
+  max_plafond?: true
   takeover_from?: true
   takeover_date?: true
   dom_status?: true
@@ -794,6 +816,7 @@ export type DapemMaxAggregateInputType = {
   audit_desc?: true
   audit_name?: true
   audit_date?: true
+  kc_pay_office?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -858,6 +881,8 @@ export type DapemCountAggregateInputType = {
   rounded?: true
   margin_type?: true
   cost_month?: true
+  max_tenor?: true
+  max_plafond?: true
   takeover_from?: true
   takeover_date?: true
   dom_status?: true
@@ -932,6 +957,7 @@ export type DapemCountAggregateInputType = {
   audit_desc?: true
   audit_name?: true
   audit_date?: true
+  kc_pay_office?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -1083,6 +1109,8 @@ export type DapemGroupByOutputType = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month: number
+  max_tenor: number
+  max_plafond: number
   takeover_from: string | null
   takeover_date: Date | null
   dom_status: boolean
@@ -1153,10 +1181,11 @@ export type DapemGroupByOutputType = {
   dev_status: boolean
   deviasi_note: string | null
   note: string | null
-  audit_status: boolean
+  audit_status: $Enums.EDapemStatus
   audit_desc: string | null
   audit_name: string | null
   audit_date: Date | null
+  kc_pay_office: string | null
   used_for: string
   no_contract: string
   date_contract: Date | null
@@ -1244,6 +1273,8 @@ export type DapemWhereInput = {
   rounded?: Prisma.IntFilter<"Dapem"> | number
   margin_type?: Prisma.EnumEMarginTypeFilter<"Dapem"> | $Enums.EMarginType
   cost_month?: Prisma.IntFilter<"Dapem"> | number
+  max_tenor?: Prisma.IntFilter<"Dapem"> | number
+  max_plafond?: Prisma.IntFilter<"Dapem"> | number
   takeover_from?: Prisma.StringNullableFilter<"Dapem"> | string | null
   takeover_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   dom_status?: Prisma.BoolFilter<"Dapem"> | boolean
@@ -1314,10 +1345,11 @@ export type DapemWhereInput = {
   dev_status?: Prisma.BoolFilter<"Dapem"> | boolean
   deviasi_note?: Prisma.StringNullableFilter<"Dapem"> | string | null
   note?: Prisma.StringNullableFilter<"Dapem"> | string | null
-  audit_status?: Prisma.BoolFilter<"Dapem"> | boolean
+  audit_status?: Prisma.EnumEDapemStatusFilter<"Dapem"> | $Enums.EDapemStatus
   audit_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
   audit_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   audit_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
+  kc_pay_office?: Prisma.StringNullableFilter<"Dapem"> | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -1400,6 +1432,8 @@ export type DapemOrderByWithRelationInput = {
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   cost_month?: Prisma.SortOrder
+  max_tenor?: Prisma.SortOrder
+  max_plafond?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrderInput | Prisma.SortOrder
   takeover_date?: Prisma.SortOrderInput | Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -1474,6 +1508,7 @@ export type DapemOrderByWithRelationInput = {
   audit_desc?: Prisma.SortOrderInput | Prisma.SortOrder
   audit_name?: Prisma.SortOrderInput | Prisma.SortOrder
   audit_date?: Prisma.SortOrderInput | Prisma.SortOrder
+  kc_pay_office?: Prisma.SortOrderInput | Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1560,6 +1595,8 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   rounded?: Prisma.IntFilter<"Dapem"> | number
   margin_type?: Prisma.EnumEMarginTypeFilter<"Dapem"> | $Enums.EMarginType
   cost_month?: Prisma.IntFilter<"Dapem"> | number
+  max_tenor?: Prisma.IntFilter<"Dapem"> | number
+  max_plafond?: Prisma.IntFilter<"Dapem"> | number
   takeover_from?: Prisma.StringNullableFilter<"Dapem"> | string | null
   takeover_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   dom_status?: Prisma.BoolFilter<"Dapem"> | boolean
@@ -1630,10 +1667,11 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   dev_status?: Prisma.BoolFilter<"Dapem"> | boolean
   deviasi_note?: Prisma.StringNullableFilter<"Dapem"> | string | null
   note?: Prisma.StringNullableFilter<"Dapem"> | string | null
-  audit_status?: Prisma.BoolFilter<"Dapem"> | boolean
+  audit_status?: Prisma.EnumEDapemStatusFilter<"Dapem"> | $Enums.EDapemStatus
   audit_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
   audit_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   audit_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
+  kc_pay_office?: Prisma.StringNullableFilter<"Dapem"> | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -1716,6 +1754,8 @@ export type DapemOrderByWithAggregationInput = {
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   cost_month?: Prisma.SortOrder
+  max_tenor?: Prisma.SortOrder
+  max_plafond?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrderInput | Prisma.SortOrder
   takeover_date?: Prisma.SortOrderInput | Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -1790,6 +1830,7 @@ export type DapemOrderByWithAggregationInput = {
   audit_desc?: Prisma.SortOrderInput | Prisma.SortOrder
   audit_name?: Prisma.SortOrderInput | Prisma.SortOrder
   audit_date?: Prisma.SortOrderInput | Prisma.SortOrder
+  kc_pay_office?: Prisma.SortOrderInput | Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1862,6 +1903,8 @@ export type DapemScalarWhereWithAggregatesInput = {
   rounded?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
   margin_type?: Prisma.EnumEMarginTypeWithAggregatesFilter<"Dapem"> | $Enums.EMarginType
   cost_month?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
+  max_tenor?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
+  max_plafond?: Prisma.IntWithAggregatesFilter<"Dapem"> | number
   takeover_from?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   takeover_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Dapem"> | Date | string | null
   dom_status?: Prisma.BoolWithAggregatesFilter<"Dapem"> | boolean
@@ -1932,10 +1975,11 @@ export type DapemScalarWhereWithAggregatesInput = {
   dev_status?: Prisma.BoolWithAggregatesFilter<"Dapem"> | boolean
   deviasi_note?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   note?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
-  audit_status?: Prisma.BoolWithAggregatesFilter<"Dapem"> | boolean
+  audit_status?: Prisma.EnumEDapemStatusWithAggregatesFilter<"Dapem"> | $Enums.EDapemStatus
   audit_desc?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   audit_name?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   audit_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Dapem"> | Date | string | null
+  kc_pay_office?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   used_for?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   no_contract?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableWithAggregatesFilter<"Dapem"> | Date | string | null
@@ -2000,6 +2044,8 @@ export type DapemCreateInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -2070,10 +2116,11 @@ export type DapemCreateInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2141,6 +2188,8 @@ export type DapemUncheckedCreateInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -2211,10 +2260,11 @@ export type DapemUncheckedCreateInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2282,6 +2332,8 @@ export type DapemUpdateInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2352,10 +2404,11 @@ export type DapemUpdateInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2423,6 +2476,8 @@ export type DapemUncheckedUpdateInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2493,10 +2548,11 @@ export type DapemUncheckedUpdateInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2564,6 +2620,8 @@ export type DapemCreateManyInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -2634,10 +2692,11 @@ export type DapemCreateManyInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2702,6 +2761,8 @@ export type DapemUpdateManyMutationInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2772,10 +2833,11 @@ export type DapemUpdateManyMutationInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2825,6 +2887,8 @@ export type DapemUncheckedUpdateManyInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2895,10 +2959,11 @@ export type DapemUncheckedUpdateManyInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2979,6 +3044,8 @@ export type DapemCountOrderByAggregateInput = {
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   cost_month?: Prisma.SortOrder
+  max_tenor?: Prisma.SortOrder
+  max_plafond?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrder
   takeover_date?: Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -3053,6 +3120,7 @@ export type DapemCountOrderByAggregateInput = {
   audit_desc?: Prisma.SortOrder
   audit_name?: Prisma.SortOrder
   audit_date?: Prisma.SortOrder
+  kc_pay_office?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -3115,6 +3183,8 @@ export type DapemAvgOrderByAggregateInput = {
   tbo?: Prisma.SortOrder
   rounded?: Prisma.SortOrder
   cost_month?: Prisma.SortOrder
+  max_tenor?: Prisma.SortOrder
+  max_plafond?: Prisma.SortOrder
 }
 
 export type DapemMaxOrderByAggregateInput = {
@@ -3145,6 +3215,8 @@ export type DapemMaxOrderByAggregateInput = {
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   cost_month?: Prisma.SortOrder
+  max_tenor?: Prisma.SortOrder
+  max_plafond?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrder
   takeover_date?: Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -3219,6 +3291,7 @@ export type DapemMaxOrderByAggregateInput = {
   audit_desc?: Prisma.SortOrder
   audit_name?: Prisma.SortOrder
   audit_date?: Prisma.SortOrder
+  kc_pay_office?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -3283,6 +3356,8 @@ export type DapemMinOrderByAggregateInput = {
   rounded?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   cost_month?: Prisma.SortOrder
+  max_tenor?: Prisma.SortOrder
+  max_plafond?: Prisma.SortOrder
   takeover_from?: Prisma.SortOrder
   takeover_date?: Prisma.SortOrder
   dom_status?: Prisma.SortOrder
@@ -3357,6 +3432,7 @@ export type DapemMinOrderByAggregateInput = {
   audit_desc?: Prisma.SortOrder
   audit_name?: Prisma.SortOrder
   audit_date?: Prisma.SortOrder
+  kc_pay_office?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -3419,6 +3495,8 @@ export type DapemSumOrderByAggregateInput = {
   tbo?: Prisma.SortOrder
   rounded?: Prisma.SortOrder
   cost_month?: Prisma.SortOrder
+  max_tenor?: Prisma.SortOrder
+  max_plafond?: Prisma.SortOrder
 }
 
 export type DapemScalarRelationFilter = {
@@ -4142,6 +4220,8 @@ export type DapemCreateWithoutAOInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4212,10 +4292,11 @@ export type DapemCreateWithoutAOInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4282,6 +4363,8 @@ export type DapemUncheckedCreateWithoutAOInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4352,10 +4435,11 @@ export type DapemUncheckedCreateWithoutAOInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4432,6 +4516,8 @@ export type DapemCreateWithoutAOCabangInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4502,10 +4588,11 @@ export type DapemCreateWithoutAOCabangInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4572,6 +4659,8 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4642,10 +4731,11 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4722,6 +4812,8 @@ export type DapemCreateWithoutAOAreaInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4792,10 +4884,11 @@ export type DapemCreateWithoutAOAreaInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4862,6 +4955,8 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -4932,10 +5027,11 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5012,6 +5108,8 @@ export type DapemCreateWithoutUserInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5082,10 +5180,11 @@ export type DapemCreateWithoutUserInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5152,6 +5251,8 @@ export type DapemUncheckedCreateWithoutUserInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5222,10 +5323,11 @@ export type DapemUncheckedCreateWithoutUserInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5321,6 +5423,8 @@ export type DapemScalarWhereInput = {
   rounded?: Prisma.IntFilter<"Dapem"> | number
   margin_type?: Prisma.EnumEMarginTypeFilter<"Dapem"> | $Enums.EMarginType
   cost_month?: Prisma.IntFilter<"Dapem"> | number
+  max_tenor?: Prisma.IntFilter<"Dapem"> | number
+  max_plafond?: Prisma.IntFilter<"Dapem"> | number
   takeover_from?: Prisma.StringNullableFilter<"Dapem"> | string | null
   takeover_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   dom_status?: Prisma.BoolFilter<"Dapem"> | boolean
@@ -5391,10 +5495,11 @@ export type DapemScalarWhereInput = {
   dev_status?: Prisma.BoolFilter<"Dapem"> | boolean
   deviasi_note?: Prisma.StringNullableFilter<"Dapem"> | string | null
   note?: Prisma.StringNullableFilter<"Dapem"> | string | null
-  audit_status?: Prisma.BoolFilter<"Dapem"> | boolean
+  audit_status?: Prisma.EnumEDapemStatusFilter<"Dapem"> | $Enums.EDapemStatus
   audit_desc?: Prisma.StringNullableFilter<"Dapem"> | string | null
   audit_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   audit_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
+  kc_pay_office?: Prisma.StringNullableFilter<"Dapem"> | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -5507,6 +5612,8 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5577,10 +5684,11 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5647,6 +5755,8 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5717,10 +5827,11 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5813,6 +5924,8 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -5883,10 +5996,11 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5953,6 +6067,8 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6023,10 +6139,11 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6119,6 +6236,8 @@ export type DapemCreateWithoutDebiturInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6189,10 +6308,11 @@ export type DapemCreateWithoutDebiturInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6259,6 +6379,8 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6329,10 +6451,11 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6425,6 +6548,8 @@ export type DapemCreateWithoutAianalysesInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6495,10 +6620,11 @@ export type DapemCreateWithoutAianalysesInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6565,6 +6691,8 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -6635,10 +6763,11 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6721,6 +6850,8 @@ export type DapemUpdateWithoutAianalysesInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -6791,10 +6922,11 @@ export type DapemUpdateWithoutAianalysesInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6861,6 +6993,8 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -6931,10 +7065,11 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7001,6 +7136,8 @@ export type DapemCreateWithoutPayOfficeInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7071,10 +7208,11 @@ export type DapemCreateWithoutPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7141,6 +7279,8 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7211,10 +7351,11 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7291,6 +7432,8 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7361,10 +7504,11 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7431,6 +7575,8 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7501,10 +7647,11 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7613,6 +7760,8 @@ export type DapemCreateWithoutInsuranceInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7683,10 +7832,11 @@ export type DapemCreateWithoutInsuranceInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7753,6 +7903,8 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7823,10 +7975,11 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7919,6 +8072,8 @@ export type DapemCreateWithoutDroppingInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -7989,10 +8144,11 @@ export type DapemCreateWithoutDroppingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8059,6 +8215,8 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8129,10 +8287,11 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8225,6 +8384,8 @@ export type DapemCreateWithoutBerkasInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8295,10 +8456,11 @@ export type DapemCreateWithoutBerkasInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8365,6 +8527,8 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8435,10 +8599,11 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8531,6 +8696,8 @@ export type DapemCreateWithoutJaminanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8601,10 +8768,11 @@ export type DapemCreateWithoutJaminanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8671,6 +8839,8 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8741,10 +8911,11 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8837,6 +9008,8 @@ export type DapemCreateWithoutPelunasanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -8907,10 +9080,11 @@ export type DapemCreateWithoutPelunasanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8977,6 +9151,8 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -9047,10 +9223,11 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9133,6 +9310,8 @@ export type DapemUpdateWithoutPelunasanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -9203,10 +9382,11 @@ export type DapemUpdateWithoutPelunasanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9273,6 +9453,8 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -9343,10 +9525,11 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9413,6 +9596,8 @@ export type DapemCreateWithoutAngsuransInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -9483,10 +9668,11 @@ export type DapemCreateWithoutAngsuransInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9553,6 +9739,8 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -9623,10 +9811,11 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9709,6 +9898,8 @@ export type DapemUpdateWithoutAngsuransInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -9779,10 +9970,11 @@ export type DapemUpdateWithoutAngsuransInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9849,6 +10041,8 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -9919,10 +10113,11 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9989,6 +10184,8 @@ export type DapemCreateWithoutAgentFrontingInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10059,10 +10256,11 @@ export type DapemCreateWithoutAgentFrontingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10129,6 +10327,8 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10199,10 +10399,11 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10295,6 +10496,8 @@ export type DapemCreateWithoutDPKStatusInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10365,10 +10568,11 @@ export type DapemCreateWithoutDPKStatusInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10435,6 +10639,8 @@ export type DapemUncheckedCreateWithoutDPKStatusInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10505,10 +10711,11 @@ export type DapemUncheckedCreateWithoutDPKStatusInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10601,6 +10808,8 @@ export type DapemCreateManyAOInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10671,10 +10880,11 @@ export type DapemCreateManyAOInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10738,6 +10948,8 @@ export type DapemCreateManyAOCabangInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10808,10 +11020,11 @@ export type DapemCreateManyAOCabangInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10875,6 +11088,8 @@ export type DapemCreateManyAOAreaInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -10945,10 +11160,11 @@ export type DapemCreateManyAOAreaInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -11012,6 +11228,8 @@ export type DapemCreateManyUserInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -11082,10 +11300,11 @@ export type DapemCreateManyUserInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -11149,6 +11368,8 @@ export type DapemUpdateWithoutAOInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11219,10 +11440,11 @@ export type DapemUpdateWithoutAOInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11289,6 +11511,8 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11359,10 +11583,11 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11429,6 +11654,8 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11499,10 +11726,11 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11566,6 +11794,8 @@ export type DapemUpdateWithoutAOCabangInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11636,10 +11866,11 @@ export type DapemUpdateWithoutAOCabangInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11706,6 +11937,8 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11776,10 +12009,11 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11846,6 +12080,8 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11916,10 +12152,11 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11983,6 +12220,8 @@ export type DapemUpdateWithoutAOAreaInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12053,10 +12292,11 @@ export type DapemUpdateWithoutAOAreaInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12123,6 +12363,8 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12193,10 +12435,11 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12263,6 +12506,8 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12333,10 +12578,11 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12400,6 +12646,8 @@ export type DapemUpdateWithoutUserInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12470,10 +12718,11 @@ export type DapemUpdateWithoutUserInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12540,6 +12789,8 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12610,10 +12861,11 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12680,6 +12932,8 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12750,10 +13004,11 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12817,6 +13072,8 @@ export type DapemCreateManyProdukPembiayaanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -12887,10 +13144,11 @@ export type DapemCreateManyProdukPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -12954,6 +13212,8 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13024,10 +13284,11 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13094,6 +13355,8 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13164,10 +13427,11 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13234,6 +13498,8 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13304,10 +13570,11 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13371,6 +13638,8 @@ export type DapemCreateManyJenisPembiayaanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -13441,10 +13710,11 @@ export type DapemCreateManyJenisPembiayaanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -13508,6 +13778,8 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13578,10 +13850,11 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13648,6 +13921,8 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13718,10 +13993,11 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13788,6 +14064,8 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13858,10 +14136,11 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13925,6 +14204,8 @@ export type DapemCreateManyDebiturInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -13995,10 +14276,11 @@ export type DapemCreateManyDebiturInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -14062,6 +14344,8 @@ export type DapemUpdateWithoutDebiturInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14132,10 +14416,11 @@ export type DapemUpdateWithoutDebiturInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14202,6 +14487,8 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14272,10 +14559,11 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14342,6 +14630,8 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14412,10 +14702,11 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14479,6 +14770,8 @@ export type DapemCreateManyPayOfficeInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -14549,10 +14842,11 @@ export type DapemCreateManyPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -14616,6 +14910,8 @@ export type DapemCreateManyPrevPayOfficeInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -14686,10 +14982,11 @@ export type DapemCreateManyPrevPayOfficeInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -14753,6 +15050,8 @@ export type DapemUpdateWithoutPayOfficeInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14823,10 +15122,11 @@ export type DapemUpdateWithoutPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14893,6 +15193,8 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14963,10 +15265,11 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15033,6 +15336,8 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15103,10 +15408,11 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15170,6 +15476,8 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15240,10 +15548,11 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15310,6 +15619,8 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15380,10 +15691,11 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15450,6 +15762,8 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15520,10 +15834,11 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15587,6 +15902,8 @@ export type DapemCreateManyInsuranceInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -15657,10 +15974,11 @@ export type DapemCreateManyInsuranceInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -15724,6 +16042,8 @@ export type DapemUpdateWithoutInsuranceInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15794,10 +16114,11 @@ export type DapemUpdateWithoutInsuranceInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15864,6 +16185,8 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15934,10 +16257,11 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16004,6 +16328,8 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16074,10 +16400,11 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16141,6 +16468,8 @@ export type DapemCreateManyDroppingInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -16211,10 +16540,11 @@ export type DapemCreateManyDroppingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -16278,6 +16608,8 @@ export type DapemUpdateWithoutDroppingInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16348,10 +16680,11 @@ export type DapemUpdateWithoutDroppingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16418,6 +16751,8 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16488,10 +16823,11 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16558,6 +16894,8 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16628,10 +16966,11 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16695,6 +17034,8 @@ export type DapemCreateManyBerkasInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -16765,10 +17106,11 @@ export type DapemCreateManyBerkasInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -16832,6 +17174,8 @@ export type DapemUpdateWithoutBerkasInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16902,10 +17246,11 @@ export type DapemUpdateWithoutBerkasInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16972,6 +17317,8 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17042,10 +17389,11 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17112,6 +17460,8 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17182,10 +17532,11 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17249,6 +17600,8 @@ export type DapemCreateManyJaminanInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -17319,10 +17672,11 @@ export type DapemCreateManyJaminanInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -17386,6 +17740,8 @@ export type DapemUpdateWithoutJaminanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17456,10 +17812,11 @@ export type DapemUpdateWithoutJaminanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17526,6 +17883,8 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17596,10 +17955,11 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17666,6 +18026,8 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17736,10 +18098,11 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17803,6 +18166,8 @@ export type DapemCreateManyAgentFrontingInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -17873,10 +18238,11 @@ export type DapemCreateManyAgentFrontingInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -17940,6 +18306,8 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -18010,10 +18378,11 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18080,6 +18449,8 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -18150,10 +18521,11 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18220,6 +18592,8 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -18290,10 +18664,11 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18357,6 +18732,8 @@ export type DapemCreateManyDPKStatusInput = {
   rounded: number
   margin_type: $Enums.EMarginType
   cost_month?: number
+  max_tenor?: number
+  max_plafond?: number
   takeover_from?: string | null
   takeover_date?: Date | string | null
   dom_status: boolean
@@ -18427,10 +18804,11 @@ export type DapemCreateManyDPKStatusInput = {
   dev_status?: boolean
   deviasi_note?: string | null
   note?: string | null
-  audit_status?: boolean
+  audit_status?: $Enums.EDapemStatus
   audit_desc?: string | null
   audit_name?: string | null
   audit_date?: Date | string | null
+  kc_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -18494,6 +18872,8 @@ export type DapemUpdateWithoutDPKStatusInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -18564,10 +18944,11 @@ export type DapemUpdateWithoutDPKStatusInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18634,6 +19015,8 @@ export type DapemUncheckedUpdateWithoutDPKStatusInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -18704,10 +19087,11 @@ export type DapemUncheckedUpdateWithoutDPKStatusInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18774,6 +19158,8 @@ export type DapemUncheckedUpdateManyWithoutDPKStatusInput = {
   rounded?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   cost_month?: Prisma.IntFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
   takeover_from?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   takeover_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   dom_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -18844,10 +19230,11 @@ export type DapemUncheckedUpdateManyWithoutDPKStatusInput = {
   dev_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deviasi_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audit_status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  audit_status?: Prisma.EnumEDapemStatusFieldUpdateOperationsInput | $Enums.EDapemStatus
   audit_desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18951,6 +19338,8 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   rounded?: boolean
   margin_type?: boolean
   cost_month?: boolean
+  max_tenor?: boolean
+  max_plafond?: boolean
   takeover_from?: boolean
   takeover_date?: boolean
   dom_status?: boolean
@@ -19025,6 +19414,7 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   audit_desc?: boolean
   audit_name?: boolean
   audit_date?: boolean
+  kc_pay_office?: boolean
   used_for?: boolean
   no_contract?: boolean
   date_contract?: boolean
@@ -19110,6 +19500,8 @@ export type DapemSelectScalar = {
   rounded?: boolean
   margin_type?: boolean
   cost_month?: boolean
+  max_tenor?: boolean
+  max_plafond?: boolean
   takeover_from?: boolean
   takeover_date?: boolean
   dom_status?: boolean
@@ -19184,6 +19576,7 @@ export type DapemSelectScalar = {
   audit_desc?: boolean
   audit_name?: boolean
   audit_date?: boolean
+  kc_pay_office?: boolean
   used_for?: boolean
   no_contract?: boolean
   date_contract?: boolean
@@ -19220,7 +19613,7 @@ export type DapemSelectScalar = {
   dPKStatusId?: boolean
 }
 
-export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "cost_month" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "aw_education" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "audit_status" | "audit_desc" | "audit_name" | "audit_date" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId", ExtArgs["result"]["dapem"]>
+export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "cost_month" | "max_tenor" | "max_plafond" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "aw_education" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "audit_status" | "audit_desc" | "audit_name" | "audit_date" | "kc_pay_office" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId", ExtArgs["result"]["dapem"]>
 export type DapemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
@@ -19293,6 +19686,8 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     rounded: number
     margin_type: $Enums.EMarginType
     cost_month: number
+    max_tenor: number
+    max_plafond: number
     takeover_from: string | null
     takeover_date: Date | null
     dom_status: boolean
@@ -19363,10 +19758,11 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     dev_status: boolean
     deviasi_note: string | null
     note: string | null
-    audit_status: boolean
+    audit_status: $Enums.EDapemStatus
     audit_desc: string | null
     audit_name: string | null
     audit_date: Date | null
+    kc_pay_office: string | null
     used_for: string
     no_contract: string
     date_contract: Date | null
@@ -19815,6 +20211,8 @@ export interface DapemFieldRefs {
   readonly rounded: Prisma.FieldRef<"Dapem", 'Int'>
   readonly margin_type: Prisma.FieldRef<"Dapem", 'EMarginType'>
   readonly cost_month: Prisma.FieldRef<"Dapem", 'Int'>
+  readonly max_tenor: Prisma.FieldRef<"Dapem", 'Int'>
+  readonly max_plafond: Prisma.FieldRef<"Dapem", 'Int'>
   readonly takeover_from: Prisma.FieldRef<"Dapem", 'String'>
   readonly takeover_date: Prisma.FieldRef<"Dapem", 'DateTime'>
   readonly dom_status: Prisma.FieldRef<"Dapem", 'Boolean'>
@@ -19885,10 +20283,11 @@ export interface DapemFieldRefs {
   readonly dev_status: Prisma.FieldRef<"Dapem", 'Boolean'>
   readonly deviasi_note: Prisma.FieldRef<"Dapem", 'String'>
   readonly note: Prisma.FieldRef<"Dapem", 'String'>
-  readonly audit_status: Prisma.FieldRef<"Dapem", 'Boolean'>
+  readonly audit_status: Prisma.FieldRef<"Dapem", 'EDapemStatus'>
   readonly audit_desc: Prisma.FieldRef<"Dapem", 'String'>
   readonly audit_name: Prisma.FieldRef<"Dapem", 'String'>
   readonly audit_date: Prisma.FieldRef<"Dapem", 'DateTime'>
+  readonly kc_pay_office: Prisma.FieldRef<"Dapem", 'String'>
   readonly used_for: Prisma.FieldRef<"Dapem", 'String'>
   readonly no_contract: Prisma.FieldRef<"Dapem", 'String'>
   readonly date_contract: Prisma.FieldRef<"Dapem", 'DateTime'>

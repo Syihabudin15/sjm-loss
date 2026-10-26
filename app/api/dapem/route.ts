@@ -105,9 +105,7 @@ export const GET = async (request: NextRequest) => {
     ...(insuranceId && { insuranceId: insuranceId }),
     ...(group_skep && { Debitur: { group_skep } }),
     ...(dev_status && { dev_status: dev_status === "true" ? true : false }),
-    ...(audit_status && {
-      audit_status: audit_status === "true" ? true : false,
-    }),
+    ...(audit_status && { audit_status: audit_status as EDapemStatus }),
     ...(backdate
       ? {
           OR: [

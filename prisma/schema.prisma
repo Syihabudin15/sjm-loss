@@ -73,8 +73,8 @@ model Role {
   updated_at DateTime @default(now())
   Users      User[]
 
-  @@index([name])
-  @@index([data_status])
+  @@index([status, data_status, name])
+  @@index([status, name, data_status])
   @@map("role")
 }
 
@@ -125,8 +125,8 @@ model Sumdan {
   Jaminans             Jaminan[]
   SumdanAgentFrontings SumdanAgentFronting[]
 
-  @@index([name])
-  @@index([code])
+  @@index([status, fronting, code, name])
+  @@index([status, code, name])
   @@map("sumdan")
 }
 
@@ -155,7 +155,8 @@ model Cabang {
   areaId     String
   Users      User[]
 
-  @@index([name])
+  @@index([status, name])
+  @@index([status, areaId, name])
   @@map("cabang")
 }
 
@@ -192,12 +193,11 @@ model User {
   agentFrontingId String?
   DataSimulasi    DataSimulasi[]
 
-  @@index([nip])
-  @@index([fullname])
-  @@index([email])
-  @@index([phone])
-  @@index([end_pkwt])
-  @@index([pkwt_status])
+  @@index([status, fullname])
+  @@index([status, cabangId, fullname])
+  @@index([status, sumdanId, fullname])
+  @@index([status, end_pkwt])
+  @@index([status, pkwt_status])
   @@map("user")
 }
 
@@ -222,7 +222,8 @@ model ProdukPembiayaan {
   Dapems        Dapem[]
   dataSimulasis DataSimulasi[]
 
-  @@index([name])
+  @@index([status, name])
+  @@index([status, sumdanId, name])
   @@map("produkpembiayaan")
 }
 
@@ -240,7 +241,7 @@ model JenisPembiayaan {
   Dapems          Dapem[]
   dataSimulasis   DataSimulasi[]
 
-  @@index([name])
+  @@index([status, name])
   @@map("jenispembiayaan")
 }
 
@@ -283,16 +284,8 @@ model Debitur {
   PayOffice      PayOffice? @relation(fields: [payOfficeId], references: [id])
   payOfficeId    String?
 
-  @@index([fullname])
-  @@index([nik])
-  @@index([name_skep])
-  @@index([no_skep])
-  @@index([account_number])
-  @@index([province])
-  @@index([city])
-  @@index([district])
-  @@index([ward])
-  @@index([pos_code])
+  @@index([group_skep])
+  @@index([payOfficeId])
   @@map("debitur")
 }
 
@@ -326,7 +319,7 @@ model Dapem {
   margin_type    EMarginType
   cost_month     Int         @default(0)
   max_tenor      Int         @default(120)
-  max_plafond    Int         @default(200000000)
+  max_plafond    Int         @default(250000000)
 
   takeover_from String?
   takeover_date DateTime?
@@ -402,10 +395,11 @@ model Dapem {
   dev_status        Boolean            @default(false)
   deviasi_note      String?            @db.Text
   note              String?            @db.Text
-  audit_status      Boolean            @default(false)
+  audit_status      EDapemStatus       @default(PENDING)
   audit_desc        String?
   audit_name        String?
   audit_date        DateTime?
+  kc_pay_office     String?
 
   used_for      String
   no_contract   String
@@ -463,22 +457,28 @@ model Dapem {
   userId             String
   dPKStatusId        String?
 
-  @@index([dropping_status])
-  @@index([document_status])
-  @@index([guarantee_status])
-  @@index([slik_status])
-  @@index([verif_status])
-  @@index([approv_status])
-  @@index([created_at])
-  @@index([takeover_date])
-  @@index([takeover_status])
-  @@index([mutasi_status])
-  @@index([flagging_status])
-  @@index([cash_status])
-  @@index([tbo_date])
-  @@index([no_contract])
-  @@index([date_contract])
-  @@index([date_end])
+  @@index([status, dropping_status])
+  @@index([status, document_status])
+  @@index([status, guarantee_status])
+  @@index([status, document_status, guarantee_status])
+  @@index([status, slik_status])
+  @@index([status, verif_status])
+  @@index([status, approv_status])
+  @@index([status, created_at])
+  @@index([status, date_contract])
+  @@index([status, takeover_status])
+  @@index([status, mutasi_status])
+  @@index([status, flagging_status])
+  @@index([status, cash_status])
+  @@index([status, payOfficeId])
+  @@index([status, prevPayOfficeId])
+  @@index([status, agentFrontingId])
+  @@index([status, userId])
+  @@index([status, aoId])
+  @@index([status, aoCabangId])
+  @@index([status, aoAreaId])
+  @@index([status, jenisPembiayaanId])
+  @@index([status, takeover_status, mutasi_status, flagging_status])
   @@map("dapem")
 }
 
@@ -519,8 +519,7 @@ model PayOffice {
   Debiturs       Debitur[]
   dataSimulasis  DataSimulasi[]
 
-  @@index([name])
-  @@index([code])
+  @@index([status, name, code])
   @@map("payoffice")
 }
 
@@ -540,8 +539,7 @@ model Insurance {
   updated_at DateTime @default(now())
   Dapems     Dapem[]
 
-  @@index([name])
-  @@index([code])
+  @@index([status, name, code])
   @@map("insurance")
 }
 
@@ -556,9 +554,9 @@ model Dropping {
   Sumdan     Sumdan    @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
   sumdanId   String
 
-  @@index([process_at])
-  @@index([created_at])
-  @@index([status])
+  @@index([status, process_at])
+  @@index([status, created_at])
+  @@index([status, sumdanId, process_at])
   @@map("dropping")
 }
 
@@ -573,9 +571,9 @@ model Berkas {
   Sumdan     Sumdan     @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
   sumdanId   String
 
-  @@index([process_at])
-  @@index([created_at])
-  @@index([status])
+  @@index([status, process_at])
+  @@index([status, created_at])
+  @@index([status, sumdanId, process_at])
   @@map("berkas")
 }
 
@@ -590,9 +588,9 @@ model Jaminan {
   Sumdan     Sumdan     @relation(fields: [sumdanId], references: [id], onUpdate: Cascade)
   sumdanId   String
 
-  @@index([process_at])
-  @@index([created_at])
-  @@index([status])
+  @@index([status, process_at])
+  @@index([status, created_at])
+  @@index([status, sumdanId, process_at])
   @@map("jaminan")
 }
 
@@ -616,7 +614,6 @@ model Pelunasan {
   @@index([type])
   @@index([guarantee_status])
   @@index([status_paid])
-  @@index([process_at])
   @@index([created_at])
   @@map("pelunasan")
 }
@@ -637,6 +634,8 @@ model Angsuran {
   note        String?   @db.Text
 
   @@index([date_pay])
+  @@index([dapemId, date_paid])
+  @@index([date_paid, dapemId])
   @@map("angsuran")
 }
 
@@ -659,8 +658,8 @@ model CategoryOfAccount {
   Childrens      CategoryOfAccount[] @relation("AccountHierarchy")
   JournalDetails JournalDetail[]
 
-  @@index([name])
-  @@index([type])
+  @@index([type, name])
+  @@index([parentId])
   @@map("categoryofaccount")
 }
 
@@ -687,6 +686,8 @@ model JournalDetail {
   categoryOfAccountId String
   userId              String?
 
+  @@index([categoryOfAccountId])
+  @@index([journalEntryId])
   @@map("journaldetail")
 }
 
@@ -710,8 +711,7 @@ model AgentFronting {
   Users                User[]
   Dapems               Dapem[]
 
-  @@index([name])
-  @@index([code])
+  @@index([status, name, code])
   @@map("agentfronting")
 }
 

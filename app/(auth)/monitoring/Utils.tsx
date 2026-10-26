@@ -36,10 +36,11 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import type {
+import {
   Berkas,
   Debitur,
   Dropping,
+  EDapemStatus,
   EMarginType,
   EMarriageStatus,
   Jaminan,
@@ -192,10 +193,18 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
         margin_type: find.margin_type,
       }));
     }
+
+    const fix_max_plaf = record
+      ? record.max_plafond
+      : data.ProdukPembiayaan.max_plafond;
+    const fix_max_tenor = record
+      ? record.max_tenor
+      : data.ProdukPembiayaan.max_tenor;
+
     const maxTenn = GetMaxTenor(data.ProdukPembiayaan.max_paid, year, month);
     const maxTen =
-      parseInt(String(maxTenn)) > data.ProdukPembiayaan.max_tenor
-        ? data.ProdukPembiayaan.max_tenor
+      parseInt(String(maxTenn)) > fix_max_tenor
+        ? fix_max_tenor
         : parseInt(String(maxTenn));
     const maxPlaff = parseInt(
       String(
@@ -207,10 +216,8 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
         ),
       ),
     );
-    const maxPlaf =
-      maxPlaff > data.ProdukPembiayaan.max_plafond
-        ? data.ProdukPembiayaan.max_plafond
-        : maxPlaff;
+
+    const maxPlaf = maxPlaff > fix_max_plaf ? fix_max_plaf : maxPlaff;
 
     // const angs = GetAngsuran(
     //   data.plafond,
@@ -1756,6 +1763,8 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                               .flatMap((s) => s.ProdukPembiayaans)
                               .find((f) => f.id === e);
                             if (find) {
+                              const isProductChanged =
+                                !record || record.produkPembiayaanId !== e;
                               setData({
                                 ...data,
                                 ProdukPembiayaan: find,
@@ -1776,6 +1785,10 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                                 rounded: find.Sumdan.rounded,
                                 tbo: find.Sumdan.tbo,
                                 c_provisi: find.Sumdan.c_provisi,
+                                ...(isProductChanged && {
+                                  max_tenor: find?.max_tenor,
+                                  max_plafond: find?.max_plafond,
+                                }),
                               });
                             }
                           }}
@@ -2252,7 +2265,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                           value: u.id,
                         })),
                         onChange: (e: string | null) => {
-                          const find = users.find((u) => u.id === e);
                           setData({
                             ...data,
                             userId: e || user?.id || "",
@@ -2725,14 +2737,15 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                       class: "flex-1",
                       required: true,
                       value: data.audit_status,
-                      onChange: (e: boolean) =>
+                      onChange: (e: EDapemStatus) =>
                         setData({
                           ...data,
                           audit_status: e,
                         }),
                       options: [
-                        { label: "PENDING", value: false },
-                        { label: "AUDITED", value: true },
+                        { label: "PENDING", value: EDapemStatus.PENDING },
+                        { label: "DITOLAK", value: EDapemStatus.DITOLAK },
+                        { label: "AUDITED", value: EDapemStatus.DISETUJUI },
                       ],
                     }}
                   />
@@ -2816,6 +2829,7 @@ const defaultData: IDapem = {
   margin_type: "ANUITAS",
   agentFrontingId: null,
   c_fee_fronting: 0,
+  max_tenor: 120, max_plafond:200000000,
 
   takeover_from: null,
   takeover_date: null,
@@ -2951,10 +2965,11 @@ const defaultData: IDapem = {
   f_pos_code: null,
   aw_education: null,
   cost_month: 0,
-  audit_status: false,
+  audit_status: "PENDING",
   audit_date: null,
   audit_name: null,
   audit_desc: null,
+  kc_pay_office: null,
 };
 
 interface ITemp {

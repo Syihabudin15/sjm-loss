@@ -1,7 +1,6 @@
 "use client";
 
 import { FormInput, ViewFiles } from "@/components";
-import { printPelunasan } from "@/components/pdfutils/etc/printPelunasan";
 import { useUser } from "@/components/UserContext";
 import { FilterData } from "@/components/utils/CompUtils";
 import {
@@ -369,7 +368,12 @@ export default function Page() {
               size="small"
               type="primary"
               icon={<PrinterOutlined />}
-              onClick={() => printPelunasan(record)}
+              onClick={async () => {
+                const { printPelunasan } = await import(
+                  "@/components/pdfutils/etc/printPelunasan"
+                );
+                printPelunasan(record);
+              }}
             ></Button>
             <Tooltip title={"Berkas Pelunasan"}>
               <Button

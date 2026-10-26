@@ -1,7 +1,6 @@
 "use client";
 
 import { FormInput, ViewFiles } from "@/components";
-import { printSIStandar } from "@/components/pdfutils/si/SIStandar";
 import { ExportToExcel, FilterData } from "@/components/utils/CompUtils";
 import {
   GetAngsuran,
@@ -42,7 +41,6 @@ import {
 import { HookAPI } from "antd/es/modal/useModal";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { printSIABS } from "@/components/pdfutils/si/SIStandarABS";
 const { RangePicker } = DatePicker;
 
 export default function Page() {
@@ -115,13 +113,19 @@ export default function Page() {
     })();
   }, []);
 
-  const printSI = (record: IDropping) => {
+  const printSI = async (record: IDropping) => {
     switch (record.Sumdan.code) {
       case "BPR ABS": {
+        const { printSIABS } = await import(
+          "@/components/pdfutils/si/SIStandarABS"
+        );
         printSIABS(record);
         break;
       }
       default: {
+        const { printSIStandar } = await import(
+          "@/components/pdfutils/si/SIStandar"
+        );
         printSIStandar(record);
         break;
       }

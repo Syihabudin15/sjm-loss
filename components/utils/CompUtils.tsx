@@ -50,10 +50,10 @@ export const GetStatusTag = (status: ESubmissionStatus | undefined | null) => {
   return <div></div>;
 };
 
-export const GetStatusTagAudit = (status: boolean) => {
+export const GetStatusTagAudit = (status: EDapemStatus) => {
   return (
-    <Tag color={status ? "green" : "orange"} variant="solid">
-      {status ? "AUDITED" : "PENDING"}
+    <Tag color={status === "DISETUJUI" ? "green" : status === "PENDING"? "orange":"red"} variant="solid">
+      {status=== "DISETUJUI" ? "AUDITED" : status }
     </Tag>
   );
 };

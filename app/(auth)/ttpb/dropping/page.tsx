@@ -1,7 +1,6 @@
 "use client";
 
 import { FormInput, ViewFiles } from "@/components";
-import { printSDStandar } from "@/components/pdfutils/si/SDStandar";
 import { useUser } from "@/components/UserContext";
 import { GetAngsuran, IDRFormat } from "@/components/utils/PembiayaanUtil";
 import {
@@ -215,7 +214,12 @@ export default function Page() {
                 icon={<PrinterOutlined />}
                 size="small"
                 type="primary"
-                onClick={() => printSDStandar(record)}
+                onClick={async () => {
+                  const { printSDStandar } = await import(
+                    "@/components/pdfutils/si/SDStandar"
+                  );
+                  printSDStandar(record);
+                }}
               ></Button>
             </Tooltip>
             <Tooltip title="Berkas Akad & SD">

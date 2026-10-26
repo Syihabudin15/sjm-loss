@@ -1,6 +1,5 @@
 "use client";
 
-import { printRL } from "@/components/pdfutils/lapkeu/rugilaba";
 import { IDRFormat } from "@/components/utils/PembiayaanUtil";
 import { ICategoryOfAccount } from "@/libs/IInterfaces";
 import {
@@ -80,9 +79,12 @@ export default function LaporanRugiLaba() {
             <Button
               type="primary"
               icon={<PrinterOutlined />}
-              onClick={() =>
-                printRL(data.pendapatan, data.beban, backdate || undefined)
-              }
+              onClick={async () => {
+                const { printRL } = await import(
+                  "@/components/pdfutils/lapkeu/rugilaba"
+                );
+                printRL(data.pendapatan, data.beban, backdate || undefined);
+              }}
             >
               Cetak
             </Button>

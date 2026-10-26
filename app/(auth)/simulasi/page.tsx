@@ -44,7 +44,6 @@ import {
 import moment from "moment";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { toPng } from "html-to-image";
 
 export default function Page() {
   const [tglLahirStr, setTglLahirStr] = useState("");
@@ -1047,6 +1046,7 @@ const ModalDetailPembiayaan = ({
     if (printRef.current === null) return;
 
     try {
+      const { toPng } = await import("html-to-image");
       const dataUrl = await toPng(printRef.current, {
         cacheBust: true,
         pixelRatio: 2,
