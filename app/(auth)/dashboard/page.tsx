@@ -143,25 +143,14 @@ export default function Page() {
     0,
   );
   const totalTagihan = approvedDapemStats.reduce(
-      (acc, curr) =>
-        acc +
-        GetAngsuran(
-          curr.dapem.plafond,
-          curr.dapem.tenor,
-          curr.dapem.c_margin + curr.dapem.c_margin_sumdan,
-          curr.dapem.margin_type,
-          curr.dapem.rounded,
-          curr.dapem.c_ned,
-        ).angsuran,
-      0,
-    );
+    (acc, curr) => acc + GetDetailDapem(curr.dapem).angsuran,
+    0,
+  );
 
   const totalPendingTakeover = approvedDapemStats.reduce(
     (acc, curr) =>
       acc +
-      (curr.dapem.takeover_status !== "DISETUJUI"
-        ? curr.dapem.c_takeover
-        : 0),
+      (curr.dapem.takeover_status !== "DISETUJUI" ? curr.dapem.c_takeover : 0),
     0,
   );
 
