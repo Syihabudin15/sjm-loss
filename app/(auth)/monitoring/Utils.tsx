@@ -40,7 +40,6 @@ import {
   Berkas,
   Debitur,
   Dropping,
-  EDapemStatus,
   EMarginType,
   EMarriageStatus,
   Jaminan,
@@ -2737,15 +2736,15 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                       class: "flex-1",
                       required: true,
                       value: data.audit_status,
-                      onChange: (e: EDapemStatus) =>
+                      onChange: (e: any) =>
                         setData({
                           ...data,
                           audit_status: e,
                         }),
                       options: [
-                        { label: "PENDING", value: EDapemStatus.PENDING },
-                        { label: "DITOLAK", value: EDapemStatus.DITOLAK },
-                        { label: "AUDITED", value: EDapemStatus.DISETUJUI },
+                        { label: "PENDING", value: "PENDING" },
+                        { label: "DITOLAK", value: "DITOLAK" },
+                        { label: "AUDITED", value: "DISETUJUI" },
                       ],
                     }}
                   />
@@ -2829,7 +2828,8 @@ const defaultData: IDapem = {
   margin_type: "ANUITAS",
   agentFrontingId: null,
   c_fee_fronting: 0,
-  max_tenor: 120, max_plafond:200000000,
+  max_tenor: 120,
+  max_plafond: 200000000,
 
   takeover_from: null,
   takeover_date: null,
