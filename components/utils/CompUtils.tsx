@@ -52,8 +52,17 @@ export const GetStatusTag = (status: ESubmissionStatus | undefined | null) => {
 
 export const GetStatusTagAudit = (status: EDapemStatus) => {
   return (
-    <Tag color={status === "DISETUJUI" ? "green" : status === "PENDING"? "orange":"red"} variant="solid">
-      {status=== "DISETUJUI" ? "AUDITED" : status }
+    <Tag
+      color={
+        status === "DISETUJUI"
+          ? "green"
+          : status === "PENDING"
+            ? "orange"
+            : "red"
+      }
+      variant="solid"
+    >
+      {status === "DISETUJUI" ? "AUDITED" : status}
     </Tag>
   );
 };
@@ -332,21 +341,9 @@ export const ExportToExcel = (data: IExportData[], filename: string) => {
 
 export const MappingToExcelDapem = (data: IDapem[]) => {
   return data.map((d, i) => {
-    const angs = GetAngsuran(
-      d.plafond,
-      d.tenor,
-      d.c_margin + d.c_margin_sumdan,
-      d.margin_type,
-      d.rounded,
-      d.c_ned,
-    ).angsuran;
-    const angsSumdan = GetAngsuran(
-      d.plafond,
-      d.tenor,
-      d.c_margin_sumdan,
-      d.margin_type,
-      d.rounded,
-    ).angsuran;
+    const detail = GetDetailDapem(d);
+    const angs = detail.angsuran;
+    const angsSumdan = detail.detail.angsuran_sumdan;
     return {
       NO: i + 1,
       PEMOHON: d.Debitur.fullname,
@@ -387,6 +384,12 @@ export const MappingToExcelDapem = (data: IDapem[]) => {
       NOMINAL_ANGSURAN: angs,
       ANGSURAN_SUMDAN: angsSumdan,
       ANGSURAN_KOPERASI: angs - angsSumdan,
+      STATUS_TAKEOVER: d.takeover_status,
+      STATUS_MUTASI: d.mutasi_status,
+      STATUS_FLAGGING: d.flagging_status,
+      KET_TAKEOVER: d.takeover_desc,
+      KET_MUTASI: d.mutasi_desc,
+      KET_FLAGGING: d.flagging_desc,
     };
   });
 };
