@@ -369,9 +369,8 @@ export default function Page() {
               type="primary"
               icon={<PrinterOutlined />}
               onClick={async () => {
-                const { printPelunasan } = await import(
-                  "@/components/pdfutils/etc/printPelunasan"
-                );
+                const { printPelunasan } =
+                  await import("@/components/pdfutils/etc/printPelunasan");
                 printPelunasan(record);
               }}
             ></Button>
@@ -526,9 +525,8 @@ export default function Page() {
                     size="small"
                     placeholder="Pilih Status..."
                     options={[
-                      { label: "Antri (PENDING)", value: "PENDING" },
-                      { label: "Disetujui (APPROVED)", value: "DISETUJUI" },
-                      { label: "Ditolak (REJECTED)", value: "DITOLAK" },
+                      { label: "PENDING", value: "PENDING" },
+                      { label: "DISETUJUI", value: "DISETUJUI" },
                     ]}
                     value={pageProps.status_paid}
                     onChange={(e) =>
@@ -1203,9 +1201,8 @@ const ProsesData = ({
               disabled: record.status_paid === "DISETUJUI",
               value: data.status_paid,
               options: [
-                { label: "APPROVED", value: "APPROVED" },
+                { label: "DISETUJUI", value: "DISETUJUI" },
                 { label: "PENDING", value: "PENDING" },
-                { label: "REJECTED", value: "REJECTED" },
               ],
               onChange: (e: string) =>
                 setData({
