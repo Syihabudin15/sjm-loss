@@ -468,6 +468,7 @@ export default function Page() {
                 backdate: "",
               }))
             }
+            // eslint-disable-next-line react/no-children-prop
             children={
               <>
                 <div className="my-2">
@@ -475,7 +476,7 @@ export default function Page() {
                   <RangePicker
                     size="small"
                     value={pageProps.backdate}
-                    onChange={(date, dateStr) =>
+                    onChange={(_date, dateStr) =>
                       setPageProps({ ...pageProps, backdate: dateStr, page: 1 })
                     }
                     style={{ width: "100%" }}
