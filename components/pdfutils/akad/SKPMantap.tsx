@@ -84,7 +84,7 @@ export const SKPMantap = (record: IDapem) => {
     <div class="flex-1">
         <p >${(record.city || record.Debitur.city || "KOTA BANDUNG").toLowerCase().replace("kota", "").replace("kabupaten", "").toUpperCase()}, ${moment(record.date_contract).format("DD-MM-YYYY")}</p>
         <p class="font-bold">Yang memberi kuasa</p>
-        <div class="h-24 pt-8 opacity-50">
+        <div class="h-28 pt-8 opacity-50">
           <p >Materai 10.000</p>
         </div>
         <div>
@@ -94,7 +94,7 @@ export const SKPMantap = (record: IDapem) => {
       </div>
       <div class="flex-1">
         <p class="font-bold">Mengetahui/menyetujui</p>
-        <div class="h-24 flex items-center justify-center opacity-50">
+        <div class="h-28 flex items-center justify-center opacity-50">
         </div>
         <div>
           <p class="w-full underline font-bold">${process.env.NEXT_PUBLIC_APP_AKAD_NAME}</p>
