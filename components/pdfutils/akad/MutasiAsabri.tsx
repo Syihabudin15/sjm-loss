@@ -4,7 +4,7 @@ import { ListNonStyle, ListStyle } from "../utils";
 // import { GetDetailDapem } from "@/components/utils/PembiayaanUtil";
 moment.locale("id");
 
-export const FLaggingAsabri = (record: IDapem) => {
+export const MutasiAsabri = (record: IDapem) => {
   // const angsuran = GetDetailDapem(record).angsuran;
 
   return `

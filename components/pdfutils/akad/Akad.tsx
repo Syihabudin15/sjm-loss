@@ -15,7 +15,7 @@ import { KuasaMutasi } from "../etc/forms/kuasaMutasi";
 import { FormMutasiTaspen } from "../etc/forms/formMutasiTaspen";
 import { FormKuasaDebet } from "../etc/formhm/formKuasaDebet";
 import { PKHM } from "../etc/formhm/PKHM";
-// import { FLaggingAsabri } from "./FlaggingAsabri";
+import { MutasiAsabri } from "././MutasiAsabri";
 import { SKPMantap } from "./SKPMantap";
 import { PKBBTM } from "../etc/formBbtm/PKBBTM";
 
@@ -133,7 +133,7 @@ const generateContractHtml = (record: IDapem) => {
         ${KuasaMutasi(record)}
       </div>
       <div class="page text-justify" style="font-size: 11px;">
-        ${FormMutasiTaspen(record)}
+        ${record.Debitur.group_skep === "PT. TASPEN" ? FormMutasiTaspen(record) : MutasiAsabri(record)}
       </div>
       ${
         record.PayOffice.code === "BANK MANTAP"
