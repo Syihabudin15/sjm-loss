@@ -107,7 +107,7 @@ export const SKPMantap = (record: IDapem) => {
       <div class="h-20 flex items-center justify-center opacity-50">
       </div>
       <div>
-        <p class="w-full underline font-bold">${record.marriage_status === "KAWIN" ? record.aw_name : ""}</p>
+        <p class="${record.marriage_status !== "KAWIN" ? "w-28" : ""} w-full underline font-bold">${record.marriage_status === "KAWIN" ? record.aw_name : ""}</p>
       </div>
     </div>
   </div>
