@@ -5,6 +5,26 @@ import { Prisma } from "../../../generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 const guestBookPath = "/guest_book";
+const allowedOrigin =
+  process.env.GUEST_BOOK_ALLOWED_ORIGIN || "https://sjm.biz.id";
+
+function addCorsHeaders(request: NextRequest, response: NextResponse) {
+  if (request.headers.get("origin") !== allowedOrigin) return response;
+
+  response.headers.set("Access-Control-Allow-Origin", allowedOrigin);
+  response.headers.set("Access-Control-Allow-Credentials", "true");
+  response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+  response.headers.append("Vary", "Origin");
+  return response;
+}
+
+function withCors(
+  handler: (request: NextRequest) => Promise<NextResponse>,
+) {
+  return async (request: NextRequest) =>
+    addCorsHeaders(request, await handler(request));
+}
 
 async function authorize(action: string) {
   const session = await getSession();
@@ -102,11 +122,7 @@ function parseGuestBook(body: unknown) {
   };
 }
 
-export async function GET(request: NextRequest) {
-  if (!(await authorize("read"))) {
-    return NextResponse.json({ msg: "Akses ditolak." }, { status: 403 });
-  }
-
+async function getGuestBooks(request: NextRequest) {
   const params = request.nextUrl.searchParams;
   const page = Math.max(1, Number.parseInt(params.get("page") || "1", 10) || 1);
   const limit = Math.min(
@@ -151,11 +167,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
-  if (!(await authorize("create"))) {
-    return NextResponse.json({ msg: "Akses ditolak." }, { status: 403 });
-  }
-
+async function createGuestBook(request: NextRequest) {
   let body: unknown;
   try {
     body = await request.json();
@@ -192,7 +204,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+async function updateGuestBook(request: NextRequest) {
   if (!(await authorize("update"))) {
     return NextResponse.json({ msg: "Akses ditolak." }, { status: 403 });
   }
@@ -250,7 +262,7 @@ export async function PUT(request: NextRequest) {
   }
 }
 
-export async function DELETE(request: NextRequest) {
+async function deleteGuestBook(request: NextRequest) {
   if (!(await authorize("delete"))) {
     return NextResponse.json({ msg: "Akses ditolak." }, { status: 403 });
   }
@@ -273,4 +285,16 @@ export async function DELETE(request: NextRequest) {
       { status: 404 },
     );
   }
+}
+
+export const GET = withCors(getGuestBooks);
+export const POST = withCors(createGuestBook);
+export const PUT = withCors(updateGuestBook);
+export const DELETE = withCors(deleteGuestBook);
+
+export async function OPTIONS(request: NextRequest) {
+  if (request.headers.get("origin") !== allowedOrigin) {
+    return new NextResponse(null, { status: 403 });
+  }
+  return addCorsHeaders(request, new NextResponse(null, { status: 204 }));
 }

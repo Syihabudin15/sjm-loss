@@ -433,37 +433,19 @@ export const PerjanjianKredit = (record: IDapem) => {
       <div class="flex gap-2">
         <p class="w-44">Alamat</p>
         <p class="w-4">:</p>
-        <p class="flex-1">${process.env.NEXT_PUBLIC_APP_COMPANY_ADDRESS_SK}</p>
+        <p class="flex-1">${process.env.NEXT_PUBLIC_APP_COMPANY_ADDRESS}</p>
       </div>
       <div class="flex gap-2">
         <p class="w-44">Email</p>
         <p class="w-4">:</p>
         <p class="flex-1">${process.env.NEXT_PUBLIC_APP_COMPANY_EMAIL}</p>
       </div>
+      <div class="flex gap-2">
+        <p class="w-44">No. Telepon</p>
+        <p class="w-4">:</p>
+        <p class="flex-1">${process.env.NEXT_PUBLIC_APP_COMPANY_PHONE}</p>
+      </div>
     </div>
-
-   ${
-     record.ProdukPembiayaan.Sumdan.code !== "BANK" &&
-     `<div class="ml-4 my-3">
-      <p class="font-bold">${record.ProdukPembiayaan.Sumdan.name}</p>
-      <div class="flex gap-2">
-        <p class="w-44">Up</p>
-        <p class="w-4">:</p>
-        <p class="flex-1">${record.ProdukPembiayaan.Sumdan.pic}</p>
-      </div>
-      <div class="flex gap-2">
-        <p class="w-44">Alamat</p>
-        <p class="w-4">:</p>
-        <p class="flex-1">${record.ProdukPembiayaan.Sumdan.address}</p>
-      </div>
-      <div class="flex gap-2">
-        <p class="w-44">Email</p>
-        <p class="w-4">:</p>
-        <p class="flex-1">${record.ProdukPembiayaan.Sumdan.email}</p>
-      </div>
-    </div>`
-   }
-
   </div>
 
   <div class="my-8">
