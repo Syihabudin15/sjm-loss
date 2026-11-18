@@ -420,7 +420,9 @@ export const ModelName = {
   AgentFronting: 'AgentFronting',
   SumdanAgentFronting: 'SumdanAgentFronting',
   DataSimulasi: 'DataSimulasi',
-  DPKStatus: 'DPKStatus'
+  DPKStatus: 'DPKStatus',
+  GuestBook: 'GuestBook',
+  GBookParticipant: 'GBookParticipant'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -436,7 +438,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "role" | "sumdan" | "area" | "cabang" | "user" | "produkPembiayaan" | "jenisPembiayaan" | "debitur" | "dapem" | "aIAnalysis" | "payOffice" | "insurance" | "dropping" | "berkas" | "jaminan" | "pelunasan" | "angsuran" | "categoryOfAccount" | "journalEntry" | "journalDetail" | "agentFronting" | "sumdanAgentFronting" | "dataSimulasi" | "dPKStatus"
+    modelProps: "role" | "sumdan" | "area" | "cabang" | "user" | "produkPembiayaan" | "jenisPembiayaan" | "debitur" | "dapem" | "aIAnalysis" | "payOffice" | "insurance" | "dropping" | "berkas" | "jaminan" | "pelunasan" | "angsuran" | "categoryOfAccount" | "journalEntry" | "journalDetail" | "agentFronting" | "sumdanAgentFronting" | "dataSimulasi" | "dPKStatus" | "guestBook" | "gBookParticipant"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2024,6 +2026,138 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    GuestBook: {
+      payload: Prisma.$GuestBookPayload<ExtArgs>
+      fields: Prisma.GuestBookFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GuestBookFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestBookPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GuestBookFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestBookPayload>
+        }
+        findFirst: {
+          args: Prisma.GuestBookFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestBookPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GuestBookFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestBookPayload>
+        }
+        findMany: {
+          args: Prisma.GuestBookFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestBookPayload>[]
+        }
+        create: {
+          args: Prisma.GuestBookCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestBookPayload>
+        }
+        createMany: {
+          args: Prisma.GuestBookCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.GuestBookDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestBookPayload>
+        }
+        update: {
+          args: Prisma.GuestBookUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestBookPayload>
+        }
+        deleteMany: {
+          args: Prisma.GuestBookDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GuestBookUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.GuestBookUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuestBookPayload>
+        }
+        aggregate: {
+          args: Prisma.GuestBookAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGuestBook>
+        }
+        groupBy: {
+          args: Prisma.GuestBookGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GuestBookGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GuestBookCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GuestBookCountAggregateOutputType> | number
+        }
+      }
+    }
+    GBookParticipant: {
+      payload: Prisma.$GBookParticipantPayload<ExtArgs>
+      fields: Prisma.GBookParticipantFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GBookParticipantFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GBookParticipantPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GBookParticipantFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GBookParticipantPayload>
+        }
+        findFirst: {
+          args: Prisma.GBookParticipantFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GBookParticipantPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GBookParticipantFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GBookParticipantPayload>
+        }
+        findMany: {
+          args: Prisma.GBookParticipantFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GBookParticipantPayload>[]
+        }
+        create: {
+          args: Prisma.GBookParticipantCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GBookParticipantPayload>
+        }
+        createMany: {
+          args: Prisma.GBookParticipantCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.GBookParticipantDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GBookParticipantPayload>
+        }
+        update: {
+          args: Prisma.GBookParticipantUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GBookParticipantPayload>
+        }
+        deleteMany: {
+          args: Prisma.GBookParticipantDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GBookParticipantUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.GBookParticipantUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GBookParticipantPayload>
+        }
+        aggregate: {
+          args: Prisma.GBookParticipantAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGBookParticipant>
+        }
+        groupBy: {
+          args: Prisma.GBookParticipantGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GBookParticipantGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GBookParticipantCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GBookParticipantCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2630,6 +2764,36 @@ export const DPKStatusScalarFieldEnum = {
 export type DPKStatusScalarFieldEnum = (typeof DPKStatusScalarFieldEnum)[keyof typeof DPKStatusScalarFieldEnum]
 
 
+export const GuestBookScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  email: 'email',
+  address: 'address',
+  date_come: 'date_come',
+  status_come: 'status_come',
+  desc: 'desc',
+  result_desc: 'result_desc',
+  file: 'file',
+  status: 'status',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type GuestBookScalarFieldEnum = (typeof GuestBookScalarFieldEnum)[keyof typeof GuestBookScalarFieldEnum]
+
+
+export const GBookParticipantScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  desc: 'desc',
+  guestBookId: 'guestBookId'
+} as const
+
+export type GBookParticipantScalarFieldEnum = (typeof GBookParticipantScalarFieldEnum)[keyof typeof GBookParticipantScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3015,6 +3179,31 @@ export const DPKStatusOrderByRelevanceFieldEnum = {
 export type DPKStatusOrderByRelevanceFieldEnum = (typeof DPKStatusOrderByRelevanceFieldEnum)[keyof typeof DPKStatusOrderByRelevanceFieldEnum]
 
 
+export const GuestBookOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  email: 'email',
+  address: 'address',
+  desc: 'desc',
+  result_desc: 'result_desc',
+  file: 'file'
+} as const
+
+export type GuestBookOrderByRelevanceFieldEnum = (typeof GuestBookOrderByRelevanceFieldEnum)[keyof typeof GuestBookOrderByRelevanceFieldEnum]
+
+
+export const GBookParticipantOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  desc: 'desc',
+  guestBookId: 'guestBookId'
+} as const
+
+export type GBookParticipantOrderByRelevanceFieldEnum = (typeof GBookParticipantOrderByRelevanceFieldEnum)[keyof typeof GBookParticipantOrderByRelevanceFieldEnum]
+
+
 
 /**
  * Field references
@@ -3293,6 +3482,8 @@ export type GlobalOmitConfig = {
   sumdanAgentFronting?: Prisma.SumdanAgentFrontingOmit
   dataSimulasi?: Prisma.DataSimulasiOmit
   dPKStatus?: Prisma.DPKStatusOmit
+  guestBook?: Prisma.GuestBookOmit
+  gBookParticipant?: Prisma.GBookParticipantOmit
 }
 
 /* Types for Logging */

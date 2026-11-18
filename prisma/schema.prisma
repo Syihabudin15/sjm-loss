@@ -778,3 +778,38 @@ model DPKStatus {
 
   @@map("dpkstatus")
 }
+
+model GuestBook {
+  id          String   @id @default(uuid())
+  name        String
+  phone       String?
+  email       String?
+  address     String?
+  date_come   DateTime
+  status_come Boolean  @default(true)
+  desc        String?  @db.Text
+  result_desc String?  @db.Text
+  file        String?
+
+  status            Boolean            @default(true)
+  created_at        DateTime           @default(now())
+  updated_at        DateTime           @default(now())
+  GbookParticipants GBookParticipant[]
+
+  @@index([status, date_come, name])
+  @@index([status, status_come, date_come, name])
+  @@map("guset_books")
+}
+
+model GBookParticipant {
+  id    String  @id @default(uuid())
+  name  String
+  phone String?
+  desc  String?
+
+  GuestBook   GuestBook @relation(fields: [guestBookId], references: [id])
+  guestBookId String
+
+  @@index([guestBookId])
+  @@map("gbook_participants")
+}

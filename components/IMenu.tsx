@@ -357,6 +357,13 @@ export const listMenuUI: IMenuType[] = [
       },
     ],
   },
+  {
+    label: "Buku Tamu",
+    key: "/guest_book",
+    icon: <BookOutlined />,
+    needaccess: true,
+    availableAccess: ["read", "create", "update", "delete"],
+  },
 ];
 
 export const listMenuServer: { key: string; needaccess: boolean }[] = [
@@ -514,6 +521,10 @@ export const listMenuServer: { key: string; needaccess: boolean }[] = [
   },
   {
     key: "/master/insurance",
+    needaccess: true,
+  },
+  {
+    key: "/guest_book",
     needaccess: true,
   },
 ];

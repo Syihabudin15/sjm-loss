@@ -137,3 +137,13 @@ export type DataSimulasi = Prisma.DataSimulasiModel
  * 
  */
 export type DPKStatus = Prisma.DPKStatusModel
+/**
+ * Model GuestBook
+ * 
+ */
+export type GuestBook = Prisma.GuestBookModel
+/**
+ * Model GBookParticipant
+ * 
+ */
+export type GBookParticipant = Prisma.GBookParticipantModel

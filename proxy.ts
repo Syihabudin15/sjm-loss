@@ -24,5 +24,6 @@ export const config = {
     "/database",
     "/slik-analyze",
     "/master/:path*",
+    "/guest_book",
   ],
 };

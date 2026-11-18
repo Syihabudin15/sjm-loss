@@ -74,7 +74,9 @@ export const ModelName = {
   AgentFronting: 'AgentFronting',
   SumdanAgentFronting: 'SumdanAgentFronting',
   DataSimulasi: 'DataSimulasi',
-  DPKStatus: 'DPKStatus'
+  DPKStatus: 'DPKStatus',
+  GuestBook: 'GuestBook',
+  GBookParticipant: 'GBookParticipant'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,6 +662,36 @@ export const DPKStatusScalarFieldEnum = {
 export type DPKStatusScalarFieldEnum = (typeof DPKStatusScalarFieldEnum)[keyof typeof DPKStatusScalarFieldEnum]
 
 
+export const GuestBookScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  email: 'email',
+  address: 'address',
+  date_come: 'date_come',
+  status_come: 'status_come',
+  desc: 'desc',
+  result_desc: 'result_desc',
+  file: 'file',
+  status: 'status',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type GuestBookScalarFieldEnum = (typeof GuestBookScalarFieldEnum)[keyof typeof GuestBookScalarFieldEnum]
+
+
+export const GBookParticipantScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  desc: 'desc',
+  guestBookId: 'guestBookId'
+} as const
+
+export type GBookParticipantScalarFieldEnum = (typeof GBookParticipantScalarFieldEnum)[keyof typeof GBookParticipantScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1043,4 +1075,29 @@ export const DPKStatusOrderByRelevanceFieldEnum = {
 } as const
 
 export type DPKStatusOrderByRelevanceFieldEnum = (typeof DPKStatusOrderByRelevanceFieldEnum)[keyof typeof DPKStatusOrderByRelevanceFieldEnum]
+
+
+export const GuestBookOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  email: 'email',
+  address: 'address',
+  desc: 'desc',
+  result_desc: 'result_desc',
+  file: 'file'
+} as const
+
+export type GuestBookOrderByRelevanceFieldEnum = (typeof GuestBookOrderByRelevanceFieldEnum)[keyof typeof GuestBookOrderByRelevanceFieldEnum]
+
+
+export const GBookParticipantOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  desc: 'desc',
+  guestBookId: 'guestBookId'
+} as const
+
+export type GBookParticipantOrderByRelevanceFieldEnum = (typeof GBookParticipantOrderByRelevanceFieldEnum)[keyof typeof GBookParticipantOrderByRelevanceFieldEnum]
 
