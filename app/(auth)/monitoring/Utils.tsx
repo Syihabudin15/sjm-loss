@@ -1688,6 +1688,20 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                       <FormInput
                         data={{
                           mode: "vertical",
+                          label: "Cabang Kantor Bayar",
+                          type: "text",
+                          class: "flex-1",
+                          value: data.kc_pay_office,
+                          onChange: (e: string) =>
+                            setData({
+                              ...data,
+                              kc_pay_office: e,
+                            }),
+                        }}
+                      />
+                      <FormInput
+                        data={{
+                          mode: "vertical",
                           label: "Nomor Rekening",
                           type: "text",
                           class: "flex-1",
