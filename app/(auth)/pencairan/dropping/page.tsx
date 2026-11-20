@@ -46,7 +46,7 @@ const { RangePicker } = DatePicker;
 export default function Page() {
   const [pageProps, setPageProps] = useState<IPageProps<IDropping>>({
     page: 1,
-    limit: 100,
+    limit: 25,
     data: [],
     total: 0,
     search: "",
@@ -116,16 +116,14 @@ export default function Page() {
   const printSI = async (record: IDropping) => {
     switch (record.Sumdan.code) {
       case "BPR ABS": {
-        const { printSIABS } = await import(
-          "@/components/pdfutils/si/SIStandarABS"
-        );
+        const { printSIABS } =
+          await import("@/components/pdfutils/si/SIStandarABS");
         printSIABS(record);
         break;
       }
       default: {
-        const { printSIStandar } = await import(
-          "@/components/pdfutils/si/SIStandar"
-        );
+        const { printSIStandar } =
+          await import("@/components/pdfutils/si/SIStandar");
         printSIStandar(record);
         break;
       }

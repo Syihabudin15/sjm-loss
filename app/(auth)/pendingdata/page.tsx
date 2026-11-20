@@ -67,7 +67,7 @@ interface IActionTableAkad<T> extends IActionTable<T> {
 export default function Page() {
   const [pageProps, setPageProps] = useState<IPageProps<IDapem>>({
     page: 1,
-    limit: 100,
+    limit: 50,
     total: 0,
     data: [],
     search: "",
@@ -644,9 +644,8 @@ export default function Page() {
             size="small"
             type="primary"
             onClick={async () => {
-              const { printMonitoring } = await import(
-                "@/components/pdfutils/etc/printMonitoring"
-              );
+              const { printMonitoring } =
+                await import("@/components/pdfutils/etc/printMonitoring");
               printMonitoring(pageProps.data, sumdans, pageProps.backdate);
             }}
           >
@@ -961,9 +960,8 @@ const PrintContractSubmission = ({
         const { msg, status, data } = res;
         if (status === 200) {
           await getData();
-          const { printContract } = await import(
-            "@/components/pdfutils/akad/Akad"
-          );
+          const { printContract } =
+            await import("@/components/pdfutils/akad/Akad");
           printContract({ ...temp, Angsuran: data } as IDapem);
         } else {
           hook.error({ content: msg });

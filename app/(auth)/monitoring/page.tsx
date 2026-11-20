@@ -93,7 +93,7 @@ interface IActionTableAkad<T> extends IActionTable<T> {
 export default function Page() {
   const [pageProps, setPageProps] = useState<IPageProps<IDapem>>({
     page: 1,
-    limit: 100,
+    limit: 50,
     total: 0,
     data: [],
     search: "",
@@ -137,7 +137,9 @@ export default function Page() {
         ...(pageProps.dropping_status && {
           dropping_status: pageProps.dropping_status,
         }),
-        ...(pageProps.backdate && { backdate: pageProps.backdate }),
+        ...(pageProps.backdate
+          ? { backdate: pageProps.backdate }
+          : { currmonth: "true" }),
         ...(pageProps.jenisPembiayaanId && {
           jenisPembiayaanId: pageProps.jenisPembiayaanId,
         }),
