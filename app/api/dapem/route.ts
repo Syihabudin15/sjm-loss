@@ -139,8 +139,26 @@ export const GET = async (request: NextRequest) => {
                 },
               },
               {
+                Dropping: {
+                  OR: [
+                    {
+                      created_at: {
+                        gte: moment().startOf("month").toDate(),
+                        lte: moment().endOf("month").toDate(),
+                      },
+                    },
+                    {
+                      process_at: {
+                        gte: moment().startOf("month").toDate(),
+                        lte: moment().endOf("month").toDate(),
+                      },
+                    },
+                  ],
+                },
+              },
+              {
                 dropping_status: {
-                  in: ["DRAFT", "PENDING", "PROSES", "DISETUJUI"],
+                  in: ["DRAFT", "PENDING", "PROSES"],
                 },
               },
             ],
