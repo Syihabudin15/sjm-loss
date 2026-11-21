@@ -180,7 +180,7 @@ export default function Page() {
         size="small"
         loading={loading}
         rowKey={"id"}
-        scroll={{ x: "max-content", y: "56vh" }}
+        scroll={{ x: "max-content", y: "55vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,

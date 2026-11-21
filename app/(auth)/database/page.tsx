@@ -206,7 +206,7 @@ export default function Page() {
         loading={loading}
         rowKey={"nopen"}
         bordered
-        scroll={{ x: "max-content", y: "56vh" }}
+        scroll={{ x: "max-content", y: "55vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,

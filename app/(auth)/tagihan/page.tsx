@@ -593,7 +593,7 @@ export default function Page() {
         loading={loading}
         rowKey={"id"}
         bordered
-        scroll={{ x: "max-content", y: "56vh" }}
+        scroll={{ x: "max-content", y: "55vh" }}
         rowSelection={rowSelection}
         pagination={{
           current: pageProps.page,
