@@ -502,6 +502,7 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                       onChange: (e: string) =>
                         setData({
                           ...data,
+                          produkPembiayaanId: "",
                           Debitur: { ...data.Debitur, birthdate: new Date(e) },
                         }),
                     }}
@@ -2266,25 +2267,6 @@ export default function UpsertPermohonan({ record }: { record?: IDapem }) {
                   loading={loading}
                 >
                   <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
-                    <FormInput
-                      data={{
-                        mode: "vertical",
-                        label: "Admin Input",
-                        type: "select",
-                        class: "flex-1",
-                        value: data.userId,
-                        options: users.map((u) => ({
-                          label: `${u.fullname} (${u.position})`,
-                          value: u.id,
-                        })),
-                        onChange: (e: string | null) => {
-                          setData({
-                            ...data,
-                            userId: e || user?.id || "",
-                          });
-                        },
-                      }}
-                    />
                     <FormInput
                       data={{
                         mode: "vertical",

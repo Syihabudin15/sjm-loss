@@ -261,7 +261,14 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
         )}
       </Sider>
 
-      <Layout style={{ background: "transparent" }}>
+      <Layout
+        style={{
+          height: "calc(100vh - 12px)",
+          minHeight: 0,
+          overflow: "auto",
+          background: "transparent",
+        }}
+      >
         <Header
           style={{
             margin: "5px 5px 0 5px",
