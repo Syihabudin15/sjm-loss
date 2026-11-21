@@ -114,16 +114,16 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
         collapsedWidth={isMobile ? 0 : 80}
         collapsed={collapsed}
         onCollapse={(value: boolean) => setCollapsed(value)}
-        width={260}
+        width={250}
         hidden={isMobile}
         theme="light"
         style={{
-          margin: "12px 0 12px 12px",
-          borderRadius: "16px",
+          margin: "5px 0px 0px 5px",
+          borderRadius: "10px",
           boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)",
           height: "calc(100vh - 24px)",
           position: "sticky",
-          top: 12,
+          // top: 12,
           left: 0,
           display: "flex",
           flexDirection: "column",
@@ -132,7 +132,7 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
       >
         <div
           style={{
-            margin: "12px",
+            margin: "5px",
             padding: collapsed ? "12px 4px" : "16px",
             borderRadius: "12px",
             background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
@@ -182,7 +182,7 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
               <div
                 style={{
                   fontWeight: 600,
-                  fontSize: 14,
+                  fontSize: 13,
                   whiteSpace: "nowrap",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
@@ -242,8 +242,8 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
             style={{
               flex: 1,
               overflowY: "auto",
-              paddingBottom: 24,
-              height: 470,
+              // paddingBottom: 24,
+              height: 500,
             }}
             className="custom-scrollbar"
           >
@@ -264,14 +264,14 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
       <Layout style={{ background: "transparent" }}>
         <Header
           style={{
-            margin: "12px 12px 0 12px",
+            margin: "5px 5px 0 5px",
             padding: "0 20px",
             height: 56,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             background: "#fff",
-            borderRadius: "16px",
+            borderRadius: "10px",
             boxShadow: "0 4px 20px rgba(0, 0, 0, 0.03)",
           }}
         >
@@ -437,10 +437,10 @@ export default function ILayout({ children }: { children: React.ReactNode }) {
 
         <Content
           style={{
-            margin: "12px",
+            margin: "5px",
             background: "#fff",
             borderRadius: "16px",
-            padding: "15px",
+            // padding: "15px",
             boxShadow: "0 4px 20px rgba(0, 0, 0, 0.02)",
           }}
           className="custom-scrollbar"
@@ -547,7 +547,7 @@ const Notify = ({
       }}
       className="hover:bg-slate-100"
     >
-      <span style={{ color: "#334155", fontSize: "12px", fontWeight: 500 }}>
+      <span style={{ color: "#334155", fontSize: "11px", fontWeight: 500 }}>
         {name}
       </span>
       {count > 0 ? (

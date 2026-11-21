@@ -35,8 +35,8 @@ export default function RootLayout({
           theme={{
             token: {
               fontFamily: "var(--font-geist-mono)",
-              borderRadius: 10,
-              fontSize: 13,
+              borderRadius: 8,
+              fontSize: 11,
             },
           }}
           locale={locale}

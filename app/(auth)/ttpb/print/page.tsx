@@ -133,7 +133,7 @@ export default function Page() {
           size="small"
           rowKey={"id"}
           bordered
-          scroll={{ x: "max-content", y: "60vh" }}
+          scroll={{ x: "max-content", y: "56vh" }}
           pagination={{
             current: pageProps.page,
             pageSize: pageProps.limit,
@@ -226,7 +226,7 @@ export default function Page() {
           </div>
           <div className="my-4">
             <p className="font-bold">List Account : </p>
-            <div className="italic text-xs">
+            <div className="italic ">
               {selecteds.map((d) => (
                 <span key={d.id}>{d.Debitur.fullname}</span>
               ))}
@@ -312,7 +312,7 @@ const columnDapem: TableProps<IDapem>["columns"] = [
       return (
         <div>
           <p>{record.Debitur.fullname}</p>
-          <p className="opacity-80 text-xs">@{record.nopen}</p>
+          <p className="opacity-80 ">@{record.nopen}</p>
         </div>
       );
     },
@@ -336,7 +336,7 @@ const columnDapem: TableProps<IDapem>["columns"] = [
     dataIndex: "tgl",
     render(value, record, index) {
       return (
-        <div className="text-xs opacity-80">
+        <div className=" opacity-80">
           <div>Akad {moment(record.date_contract).format("DD/MM/YYYY")}</div>
           <div>
             Realisai {moment(record.Dropping?.process_at).format("DD/MM/YYYY")}

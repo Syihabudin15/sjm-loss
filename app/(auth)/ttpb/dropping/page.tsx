@@ -156,11 +156,11 @@ export default function Page() {
         return (
           <div>
             <div>
-              <span className="text-xs opacity-80">Plafond:</span>{" "}
+              <span className=" opacity-80">Plafond:</span>{" "}
               <Tag color={"blue"}>{IDRFormat(total)}</Tag>
             </div>
             <div>
-              <span className="text-xs opacity-80">Angsuran:</span>{" "}
+              <span className=" opacity-80">Angsuran:</span>{" "}
               <Tag color={"blue"}>{IDRFormat(angsuran)}</Tag>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default function Page() {
           >
             {record.status}
           </Tag>
-          <span className="text-xs opacity-80">
+          <span className=" opacity-80">
             {record.process_at
               ? moment(record.process_at).format("DD-MM-YYYY HH:mm")
               : ""}
@@ -215,9 +215,8 @@ export default function Page() {
                 size="small"
                 type="primary"
                 onClick={async () => {
-                  const { printSDStandar } = await import(
-                    "@/components/pdfutils/si/SDStandar"
-                  );
+                  const { printSDStandar } =
+                    await import("@/components/pdfutils/si/SDStandar");
                   printSDStandar(record);
                 }}
               ></Button>
@@ -347,7 +346,7 @@ export default function Page() {
         size="small"
         rowKey={"id"}
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,
@@ -677,7 +676,7 @@ const TableDapem = ({ data }: { data: IDapem[] }) => {
         return (
           <div>
             <div>{record.Debitur.fullname}</div>
-            <div className="opacity-80 text-xs">@{record.nopen}</div>
+            <div className="opacity-80 ">@{record.nopen}</div>
           </div>
         );
       },
@@ -690,9 +689,7 @@ const TableDapem = ({ data }: { data: IDapem[] }) => {
         return (
           <div>
             <div>{record.ProdukPembiayaan.name}</div>
-            <div className="opacity-80 text-xs">
-              {record.JenisPembiayaan.name}
-            </div>
+            <div className="opacity-80 ">{record.JenisPembiayaan.name}</div>
           </div>
         );
       },

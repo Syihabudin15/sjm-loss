@@ -142,7 +142,7 @@ export default function Page() {
           size="small"
           rowKey={"id"}
           bordered
-          scroll={{ x: "max-content", y: "48vh" }}
+          scroll={{ x: "max-content", y: "56vh" }}
           pagination={{
             current: pageProps.page,
             pageSize: pageProps.limit,
@@ -236,7 +236,7 @@ export default function Page() {
           </div>
           <div className="my-4">
             <p className="font-bold">List Account : </p>
-            <div className="italic text-xs">
+            <div className="italic ">
               {selecteds.map((d) => (
                 <span key={d.id}>{d.Debitur.fullname}</span>
               ))}
@@ -322,7 +322,7 @@ const columnDapem: TableProps<IDapem>["columns"] = [
       return (
         <div>
           <p>{record.Debitur.fullname}</p>
-          <p className="opacity-80 text-xs">@{record.nopen}</p>
+          <p className="opacity-80 ">@{record.nopen}</p>
         </div>
       );
     },
@@ -351,7 +351,7 @@ const columnDapem: TableProps<IDapem>["columns"] = [
           <Tag color={isTbo ? "red" : "blue"} variant="solid">
             {isTbo ? "LEWAT TBO" : "MASA TBO"}
           </Tag>
-          <div className="text-xs opacity-80">
+          <div className=" opacity-80">
             <div>Akad {moment(record.date_contract).format("DD/MM/YYYY")}</div>
             <div>TBO Month ({record.tbo} Bln)</div>
             <div>Tgl TBO {moment(record.tbo_date).format("DD/MM/YYYY")}</div>

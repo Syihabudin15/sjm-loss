@@ -53,7 +53,7 @@ export default function Page() {
   });
   const [pageProps, setPageProps] = useState<IPageProps<ISumdan>>({
     page: 1,
-    limit: 10,
+    limit: 50,
     total: 0,
     data: [],
     search: "",
@@ -70,7 +70,7 @@ export default function Page() {
       page: pageProps.page.toString(),
       limit: pageProps.limit.toString(),
       ...(pageProps.search && { search: pageProps.search }),
-      includes: "true",
+      includeproduct: "true",
       front: "true",
     });
     const res = await fetch(`/api/sumdan?${params.toString()}`);
@@ -99,7 +99,7 @@ export default function Page() {
         return (
           <>
             <div>{(pageProps.page - 1) * pageProps.limit + index + 1}</div>
-            <div className="text-xs opacity-70">{record.id}</div>
+            <div className=" opacity-70">{record.id}</div>
           </>
         );
       },
@@ -113,7 +113,7 @@ export default function Page() {
         return (
           <div>
             <p>{record.name}</p>
-            <p className="text-xs ">@{record.code}</p>
+            <p className=" ">@{record.code}</p>
           </div>
         );
       },
@@ -126,7 +126,7 @@ export default function Page() {
       render(value, record, index) {
         return (
           <div>
-            <div className="text-xs  ">
+            <div className="  ">
               <p>
                 <EnvironmentOutlined /> {record.address}
               </p>
@@ -145,7 +145,7 @@ export default function Page() {
       render(value, record, index) {
         return (
           <div>
-            <div className="text-xs  text-blue-400">
+            <div className="  text-blue-400">
               <p>Rounded : {IDRFormat(record.rounded)}</p>
               <p>DSR : {record.dsr}%</p>
               <p>TBO : {record.tbo} Bulan</p>
@@ -161,7 +161,7 @@ export default function Page() {
       key: "cost_mitra",
       render(value, record, index) {
         return (
-          <div className="text-xs text-blue-400">
+          <div className=" text-blue-400">
             <p>Admin : {record.c_adm_sumdan}%</p>
             <p>Provisi : {record.c_provisi_sumdan}%</p>
             <p>Rekening : {IDRFormat(record.c_account_sumdan)}</p>
@@ -175,7 +175,7 @@ export default function Page() {
       key: "cost",
       render(value, record, index) {
         return (
-          <div className="text-xs text-blue-400">
+          <div className=" text-blue-400">
             <p>Admin : {record.c_adm}%</p>
             <p>Tatalaksana : {IDRFormat(record.c_gov)}</p>
             {/* <p>Materai : {IDRFormat(record.c_stamps)}</p> */}
@@ -189,42 +189,11 @@ export default function Page() {
       key: "lain",
       render(value, record, index) {
         return (
-          <div className="text-xs text-blue-400">
+          <div className=" text-blue-400">
             <p>Tamb Asuransi : {IDRFormat(record.c_flagging)}</p>
             <p>Data Informasi : {IDRFormat(record.c_information)}</p>
             <p>Banpot : {record.fee_banpot}%</p>
             <p>NED : {IDRFormat(record.c_ned)}</p>
-          </div>
-        );
-      },
-    },
-    {
-      title: "Limit",
-      dataIndex: "limit",
-      key: "limit",
-      render(value, record, index) {
-        const total = record.ProdukPembiayaans.flatMap((d) => d.Dapems).reduce(
-          (acc, curr) => acc + curr.plafond,
-          0,
-        );
-        const os = record.ProdukPembiayaans.flatMap((d) =>
-          d.Dapems.filter((dp) => dp.dropping_status === "DISETUJUI").flatMap(
-            (dpa) => GetSisaPokokMargin(dpa as any as IDapem).principal,
-          ),
-        ).reduce((acc, curr) => acc + curr, 0);
-        return (
-          <div className="flex flex-col">
-            <Progress
-              percent={Number(
-                ((total / Number(record.limit)) * 100).toFixed(2),
-              )}
-            />
-            <div className="text-xs opacity-80">
-              {IDRFormat(total)} | {IDRFormat(Number(record.limit))}
-            </div>
-            <div className="text-xs opacity-80 text-center">
-              OS {IDRFormat(os)}
-            </div>
           </div>
         );
       },
@@ -339,7 +308,7 @@ export default function Page() {
         loading={loading}
         rowKey={"id"}
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,
@@ -978,7 +947,7 @@ function TableProduk({
         return (
           <div>
             <div>{record.name}</div>
-            <div className="text-xs opacity-70">{record.id}</div>
+            <div className=" opacity-70">{record.id}</div>
           </div>
         );
       },
@@ -989,7 +958,7 @@ function TableProduk({
       key: "kriteria",
       render(value, record, index) {
         return (
-          <div className="text-xs ">
+          <div className=" ">
             <p>
               Usia : {record.min_age} - {record.max_age}
             </p>
@@ -1004,7 +973,7 @@ function TableProduk({
       key: "kriteria",
       render(value, record, index) {
         return (
-          <div className="text-xs text-blue-400">
+          <div className=" text-blue-400">
             <p>Tenor : {record.max_tenor} Bulan</p>
             <p>Plafond : {IDRFormat(record.max_plafond)}</p>
           </div>
@@ -1017,7 +986,7 @@ function TableProduk({
       key: "biaya",
       render(value, record, index) {
         return (
-          <div className="text-xs text-blue-400">
+          <div className=" text-blue-400">
             <div>
               Margin : {record.c_margin}%+{record.c_margin_sumdan} (
               {record.c_margin + record.c_margin_sumdan}
@@ -1034,7 +1003,7 @@ function TableProduk({
       dataIndex: "updated_at",
       key: "updated_at",
       render: (date) => (
-        <div className="text-xs">{moment(date).format("DD-MM-YYYY")}</div>
+        <div className="">{moment(date).format("DD-MM-YYYY")}</div>
       ),
     },
     {

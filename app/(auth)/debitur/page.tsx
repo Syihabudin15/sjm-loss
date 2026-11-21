@@ -91,7 +91,7 @@ export default function Page() {
         return (
           <div>
             <div>{record.fullname}</div>
-            <div className="text-xs opacity-80  ">@{record.nopen}</div>
+            <div className=" opacity-80  ">@{record.nopen}</div>
           </div>
         );
       },
@@ -133,7 +133,7 @@ export default function Page() {
       key: "alamat_penerima",
       render(value, record, index) {
         return (
-          <div style={{ maxWidth: 250 }} className="text-xs">
+          <div style={{ maxWidth: 250 }} className="">
             {record.address} {record.ward} {record.district} {record.city}{" "}
             {record.province} {record.pos_code} | {record.phone}
           </div>
@@ -200,7 +200,7 @@ export default function Page() {
         loading={loading}
         rowKey={"nopen"}
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,
@@ -291,9 +291,7 @@ const columnDapem: TableProps<IDapem>["columns"] = [
           <div>
             {record.ProdukPembiayaan.id} {record.ProdukPembiayaan.name}
           </div>
-          <div className="text-xs opacity-80">
-            {record.JenisPembiayaan.name}
-          </div>
+          <div className=" opacity-80">{record.JenisPembiayaan.name}</div>
         </div>
       );
     },
@@ -307,7 +305,7 @@ const columnDapem: TableProps<IDapem>["columns"] = [
       return (
         <div>
           <div>{ao?.fullname}</div>
-          <div className="text-xs opacity-80">
+          <div className=" opacity-80">
             <span>{ao?.Cabang.name}</span> | <span>{ao?.Cabang.Area.name}</span>
           </div>
         </div>
@@ -350,7 +348,7 @@ const columnDapem: TableProps<IDapem>["columns"] = [
       return (
         <div>
           <div>{record.no_contract}</div>
-          <div className="opacity-80  text-xs">
+          <div className="opacity-80  ">
             {moment(record.date_contract).format("DD/MM/YYYY")}
           </div>
         </div>

@@ -169,7 +169,7 @@ export default function Page() {
         return (
           <div>
             <div>{(pageProps.page - 1) * pageProps.limit + index + 1}</div>
-            <div className="text-xs opacity-80">{record.id}</div>
+            <div className=" opacity-80">{record.id}</div>
           </div>
         );
       },
@@ -182,7 +182,7 @@ export default function Page() {
         return (
           <div>
             <div>{record.Debitur.fullname}</div>
-            <div className="text-xs opacity-80">@{record.Debitur.nopen}</div>
+            <div className=" opacity-80">@{record.Debitur.nopen}</div>
           </div>
         );
       },
@@ -213,7 +213,7 @@ export default function Page() {
         return (
           <div>
             <div>{record.no_contract}</div>
-            <div className="text-xs opacity-80">
+            <div className=" opacity-80">
               {moment(record.date_contract).format("DD/MM/YYY")}
             </div>
           </div>
@@ -229,7 +229,7 @@ export default function Page() {
         return (
           <div>
             <div>{ao?.fullname}</div>
-            <div className="text-xs opacity-80">
+            <div className=" opacity-80">
               {ao?.Cabang.name} | {ao?.Cabang.Area.name}
             </div>
           </div>
@@ -243,7 +243,7 @@ export default function Page() {
       render(value, record, index) {
         const detail = GetDetailDapem(record);
         return (
-          <div className="text-xs">
+          <div className="">
             <div className="flex gap-2 items-center">
               <Tag color={"blue"}>
                 <BankOutlined /> {IDRFormat(detail.detail.angsuran_sumdan)}
@@ -318,7 +318,7 @@ export default function Page() {
                 <Tag color={find.date_paid ? "green" : "red"} variant="solid">
                   {find.date_paid ? "DIBAYAR" : "BELUM BAYAR"}
                 </Tag>
-                <div className="text-xs opacity-80">
+                <div className=" opacity-80">
                   <div>
                     <CalendarOutlined />{" "}
                     {moment(find.date_pay).format("DD/MM/YYYY")}
@@ -343,9 +343,7 @@ export default function Page() {
         return (
           <div>
             <div>{record.PayOffice.code || record.PayOffice.name}</div>
-            <div className="opacity-80 text-xs">
-              @{record.Debitur.account_number}
-            </div>
+            <div className="opacity-80 ">@{record.Debitur.account_number}</div>
           </div>
         );
       },
@@ -595,7 +593,7 @@ export default function Page() {
         loading={loading}
         rowKey={"id"}
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         rowSelection={rowSelection}
         pagination={{
           current: pageProps.page,
@@ -635,7 +633,7 @@ export default function Page() {
             plafond += p.plafond;
           });
           return (
-            <Table.Summary.Row className="text-xs bg-blue-400">
+            <Table.Summary.Row className=" bg-blue-400">
               <Table.Summary.Cell index={0} colSpan={3} className="text-center">
                 <b>SUMMARY</b>
               </Table.Summary.Cell>
@@ -808,7 +806,7 @@ const UpdateTagihan = ({
               setData({ ...data, date_paid: new Date(e) }),
           }}
         />
-        <div className="italic text-xs text-blue-500">
+        <div className="italic  text-blue-500">
           Isi tanggal bayar untuk update status menjadi tertagih, kosongkan jika
           tidak tertagih!
         </div>
@@ -1161,7 +1159,7 @@ const CekTagihan = ({
           </Upload>
         </div>
         {msg.length > 0 && (
-          <div className="mt-4 text-xs">
+          <div className="mt-4 ">
             <Divider style={{ marginTop: 5, marginBottom: 5 }} />
             <p className="font-bold mb-2">Hasil Cek Tagihan:</p>
             <ul className="list-decimal list-inside">
@@ -1191,13 +1189,13 @@ const columnsangsuran: TableProps<Angsuran>["columns"] = [
     dataIndex: "counter",
     key: "counter",
     width: 70,
-    className: "text-xs",
+    className: "",
   },
   {
     title: "Jadwal Bayar",
     dataIndex: "date_pay",
     key: "datepay",
-    className: "text-xs",
+    className: "",
     render(value, record, index) {
       return <>{moment(value).format("DD/MM/YYYY")}</>;
     },

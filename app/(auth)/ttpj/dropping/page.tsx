@@ -154,11 +154,11 @@ export default function Page() {
         return (
           <div>
             <div>
-              <span className="italic text-xs opacity-70">Plafond:</span>{" "}
+              <span className="italic  opacity-70">Plafond:</span>{" "}
               <Tag color={"blue"}>{IDRFormat(total)}</Tag>
             </div>
             <div>
-              <span className="italic text-xs opacity-70">Angsuran:</span>{" "}
+              <span className="italic  opacity-70">Angsuran:</span>{" "}
               <Tag color={"blue"}>{IDRFormat(angsuran)}</Tag>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function Page() {
           >
             {record.status}
           </Tag>
-          <span className="text-xs italic opacity-70">
+          <span className=" italic opacity-70">
             {record.process_at
               ? moment(record.process_at).format("DD-MM-YYYY HH:mm")
               : ""}
@@ -213,9 +213,8 @@ export default function Page() {
                 size="small"
                 type="primary"
                 onClick={async () => {
-                  const { printSJStandar } = await import(
-                    "@/components/pdfutils/si/SJStandar"
-                  );
+                  const { printSJStandar } =
+                    await import("@/components/pdfutils/si/SJStandar");
                   printSJStandar(record);
                 }}
               ></Button>
@@ -344,7 +343,7 @@ export default function Page() {
         size="small"
         rowKey={"id"}
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,
@@ -716,7 +715,7 @@ const TableDapem = ({ data }: { data: IDapem[] }) => {
             <Tag color={isTbo ? "red" : "blue"} variant="solid">
               {isTbo ? "LEWAT TBO" : "MASA TBO"}
             </Tag>
-            <div className="text-xs opacity-80">
+            <div className=" opacity-80">
               <div>
                 Akad {moment(record.date_contract).format("DD/MM/YYYY")}
               </div>

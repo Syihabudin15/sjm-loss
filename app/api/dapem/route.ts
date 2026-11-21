@@ -53,6 +53,82 @@ export const GET = async (request: NextRequest) => {
 
   const whereFunc = WheresDapem(user);
   const where: Prisma.DapemWhereInput = {
+    ...(backdate
+      ? {
+          OR: [
+            {
+              date_contract: {
+                gte: moment(backdate.split(",")[0]).toDate(),
+                lte: moment(backdate.split(",")[1]).toDate(),
+              },
+            },
+            {
+              created_at: {
+                gte: moment(backdate.split(",")[0]).toDate(),
+                lte: moment(backdate.split(",")[1]).toDate(),
+              },
+            },
+            {
+              Dropping: {
+                OR: [
+                  {
+                    created_at: {
+                      gte: moment(backdate.split(",")[0]).toDate(),
+                      lte: moment(backdate.split(",")[1]).toDate(),
+                    },
+                  },
+                  {
+                    process_at: {
+                      gte: moment(backdate.split(",")[0]).toDate(),
+                      lte: moment(backdate.split(",")[1]).toDate(),
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        }
+      : currmonth
+        ? {
+            OR: [
+              {
+                date_contract: {
+                  gte: moment().startOf("month").toDate(),
+                  lte: moment().endOf("month").toDate(),
+                },
+              },
+              {
+                created_at: {
+                  gte: moment().startOf("month").toDate(),
+                  lte: moment().endOf("month").toDate(),
+                },
+              },
+              {
+                Dropping: {
+                  OR: [
+                    {
+                      created_at: {
+                        gte: moment().startOf("month").toDate(),
+                        lte: moment().endOf("month").toDate(),
+                      },
+                    },
+                    {
+                      process_at: {
+                        gte: moment().startOf("month").toDate(),
+                        lte: moment().endOf("month").toDate(),
+                      },
+                    },
+                  ],
+                },
+              },
+              {
+                dropping_status: {
+                  in: ["DRAFT", "PENDING", "PROSES"],
+                },
+              },
+            ],
+          }
+        : {}),
     ...(search && ORDapem(search)),
     ...(dropping_status
       ? dropping_status === "FINAL"
@@ -106,64 +182,6 @@ export const GET = async (request: NextRequest) => {
     ...(group_skep && { Debitur: { group_skep } }),
     ...(dev_status && { dev_status: dev_status === "true" ? true : false }),
     ...(audit_status && { audit_status: audit_status as EDapemStatus }),
-    ...(backdate
-      ? {
-          OR: [
-            {
-              date_contract: {
-                gte: moment(backdate.split(",")[0]).toDate(),
-                lte: moment(backdate.split(",")[1]).toDate(),
-              },
-            },
-            {
-              created_at: {
-                gte: moment(backdate.split(",")[0]).toDate(),
-                lte: moment(backdate.split(",")[1]).toDate(),
-              },
-            },
-          ],
-        }
-      : currmonth
-        ? {
-            OR: [
-              {
-                date_contract: {
-                  gte: moment().startOf("month").toDate(),
-                  lte: moment().endOf("month").toDate(),
-                },
-              },
-              {
-                created_at: {
-                  gte: moment().startOf("month").toDate(),
-                  lte: moment().endOf("month").toDate(),
-                },
-              },
-              {
-                Dropping: {
-                  OR: [
-                    {
-                      created_at: {
-                        gte: moment().startOf("month").toDate(),
-                        lte: moment().endOf("month").toDate(),
-                      },
-                    },
-                    {
-                      process_at: {
-                        gte: moment().startOf("month").toDate(),
-                        lte: moment().endOf("month").toDate(),
-                      },
-                    },
-                  ],
-                },
-              },
-              {
-                dropping_status: {
-                  in: ["DRAFT", "PENDING", "PROSES"],
-                },
-              },
-            ],
-          }
-        : {}),
     ...whereFunc,
     status: true,
   };

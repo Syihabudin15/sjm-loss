@@ -46,7 +46,7 @@ const { RangePicker } = DatePicker;
 export default function Page() {
   const [pageProps, setPageProps] = useState<IPageProps<IDropping>>({
     page: 1,
-    limit: 25,
+    limit: 50,
     data: [],
     total: 0,
     search: "",
@@ -193,7 +193,7 @@ export default function Page() {
           }),
         },
       ],
-      "txt_cif", // Catatan: nama file ini masih "txt_cif", sesuaikan jika ingin diganti misal "txt_credit"
+      "txt_credit", // Catatan: nama file ini masih "txt_cif", sesuaikan jika ingin diganti misal "txt_credit"
     );
   };
 
@@ -239,11 +239,11 @@ export default function Page() {
         return (
           <div>
             <div className="flex justify-between gap-2">
-              <span className="text-xs opacity-80">Plafond:</span>{" "}
+              <span className="opacity-80">Plafond:</span>{" "}
               <Tag color={"blue"}>{IDRFormat(total)}</Tag>
             </div>
             <div className="flex justify-between gap-2">
-              <span className="text-xs opacity-80">Dropping:</span>{" "}
+              <span className="opacity-80">Dropping:</span>{" "}
               <Tag color={"blue"}>{IDRFormat(total - biaya)}</Tag>
             </div>
           </div>
@@ -302,7 +302,7 @@ export default function Page() {
           return acc + curr.c_blokir * detail.angsuran; // Explicit return required here
         }, 0);
         return (
-          <div className="text-xs flex flex-col items-center gap-1">
+          <div className=" flex flex-col items-center gap-1">
             <div className="flex justify-center gap-1">
               <Tag color={"blue"}>
                 <BankOutlined />
@@ -325,7 +325,7 @@ export default function Page() {
           <Tag color={record.status ? "green" : "orange"} variant="solid">
             {record.status ? "TRANSFER" : "PENDING"}
           </Tag>
-          <span className="text-xs opacity-80">
+          <span className=" opacity-80">
             {record.process_at
               ? moment(record.process_at).format("DD-MM-YYYY HH:mm")
               : ""}
@@ -528,7 +528,7 @@ export default function Page() {
         size="small"
         rowKey={"id"}
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,

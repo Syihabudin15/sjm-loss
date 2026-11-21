@@ -26,7 +26,7 @@ export default function Page() {
   });
   const [pageProps, setPageProps] = useState<IPageProps<IArea>>({
     page: 1,
-    limit: 10,
+    limit: 50,
     total: 0,
     data: [],
     search: "",
@@ -152,7 +152,7 @@ export default function Page() {
         size="small"
         loading={loading}
         rowKey={"id"}
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         bordered
         pagination={{
           current: pageProps.page,

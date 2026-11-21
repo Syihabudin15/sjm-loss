@@ -246,7 +246,7 @@ export default function Page() {
         render: (_, record, index) => (
           <div>
             <div>{(pageProps.page - 1) * pageProps.limit + index + 1}</div>
-            <div className="opacity-80 text-xs">{record.id}</div>
+            <div className="opacity-80 ">{record.id}</div>
           </div>
         ),
       },
@@ -261,7 +261,7 @@ export default function Page() {
         render: (_, record) => (
           <div>
             <p className="font-bold">{record.Debitur?.fullname}</p>
-            <div className="text-xs opacity-80">
+            <div className=" opacity-80">
               <p>@{record.Debitur?.nopen}</p>
             </div>
           </div>
@@ -289,7 +289,7 @@ export default function Page() {
         render: (_, record) => {
           const detail = GetDetailDapem(record);
           return (
-            <div className="text-xs">
+            <div className="">
               <div className="flex gap-2 items-center">
                 <Tag color="blue">
                   <BankOutlined /> {IDRFormat(detail.detail.angsuran_sumdan)}
@@ -315,7 +315,7 @@ export default function Page() {
               {record.ProdukPembiayaan?.name}{" "}
               <span>({record.ProdukPembiayaan?.Sumdan?.code})</span>
             </p>
-            <p className="opacity-80 text-xs">{record.JenisPembiayaan?.name}</p>
+            <p className="opacity-80 ">{record.JenisPembiayaan?.name}</p>
           </div>
         ),
       },
@@ -328,7 +328,7 @@ export default function Page() {
           return (
             <div>
               <div>{ao?.fullname}</div>
-              <div className="text-xs opacity-80">
+              <div className=" opacity-80">
                 {ao?.Cabang?.name} | {ao?.Cabang?.Area?.name}
               </div>
             </div>
@@ -342,9 +342,7 @@ export default function Page() {
         render: (_, record) => (
           <div>
             <div>{record.AgentFronting?.name}</div>
-            <div className="text-xs opacity-80">
-              {record.AgentFronting?.code}
-            </div>
+            <div className=" opacity-80">{record.AgentFronting?.code}</div>
           </div>
         ),
       },
@@ -356,7 +354,7 @@ export default function Page() {
           <div>
             {record.no_contract && <div>{record.no_contract}</div>}
             {record.date_contract && (
-              <div className="text-xs opacity-80">
+              <div className=" opacity-80">
                 {moment(record.date_contract).format("DD/MM/YYYY")}
               </div>
             )}
@@ -403,7 +401,7 @@ export default function Page() {
           <div className="flex gap-1 items-center">
             {GetDroppingStatusTag(record.dropping_status)}
             {record.Dropping?.process_at && (
-              <div className="text-xs text-opacity-80">
+              <div className=" text-opacity-80">
                 {moment(record.Dropping.process_at).format("DD/MM/YYYY HH:mm")}
               </div>
             )}
@@ -435,13 +433,13 @@ export default function Page() {
                   })
                 }
               />
-              <span className="text-xs opacity-80">
+              <span className=" opacity-80">
                 {moment(record.takeover_date_exc).format("DD/MM/YYYY")}
               </span>
             </div>
             <Paragraph
               ellipsis={{ rows: 2, expandable: "collapsible" }}
-              style={{ fontSize: 11, margin: 0, marginTop: 4 }}
+              style={{ fontSize: 10, margin: 0, marginTop: 4 }}
             >
               {record.takeover_desc}
             </Paragraph>
@@ -470,13 +468,13 @@ export default function Page() {
                   })
                 }
               />
-              <span className="text-xs opacity-80">
+              <span className=" opacity-80">
                 {moment(record.mutasi_date_exc).format("DD/MM/YYYY")}
               </span>
             </div>
             <Paragraph
               ellipsis={{ rows: 2, expandable: "collapsible" }}
-              style={{ fontSize: 11, margin: 0, marginTop: 4 }}
+              style={{ fontSize: 10, margin: 0, marginTop: 4 }}
             >
               {record.mutasi_desc}
             </Paragraph>
@@ -508,13 +506,13 @@ export default function Page() {
                   })
                 }
               />
-              <span className="text-xs opacity-80">
+              <span className=" opacity-80">
                 {moment(record.flagging_date_exc).format("DD/MM/YYYY")}
               </span>
             </div>
             <Paragraph
               ellipsis={{ rows: 2, expandable: "collapsible" }}
-              style={{ fontSize: 11, margin: 0, marginTop: 4 }}
+              style={{ fontSize: 10, margin: 0, marginTop: 4 }}
             >
               {record.flagging_desc}
             </Paragraph>
@@ -552,14 +550,14 @@ export default function Page() {
                     })
                   }
                 />
-                <span className="text-xs opacity-80">
+                <span className=" opacity-80">
                   {IDRFormat(total)}/{IDRFormat(tb)} ({percent}%) (
                   {IDRFormat(tb - total)})
                 </span>
               </div>
               <Paragraph
                 ellipsis={{ rows: 1, expandable: "collapsible" }}
-                style={{ fontSize: 11, margin: 0, marginTop: 4 }}
+                style={{ fontSize: 10, margin: 0, marginTop: 4 }}
               >
                 {desc.map((d, i) => {
                   const itemPercent =
@@ -606,14 +604,14 @@ export default function Page() {
                 }
               />
               {record.Berkas?.process_at && (
-                <span className="text-xs opacity-80">
+                <span className=" opacity-80">
                   Send : {moment(record.Berkas.process_at).format("DD/MM/YYYY")}
                 </span>
               )}
             </div>
             <Paragraph
               ellipsis={{ rows: 2, expandable: "collapsible" }}
-              style={{ fontSize: 11, margin: 0, marginTop: 4 }}
+              style={{ fontSize: 10, margin: 0, marginTop: 4 }}
             >
               {record.document_desc}
             </Paragraph>
@@ -656,7 +654,7 @@ export default function Page() {
                     })
                   }
                 />
-                <div className="text-xs opacity-80">
+                <div className=" opacity-80">
                   <div>
                     TBO : {moment(record.tbo_date).format("DD/MM/YYYY")}
                   </div>
@@ -670,7 +668,7 @@ export default function Page() {
               </div>
               <Paragraph
                 ellipsis={{ rows: 2, expandable: "collapsible" }}
-                style={{ fontSize: 11, margin: 0, marginTop: 4 }}
+                style={{ fontSize: 10, margin: 0, marginTop: 4 }}
               >
                 {record.guarantee_desc}
               </Paragraph>
@@ -720,7 +718,7 @@ export default function Page() {
         render: (_, record) => (
           <div>
             <div>{record.User?.fullname}</div>
-            <div className="opacity-80 text-xs">
+            <div className="opacity-80 ">
               {moment(record.created_at).format("DD/MM/YYYY")}
             </div>
           </div>
@@ -809,7 +807,7 @@ export default function Page() {
     const admAngsuran = Math.ceil(totalAngs - angsSumdan);
 
     return (
-      <Table.Summary.Row className="text-xs bg-blue-400">
+      <Table.Summary.Row className=" bg-blue-400">
         <Table.Summary.Cell index={0} colSpan={2} className="text-center">
           <b>SUMMARY</b>
         </Table.Summary.Cell>
@@ -1088,7 +1086,7 @@ export default function Page() {
         loading={loading}
         rowKey="id"
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,

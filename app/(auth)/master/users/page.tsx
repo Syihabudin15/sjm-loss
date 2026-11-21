@@ -50,7 +50,7 @@ export default function Page() {
   });
   const [pageProps, setPageProps] = useState<IPageProps<UserType>>({
     page: 1,
-    limit: 10,
+    limit: 50,
     total: 0,
     data: [],
     search: "",
@@ -144,7 +144,7 @@ export default function Page() {
         return (
           <div>
             <div>{(pageProps.page - 1) * pageProps.limit + index + 1}</div>
-            <div className="opacity-80 text-xs">{record.id}</div>
+            <div className="opacity-80 ">{record.id}</div>
           </div>
         );
       },
@@ -158,7 +158,7 @@ export default function Page() {
         return (
           <div>
             <p>{record.fullname}</p>
-            <div className="text-xs">@{record.username}</div>
+            <div className="">@{record.username}</div>
           </div>
         );
       },
@@ -167,7 +167,7 @@ export default function Page() {
       title: "Kontak",
       dataIndex: "kontak",
       key: "kontak",
-      className: "text-xs",
+      className: "",
       render(value, record, index) {
         return (
           <div>
@@ -185,7 +185,7 @@ export default function Page() {
       title: "Unit Pelayanan",
       dataIndex: "tambahan",
       key: "tambahan",
-      className: "text-xs",
+      className: "",
       // sorter: (a, b) => a.fullname.localeCompare(b.fullname),
       render(value, record, index) {
         return (
@@ -204,7 +204,7 @@ export default function Page() {
       title: "Posisi & Target",
       dataIndex: "position",
       key: "position",
-      className: "text-xs",
+      className: "",
       render(value, record, index) {
         return (
           <div>
@@ -227,13 +227,13 @@ export default function Page() {
         <div className="flex gap-2">
           <div>
             <Tag color={"blue"}>{record.pkwt_status || "NOT SET"}</Tag>
-            <div className="text-xs opacity-80 flex gap-1">
+            <div className=" opacity-80 flex gap-1">
               <CalendarArrowUp size={14} />{" "}
               {record.start_pkwt
                 ? moment(record.start_pkwt).format("DD/MM/YYYY")
                 : "-"}
             </div>
-            <div className="text-xs opacity-80 flex gap-1">
+            <div className=" opacity-80 flex gap-1">
               <CalendarArrowDown size={14} />{" "}
               {record.end_pkwt
                 ? moment(record.end_pkwt).format("DD/MM/YYYY")
@@ -249,10 +249,10 @@ export default function Page() {
       key: "mitra",
       render: (_, record) => (
         <div className="">
-          <div className="text-xs opacity-80 flex gap-1">
+          <div className=" opacity-80 flex gap-1">
             <BankOutlined size={14} /> {record.Sumdan?.code || "-"}
           </div>
-          <div className="text-xs opacity-80 flex gap-1">
+          <div className=" opacity-80 flex gap-1">
             <BranchesOutlined size={14} /> {record.AgentFronting?.code || "-"}
           </div>
         </div>
@@ -453,7 +453,7 @@ export default function Page() {
         loading={loading}
         rowKey={"id"}
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,

@@ -146,7 +146,7 @@ export default function Page() {
         return (
           <div>
             <div>{(pageProps.page - 1) * pageProps.limit + index + 1}</div>
-            <div className="text-xs opacity-80">{record.id}</div>
+            <div className=" opacity-80">{record.id}</div>
           </div>
         );
       },
@@ -159,9 +159,7 @@ export default function Page() {
         return (
           <div>
             <div>{record.Dapem.Debitur.fullname}</div>
-            <div className="text-xs opacity-80">
-              @{record.Dapem.Debitur.nopen}
-            </div>
+            <div className=" opacity-80">@{record.Dapem.Debitur.nopen}</div>
           </div>
         );
       },
@@ -233,7 +231,7 @@ export default function Page() {
               {record.Dapem.ProdukPembiayaan.id}{" "}
               {record.Dapem.ProdukPembiayaan.name}
             </div>
-            <div className="text-xs opacity-80">
+            <div className=" opacity-80">
               {record.Dapem.JenisPembiayaan.name}
             </div>
           </div>
@@ -281,7 +279,7 @@ export default function Page() {
           >
             {record.status_paid}
           </Tag>
-          <div className="text-xs opacity-80">
+          <div className=" opacity-80">
             {record.process_at
               ? moment(record.process_at).format("DD-MM-YYYY")
               : ""}
@@ -303,7 +301,7 @@ export default function Page() {
                 rows: 1,
                 expandable: "collapsible",
               }}
-              style={{ fontSize: 11 }}
+              style={{ fontSize: 10 }}
             >
               {record.desc}
             </Paragraph>
@@ -321,7 +319,7 @@ export default function Page() {
             <Tag color={"blue"}>
               {IDRFormat(record.amount + record.penalty)}
             </Tag>
-            <div className="opacity-80 text-xs">
+            <div className="opacity-80 ">
               <div>Pokok: {IDRFormat(record.amount)}</div>
               <div>Penalty: {IDRFormat(record.penalty)}</div>
             </div>
@@ -343,7 +341,7 @@ export default function Page() {
                 rows: 1,
                 expandable: "collapsible",
               }}
-              style={{ fontSize: 11 }}
+              style={{ fontSize: 10 }}
             >
               {record.desc_sumdan}
             </Paragraph>
@@ -558,7 +556,7 @@ export default function Page() {
         loading={loading}
         rowKey={"id"}
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,
@@ -575,7 +573,7 @@ export default function Page() {
         }}
         summary={(pageData: readonly IPelunasan[]) => {
           return (
-            <Table.Summary.Row className="text-xs bg-blue-400">
+            <Table.Summary.Row className=" bg-blue-400">
               <Table.Summary.Cell index={0} colSpan={2} className="text-center">
                 <b>SUMMARY</b>
               </Table.Summary.Cell>

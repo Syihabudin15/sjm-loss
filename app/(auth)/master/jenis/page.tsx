@@ -36,7 +36,7 @@ export default function Page() {
   });
   const [pageProps, setPageProps] = useState<IPageProps<JenisPembiayaan>>({
     page: 1,
-    limit: 10,
+    limit: 50,
     total: 0,
     data: [],
     search: "",
@@ -81,7 +81,7 @@ export default function Page() {
         return (
           <>
             <div>{(pageProps.page - 1) * pageProps.limit + index + 1}</div>
-            <div className="text-xs opacity-70">{record.id}</div>
+            <div className=" opacity-70">{record.id}</div>
           </>
         );
       },
@@ -98,7 +98,7 @@ export default function Page() {
       key: "biaya",
       render(value, record, index) {
         return (
-          <div className="text-xs">
+          <div className="">
             <p>Blokir : {record.c_blokir}x</p>
             <p>Biaya Mutasi : {IDRFormat(record.c_mutasi)}</p>
           </div>
@@ -111,7 +111,7 @@ export default function Page() {
       key: "statusPermohonan",
       render(value, record, index) {
         return (
-          <div className="text-xs">
+          <div className="">
             <p>
               Pelunasan :{" "}
               {record.status_takeover ? (
@@ -209,7 +209,7 @@ export default function Page() {
         loading={loading}
         rowKey={"id"}
         bordered
-        scroll={{ x: "max-content", y: "48vh" }}
+        scroll={{ x: "max-content", y: "56vh" }}
         pagination={{
           current: pageProps.page,
           pageSize: pageProps.limit,
