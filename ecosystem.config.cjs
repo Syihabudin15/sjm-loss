@@ -4,8 +4,8 @@ module.exports = {
       name: "sjm-sipp",
       script: "node_modules/next/dist/bin/next",
       args: "start",
-      instances: 1, // ⬅️ WAJIB 1
-      exec_mode: "fork", // ⬅️ lebih hemat daripada cluster
+      instances: 2, // ⬅️ WAJIB 1
+      exec_mode: "cluster", // ⬅️ lebih hemat daripada cluster
       autorestart: true,
       watch: false,
       max_memory_restart: "500M",
