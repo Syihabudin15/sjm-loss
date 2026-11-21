@@ -471,7 +471,7 @@ export default function Page() {
     {
       title: "Aksi",
       key: "action",
-      width: 100,
+      width: 150,
       render: (_, record) => (
         <div className="flex gap-1 flex-wrap justify-center">
           {/* {hasAccess("write") && (
