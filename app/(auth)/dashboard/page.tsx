@@ -154,7 +154,7 @@ export default function Page() {
 
   return (
     <Spin spinning={loading} size="large">
-      <div className=" bg-slate-50 min-h-screen space-y-6">
+      <div className="p-2 bg-slate-50 min-h-screen space-y-6">
         {/* SECTION 1: KARTU STATISTIK GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatisticCard
