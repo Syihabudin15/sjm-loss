@@ -19,14 +19,8 @@ export const GET = async (req: NextRequest) => {
     ...WheresDapem(user),
   };
 
-  const [
-    alldata,
-    droppingall,
-    droppingmonthly,
-    applicationmonthly,
-    byjepem,
-    sumdan,
-  ] = await Promise.all([
+  const [alldata, droppingall, droppingmonthly, byjepem, sumdan] =
+    await Promise.all([
       prisma.dapem.findMany({
         where,
         select: {
@@ -106,22 +100,6 @@ export const GET = async (req: NextRequest) => {
           plafond: true,
         },
       }),
-      prisma.dapem.findMany({
-        where: {
-          ...where,
-          created_at: {
-            gte: moment().startOf("month").toDate(),
-            lte: moment().endOf("month").toDate(),
-          },
-        },
-        select: {
-          plafond: true,
-          dropping_status: true,
-          slik_status: true,
-          verif_status: true,
-          approv_status: true,
-        },
-      }),
       prisma.jenisPembiayaan.findMany({
         select: {
           name: true,
@@ -190,7 +168,6 @@ export const GET = async (req: NextRequest) => {
       alldata: serializeForApi(alldata),
       droppingall: serializeForApi(droppingall),
       droppingmonthly: serializeForApi(droppingmonthly),
-      applicationmonthly: serializeForApi(applicationmonthly),
       prevmonth: serializeForApi(prevmonth),
       byjepem: serializeForApi(byjepem),
       bysumdan: serializeForApi(sumdan),
