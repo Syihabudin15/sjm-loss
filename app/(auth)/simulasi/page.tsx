@@ -297,8 +297,8 @@ export default function Page() {
                   if (parsedDate.isValid()) {
                     setData({
                       ...data,
-                      produkPembiayaanId: null,
-                      jenisPembiayaanId: null,
+                      produkPembiayaanId: "",
+                      jenisPembiayaanId: "",
                       Debitur: {
                         ...data.Debitur,
                         birthdate: parsedDate.toDate(),
