@@ -35,9 +35,18 @@ interface IDashboard {
   alldata: IDapem[];
   droppingall: IDapem[];
   droppingmonthly: IDapem[];
+  applicationmonthly: IMonthlyDapem[];
   prevmonth: { month: string; data: IDapem[] }[];
   byjepem: IJenisPembiayaan[];
   bysumdan: ISumdan[];
+}
+
+interface IMonthlyDapem {
+  plafond: number;
+  dropping_status: string;
+  slik_status: string | null;
+  verif_status: string | null;
+  approv_status: string | null;
 }
 
 // Fungsi pembantu untuk menghitung Pending Terima Bersih agar kode JSX tetap bersih
@@ -82,6 +91,7 @@ export default function Page() {
     alldata: [],
     droppingall: [],
     droppingmonthly: [],
+    applicationmonthly: [],
     prevmonth: [],
     byjepem: [],
     bysumdan: [],
@@ -110,6 +120,70 @@ export default function Page() {
   );
   const totalPlafondMonth = data.droppingmonthly.reduce(
     (acc, curr) => acc + curr.plafond,
+    0,
+  );
+
+  const monthlyApplications = data.applicationmonthly;
+  const monthlyStatusSummary = [
+    {
+      label: "Draft",
+      cardClass: "border-amber-200 bg-amber-50/80",
+      labelClass: "text-amber-700",
+      applications: monthlyApplications.filter(
+        (item) => item.dropping_status === "DRAFT",
+      ),
+    },
+    {
+      label: "Pending SLIK",
+      cardClass: "border-violet-200 bg-violet-50/80",
+      labelClass: "text-violet-700",
+      applications: monthlyApplications.filter(
+        (item) =>
+          item.dropping_status === "PENDING" && item.slik_status === "PENDING",
+      ),
+    },
+    {
+      label: "Pending Verifikasi",
+      cardClass: "border-orange-200 bg-orange-50/80",
+      labelClass: "text-orange-700",
+      applications: monthlyApplications.filter(
+        (item) =>
+          item.dropping_status === "PENDING" &&
+          item.slik_status === "DISETUJUI" &&
+          item.verif_status === "PENDING",
+      ),
+    },
+    {
+      label: "Pending Approval",
+      cardClass: "border-pink-200 bg-pink-50/80",
+      labelClass: "text-pink-700",
+      applications: monthlyApplications.filter(
+        (item) =>
+          item.dropping_status === "PENDING" &&
+          item.slik_status === "DISETUJUI" &&
+          item.verif_status === "DISETUJUI" &&
+          item.approv_status === "PENDING",
+      ),
+    },
+    {
+      label: "Proses",
+      cardClass: "border-blue-200 bg-blue-50/80",
+      labelClass: "text-blue-700",
+      applications: monthlyApplications.filter(
+        (item) => item.dropping_status === "PROSES",
+      ),
+    },
+    {
+      label: "Disetujui",
+      cardClass: "border-emerald-200 bg-emerald-50/80",
+      labelClass: "text-emerald-700",
+      applications: monthlyApplications.filter(
+        (item) => item.dropping_status === "DISETUJUI",
+      ),
+    },
+  ];
+  const monthlyTotalPlafond = monthlyApplications.reduce(
+    (total, item) => total + item.plafond,
     0,
   );
 
@@ -154,7 +228,74 @@ export default function Page() {
 
   return (
     <Spin spinning={loading} size="large">
-      <div className="p-4 bg-slate-50 min-h-screen space-y-6">
+      <div className=" bg-slate-50 min-h-screen space-y-6">
+        <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 bg-slate-50/70 px-5 py-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-lg text-white shadow-md shadow-blue-200">
+                <SwapOutlined />
+              </div>
+              <div>
+                <h2 className="font-bold text-slate-800">
+                  Status Pembiayaan Bulan Berjalan
+                </h2>
+                <p className="text-xs text-slate-500">
+                  Pengajuan bulan ini berdasarkan status terkini
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <div className="rounded-lg border border-slate-200 bg-white px-3 py-1.5">
+                <p className="text-[9px] font-semibold uppercase tracking-wider text-slate-500">
+                  Total NOA
+                </p>
+                <p className="text-sm font-bold text-slate-800">
+                  {monthlyApplications.length}
+                </p>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-white px-3 py-1.5">
+                <p className="text-[9px] font-semibold uppercase tracking-wider text-slate-500">
+                  Total Plafon
+                </p>
+                <p className="text-sm font-bold text-slate-800">
+                  Rp {IDRFormat(monthlyTotalPlafond)}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-2.5 p-4 sm:grid-cols-2 lg:grid-cols-3">
+            {monthlyStatusSummary.map((status) => (
+              <div
+                key={status.label}
+                className={`rounded-xl border p-3 ${status.cardClass}`}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <p
+                    className={`text-[10px] font-bold uppercase tracking-wider ${status.labelClass}`}
+                  >
+                    {status.label}
+                  </p>
+                  <span className="rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-bold text-slate-700">
+                    {status.applications.length} NOA
+                  </span>
+                </div>
+                <p className="mt-2 text-sm font-bold text-slate-800">
+                  Rp{" "}
+                  {IDRFormat(
+                    status.applications.reduce(
+                      (total, item) => total + item.plafond,
+                      0,
+                    ),
+                  )}
+                </p>
+                <p className="mt-0.5 text-[10px] text-slate-500">
+                  Total plafon
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* SECTION 1: KARTU STATISTIK GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatisticCard
