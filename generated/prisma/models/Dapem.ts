@@ -191,6 +191,7 @@ export type DapemMinAggregateOutputType = {
   audit_name: string | null
   audit_date: Date | null
   kc_pay_office: string | null
+  kcprev_pay_office: string | null
   used_for: string | null
   no_contract: string | null
   date_contract: Date | null
@@ -225,6 +226,10 @@ export type DapemMinAggregateOutputType = {
   insuranceId: string | null
   userId: string | null
   dPKStatusId: string | null
+  file_account: string | null
+  file_skp: string | null
+  add_mitra: boolean | null
+  file_idpb: string | null
 }
 
 export type DapemMaxAggregateOutputType = {
@@ -332,6 +337,7 @@ export type DapemMaxAggregateOutputType = {
   audit_name: string | null
   audit_date: Date | null
   kc_pay_office: string | null
+  kcprev_pay_office: string | null
   used_for: string | null
   no_contract: string | null
   date_contract: Date | null
@@ -366,6 +372,10 @@ export type DapemMaxAggregateOutputType = {
   insuranceId: string | null
   userId: string | null
   dPKStatusId: string | null
+  file_account: string | null
+  file_skp: string | null
+  add_mitra: boolean | null
+  file_idpb: string | null
 }
 
 export type DapemCountAggregateOutputType = {
@@ -473,6 +483,7 @@ export type DapemCountAggregateOutputType = {
   audit_name: number
   audit_date: number
   kc_pay_office: number
+  kcprev_pay_office: number
   used_for: number
   no_contract: number
   date_contract: number
@@ -507,6 +518,10 @@ export type DapemCountAggregateOutputType = {
   insuranceId: number
   userId: number
   dPKStatusId: number
+  file_account: number
+  file_skp: number
+  add_mitra: number
+  file_idpb: number
   _all: number
 }
 
@@ -676,6 +691,7 @@ export type DapemMinAggregateInputType = {
   audit_name?: true
   audit_date?: true
   kc_pay_office?: true
+  kcprev_pay_office?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -710,6 +726,10 @@ export type DapemMinAggregateInputType = {
   insuranceId?: true
   userId?: true
   dPKStatusId?: true
+  file_account?: true
+  file_skp?: true
+  add_mitra?: true
+  file_idpb?: true
 }
 
 export type DapemMaxAggregateInputType = {
@@ -817,6 +837,7 @@ export type DapemMaxAggregateInputType = {
   audit_name?: true
   audit_date?: true
   kc_pay_office?: true
+  kcprev_pay_office?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -851,6 +872,10 @@ export type DapemMaxAggregateInputType = {
   insuranceId?: true
   userId?: true
   dPKStatusId?: true
+  file_account?: true
+  file_skp?: true
+  add_mitra?: true
+  file_idpb?: true
 }
 
 export type DapemCountAggregateInputType = {
@@ -958,6 +983,7 @@ export type DapemCountAggregateInputType = {
   audit_name?: true
   audit_date?: true
   kc_pay_office?: true
+  kcprev_pay_office?: true
   used_for?: true
   no_contract?: true
   date_contract?: true
@@ -992,6 +1018,10 @@ export type DapemCountAggregateInputType = {
   insuranceId?: true
   userId?: true
   dPKStatusId?: true
+  file_account?: true
+  file_skp?: true
+  add_mitra?: true
+  file_idpb?: true
   _all?: true
 }
 
@@ -1186,6 +1216,7 @@ export type DapemGroupByOutputType = {
   audit_name: string | null
   audit_date: Date | null
   kc_pay_office: string | null
+  kcprev_pay_office: string | null
   used_for: string
   no_contract: string
   date_contract: Date | null
@@ -1220,6 +1251,10 @@ export type DapemGroupByOutputType = {
   insuranceId: string | null
   userId: string
   dPKStatusId: string | null
+  file_account: string | null
+  file_skp: string | null
+  add_mitra: boolean
+  file_idpb: string | null
   _count: DapemCountAggregateOutputType | null
   _avg: DapemAvgAggregateOutputType | null
   _sum: DapemSumAggregateOutputType | null
@@ -1350,6 +1385,7 @@ export type DapemWhereInput = {
   audit_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   audit_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   kc_pay_office?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  kcprev_pay_office?: Prisma.StringNullableFilter<"Dapem"> | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -1384,6 +1420,10 @@ export type DapemWhereInput = {
   insuranceId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   userId?: Prisma.StringFilter<"Dapem"> | string
   dPKStatusId?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  file_account?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  file_skp?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  add_mitra?: Prisma.BoolFilter<"Dapem"> | boolean
+  file_idpb?: Prisma.StringNullableFilter<"Dapem"> | string | null
   Debitur?: Prisma.XOR<Prisma.DebiturScalarRelationFilter, Prisma.DebiturWhereInput>
   ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
   JenisPembiayaan?: Prisma.XOR<Prisma.JenisPembiayaanScalarRelationFilter, Prisma.JenisPembiayaanWhereInput>
@@ -1509,6 +1549,7 @@ export type DapemOrderByWithRelationInput = {
   audit_name?: Prisma.SortOrderInput | Prisma.SortOrder
   audit_date?: Prisma.SortOrderInput | Prisma.SortOrder
   kc_pay_office?: Prisma.SortOrderInput | Prisma.SortOrder
+  kcprev_pay_office?: Prisma.SortOrderInput | Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1543,6 +1584,10 @@ export type DapemOrderByWithRelationInput = {
   insuranceId?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
   dPKStatusId?: Prisma.SortOrderInput | Prisma.SortOrder
+  file_account?: Prisma.SortOrderInput | Prisma.SortOrder
+  file_skp?: Prisma.SortOrderInput | Prisma.SortOrder
+  add_mitra?: Prisma.SortOrder
+  file_idpb?: Prisma.SortOrderInput | Prisma.SortOrder
   Debitur?: Prisma.DebiturOrderByWithRelationInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanOrderByWithRelationInput
   JenisPembiayaan?: Prisma.JenisPembiayaanOrderByWithRelationInput
@@ -1672,6 +1717,7 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   audit_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   audit_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   kc_pay_office?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  kcprev_pay_office?: Prisma.StringNullableFilter<"Dapem"> | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -1706,6 +1752,10 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   insuranceId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   userId?: Prisma.StringFilter<"Dapem"> | string
   dPKStatusId?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  file_account?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  file_skp?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  add_mitra?: Prisma.BoolFilter<"Dapem"> | boolean
+  file_idpb?: Prisma.StringNullableFilter<"Dapem"> | string | null
   Debitur?: Prisma.XOR<Prisma.DebiturScalarRelationFilter, Prisma.DebiturWhereInput>
   ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
   JenisPembiayaan?: Prisma.XOR<Prisma.JenisPembiayaanScalarRelationFilter, Prisma.JenisPembiayaanWhereInput>
@@ -1831,6 +1881,7 @@ export type DapemOrderByWithAggregationInput = {
   audit_name?: Prisma.SortOrderInput | Prisma.SortOrder
   audit_date?: Prisma.SortOrderInput | Prisma.SortOrder
   kc_pay_office?: Prisma.SortOrderInput | Prisma.SortOrder
+  kcprev_pay_office?: Prisma.SortOrderInput | Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1865,6 +1916,10 @@ export type DapemOrderByWithAggregationInput = {
   insuranceId?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
   dPKStatusId?: Prisma.SortOrderInput | Prisma.SortOrder
+  file_account?: Prisma.SortOrderInput | Prisma.SortOrder
+  file_skp?: Prisma.SortOrderInput | Prisma.SortOrder
+  add_mitra?: Prisma.SortOrder
+  file_idpb?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.DapemCountOrderByAggregateInput
   _avg?: Prisma.DapemAvgOrderByAggregateInput
   _max?: Prisma.DapemMaxOrderByAggregateInput
@@ -1980,6 +2035,7 @@ export type DapemScalarWhereWithAggregatesInput = {
   audit_name?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   audit_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Dapem"> | Date | string | null
   kc_pay_office?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  kcprev_pay_office?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   used_for?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   no_contract?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableWithAggregatesFilter<"Dapem"> | Date | string | null
@@ -2014,6 +2070,10 @@ export type DapemScalarWhereWithAggregatesInput = {
   insuranceId?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   userId?: Prisma.StringWithAggregatesFilter<"Dapem"> | string
   dPKStatusId?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  file_account?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  file_skp?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  add_mitra?: Prisma.BoolWithAggregatesFilter<"Dapem"> | boolean
+  file_idpb?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
 }
 
 export type DapemCreateInput = {
@@ -2121,6 +2181,7 @@ export type DapemCreateInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2140,6 +2201,10 @@ export type DapemCreateInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -2265,6 +2330,7 @@ export type DapemUncheckedCreateInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2299,6 +2365,10 @@ export type DapemUncheckedCreateInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -2409,6 +2479,7 @@ export type DapemUpdateInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2428,6 +2499,10 @@ export type DapemUpdateInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -2553,6 +2628,7 @@ export type DapemUncheckedUpdateInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2587,6 +2663,10 @@ export type DapemUncheckedUpdateInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -2697,6 +2777,7 @@ export type DapemCreateManyInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -2731,6 +2812,10 @@ export type DapemCreateManyInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateManyMutationInput = {
@@ -2838,6 +2923,7 @@ export type DapemUpdateManyMutationInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2857,6 +2943,10 @@ export type DapemUpdateManyMutationInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUncheckedUpdateManyInput = {
@@ -2964,6 +3054,7 @@ export type DapemUncheckedUpdateManyInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2998,6 +3089,10 @@ export type DapemUncheckedUpdateManyInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemListRelationFilter = {
@@ -3121,6 +3216,7 @@ export type DapemCountOrderByAggregateInput = {
   audit_name?: Prisma.SortOrder
   audit_date?: Prisma.SortOrder
   kc_pay_office?: Prisma.SortOrder
+  kcprev_pay_office?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -3155,6 +3251,10 @@ export type DapemCountOrderByAggregateInput = {
   insuranceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   dPKStatusId?: Prisma.SortOrder
+  file_account?: Prisma.SortOrder
+  file_skp?: Prisma.SortOrder
+  add_mitra?: Prisma.SortOrder
+  file_idpb?: Prisma.SortOrder
 }
 
 export type DapemAvgOrderByAggregateInput = {
@@ -3292,6 +3392,7 @@ export type DapemMaxOrderByAggregateInput = {
   audit_name?: Prisma.SortOrder
   audit_date?: Prisma.SortOrder
   kc_pay_office?: Prisma.SortOrder
+  kcprev_pay_office?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -3326,6 +3427,10 @@ export type DapemMaxOrderByAggregateInput = {
   insuranceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   dPKStatusId?: Prisma.SortOrder
+  file_account?: Prisma.SortOrder
+  file_skp?: Prisma.SortOrder
+  add_mitra?: Prisma.SortOrder
+  file_idpb?: Prisma.SortOrder
 }
 
 export type DapemMinOrderByAggregateInput = {
@@ -3433,6 +3538,7 @@ export type DapemMinOrderByAggregateInput = {
   audit_name?: Prisma.SortOrder
   audit_date?: Prisma.SortOrder
   kc_pay_office?: Prisma.SortOrder
+  kcprev_pay_office?: Prisma.SortOrder
   used_for?: Prisma.SortOrder
   no_contract?: Prisma.SortOrder
   date_contract?: Prisma.SortOrder
@@ -3467,6 +3573,10 @@ export type DapemMinOrderByAggregateInput = {
   insuranceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   dPKStatusId?: Prisma.SortOrder
+  file_account?: Prisma.SortOrder
+  file_skp?: Prisma.SortOrder
+  add_mitra?: Prisma.SortOrder
+  file_idpb?: Prisma.SortOrder
 }
 
 export type DapemSumOrderByAggregateInput = {
@@ -4297,6 +4407,7 @@ export type DapemCreateWithoutAOInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4316,6 +4427,10 @@ export type DapemCreateWithoutAOInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -4440,6 +4555,7 @@ export type DapemUncheckedCreateWithoutAOInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4473,6 +4589,10 @@ export type DapemUncheckedCreateWithoutAOInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -4593,6 +4713,7 @@ export type DapemCreateWithoutAOCabangInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4612,6 +4733,10 @@ export type DapemCreateWithoutAOCabangInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -4736,6 +4861,7 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4769,6 +4895,10 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -4889,6 +5019,7 @@ export type DapemCreateWithoutAOAreaInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -4908,6 +5039,10 @@ export type DapemCreateWithoutAOAreaInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -5032,6 +5167,7 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5065,6 +5201,10 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -5185,6 +5325,7 @@ export type DapemCreateWithoutUserInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5204,6 +5345,10 @@ export type DapemCreateWithoutUserInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -5328,6 +5473,7 @@ export type DapemUncheckedCreateWithoutUserInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5361,6 +5507,10 @@ export type DapemUncheckedCreateWithoutUserInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -5500,6 +5650,7 @@ export type DapemScalarWhereInput = {
   audit_name?: Prisma.StringNullableFilter<"Dapem"> | string | null
   audit_date?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
   kc_pay_office?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  kcprev_pay_office?: Prisma.StringNullableFilter<"Dapem"> | string | null
   used_for?: Prisma.StringFilter<"Dapem"> | string
   no_contract?: Prisma.StringFilter<"Dapem"> | string
   date_contract?: Prisma.DateTimeNullableFilter<"Dapem"> | Date | string | null
@@ -5534,6 +5685,10 @@ export type DapemScalarWhereInput = {
   insuranceId?: Prisma.StringNullableFilter<"Dapem"> | string | null
   userId?: Prisma.StringFilter<"Dapem"> | string
   dPKStatusId?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  file_account?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  file_skp?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  add_mitra?: Prisma.BoolFilter<"Dapem"> | boolean
+  file_idpb?: Prisma.StringNullableFilter<"Dapem"> | string | null
 }
 
 export type DapemUpsertWithWhereUniqueWithoutAOCabangInput = {
@@ -5689,6 +5844,7 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5708,6 +5864,10 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
   AO?: Prisma.UserCreateNestedOneWithoutAOsInput
@@ -5832,6 +5992,7 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -5865,6 +6026,10 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6001,6 +6166,7 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6020,6 +6186,10 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   AO?: Prisma.UserCreateNestedOneWithoutAOsInput
@@ -6144,6 +6314,7 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6177,6 +6348,10 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6313,6 +6488,7 @@ export type DapemCreateWithoutDebiturInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6332,6 +6508,10 @@ export type DapemCreateWithoutDebiturInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
   AO?: Prisma.UserCreateNestedOneWithoutAOsInput
@@ -6456,6 +6636,7 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6489,6 +6670,10 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6625,6 +6810,7 @@ export type DapemCreateWithoutAianalysesInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6644,6 +6830,10 @@ export type DapemCreateWithoutAianalysesInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -6768,6 +6958,7 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -6802,6 +6993,10 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
 }
@@ -6927,6 +7122,7 @@ export type DapemUpdateWithoutAianalysesInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6946,6 +7142,10 @@ export type DapemUpdateWithoutAianalysesInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -7070,6 +7270,7 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7104,6 +7305,10 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
 }
@@ -7213,6 +7418,7 @@ export type DapemCreateWithoutPayOfficeInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7232,6 +7438,10 @@ export type DapemCreateWithoutPayOfficeInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -7356,6 +7566,7 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7389,6 +7600,10 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -7509,6 +7724,7 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7528,6 +7744,10 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -7652,6 +7872,7 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7685,6 +7906,10 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -7837,6 +8062,7 @@ export type DapemCreateWithoutInsuranceInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -7856,6 +8082,10 @@ export type DapemCreateWithoutInsuranceInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -7980,6 +8210,7 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8013,6 +8244,10 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   payOfficeId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -8149,6 +8384,7 @@ export type DapemCreateWithoutDroppingInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8168,6 +8404,10 @@ export type DapemCreateWithoutDroppingInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -8292,6 +8532,7 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8325,6 +8566,10 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -8461,6 +8706,7 @@ export type DapemCreateWithoutBerkasInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8480,6 +8726,10 @@ export type DapemCreateWithoutBerkasInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -8604,6 +8854,7 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8637,6 +8888,10 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -8773,6 +9028,7 @@ export type DapemCreateWithoutJaminanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8792,6 +9048,10 @@ export type DapemCreateWithoutJaminanInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -8916,6 +9176,7 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -8949,6 +9210,10 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -9085,6 +9350,7 @@ export type DapemCreateWithoutPelunasanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9104,6 +9370,10 @@ export type DapemCreateWithoutPelunasanInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -9228,6 +9498,7 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9262,6 +9533,10 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
 }
@@ -9387,6 +9662,7 @@ export type DapemUpdateWithoutPelunasanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9406,6 +9682,10 @@ export type DapemUpdateWithoutPelunasanInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -9530,6 +9810,7 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9564,6 +9845,10 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
 }
@@ -9673,6 +9958,7 @@ export type DapemCreateWithoutAngsuransInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9692,6 +9978,10 @@ export type DapemCreateWithoutAngsuransInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -9816,6 +10106,7 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -9850,6 +10141,10 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
 }
@@ -9975,6 +10270,7 @@ export type DapemUpdateWithoutAngsuransInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9994,6 +10290,10 @@ export type DapemUpdateWithoutAngsuransInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -10118,6 +10418,7 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10152,6 +10453,10 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
 }
@@ -10261,6 +10566,7 @@ export type DapemCreateWithoutAgentFrontingInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10280,6 +10586,10 @@ export type DapemCreateWithoutAgentFrontingInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -10404,6 +10714,7 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10437,6 +10748,10 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -10573,6 +10888,7 @@ export type DapemCreateWithoutDPKStatusInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10592,6 +10908,10 @@ export type DapemCreateWithoutDPKStatusInput = {
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -10716,6 +11036,7 @@ export type DapemUncheckedCreateWithoutDPKStatusInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10749,6 +11070,10 @@ export type DapemUncheckedCreateWithoutDPKStatusInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -10885,6 +11210,7 @@ export type DapemCreateManyAOInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -10918,6 +11244,10 @@ export type DapemCreateManyAOInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemCreateManyAOCabangInput = {
@@ -11025,6 +11355,7 @@ export type DapemCreateManyAOCabangInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -11058,6 +11389,10 @@ export type DapemCreateManyAOCabangInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemCreateManyAOAreaInput = {
@@ -11165,6 +11500,7 @@ export type DapemCreateManyAOAreaInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -11198,6 +11534,10 @@ export type DapemCreateManyAOAreaInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemCreateManyUserInput = {
@@ -11305,6 +11645,7 @@ export type DapemCreateManyUserInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -11338,6 +11679,10 @@ export type DapemCreateManyUserInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutAOInput = {
@@ -11445,6 +11790,7 @@ export type DapemUpdateWithoutAOInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11464,6 +11810,10 @@ export type DapemUpdateWithoutAOInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -11588,6 +11938,7 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11621,6 +11972,10 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -11731,6 +12086,7 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11764,6 +12120,10 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutAOCabangInput = {
@@ -11871,6 +12231,7 @@ export type DapemUpdateWithoutAOCabangInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11890,6 +12251,10 @@ export type DapemUpdateWithoutAOCabangInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -12014,6 +12379,7 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12047,6 +12413,10 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -12157,6 +12527,7 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12190,6 +12561,10 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutAOAreaInput = {
@@ -12297,6 +12672,7 @@ export type DapemUpdateWithoutAOAreaInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12316,6 +12692,10 @@ export type DapemUpdateWithoutAOAreaInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -12440,6 +12820,7 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12473,6 +12854,10 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -12583,6 +12968,7 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12616,6 +13002,10 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutUserInput = {
@@ -12723,6 +13113,7 @@ export type DapemUpdateWithoutUserInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12742,6 +13133,10 @@ export type DapemUpdateWithoutUserInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -12866,6 +13261,7 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12899,6 +13295,10 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -13009,6 +13409,7 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13042,6 +13443,10 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyProdukPembiayaanInput = {
@@ -13149,6 +13554,7 @@ export type DapemCreateManyProdukPembiayaanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -13182,6 +13588,10 @@ export type DapemCreateManyProdukPembiayaanInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutProdukPembiayaanInput = {
@@ -13289,6 +13699,7 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13308,6 +13719,10 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   AO?: Prisma.UserUpdateOneWithoutAOsNestedInput
@@ -13432,6 +13847,7 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13465,6 +13881,10 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -13575,6 +13995,7 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13608,6 +14029,10 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyJenisPembiayaanInput = {
@@ -13715,6 +14140,7 @@ export type DapemCreateManyJenisPembiayaanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -13748,6 +14174,10 @@ export type DapemCreateManyJenisPembiayaanInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutJenisPembiayaanInput = {
@@ -13855,6 +14285,7 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13874,6 +14305,10 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   AO?: Prisma.UserUpdateOneWithoutAOsNestedInput
@@ -13998,6 +14433,7 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14031,6 +14467,10 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -14141,6 +14581,7 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14174,6 +14615,10 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyDebiturInput = {
@@ -14281,6 +14726,7 @@ export type DapemCreateManyDebiturInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -14314,6 +14760,10 @@ export type DapemCreateManyDebiturInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutDebiturInput = {
@@ -14421,6 +14871,7 @@ export type DapemUpdateWithoutDebiturInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14440,6 +14891,10 @@ export type DapemUpdateWithoutDebiturInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   AO?: Prisma.UserUpdateOneWithoutAOsNestedInput
@@ -14564,6 +15019,7 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14597,6 +15053,10 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -14707,6 +15167,7 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14740,6 +15201,10 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyPayOfficeInput = {
@@ -14847,6 +15312,7 @@ export type DapemCreateManyPayOfficeInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -14880,6 +15346,10 @@ export type DapemCreateManyPayOfficeInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemCreateManyPrevPayOfficeInput = {
@@ -14987,6 +15457,7 @@ export type DapemCreateManyPrevPayOfficeInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -15020,6 +15491,10 @@ export type DapemCreateManyPrevPayOfficeInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutPayOfficeInput = {
@@ -15127,6 +15602,7 @@ export type DapemUpdateWithoutPayOfficeInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15146,6 +15622,10 @@ export type DapemUpdateWithoutPayOfficeInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -15270,6 +15750,7 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15303,6 +15784,10 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -15413,6 +15898,7 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15446,6 +15932,10 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutPrevPayOfficeInput = {
@@ -15553,6 +16043,7 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15572,6 +16063,10 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -15696,6 +16191,7 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15729,6 +16225,10 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -15839,6 +16339,7 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15872,6 +16373,10 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyInsuranceInput = {
@@ -15979,6 +16484,7 @@ export type DapemCreateManyInsuranceInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -16012,6 +16518,10 @@ export type DapemCreateManyInsuranceInput = {
   payOfficeId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutInsuranceInput = {
@@ -16119,6 +16629,7 @@ export type DapemUpdateWithoutInsuranceInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16138,6 +16649,10 @@ export type DapemUpdateWithoutInsuranceInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -16262,6 +16777,7 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16295,6 +16811,10 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -16405,6 +16925,7 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16438,6 +16959,10 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyDroppingInput = {
@@ -16545,6 +17070,7 @@ export type DapemCreateManyDroppingInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -16578,6 +17104,10 @@ export type DapemCreateManyDroppingInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutDroppingInput = {
@@ -16685,6 +17215,7 @@ export type DapemUpdateWithoutDroppingInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16704,6 +17235,10 @@ export type DapemUpdateWithoutDroppingInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -16828,6 +17363,7 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -16861,6 +17397,10 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -16971,6 +17511,7 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17004,6 +17545,10 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyBerkasInput = {
@@ -17111,6 +17656,7 @@ export type DapemCreateManyBerkasInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -17144,6 +17690,10 @@ export type DapemCreateManyBerkasInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutBerkasInput = {
@@ -17251,6 +17801,7 @@ export type DapemUpdateWithoutBerkasInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17270,6 +17821,10 @@ export type DapemUpdateWithoutBerkasInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -17394,6 +17949,7 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17427,6 +17983,10 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -17537,6 +18097,7 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17570,6 +18131,10 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyJaminanInput = {
@@ -17677,6 +18242,7 @@ export type DapemCreateManyJaminanInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -17710,6 +18276,10 @@ export type DapemCreateManyJaminanInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutJaminanInput = {
@@ -17817,6 +18387,7 @@ export type DapemUpdateWithoutJaminanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17836,6 +18407,10 @@ export type DapemUpdateWithoutJaminanInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -17960,6 +18535,7 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17993,6 +18569,10 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -18103,6 +18683,7 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18136,6 +18717,10 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyAgentFrontingInput = {
@@ -18243,6 +18828,7 @@ export type DapemCreateManyAgentFrontingInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -18276,6 +18862,10 @@ export type DapemCreateManyAgentFrontingInput = {
   insuranceId?: string | null
   userId: string
   dPKStatusId?: string | null
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutAgentFrontingInput = {
@@ -18383,6 +18973,7 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18402,6 +18993,10 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -18526,6 +19121,7 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18559,6 +19155,10 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -18669,6 +19269,7 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18702,6 +19303,10 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   dPKStatusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyDPKStatusInput = {
@@ -18809,6 +19414,7 @@ export type DapemCreateManyDPKStatusInput = {
   audit_name?: string | null
   audit_date?: Date | string | null
   kc_pay_office?: string | null
+  kcprev_pay_office?: string | null
   used_for: string
   no_contract: string
   date_contract?: Date | string | null
@@ -18842,6 +19448,10 @@ export type DapemCreateManyDPKStatusInput = {
   payOfficeId?: string | null
   insuranceId?: string | null
   userId: string
+  file_account?: string | null
+  file_skp?: string | null
+  add_mitra?: boolean
+  file_idpb?: string | null
 }
 
 export type DapemUpdateWithoutDPKStatusInput = {
@@ -18949,6 +19559,7 @@ export type DapemUpdateWithoutDPKStatusInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18968,6 +19579,10 @@ export type DapemUpdateWithoutDPKStatusInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -19092,6 +19707,7 @@ export type DapemUncheckedUpdateWithoutDPKStatusInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19125,6 +19741,10 @@ export type DapemUncheckedUpdateWithoutDPKStatusInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -19235,6 +19855,7 @@ export type DapemUncheckedUpdateManyWithoutDPKStatusInput = {
   audit_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   audit_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   kc_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kcprev_pay_office?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   used_for?: Prisma.StringFieldUpdateOperationsInput | string
   no_contract?: Prisma.StringFieldUpdateOperationsInput | string
   date_contract?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19268,6 +19889,10 @@ export type DapemUncheckedUpdateManyWithoutDPKStatusInput = {
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   insuranceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  file_account?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -19415,6 +20040,7 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   audit_name?: boolean
   audit_date?: boolean
   kc_pay_office?: boolean
+  kcprev_pay_office?: boolean
   used_for?: boolean
   no_contract?: boolean
   date_contract?: boolean
@@ -19449,6 +20075,10 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   insuranceId?: boolean
   userId?: boolean
   dPKStatusId?: boolean
+  file_account?: boolean
+  file_skp?: boolean
+  add_mitra?: boolean
+  file_idpb?: boolean
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
   JenisPembiayaan?: boolean | Prisma.JenisPembiayaanDefaultArgs<ExtArgs>
@@ -19577,6 +20207,7 @@ export type DapemSelectScalar = {
   audit_name?: boolean
   audit_date?: boolean
   kc_pay_office?: boolean
+  kcprev_pay_office?: boolean
   used_for?: boolean
   no_contract?: boolean
   date_contract?: boolean
@@ -19611,9 +20242,13 @@ export type DapemSelectScalar = {
   insuranceId?: boolean
   userId?: boolean
   dPKStatusId?: boolean
+  file_account?: boolean
+  file_skp?: boolean
+  add_mitra?: boolean
+  file_idpb?: boolean
 }
 
-export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "cost_month" | "max_tenor" | "max_plafond" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "aw_education" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "audit_status" | "audit_desc" | "audit_name" | "audit_date" | "kc_pay_office" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId", ExtArgs["result"]["dapem"]>
+export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "cost_month" | "max_tenor" | "max_plafond" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "aw_education" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "audit_status" | "audit_desc" | "audit_name" | "audit_date" | "kc_pay_office" | "kcprev_pay_office" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId" | "file_account" | "file_skp" | "add_mitra" | "file_idpb", ExtArgs["result"]["dapem"]>
 export type DapemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
@@ -19763,6 +20398,7 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     audit_name: string | null
     audit_date: Date | null
     kc_pay_office: string | null
+    kcprev_pay_office: string | null
     used_for: string
     no_contract: string
     date_contract: Date | null
@@ -19797,6 +20433,10 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     insuranceId: string | null
     userId: string
     dPKStatusId: string | null
+    file_account: string | null
+    file_skp: string | null
+    add_mitra: boolean
+    file_idpb: string | null
   }, ExtArgs["result"]["dapem"]>
   composites: {}
 }
@@ -20288,6 +20928,7 @@ export interface DapemFieldRefs {
   readonly audit_name: Prisma.FieldRef<"Dapem", 'String'>
   readonly audit_date: Prisma.FieldRef<"Dapem", 'DateTime'>
   readonly kc_pay_office: Prisma.FieldRef<"Dapem", 'String'>
+  readonly kcprev_pay_office: Prisma.FieldRef<"Dapem", 'String'>
   readonly used_for: Prisma.FieldRef<"Dapem", 'String'>
   readonly no_contract: Prisma.FieldRef<"Dapem", 'String'>
   readonly date_contract: Prisma.FieldRef<"Dapem", 'DateTime'>
@@ -20322,6 +20963,10 @@ export interface DapemFieldRefs {
   readonly insuranceId: Prisma.FieldRef<"Dapem", 'String'>
   readonly userId: Prisma.FieldRef<"Dapem", 'String'>
   readonly dPKStatusId: Prisma.FieldRef<"Dapem", 'String'>
+  readonly file_account: Prisma.FieldRef<"Dapem", 'String'>
+  readonly file_skp: Prisma.FieldRef<"Dapem", 'String'>
+  readonly add_mitra: Prisma.FieldRef<"Dapem", 'Boolean'>
+  readonly file_idpb: Prisma.FieldRef<"Dapem", 'String'>
 }
     
 

@@ -41,6 +41,9 @@ export const GET = async (request: NextRequest) => {
     group_skep,
     audit_status,
     dev_status,
+    add_mitra,
+    file_skp,
+    file_account,
   } = params;
   const skip = (parseInt(page) - 1) * parseInt(limit);
 
@@ -182,6 +185,11 @@ export const GET = async (request: NextRequest) => {
     ...(group_skep && { Debitur: { group_skep } }),
     ...(dev_status && { dev_status: dev_status === "true" ? true : false }),
     ...(audit_status && { audit_status: audit_status as EDapemStatus }),
+    ...(add_mitra && { add_mitra: add_mitra === "true" ? true : false }),
+    ...(file_skp && { file_skp: file_skp === "true" ? { not: null } : null }),
+    ...(file_account && {
+      file_account: file_account === "true" ? { not: null } : null,
+    }),
     ...whereFunc,
     status: true,
   };
@@ -298,6 +306,8 @@ export const GET = async (request: NextRequest) => {
         audit_desc: true,
         audit_name: true,
         audit_date: true,
+        kc_pay_office: true,
+        kcprev_pay_office: true,
         ...(includes && {
           takeover_date_exc: true,
           takeover_desc: true,
@@ -315,6 +325,10 @@ export const GET = async (request: NextRequest) => {
           file_mutasi: true,
           file_takeover: true,
           file_flagging: true,
+          add_mitra: true,
+          file_skep: true,
+          file_account: true,
+          file_idpb: true,
           Angsurans: {
             select: { id: true },
             where: {

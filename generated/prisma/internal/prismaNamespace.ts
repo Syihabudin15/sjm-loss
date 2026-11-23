@@ -2484,6 +2484,7 @@ export const DapemScalarFieldEnum = {
   audit_name: 'audit_name',
   audit_date: 'audit_date',
   kc_pay_office: 'kc_pay_office',
+  kcprev_pay_office: 'kcprev_pay_office',
   used_for: 'used_for',
   no_contract: 'no_contract',
   date_contract: 'date_contract',
@@ -2517,7 +2518,11 @@ export const DapemScalarFieldEnum = {
   payOfficeId: 'payOfficeId',
   insuranceId: 'insuranceId',
   userId: 'userId',
-  dPKStatusId: 'dPKStatusId'
+  dPKStatusId: 'dPKStatusId',
+  file_account: 'file_account',
+  file_skp: 'file_skp',
+  add_mitra: 'add_mitra',
+  file_idpb: 'file_idpb'
 } as const
 
 export type DapemScalarFieldEnum = (typeof DapemScalarFieldEnum)[keyof typeof DapemScalarFieldEnum]
@@ -2983,6 +2988,7 @@ export const DapemOrderByRelevanceFieldEnum = {
   audit_desc: 'audit_desc',
   audit_name: 'audit_name',
   kc_pay_office: 'kc_pay_office',
+  kcprev_pay_office: 'kcprev_pay_office',
   used_for: 'used_for',
   no_contract: 'no_contract',
   file_slik: 'file_slik',
@@ -3010,7 +3016,10 @@ export const DapemOrderByRelevanceFieldEnum = {
   payOfficeId: 'payOfficeId',
   insuranceId: 'insuranceId',
   userId: 'userId',
-  dPKStatusId: 'dPKStatusId'
+  dPKStatusId: 'dPKStatusId',
+  file_account: 'file_account',
+  file_skp: 'file_skp',
+  file_idpb: 'file_idpb'
 } as const
 
 export type DapemOrderByRelevanceFieldEnum = (typeof DapemOrderByRelevanceFieldEnum)[keyof typeof DapemOrderByRelevanceFieldEnum]

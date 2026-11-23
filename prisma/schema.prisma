@@ -400,6 +400,7 @@ model Dapem {
   audit_name        String?
   audit_date        DateTime?
   kc_pay_office     String?
+  kcprev_pay_office String?
 
   used_for      String
   no_contract   String
@@ -456,6 +457,10 @@ model Dapem {
   Aianalyses         AIAnalysis[]
   userId             String
   dPKStatusId        String?
+  file_account       String?
+  file_skp           String?
+  add_mitra          Boolean      @default(false)
+  file_idpb          String?
 
   @@index([status, dropping_status])
   @@index([status, document_status])

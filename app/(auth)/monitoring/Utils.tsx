@@ -2966,6 +2966,11 @@ const defaultData: IDapem = {
   audit_name: null,
   audit_desc: null,
   kc_pay_office: null,
+  kcprev_pay_office: null,
+  add_mitra: false,
+  file_skp: null,
+  file_account: null,
+  file_idpb: null,
 };
 
 interface ITemp {

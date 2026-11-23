@@ -202,6 +202,13 @@ export const listMenuUI: IMenuType[] = [
     availableAccess: ["read", "update"],
   },
   {
+    label: "SKP & Rekening",
+    key: "/ops_tag",
+    icon: <FileProtectOutlined />,
+    needaccess: true,
+    availableAccess: ["read", "proses", "update"],
+  },
+  {
     label: "Tagihan",
     key: "/tagihan",
     icon: <MoneyCollectOutlined />,
@@ -441,6 +448,10 @@ export const listMenuServer: { key: string; needaccess: boolean }[] = [
   },
   {
     key: "/tmftb",
+    needaccess: true,
+  },
+  {
+    key: "/ops_tag",
     needaccess: true,
   },
   {
