@@ -14,6 +14,9 @@ import {
   JenisPembiayaan,
   JournalDetail,
   JournalEntry,
+  OTSData,
+  OTSDefault,
+  OTSDetail,
   PayOffice,
   Pelunasan,
   ProdukPembiayaan,
@@ -220,3 +223,27 @@ export interface IOutputDapemDetail {
   tb: number;
   biayakop: number;
 }
+
+export interface IOTSDetail extends OTSDetail {
+  Debitur: IDebitur;
+  OTSData: IOTSData;
+}
+export interface IOTSData extends OTSData {
+  Otsdetails: IOTSDetail[];
+  User: User;
+}
+export interface IOTSDefault extends OTSDefault {
+  ProdukPembiayaan: IProdukPembiayaan;
+  JenisPembiayaan: JenisPembiayaan;
+}
+
+export const defaultApp: IOTSDefault = {
+  id: "",
+  pagesize: 10,
+  reset_day: 7,
+  max_dev: 2,
+  produkPembiayaanId: "",
+  jenisPembiayaanId: "",
+  JenisPembiayaan: {} as JenisPembiayaan,
+  ProdukPembiayaan: {} as IProdukPembiayaan,
+};

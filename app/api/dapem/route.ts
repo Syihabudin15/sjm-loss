@@ -44,6 +44,7 @@ export const GET = async (request: NextRequest) => {
     add_mitra,
     file_skp,
     file_account,
+    file_spd,
   } = params;
   const skip = (parseInt(page) - 1) * parseInt(limit);
 
@@ -189,6 +190,9 @@ export const GET = async (request: NextRequest) => {
     ...(file_skp && { file_skp: file_skp === "true" ? { not: null } : null }),
     ...(file_account && {
       file_account: file_account === "true" ? { not: null } : null,
+    }),
+    ...(file_spd && {
+      file_spd: file_spd === "true" ? { not: null } : null,
     }),
     ...whereFunc,
     status: true,

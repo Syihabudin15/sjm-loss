@@ -2971,6 +2971,7 @@ const defaultData: IDapem = {
   file_skp: null,
   file_account: null,
   file_idpb: null,
+  file_spd: null,
 };
 
 interface ITemp {

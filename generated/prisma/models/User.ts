@@ -346,6 +346,7 @@ export type UserWhereInput = {
   Dapems?: Prisma.DapemListRelationFilter
   JournalDetails?: Prisma.JournalDetailListRelationFilter
   DataSimulasi?: Prisma.DataSimulasiListRelationFilter
+  Otsdata?: Prisma.OTSDataListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -379,6 +380,7 @@ export type UserOrderByWithRelationInput = {
   Dapems?: Prisma.DapemOrderByRelationAggregateInput
   JournalDetails?: Prisma.JournalDetailOrderByRelationAggregateInput
   DataSimulasi?: Prisma.DataSimulasiOrderByRelationAggregateInput
+  Otsdata?: Prisma.OTSDataOrderByRelationAggregateInput
   _relevance?: Prisma.UserOrderByRelevanceInput
 }
 
@@ -416,6 +418,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   Dapems?: Prisma.DapemListRelationFilter
   JournalDetails?: Prisma.JournalDetailListRelationFilter
   DataSimulasi?: Prisma.DataSimulasiListRelationFilter
+  Otsdata?: Prisma.OTSDataListRelationFilter
 }, "id" | "username">
 
 export type UserOrderByWithAggregationInput = {
@@ -499,6 +502,7 @@ export type UserCreateInput = {
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -528,6 +532,7 @@ export type UserUncheckedCreateInput = {
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -557,6 +562,7 @@ export type UserUpdateInput = {
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -586,6 +592,7 @@ export type UserUncheckedUpdateInput = {
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1016,6 +1023,20 @@ export type UserUpdateOneRequiredWithoutDataSimulasiNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDataSimulasiInput, Prisma.UserUpdateWithoutDataSimulasiInput>, Prisma.UserUncheckedUpdateWithoutDataSimulasiInput>
 }
 
+export type UserCreateNestedOneWithoutOtsdataInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOtsdataInput, Prisma.UserUncheckedCreateWithoutOtsdataInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOtsdataInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutOtsdataNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOtsdataInput, Prisma.UserUncheckedCreateWithoutOtsdataInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOtsdataInput
+  upsert?: Prisma.UserUpsertWithoutOtsdataInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOtsdataInput, Prisma.UserUpdateWithoutOtsdataInput>, Prisma.UserUncheckedUpdateWithoutOtsdataInput>
+}
+
 export type UserCreateWithoutRoleInput = {
   id?: string
   nip?: string | null
@@ -1042,6 +1063,7 @@ export type UserCreateWithoutRoleInput = {
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRoleInput = {
@@ -1070,6 +1092,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRoleInput = {
@@ -1150,6 +1173,7 @@ export type UserCreateWithoutSumdanInput = {
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSumdanInput = {
@@ -1178,6 +1202,7 @@ export type UserUncheckedCreateWithoutSumdanInput = {
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSumdanInput = {
@@ -1232,6 +1257,7 @@ export type UserCreateWithoutCabangInput = {
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCabangInput = {
@@ -1260,6 +1286,7 @@ export type UserUncheckedCreateWithoutCabangInput = {
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCabangInput = {
@@ -1314,6 +1341,7 @@ export type UserCreateWithoutAOsInput = {
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAOsInput = {
@@ -1342,6 +1370,7 @@ export type UserUncheckedCreateWithoutAOsInput = {
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAOsInput = {
@@ -1375,6 +1404,7 @@ export type UserCreateWithoutAOCabangsInput = {
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAOCabangsInput = {
@@ -1403,6 +1433,7 @@ export type UserUncheckedCreateWithoutAOCabangsInput = {
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAOCabangsInput = {
@@ -1436,6 +1467,7 @@ export type UserCreateWithoutAOAreasInput = {
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAOAreasInput = {
@@ -1464,6 +1496,7 @@ export type UserUncheckedCreateWithoutAOAreasInput = {
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAOAreasInput = {
@@ -1497,6 +1530,7 @@ export type UserCreateWithoutDapemsInput = {
   AOAreas?: Prisma.DapemCreateNestedManyWithoutAOAreaInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDapemsInput = {
@@ -1525,6 +1559,7 @@ export type UserUncheckedCreateWithoutDapemsInput = {
   AOAreas?: Prisma.DapemUncheckedCreateNestedManyWithoutAOAreaInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDapemsInput = {
@@ -1569,6 +1604,7 @@ export type UserUpdateWithoutAOsInput = {
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAOsInput = {
@@ -1597,6 +1633,7 @@ export type UserUncheckedUpdateWithoutAOsInput = {
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutAOCabangsInput = {
@@ -1636,6 +1673,7 @@ export type UserUpdateWithoutAOCabangsInput = {
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAOCabangsInput = {
@@ -1664,6 +1702,7 @@ export type UserUncheckedUpdateWithoutAOCabangsInput = {
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutAOAreasInput = {
@@ -1703,6 +1742,7 @@ export type UserUpdateWithoutAOAreasInput = {
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAOAreasInput = {
@@ -1731,6 +1771,7 @@ export type UserUncheckedUpdateWithoutAOAreasInput = {
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutDapemsInput = {
@@ -1770,6 +1811,7 @@ export type UserUpdateWithoutDapemsInput = {
   AOAreas?: Prisma.DapemUpdateManyWithoutAOAreaNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDapemsInput = {
@@ -1798,6 +1840,7 @@ export type UserUncheckedUpdateWithoutDapemsInput = {
   AOAreas?: Prisma.DapemUncheckedUpdateManyWithoutAOAreaNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutJournalDetailsInput = {
@@ -1826,6 +1869,7 @@ export type UserCreateWithoutJournalDetailsInput = {
   AOAreas?: Prisma.DapemCreateNestedManyWithoutAOAreaInput
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutJournalDetailsInput = {
@@ -1854,6 +1898,7 @@ export type UserUncheckedCreateWithoutJournalDetailsInput = {
   AOAreas?: Prisma.DapemUncheckedCreateNestedManyWithoutAOAreaInput
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutJournalDetailsInput = {
@@ -1898,6 +1943,7 @@ export type UserUpdateWithoutJournalDetailsInput = {
   AOAreas?: Prisma.DapemUpdateManyWithoutAOAreaNestedInput
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutJournalDetailsInput = {
@@ -1926,6 +1972,7 @@ export type UserUncheckedUpdateWithoutJournalDetailsInput = {
   AOAreas?: Prisma.DapemUncheckedUpdateManyWithoutAOAreaNestedInput
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAgentFrontingInput = {
@@ -1954,6 +2001,7 @@ export type UserCreateWithoutAgentFrontingInput = {
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAgentFrontingInput = {
@@ -1982,6 +2030,7 @@ export type UserUncheckedCreateWithoutAgentFrontingInput = {
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAgentFrontingInput = {
@@ -2036,6 +2085,7 @@ export type UserCreateWithoutDataSimulasiInput = {
   AOAreas?: Prisma.DapemCreateNestedManyWithoutAOAreaInput
   Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDataSimulasiInput = {
@@ -2064,6 +2114,7 @@ export type UserUncheckedCreateWithoutDataSimulasiInput = {
   AOAreas?: Prisma.DapemUncheckedCreateNestedManyWithoutAOAreaInput
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
   JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
+  Otsdata?: Prisma.OTSDataUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDataSimulasiInput = {
@@ -2108,6 +2159,7 @@ export type UserUpdateWithoutDataSimulasiInput = {
   AOAreas?: Prisma.DapemUpdateManyWithoutAOAreaNestedInput
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDataSimulasiInput = {
@@ -2136,6 +2188,139 @@ export type UserUncheckedUpdateWithoutDataSimulasiInput = {
   AOAreas?: Prisma.DapemUncheckedUpdateManyWithoutAOAreaNestedInput
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutOtsdataInput = {
+  id?: string
+  nip?: string | null
+  fullname: string
+  username: string
+  password: string
+  email?: string | null
+  phone?: string | null
+  target?: number
+  position?: string | null
+  pkwt_status?: string | null
+  start_pkwt?: Date | string | null
+  end_pkwt?: Date | string | null
+  nik?: string | null
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  Cabang: Prisma.CabangCreateNestedOneWithoutUsersInput
+  Sumdan?: Prisma.SumdanCreateNestedOneWithoutUsersInput
+  AgentFronting?: Prisma.AgentFrontingCreateNestedOneWithoutUsersInput
+  AOs?: Prisma.DapemCreateNestedManyWithoutAOInput
+  AOCabangs?: Prisma.DapemCreateNestedManyWithoutAOCabangInput
+  AOAreas?: Prisma.DapemCreateNestedManyWithoutAOAreaInput
+  Dapems?: Prisma.DapemCreateNestedManyWithoutUserInput
+  JournalDetails?: Prisma.JournalDetailCreateNestedManyWithoutUserInput
+  DataSimulasi?: Prisma.DataSimulasiCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutOtsdataInput = {
+  id?: string
+  nip?: string | null
+  fullname: string
+  username: string
+  password: string
+  email?: string | null
+  phone?: string | null
+  target?: number
+  position?: string | null
+  pkwt_status?: string | null
+  start_pkwt?: Date | string | null
+  end_pkwt?: Date | string | null
+  nik?: string | null
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  roleId: string
+  cabangId: string
+  sumdanId?: string | null
+  agentFrontingId?: string | null
+  AOs?: Prisma.DapemUncheckedCreateNestedManyWithoutAOInput
+  AOCabangs?: Prisma.DapemUncheckedCreateNestedManyWithoutAOCabangInput
+  AOAreas?: Prisma.DapemUncheckedCreateNestedManyWithoutAOAreaInput
+  Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutUserInput
+  JournalDetails?: Prisma.JournalDetailUncheckedCreateNestedManyWithoutUserInput
+  DataSimulasi?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutOtsdataInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutOtsdataInput, Prisma.UserUncheckedCreateWithoutOtsdataInput>
+}
+
+export type UserUpsertWithoutOtsdataInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutOtsdataInput, Prisma.UserUncheckedUpdateWithoutOtsdataInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutOtsdataInput, Prisma.UserUncheckedCreateWithoutOtsdataInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutOtsdataInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutOtsdataInput, Prisma.UserUncheckedUpdateWithoutOtsdataInput>
+}
+
+export type UserUpdateWithoutOtsdataInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullname?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  target?: Prisma.IntFieldUpdateOperationsInput | number
+  position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pkwt_status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_pkwt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  end_pkwt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  nik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  Cabang?: Prisma.CabangUpdateOneRequiredWithoutUsersNestedInput
+  Sumdan?: Prisma.SumdanUpdateOneWithoutUsersNestedInput
+  AgentFronting?: Prisma.AgentFrontingUpdateOneWithoutUsersNestedInput
+  AOs?: Prisma.DapemUpdateManyWithoutAONestedInput
+  AOCabangs?: Prisma.DapemUpdateManyWithoutAOCabangNestedInput
+  AOAreas?: Prisma.DapemUpdateManyWithoutAOAreaNestedInput
+  Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
+  JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
+  DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutOtsdataInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullname?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  target?: Prisma.IntFieldUpdateOperationsInput | number
+  position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pkwt_status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  start_pkwt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  end_pkwt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  nik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  cabangId?: Prisma.StringFieldUpdateOperationsInput | string
+  sumdanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agentFrontingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  AOs?: Prisma.DapemUncheckedUpdateManyWithoutAONestedInput
+  AOCabangs?: Prisma.DapemUncheckedUpdateManyWithoutAOCabangNestedInput
+  AOAreas?: Prisma.DapemUncheckedUpdateManyWithoutAOAreaNestedInput
+  Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
+  JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
+  DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyRoleInput = {
@@ -2186,6 +2371,7 @@ export type UserUpdateWithoutRoleInput = {
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRoleInput = {
@@ -2214,6 +2400,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -2286,6 +2473,7 @@ export type UserUpdateWithoutSumdanInput = {
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSumdanInput = {
@@ -2314,6 +2502,7 @@ export type UserUncheckedUpdateWithoutSumdanInput = {
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutSumdanInput = {
@@ -2386,6 +2575,7 @@ export type UserUpdateWithoutCabangInput = {
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCabangInput = {
@@ -2414,6 +2604,7 @@ export type UserUncheckedUpdateWithoutCabangInput = {
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCabangInput = {
@@ -2486,6 +2677,7 @@ export type UserUpdateWithoutAgentFrontingInput = {
   Dapems?: Prisma.DapemUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAgentFrontingInput = {
@@ -2514,6 +2706,7 @@ export type UserUncheckedUpdateWithoutAgentFrontingInput = {
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutUserNestedInput
   JournalDetails?: Prisma.JournalDetailUncheckedUpdateManyWithoutUserNestedInput
   DataSimulasi?: Prisma.DataSimulasiUncheckedUpdateManyWithoutUserNestedInput
+  Otsdata?: Prisma.OTSDataUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutAgentFrontingInput = {
@@ -2550,6 +2743,7 @@ export type UserCountOutputType = {
   Dapems: number
   JournalDetails: number
   DataSimulasi: number
+  Otsdata: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2559,6 +2753,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   Dapems?: boolean | UserCountOutputTypeCountDapemsArgs
   JournalDetails?: boolean | UserCountOutputTypeCountJournalDetailsArgs
   DataSimulasi?: boolean | UserCountOutputTypeCountDataSimulasiArgs
+  Otsdata?: boolean | UserCountOutputTypeCountOtsdataArgs
 }
 
 /**
@@ -2613,6 +2808,13 @@ export type UserCountOutputTypeCountDataSimulasiArgs<ExtArgs extends runtime.Typ
   where?: Prisma.DataSimulasiWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountOtsdataArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OTSDataWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2645,6 +2847,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   Dapems?: boolean | Prisma.User$DapemsArgs<ExtArgs>
   JournalDetails?: boolean | Prisma.User$JournalDetailsArgs<ExtArgs>
   DataSimulasi?: boolean | Prisma.User$DataSimulasiArgs<ExtArgs>
+  Otsdata?: boolean | Prisma.User$OtsdataArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2685,6 +2888,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   Dapems?: boolean | Prisma.User$DapemsArgs<ExtArgs>
   JournalDetails?: boolean | Prisma.User$JournalDetailsArgs<ExtArgs>
   DataSimulasi?: boolean | Prisma.User$DataSimulasiArgs<ExtArgs>
+  Otsdata?: boolean | Prisma.User$OtsdataArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -2701,6 +2905,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     Dapems: Prisma.$DapemPayload<ExtArgs>[]
     JournalDetails: Prisma.$JournalDetailPayload<ExtArgs>[]
     DataSimulasi: Prisma.$DataSimulasiPayload<ExtArgs>[]
+    Otsdata: Prisma.$OTSDataPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3073,6 +3278,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   Dapems<T extends Prisma.User$DapemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$DapemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DapemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   JournalDetails<T extends Prisma.User$JournalDetailsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$JournalDetailsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JournalDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   DataSimulasi<T extends Prisma.User$DataSimulasiArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$DataSimulasiArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DataSimulasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Otsdata<T extends Prisma.User$OtsdataArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$OtsdataArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OTSDataPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3649,6 +3855,30 @@ export type User$DataSimulasiArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.DataSimulasiScalarFieldEnum | Prisma.DataSimulasiScalarFieldEnum[]
+}
+
+/**
+ * User.Otsdata
+ */
+export type User$OtsdataArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OTSData
+   */
+  select?: Prisma.OTSDataSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OTSData
+   */
+  omit?: Prisma.OTSDataOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OTSDataInclude<ExtArgs> | null
+  where?: Prisma.OTSDataWhereInput
+  orderBy?: Prisma.OTSDataOrderByWithRelationInput | Prisma.OTSDataOrderByWithRelationInput[]
+  cursor?: Prisma.OTSDataWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OTSDataScalarFieldEnum | Prisma.OTSDataScalarFieldEnum[]
 }
 
 /**

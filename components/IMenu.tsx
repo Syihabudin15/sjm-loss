@@ -28,7 +28,7 @@ import {
   TeamOutlined,
   TransactionOutlined,
 } from "@ant-design/icons";
-import { Banknote } from "lucide-react";
+import { Banknote, List } from "lucide-react";
 import Link from "next/link";
 
 export interface IMenu {
@@ -72,12 +72,22 @@ export const listMenuUI: IMenuType[] = [
     availableAccess: ["read", "update", "showpercent", "update_bop", "deviasi"],
   },
   {
-    label: "Data Simulasi",
-    key: "/data_simulasi",
-    icon: <CalculatorOutlined />,
+    label: "OTS Setup",
+    key: "/ots_setup/config",
+    icon: <DatabaseOutlined />,
     needaccess: true,
-    availableAccess: ["read", "update", "delete"],
+    availableAccess: ["read", "update"],
+    children: [
+      {
+        label: "OTS Data",
+        key: "/ots_setup/data_ots",
+        icon: <List size={14} />,
+        needaccess: true,
+        availableAccess: ["read", "write", "update", "delete"],
+      },
+    ],
   },
+
   {
     label: "Monitoring Pembiayaan",
     key: "/monitoring",
@@ -395,7 +405,11 @@ export const listMenuServer: { key: string; needaccess: boolean }[] = [
     needaccess: true,
   },
   {
-    key: "/data_simulasi",
+    key: "/ots_setup/config",
+    needaccess: true,
+  },
+  {
+    key: "/ots_setup/data_ots",
     needaccess: true,
   },
   {

@@ -419,10 +419,13 @@ export const ModelName = {
   JournalDetail: 'JournalDetail',
   AgentFronting: 'AgentFronting',
   SumdanAgentFronting: 'SumdanAgentFronting',
-  DataSimulasi: 'DataSimulasi',
   DPKStatus: 'DPKStatus',
   GuestBook: 'GuestBook',
-  GBookParticipant: 'GBookParticipant'
+  GBookParticipant: 'GBookParticipant',
+  DataSimulasi: 'DataSimulasi',
+  OTSDefault: 'OTSDefault',
+  OTSData: 'OTSData',
+  OTSDetail: 'OTSDetail'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -438,7 +441,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "role" | "sumdan" | "area" | "cabang" | "user" | "produkPembiayaan" | "jenisPembiayaan" | "debitur" | "dapem" | "aIAnalysis" | "payOffice" | "insurance" | "dropping" | "berkas" | "jaminan" | "pelunasan" | "angsuran" | "categoryOfAccount" | "journalEntry" | "journalDetail" | "agentFronting" | "sumdanAgentFronting" | "dataSimulasi" | "dPKStatus" | "guestBook" | "gBookParticipant"
+    modelProps: "role" | "sumdan" | "area" | "cabang" | "user" | "produkPembiayaan" | "jenisPembiayaan" | "debitur" | "dapem" | "aIAnalysis" | "payOffice" | "insurance" | "dropping" | "berkas" | "jaminan" | "pelunasan" | "angsuran" | "categoryOfAccount" | "journalEntry" | "journalDetail" | "agentFronting" | "sumdanAgentFronting" | "dPKStatus" | "guestBook" | "gBookParticipant" | "dataSimulasi" | "oTSDefault" | "oTSData" | "oTSDetail"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1894,72 +1897,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    DataSimulasi: {
-      payload: Prisma.$DataSimulasiPayload<ExtArgs>
-      fields: Prisma.DataSimulasiFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.DataSimulasiFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.DataSimulasiFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
-        }
-        findFirst: {
-          args: Prisma.DataSimulasiFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.DataSimulasiFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
-        }
-        findMany: {
-          args: Prisma.DataSimulasiFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>[]
-        }
-        create: {
-          args: Prisma.DataSimulasiCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
-        }
-        createMany: {
-          args: Prisma.DataSimulasiCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        delete: {
-          args: Prisma.DataSimulasiDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
-        }
-        update: {
-          args: Prisma.DataSimulasiUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
-        }
-        deleteMany: {
-          args: Prisma.DataSimulasiDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.DataSimulasiUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        upsert: {
-          args: Prisma.DataSimulasiUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
-        }
-        aggregate: {
-          args: Prisma.DataSimulasiAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateDataSimulasi>
-        }
-        groupBy: {
-          args: Prisma.DataSimulasiGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DataSimulasiGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.DataSimulasiCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DataSimulasiCountAggregateOutputType> | number
-        }
-      }
-    }
     DPKStatus: {
       payload: Prisma.$DPKStatusPayload<ExtArgs>
       fields: Prisma.DPKStatusFieldRefs
@@ -2155,6 +2092,270 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.GBookParticipantCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.GBookParticipantCountAggregateOutputType> | number
+        }
+      }
+    }
+    DataSimulasi: {
+      payload: Prisma.$DataSimulasiPayload<ExtArgs>
+      fields: Prisma.DataSimulasiFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DataSimulasiFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DataSimulasiFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
+        }
+        findFirst: {
+          args: Prisma.DataSimulasiFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DataSimulasiFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
+        }
+        findMany: {
+          args: Prisma.DataSimulasiFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>[]
+        }
+        create: {
+          args: Prisma.DataSimulasiCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
+        }
+        createMany: {
+          args: Prisma.DataSimulasiCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.DataSimulasiDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
+        }
+        update: {
+          args: Prisma.DataSimulasiUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
+        }
+        deleteMany: {
+          args: Prisma.DataSimulasiDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DataSimulasiUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.DataSimulasiUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DataSimulasiPayload>
+        }
+        aggregate: {
+          args: Prisma.DataSimulasiAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDataSimulasi>
+        }
+        groupBy: {
+          args: Prisma.DataSimulasiGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DataSimulasiGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DataSimulasiCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DataSimulasiCountAggregateOutputType> | number
+        }
+      }
+    }
+    OTSDefault: {
+      payload: Prisma.$OTSDefaultPayload<ExtArgs>
+      fields: Prisma.OTSDefaultFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.OTSDefaultFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDefaultPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.OTSDefaultFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDefaultPayload>
+        }
+        findFirst: {
+          args: Prisma.OTSDefaultFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDefaultPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.OTSDefaultFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDefaultPayload>
+        }
+        findMany: {
+          args: Prisma.OTSDefaultFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDefaultPayload>[]
+        }
+        create: {
+          args: Prisma.OTSDefaultCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDefaultPayload>
+        }
+        createMany: {
+          args: Prisma.OTSDefaultCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.OTSDefaultDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDefaultPayload>
+        }
+        update: {
+          args: Prisma.OTSDefaultUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDefaultPayload>
+        }
+        deleteMany: {
+          args: Prisma.OTSDefaultDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.OTSDefaultUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.OTSDefaultUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDefaultPayload>
+        }
+        aggregate: {
+          args: Prisma.OTSDefaultAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOTSDefault>
+        }
+        groupBy: {
+          args: Prisma.OTSDefaultGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OTSDefaultGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.OTSDefaultCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OTSDefaultCountAggregateOutputType> | number
+        }
+      }
+    }
+    OTSData: {
+      payload: Prisma.$OTSDataPayload<ExtArgs>
+      fields: Prisma.OTSDataFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.OTSDataFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDataPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.OTSDataFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDataPayload>
+        }
+        findFirst: {
+          args: Prisma.OTSDataFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDataPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.OTSDataFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDataPayload>
+        }
+        findMany: {
+          args: Prisma.OTSDataFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDataPayload>[]
+        }
+        create: {
+          args: Prisma.OTSDataCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDataPayload>
+        }
+        createMany: {
+          args: Prisma.OTSDataCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.OTSDataDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDataPayload>
+        }
+        update: {
+          args: Prisma.OTSDataUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDataPayload>
+        }
+        deleteMany: {
+          args: Prisma.OTSDataDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.OTSDataUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.OTSDataUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDataPayload>
+        }
+        aggregate: {
+          args: Prisma.OTSDataAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOTSData>
+        }
+        groupBy: {
+          args: Prisma.OTSDataGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OTSDataGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.OTSDataCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OTSDataCountAggregateOutputType> | number
+        }
+      }
+    }
+    OTSDetail: {
+      payload: Prisma.$OTSDetailPayload<ExtArgs>
+      fields: Prisma.OTSDetailFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.OTSDetailFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDetailPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.OTSDetailFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDetailPayload>
+        }
+        findFirst: {
+          args: Prisma.OTSDetailFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDetailPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.OTSDetailFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDetailPayload>
+        }
+        findMany: {
+          args: Prisma.OTSDetailFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDetailPayload>[]
+        }
+        create: {
+          args: Prisma.OTSDetailCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDetailPayload>
+        }
+        createMany: {
+          args: Prisma.OTSDetailCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.OTSDetailDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDetailPayload>
+        }
+        update: {
+          args: Prisma.OTSDetailUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDetailPayload>
+        }
+        deleteMany: {
+          args: Prisma.OTSDetailDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.OTSDetailUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.OTSDetailUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OTSDetailPayload>
+        }
+        aggregate: {
+          args: Prisma.OTSDetailAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOTSDetail>
+        }
+        groupBy: {
+          args: Prisma.OTSDetailGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OTSDetailGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.OTSDetailCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OTSDetailCountAggregateOutputType> | number
         }
       }
     }
@@ -2370,6 +2571,9 @@ export const DebiturScalarFieldEnum = {
   id_publisher: 'id_publisher',
   id_end: 'id_end',
   number_kk: 'number_kk',
+  kc_payoffice: 'kc_payoffice',
+  plafond: 'plafond',
+  end_date: 'end_date',
   mother_name: 'mother_name',
   account_name: 'account_name',
   account_number: 'account_number',
@@ -2522,7 +2726,8 @@ export const DapemScalarFieldEnum = {
   file_account: 'file_account',
   file_skp: 'file_skp',
   add_mitra: 'add_mitra',
-  file_idpb: 'file_idpb'
+  file_idpb: 'file_idpb',
+  file_spd: 'file_spd'
 } as const
 
 export type DapemScalarFieldEnum = (typeof DapemScalarFieldEnum)[keyof typeof DapemScalarFieldEnum]
@@ -2718,45 +2923,6 @@ export const SumdanAgentFrontingScalarFieldEnum = {
 export type SumdanAgentFrontingScalarFieldEnum = (typeof SumdanAgentFrontingScalarFieldEnum)[keyof typeof SumdanAgentFrontingScalarFieldEnum]
 
 
-export const DataSimulasiScalarFieldEnum = {
-  id: 'id',
-  nopen: 'nopen',
-  fullname: 'fullname',
-  birtdate: 'birtdate',
-  salary: 'salary',
-  tenor: 'tenor',
-  plafond: 'plafond',
-  c_margin_sumdan: 'c_margin_sumdan',
-  c_margin: 'c_margin',
-  c_adm_sumdan: 'c_adm_sumdan',
-  c_adm: 'c_adm',
-  c_account: 'c_account',
-  c_provisi: 'c_provisi',
-  c_provisi_sumdan: 'c_provisi_sumdan',
-  c_insurance: 'c_insurance',
-  c_flagging: 'c_flagging',
-  c_stamp: 'c_stamp',
-  c_gov: 'c_gov',
-  c_information: 'c_information',
-  c_mutasi: 'c_mutasi',
-  c_ned: 'c_ned',
-  c_fee_banpot: 'c_fee_banpot',
-  c_blokir: 'c_blokir',
-  c_takeover: 'c_takeover',
-  margin_type: 'margin_type',
-  note: 'note',
-  status: 'status',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  produkPembiayaanId: 'produkPembiayaanId',
-  jenisPembiayaanId: 'jenisPembiayaanId',
-  payOfficeId: 'payOfficeId',
-  userId: 'userId'
-} as const
-
-export type DataSimulasiScalarFieldEnum = (typeof DataSimulasiScalarFieldEnum)[keyof typeof DataSimulasiScalarFieldEnum]
-
-
 export const DPKStatusScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -2799,12 +2965,99 @@ export const GBookParticipantScalarFieldEnum = {
 export type GBookParticipantScalarFieldEnum = (typeof GBookParticipantScalarFieldEnum)[keyof typeof GBookParticipantScalarFieldEnum]
 
 
+export const DataSimulasiScalarFieldEnum = {
+  id: 'id',
+  nopen: 'nopen',
+  fullname: 'fullname',
+  birtdate: 'birtdate',
+  salary: 'salary',
+  tenor: 'tenor',
+  plafond: 'plafond',
+  c_margin_sumdan: 'c_margin_sumdan',
+  c_margin: 'c_margin',
+  c_adm_sumdan: 'c_adm_sumdan',
+  c_adm: 'c_adm',
+  c_account: 'c_account',
+  c_provisi: 'c_provisi',
+  c_provisi_sumdan: 'c_provisi_sumdan',
+  c_insurance: 'c_insurance',
+  c_flagging: 'c_flagging',
+  c_stamp: 'c_stamp',
+  c_gov: 'c_gov',
+  c_information: 'c_information',
+  c_mutasi: 'c_mutasi',
+  c_ned: 'c_ned',
+  c_fee_banpot: 'c_fee_banpot',
+  c_blokir: 'c_blokir',
+  c_takeover: 'c_takeover',
+  margin_type: 'margin_type',
+  note: 'note',
+  c_fee: 'c_fee',
+  status: 'status',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId',
+  payOfficeId: 'payOfficeId',
+  userId: 'userId'
+} as const
+
+export type DataSimulasiScalarFieldEnum = (typeof DataSimulasiScalarFieldEnum)[keyof typeof DataSimulasiScalarFieldEnum]
+
+
+export const OTSDefaultScalarFieldEnum = {
+  id: 'id',
+  pagesize: 'pagesize',
+  reset_day: 'reset_day',
+  max_dev: 'max_dev',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId'
+} as const
+
+export type OTSDefaultScalarFieldEnum = (typeof OTSDefaultScalarFieldEnum)[keyof typeof OTSDefaultScalarFieldEnum]
+
+
+export const OTSDataScalarFieldEnum = {
+  id: 'id',
+  get_date: 'get_date',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  ward: 'ward',
+  pagesize: 'pagesize',
+  count: 'count',
+  reset_date: 'reset_date',
+  userId: 'userId'
+} as const
+
+export type OTSDataScalarFieldEnum = (typeof OTSDataScalarFieldEnum)[keyof typeof OTSDataScalarFieldEnum]
+
+
+export const OTSDetailScalarFieldEnum = {
+  id: 'id',
+  desc: 'desc',
+  ots_status: 'ots_status',
+  files: 'files',
+  oTSDataId: 'oTSDataId',
+  debiturNopen: 'debiturNopen'
+} as const
+
+export type OTSDetailScalarFieldEnum = (typeof OTSDetailScalarFieldEnum)[keyof typeof OTSDetailScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const RoleOrderByRelevanceFieldEnum = {
@@ -2923,6 +3176,7 @@ export const DebiturOrderByRelevanceFieldEnum = {
   group_skep: 'group_skep',
   id_publisher: 'id_publisher',
   number_kk: 'number_kk',
+  kc_payoffice: 'kc_payoffice',
   mother_name: 'mother_name',
   account_name: 'account_name',
   account_number: 'account_number',
@@ -3019,7 +3273,8 @@ export const DapemOrderByRelevanceFieldEnum = {
   dPKStatusId: 'dPKStatusId',
   file_account: 'file_account',
   file_skp: 'file_skp',
-  file_idpb: 'file_idpb'
+  file_idpb: 'file_idpb',
+  file_spd: 'file_spd'
 } as const
 
 export type DapemOrderByRelevanceFieldEnum = (typeof DapemOrderByRelevanceFieldEnum)[keyof typeof DapemOrderByRelevanceFieldEnum]
@@ -3166,19 +3421,6 @@ export const SumdanAgentFrontingOrderByRelevanceFieldEnum = {
 export type SumdanAgentFrontingOrderByRelevanceFieldEnum = (typeof SumdanAgentFrontingOrderByRelevanceFieldEnum)[keyof typeof SumdanAgentFrontingOrderByRelevanceFieldEnum]
 
 
-export const DataSimulasiOrderByRelevanceFieldEnum = {
-  nopen: 'nopen',
-  fullname: 'fullname',
-  note: 'note',
-  produkPembiayaanId: 'produkPembiayaanId',
-  jenisPembiayaanId: 'jenisPembiayaanId',
-  payOfficeId: 'payOfficeId',
-  userId: 'userId'
-} as const
-
-export type DataSimulasiOrderByRelevanceFieldEnum = (typeof DataSimulasiOrderByRelevanceFieldEnum)[keyof typeof DataSimulasiOrderByRelevanceFieldEnum]
-
-
 export const DPKStatusOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
@@ -3211,6 +3453,67 @@ export const GBookParticipantOrderByRelevanceFieldEnum = {
 } as const
 
 export type GBookParticipantOrderByRelevanceFieldEnum = (typeof GBookParticipantOrderByRelevanceFieldEnum)[keyof typeof GBookParticipantOrderByRelevanceFieldEnum]
+
+
+export const DataSimulasiOrderByRelevanceFieldEnum = {
+  nopen: 'nopen',
+  fullname: 'fullname',
+  note: 'note',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId',
+  payOfficeId: 'payOfficeId',
+  userId: 'userId'
+} as const
+
+export type DataSimulasiOrderByRelevanceFieldEnum = (typeof DataSimulasiOrderByRelevanceFieldEnum)[keyof typeof DataSimulasiOrderByRelevanceFieldEnum]
+
+
+export const OTSDefaultOrderByRelevanceFieldEnum = {
+  id: 'id',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId'
+} as const
+
+export type OTSDefaultOrderByRelevanceFieldEnum = (typeof OTSDefaultOrderByRelevanceFieldEnum)[keyof typeof OTSDefaultOrderByRelevanceFieldEnum]
+
+
+export const OTSDataOrderByRelevanceFieldEnum = {
+  id: 'id',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  ward: 'ward',
+  userId: 'userId'
+} as const
+
+export type OTSDataOrderByRelevanceFieldEnum = (typeof OTSDataOrderByRelevanceFieldEnum)[keyof typeof OTSDataOrderByRelevanceFieldEnum]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const OTSDetailOrderByRelevanceFieldEnum = {
+  id: 'id',
+  desc: 'desc',
+  oTSDataId: 'oTSDataId',
+  debiturNopen: 'debiturNopen'
+} as const
+
+export type OTSDetailOrderByRelevanceFieldEnum = (typeof OTSDetailOrderByRelevanceFieldEnum)[keyof typeof OTSDetailOrderByRelevanceFieldEnum]
 
 
 
@@ -3314,6 +3617,27 @@ export type EnumESettleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'AccountType'
  */
 export type EnumAccountTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountType'>
+    
+
+
+/**
+ * Reference to a field of type 'EOTSStatus'
+ */
+export type EnumEOTSStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EOTSStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 /**
@@ -3489,10 +3813,13 @@ export type GlobalOmitConfig = {
   journalDetail?: Prisma.JournalDetailOmit
   agentFronting?: Prisma.AgentFrontingOmit
   sumdanAgentFronting?: Prisma.SumdanAgentFrontingOmit
-  dataSimulasi?: Prisma.DataSimulasiOmit
   dPKStatus?: Prisma.DPKStatusOmit
   guestBook?: Prisma.GuestBookOmit
   gBookParticipant?: Prisma.GBookParticipantOmit
+  dataSimulasi?: Prisma.DataSimulasiOmit
+  oTSDefault?: Prisma.OTSDefaultOmit
+  oTSData?: Prisma.OTSDataOmit
+  oTSDetail?: Prisma.OTSDetailOmit
 }
 
 /* Types for Logging */

@@ -128,11 +128,6 @@ export type AgentFronting = Prisma.AgentFrontingModel
  */
 export type SumdanAgentFronting = Prisma.SumdanAgentFrontingModel
 /**
- * Model DataSimulasi
- * 
- */
-export type DataSimulasi = Prisma.DataSimulasiModel
-/**
  * Model DPKStatus
  * 
  */
@@ -147,3 +142,23 @@ export type GuestBook = Prisma.GuestBookModel
  * 
  */
 export type GBookParticipant = Prisma.GBookParticipantModel
+/**
+ * Model DataSimulasi
+ * 
+ */
+export type DataSimulasi = Prisma.DataSimulasiModel
+/**
+ * Model OTSDefault
+ * 
+ */
+export type OTSDefault = Prisma.OTSDefaultModel
+/**
+ * Model OTSData
+ * 
+ */
+export type OTSData = Prisma.OTSDataModel
+/**
+ * Model OTSDetail
+ * 
+ */
+export type OTSDetail = Prisma.OTSDetailModel

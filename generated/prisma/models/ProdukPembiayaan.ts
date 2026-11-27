@@ -327,6 +327,7 @@ export type ProdukPembiayaanWhereInput = {
   Sumdan?: Prisma.XOR<Prisma.SumdanScalarRelationFilter, Prisma.SumdanWhereInput>
   Dapems?: Prisma.DapemListRelationFilter
   dataSimulasis?: Prisma.DataSimulasiListRelationFilter
+  otsdefaults?: Prisma.OTSDefaultListRelationFilter
 }
 
 export type ProdukPembiayaanOrderByWithRelationInput = {
@@ -348,6 +349,7 @@ export type ProdukPembiayaanOrderByWithRelationInput = {
   Sumdan?: Prisma.SumdanOrderByWithRelationInput
   Dapems?: Prisma.DapemOrderByRelationAggregateInput
   dataSimulasis?: Prisma.DataSimulasiOrderByRelationAggregateInput
+  otsdefaults?: Prisma.OTSDefaultOrderByRelationAggregateInput
   _relevance?: Prisma.ProdukPembiayaanOrderByRelevanceInput
 }
 
@@ -373,6 +375,7 @@ export type ProdukPembiayaanWhereUniqueInput = Prisma.AtLeast<{
   Sumdan?: Prisma.XOR<Prisma.SumdanScalarRelationFilter, Prisma.SumdanWhereInput>
   Dapems?: Prisma.DapemListRelationFilter
   dataSimulasis?: Prisma.DataSimulasiListRelationFilter
+  otsdefaults?: Prisma.OTSDefaultListRelationFilter
 }, "id">
 
 export type ProdukPembiayaanOrderByWithAggregationInput = {
@@ -437,6 +440,7 @@ export type ProdukPembiayaanCreateInput = {
   Sumdan: Prisma.SumdanCreateNestedOneWithoutProdukPembiayaansInput
   Dapems?: Prisma.DapemCreateNestedManyWithoutProdukPembiayaanInput
   dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutProductInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutProdukPembiayaanInput
 }
 
 export type ProdukPembiayaanUncheckedCreateInput = {
@@ -457,6 +461,7 @@ export type ProdukPembiayaanUncheckedCreateInput = {
   sumdanId: string
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutProdukPembiayaanInput
   dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutProductInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutProdukPembiayaanInput
 }
 
 export type ProdukPembiayaanUpdateInput = {
@@ -477,6 +482,7 @@ export type ProdukPembiayaanUpdateInput = {
   Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutProdukPembiayaansNestedInput
   Dapems?: Prisma.DapemUpdateManyWithoutProdukPembiayaanNestedInput
   dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutProductNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutProdukPembiayaanNestedInput
 }
 
 export type ProdukPembiayaanUncheckedUpdateInput = {
@@ -497,6 +503,7 @@ export type ProdukPembiayaanUncheckedUpdateInput = {
   sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
   dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutProductNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
 }
 
 export type ProdukPembiayaanCreateManyInput = {
@@ -723,6 +730,20 @@ export type ProdukPembiayaanUpdateOneRequiredWithoutDataSimulasisNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProdukPembiayaanUpdateToOneWithWhereWithoutDataSimulasisInput, Prisma.ProdukPembiayaanUpdateWithoutDataSimulasisInput>, Prisma.ProdukPembiayaanUncheckedUpdateWithoutDataSimulasisInput>
 }
 
+export type ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput = {
+  create?: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutOtsdefaultsInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutOtsdefaultsInput>
+  connectOrCreate?: Prisma.ProdukPembiayaanCreateOrConnectWithoutOtsdefaultsInput
+  connect?: Prisma.ProdukPembiayaanWhereUniqueInput
+}
+
+export type ProdukPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutOtsdefaultsInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutOtsdefaultsInput>
+  connectOrCreate?: Prisma.ProdukPembiayaanCreateOrConnectWithoutOtsdefaultsInput
+  upsert?: Prisma.ProdukPembiayaanUpsertWithoutOtsdefaultsInput
+  connect?: Prisma.ProdukPembiayaanWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProdukPembiayaanUpdateToOneWithWhereWithoutOtsdefaultsInput, Prisma.ProdukPembiayaanUpdateWithoutOtsdefaultsInput>, Prisma.ProdukPembiayaanUncheckedUpdateWithoutOtsdefaultsInput>
+}
+
 export type ProdukPembiayaanCreateWithoutSumdanInput = {
   id?: string
   name: string
@@ -740,6 +761,7 @@ export type ProdukPembiayaanCreateWithoutSumdanInput = {
   updated_at?: Date | string
   Dapems?: Prisma.DapemCreateNestedManyWithoutProdukPembiayaanInput
   dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutProductInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutProdukPembiayaanInput
 }
 
 export type ProdukPembiayaanUncheckedCreateWithoutSumdanInput = {
@@ -759,6 +781,7 @@ export type ProdukPembiayaanUncheckedCreateWithoutSumdanInput = {
   updated_at?: Date | string
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutProdukPembiayaanInput
   dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutProductInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutProdukPembiayaanInput
 }
 
 export type ProdukPembiayaanCreateOrConnectWithoutSumdanInput = {
@@ -825,6 +848,7 @@ export type ProdukPembiayaanCreateWithoutDapemsInput = {
   updated_at?: Date | string
   Sumdan: Prisma.SumdanCreateNestedOneWithoutProdukPembiayaansInput
   dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutProductInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutProdukPembiayaanInput
 }
 
 export type ProdukPembiayaanUncheckedCreateWithoutDapemsInput = {
@@ -844,6 +868,7 @@ export type ProdukPembiayaanUncheckedCreateWithoutDapemsInput = {
   updated_at?: Date | string
   sumdanId: string
   dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutProductInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutProdukPembiayaanInput
 }
 
 export type ProdukPembiayaanCreateOrConnectWithoutDapemsInput = {
@@ -879,6 +904,7 @@ export type ProdukPembiayaanUpdateWithoutDapemsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutProdukPembiayaansNestedInput
   dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutProductNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutProdukPembiayaanNestedInput
 }
 
 export type ProdukPembiayaanUncheckedUpdateWithoutDapemsInput = {
@@ -898,6 +924,7 @@ export type ProdukPembiayaanUncheckedUpdateWithoutDapemsInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
   dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutProductNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
 }
 
 export type ProdukPembiayaanCreateWithoutDataSimulasisInput = {
@@ -917,6 +944,7 @@ export type ProdukPembiayaanCreateWithoutDataSimulasisInput = {
   updated_at?: Date | string
   Sumdan: Prisma.SumdanCreateNestedOneWithoutProdukPembiayaansInput
   Dapems?: Prisma.DapemCreateNestedManyWithoutProdukPembiayaanInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutProdukPembiayaanInput
 }
 
 export type ProdukPembiayaanUncheckedCreateWithoutDataSimulasisInput = {
@@ -936,6 +964,7 @@ export type ProdukPembiayaanUncheckedCreateWithoutDataSimulasisInput = {
   updated_at?: Date | string
   sumdanId: string
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutProdukPembiayaanInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutProdukPembiayaanInput
 }
 
 export type ProdukPembiayaanCreateOrConnectWithoutDataSimulasisInput = {
@@ -971,6 +1000,7 @@ export type ProdukPembiayaanUpdateWithoutDataSimulasisInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutProdukPembiayaansNestedInput
   Dapems?: Prisma.DapemUpdateManyWithoutProdukPembiayaanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutProdukPembiayaanNestedInput
 }
 
 export type ProdukPembiayaanUncheckedUpdateWithoutDataSimulasisInput = {
@@ -990,6 +1020,103 @@ export type ProdukPembiayaanUncheckedUpdateWithoutDataSimulasisInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
+}
+
+export type ProdukPembiayaanCreateWithoutOtsdefaultsInput = {
+  id?: string
+  name: string
+  c_margin: number
+  c_margin_sumdan?: number
+  c_insurance: number
+  max_tenor: number
+  max_plafond: number
+  min_age: number
+  max_age: number
+  max_paid: number
+  margin_type: $Enums.EMarginType
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Sumdan: Prisma.SumdanCreateNestedOneWithoutProdukPembiayaansInput
+  Dapems?: Prisma.DapemCreateNestedManyWithoutProdukPembiayaanInput
+  dataSimulasis?: Prisma.DataSimulasiCreateNestedManyWithoutProductInput
+}
+
+export type ProdukPembiayaanUncheckedCreateWithoutOtsdefaultsInput = {
+  id?: string
+  name: string
+  c_margin: number
+  c_margin_sumdan?: number
+  c_insurance: number
+  max_tenor: number
+  max_plafond: number
+  min_age: number
+  max_age: number
+  max_paid: number
+  margin_type: $Enums.EMarginType
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  sumdanId: string
+  Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutProdukPembiayaanInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedCreateNestedManyWithoutProductInput
+}
+
+export type ProdukPembiayaanCreateOrConnectWithoutOtsdefaultsInput = {
+  where: Prisma.ProdukPembiayaanWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutOtsdefaultsInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutOtsdefaultsInput>
+}
+
+export type ProdukPembiayaanUpsertWithoutOtsdefaultsInput = {
+  update: Prisma.XOR<Prisma.ProdukPembiayaanUpdateWithoutOtsdefaultsInput, Prisma.ProdukPembiayaanUncheckedUpdateWithoutOtsdefaultsInput>
+  create: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutOtsdefaultsInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutOtsdefaultsInput>
+  where?: Prisma.ProdukPembiayaanWhereInput
+}
+
+export type ProdukPembiayaanUpdateToOneWithWhereWithoutOtsdefaultsInput = {
+  where?: Prisma.ProdukPembiayaanWhereInput
+  data: Prisma.XOR<Prisma.ProdukPembiayaanUpdateWithoutOtsdefaultsInput, Prisma.ProdukPembiayaanUncheckedUpdateWithoutOtsdefaultsInput>
+}
+
+export type ProdukPembiayaanUpdateWithoutOtsdefaultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  min_age?: Prisma.IntFieldUpdateOperationsInput | number
+  max_age?: Prisma.IntFieldUpdateOperationsInput | number
+  max_paid?: Prisma.IntFieldUpdateOperationsInput | number
+  margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutProdukPembiayaansNestedInput
+  Dapems?: Prisma.DapemUpdateManyWithoutProdukPembiayaanNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutProductNestedInput
+}
+
+export type ProdukPembiayaanUncheckedUpdateWithoutOtsdefaultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_tenor?: Prisma.IntFieldUpdateOperationsInput | number
+  max_plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  min_age?: Prisma.IntFieldUpdateOperationsInput | number
+  max_age?: Prisma.IntFieldUpdateOperationsInput | number
+  max_paid?: Prisma.IntFieldUpdateOperationsInput | number
+  margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
+  Dapems?: Prisma.DapemUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
+  dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProdukPembiayaanCreateManySumdanInput = {
@@ -1026,6 +1153,7 @@ export type ProdukPembiayaanUpdateWithoutSumdanInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUpdateManyWithoutProdukPembiayaanNestedInput
   dataSimulasis?: Prisma.DataSimulasiUpdateManyWithoutProductNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutProdukPembiayaanNestedInput
 }
 
 export type ProdukPembiayaanUncheckedUpdateWithoutSumdanInput = {
@@ -1045,6 +1173,7 @@ export type ProdukPembiayaanUncheckedUpdateWithoutSumdanInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
   dataSimulasis?: Prisma.DataSimulasiUncheckedUpdateManyWithoutProductNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutProdukPembiayaanNestedInput
 }
 
 export type ProdukPembiayaanUncheckedUpdateManyWithoutSumdanInput = {
@@ -1072,11 +1201,13 @@ export type ProdukPembiayaanUncheckedUpdateManyWithoutSumdanInput = {
 export type ProdukPembiayaanCountOutputType = {
   Dapems: number
   dataSimulasis: number
+  otsdefaults: number
 }
 
 export type ProdukPembiayaanCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Dapems?: boolean | ProdukPembiayaanCountOutputTypeCountDapemsArgs
   dataSimulasis?: boolean | ProdukPembiayaanCountOutputTypeCountDataSimulasisArgs
+  otsdefaults?: boolean | ProdukPembiayaanCountOutputTypeCountOtsdefaultsArgs
 }
 
 /**
@@ -1103,6 +1234,13 @@ export type ProdukPembiayaanCountOutputTypeCountDataSimulasisArgs<ExtArgs extend
   where?: Prisma.DataSimulasiWhereInput
 }
 
+/**
+ * ProdukPembiayaanCountOutputType without action
+ */
+export type ProdukPembiayaanCountOutputTypeCountOtsdefaultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OTSDefaultWhereInput
+}
+
 
 export type ProdukPembiayaanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1123,6 +1261,7 @@ export type ProdukPembiayaanSelect<ExtArgs extends runtime.Types.Extensions.Inte
   Sumdan?: boolean | Prisma.SumdanDefaultArgs<ExtArgs>
   Dapems?: boolean | Prisma.ProdukPembiayaan$DapemsArgs<ExtArgs>
   dataSimulasis?: boolean | Prisma.ProdukPembiayaan$dataSimulasisArgs<ExtArgs>
+  otsdefaults?: boolean | Prisma.ProdukPembiayaan$otsdefaultsArgs<ExtArgs>
   _count?: boolean | Prisma.ProdukPembiayaanCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["produkPembiayaan"]>
 
@@ -1151,6 +1290,7 @@ export type ProdukPembiayaanInclude<ExtArgs extends runtime.Types.Extensions.Int
   Sumdan?: boolean | Prisma.SumdanDefaultArgs<ExtArgs>
   Dapems?: boolean | Prisma.ProdukPembiayaan$DapemsArgs<ExtArgs>
   dataSimulasis?: boolean | Prisma.ProdukPembiayaan$dataSimulasisArgs<ExtArgs>
+  otsdefaults?: boolean | Prisma.ProdukPembiayaan$otsdefaultsArgs<ExtArgs>
   _count?: boolean | Prisma.ProdukPembiayaanCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1160,6 +1300,7 @@ export type $ProdukPembiayaanPayload<ExtArgs extends runtime.Types.Extensions.In
     Sumdan: Prisma.$SumdanPayload<ExtArgs>
     Dapems: Prisma.$DapemPayload<ExtArgs>[]
     dataSimulasis: Prisma.$DataSimulasiPayload<ExtArgs>[]
+    otsdefaults: Prisma.$OTSDefaultPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1520,6 +1661,7 @@ export interface Prisma__ProdukPembiayaanClient<T, Null = never, ExtArgs extends
   Sumdan<T extends Prisma.SumdanDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SumdanDefaultArgs<ExtArgs>>): Prisma.Prisma__SumdanClient<runtime.Types.Result.GetResult<Prisma.$SumdanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   Dapems<T extends Prisma.ProdukPembiayaan$DapemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProdukPembiayaan$DapemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DapemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   dataSimulasis<T extends Prisma.ProdukPembiayaan$dataSimulasisArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProdukPembiayaan$dataSimulasisArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DataSimulasiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  otsdefaults<T extends Prisma.ProdukPembiayaan$otsdefaultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProdukPembiayaan$otsdefaultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OTSDefaultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1957,6 +2099,30 @@ export type ProdukPembiayaan$dataSimulasisArgs<ExtArgs extends runtime.Types.Ext
   take?: number
   skip?: number
   distinct?: Prisma.DataSimulasiScalarFieldEnum | Prisma.DataSimulasiScalarFieldEnum[]
+}
+
+/**
+ * ProdukPembiayaan.otsdefaults
+ */
+export type ProdukPembiayaan$otsdefaultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OTSDefault
+   */
+  select?: Prisma.OTSDefaultSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OTSDefault
+   */
+  omit?: Prisma.OTSDefaultOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OTSDefaultInclude<ExtArgs> | null
+  where?: Prisma.OTSDefaultWhereInput
+  orderBy?: Prisma.OTSDefaultOrderByWithRelationInput | Prisma.OTSDefaultOrderByWithRelationInput[]
+  cursor?: Prisma.OTSDefaultWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OTSDefaultScalarFieldEnum | Prisma.OTSDefaultScalarFieldEnum[]
 }
 
 /**

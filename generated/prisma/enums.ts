@@ -79,6 +79,16 @@ export const ESettleStatus = {
 export type ESettleStatus = (typeof ESettleStatus)[keyof typeof ESettleStatus]
 
 
+export const EOTSStatus = {
+  PENDING: 'PENDING',
+  PROSES: 'PROSES',
+  AKTIF: 'AKTIF',
+  HAPUS: 'HAPUS'
+} as const
+
+export type EOTSStatus = (typeof EOTSStatus)[keyof typeof EOTSStatus]
+
+
 export const AccountType = {
   ASSET: 'ASSET',
   KEWAJIBAN: 'KEWAJIBAN',

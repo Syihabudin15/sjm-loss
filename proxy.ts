@@ -25,5 +25,6 @@ export const config = {
     "/slik-analyze",
     "/master/:path*",
     "/guest_book",
+    "/ots_setup/:path*",
   ],
 };

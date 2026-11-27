@@ -48,6 +48,7 @@ export type DataSimulasiAvgAggregateOutputType = {
   c_fee_banpot: number | null
   c_blokir: number | null
   c_takeover: number | null
+  c_fee: number | null
 }
 
 export type DataSimulasiSumAggregateOutputType = {
@@ -72,6 +73,7 @@ export type DataSimulasiSumAggregateOutputType = {
   c_fee_banpot: number | null
   c_blokir: number | null
   c_takeover: number | null
+  c_fee: number | null
 }
 
 export type DataSimulasiMinAggregateOutputType = {
@@ -101,6 +103,7 @@ export type DataSimulasiMinAggregateOutputType = {
   c_takeover: number | null
   margin_type: $Enums.EMarginType | null
   note: string | null
+  c_fee: number | null
   status: boolean | null
   created_at: Date | null
   updated_at: Date | null
@@ -137,6 +140,7 @@ export type DataSimulasiMaxAggregateOutputType = {
   c_takeover: number | null
   margin_type: $Enums.EMarginType | null
   note: string | null
+  c_fee: number | null
   status: boolean | null
   created_at: Date | null
   updated_at: Date | null
@@ -173,6 +177,7 @@ export type DataSimulasiCountAggregateOutputType = {
   c_takeover: number
   margin_type: number
   note: number
+  c_fee: number
   status: number
   created_at: number
   updated_at: number
@@ -206,6 +211,7 @@ export type DataSimulasiAvgAggregateInputType = {
   c_fee_banpot?: true
   c_blokir?: true
   c_takeover?: true
+  c_fee?: true
 }
 
 export type DataSimulasiSumAggregateInputType = {
@@ -230,6 +236,7 @@ export type DataSimulasiSumAggregateInputType = {
   c_fee_banpot?: true
   c_blokir?: true
   c_takeover?: true
+  c_fee?: true
 }
 
 export type DataSimulasiMinAggregateInputType = {
@@ -259,6 +266,7 @@ export type DataSimulasiMinAggregateInputType = {
   c_takeover?: true
   margin_type?: true
   note?: true
+  c_fee?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -295,6 +303,7 @@ export type DataSimulasiMaxAggregateInputType = {
   c_takeover?: true
   margin_type?: true
   note?: true
+  c_fee?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -331,6 +340,7 @@ export type DataSimulasiCountAggregateInputType = {
   c_takeover?: true
   margin_type?: true
   note?: true
+  c_fee?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -454,6 +464,7 @@ export type DataSimulasiGroupByOutputType = {
   c_takeover: number
   margin_type: $Enums.EMarginType
   note: string | null
+  c_fee: number
   status: boolean
   created_at: Date
   updated_at: Date
@@ -494,25 +505,26 @@ export type DataSimulasiWhereInput = {
   salary?: Prisma.IntFilter<"DataSimulasi"> | number
   tenor?: Prisma.IntFilter<"DataSimulasi"> | number
   plafond?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_margin_sumdan?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_margin?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_adm_sumdan?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_adm?: Prisma.IntFilter<"DataSimulasi"> | number
+  c_margin_sumdan?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_margin?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_adm_sumdan?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_adm?: Prisma.FloatFilter<"DataSimulasi"> | number
   c_account?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_provisi?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_provisi_sumdan?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_insurance?: Prisma.IntFilter<"DataSimulasi"> | number
+  c_provisi?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_provisi_sumdan?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_insurance?: Prisma.FloatFilter<"DataSimulasi"> | number
   c_flagging?: Prisma.IntFilter<"DataSimulasi"> | number
   c_stamp?: Prisma.IntFilter<"DataSimulasi"> | number
   c_gov?: Prisma.IntFilter<"DataSimulasi"> | number
   c_information?: Prisma.IntFilter<"DataSimulasi"> | number
   c_mutasi?: Prisma.IntFilter<"DataSimulasi"> | number
   c_ned?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_fee_banpot?: Prisma.IntFilter<"DataSimulasi"> | number
+  c_fee_banpot?: Prisma.FloatFilter<"DataSimulasi"> | number
   c_blokir?: Prisma.IntFilter<"DataSimulasi"> | number
   c_takeover?: Prisma.IntFilter<"DataSimulasi"> | number
   margin_type?: Prisma.EnumEMarginTypeFilter<"DataSimulasi"> | $Enums.EMarginType
   note?: Prisma.StringNullableFilter<"DataSimulasi"> | string | null
+  c_fee?: Prisma.FloatFilter<"DataSimulasi"> | number
   status?: Prisma.BoolFilter<"DataSimulasi"> | boolean
   created_at?: Prisma.DateTimeFilter<"DataSimulasi"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"DataSimulasi"> | Date | string
@@ -553,6 +565,7 @@ export type DataSimulasiOrderByWithRelationInput = {
   c_takeover?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  c_fee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -578,25 +591,26 @@ export type DataSimulasiWhereUniqueInput = Prisma.AtLeast<{
   salary?: Prisma.IntFilter<"DataSimulasi"> | number
   tenor?: Prisma.IntFilter<"DataSimulasi"> | number
   plafond?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_margin_sumdan?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_margin?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_adm_sumdan?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_adm?: Prisma.IntFilter<"DataSimulasi"> | number
+  c_margin_sumdan?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_margin?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_adm_sumdan?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_adm?: Prisma.FloatFilter<"DataSimulasi"> | number
   c_account?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_provisi?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_provisi_sumdan?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_insurance?: Prisma.IntFilter<"DataSimulasi"> | number
+  c_provisi?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_provisi_sumdan?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_insurance?: Prisma.FloatFilter<"DataSimulasi"> | number
   c_flagging?: Prisma.IntFilter<"DataSimulasi"> | number
   c_stamp?: Prisma.IntFilter<"DataSimulasi"> | number
   c_gov?: Prisma.IntFilter<"DataSimulasi"> | number
   c_information?: Prisma.IntFilter<"DataSimulasi"> | number
   c_mutasi?: Prisma.IntFilter<"DataSimulasi"> | number
   c_ned?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_fee_banpot?: Prisma.IntFilter<"DataSimulasi"> | number
+  c_fee_banpot?: Prisma.FloatFilter<"DataSimulasi"> | number
   c_blokir?: Prisma.IntFilter<"DataSimulasi"> | number
   c_takeover?: Prisma.IntFilter<"DataSimulasi"> | number
   margin_type?: Prisma.EnumEMarginTypeFilter<"DataSimulasi"> | $Enums.EMarginType
   note?: Prisma.StringNullableFilter<"DataSimulasi"> | string | null
+  c_fee?: Prisma.FloatFilter<"DataSimulasi"> | number
   status?: Prisma.BoolFilter<"DataSimulasi"> | boolean
   created_at?: Prisma.DateTimeFilter<"DataSimulasi"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"DataSimulasi"> | Date | string
@@ -637,6 +651,7 @@ export type DataSimulasiOrderByWithAggregationInput = {
   c_takeover?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  c_fee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -662,25 +677,26 @@ export type DataSimulasiScalarWhereWithAggregatesInput = {
   salary?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
   tenor?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
   plafond?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
-  c_margin_sumdan?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
-  c_margin?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
-  c_adm_sumdan?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
-  c_adm?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
+  c_margin_sumdan?: Prisma.FloatWithAggregatesFilter<"DataSimulasi"> | number
+  c_margin?: Prisma.FloatWithAggregatesFilter<"DataSimulasi"> | number
+  c_adm_sumdan?: Prisma.FloatWithAggregatesFilter<"DataSimulasi"> | number
+  c_adm?: Prisma.FloatWithAggregatesFilter<"DataSimulasi"> | number
   c_account?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
-  c_provisi?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
-  c_provisi_sumdan?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
-  c_insurance?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
+  c_provisi?: Prisma.FloatWithAggregatesFilter<"DataSimulasi"> | number
+  c_provisi_sumdan?: Prisma.FloatWithAggregatesFilter<"DataSimulasi"> | number
+  c_insurance?: Prisma.FloatWithAggregatesFilter<"DataSimulasi"> | number
   c_flagging?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
   c_stamp?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
   c_gov?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
   c_information?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
   c_mutasi?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
   c_ned?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
-  c_fee_banpot?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
+  c_fee_banpot?: Prisma.FloatWithAggregatesFilter<"DataSimulasi"> | number
   c_blokir?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
   c_takeover?: Prisma.IntWithAggregatesFilter<"DataSimulasi"> | number
   margin_type?: Prisma.EnumEMarginTypeWithAggregatesFilter<"DataSimulasi"> | $Enums.EMarginType
   note?: Prisma.StringNullableWithAggregatesFilter<"DataSimulasi"> | string | null
+  c_fee?: Prisma.FloatWithAggregatesFilter<"DataSimulasi"> | number
   status?: Prisma.BoolWithAggregatesFilter<"DataSimulasi"> | boolean
   created_at?: Prisma.DateTimeWithAggregatesFilter<"DataSimulasi"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"DataSimulasi"> | Date | string
@@ -716,6 +732,7 @@ export type DataSimulasiCreateInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -752,6 +769,7 @@ export type DataSimulasiUncheckedCreateInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -768,25 +786,26 @@ export type DataSimulasiUpdateInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -804,25 +823,26 @@ export type DataSimulasiUncheckedUpdateInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -859,6 +879,7 @@ export type DataSimulasiCreateManyInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -875,25 +896,26 @@ export type DataSimulasiUpdateManyMutationInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -907,25 +929,26 @@ export type DataSimulasiUncheckedUpdateManyInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -978,6 +1001,7 @@ export type DataSimulasiCountOrderByAggregateInput = {
   c_takeover?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  c_fee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -1009,6 +1033,7 @@ export type DataSimulasiAvgOrderByAggregateInput = {
   c_fee_banpot?: Prisma.SortOrder
   c_blokir?: Prisma.SortOrder
   c_takeover?: Prisma.SortOrder
+  c_fee?: Prisma.SortOrder
 }
 
 export type DataSimulasiMaxOrderByAggregateInput = {
@@ -1038,6 +1063,7 @@ export type DataSimulasiMaxOrderByAggregateInput = {
   c_takeover?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  c_fee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -1074,6 +1100,7 @@ export type DataSimulasiMinOrderByAggregateInput = {
   c_takeover?: Prisma.SortOrder
   margin_type?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  c_fee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -1105,6 +1132,7 @@ export type DataSimulasiSumOrderByAggregateInput = {
   c_fee_banpot?: Prisma.SortOrder
   c_blokir?: Prisma.SortOrder
   c_takeover?: Prisma.SortOrder
+  c_fee?: Prisma.SortOrder
 }
 
 export type DataSimulasiCreateNestedManyWithoutUserInput = {
@@ -1301,6 +1329,7 @@ export type DataSimulasiCreateWithoutUserInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1336,6 +1365,7 @@ export type DataSimulasiUncheckedCreateWithoutUserInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1381,25 +1411,26 @@ export type DataSimulasiScalarWhereInput = {
   salary?: Prisma.IntFilter<"DataSimulasi"> | number
   tenor?: Prisma.IntFilter<"DataSimulasi"> | number
   plafond?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_margin_sumdan?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_margin?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_adm_sumdan?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_adm?: Prisma.IntFilter<"DataSimulasi"> | number
+  c_margin_sumdan?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_margin?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_adm_sumdan?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_adm?: Prisma.FloatFilter<"DataSimulasi"> | number
   c_account?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_provisi?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_provisi_sumdan?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_insurance?: Prisma.IntFilter<"DataSimulasi"> | number
+  c_provisi?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_provisi_sumdan?: Prisma.FloatFilter<"DataSimulasi"> | number
+  c_insurance?: Prisma.FloatFilter<"DataSimulasi"> | number
   c_flagging?: Prisma.IntFilter<"DataSimulasi"> | number
   c_stamp?: Prisma.IntFilter<"DataSimulasi"> | number
   c_gov?: Prisma.IntFilter<"DataSimulasi"> | number
   c_information?: Prisma.IntFilter<"DataSimulasi"> | number
   c_mutasi?: Prisma.IntFilter<"DataSimulasi"> | number
   c_ned?: Prisma.IntFilter<"DataSimulasi"> | number
-  c_fee_banpot?: Prisma.IntFilter<"DataSimulasi"> | number
+  c_fee_banpot?: Prisma.FloatFilter<"DataSimulasi"> | number
   c_blokir?: Prisma.IntFilter<"DataSimulasi"> | number
   c_takeover?: Prisma.IntFilter<"DataSimulasi"> | number
   margin_type?: Prisma.EnumEMarginTypeFilter<"DataSimulasi"> | $Enums.EMarginType
   note?: Prisma.StringNullableFilter<"DataSimulasi"> | string | null
+  c_fee?: Prisma.FloatFilter<"DataSimulasi"> | number
   status?: Prisma.BoolFilter<"DataSimulasi"> | boolean
   created_at?: Prisma.DateTimeFilter<"DataSimulasi"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"DataSimulasi"> | Date | string
@@ -1435,6 +1466,7 @@ export type DataSimulasiCreateWithoutProductInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1470,6 +1502,7 @@ export type DataSimulasiUncheckedCreateWithoutProductInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1530,6 +1563,7 @@ export type DataSimulasiCreateWithoutJenisPembiayaanInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1565,6 +1599,7 @@ export type DataSimulasiUncheckedCreateWithoutJenisPembiayaanInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1625,6 +1660,7 @@ export type DataSimulasiCreateWithoutPayOfficeInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1660,6 +1696,7 @@ export type DataSimulasiUncheckedCreateWithoutPayOfficeInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1721,6 +1758,7 @@ export type DataSimulasiCreateManyUserInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1736,25 +1774,26 @@ export type DataSimulasiUpdateWithoutUserInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1771,25 +1810,26 @@ export type DataSimulasiUncheckedUpdateWithoutUserInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1806,25 +1846,26 @@ export type DataSimulasiUncheckedUpdateManyWithoutUserInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1860,6 +1901,7 @@ export type DataSimulasiCreateManyProductInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1875,25 +1917,26 @@ export type DataSimulasiUpdateWithoutProductInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1910,25 +1953,26 @@ export type DataSimulasiUncheckedUpdateWithoutProductInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1945,25 +1989,26 @@ export type DataSimulasiUncheckedUpdateManyWithoutProductInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1999,6 +2044,7 @@ export type DataSimulasiCreateManyJenisPembiayaanInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2014,25 +2060,26 @@ export type DataSimulasiUpdateWithoutJenisPembiayaanInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2049,25 +2096,26 @@ export type DataSimulasiUncheckedUpdateWithoutJenisPembiayaanInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2084,25 +2132,26 @@ export type DataSimulasiUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2138,6 +2187,7 @@ export type DataSimulasiCreateManyPayOfficeInput = {
   c_takeover: number
   margin_type?: $Enums.EMarginType
   note?: string | null
+  c_fee: number
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2153,25 +2203,26 @@ export type DataSimulasiUpdateWithoutPayOfficeInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2188,25 +2239,26 @@ export type DataSimulasiUncheckedUpdateWithoutPayOfficeInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2223,25 +2275,26 @@ export type DataSimulasiUncheckedUpdateManyWithoutPayOfficeInput = {
   salary?: Prisma.IntFieldUpdateOperationsInput | number
   tenor?: Prisma.IntFieldUpdateOperationsInput | number
   plafond?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_margin?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_adm?: Prisma.IntFieldUpdateOperationsInput | number
+  c_margin_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
   c_account?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi?: Prisma.IntFieldUpdateOperationsInput | number
-  c_provisi_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
-  c_insurance?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_insurance?: Prisma.FloatFieldUpdateOperationsInput | number
   c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
   c_stamp?: Prisma.IntFieldUpdateOperationsInput | number
   c_gov?: Prisma.IntFieldUpdateOperationsInput | number
   c_information?: Prisma.IntFieldUpdateOperationsInput | number
   c_mutasi?: Prisma.IntFieldUpdateOperationsInput | number
   c_ned?: Prisma.IntFieldUpdateOperationsInput | number
-  c_fee_banpot?: Prisma.IntFieldUpdateOperationsInput | number
+  c_fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
   c_blokir?: Prisma.IntFieldUpdateOperationsInput | number
   c_takeover?: Prisma.IntFieldUpdateOperationsInput | number
   margin_type?: Prisma.EnumEMarginTypeFieldUpdateOperationsInput | $Enums.EMarginType
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  c_fee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2279,6 +2332,7 @@ export type DataSimulasiSelect<ExtArgs extends runtime.Types.Extensions.Internal
   c_takeover?: boolean
   margin_type?: boolean
   note?: boolean
+  c_fee?: boolean
   status?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -2321,6 +2375,7 @@ export type DataSimulasiSelectScalar = {
   c_takeover?: boolean
   margin_type?: boolean
   note?: boolean
+  c_fee?: boolean
   status?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -2330,7 +2385,7 @@ export type DataSimulasiSelectScalar = {
   userId?: boolean
 }
 
-export type DataSimulasiOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nopen" | "fullname" | "birtdate" | "salary" | "tenor" | "plafond" | "c_margin_sumdan" | "c_margin" | "c_adm_sumdan" | "c_adm" | "c_account" | "c_provisi" | "c_provisi_sumdan" | "c_insurance" | "c_flagging" | "c_stamp" | "c_gov" | "c_information" | "c_mutasi" | "c_ned" | "c_fee_banpot" | "c_blokir" | "c_takeover" | "margin_type" | "note" | "status" | "created_at" | "updated_at" | "produkPembiayaanId" | "jenisPembiayaanId" | "payOfficeId" | "userId", ExtArgs["result"]["dataSimulasi"]>
+export type DataSimulasiOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nopen" | "fullname" | "birtdate" | "salary" | "tenor" | "plafond" | "c_margin_sumdan" | "c_margin" | "c_adm_sumdan" | "c_adm" | "c_account" | "c_provisi" | "c_provisi_sumdan" | "c_insurance" | "c_flagging" | "c_stamp" | "c_gov" | "c_information" | "c_mutasi" | "c_ned" | "c_fee_banpot" | "c_blokir" | "c_takeover" | "margin_type" | "note" | "c_fee" | "status" | "created_at" | "updated_at" | "produkPembiayaanId" | "jenisPembiayaanId" | "payOfficeId" | "userId", ExtArgs["result"]["dataSimulasi"]>
 export type DataSimulasiInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Product?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
   JenisPembiayaan?: boolean | Prisma.JenisPembiayaanDefaultArgs<ExtArgs>
@@ -2373,6 +2428,7 @@ export type $DataSimulasiPayload<ExtArgs extends runtime.Types.Extensions.Intern
     c_takeover: number
     margin_type: $Enums.EMarginType
     note: string | null
+    c_fee: number
     status: boolean
     created_at: Date
     updated_at: Date
@@ -2760,25 +2816,26 @@ export interface DataSimulasiFieldRefs {
   readonly salary: Prisma.FieldRef<"DataSimulasi", 'Int'>
   readonly tenor: Prisma.FieldRef<"DataSimulasi", 'Int'>
   readonly plafond: Prisma.FieldRef<"DataSimulasi", 'Int'>
-  readonly c_margin_sumdan: Prisma.FieldRef<"DataSimulasi", 'Int'>
-  readonly c_margin: Prisma.FieldRef<"DataSimulasi", 'Int'>
-  readonly c_adm_sumdan: Prisma.FieldRef<"DataSimulasi", 'Int'>
-  readonly c_adm: Prisma.FieldRef<"DataSimulasi", 'Int'>
+  readonly c_margin_sumdan: Prisma.FieldRef<"DataSimulasi", 'Float'>
+  readonly c_margin: Prisma.FieldRef<"DataSimulasi", 'Float'>
+  readonly c_adm_sumdan: Prisma.FieldRef<"DataSimulasi", 'Float'>
+  readonly c_adm: Prisma.FieldRef<"DataSimulasi", 'Float'>
   readonly c_account: Prisma.FieldRef<"DataSimulasi", 'Int'>
-  readonly c_provisi: Prisma.FieldRef<"DataSimulasi", 'Int'>
-  readonly c_provisi_sumdan: Prisma.FieldRef<"DataSimulasi", 'Int'>
-  readonly c_insurance: Prisma.FieldRef<"DataSimulasi", 'Int'>
+  readonly c_provisi: Prisma.FieldRef<"DataSimulasi", 'Float'>
+  readonly c_provisi_sumdan: Prisma.FieldRef<"DataSimulasi", 'Float'>
+  readonly c_insurance: Prisma.FieldRef<"DataSimulasi", 'Float'>
   readonly c_flagging: Prisma.FieldRef<"DataSimulasi", 'Int'>
   readonly c_stamp: Prisma.FieldRef<"DataSimulasi", 'Int'>
   readonly c_gov: Prisma.FieldRef<"DataSimulasi", 'Int'>
   readonly c_information: Prisma.FieldRef<"DataSimulasi", 'Int'>
   readonly c_mutasi: Prisma.FieldRef<"DataSimulasi", 'Int'>
   readonly c_ned: Prisma.FieldRef<"DataSimulasi", 'Int'>
-  readonly c_fee_banpot: Prisma.FieldRef<"DataSimulasi", 'Int'>
+  readonly c_fee_banpot: Prisma.FieldRef<"DataSimulasi", 'Float'>
   readonly c_blokir: Prisma.FieldRef<"DataSimulasi", 'Int'>
   readonly c_takeover: Prisma.FieldRef<"DataSimulasi", 'Int'>
   readonly margin_type: Prisma.FieldRef<"DataSimulasi", 'EMarginType'>
   readonly note: Prisma.FieldRef<"DataSimulasi", 'String'>
+  readonly c_fee: Prisma.FieldRef<"DataSimulasi", 'Float'>
   readonly status: Prisma.FieldRef<"DataSimulasi", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"DataSimulasi", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"DataSimulasi", 'DateTime'>

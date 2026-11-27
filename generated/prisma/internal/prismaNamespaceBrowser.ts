@@ -73,10 +73,13 @@ export const ModelName = {
   JournalDetail: 'JournalDetail',
   AgentFronting: 'AgentFronting',
   SumdanAgentFronting: 'SumdanAgentFronting',
-  DataSimulasi: 'DataSimulasi',
   DPKStatus: 'DPKStatus',
   GuestBook: 'GuestBook',
-  GBookParticipant: 'GBookParticipant'
+  GBookParticipant: 'GBookParticipant',
+  DataSimulasi: 'DataSimulasi',
+  OTSDefault: 'OTSDefault',
+  OTSData: 'OTSData',
+  OTSDetail: 'OTSDetail'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -268,6 +271,9 @@ export const DebiturScalarFieldEnum = {
   id_publisher: 'id_publisher',
   id_end: 'id_end',
   number_kk: 'number_kk',
+  kc_payoffice: 'kc_payoffice',
+  plafond: 'plafond',
+  end_date: 'end_date',
   mother_name: 'mother_name',
   account_name: 'account_name',
   account_number: 'account_number',
@@ -420,7 +426,8 @@ export const DapemScalarFieldEnum = {
   file_account: 'file_account',
   file_skp: 'file_skp',
   add_mitra: 'add_mitra',
-  file_idpb: 'file_idpb'
+  file_idpb: 'file_idpb',
+  file_spd: 'file_spd'
 } as const
 
 export type DapemScalarFieldEnum = (typeof DapemScalarFieldEnum)[keyof typeof DapemScalarFieldEnum]
@@ -616,45 +623,6 @@ export const SumdanAgentFrontingScalarFieldEnum = {
 export type SumdanAgentFrontingScalarFieldEnum = (typeof SumdanAgentFrontingScalarFieldEnum)[keyof typeof SumdanAgentFrontingScalarFieldEnum]
 
 
-export const DataSimulasiScalarFieldEnum = {
-  id: 'id',
-  nopen: 'nopen',
-  fullname: 'fullname',
-  birtdate: 'birtdate',
-  salary: 'salary',
-  tenor: 'tenor',
-  plafond: 'plafond',
-  c_margin_sumdan: 'c_margin_sumdan',
-  c_margin: 'c_margin',
-  c_adm_sumdan: 'c_adm_sumdan',
-  c_adm: 'c_adm',
-  c_account: 'c_account',
-  c_provisi: 'c_provisi',
-  c_provisi_sumdan: 'c_provisi_sumdan',
-  c_insurance: 'c_insurance',
-  c_flagging: 'c_flagging',
-  c_stamp: 'c_stamp',
-  c_gov: 'c_gov',
-  c_information: 'c_information',
-  c_mutasi: 'c_mutasi',
-  c_ned: 'c_ned',
-  c_fee_banpot: 'c_fee_banpot',
-  c_blokir: 'c_blokir',
-  c_takeover: 'c_takeover',
-  margin_type: 'margin_type',
-  note: 'note',
-  status: 'status',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  produkPembiayaanId: 'produkPembiayaanId',
-  jenisPembiayaanId: 'jenisPembiayaanId',
-  payOfficeId: 'payOfficeId',
-  userId: 'userId'
-} as const
-
-export type DataSimulasiScalarFieldEnum = (typeof DataSimulasiScalarFieldEnum)[keyof typeof DataSimulasiScalarFieldEnum]
-
-
 export const DPKStatusScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -697,12 +665,99 @@ export const GBookParticipantScalarFieldEnum = {
 export type GBookParticipantScalarFieldEnum = (typeof GBookParticipantScalarFieldEnum)[keyof typeof GBookParticipantScalarFieldEnum]
 
 
+export const DataSimulasiScalarFieldEnum = {
+  id: 'id',
+  nopen: 'nopen',
+  fullname: 'fullname',
+  birtdate: 'birtdate',
+  salary: 'salary',
+  tenor: 'tenor',
+  plafond: 'plafond',
+  c_margin_sumdan: 'c_margin_sumdan',
+  c_margin: 'c_margin',
+  c_adm_sumdan: 'c_adm_sumdan',
+  c_adm: 'c_adm',
+  c_account: 'c_account',
+  c_provisi: 'c_provisi',
+  c_provisi_sumdan: 'c_provisi_sumdan',
+  c_insurance: 'c_insurance',
+  c_flagging: 'c_flagging',
+  c_stamp: 'c_stamp',
+  c_gov: 'c_gov',
+  c_information: 'c_information',
+  c_mutasi: 'c_mutasi',
+  c_ned: 'c_ned',
+  c_fee_banpot: 'c_fee_banpot',
+  c_blokir: 'c_blokir',
+  c_takeover: 'c_takeover',
+  margin_type: 'margin_type',
+  note: 'note',
+  c_fee: 'c_fee',
+  status: 'status',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId',
+  payOfficeId: 'payOfficeId',
+  userId: 'userId'
+} as const
+
+export type DataSimulasiScalarFieldEnum = (typeof DataSimulasiScalarFieldEnum)[keyof typeof DataSimulasiScalarFieldEnum]
+
+
+export const OTSDefaultScalarFieldEnum = {
+  id: 'id',
+  pagesize: 'pagesize',
+  reset_day: 'reset_day',
+  max_dev: 'max_dev',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId'
+} as const
+
+export type OTSDefaultScalarFieldEnum = (typeof OTSDefaultScalarFieldEnum)[keyof typeof OTSDefaultScalarFieldEnum]
+
+
+export const OTSDataScalarFieldEnum = {
+  id: 'id',
+  get_date: 'get_date',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  ward: 'ward',
+  pagesize: 'pagesize',
+  count: 'count',
+  reset_date: 'reset_date',
+  userId: 'userId'
+} as const
+
+export type OTSDataScalarFieldEnum = (typeof OTSDataScalarFieldEnum)[keyof typeof OTSDataScalarFieldEnum]
+
+
+export const OTSDetailScalarFieldEnum = {
+  id: 'id',
+  desc: 'desc',
+  ots_status: 'ots_status',
+  files: 'files',
+  oTSDataId: 'oTSDataId',
+  debiturNopen: 'debiturNopen'
+} as const
+
+export type OTSDetailScalarFieldEnum = (typeof OTSDetailScalarFieldEnum)[keyof typeof OTSDetailScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const RoleOrderByRelevanceFieldEnum = {
@@ -821,6 +876,7 @@ export const DebiturOrderByRelevanceFieldEnum = {
   group_skep: 'group_skep',
   id_publisher: 'id_publisher',
   number_kk: 'number_kk',
+  kc_payoffice: 'kc_payoffice',
   mother_name: 'mother_name',
   account_name: 'account_name',
   account_number: 'account_number',
@@ -917,7 +973,8 @@ export const DapemOrderByRelevanceFieldEnum = {
   dPKStatusId: 'dPKStatusId',
   file_account: 'file_account',
   file_skp: 'file_skp',
-  file_idpb: 'file_idpb'
+  file_idpb: 'file_idpb',
+  file_spd: 'file_spd'
 } as const
 
 export type DapemOrderByRelevanceFieldEnum = (typeof DapemOrderByRelevanceFieldEnum)[keyof typeof DapemOrderByRelevanceFieldEnum]
@@ -1064,19 +1121,6 @@ export const SumdanAgentFrontingOrderByRelevanceFieldEnum = {
 export type SumdanAgentFrontingOrderByRelevanceFieldEnum = (typeof SumdanAgentFrontingOrderByRelevanceFieldEnum)[keyof typeof SumdanAgentFrontingOrderByRelevanceFieldEnum]
 
 
-export const DataSimulasiOrderByRelevanceFieldEnum = {
-  nopen: 'nopen',
-  fullname: 'fullname',
-  note: 'note',
-  produkPembiayaanId: 'produkPembiayaanId',
-  jenisPembiayaanId: 'jenisPembiayaanId',
-  payOfficeId: 'payOfficeId',
-  userId: 'userId'
-} as const
-
-export type DataSimulasiOrderByRelevanceFieldEnum = (typeof DataSimulasiOrderByRelevanceFieldEnum)[keyof typeof DataSimulasiOrderByRelevanceFieldEnum]
-
-
 export const DPKStatusOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
@@ -1109,4 +1153,65 @@ export const GBookParticipantOrderByRelevanceFieldEnum = {
 } as const
 
 export type GBookParticipantOrderByRelevanceFieldEnum = (typeof GBookParticipantOrderByRelevanceFieldEnum)[keyof typeof GBookParticipantOrderByRelevanceFieldEnum]
+
+
+export const DataSimulasiOrderByRelevanceFieldEnum = {
+  nopen: 'nopen',
+  fullname: 'fullname',
+  note: 'note',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId',
+  payOfficeId: 'payOfficeId',
+  userId: 'userId'
+} as const
+
+export type DataSimulasiOrderByRelevanceFieldEnum = (typeof DataSimulasiOrderByRelevanceFieldEnum)[keyof typeof DataSimulasiOrderByRelevanceFieldEnum]
+
+
+export const OTSDefaultOrderByRelevanceFieldEnum = {
+  id: 'id',
+  produkPembiayaanId: 'produkPembiayaanId',
+  jenisPembiayaanId: 'jenisPembiayaanId'
+} as const
+
+export type OTSDefaultOrderByRelevanceFieldEnum = (typeof OTSDefaultOrderByRelevanceFieldEnum)[keyof typeof OTSDefaultOrderByRelevanceFieldEnum]
+
+
+export const OTSDataOrderByRelevanceFieldEnum = {
+  id: 'id',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  ward: 'ward',
+  userId: 'userId'
+} as const
+
+export type OTSDataOrderByRelevanceFieldEnum = (typeof OTSDataOrderByRelevanceFieldEnum)[keyof typeof OTSDataOrderByRelevanceFieldEnum]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const OTSDetailOrderByRelevanceFieldEnum = {
+  id: 'id',
+  desc: 'desc',
+  oTSDataId: 'oTSDataId',
+  debiturNopen: 'debiturNopen'
+} as const
+
+export type OTSDetailOrderByRelevanceFieldEnum = (typeof OTSDetailOrderByRelevanceFieldEnum)[keyof typeof OTSDetailOrderByRelevanceFieldEnum]
 

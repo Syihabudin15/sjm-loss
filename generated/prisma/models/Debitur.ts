@@ -30,12 +30,14 @@ export type DebiturAvgAggregateOutputType = {
   salary: number | null
   soul_code: number | null
   job_year: number | null
+  plafond: number | null
 }
 
 export type DebiturSumAggregateOutputType = {
   salary: number | null
   soul_code: number | null
   job_year: number | null
+  plafond: number | null
 }
 
 export type DebiturMinAggregateOutputType = {
@@ -68,6 +70,9 @@ export type DebiturMinAggregateOutputType = {
   id_publisher: string | null
   id_end: Date | null
   number_kk: string | null
+  kc_payoffice: string | null
+  plafond: number | null
+  end_date: Date | null
   mother_name: string | null
   account_name: string | null
   account_number: string | null
@@ -104,6 +109,9 @@ export type DebiturMaxAggregateOutputType = {
   id_publisher: string | null
   id_end: Date | null
   number_kk: string | null
+  kc_payoffice: string | null
+  plafond: number | null
+  end_date: Date | null
   mother_name: string | null
   account_name: string | null
   account_number: string | null
@@ -140,6 +148,9 @@ export type DebiturCountAggregateOutputType = {
   id_publisher: number
   id_end: number
   number_kk: number
+  kc_payoffice: number
+  plafond: number
+  end_date: number
   mother_name: number
   account_name: number
   account_number: number
@@ -152,12 +163,14 @@ export type DebiturAvgAggregateInputType = {
   salary?: true
   soul_code?: true
   job_year?: true
+  plafond?: true
 }
 
 export type DebiturSumAggregateInputType = {
   salary?: true
   soul_code?: true
   job_year?: true
+  plafond?: true
 }
 
 export type DebiturMinAggregateInputType = {
@@ -190,6 +203,9 @@ export type DebiturMinAggregateInputType = {
   id_publisher?: true
   id_end?: true
   number_kk?: true
+  kc_payoffice?: true
+  plafond?: true
+  end_date?: true
   mother_name?: true
   account_name?: true
   account_number?: true
@@ -226,6 +242,9 @@ export type DebiturMaxAggregateInputType = {
   id_publisher?: true
   id_end?: true
   number_kk?: true
+  kc_payoffice?: true
+  plafond?: true
+  end_date?: true
   mother_name?: true
   account_name?: true
   account_number?: true
@@ -262,6 +281,9 @@ export type DebiturCountAggregateInputType = {
   id_publisher?: true
   id_end?: true
   number_kk?: true
+  kc_payoffice?: true
+  plafond?: true
+  end_date?: true
   mother_name?: true
   account_name?: true
   account_number?: true
@@ -385,6 +407,9 @@ export type DebiturGroupByOutputType = {
   id_publisher: string | null
   id_end: Date | null
   number_kk: string | null
+  kc_payoffice: string | null
+  plafond: number
+  end_date: Date | null
   mother_name: string | null
   account_name: string | null
   account_number: string | null
@@ -444,12 +469,16 @@ export type DebiturWhereInput = {
   id_publisher?: Prisma.StringNullableFilter<"Debitur"> | string | null
   id_end?: Prisma.DateTimeNullableFilter<"Debitur"> | Date | string | null
   number_kk?: Prisma.StringNullableFilter<"Debitur"> | string | null
+  kc_payoffice?: Prisma.StringNullableFilter<"Debitur"> | string | null
+  plafond?: Prisma.IntFilter<"Debitur"> | number
+  end_date?: Prisma.DateTimeNullableFilter<"Debitur"> | Date | string | null
   mother_name?: Prisma.StringNullableFilter<"Debitur"> | string | null
   account_name?: Prisma.StringNullableFilter<"Debitur"> | string | null
   account_number?: Prisma.StringNullableFilter<"Debitur"> | string | null
   payOfficeId?: Prisma.StringNullableFilter<"Debitur"> | string | null
   Dapems?: Prisma.DapemListRelationFilter
   PayOffice?: Prisma.XOR<Prisma.PayOfficeNullableScalarRelationFilter, Prisma.PayOfficeWhereInput> | null
+  Otsdetails?: Prisma.OTSDetailListRelationFilter
 }
 
 export type DebiturOrderByWithRelationInput = {
@@ -482,12 +511,16 @@ export type DebiturOrderByWithRelationInput = {
   id_publisher?: Prisma.SortOrderInput | Prisma.SortOrder
   id_end?: Prisma.SortOrderInput | Prisma.SortOrder
   number_kk?: Prisma.SortOrderInput | Prisma.SortOrder
+  kc_payoffice?: Prisma.SortOrderInput | Prisma.SortOrder
+  plafond?: Prisma.SortOrder
+  end_date?: Prisma.SortOrderInput | Prisma.SortOrder
   mother_name?: Prisma.SortOrderInput | Prisma.SortOrder
   account_name?: Prisma.SortOrderInput | Prisma.SortOrder
   account_number?: Prisma.SortOrderInput | Prisma.SortOrder
   payOfficeId?: Prisma.SortOrderInput | Prisma.SortOrder
   Dapems?: Prisma.DapemOrderByRelationAggregateInput
   PayOffice?: Prisma.PayOfficeOrderByWithRelationInput
+  Otsdetails?: Prisma.OTSDetailOrderByRelationAggregateInput
   _relevance?: Prisma.DebiturOrderByRelevanceInput
 }
 
@@ -524,12 +557,16 @@ export type DebiturWhereUniqueInput = Prisma.AtLeast<{
   id_publisher?: Prisma.StringNullableFilter<"Debitur"> | string | null
   id_end?: Prisma.DateTimeNullableFilter<"Debitur"> | Date | string | null
   number_kk?: Prisma.StringNullableFilter<"Debitur"> | string | null
+  kc_payoffice?: Prisma.StringNullableFilter<"Debitur"> | string | null
+  plafond?: Prisma.IntFilter<"Debitur"> | number
+  end_date?: Prisma.DateTimeNullableFilter<"Debitur"> | Date | string | null
   mother_name?: Prisma.StringNullableFilter<"Debitur"> | string | null
   account_name?: Prisma.StringNullableFilter<"Debitur"> | string | null
   account_number?: Prisma.StringNullableFilter<"Debitur"> | string | null
   payOfficeId?: Prisma.StringNullableFilter<"Debitur"> | string | null
   Dapems?: Prisma.DapemListRelationFilter
   PayOffice?: Prisma.XOR<Prisma.PayOfficeNullableScalarRelationFilter, Prisma.PayOfficeWhereInput> | null
+  Otsdetails?: Prisma.OTSDetailListRelationFilter
 }, "nopen">
 
 export type DebiturOrderByWithAggregationInput = {
@@ -562,6 +599,9 @@ export type DebiturOrderByWithAggregationInput = {
   id_publisher?: Prisma.SortOrderInput | Prisma.SortOrder
   id_end?: Prisma.SortOrderInput | Prisma.SortOrder
   number_kk?: Prisma.SortOrderInput | Prisma.SortOrder
+  kc_payoffice?: Prisma.SortOrderInput | Prisma.SortOrder
+  plafond?: Prisma.SortOrder
+  end_date?: Prisma.SortOrderInput | Prisma.SortOrder
   mother_name?: Prisma.SortOrderInput | Prisma.SortOrder
   account_name?: Prisma.SortOrderInput | Prisma.SortOrder
   account_number?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -606,6 +646,9 @@ export type DebiturScalarWhereWithAggregatesInput = {
   id_publisher?: Prisma.StringNullableWithAggregatesFilter<"Debitur"> | string | null
   id_end?: Prisma.DateTimeNullableWithAggregatesFilter<"Debitur"> | Date | string | null
   number_kk?: Prisma.StringNullableWithAggregatesFilter<"Debitur"> | string | null
+  kc_payoffice?: Prisma.StringNullableWithAggregatesFilter<"Debitur"> | string | null
+  plafond?: Prisma.IntWithAggregatesFilter<"Debitur"> | number
+  end_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Debitur"> | Date | string | null
   mother_name?: Prisma.StringNullableWithAggregatesFilter<"Debitur"> | string | null
   account_name?: Prisma.StringNullableWithAggregatesFilter<"Debitur"> | string | null
   account_number?: Prisma.StringNullableWithAggregatesFilter<"Debitur"> | string | null
@@ -642,11 +685,15 @@ export type DebiturCreateInput = {
   id_publisher?: string | null
   id_end?: Date | string | null
   number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
   mother_name?: string | null
   account_name?: string | null
   account_number?: string | null
   Dapems?: Prisma.DapemCreateNestedManyWithoutDebiturInput
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDebitursInput
+  Otsdetails?: Prisma.OTSDetailCreateNestedManyWithoutDebiturInput
 }
 
 export type DebiturUncheckedCreateInput = {
@@ -679,11 +726,15 @@ export type DebiturUncheckedCreateInput = {
   id_publisher?: string | null
   id_end?: Date | string | null
   number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
   mother_name?: string | null
   account_name?: string | null
   account_number?: string | null
   payOfficeId?: string | null
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutDebiturInput
+  Otsdetails?: Prisma.OTSDetailUncheckedCreateNestedManyWithoutDebiturInput
 }
 
 export type DebiturUpdateInput = {
@@ -716,11 +767,15 @@ export type DebiturUpdateInput = {
   id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Dapems?: Prisma.DapemUpdateManyWithoutDebiturNestedInput
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDebitursNestedInput
+  Otsdetails?: Prisma.OTSDetailUpdateManyWithoutDebiturNestedInput
 }
 
 export type DebiturUncheckedUpdateInput = {
@@ -753,11 +808,15 @@ export type DebiturUncheckedUpdateInput = {
   id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutDebiturNestedInput
+  Otsdetails?: Prisma.OTSDetailUncheckedUpdateManyWithoutDebiturNestedInput
 }
 
 export type DebiturCreateManyInput = {
@@ -790,6 +849,9 @@ export type DebiturCreateManyInput = {
   id_publisher?: string | null
   id_end?: Date | string | null
   number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
   mother_name?: string | null
   account_name?: string | null
   account_number?: string | null
@@ -826,6 +888,9 @@ export type DebiturUpdateManyMutationInput = {
   id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -861,6 +926,9 @@ export type DebiturUncheckedUpdateManyInput = {
   id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -903,6 +971,9 @@ export type DebiturCountOrderByAggregateInput = {
   id_publisher?: Prisma.SortOrder
   id_end?: Prisma.SortOrder
   number_kk?: Prisma.SortOrder
+  kc_payoffice?: Prisma.SortOrder
+  plafond?: Prisma.SortOrder
+  end_date?: Prisma.SortOrder
   mother_name?: Prisma.SortOrder
   account_name?: Prisma.SortOrder
   account_number?: Prisma.SortOrder
@@ -913,6 +984,7 @@ export type DebiturAvgOrderByAggregateInput = {
   salary?: Prisma.SortOrder
   soul_code?: Prisma.SortOrder
   job_year?: Prisma.SortOrder
+  plafond?: Prisma.SortOrder
 }
 
 export type DebiturMaxOrderByAggregateInput = {
@@ -945,6 +1017,9 @@ export type DebiturMaxOrderByAggregateInput = {
   id_publisher?: Prisma.SortOrder
   id_end?: Prisma.SortOrder
   number_kk?: Prisma.SortOrder
+  kc_payoffice?: Prisma.SortOrder
+  plafond?: Prisma.SortOrder
+  end_date?: Prisma.SortOrder
   mother_name?: Prisma.SortOrder
   account_name?: Prisma.SortOrder
   account_number?: Prisma.SortOrder
@@ -981,6 +1056,9 @@ export type DebiturMinOrderByAggregateInput = {
   id_publisher?: Prisma.SortOrder
   id_end?: Prisma.SortOrder
   number_kk?: Prisma.SortOrder
+  kc_payoffice?: Prisma.SortOrder
+  plafond?: Prisma.SortOrder
+  end_date?: Prisma.SortOrder
   mother_name?: Prisma.SortOrder
   account_name?: Prisma.SortOrder
   account_number?: Prisma.SortOrder
@@ -991,6 +1069,7 @@ export type DebiturSumOrderByAggregateInput = {
   salary?: Prisma.SortOrder
   soul_code?: Prisma.SortOrder
   job_year?: Prisma.SortOrder
+  plafond?: Prisma.SortOrder
 }
 
 export type DebiturScalarRelationFilter = {
@@ -1072,6 +1151,20 @@ export type DebiturUncheckedUpdateManyWithoutPayOfficeNestedInput = {
   deleteMany?: Prisma.DebiturScalarWhereInput | Prisma.DebiturScalarWhereInput[]
 }
 
+export type DebiturCreateNestedOneWithoutOtsdetailsInput = {
+  create?: Prisma.XOR<Prisma.DebiturCreateWithoutOtsdetailsInput, Prisma.DebiturUncheckedCreateWithoutOtsdetailsInput>
+  connectOrCreate?: Prisma.DebiturCreateOrConnectWithoutOtsdetailsInput
+  connect?: Prisma.DebiturWhereUniqueInput
+}
+
+export type DebiturUpdateOneRequiredWithoutOtsdetailsNestedInput = {
+  create?: Prisma.XOR<Prisma.DebiturCreateWithoutOtsdetailsInput, Prisma.DebiturUncheckedCreateWithoutOtsdetailsInput>
+  connectOrCreate?: Prisma.DebiturCreateOrConnectWithoutOtsdetailsInput
+  upsert?: Prisma.DebiturUpsertWithoutOtsdetailsInput
+  connect?: Prisma.DebiturWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DebiturUpdateToOneWithWhereWithoutOtsdetailsInput, Prisma.DebiturUpdateWithoutOtsdetailsInput>, Prisma.DebiturUncheckedUpdateWithoutOtsdetailsInput>
+}
+
 export type DebiturCreateWithoutDapemsInput = {
   nopen: string
   salary: number
@@ -1102,10 +1195,14 @@ export type DebiturCreateWithoutDapemsInput = {
   id_publisher?: string | null
   id_end?: Date | string | null
   number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
   mother_name?: string | null
   account_name?: string | null
   account_number?: string | null
   PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDebitursInput
+  Otsdetails?: Prisma.OTSDetailCreateNestedManyWithoutDebiturInput
 }
 
 export type DebiturUncheckedCreateWithoutDapemsInput = {
@@ -1138,10 +1235,14 @@ export type DebiturUncheckedCreateWithoutDapemsInput = {
   id_publisher?: string | null
   id_end?: Date | string | null
   number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
   mother_name?: string | null
   account_name?: string | null
   account_number?: string | null
   payOfficeId?: string | null
+  Otsdetails?: Prisma.OTSDetailUncheckedCreateNestedManyWithoutDebiturInput
 }
 
 export type DebiturCreateOrConnectWithoutDapemsInput = {
@@ -1190,10 +1291,14 @@ export type DebiturUpdateWithoutDapemsInput = {
   id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   PayOffice?: Prisma.PayOfficeUpdateOneWithoutDebitursNestedInput
+  Otsdetails?: Prisma.OTSDetailUpdateManyWithoutDebiturNestedInput
 }
 
 export type DebiturUncheckedUpdateWithoutDapemsInput = {
@@ -1226,10 +1331,14 @@ export type DebiturUncheckedUpdateWithoutDapemsInput = {
   id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Otsdetails?: Prisma.OTSDetailUncheckedUpdateManyWithoutDebiturNestedInput
 }
 
 export type DebiturCreateWithoutPayOfficeInput = {
@@ -1262,10 +1371,14 @@ export type DebiturCreateWithoutPayOfficeInput = {
   id_publisher?: string | null
   id_end?: Date | string | null
   number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
   mother_name?: string | null
   account_name?: string | null
   account_number?: string | null
   Dapems?: Prisma.DapemCreateNestedManyWithoutDebiturInput
+  Otsdetails?: Prisma.OTSDetailCreateNestedManyWithoutDebiturInput
 }
 
 export type DebiturUncheckedCreateWithoutPayOfficeInput = {
@@ -1298,10 +1411,14 @@ export type DebiturUncheckedCreateWithoutPayOfficeInput = {
   id_publisher?: string | null
   id_end?: Date | string | null
   number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
   mother_name?: string | null
   account_name?: string | null
   account_number?: string | null
   Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutDebiturInput
+  Otsdetails?: Prisma.OTSDetailUncheckedCreateNestedManyWithoutDebiturInput
 }
 
 export type DebiturCreateOrConnectWithoutPayOfficeInput = {
@@ -1363,10 +1480,189 @@ export type DebiturScalarWhereInput = {
   id_publisher?: Prisma.StringNullableFilter<"Debitur"> | string | null
   id_end?: Prisma.DateTimeNullableFilter<"Debitur"> | Date | string | null
   number_kk?: Prisma.StringNullableFilter<"Debitur"> | string | null
+  kc_payoffice?: Prisma.StringNullableFilter<"Debitur"> | string | null
+  plafond?: Prisma.IntFilter<"Debitur"> | number
+  end_date?: Prisma.DateTimeNullableFilter<"Debitur"> | Date | string | null
   mother_name?: Prisma.StringNullableFilter<"Debitur"> | string | null
   account_name?: Prisma.StringNullableFilter<"Debitur"> | string | null
   account_number?: Prisma.StringNullableFilter<"Debitur"> | string | null
   payOfficeId?: Prisma.StringNullableFilter<"Debitur"> | string | null
+}
+
+export type DebiturCreateWithoutOtsdetailsInput = {
+  nopen: string
+  salary: number
+  fullname: string
+  nik?: string | null
+  birthdate: Date | string
+  birthplace?: string | null
+  religion?: string | null
+  address: string
+  ward?: string | null
+  district?: string | null
+  city?: string | null
+  province?: string | null
+  pos_code?: string | null
+  npwp?: string | null
+  phone?: string | null
+  education?: string | null
+  gender?: string | null
+  no_skep?: string | null
+  name_skep?: string | null
+  date_skep?: Date | string | null
+  tmt_skep?: Date | string | null
+  rank_skep?: string | null
+  publisher_skep?: string | null
+  group_skep?: string | null
+  soul_code?: number | null
+  job_year?: number | null
+  id_publisher?: string | null
+  id_end?: Date | string | null
+  number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
+  mother_name?: string | null
+  account_name?: string | null
+  account_number?: string | null
+  Dapems?: Prisma.DapemCreateNestedManyWithoutDebiturInput
+  PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutDebitursInput
+}
+
+export type DebiturUncheckedCreateWithoutOtsdetailsInput = {
+  nopen: string
+  salary: number
+  fullname: string
+  nik?: string | null
+  birthdate: Date | string
+  birthplace?: string | null
+  religion?: string | null
+  address: string
+  ward?: string | null
+  district?: string | null
+  city?: string | null
+  province?: string | null
+  pos_code?: string | null
+  npwp?: string | null
+  phone?: string | null
+  education?: string | null
+  gender?: string | null
+  no_skep?: string | null
+  name_skep?: string | null
+  date_skep?: Date | string | null
+  tmt_skep?: Date | string | null
+  rank_skep?: string | null
+  publisher_skep?: string | null
+  group_skep?: string | null
+  soul_code?: number | null
+  job_year?: number | null
+  id_publisher?: string | null
+  id_end?: Date | string | null
+  number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
+  mother_name?: string | null
+  account_name?: string | null
+  account_number?: string | null
+  payOfficeId?: string | null
+  Dapems?: Prisma.DapemUncheckedCreateNestedManyWithoutDebiturInput
+}
+
+export type DebiturCreateOrConnectWithoutOtsdetailsInput = {
+  where: Prisma.DebiturWhereUniqueInput
+  create: Prisma.XOR<Prisma.DebiturCreateWithoutOtsdetailsInput, Prisma.DebiturUncheckedCreateWithoutOtsdetailsInput>
+}
+
+export type DebiturUpsertWithoutOtsdetailsInput = {
+  update: Prisma.XOR<Prisma.DebiturUpdateWithoutOtsdetailsInput, Prisma.DebiturUncheckedUpdateWithoutOtsdetailsInput>
+  create: Prisma.XOR<Prisma.DebiturCreateWithoutOtsdetailsInput, Prisma.DebiturUncheckedCreateWithoutOtsdetailsInput>
+  where?: Prisma.DebiturWhereInput
+}
+
+export type DebiturUpdateToOneWithWhereWithoutOtsdetailsInput = {
+  where?: Prisma.DebiturWhereInput
+  data: Prisma.XOR<Prisma.DebiturUpdateWithoutOtsdetailsInput, Prisma.DebiturUncheckedUpdateWithoutOtsdetailsInput>
+}
+
+export type DebiturUpdateWithoutOtsdetailsInput = {
+  nopen?: Prisma.StringFieldUpdateOperationsInput | string
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
+  fullname?: Prisma.StringFieldUpdateOperationsInput | string
+  nik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  birthdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  birthplace?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  religion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  npwp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  no_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date_skep?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tmt_skep?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rank_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publisher_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  group_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  soul_code?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  job_year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Dapems?: Prisma.DapemUpdateManyWithoutDebiturNestedInput
+  PayOffice?: Prisma.PayOfficeUpdateOneWithoutDebitursNestedInput
+}
+
+export type DebiturUncheckedUpdateWithoutOtsdetailsInput = {
+  nopen?: Prisma.StringFieldUpdateOperationsInput | string
+  salary?: Prisma.IntFieldUpdateOperationsInput | number
+  fullname?: Prisma.StringFieldUpdateOperationsInput | string
+  nik?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  birthdate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  birthplace?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  religion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pos_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  npwp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  no_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date_skep?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tmt_skep?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rank_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publisher_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  group_skep?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  soul_code?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  job_year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  payOfficeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Dapems?: Prisma.DapemUncheckedUpdateManyWithoutDebiturNestedInput
 }
 
 export type DebiturCreateManyPayOfficeInput = {
@@ -1399,6 +1695,9 @@ export type DebiturCreateManyPayOfficeInput = {
   id_publisher?: string | null
   id_end?: Date | string | null
   number_kk?: string | null
+  kc_payoffice?: string | null
+  plafond?: number
+  end_date?: Date | string | null
   mother_name?: string | null
   account_name?: string | null
   account_number?: string | null
@@ -1434,10 +1733,14 @@ export type DebiturUpdateWithoutPayOfficeInput = {
   id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Dapems?: Prisma.DapemUpdateManyWithoutDebiturNestedInput
+  Otsdetails?: Prisma.OTSDetailUpdateManyWithoutDebiturNestedInput
 }
 
 export type DebiturUncheckedUpdateWithoutPayOfficeInput = {
@@ -1470,10 +1773,14 @@ export type DebiturUncheckedUpdateWithoutPayOfficeInput = {
   id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Dapems?: Prisma.DapemUncheckedUpdateManyWithoutDebiturNestedInput
+  Otsdetails?: Prisma.OTSDetailUncheckedUpdateManyWithoutDebiturNestedInput
 }
 
 export type DebiturUncheckedUpdateManyWithoutPayOfficeInput = {
@@ -1506,6 +1813,9 @@ export type DebiturUncheckedUpdateManyWithoutPayOfficeInput = {
   id_publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_end?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   number_kk?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  kc_payoffice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plafond?: Prisma.IntFieldUpdateOperationsInput | number
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   mother_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   account_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1518,10 +1828,12 @@ export type DebiturUncheckedUpdateManyWithoutPayOfficeInput = {
 
 export type DebiturCountOutputType = {
   Dapems: number
+  Otsdetails: number
 }
 
 export type DebiturCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Dapems?: boolean | DebiturCountOutputTypeCountDapemsArgs
+  Otsdetails?: boolean | DebiturCountOutputTypeCountOtsdetailsArgs
 }
 
 /**
@@ -1539,6 +1851,13 @@ export type DebiturCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
  */
 export type DebiturCountOutputTypeCountDapemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.DapemWhereInput
+}
+
+/**
+ * DebiturCountOutputType without action
+ */
+export type DebiturCountOutputTypeCountOtsdetailsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OTSDetailWhereInput
 }
 
 
@@ -1572,12 +1891,16 @@ export type DebiturSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id_publisher?: boolean
   id_end?: boolean
   number_kk?: boolean
+  kc_payoffice?: boolean
+  plafond?: boolean
+  end_date?: boolean
   mother_name?: boolean
   account_name?: boolean
   account_number?: boolean
   payOfficeId?: boolean
   Dapems?: boolean | Prisma.Debitur$DapemsArgs<ExtArgs>
   PayOffice?: boolean | Prisma.Debitur$PayOfficeArgs<ExtArgs>
+  Otsdetails?: boolean | Prisma.Debitur$OtsdetailsArgs<ExtArgs>
   _count?: boolean | Prisma.DebiturCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["debitur"]>
 
@@ -1613,16 +1936,20 @@ export type DebiturSelectScalar = {
   id_publisher?: boolean
   id_end?: boolean
   number_kk?: boolean
+  kc_payoffice?: boolean
+  plafond?: boolean
+  end_date?: boolean
   mother_name?: boolean
   account_name?: boolean
   account_number?: boolean
   payOfficeId?: boolean
 }
 
-export type DebiturOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"nopen" | "salary" | "fullname" | "nik" | "birthdate" | "birthplace" | "religion" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "npwp" | "phone" | "education" | "gender" | "no_skep" | "name_skep" | "date_skep" | "tmt_skep" | "rank_skep" | "publisher_skep" | "group_skep" | "soul_code" | "job_year" | "id_publisher" | "id_end" | "number_kk" | "mother_name" | "account_name" | "account_number" | "payOfficeId", ExtArgs["result"]["debitur"]>
+export type DebiturOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"nopen" | "salary" | "fullname" | "nik" | "birthdate" | "birthplace" | "religion" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "npwp" | "phone" | "education" | "gender" | "no_skep" | "name_skep" | "date_skep" | "tmt_skep" | "rank_skep" | "publisher_skep" | "group_skep" | "soul_code" | "job_year" | "id_publisher" | "id_end" | "number_kk" | "kc_payoffice" | "plafond" | "end_date" | "mother_name" | "account_name" | "account_number" | "payOfficeId", ExtArgs["result"]["debitur"]>
 export type DebiturInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Dapems?: boolean | Prisma.Debitur$DapemsArgs<ExtArgs>
   PayOffice?: boolean | Prisma.Debitur$PayOfficeArgs<ExtArgs>
+  Otsdetails?: boolean | Prisma.Debitur$OtsdetailsArgs<ExtArgs>
   _count?: boolean | Prisma.DebiturCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1631,6 +1958,7 @@ export type $DebiturPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     Dapems: Prisma.$DapemPayload<ExtArgs>[]
     PayOffice: Prisma.$PayOfficePayload<ExtArgs> | null
+    Otsdetails: Prisma.$OTSDetailPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     nopen: string
@@ -1662,6 +1990,9 @@ export type $DebiturPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     id_publisher: string | null
     id_end: Date | null
     number_kk: string | null
+    kc_payoffice: string | null
+    plafond: number
+    end_date: Date | null
     mother_name: string | null
     account_name: string | null
     account_number: string | null
@@ -2008,6 +2339,7 @@ export interface Prisma__DebiturClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   Dapems<T extends Prisma.Debitur$DapemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Debitur$DapemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DapemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   PayOffice<T extends Prisma.Debitur$PayOfficeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Debitur$PayOfficeArgs<ExtArgs>>): Prisma.Prisma__PayOfficeClient<runtime.Types.Result.GetResult<Prisma.$PayOfficePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  Otsdetails<T extends Prisma.Debitur$OtsdetailsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Debitur$OtsdetailsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OTSDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2066,6 +2398,9 @@ export interface DebiturFieldRefs {
   readonly id_publisher: Prisma.FieldRef<"Debitur", 'String'>
   readonly id_end: Prisma.FieldRef<"Debitur", 'DateTime'>
   readonly number_kk: Prisma.FieldRef<"Debitur", 'String'>
+  readonly kc_payoffice: Prisma.FieldRef<"Debitur", 'String'>
+  readonly plafond: Prisma.FieldRef<"Debitur", 'Int'>
+  readonly end_date: Prisma.FieldRef<"Debitur", 'DateTime'>
   readonly mother_name: Prisma.FieldRef<"Debitur", 'String'>
   readonly account_name: Prisma.FieldRef<"Debitur", 'String'>
   readonly account_number: Prisma.FieldRef<"Debitur", 'String'>
@@ -2458,6 +2793,30 @@ export type Debitur$PayOfficeArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   include?: Prisma.PayOfficeInclude<ExtArgs> | null
   where?: Prisma.PayOfficeWhereInput
+}
+
+/**
+ * Debitur.Otsdetails
+ */
+export type Debitur$OtsdetailsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OTSDetail
+   */
+  select?: Prisma.OTSDetailSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OTSDetail
+   */
+  omit?: Prisma.OTSDetailOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OTSDetailInclude<ExtArgs> | null
+  where?: Prisma.OTSDetailWhereInput
+  orderBy?: Prisma.OTSDetailOrderByWithRelationInput | Prisma.OTSDetailOrderByWithRelationInput[]
+  cursor?: Prisma.OTSDetailWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OTSDetailScalarFieldEnum | Prisma.OTSDetailScalarFieldEnum[]
 }
 
 /**

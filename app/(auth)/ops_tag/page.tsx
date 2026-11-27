@@ -57,6 +57,7 @@ export default function Page() {
     backdate: "",
     add_mitra: "",
     file_skp: "",
+    file_spd: "",
     file_account: "",
   });
 
@@ -90,7 +91,8 @@ export default function Page() {
       ...(pageProps.backdate && { backdate: pageProps.backdate }),
       ...(pageProps.add_mitra && { add_mitra: pageProps.add_mitra }),
       ...(pageProps.file_skp && { file_skp: pageProps.file_skp }),
-      ...(pageProps.file_account && { file_account: pageProps.file_skp }),
+      ...(pageProps.file_account && { file_account: pageProps.file_account }),
+      ...(pageProps.file_spd && { file_spd: pageProps.file_spd }),
     });
 
     try {
@@ -115,6 +117,7 @@ export default function Page() {
     pageProps.add_mitra,
     pageProps.file_skp,
     pageProps.file_account,
+    pageProps.file_spd,
   ]);
 
   // Debounce data fetching
@@ -292,6 +295,35 @@ export default function Page() {
         ),
       },
       {
+        title: "File Rekening",
+        dataIndex: "file_account",
+        key: "file_account",
+        render: (_, record) => (
+          <div className="flex justify-center items-center gap-2">
+            <Button
+              icon={<FileFilled />}
+              size="small"
+              disabled={!record.file_account}
+              onClick={() =>
+                setViews({
+                  open: true,
+                  data: [
+                    { name: "Buku Tabungan", url: record.file_account || "" },
+                  ],
+                })
+              }
+            />
+            <div className="opacity-70 italic">
+              <div>
+                {record.Debitur.account_number}{" "}
+                {record.kc_pay_office ? `(${record.kc_pay_office})` : ""}
+              </div>
+              <div>{record.Debitur.account_name}</div>
+            </div>
+          </div>
+        ),
+      },
+      {
         title: "File SKP",
         dataIndex: "file_skp",
         key: "file_skp",
@@ -314,21 +346,19 @@ export default function Page() {
         ),
       },
       {
-        title: "File Rekening",
-        dataIndex: "file_account",
-        key: "file_account",
+        title: "File SPD",
+        dataIndex: "file_spd",
+        key: "file_spd",
         render: (_, record) => (
           <div className="flex justify-center items-center">
             <Button
               icon={<FileFilled />}
               size="small"
-              disabled={!record.file_account}
+              disabled={!record.file_spd}
               onClick={() =>
                 setViews({
                   open: true,
-                  data: [
-                    { name: "Buku Tabungan", url: record.file_account || "" },
-                  ],
+                  data: [{ name: "SPD", url: record.file_spd || "" }],
                 })
               }
             />
@@ -397,6 +427,10 @@ export default function Page() {
       search: "",
       sumdanId: "",
       backdate: "",
+      add_mitra: "",
+      file_account: "",
+      file_skp: "",
+      file_spd: "",
     }));
   }, []);
 
@@ -539,6 +573,29 @@ export default function Page() {
                 style={{ width: "100%" }}
               />
             </div>
+            <div className="flex flex-col space-y-1">
+              <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide truncate">
+                File SPD
+              </label>
+              <Select
+                size="small"
+                placeholder="file spd"
+                options={[
+                  { label: "Ada", value: "true" },
+                  { label: "Tidak Ada", value: "false" },
+                ]}
+                value={pageProps.file_spd}
+                onChange={(e) =>
+                  setPageProps((prev) => ({
+                    ...prev,
+                    file_spd: e,
+                    page: 1,
+                  }))
+                }
+                allowClear
+                style={{ width: "100%" }}
+              />
+            </div>
           </FilterData>
         </div>
         <div className="flex gap-2">
@@ -670,65 +727,129 @@ const UpdateStatus = ({
       title={`Update Data ${dapem.id}`}
       open={open}
       onCancel={() => setOpen(false)}
-      // width={500}
+      width={1000}
       loading={loading}
       onOk={handleSubmit}
       style={{ top: 20 }}
     >
-      <div className="my-4 flex gap-2 flex-col">
-        <FormInput
-          data={{
-            label: "Pemohon",
-            class: "flex-1",
-            type: "text",
-            disabled: true,
-            value: `${dapem.Debitur?.fullname || ""} (${dapem.nopen})`,
-          }}
-        />
-        <FormInput
-          data={{
-            label: "Status Add Mitra",
-            class: "flex-1",
-            type: "select",
-            value: data.add_mitra,
-            options: [
-              { label: "Sudah di Add", value: true },
-              { label: "Belum di Add", value: false },
-            ],
-            onChange: (e: boolean) =>
-              setData((prev) => ({ ...prev, add_mitra: e })),
-          }}
-        />
-        <FormInput
-          data={{
-            label: "File SKP",
-            class: "flex-1",
-            type: "upload",
-            value: data.file_skp,
-            onChange: (e: string | null) =>
-              setData((prev) => ({ ...prev, file_skp: e })),
-          }}
-        />
-        <FormInput
-          data={{
-            label: "File Rekening",
-            class: "flex-1",
-            type: "upload",
-            value: data.file_account,
-            onChange: (e: string | null) =>
-              setData((prev) => ({ ...prev, file_account: e })),
-          }}
-        />
-        <FormInput
-          data={{
-            label: "File IDPB",
-            class: "flex-1",
-            type: "upload",
-            value: data.file_idpb,
-            onChange: (e: string | null) =>
-              setData((prev) => ({ ...prev, file_idpb: e })),
-          }}
-        />
+      <div className="my-4 flex flex-col sm:flex-row gap-4">
+        <div className="flex-1 flex gap-2 flex-col">
+          <FormInput
+            data={{
+              label: "Pemohon",
+              class: "flex-1",
+              type: "text",
+              disabled: true,
+              value: `${dapem.Debitur?.fullname || ""} (${dapem.nopen})`,
+            }}
+          />
+          <FormInput
+            data={{
+              label: "Kantor Bayar",
+              class: "flex-1",
+              type: "text",
+              disabled: true,
+              value: dapem.PayOffice.name,
+            }}
+          />
+          <FormInput
+            data={{
+              label: "Status Add Mitra",
+              class: "flex-1",
+              type: "select",
+              value: data.add_mitra,
+              options: [
+                { label: "Sudah di Add", value: true },
+                { label: "Belum di Add", value: false },
+              ],
+              onChange: (e: boolean) =>
+                setData((prev) => ({ ...prev, add_mitra: e })),
+            }}
+          />
+          <FormInput
+            data={{
+              label: "No Rekening",
+              class: "flex-1",
+              type: "text",
+              value: data.Debitur.account_number,
+              onChange: (e: string | null) =>
+                setData((prev) => ({
+                  ...prev,
+                  Debitur: { ...prev.Debitur, account_number: e },
+                })),
+            }}
+          />
+          <FormInput
+            data={{
+              label: "Nama Rekening",
+              class: "flex-1",
+              type: "text",
+              value: data.Debitur.account_name,
+              onChange: (e: string | null) =>
+                setData((prev) => ({
+                  ...prev,
+                  Debitur: { ...prev.Debitur, account_name: e },
+                })),
+            }}
+          />
+          <FormInput
+            data={{
+              label: "Kantor Cabang",
+              class: "flex-1",
+              type: "text",
+              value: data.kc_pay_office,
+              onChange: (e: string | null) =>
+                setData((prev) => ({
+                  ...prev,
+                  kc_pay_office: e,
+                  Debitur: { ...prev.Debitur, kc_payoffice: e },
+                })),
+            }}
+          />
+        </div>
+        <div className="flex-1 flex gap-2 flex-col">
+          <FormInput
+            data={{
+              label: "File Rekening",
+              class: "flex-1",
+              type: "upload",
+              value: data.file_account,
+              onChange: (e: string | null) =>
+                setData((prev) => ({ ...prev, file_account: e })),
+            }}
+          />
+          <FormInput
+            data={{
+              label: "File SKP",
+              class: "flex-1",
+              type: "upload",
+              value: data.file_skp,
+              onChange: (e: string | null) =>
+                setData((prev) => ({ ...prev, file_skp: e })),
+            }}
+          />
+          <FormInput
+            data={{
+              label: "File SPD",
+              class: "flex-1",
+              type: "upload",
+              value: data.file_spd,
+              onChange: (e: string | null) =>
+                setData((prev) => ({ ...prev, file_spd: e })),
+            }}
+          />
+
+          <FormInput
+            data={{
+              label: "File IDPB",
+              class: "flex-1",
+              type: "upload",
+              value: data.file_idpb,
+              onChange: (e: string | null) =>
+                setData((prev) => ({ ...prev, file_idpb: e })),
+            }}
+          />
+        </div>
       </div>
     </Modal>
   );

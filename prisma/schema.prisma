@@ -62,6 +62,13 @@ enum ESettleStatus {
   JATUHTEMPO
 }
 
+enum EOTSStatus {
+  PENDING
+  PROSES
+  AKTIF
+  HAPUS
+}
+
 model Role {
   id          String      @id @default(uuid())
   name        String      @unique
@@ -192,6 +199,7 @@ model User {
   JournalDetails  JournalDetail[]
   agentFrontingId String?
   DataSimulasi    DataSimulasi[]
+  Otsdata         OTSData[]
 
   @@index([status, fullname])
   @@index([status, cabangId, fullname])
@@ -221,6 +229,7 @@ model ProdukPembiayaan {
   sumdanId      String
   Dapems        Dapem[]
   dataSimulasis DataSimulasi[]
+  otsdefaults   OTSDefault[]
 
   @@index([status, name])
   @@index([status, sumdanId, name])
@@ -240,6 +249,7 @@ model JenisPembiayaan {
   updated_at      DateTime       @default(now())
   Dapems          Dapem[]
   dataSimulasis   DataSimulasi[]
+  otsdefaults     OTSDefault[]
 
   @@index([status, name])
   @@map("jenispembiayaan")
@@ -276,13 +286,17 @@ model Debitur {
   id_publisher   String?
   id_end         DateTime?
   number_kk      String?
+  kc_payoffice   String?
+  plafond        Int       @default(0)
+  end_date       DateTime?
 
   mother_name    String?
   account_name   String?
   account_number String?
   Dapems         Dapem[]
-  PayOffice      PayOffice? @relation(fields: [payOfficeId], references: [id])
+  PayOffice      PayOffice?  @relation(fields: [payOfficeId], references: [id])
   payOfficeId    String?
+  Otsdetails     OTSDetail[]
 
   @@index([group_skep])
   @@index([payOfficeId])
@@ -461,6 +475,7 @@ model Dapem {
   file_skp           String?
   add_mitra          Boolean      @default(false)
   file_idpb          String?
+  file_spd           String?
 
   @@index([status, dropping_status])
   @@index([status, document_status])
@@ -730,48 +745,6 @@ model SumdanAgentFronting {
   @@map("sumdanagentfronting")
 }
 
-model DataSimulasi {
-  id                 Int              @id @default(autoincrement())
-  nopen              String
-  fullname           String
-  birtdate           DateTime
-  salary             Int
-  tenor              Int
-  plafond            Int
-  c_margin_sumdan    Int
-  c_margin           Int
-  c_adm_sumdan       Int
-  c_adm              Int
-  c_account          Int
-  c_provisi          Int
-  c_provisi_sumdan   Int
-  c_insurance        Int
-  c_flagging         Int
-  c_stamp            Int
-  c_gov              Int
-  c_information      Int
-  c_mutasi           Int
-  c_ned              Int
-  c_fee_banpot       Int
-  c_blokir           Int
-  c_takeover         Int
-  margin_type        EMarginType      @default(ANUITAS)
-  note               String?
-  status             Boolean          @default(true)
-  created_at         DateTime         @default(now())
-  updated_at         DateTime         @default(now())
-  Product            ProdukPembiayaan @relation(fields: [produkPembiayaanId], references: [id])
-  JenisPembiayaan    JenisPembiayaan  @relation(fields: [jenisPembiayaanId], references: [id])
-  PayOffice          PayOffice?       @relation(fields: [payOfficeId], references: [id])
-  User               User             @relation(fields: [userId], references: [id])
-  produkPembiayaanId String
-  jenisPembiayaanId  String
-  payOfficeId        String?
-  userId             String
-
-  @@map("datasimulasi")
-}
-
 model DPKStatus {
   id          String   @id @default(uuid())
   name        String?
@@ -817,4 +790,98 @@ model GBookParticipant {
 
   @@index([guestBookId])
   @@map("gbook_participants")
+}
+
+model DataSimulasi {
+  id               Int         @id @default(autoincrement())
+  nopen            String
+  fullname         String
+  birtdate         DateTime
+  salary           Int
+  tenor            Int
+  plafond          Int
+  c_margin_sumdan  Float
+  c_margin         Float
+  c_adm_sumdan     Float
+  c_adm            Float
+  c_account        Int
+  c_provisi        Float
+  c_provisi_sumdan Float
+  c_insurance      Float
+  c_flagging       Int
+  c_stamp          Int
+  c_gov            Int
+  c_information    Int
+  c_mutasi         Int
+  c_ned            Int
+  c_fee_banpot     Float
+  c_blokir         Int
+  c_takeover       Int
+  margin_type      EMarginType @default(ANUITAS)
+  note             String?
+  c_fee            Float
+
+  status             Boolean          @default(true)
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @default(now())
+  Product            ProdukPembiayaan @relation(fields: [produkPembiayaanId], references: [id])
+  JenisPembiayaan    JenisPembiayaan  @relation(fields: [jenisPembiayaanId], references: [id])
+  PayOffice          PayOffice?       @relation(fields: [payOfficeId], references: [id])
+  User               User             @relation(fields: [userId], references: [id])
+  produkPembiayaanId String
+  jenisPembiayaanId  String
+  payOfficeId        String?
+  userId             String
+
+  @@map("datasimulasi")
+}
+
+model OTSDefault {
+  id        String @id @default(uuid())
+  pagesize  Int    @default(0)
+  reset_day Int
+  max_dev   Float
+
+  ProdukPembiayaan   ProdukPembiayaan @relation(fields: [produkPembiayaanId], references: [id])
+  JenisPembiayaan    JenisPembiayaan  @relation(fields: [jenisPembiayaanId], references: [id])
+  produkPembiayaanId String
+  jenisPembiayaanId  String
+
+  @@map("ots_default")
+}
+
+model OTSData {
+  id         String   @id @default(uuid())
+  get_date   DateTime
+  province   String?
+  city       String?
+  district   String?
+  ward       String?
+  pagesize   Int
+  count      Int
+  reset_date DateTime
+
+  User       User        @relation(fields: [userId], references: [id])
+  userId     String
+  Otsdetails OTSDetail[]
+
+  @@index([reset_date])
+  @@index([get_date, userId])
+  @@map("ots_data")
+}
+
+model OTSDetail {
+  id         String     @id @default(uuid())
+  desc       String?
+  ots_status EOTSStatus @default(PENDING)
+  files      Json       @default("[]")
+
+  OTSData      OTSData @relation(fields: [oTSDataId], references: [id])
+  Debitur      Debitur @relation(fields: [debiturNopen], references: [nopen])
+  oTSDataId    String
+  debiturNopen String
+
+  @@index([ots_status])
+  @@index([oTSDataId, ots_status, debiturNopen])
+  @@map("ots_detail")
 }

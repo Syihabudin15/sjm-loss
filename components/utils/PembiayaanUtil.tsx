@@ -136,7 +136,35 @@ export const GetDapem = (data: IDapem) => {
   return { biaya, blok, lastbiaya, tb };
 };
 
-export const GetDetailDapem = (dapem: IDapem): IOutputDapemDetail => {
+type IDapemCalculationInput = Pick<
+  IDapem,
+  | "plafond"
+  | "tenor"
+  | "c_margin_sumdan"
+  | "c_margin"
+  | "margin_type"
+  | "rounded"
+  | "c_ned"
+  | "c_adm_sumdan"
+  | "c_provisi_sumdan"
+  | "c_insurance"
+  | "c_adm"
+  | "c_provisi"
+  | "c_account_sumdan"
+  | "c_gov"
+  | "c_infomation"
+  | "c_stamp"
+  | "c_mutasi"
+  | "c_fee_bpp"
+  | "c_flagging"
+  | "fee_banpot"
+  | "c_takeover"
+  | "c_blokir"
+>;
+
+export const GetDetailDapem = (
+  dapem: IDapemCalculationInput,
+): IOutputDapemDetail => {
   const adm_sumdan = dapem.plafond * (dapem.c_adm_sumdan / 100);
   const provisi_sumdan = dapem.plafond * (dapem.c_provisi_sumdan / 100);
   const asuransi = dapem.plafond * (dapem.c_insurance / 100) + dapem.c_flagging;
@@ -190,13 +218,19 @@ export const GetDetailDapem = (dapem: IDapem): IOutputDapemDetail => {
   };
 };
 
-const ValidateAngsuran = (dapem: IDapem, sumdan?: boolean) => {
+const ValidateAngsuran = (
+  dapem: IDapemCalculationInput,
+  sumdan?: boolean,
+) => {
   if (dapem.margin_type === "ANUITAS") return AngsuranAnuitas(dapem, sumdan);
   if (dapem.margin_type === "FLAT") return AngsuranFlat(dapem, sumdan);
   return AngsuranAnuitas(dapem);
 };
 
-const AngsuranAnuitas = (dapem: IDapem, sumdan?: boolean) => {
+const AngsuranAnuitas = (
+  dapem: IDapemCalculationInput,
+  sumdan?: boolean,
+) => {
   const rate = sumdan
     ? dapem.c_margin_sumdan
     : dapem.c_margin + dapem.c_margin_sumdan;
@@ -210,7 +244,7 @@ const AngsuranAnuitas = (dapem: IDapem, sumdan?: boolean) => {
   return angs;
 };
 
-const AngsuranFlat = (dapem: IDapem, sumdan?: boolean) => {
+const AngsuranFlat = (dapem: IDapemCalculationInput, sumdan?: boolean) => {
   const pokok = dapem.plafond / dapem.tenor;
   const r = sumdan
     ? dapem.c_margin_sumdan

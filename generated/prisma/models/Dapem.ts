@@ -230,6 +230,7 @@ export type DapemMinAggregateOutputType = {
   file_skp: string | null
   add_mitra: boolean | null
   file_idpb: string | null
+  file_spd: string | null
 }
 
 export type DapemMaxAggregateOutputType = {
@@ -376,6 +377,7 @@ export type DapemMaxAggregateOutputType = {
   file_skp: string | null
   add_mitra: boolean | null
   file_idpb: string | null
+  file_spd: string | null
 }
 
 export type DapemCountAggregateOutputType = {
@@ -522,6 +524,7 @@ export type DapemCountAggregateOutputType = {
   file_skp: number
   add_mitra: number
   file_idpb: number
+  file_spd: number
   _all: number
 }
 
@@ -730,6 +733,7 @@ export type DapemMinAggregateInputType = {
   file_skp?: true
   add_mitra?: true
   file_idpb?: true
+  file_spd?: true
 }
 
 export type DapemMaxAggregateInputType = {
@@ -876,6 +880,7 @@ export type DapemMaxAggregateInputType = {
   file_skp?: true
   add_mitra?: true
   file_idpb?: true
+  file_spd?: true
 }
 
 export type DapemCountAggregateInputType = {
@@ -1022,6 +1027,7 @@ export type DapemCountAggregateInputType = {
   file_skp?: true
   add_mitra?: true
   file_idpb?: true
+  file_spd?: true
   _all?: true
 }
 
@@ -1255,6 +1261,7 @@ export type DapemGroupByOutputType = {
   file_skp: string | null
   add_mitra: boolean
   file_idpb: string | null
+  file_spd: string | null
   _count: DapemCountAggregateOutputType | null
   _avg: DapemAvgAggregateOutputType | null
   _sum: DapemSumAggregateOutputType | null
@@ -1424,6 +1431,7 @@ export type DapemWhereInput = {
   file_skp?: Prisma.StringNullableFilter<"Dapem"> | string | null
   add_mitra?: Prisma.BoolFilter<"Dapem"> | boolean
   file_idpb?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  file_spd?: Prisma.StringNullableFilter<"Dapem"> | string | null
   Debitur?: Prisma.XOR<Prisma.DebiturScalarRelationFilter, Prisma.DebiturWhereInput>
   ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
   JenisPembiayaan?: Prisma.XOR<Prisma.JenisPembiayaanScalarRelationFilter, Prisma.JenisPembiayaanWhereInput>
@@ -1588,6 +1596,7 @@ export type DapemOrderByWithRelationInput = {
   file_skp?: Prisma.SortOrderInput | Prisma.SortOrder
   add_mitra?: Prisma.SortOrder
   file_idpb?: Prisma.SortOrderInput | Prisma.SortOrder
+  file_spd?: Prisma.SortOrderInput | Prisma.SortOrder
   Debitur?: Prisma.DebiturOrderByWithRelationInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanOrderByWithRelationInput
   JenisPembiayaan?: Prisma.JenisPembiayaanOrderByWithRelationInput
@@ -1756,6 +1765,7 @@ export type DapemWhereUniqueInput = Prisma.AtLeast<{
   file_skp?: Prisma.StringNullableFilter<"Dapem"> | string | null
   add_mitra?: Prisma.BoolFilter<"Dapem"> | boolean
   file_idpb?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  file_spd?: Prisma.StringNullableFilter<"Dapem"> | string | null
   Debitur?: Prisma.XOR<Prisma.DebiturScalarRelationFilter, Prisma.DebiturWhereInput>
   ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
   JenisPembiayaan?: Prisma.XOR<Prisma.JenisPembiayaanScalarRelationFilter, Prisma.JenisPembiayaanWhereInput>
@@ -1920,6 +1930,7 @@ export type DapemOrderByWithAggregationInput = {
   file_skp?: Prisma.SortOrderInput | Prisma.SortOrder
   add_mitra?: Prisma.SortOrder
   file_idpb?: Prisma.SortOrderInput | Prisma.SortOrder
+  file_spd?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.DapemCountOrderByAggregateInput
   _avg?: Prisma.DapemAvgOrderByAggregateInput
   _max?: Prisma.DapemMaxOrderByAggregateInput
@@ -2074,6 +2085,7 @@ export type DapemScalarWhereWithAggregatesInput = {
   file_skp?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
   add_mitra?: Prisma.BoolWithAggregatesFilter<"Dapem"> | boolean
   file_idpb?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
+  file_spd?: Prisma.StringNullableWithAggregatesFilter<"Dapem"> | string | null
 }
 
 export type DapemCreateInput = {
@@ -2205,6 +2217,7 @@ export type DapemCreateInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -2369,6 +2382,7 @@ export type DapemUncheckedCreateInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -2503,6 +2517,7 @@ export type DapemUpdateInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -2667,6 +2682,7 @@ export type DapemUncheckedUpdateInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -2816,6 +2832,7 @@ export type DapemCreateManyInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateManyMutationInput = {
@@ -2947,6 +2964,7 @@ export type DapemUpdateManyMutationInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUncheckedUpdateManyInput = {
@@ -3093,6 +3111,7 @@ export type DapemUncheckedUpdateManyInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemListRelationFilter = {
@@ -3255,6 +3274,7 @@ export type DapemCountOrderByAggregateInput = {
   file_skp?: Prisma.SortOrder
   add_mitra?: Prisma.SortOrder
   file_idpb?: Prisma.SortOrder
+  file_spd?: Prisma.SortOrder
 }
 
 export type DapemAvgOrderByAggregateInput = {
@@ -3431,6 +3451,7 @@ export type DapemMaxOrderByAggregateInput = {
   file_skp?: Prisma.SortOrder
   add_mitra?: Prisma.SortOrder
   file_idpb?: Prisma.SortOrder
+  file_spd?: Prisma.SortOrder
 }
 
 export type DapemMinOrderByAggregateInput = {
@@ -3577,6 +3598,7 @@ export type DapemMinOrderByAggregateInput = {
   file_skp?: Prisma.SortOrder
   add_mitra?: Prisma.SortOrder
   file_idpb?: Prisma.SortOrder
+  file_spd?: Prisma.SortOrder
 }
 
 export type DapemSumOrderByAggregateInput = {
@@ -4431,6 +4453,7 @@ export type DapemCreateWithoutAOInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -4593,6 +4616,7 @@ export type DapemUncheckedCreateWithoutAOInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -4737,6 +4761,7 @@ export type DapemCreateWithoutAOCabangInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -4899,6 +4924,7 @@ export type DapemUncheckedCreateWithoutAOCabangInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -5043,6 +5069,7 @@ export type DapemCreateWithoutAOAreaInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -5205,6 +5232,7 @@ export type DapemUncheckedCreateWithoutAOAreaInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -5349,6 +5377,7 @@ export type DapemCreateWithoutUserInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -5511,6 +5540,7 @@ export type DapemUncheckedCreateWithoutUserInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -5689,6 +5719,7 @@ export type DapemScalarWhereInput = {
   file_skp?: Prisma.StringNullableFilter<"Dapem"> | string | null
   add_mitra?: Prisma.BoolFilter<"Dapem"> | boolean
   file_idpb?: Prisma.StringNullableFilter<"Dapem"> | string | null
+  file_spd?: Prisma.StringNullableFilter<"Dapem"> | string | null
 }
 
 export type DapemUpsertWithWhereUniqueWithoutAOCabangInput = {
@@ -5868,6 +5899,7 @@ export type DapemCreateWithoutProdukPembiayaanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
   AO?: Prisma.UserCreateNestedOneWithoutAOsInput
@@ -6030,6 +6062,7 @@ export type DapemUncheckedCreateWithoutProdukPembiayaanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6190,6 +6223,7 @@ export type DapemCreateWithoutJenisPembiayaanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   AO?: Prisma.UserCreateNestedOneWithoutAOsInput
@@ -6352,6 +6386,7 @@ export type DapemUncheckedCreateWithoutJenisPembiayaanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6512,6 +6547,7 @@ export type DapemCreateWithoutDebiturInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
   AO?: Prisma.UserCreateNestedOneWithoutAOsInput
@@ -6674,6 +6710,7 @@ export type DapemUncheckedCreateWithoutDebiturInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -6834,6 +6871,7 @@ export type DapemCreateWithoutAianalysesInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -6997,6 +7035,7 @@ export type DapemUncheckedCreateWithoutAianalysesInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
 }
@@ -7146,6 +7185,7 @@ export type DapemUpdateWithoutAianalysesInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -7309,6 +7349,7 @@ export type DapemUncheckedUpdateWithoutAianalysesInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
 }
@@ -7442,6 +7483,7 @@ export type DapemCreateWithoutPayOfficeInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -7604,6 +7646,7 @@ export type DapemUncheckedCreateWithoutPayOfficeInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -7748,6 +7791,7 @@ export type DapemCreateWithoutPrevPayOfficeInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -7910,6 +7954,7 @@ export type DapemUncheckedCreateWithoutPrevPayOfficeInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -8086,6 +8131,7 @@ export type DapemCreateWithoutInsuranceInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -8248,6 +8294,7 @@ export type DapemUncheckedCreateWithoutInsuranceInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -8408,6 +8455,7 @@ export type DapemCreateWithoutDroppingInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -8570,6 +8618,7 @@ export type DapemUncheckedCreateWithoutDroppingInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -8730,6 +8779,7 @@ export type DapemCreateWithoutBerkasInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -8892,6 +8942,7 @@ export type DapemUncheckedCreateWithoutBerkasInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -9052,6 +9103,7 @@ export type DapemCreateWithoutJaminanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -9214,6 +9266,7 @@ export type DapemUncheckedCreateWithoutJaminanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -9374,6 +9427,7 @@ export type DapemCreateWithoutPelunasanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -9537,6 +9591,7 @@ export type DapemUncheckedCreateWithoutPelunasanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
 }
@@ -9686,6 +9741,7 @@ export type DapemUpdateWithoutPelunasanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -9849,6 +9905,7 @@ export type DapemUncheckedUpdateWithoutPelunasanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
 }
@@ -9982,6 +10039,7 @@ export type DapemCreateWithoutAngsuransInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -10145,6 +10203,7 @@ export type DapemUncheckedCreateWithoutAngsuransInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
 }
@@ -10294,6 +10353,7 @@ export type DapemUpdateWithoutAngsuransInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -10457,6 +10517,7 @@ export type DapemUncheckedUpdateWithoutAngsuransInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
 }
@@ -10590,6 +10651,7 @@ export type DapemCreateWithoutAgentFrontingInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -10752,6 +10814,7 @@ export type DapemUncheckedCreateWithoutAgentFrontingInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -10912,6 +10975,7 @@ export type DapemCreateWithoutDPKStatusInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Debitur: Prisma.DebiturCreateNestedOneWithoutDapemsInput
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutDapemsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutDapemsInput
@@ -11074,6 +11138,7 @@ export type DapemUncheckedCreateWithoutDPKStatusInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
   Angsurans?: Prisma.AngsuranUncheckedCreateNestedManyWithoutDapemInput
   Pelunasan?: Prisma.PelunasanUncheckedCreateNestedOneWithoutDapemInput
   Aianalyses?: Prisma.AIAnalysisUncheckedCreateNestedManyWithoutDapemInput
@@ -11248,6 +11313,7 @@ export type DapemCreateManyAOInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemCreateManyAOCabangInput = {
@@ -11393,6 +11459,7 @@ export type DapemCreateManyAOCabangInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemCreateManyAOAreaInput = {
@@ -11538,6 +11605,7 @@ export type DapemCreateManyAOAreaInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemCreateManyUserInput = {
@@ -11683,6 +11751,7 @@ export type DapemCreateManyUserInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutAOInput = {
@@ -11814,6 +11883,7 @@ export type DapemUpdateWithoutAOInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -11976,6 +12046,7 @@ export type DapemUncheckedUpdateWithoutAOInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -12124,6 +12195,7 @@ export type DapemUncheckedUpdateManyWithoutAOInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutAOCabangInput = {
@@ -12255,6 +12327,7 @@ export type DapemUpdateWithoutAOCabangInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -12417,6 +12490,7 @@ export type DapemUncheckedUpdateWithoutAOCabangInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -12565,6 +12639,7 @@ export type DapemUncheckedUpdateManyWithoutAOCabangInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutAOAreaInput = {
@@ -12696,6 +12771,7 @@ export type DapemUpdateWithoutAOAreaInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -12858,6 +12934,7 @@ export type DapemUncheckedUpdateWithoutAOAreaInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -13006,6 +13083,7 @@ export type DapemUncheckedUpdateManyWithoutAOAreaInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutUserInput = {
@@ -13137,6 +13215,7 @@ export type DapemUpdateWithoutUserInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -13299,6 +13378,7 @@ export type DapemUncheckedUpdateWithoutUserInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -13447,6 +13527,7 @@ export type DapemUncheckedUpdateManyWithoutUserInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyProdukPembiayaanInput = {
@@ -13592,6 +13673,7 @@ export type DapemCreateManyProdukPembiayaanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutProdukPembiayaanInput = {
@@ -13723,6 +13805,7 @@ export type DapemUpdateWithoutProdukPembiayaanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   AO?: Prisma.UserUpdateOneWithoutAOsNestedInput
@@ -13885,6 +13968,7 @@ export type DapemUncheckedUpdateWithoutProdukPembiayaanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -14033,6 +14117,7 @@ export type DapemUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyJenisPembiayaanInput = {
@@ -14178,6 +14263,7 @@ export type DapemCreateManyJenisPembiayaanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutJenisPembiayaanInput = {
@@ -14309,6 +14395,7 @@ export type DapemUpdateWithoutJenisPembiayaanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   AO?: Prisma.UserUpdateOneWithoutAOsNestedInput
@@ -14471,6 +14558,7 @@ export type DapemUncheckedUpdateWithoutJenisPembiayaanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -14619,6 +14707,7 @@ export type DapemUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyDebiturInput = {
@@ -14764,6 +14853,7 @@ export type DapemCreateManyDebiturInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutDebiturInput = {
@@ -14895,6 +14985,7 @@ export type DapemUpdateWithoutDebiturInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   AO?: Prisma.UserUpdateOneWithoutAOsNestedInput
@@ -15057,6 +15148,7 @@ export type DapemUncheckedUpdateWithoutDebiturInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -15205,6 +15297,7 @@ export type DapemUncheckedUpdateManyWithoutDebiturInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyPayOfficeInput = {
@@ -15350,6 +15443,7 @@ export type DapemCreateManyPayOfficeInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemCreateManyPrevPayOfficeInput = {
@@ -15495,6 +15589,7 @@ export type DapemCreateManyPrevPayOfficeInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutPayOfficeInput = {
@@ -15626,6 +15721,7 @@ export type DapemUpdateWithoutPayOfficeInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -15788,6 +15884,7 @@ export type DapemUncheckedUpdateWithoutPayOfficeInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -15936,6 +16033,7 @@ export type DapemUncheckedUpdateManyWithoutPayOfficeInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemUpdateWithoutPrevPayOfficeInput = {
@@ -16067,6 +16165,7 @@ export type DapemUpdateWithoutPrevPayOfficeInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -16229,6 +16328,7 @@ export type DapemUncheckedUpdateWithoutPrevPayOfficeInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -16377,6 +16477,7 @@ export type DapemUncheckedUpdateManyWithoutPrevPayOfficeInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyInsuranceInput = {
@@ -16522,6 +16623,7 @@ export type DapemCreateManyInsuranceInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutInsuranceInput = {
@@ -16653,6 +16755,7 @@ export type DapemUpdateWithoutInsuranceInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -16815,6 +16918,7 @@ export type DapemUncheckedUpdateWithoutInsuranceInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -16963,6 +17067,7 @@ export type DapemUncheckedUpdateManyWithoutInsuranceInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyDroppingInput = {
@@ -17108,6 +17213,7 @@ export type DapemCreateManyDroppingInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutDroppingInput = {
@@ -17239,6 +17345,7 @@ export type DapemUpdateWithoutDroppingInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -17401,6 +17508,7 @@ export type DapemUncheckedUpdateWithoutDroppingInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -17549,6 +17657,7 @@ export type DapemUncheckedUpdateManyWithoutDroppingInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyBerkasInput = {
@@ -17694,6 +17803,7 @@ export type DapemCreateManyBerkasInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutBerkasInput = {
@@ -17825,6 +17935,7 @@ export type DapemUpdateWithoutBerkasInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -17987,6 +18098,7 @@ export type DapemUncheckedUpdateWithoutBerkasInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -18135,6 +18247,7 @@ export type DapemUncheckedUpdateManyWithoutBerkasInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyJaminanInput = {
@@ -18280,6 +18393,7 @@ export type DapemCreateManyJaminanInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutJaminanInput = {
@@ -18411,6 +18525,7 @@ export type DapemUpdateWithoutJaminanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -18573,6 +18688,7 @@ export type DapemUncheckedUpdateWithoutJaminanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -18721,6 +18837,7 @@ export type DapemUncheckedUpdateManyWithoutJaminanInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyAgentFrontingInput = {
@@ -18866,6 +18983,7 @@ export type DapemCreateManyAgentFrontingInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutAgentFrontingInput = {
@@ -18997,6 +19115,7 @@ export type DapemUpdateWithoutAgentFrontingInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -19159,6 +19278,7 @@ export type DapemUncheckedUpdateWithoutAgentFrontingInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -19307,6 +19427,7 @@ export type DapemUncheckedUpdateManyWithoutAgentFrontingInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DapemCreateManyDPKStatusInput = {
@@ -19452,6 +19573,7 @@ export type DapemCreateManyDPKStatusInput = {
   file_skp?: string | null
   add_mitra?: boolean
   file_idpb?: string | null
+  file_spd?: string | null
 }
 
 export type DapemUpdateWithoutDPKStatusInput = {
@@ -19583,6 +19705,7 @@ export type DapemUpdateWithoutDPKStatusInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutDapemsNestedInput
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutDapemsNestedInput
@@ -19745,6 +19868,7 @@ export type DapemUncheckedUpdateWithoutDPKStatusInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Angsurans?: Prisma.AngsuranUncheckedUpdateManyWithoutDapemNestedInput
   Pelunasan?: Prisma.PelunasanUncheckedUpdateOneWithoutDapemNestedInput
   Aianalyses?: Prisma.AIAnalysisUncheckedUpdateManyWithoutDapemNestedInput
@@ -19893,6 +20017,7 @@ export type DapemUncheckedUpdateManyWithoutDPKStatusInput = {
   file_skp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   add_mitra?: Prisma.BoolFieldUpdateOperationsInput | boolean
   file_idpb?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file_spd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -20079,6 +20204,7 @@ export type DapemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   file_skp?: boolean
   add_mitra?: boolean
   file_idpb?: boolean
+  file_spd?: boolean
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
   JenisPembiayaan?: boolean | Prisma.JenisPembiayaanDefaultArgs<ExtArgs>
@@ -20246,9 +20372,10 @@ export type DapemSelectScalar = {
   file_skp?: boolean
   add_mitra?: boolean
   file_idpb?: boolean
+  file_spd?: boolean
 }
 
-export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "cost_month" | "max_tenor" | "max_plafond" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "aw_education" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "audit_status" | "audit_desc" | "audit_name" | "audit_date" | "kc_pay_office" | "kcprev_pay_office" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId" | "file_account" | "file_skp" | "add_mitra" | "file_idpb", ExtArgs["result"]["dapem"]>
+export type DapemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenor" | "plafond" | "salary" | "c_margin_sumdan" | "c_account_sumdan" | "c_adm_sumdan" | "c_provisi_sumdan" | "c_margin" | "c_adm" | "c_insurance" | "c_provisi" | "c_gov" | "c_stamp" | "c_flagging" | "c_infomation" | "c_mutasi" | "c_blokir" | "c_fee_bpp" | "c_fee_fronting" | "c_ned" | "fee_banpot" | "c_takeover" | "tbo" | "rounded" | "margin_type" | "cost_month" | "max_tenor" | "max_plafond" | "takeover_from" | "takeover_date" | "dom_status" | "address" | "ward" | "district" | "city" | "province" | "pos_code" | "geolocation" | "house_status" | "house_year" | "job" | "job_address" | "business" | "marriage_status" | "aw_name" | "aw_nik" | "aw_birthdate" | "aw_birthplace" | "aw_job" | "aw_address" | "aw_relate" | "aw_phone" | "aw_rt" | "aw_rw" | "aw_ward" | "aw_district" | "aw_city" | "aw_province" | "aw_pos_code" | "aw_education" | "f_name" | "f_relate" | "f_phone" | "f_address" | "f_rt" | "f_rw" | "f_ward" | "f_district" | "f_city" | "f_province" | "f_pos_code" | "dropping_status" | "verif_status" | "verif_desc" | "slik_status" | "slik_desc" | "approv_status" | "approv_desc" | "takeover_status" | "takeover_desc" | "takeover_date_exc" | "mutasi_status" | "mutasi_desc" | "mutasi_date_exc" | "flagging_status" | "flagging_desc" | "flagging_date_exc" | "cash_status" | "cash_desc" | "document_status" | "document_desc" | "guarantee_status" | "guarantee_desc" | "ao_fee_status" | "ao_fee_desc" | "dev_status" | "deviasi_note" | "note" | "audit_status" | "audit_desc" | "audit_name" | "audit_date" | "kc_pay_office" | "kcprev_pay_office" | "used_for" | "no_contract" | "date_contract" | "date_end" | "tbo_date" | "file_slik" | "file_proses" | "file_submission" | "video_interview" | "video_insurance" | "video_contract" | "file_contract" | "file_takeover" | "file_mutasi" | "file_flagging" | "file_skep" | "status" | "created_at" | "updated_at" | "prevPayOfficeId" | "nopen" | "produkPembiayaanId" | "jenisPembiayaanId" | "aoId" | "aoCabangId" | "aoAreaId" | "droppingId" | "berkasId" | "jaminanId" | "agentFrontingId" | "payOfficeId" | "insuranceId" | "userId" | "dPKStatusId" | "file_account" | "file_skp" | "add_mitra" | "file_idpb" | "file_spd", ExtArgs["result"]["dapem"]>
 export type DapemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
@@ -20437,6 +20564,7 @@ export type $DapemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     file_skp: string | null
     add_mitra: boolean
     file_idpb: string | null
+    file_spd: string | null
   }, ExtArgs["result"]["dapem"]>
   composites: {}
 }
@@ -20967,6 +21095,7 @@ export interface DapemFieldRefs {
   readonly file_skp: Prisma.FieldRef<"Dapem", 'String'>
   readonly add_mitra: Prisma.FieldRef<"Dapem", 'Boolean'>
   readonly file_idpb: Prisma.FieldRef<"Dapem", 'String'>
+  readonly file_spd: Prisma.FieldRef<"Dapem", 'String'>
 }
     
 
