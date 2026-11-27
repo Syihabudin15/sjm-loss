@@ -131,6 +131,17 @@ export const POST = async (req: NextRequest) => {
     take: availableTake,
   });
 
+  if (find.length === 0) {
+    return NextResponse.json(
+      {
+        data: [],
+        status: 403,
+        msg: `Tidak ada lagi data di area yg dipilih. mohon pilih area lain!`,
+      },
+      { status: 403 },
+    );
+  }
+
   await prisma.$transaction(
     async (tx) => {
       const dataots = await tx.oTSData.create({
@@ -183,7 +194,7 @@ export const DELETE = async (req: NextRequest) => {
   return NextResponse.json(
     {
       status: 200,
-      msg: `Data ${find.debiturNopen} berhasil ${status === "DELETE" ? "dihapus" : "diupdate"}`,
+      msg: `Data ${find.debiturNopen} berhasil ${status === "HAPUS" ? "dihapus" : "diupdate"}`,
     },
     { status: 200 },
   );
