@@ -73,11 +73,18 @@ export const listMenuUI: IMenuType[] = [
   },
   {
     label: "OTS Setup",
-    key: "/ots_setup/config",
+    key: "/ots_setup",
     icon: <DatabaseOutlined />,
     needaccess: true,
     availableAccess: ["read", "update"],
     children: [
+      {
+        label: "OTS Configuration",
+        key: "/ots_setup/config",
+        icon: <SettingOutlined />,
+        needaccess: true,
+        availableAccess: ["read", "update"],
+      },
       {
         label: "OTS Data",
         key: "/ots_setup/data_ots",
