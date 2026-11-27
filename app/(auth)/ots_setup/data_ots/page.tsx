@@ -4,26 +4,35 @@ import { FormInput } from "@/components";
 import { IDRFormat } from "@/components/utils/PembiayaanUtil";
 import { defaultApp, IOTSDefault, IOTSDetail } from "@/libs/IInterfaces";
 import {
+  CalendarOutlined,
   CalculatorOutlined,
   CheckCircleOutlined,
+  ClockCircleOutlined,
   DeleteOutlined,
   DollarCircleOutlined,
+  EnvironmentOutlined,
+  InfoCircleOutlined,
   PlusCircleOutlined,
+  SearchOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import {
   App,
+  Avatar,
   Button,
-  Descriptions,
+  Card,
+  Collapse,
+  Empty,
+  Input,
   Modal,
+  Pagination,
   Popover,
-  Table,
+  Progress,
+  Spin,
   Tabs,
   Tag,
 } from "antd";
 import { HookAPI } from "antd/lib/modal/useModal";
-import { TableProps } from "antd/lib/table";
-import { CalendarArrowDown, CalendarArrowUp } from "lucide-react";
 import moment from "moment";
 import { useCallback, useEffect, useState } from "react";
 import { SimulasiAutomation } from "./util";
@@ -33,6 +42,8 @@ export default function Page() {
   const [datastatus, setDataStatus] = useState<string | null>(null);
   const [data, setData] = useState<IOTSDetail[]>([]);
   const [app, setApp] = useState<IOTSDefault>(defaultApp);
+  const [searchText, setSearchText] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const [openGetData, setOpenGetData] = useState(false);
   const [openSimulasi, setOpenSimulasi] = useState<{
     record: IOTSDetail | undefined;
@@ -95,145 +106,11 @@ export default function Page() {
     setLoading(false);
   };
 
-  const columns: TableProps<IOTSDetail>["columns"] = [
-    {
-      title: "ID",
-      dataIndex: "id",
-      key: "id",
-      render: (value, record, index) => {
-        return <div>{index + 1}</div>;
-      },
-    },
-    {
-      title: "Nama Lengkap",
-      dataIndex: "fullname",
-      key: "fullname",
-      render: (_, record) => (
-        <div>
-          <div>{record.Debitur.fullname}</div>
-          <div className="opacity-70 ">@{record.debiturNopen}</div>
-        </div>
-      ),
-    },
-    {
-      title: "Info",
-      dataIndex: "salary",
-      key: "salary",
-      render: (_, record) => (
-        <div>
-          <div>
-            <DollarCircleOutlined /> {IDRFormat(record.Debitur.salary)}
-          </div>
-          <div className="opacity-70">
-            Tgl Lunas {moment(record.Debitur.end_date).format("MM/YYYY")}
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Status Proses",
-      dataIndex: "status",
-      key: "status",
-      render: (_, record) => (
-        <div className="flex justify-center">
-          <Tag
-            variant="solid"
-            color={
-              record.ots_status === "PENDING"
-                ? "orange"
-                : record.ots_status === "AKTIF"
-                  ? "green"
-                  : "blue"
-            }
-          >
-            {record.ots_status}
-          </Tag>
-        </div>
-      ),
-    },
-    {
-      title: "Waktu",
-      dataIndex: "time",
-      key: "time",
-      render: (_, record) => (
-        <div className="opacity-80">
-          <div className="flex gap-2">
-            <CalendarArrowUp size={12} />{" "}
-            {moment(record.OTSData.get_date).format("DD/MM/YYYY")}
-          </div>
-          <div className="flex gap-2 text-red-500">
-            <CalendarArrowDown size={12} />{" "}
-            {moment(record.OTSData.reset_date).format("DD/MM/YYYY")}
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Aksi",
-      key: "action",
-      hidden: datastatus !== null,
-      width: 100,
-      render: (_, record) => (
-        <div className="flex gap-2 justify-center">
-          <Button
-            size="small"
-            icon={<CalculatorOutlined />}
-            onClick={() => setOpenSimulasi({ record: record, open: true })}
-          ></Button>
-          {record.ots_status === "PENDING" && (
-            <Popover
-              title="Konfirmasi proses data ini?"
-              trigger="click"
-              placement="left"
-              content={
-                <div className="flex gap-3 justify-end">
-                  <Button
-                    size="small"
-                    type="primary"
-                    onClick={() => handleUpdate(record.id, "PROSES")}
-                  >
-                    Proses
-                  </Button>
-                </div>
-              }
-            >
-              <Button
-                size="small"
-                type="primary"
-                icon={<CheckCircleOutlined />}
-              ></Button>
-            </Popover>
-          )}
-          {record.ots_status === "PENDING" && (
-            <Popover
-              title="Konfirmasi hapus data ini?"
-              trigger="click"
-              placement="left"
-              content={
-                <div className="flex gap-3 justify-end">
-                  <Button
-                    size="small"
-                    danger
-                    onClick={() => handleUpdate(record.id, "HAPUS")}
-                  >
-                    Hapus
-                  </Button>
-                </div>
-              }
-            >
-              <Button size="small" danger icon={<DeleteOutlined />}></Button>
-            </Popover>
-          )}
-        </div>
-      ),
-    },
-  ];
-
   const renderExpandedDetails = (record: IOTSDetail) => {
     const address = [
       record.Debitur.address,
-      "KELURAHAN " + record.Debitur.ward,
-      "KECAMATAN " + record.Debitur.district,
+      record.Debitur.ward && `Kelurahan ${record.Debitur.ward}`,
+      record.Debitur.district && `Kecamatan ${record.Debitur.district}`,
       record.Debitur.city,
       record.Debitur.province,
     ]
@@ -250,23 +127,33 @@ export default function Page() {
       : null;
 
     return (
-      <Descriptions bordered size="small" column={2}>
-        <Descriptions.Item label="Alamat">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="sm:col-span-2">
+          <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Alamat
+          </div>
           {address ? (
             <a
+              className="block max-w-[320px] whitespace-normal text-blue-700 hover:text-blue-900"
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
               target="_blank"
               rel="noopener noreferrer"
+              style={{ overflowWrap: "anywhere" }}
             >
+              <EnvironmentOutlined className="mr-1" />
               {address}
             </a>
           ) : (
-            "-"
+            <span>-</span>
           )}
-        </Descriptions.Item>
-        <Descriptions.Item label="No. Telepon">
+        </div>
+        <div>
+          <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            No. Telepon
+          </div>
           {phone && whatsappNumber ? (
             <a
+              className="text-green-700 hover:text-green-900"
               href={`https://wa.me/${whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -274,111 +161,393 @@ export default function Page() {
               {phone}
             </a>
           ) : (
-            "-"
+            <span>-</span>
           )}
-        </Descriptions.Item>
-        <Descriptions.Item label="Plafond Sebelumnya">
-          {IDRFormat(record.Debitur.plafond)}
-        </Descriptions.Item>
-        <Descriptions.Item label="Tanggal Lunas">
-          {record.Debitur.end_date
-            ? moment(record.Debitur.end_date).format("DD/MM/YYYY")
-            : "-"}
-        </Descriptions.Item>
-        <Descriptions.Item label="Kantor Bayar">
-          {record.Debitur.PayOffice.name}{" "}
-          {record.Debitur.kc_payoffice
-            ? `(${record.Debitur.kc_payoffice})`
-            : ""}
-        </Descriptions.Item>
-      </Descriptions>
-    );
-  };
-
-  return (
-    <div className="p-2">
-      <div className="flex gap-2 text-xl px-2 justify-between items-center">
-        <div className="font-bold">
-          <UserOutlined /> <span>Data OTS</span>
         </div>
-        <div className="flex flex-col gap-2">
-          <Button
-            type="primary"
-            icon={<PlusCircleOutlined />}
-            onClick={() => setOpenGetData(true)}
-          >
-            Tarik Data
-          </Button>
-          <div className="text-center text-xs opacity-80">
-            {data.length}/{app.pagesize}
+        <div>
+          <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Plafond Sebelumnya
+          </div>
+          <div>{IDRFormat(record.Debitur.plafond)}</div>
+        </div>
+        <div>
+          <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Tanggal Lunas
+          </div>
+          <div>
+            {record.Debitur.end_date
+              ? moment(record.Debitur.end_date).format("DD/MM/YYYY")
+              : "-"}
+          </div>
+        </div>
+        <div>
+          <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Kantor Bayar
+          </div>
+          <div>
+            {record.Debitur.PayOffice?.name || "-"}
+            {record.Debitur.kc_payoffice
+              ? ` (${record.Debitur.kc_payoffice})`
+              : ""}
           </div>
         </div>
       </div>
+    );
+  };
 
-      <div>
+  const isDailyActivity = datastatus === null;
+  const pageSize = app?.pagesize ?? 0;
+  const pendingCount = data.filter(
+    (record) => record.ots_status === "PENDING",
+  ).length;
+  const processingCount = data.filter(
+    (record) => record.ots_status === "PROSES",
+  ).length;
+  const filteredData = data.filter((record) => {
+    const query = searchText.trim().toLocaleLowerCase();
+    return (
+      !query ||
+      record.Debitur.fullname.toLocaleLowerCase().includes(query) ||
+      record.debiturNopen.toLocaleLowerCase().includes(query) ||
+      (record.Debitur.city || "").toLocaleLowerCase().includes(query)
+    );
+  });
+  const cardPageSize = 12;
+  const pageData = filteredData.slice(
+    (currentPage - 1) * cardPageSize,
+    currentPage * cardPageSize,
+  );
+  const statusColor: Record<string, string> = {
+    PENDING: "orange",
+    PROSES: "blue",
+    AKTIF: "green",
+  };
+  const statusLabel: Record<string, string> = {
+    PENDING: "Menunggu proses",
+    PROSES: "Sedang diproses",
+    AKTIF: "Aktif",
+  };
+
+  return (
+    <div className="mx-auto max-w-7xl space-y-5 p-3 sm:p-5">
+      <Card className="overflow-hidden rounded-2xl border-0 bg-gradient-to-r from-sky-50 via-white to-indigo-50 shadow-sm">
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
+          <div>
+            <div className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-blue-700">
+              <UserOutlined />
+              Operasional
+            </div>
+            <h1 className="m-0 text-2xl font-bold text-slate-800 sm:text-3xl">
+              Data OTS
+            </h1>
+            <p className="mb-0 mt-2 max-w-2xl text-sm text-slate-600">
+              Kelola data debitur, tinjau informasi penting, dan lanjutkan
+              proses dalam satu tempat.
+            </p>
+          </div>
+          <Button
+            type="primary"
+            size="large"
+            icon={<PlusCircleOutlined />}
+            onClick={() => setOpenGetData(true)}
+            className="self-start shadow-sm md:self-auto"
+          >
+            Tarik Data Baru
+          </Button>
+        </div>
+        {isDailyActivity && (
+          <div className="mt-6 grid gap-3 border-t border-slate-200 pt-5 sm:grid-cols-3">
+            <div className="rounded-xl bg-white/80 p-4">
+              <div className="text-sm text-slate-500">Data dalam daftar</div>
+              <div className="mt-1 text-2xl font-bold text-slate-800">
+                {data.length}
+                <span className="ml-1 text-sm font-normal text-slate-500">
+                  debitur
+                </span>
+              </div>
+            </div>
+            <div className="rounded-xl bg-white/80 p-4">
+              <div className="text-sm text-slate-500">Menunggu proses</div>
+              <div className="mt-1 text-2xl font-bold text-orange-600">
+                {pendingCount}
+                <span className="ml-1 text-sm font-normal text-slate-500">
+                  debitur
+                </span>
+              </div>
+            </div>
+            <div className="rounded-xl bg-white/80 p-4">
+              <div className="text-sm text-slate-500">Sedang diproses</div>
+              <div className="mt-1 text-2xl font-bold text-blue-700">
+                {processingCount}
+                <span className="ml-1 text-sm font-normal text-slate-500">
+                  debitur
+                </span>
+              </div>
+            </div>
+            <div className="rounded-xl bg-white/80 p-4 sm:col-span-3">
+              <div className="mb-2 flex items-center justify-between gap-3 text-sm">
+                <span className="font-medium text-slate-700">
+                  Kapasitas daftar harian
+                </span>
+                <span className="text-slate-500">
+                  {data.length} / {pageSize}
+                </span>
+              </div>
+              <Progress
+                percent={
+                  pageSize > 0
+                    ? Math.min(Math.round((data.length / pageSize) * 100), 100)
+                    : 0
+                }
+                showInfo={false}
+                strokeColor={data.length >= pageSize ? "#f59e0b" : "#2563eb"}
+              />
+            </div>
+          </div>
+        )}
+      </Card>
+
+      <Card className="rounded-2xl shadow-sm" styles={{ body: { padding: 0 } }}>
         <Tabs
+          activeKey={datastatus ?? "daily-avtivity"}
+          className="px-4"
           items={[
             {
               key: "daily-avtivity",
-              label: "Daily Avtivity",
-              children: (
-                <Table
-                  columns={columns}
-                  dataSource={data}
-                  size="small"
-                  loading={loading}
-                  rowKey="id"
-                  scroll={{ x: "max-content" }}
-                  pagination={false}
-                  expandable={{
-                    expandedRowRender: renderExpandedDetails,
-                  }}
-                />
-              ),
+              label: "Aktivitas Harian",
             },
             {
               key: "PROSES",
               label: "Sedang Proses",
-              children: (
-                <Table
-                  columns={columns}
-                  dataSource={data}
-                  size="small"
-                  loading={loading}
-                  rowKey="id"
-                  scroll={{ x: "max-content" }}
-                  pagination={false}
-                  expandable={{
-                    expandedRowRender: renderExpandedDetails,
-                  }}
-                />
-              ),
             },
             {
               key: "AKTIF",
               label: "Aktif",
-              children: (
-                <Table
-                  columns={columns}
-                  dataSource={data}
-                  size="small"
-                  loading={loading}
-                  rowKey="id"
-                  scroll={{ x: "max-content", y: "none" }}
-                  pagination={false}
-                  expandable={{
-                    expandedRowRender: renderExpandedDetails,
-                  }}
-                />
-              ),
             },
           ]}
-          defaultActiveKey="daily-avtivity"
-          onChange={(e: string) =>
-            setDataStatus(e === "daily-avtivity" ? null : e)
-          }
+          onChange={(e: string) => {
+            setDataStatus(e === "daily-avtivity" ? null : e);
+            setCurrentPage(1);
+          }}
         />
-      </div>
+        <div className="space-y-4 px-4 pb-5">
+          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+            <div>
+              <h2 className="m-0 text-lg font-semibold text-slate-800">
+                {isDailyActivity
+                  ? "Daftar aktivitas hari ini"
+                  : statusLabel[datastatus || ""] || "Daftar debitur"}
+              </h2>
+              <p className="mb-0 mt-1 text-sm text-slate-500">
+                {filteredData.length} data
+                {searchText ? " ditemukan" : " tersedia"}
+              </p>
+            </div>
+            <Input
+              allowClear
+              prefix={<SearchOutlined className="text-slate-400" />}
+              placeholder="Cari nama, nomor pensiun, atau kota"
+              value={searchText}
+              onChange={(event) => {
+                setSearchText(event.target.value);
+                setCurrentPage(1);
+              }}
+              className="sm:max-w-sm"
+            />
+          </div>
+
+          <Spin spinning={loading}>
+            {pageData.length ? (
+              <div className="grid items-start gap-4 md:grid-cols-2">
+                {pageData.map((record, index) => (
+                  <Card
+                    key={record.id}
+                    hoverable
+                    className="h-full rounded-xl border-slate-200 transition-shadow hover:shadow-md"
+                    styles={{ body: { padding: 16 } }}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex min-w-0 items-center gap-3">
+                        <Avatar
+                          size={46}
+                          className="shrink-0 bg-blue-100 font-semibold text-blue-700"
+                        >
+                          {record.Debitur.fullname
+                            .trim()
+                            .slice(0, 1)
+                            .toUpperCase()}
+                        </Avatar>
+                        <div className="min-w-0">
+                          <div className="truncate font-semibold text-slate-800">
+                            {record.Debitur.fullname}
+                          </div>
+                          <div className="text-sm text-slate-500">
+                            No. Pensiun: {record.debiturNopen}
+                          </div>
+                        </div>
+                      </div>
+                      <Tag
+                        color={statusColor[record.ots_status] || "default"}
+                        className="m-0 shrink-0 rounded-full px-3 py-1"
+                      >
+                        {statusLabel[record.ots_status] || record.ots_status}
+                      </Tag>
+                    </div>
+
+                    <div className="my-4 grid grid-cols-2 gap-3">
+                      <div className="rounded-lg bg-emerald-50 p-3">
+                        <div className="mb-1 text-xs text-emerald-700">
+                          <DollarCircleOutlined className="mr-1" />
+                          Gaji pensiun
+                        </div>
+                        <div className="font-semibold text-slate-800">
+                          {IDRFormat(record.Debitur.salary)}
+                        </div>
+                      </div>
+                      <div className="rounded-lg bg-amber-50 p-3">
+                        <div className="mb-1 text-xs text-amber-700">
+                          <CalendarOutlined className="mr-1" />
+                          Tanggal lunas
+                        </div>
+                        <div className="font-semibold text-slate-800">
+                          {record.Debitur.end_date
+                            ? moment(record.Debitur.end_date).format(
+                                "DD/MM/YYYY",
+                              )
+                            : "-"}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-500">
+                      <span>
+                        <ClockCircleOutlined className="mr-1" />
+                        Ditarik{" "}
+                        {moment(record.OTSData.get_date).format("DD/MM/YYYY")}
+                      </span>
+                      <span>
+                        <ClockCircleOutlined className="mr-1 text-rose-500" />
+                        Reset{" "}
+                        {moment(record.OTSData.reset_date).format("DD/MM/YYYY")}
+                      </span>
+                      <span className="ml-auto">#{index + 1}</span>
+                    </div>
+
+                    <Collapse
+                      ghost
+                      size="small"
+                      className="mt-2"
+                      items={[
+                        {
+                          key: "details",
+                          label: (
+                            <span className="font-medium text-blue-700">
+                              <InfoCircleOutlined className="mr-2" />
+                              Detail debitur
+                            </span>
+                          ),
+                          children: renderExpandedDetails(record),
+                        },
+                      ]}
+                    />
+
+                    {isDailyActivity && (
+                      <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-3">
+                        <Button
+                          icon={<CalculatorOutlined />}
+                          onClick={() =>
+                            setOpenSimulasi({ record, open: true })
+                          }
+                        >
+                          Simulasi
+                        </Button>
+                        {record.ots_status === "PENDING" && (
+                          <>
+                            <Popover
+                              title="Konfirmasi proses data ini?"
+                              trigger="click"
+                              placement="topRight"
+                              content={
+                                <div className="flex justify-end">
+                                  <Button
+                                    size="small"
+                                    type="primary"
+                                    onClick={() =>
+                                      handleUpdate(record.id, "PROSES")
+                                    }
+                                  >
+                                    Ya, proses
+                                  </Button>
+                                </div>
+                              }
+                            >
+                              <Button
+                                type="primary"
+                                icon={<CheckCircleOutlined />}
+                              >
+                                Proses
+                              </Button>
+                            </Popover>
+                            <Popover
+                              title="Konfirmasi hapus data ini?"
+                              trigger="click"
+                              placement="topRight"
+                              content={
+                                <div className="flex justify-end">
+                                  <Button
+                                    size="small"
+                                    danger
+                                    onClick={() =>
+                                      handleUpdate(record.id, "HAPUS")
+                                    }
+                                  >
+                                    Ya, hapus
+                                  </Button>
+                                </div>
+                              }
+                            >
+                              <Button
+                                danger
+                                icon={<DeleteOutlined />}
+                                className="ml-auto"
+                              >
+                                Hapus
+                              </Button>
+                            </Popover>
+                          </>
+                        )}
+                      </div>
+                    )}
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <Empty
+                className="py-12"
+                description={
+                  searchText
+                    ? "Tidak ada data yang cocok dengan pencarian."
+                    : "Belum ada data pada kategori ini."
+                }
+              />
+            )}
+          </Spin>
+          {filteredData.length > cardPageSize && (
+            <div className="flex justify-center pt-2">
+              <Pagination
+                current={currentPage}
+                pageSize={cardPageSize}
+                total={filteredData.length}
+                onChange={setCurrentPage}
+                showSizeChanger={false}
+                showTotal={(total, range) =>
+                  `${range[0]}-${range[1]} dari ${total} debitur`
+                }
+              />
+            </div>
+          )}
+        </div>
+      </Card>
       <GetNewData
         open={openGetData}
         setOpen={(b: boolean) => setOpenGetData(b)}
