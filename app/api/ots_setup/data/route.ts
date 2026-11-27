@@ -25,7 +25,7 @@ const getTodayData = async (id: string) => {
 
 export const GET = async (req: NextRequest) => {
   const params = Object.fromEntries(req.nextUrl.searchParams);
-  const { status } = params;
+  const { status, locations, province, city, district } = params;
 
   const session = await getSession();
   if (!session)
@@ -33,6 +33,60 @@ export const GET = async (req: NextRequest) => {
   const user = await GetUserSession(session);
   if (!user)
     return NextResponse.json({ data: [], status: 200 }, { status: 200 });
+
+  if (locations) {
+    let values: string[];
+    if (locations === "province") {
+      const rows = await prisma.debitur.groupBy({
+        by: ["province"],
+        where: { province: { not: null } },
+        orderBy: { province: "asc" },
+      });
+      values = rows.flatMap((row) => (row.province ? [row.province] : []));
+    } else if (locations === "city") {
+      const rows = await prisma.debitur.groupBy({
+        by: ["city"],
+        where: {
+          city: { not: null },
+          ...(province && { province }),
+        },
+        orderBy: { city: "asc" },
+      });
+      values = rows.flatMap((row) => (row.city ? [row.city] : []));
+    } else if (locations === "district") {
+      const rows = await prisma.debitur.groupBy({
+        by: ["district"],
+        where: {
+          district: { not: null },
+          ...(province && { province }),
+          ...(city && { city }),
+        },
+        orderBy: { district: "asc" },
+      });
+      values = rows.flatMap((row) =>
+        row.district ? [row.district] : [],
+      );
+    } else if (locations === "ward") {
+      const rows = await prisma.debitur.groupBy({
+        by: ["ward"],
+        where: {
+          ward: { not: null },
+          ...(province && { province }),
+          ...(city && { city }),
+          ...(district && { district }),
+        },
+        orderBy: { ward: "asc" },
+      });
+      values = rows.flatMap((row) => (row.ward ? [row.ward] : []));
+    } else {
+      return NextResponse.json(
+        { msg: "Tingkat wilayah tidak valid." },
+        { status: 400 },
+      );
+    }
+
+    return NextResponse.json({ status: 200, locations: values });
+  }
 
   const findToday = await getTodayData(user.id);
   const datastatus = status

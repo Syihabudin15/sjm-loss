@@ -1,6 +1,5 @@
 "use client";
 
-import { FormInput } from "@/components";
 import { IDRFormat } from "@/components/utils/PembiayaanUtil";
 import { defaultApp, IOTSDefault, IOTSDetail } from "@/libs/IInterfaces";
 import {
@@ -8,6 +7,7 @@ import {
   CalculatorOutlined,
   CheckCircleOutlined,
   ClockCircleOutlined,
+  DownOutlined,
   DeleteOutlined,
   DollarCircleOutlined,
   EnvironmentOutlined,
@@ -17,7 +17,9 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import {
+  Alert,
   App,
+  AutoComplete,
   Avatar,
   Button,
   Card,
@@ -36,6 +38,16 @@ import { HookAPI } from "antd/lib/modal/useModal";
 import moment from "moment";
 import { useCallback, useEffect, useState } from "react";
 import { SimulasiAutomation } from "./util";
+
+type LocationField = "province" | "city" | "district" | "ward";
+type LocationOptions = Record<LocationField, string[]>;
+
+const emptyLocationOptions: LocationOptions = {
+  province: [],
+  city: [],
+  district: [],
+  ward: [],
+};
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
@@ -363,7 +375,7 @@ export default function Page() {
                   <Card
                     key={record.id}
                     hoverable
-                    className="h-full rounded-xl border-slate-200 transition-shadow hover:shadow-md"
+                    className="h-full rounded-xl border border-slate-300 shadow-sm transition-all hover:border-blue-300 hover:shadow-md"
                     styles={{ body: { padding: 16 } }}
                   >
                     <div className="flex items-start justify-between gap-3">
@@ -585,6 +597,79 @@ const GetNewData = ({
     ward: "",
   });
   const [loading, setLoading] = useState(false);
+  const [loadingOptions, setLoadingOptions] = useState<LocationField | null>(
+    null,
+  );
+  const [locationOptions, setLocationOptions] =
+    useState<LocationOptions>(emptyLocationOptions);
+  const [locationError, setLocationError] = useState<string | null>(null);
+
+  const loadLocationOptions = useCallback(
+    async (
+      field: LocationField,
+      filters: Partial<Record<LocationField, string>>,
+    ) => {
+      setLoadingOptions(field);
+      setLocationError(null);
+      try {
+        const params = new URLSearchParams({ locations: field });
+        Object.entries(filters).forEach(([key, value]) => {
+          if (value?.trim()) params.set(key, value.trim());
+        });
+
+        const response = await fetch(
+          `/api/ots_setup/data?${params.toString()}`,
+        );
+        const result: { locations?: string[]; msg?: string } =
+          await response.json();
+        if (!response.ok) {
+          throw new Error(result.msg || "Gagal memuat saran wilayah.");
+        }
+
+        setLocationOptions((prev) => ({
+          ...prev,
+          [field]: result.locations || [],
+        }));
+      } catch (error) {
+        setLocationError(
+          error instanceof Error
+            ? error.message
+            : "Gagal memuat saran wilayah.",
+        );
+      } finally {
+        setLoadingOptions(null);
+      }
+    },
+    [],
+  );
+
+  const updateLocation = (field: LocationField, value: string) => {
+    setdata((prev) => {
+      if (field === "province") {
+        return { ...prev, province: value, city: "", district: "", ward: "" };
+      }
+      if (field === "city") {
+        return { ...prev, city: value, district: "", ward: "" };
+      }
+      if (field === "district") {
+        return { ...prev, district: value, ward: "" };
+      }
+      return { ...prev, ward: value };
+    });
+
+    setLocationOptions((prev) => {
+      if (field === "province") {
+        return { ...prev, city: [], district: [], ward: [] };
+      }
+      if (field === "city") {
+        return { ...prev, district: [], ward: [] };
+      }
+      if (field === "district") {
+        return { ...prev, ward: [] };
+      }
+      return prev;
+    });
+  };
 
   const handleOK = async () => {
     setLoading(true);
@@ -592,16 +677,16 @@ const GetNewData = ({
     const res = await fetch(`/api/ots_setup/data`, {
       method: "POST",
       body: JSON.stringify({
-        province: data.province,
-        city: data.city,
-        district: data.district,
-        ward: data.ward,
+        province: data.province.trim(),
+        city: data.city.trim(),
+        district: data.district.trim(),
+        ward: data.ward.trim(),
       }),
     });
     const json = await res.json();
     if (json.status === 200) {
       hook.success({ content: json.msg });
-      setOpen(false);
+      closeModal();
       await getData();
     } else {
       hook.error({ content: json.msg });
@@ -609,54 +694,142 @@ const GetNewData = ({
     setLoading(false);
   };
 
+  const closeModal = () => {
+    setOpen(false);
+    setdata({ province: "", city: "", district: "", ward: "" });
+    setLocationOptions(emptyLocationOptions);
+    setLocationError(null);
+  };
+
   return (
     <Modal
-      title="Tarik Data Baru"
+      title={
+        <div className="flex items-center gap-3 py-1">
+          <div className="flex size-11 items-center justify-center rounded-xl bg-blue-100 text-xl text-blue-700">
+            <EnvironmentOutlined />
+          </div>
+          <div>
+            <div className="text-lg font-semibold text-slate-800">
+              Tarik Data OTS
+            </div>
+            <div className="text-xs font-normal text-slate-500">
+              Tentukan wilayah untuk mencari debitur
+            </div>
+          </div>
+        </div>
+      }
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={closeModal}
       onOk={handleOK}
-      loading={loading}
+      okText="Tarik Data"
+      cancelText="Batal"
+      okButtonProps={{ icon: <PlusCircleOutlined /> }}
+      confirmLoading={loading}
+      centered
+      width={640}
       destroyOnHidden
     >
-      <div className="flex flex-col gap-2">
-        <FormInput
-          data={{
-            label: "Provinsi",
-            class: "flex-1",
-            type: "text",
-            value: data.province,
-            onChange: (e: string) =>
-              setdata((prev) => ({ ...prev, province: e })),
-          }}
+      <div className="space-y-4 pt-3">
+        <Alert
+          showIcon
+          type="info"
+          message="Pilih saran wilayah atau ketik secara manual"
+          description="Saran akan mengikuti wilayah yang dipilih sebelumnya. Kolom boleh dikosongkan untuk pencarian yang lebih luas."
         />
-        <FormInput
-          data={{
-            label: "Kota/Kabupaten",
-            class: "flex-1",
-            type: "text",
-            value: data.city,
-            onChange: (e: string) => setdata((prev) => ({ ...prev, city: e })),
-          }}
-        />
-        <FormInput
-          data={{
-            label: "Kecamatan",
-            class: "flex-1",
-            type: "text",
-            value: data.district,
-            onChange: (e: string) =>
-              setdata((prev) => ({ ...prev, district: e })),
-          }}
-        />
-        <FormInput
-          data={{
-            label: "Kelurahan",
-            class: "flex-1",
-            type: "text",
-            value: data.ward,
-            onChange: (e: string) => setdata((prev) => ({ ...prev, ward: e })),
-          }}
-        />
+        {locationError && (
+          <Alert
+            showIcon
+            type="warning"
+            message="Saran wilayah belum tersedia"
+            description={`${locationError} Anda tetap dapat mengisi kolom secara manual.`}
+          />
+        )}
+        {loadingOptions && (
+          <div className="flex items-center gap-2 text-sm text-slate-500">
+            <Spin size="small" />
+            Memuat saran wilayah...
+          </div>
+        )}
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {(
+            [
+              ["province", "Provinsi", "Pilih atau ketik provinsi"],
+              ["city", "Kota/Kabupaten", "Pilih atau ketik kota/kabupaten"],
+              ["district", "Kecamatan", "Pilih atau ketik kecamatan"],
+              ["ward", "Kelurahan", "Pilih atau ketik kelurahan"],
+            ] as const
+          ).map(([field, label, placeholder]) => (
+            <div key={field} className="space-y-1.5">
+              <label
+                htmlFor={`ots-location-${field}`}
+                className="text-sm font-medium text-slate-700"
+              >
+                {label}
+              </label>
+              <AutoComplete
+                value={data[field]}
+                options={locationOptions[field].map((value) => ({
+                  value,
+                  label: value,
+                }))}
+                onChange={(value) => updateLocation(field, value)}
+                onFocus={() => {
+                  if (
+                    field === "province" &&
+                    locationOptions.province.length === 0
+                  ) {
+                    void loadLocationOptions("province", {});
+                  }
+                }}
+                onSelect={(value) => {
+                  if (field === "province") {
+                    void loadLocationOptions("city", { province: value });
+                  } else if (field === "city") {
+                    void loadLocationOptions("district", {
+                      province: data.province,
+                      city: value,
+                    });
+                  } else if (field === "district") {
+                    void loadLocationOptions("ward", {
+                      province: data.province,
+                      city: data.city,
+                      district: value,
+                    });
+                  }
+                }}
+                onBlur={() => {
+                  if (field === "province" && data.province.trim()) {
+                    void loadLocationOptions("city", {
+                      province: data.province,
+                    });
+                  } else if (field === "city" && data.city.trim()) {
+                    void loadLocationOptions("district", {
+                      province: data.province,
+                      city: data.city,
+                    });
+                  } else if (field === "district" && data.district.trim()) {
+                    void loadLocationOptions("ward", {
+                      province: data.province,
+                      city: data.city,
+                      district: data.district,
+                    });
+                  }
+                }}
+                filterOption={(inputValue, option) =>
+                  String(option?.value || "")
+                    .toLocaleLowerCase()
+                    .includes(inputValue.toLocaleLowerCase())
+                }
+                suffixIcon={<DownOutlined className="text-slate-400" />}
+                allowClear
+                className="w-full"
+                id={`ots-location-${field}`}
+                placeholder={placeholder}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </Modal>
   );
