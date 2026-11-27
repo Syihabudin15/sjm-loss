@@ -13,7 +13,7 @@ const getTodayData = async (id: string) => {
       ots_status: { in: ["PENDING", "PROSES"] },
     },
     include: {
-      Debitur: true,
+      Debitur: { include: { PayOffice: { select: { name: true } } } },
       OTSData: true,
     },
     orderBy: {
@@ -41,7 +41,7 @@ export const GET = async (req: NextRequest) => {
           ots_status: status as EOTSStatus,
         },
         include: {
-          Debitur: true,
+          Debitur: { include: { PayOffice: { select: { name: true } } } },
           OTSData: true,
         },
       })
