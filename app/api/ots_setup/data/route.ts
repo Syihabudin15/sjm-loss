@@ -16,6 +16,9 @@ const getTodayData = async (id: string) => {
       Debitur: true,
       OTSData: true,
     },
+    orderBy: {
+      OTSData: { get_date: "desc" },
+    },
   });
   return data;
 };
@@ -77,7 +80,27 @@ export const POST = async (req: NextRequest) => {
       {
         data: [],
         status: 403,
-        msg: "Data kamu lebih atau sama dengan 10. mohon sebagian lalu coba lagi!",
+        msg: `Data kamu lebih atau sama dengan ${app.pagesize}. mohon hapus sebagian lalu coba lagi!`,
+      },
+      { status: 403 },
+    );
+  }
+  const maxgetCount = await prisma.oTSData.count({
+    where: {
+      userId: user.id,
+      get_date: {
+        gte: moment().startOf("day").toDate(),
+        lte: moment().endOf("day").toDate(),
+      },
+    },
+  });
+
+  if (maxgetCount >= app.max_daily_get) {
+    return NextResponse.json(
+      {
+        data: [],
+        status: 403,
+        msg: `Maksimal Get data sudah tercapai (${app.max_daily_get}x). Coba lagi besok!`,
       },
       { status: 403 },
     );
@@ -89,6 +112,13 @@ export const POST = async (req: NextRequest) => {
         none: {
           dropping_status: {
             in: ["DISETUJUI", "DITOLAK", "DRAFT", "PENDING", "PROSES"],
+          },
+        },
+      },
+      Otsdetails: {
+        none: {
+          ots_status: {
+            in: ["PROSES", "AKTIF", "PENDING"],
           },
         },
       },

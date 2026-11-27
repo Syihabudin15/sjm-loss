@@ -11,7 +11,16 @@ import {
   PlusCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { App, Button, Modal, Popover, Table, Tabs, Tag } from "antd";
+import {
+  App,
+  Button,
+  Descriptions,
+  Modal,
+  Popover,
+  Table,
+  Tabs,
+  Tag,
+} from "antd";
 import { HookAPI } from "antd/lib/modal/useModal";
 import { TableProps } from "antd/lib/table";
 import { CalendarArrowDown, CalendarArrowUp } from "lucide-react";
@@ -219,10 +228,77 @@ export default function Page() {
       ),
     },
   ];
+
+  const renderExpandedDetails = (record: IOTSDetail) => {
+    const address = [
+      record.Debitur.address,
+      "KELURAHAN " + record.Debitur.ward,
+      "KECAMATAN " + record.Debitur.district,
+      record.Debitur.city,
+      record.Debitur.province,
+    ]
+      .filter(Boolean)
+      .join(", ");
+    const phone = record.Debitur.phone;
+    const phoneDigits = phone?.replace(/\D/g, "");
+    const whatsappNumber = phoneDigits
+      ? phoneDigits.startsWith("0")
+        ? `62${phoneDigits.slice(1)}`
+        : phoneDigits.startsWith("62")
+          ? phoneDigits
+          : `62${phoneDigits}`
+      : null;
+
+    return (
+      <Descriptions bordered size="small" column={2}>
+        <Descriptions.Item label="Alamat">
+          {address ? (
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {address}
+            </a>
+          ) : (
+            "-"
+          )}
+        </Descriptions.Item>
+        <Descriptions.Item label="No. Telepon">
+          {phone && whatsappNumber ? (
+            <a
+              href={`https://wa.me/${whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {phone}
+            </a>
+          ) : (
+            "-"
+          )}
+        </Descriptions.Item>
+        <Descriptions.Item label="Plafond Sebelumnya">
+          {IDRFormat(record.Debitur.plafond)}
+        </Descriptions.Item>
+        <Descriptions.Item label="Tanggal Lunas">
+          {record.Debitur.end_date
+            ? moment(record.Debitur.end_date).format("DD/MM/YYYY")
+            : "-"}
+        </Descriptions.Item>
+        <Descriptions.Item label="Kantor Bayar">
+          {record.Debitur.PayOffice.name}{" "}
+          {record.Debitur.kc_payoffice
+            ? `(${record.Debitur.kc_payoffice})`
+            : ""}
+        </Descriptions.Item>
+      </Descriptions>
+    );
+  };
+
   return (
     <div className="p-2">
       <div className="flex gap-2 text-xl px-2 justify-between items-center">
-        <div>
+        <div className="font-bold">
           <UserOutlined /> <span>Data OTS</span>
         </div>
         <div className="flex flex-col gap-2">
@@ -254,6 +330,9 @@ export default function Page() {
                   rowKey="id"
                   scroll={{ x: "max-content" }}
                   pagination={false}
+                  expandable={{
+                    expandedRowRender: renderExpandedDetails,
+                  }}
                 />
               ),
             },
@@ -269,6 +348,9 @@ export default function Page() {
                   rowKey="id"
                   scroll={{ x: "max-content" }}
                   pagination={false}
+                  expandable={{
+                    expandedRowRender: renderExpandedDetails,
+                  }}
                 />
               ),
             },
@@ -284,6 +366,9 @@ export default function Page() {
                   rowKey="id"
                   scroll={{ x: "max-content", y: "none" }}
                   pagination={false}
+                  expandable={{
+                    expandedRowRender: renderExpandedDetails,
+                  }}
                 />
               ),
             },

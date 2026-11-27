@@ -8,6 +8,7 @@ interface OTSSetupValues {
   pagesize: number;
   reset_day: number;
   max_dev: number;
+  max_daily_get: number;
   produkPembiayaanId: string;
   jenisPembiayaanId: string;
 }
@@ -63,6 +64,7 @@ export default function Page() {
             pagesize: 0,
             reset_day: 7,
             max_dev: 2,
+            max_daily_get: 3,
           },
         );
       } catch (error) {
@@ -170,6 +172,20 @@ export default function Page() {
             rules={[{ required: true, message: "Isi ukuran halaman." }]}
           >
             <InputNumber min={0} precision={0} className="w-full" />
+          </Form.Item>
+          <Form.Item
+            label="Maksimal Get Harian"
+            name="max_daily_get"
+            rules={[
+              { required: true, message: "Isi maksimal get harian." },
+              {
+                type: "number",
+                min: 1,
+                message: "Maksimal get harian minimal 1.",
+              },
+            ]}
+          >
+            <InputNumber min={1} precision={0} className="w-full" />
           </Form.Item>
           <Form.Item
             label="Hari Reset"

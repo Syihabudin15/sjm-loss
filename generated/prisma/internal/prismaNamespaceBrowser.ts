@@ -710,6 +710,7 @@ export const OTSDefaultScalarFieldEnum = {
   pagesize: 'pagesize',
   reset_day: 'reset_day',
   max_dev: 'max_dev',
+  max_daily_get: 'max_daily_get',
   produkPembiayaanId: 'produkPembiayaanId',
   jenisPembiayaanId: 'jenisPembiayaanId'
 } as const

@@ -63,6 +63,7 @@ export const PUT = async (request: NextRequest) => {
     pagesize,
     reset_day,
     max_dev,
+    max_daily_get,
     produkPembiayaanId,
     jenisPembiayaanId,
   } = values;
@@ -78,6 +79,9 @@ export const PUT = async (request: NextRequest) => {
     typeof max_dev !== "number" ||
     !Number.isFinite(max_dev) ||
     max_dev < 0 ||
+    typeof max_daily_get !== "number" ||
+    !Number.isInteger(max_daily_get) ||
+    max_daily_get < 1 ||
     typeof produkPembiayaanId !== "string" ||
     !produkPembiayaanId ||
     typeof jenisPembiayaanId !== "string" ||
@@ -116,6 +120,7 @@ export const PUT = async (request: NextRequest) => {
       pagesize,
       reset_day,
       max_dev,
+      max_daily_get,
       produkPembiayaanId,
       jenisPembiayaanId,
     };

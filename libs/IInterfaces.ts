@@ -242,6 +242,7 @@ export const defaultApp: IOTSDefault = {
   pagesize: 10,
   reset_day: 7,
   max_dev: 2,
+  max_daily_get: 3,
   produkPembiayaanId: "",
   jenisPembiayaanId: "",
   JenisPembiayaan: {} as JenisPembiayaan,

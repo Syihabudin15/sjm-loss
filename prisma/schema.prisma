@@ -837,10 +837,11 @@ model DataSimulasi {
 }
 
 model OTSDefault {
-  id        String @id @default(uuid())
-  pagesize  Int    @default(0)
-  reset_day Int
-  max_dev   Float
+  id            String @id @default(uuid())
+  pagesize      Int    @default(0)
+  reset_day     Int
+  max_dev       Float
+  max_daily_get Int    @default(3)
 
   ProdukPembiayaan   ProdukPembiayaan @relation(fields: [produkPembiayaanId], references: [id])
   JenisPembiayaan    JenisPembiayaan  @relation(fields: [jenisPembiayaanId], references: [id])

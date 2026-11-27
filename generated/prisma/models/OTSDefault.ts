@@ -30,12 +30,14 @@ export type OTSDefaultAvgAggregateOutputType = {
   pagesize: number | null
   reset_day: number | null
   max_dev: number | null
+  max_daily_get: number | null
 }
 
 export type OTSDefaultSumAggregateOutputType = {
   pagesize: number | null
   reset_day: number | null
   max_dev: number | null
+  max_daily_get: number | null
 }
 
 export type OTSDefaultMinAggregateOutputType = {
@@ -43,6 +45,7 @@ export type OTSDefaultMinAggregateOutputType = {
   pagesize: number | null
   reset_day: number | null
   max_dev: number | null
+  max_daily_get: number | null
   produkPembiayaanId: string | null
   jenisPembiayaanId: string | null
 }
@@ -52,6 +55,7 @@ export type OTSDefaultMaxAggregateOutputType = {
   pagesize: number | null
   reset_day: number | null
   max_dev: number | null
+  max_daily_get: number | null
   produkPembiayaanId: string | null
   jenisPembiayaanId: string | null
 }
@@ -61,6 +65,7 @@ export type OTSDefaultCountAggregateOutputType = {
   pagesize: number
   reset_day: number
   max_dev: number
+  max_daily_get: number
   produkPembiayaanId: number
   jenisPembiayaanId: number
   _all: number
@@ -71,12 +76,14 @@ export type OTSDefaultAvgAggregateInputType = {
   pagesize?: true
   reset_day?: true
   max_dev?: true
+  max_daily_get?: true
 }
 
 export type OTSDefaultSumAggregateInputType = {
   pagesize?: true
   reset_day?: true
   max_dev?: true
+  max_daily_get?: true
 }
 
 export type OTSDefaultMinAggregateInputType = {
@@ -84,6 +91,7 @@ export type OTSDefaultMinAggregateInputType = {
   pagesize?: true
   reset_day?: true
   max_dev?: true
+  max_daily_get?: true
   produkPembiayaanId?: true
   jenisPembiayaanId?: true
 }
@@ -93,6 +101,7 @@ export type OTSDefaultMaxAggregateInputType = {
   pagesize?: true
   reset_day?: true
   max_dev?: true
+  max_daily_get?: true
   produkPembiayaanId?: true
   jenisPembiayaanId?: true
 }
@@ -102,6 +111,7 @@ export type OTSDefaultCountAggregateInputType = {
   pagesize?: true
   reset_day?: true
   max_dev?: true
+  max_daily_get?: true
   produkPembiayaanId?: true
   jenisPembiayaanId?: true
   _all?: true
@@ -198,6 +208,7 @@ export type OTSDefaultGroupByOutputType = {
   pagesize: number
   reset_day: number
   max_dev: number
+  max_daily_get: number
   produkPembiayaanId: string
   jenisPembiayaanId: string
   _count: OTSDefaultCountAggregateOutputType | null
@@ -230,6 +241,7 @@ export type OTSDefaultWhereInput = {
   pagesize?: Prisma.IntFilter<"OTSDefault"> | number
   reset_day?: Prisma.IntFilter<"OTSDefault"> | number
   max_dev?: Prisma.FloatFilter<"OTSDefault"> | number
+  max_daily_get?: Prisma.IntFilter<"OTSDefault"> | number
   produkPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
   jenisPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
   ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
@@ -241,6 +253,7 @@ export type OTSDefaultOrderByWithRelationInput = {
   pagesize?: Prisma.SortOrder
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
+  max_daily_get?: Prisma.SortOrder
   produkPembiayaanId?: Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
   ProdukPembiayaan?: Prisma.ProdukPembiayaanOrderByWithRelationInput
@@ -256,6 +269,7 @@ export type OTSDefaultWhereUniqueInput = Prisma.AtLeast<{
   pagesize?: Prisma.IntFilter<"OTSDefault"> | number
   reset_day?: Prisma.IntFilter<"OTSDefault"> | number
   max_dev?: Prisma.FloatFilter<"OTSDefault"> | number
+  max_daily_get?: Prisma.IntFilter<"OTSDefault"> | number
   produkPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
   jenisPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
   ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
@@ -267,6 +281,7 @@ export type OTSDefaultOrderByWithAggregationInput = {
   pagesize?: Prisma.SortOrder
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
+  max_daily_get?: Prisma.SortOrder
   produkPembiayaanId?: Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
   _count?: Prisma.OTSDefaultCountOrderByAggregateInput
@@ -284,6 +299,7 @@ export type OTSDefaultScalarWhereWithAggregatesInput = {
   pagesize?: Prisma.IntWithAggregatesFilter<"OTSDefault"> | number
   reset_day?: Prisma.IntWithAggregatesFilter<"OTSDefault"> | number
   max_dev?: Prisma.FloatWithAggregatesFilter<"OTSDefault"> | number
+  max_daily_get?: Prisma.IntWithAggregatesFilter<"OTSDefault"> | number
   produkPembiayaanId?: Prisma.StringWithAggregatesFilter<"OTSDefault"> | string
   jenisPembiayaanId?: Prisma.StringWithAggregatesFilter<"OTSDefault"> | string
 }
@@ -293,6 +309,7 @@ export type OTSDefaultCreateInput = {
   pagesize?: number
   reset_day: number
   max_dev: number
+  max_daily_get?: number
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutOtsdefaultsInput
 }
@@ -302,6 +319,7 @@ export type OTSDefaultUncheckedCreateInput = {
   pagesize?: number
   reset_day: number
   max_dev: number
+  max_daily_get?: number
   produkPembiayaanId: string
   jenisPembiayaanId: string
 }
@@ -311,6 +329,7 @@ export type OTSDefaultUpdateInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
 }
@@ -320,6 +339,7 @@ export type OTSDefaultUncheckedUpdateInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
   jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -329,6 +349,7 @@ export type OTSDefaultCreateManyInput = {
   pagesize?: number
   reset_day: number
   max_dev: number
+  max_daily_get?: number
   produkPembiayaanId: string
   jenisPembiayaanId: string
 }
@@ -338,6 +359,7 @@ export type OTSDefaultUpdateManyMutationInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type OTSDefaultUncheckedUpdateManyInput = {
@@ -345,6 +367,7 @@ export type OTSDefaultUncheckedUpdateManyInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
   jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -370,6 +393,7 @@ export type OTSDefaultCountOrderByAggregateInput = {
   pagesize?: Prisma.SortOrder
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
+  max_daily_get?: Prisma.SortOrder
   produkPembiayaanId?: Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
 }
@@ -378,6 +402,7 @@ export type OTSDefaultAvgOrderByAggregateInput = {
   pagesize?: Prisma.SortOrder
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
+  max_daily_get?: Prisma.SortOrder
 }
 
 export type OTSDefaultMaxOrderByAggregateInput = {
@@ -385,6 +410,7 @@ export type OTSDefaultMaxOrderByAggregateInput = {
   pagesize?: Prisma.SortOrder
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
+  max_daily_get?: Prisma.SortOrder
   produkPembiayaanId?: Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
 }
@@ -394,6 +420,7 @@ export type OTSDefaultMinOrderByAggregateInput = {
   pagesize?: Prisma.SortOrder
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
+  max_daily_get?: Prisma.SortOrder
   produkPembiayaanId?: Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
 }
@@ -402,6 +429,7 @@ export type OTSDefaultSumOrderByAggregateInput = {
   pagesize?: Prisma.SortOrder
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
+  max_daily_get?: Prisma.SortOrder
 }
 
 export type OTSDefaultCreateNestedManyWithoutProdukPembiayaanInput = {
@@ -493,6 +521,7 @@ export type OTSDefaultCreateWithoutProdukPembiayaanInput = {
   pagesize?: number
   reset_day: number
   max_dev: number
+  max_daily_get?: number
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutOtsdefaultsInput
 }
 
@@ -501,6 +530,7 @@ export type OTSDefaultUncheckedCreateWithoutProdukPembiayaanInput = {
   pagesize?: number
   reset_day: number
   max_dev: number
+  max_daily_get?: number
   jenisPembiayaanId: string
 }
 
@@ -538,6 +568,7 @@ export type OTSDefaultScalarWhereInput = {
   pagesize?: Prisma.IntFilter<"OTSDefault"> | number
   reset_day?: Prisma.IntFilter<"OTSDefault"> | number
   max_dev?: Prisma.FloatFilter<"OTSDefault"> | number
+  max_daily_get?: Prisma.IntFilter<"OTSDefault"> | number
   produkPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
   jenisPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
 }
@@ -547,6 +578,7 @@ export type OTSDefaultCreateWithoutJenisPembiayaanInput = {
   pagesize?: number
   reset_day: number
   max_dev: number
+  max_daily_get?: number
   ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput
 }
 
@@ -555,6 +587,7 @@ export type OTSDefaultUncheckedCreateWithoutJenisPembiayaanInput = {
   pagesize?: number
   reset_day: number
   max_dev: number
+  max_daily_get?: number
   produkPembiayaanId: string
 }
 
@@ -589,6 +622,7 @@ export type OTSDefaultCreateManyProdukPembiayaanInput = {
   pagesize?: number
   reset_day: number
   max_dev: number
+  max_daily_get?: number
   jenisPembiayaanId: string
 }
 
@@ -597,6 +631,7 @@ export type OTSDefaultUpdateWithoutProdukPembiayaanInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
 }
 
@@ -605,6 +640,7 @@ export type OTSDefaultUncheckedUpdateWithoutProdukPembiayaanInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -613,6 +649,7 @@ export type OTSDefaultUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -621,6 +658,7 @@ export type OTSDefaultCreateManyJenisPembiayaanInput = {
   pagesize?: number
   reset_day: number
   max_dev: number
+  max_daily_get?: number
   produkPembiayaanId: string
 }
 
@@ -629,6 +667,7 @@ export type OTSDefaultUpdateWithoutJenisPembiayaanInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
 }
 
@@ -637,6 +676,7 @@ export type OTSDefaultUncheckedUpdateWithoutJenisPembiayaanInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -645,6 +685,7 @@ export type OTSDefaultUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   pagesize?: Prisma.IntFieldUpdateOperationsInput | number
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -655,6 +696,7 @@ export type OTSDefaultSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   pagesize?: boolean
   reset_day?: boolean
   max_dev?: boolean
+  max_daily_get?: boolean
   produkPembiayaanId?: boolean
   jenisPembiayaanId?: boolean
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
@@ -668,11 +710,12 @@ export type OTSDefaultSelectScalar = {
   pagesize?: boolean
   reset_day?: boolean
   max_dev?: boolean
+  max_daily_get?: boolean
   produkPembiayaanId?: boolean
   jenisPembiayaanId?: boolean
 }
 
-export type OTSDefaultOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "pagesize" | "reset_day" | "max_dev" | "produkPembiayaanId" | "jenisPembiayaanId", ExtArgs["result"]["oTSDefault"]>
+export type OTSDefaultOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "pagesize" | "reset_day" | "max_dev" | "max_daily_get" | "produkPembiayaanId" | "jenisPembiayaanId", ExtArgs["result"]["oTSDefault"]>
 export type OTSDefaultInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
   JenisPembiayaan?: boolean | Prisma.JenisPembiayaanDefaultArgs<ExtArgs>
@@ -689,6 +732,7 @@ export type $OTSDefaultPayload<ExtArgs extends runtime.Types.Extensions.Internal
     pagesize: number
     reset_day: number
     max_dev: number
+    max_daily_get: number
     produkPembiayaanId: string
     jenisPembiayaanId: string
   }, ExtArgs["result"]["oTSDefault"]>
@@ -1066,6 +1110,7 @@ export interface OTSDefaultFieldRefs {
   readonly pagesize: Prisma.FieldRef<"OTSDefault", 'Int'>
   readonly reset_day: Prisma.FieldRef<"OTSDefault", 'Int'>
   readonly max_dev: Prisma.FieldRef<"OTSDefault", 'Float'>
+  readonly max_daily_get: Prisma.FieldRef<"OTSDefault", 'Int'>
   readonly produkPembiayaanId: Prisma.FieldRef<"OTSDefault", 'String'>
   readonly jenisPembiayaanId: Prisma.FieldRef<"OTSDefault", 'String'>
 }
