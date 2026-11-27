@@ -205,7 +205,7 @@ export default function Page() {
                   <Button
                     size="small"
                     danger
-                    onClick={() => handleUpdate(record.id, "DELETE")}
+                    onClick={() => handleUpdate(record.id, "HAPUS")}
                   >
                     Hapus
                   </Button>
@@ -252,7 +252,6 @@ export default function Page() {
                   size="small"
                   loading={loading}
                   rowKey="id"
-                  bordered
                   scroll={{ x: "max-content" }}
                   pagination={false}
                 />
@@ -268,7 +267,6 @@ export default function Page() {
                   size="small"
                   loading={loading}
                   rowKey="id"
-                  bordered
                   scroll={{ x: "max-content" }}
                   pagination={false}
                 />
@@ -284,7 +282,6 @@ export default function Page() {
                   size="small"
                   loading={loading}
                   rowKey="id"
-                  bordered
                   scroll={{ x: "max-content", y: "none" }}
                   pagination={false}
                 />

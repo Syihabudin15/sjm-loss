@@ -144,14 +144,11 @@ export const DELETE = async (req: NextRequest) => {
       { status: 404 },
     );
   }
-  if (status === "DELETE") {
-    await prisma.oTSDetail.delete({ where: { id } });
-  } else {
-    await prisma.oTSDetail.update({
-      where: { id },
-      data: { ots_status: status as EOTSStatus },
-    });
-  }
+
+  await prisma.oTSDetail.update({
+    where: { id },
+    data: { ots_status: status as EOTSStatus },
+  });
 
   return NextResponse.json(
     {
