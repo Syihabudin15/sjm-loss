@@ -63,9 +63,7 @@ export const GET = async (req: NextRequest) => {
         },
         orderBy: { district: "asc" },
       });
-      values = rows.flatMap((row) =>
-        row.district ? [row.district] : [],
-      );
+      values = rows.flatMap((row) => (row.district ? [row.district] : []));
     } else if (locations === "ward") {
       const rows = await prisma.debitur.groupBy({
         by: ["ward"],
@@ -170,12 +168,9 @@ export const POST = async (req: NextRequest) => {
         },
       },
       Otsdetails: {
-        none: {
-          ots_status: {
-            in: ["PROSES", "AKTIF", "PENDING"],
-          },
-        },
+        none: {},
       },
+      payOfficeId: app.payOfficeId,
       nopen: { notIn: debId },
       ...(province && { province }),
       ...(city && { city }),
@@ -206,13 +201,13 @@ export const POST = async (req: NextRequest) => {
           ...(district && { district }),
           ...(ward && { ward }),
           userId: user.id,
-          pagesize: app.pagesize,
-          count: 1,
-          reset_date: moment().add(app.reset_day, "day").endOf("day").toDate(),
         },
       });
       const savedData = find.map((d) => ({
         ots_status: EOTSStatus.PENDING,
+        reset_count: 0,
+        get_date: new Date(),
+        reset_date: moment().endOf("day").toDate(),
 
         oTSDataId: dataots.id,
         debiturNopen: d.nopen,
@@ -239,10 +234,15 @@ export const DELETE = async (req: NextRequest) => {
       { status: 404 },
     );
   }
+  const findApp = await prisma.oTSDefault.findFirst();
+  const app = findApp || defaultApp;
 
   await prisma.oTSDetail.update({
     where: { id },
-    data: { ots_status: status as EOTSStatus },
+    data: {
+      ots_status: status as EOTSStatus,
+      reset_date: moment().add(app.reset_day, "day").endOf("day").toDate(),
+    },
   });
 
   return NextResponse.json(

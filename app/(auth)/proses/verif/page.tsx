@@ -28,6 +28,7 @@ import {
   PayCircleOutlined,
   PrinterOutlined,
   SwapOutlined,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import type {
   JenisPembiayaan,
@@ -76,6 +77,7 @@ export default function Page() {
   const { hasAccess } = useAccess(
     window ? window.location.pathname : "/proses/verif",
   );
+  const [loadingNotif, setLoadingNotif] = useState(false);
   const user = useUser();
 
   const getData = async () => {
@@ -130,6 +132,24 @@ export default function Page() {
       ]);
     })();
   }, []);
+
+  const handleSendNotif = async (record: IDapem) => {
+    setLoadingNotif(true);
+    const res = await fetch(`/api/whatsapp/sendmessage`, {
+      method: "POST",
+      body: JSON.stringify({
+        id: record.id,
+        isfor: "SLIK",
+      }),
+    });
+    const json = await res.json();
+    if (json.status === 200) {
+      modal.success({ title: "Notify Success", content: json.msg });
+    } else {
+      modal.error({ title: "Notify Failed", content: json.msg });
+    }
+    setLoadingNotif(false);
+  };
 
   const columns: TableProps<IDapem>["columns"] = [
     {
@@ -368,6 +388,14 @@ export default function Page() {
               }
             ></Button>
           )}
+          {hasAccess("notify") && record.verif_status === "PENDING" && (
+            <Button
+              size="small"
+              icon={<WhatsAppOutlined />}
+              onClick={() => handleSendNotif(record)}
+              loading={loadingNotif}
+            ></Button>
+          )}
         </div>
       ),
     },
@@ -394,6 +422,7 @@ export default function Page() {
                 backdate: "",
               }))
             }
+            // eslint-disable-next-line react/no-children-prop
             children={
               <>
                 <div className="my-2">
@@ -401,7 +430,7 @@ export default function Page() {
                   <RangePicker
                     size="small"
                     value={pageProps.backdate}
-                    onChange={(date, dateStr) =>
+                    onChange={(_date, dateStr) =>
                       setPageProps({ ...pageProps, backdate: dateStr, page: 1 })
                     }
                     style={{ width: "100%" }}

@@ -233,8 +233,10 @@ export interface IOTSData extends OTSData {
   User: User;
 }
 export interface IOTSDefault extends OTSDefault {
-  ProdukPembiayaan: IProdukPembiayaan;
+  ProdukPembiayaan: (ProdukPembiayaan & { Sumdan: Sumdan }) | null;
   JenisPembiayaan: JenisPembiayaan;
+  PayOffice: PayOffice;
+  Sumdan: Sumdan & { ProdukPembiayaans: ProdukPembiayaan[] };
 }
 
 export const defaultApp: IOTSDefault = {
@@ -244,7 +246,11 @@ export const defaultApp: IOTSDefault = {
   max_dev: 2,
   max_daily_get: 3,
   produkPembiayaanId: "",
+  payOfficeId: "",
+  sumdanId: "",
   jenisPembiayaanId: "",
   JenisPembiayaan: {} as JenisPembiayaan,
-  ProdukPembiayaan: {} as IProdukPembiayaan,
+  ProdukPembiayaan: null,
+  PayOffice: {} as PayOffice,
+  Sumdan: {} as Sumdan & { ProdukPembiayaans: ProdukPembiayaan[] },
 };

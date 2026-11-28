@@ -82,8 +82,10 @@ export type ESettleStatus = (typeof ESettleStatus)[keyof typeof ESettleStatus]
 export const EOTSStatus = {
   PENDING: 'PENDING',
   PROSES: 'PROSES',
+  INREVIEW: 'INREVIEW',
   AKTIF: 'AKTIF',
-  HAPUS: 'HAPUS'
+  HAPUS: 'HAPUS',
+  LUNAS: 'LUNAS'
 } as const
 
 export type EOTSStatus = (typeof EOTSStatus)[keyof typeof EOTSStatus]

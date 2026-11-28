@@ -25,11 +25,19 @@ export const SimulasiAutomation = ({
   appData: IOTSDefault;
 }) => {
   const printRef = useRef<HTMLDivElement>(null);
-  const product = appData.ProdukPembiayaan;
   const jenis = appData.JenisPembiayaan;
-  const sumdan = product?.Sumdan;
   const simulationDate = record.OTSData.get_date;
   const age = GetFullAge(record.Debitur.birthdate, simulationDate);
+  const eligibleProducts = (appData.Sumdan?.ProdukPembiayaans || []).filter(
+    (item) => age.year >= item.min_age && age.year < item.max_age,
+  );
+  const configuredProduct = appData.ProdukPembiayaan;
+  const product =
+    configuredProduct &&
+    eligibleProducts.some((item) => item.id === configuredProduct.id)
+      ? configuredProduct
+      : (eligibleProducts[0] ?? null);
+  const sumdan = appData.Sumdan;
   const maxTenor = Math.max(
     0,
     Math.min(
@@ -118,11 +126,28 @@ export const SimulasiAutomation = ({
         <Alert
           type="warning"
           showIcon
-          message="Simulasi otomatis belum dapat dihitung."
-          description="Pastikan konfigurasi produk dan jenis pembiayaan tersedia serta usia debitur masih memenuhi tenor maksimum."
+          message={
+            product
+              ? "Simulasi otomatis belum dapat dihitung."
+              : "Produk sesuai usia belum tersedia."
+          }
+          description={
+            product
+              ? "Pastikan jenis pembiayaan tersedia dan usia debitur masih memenuhi tenor maksimum."
+              : `Tidak ada produk aktif pada Sumdan ${appData.Sumdan?.name || ""} dengan rentang usia yang mencakup ${age.year} tahun. Periksa produk dan rentang usianya pada master Sumdan.`
+          }
         />
       ) : (
         <>
+          {configuredProduct?.id !== product.id && (
+            <Alert
+              className="mb-3"
+              type="info"
+              showIcon
+              message={`Produk ${product.name} dipilih otomatis`}
+              description={`Produk pada Sumdan ${sumdan?.name} sesuai rentang usia ${product.min_age}-${product.max_age} tahun.`}
+            />
+          )}
           <div ref={printRef} style={{ padding: 10, backgroundColor: "#fff" }}>
             <p className="font-bold text-lg mb-1">PERHITUNGAN PEMBIAYAAN</p>
             <div className="flex gap-2 flex-col sm:flex-row justify-between">

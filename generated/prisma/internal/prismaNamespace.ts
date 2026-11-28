@@ -2446,6 +2446,8 @@ export const SumdanScalarFieldEnum = {
   file: 'file',
   sk_akad: 'sk_akad',
   fronting: 'fronting',
+  allow_bot: 'allow_bot',
+  group_id: 'group_id',
   status: 'status',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -3012,7 +3014,9 @@ export const OTSDefaultScalarFieldEnum = {
   max_dev: 'max_dev',
   max_daily_get: 'max_daily_get',
   produkPembiayaanId: 'produkPembiayaanId',
-  jenisPembiayaanId: 'jenisPembiayaanId'
+  jenisPembiayaanId: 'jenisPembiayaanId',
+  payOfficeId: 'payOfficeId',
+  sumdanId: 'sumdanId'
 } as const
 
 export type OTSDefaultScalarFieldEnum = (typeof OTSDefaultScalarFieldEnum)[keyof typeof OTSDefaultScalarFieldEnum]
@@ -3025,9 +3029,6 @@ export const OTSDataScalarFieldEnum = {
   city: 'city',
   district: 'district',
   ward: 'ward',
-  pagesize: 'pagesize',
-  count: 'count',
-  reset_date: 'reset_date',
   userId: 'userId'
 } as const
 
@@ -3039,6 +3040,9 @@ export const OTSDetailScalarFieldEnum = {
   desc: 'desc',
   ots_status: 'ots_status',
   files: 'files',
+  get_date: 'get_date',
+  reset_date: 'reset_date',
+  reset_count: 'reset_count',
   oTSDataId: 'oTSDataId',
   debiturNopen: 'debiturNopen'
 } as const
@@ -3092,7 +3096,8 @@ export const SumdanOrderByRelevanceFieldEnum = {
   sk_no: 'sk_no',
   pic: 'pic',
   file: 'file',
-  sk_akad: 'sk_akad'
+  sk_akad: 'sk_akad',
+  group_id: 'group_id'
 } as const
 
 export type SumdanOrderByRelevanceFieldEnum = (typeof SumdanOrderByRelevanceFieldEnum)[keyof typeof SumdanOrderByRelevanceFieldEnum]
@@ -3472,7 +3477,9 @@ export type DataSimulasiOrderByRelevanceFieldEnum = (typeof DataSimulasiOrderByR
 export const OTSDefaultOrderByRelevanceFieldEnum = {
   id: 'id',
   produkPembiayaanId: 'produkPembiayaanId',
-  jenisPembiayaanId: 'jenisPembiayaanId'
+  jenisPembiayaanId: 'jenisPembiayaanId',
+  payOfficeId: 'payOfficeId',
+  sumdanId: 'sumdanId'
 } as const
 
 export type OTSDefaultOrderByRelevanceFieldEnum = (typeof OTSDefaultOrderByRelevanceFieldEnum)[keyof typeof OTSDefaultOrderByRelevanceFieldEnum]

@@ -48,6 +48,8 @@ export type OTSDefaultMinAggregateOutputType = {
   max_daily_get: number | null
   produkPembiayaanId: string | null
   jenisPembiayaanId: string | null
+  payOfficeId: string | null
+  sumdanId: string | null
 }
 
 export type OTSDefaultMaxAggregateOutputType = {
@@ -58,6 +60,8 @@ export type OTSDefaultMaxAggregateOutputType = {
   max_daily_get: number | null
   produkPembiayaanId: string | null
   jenisPembiayaanId: string | null
+  payOfficeId: string | null
+  sumdanId: string | null
 }
 
 export type OTSDefaultCountAggregateOutputType = {
@@ -68,6 +72,8 @@ export type OTSDefaultCountAggregateOutputType = {
   max_daily_get: number
   produkPembiayaanId: number
   jenisPembiayaanId: number
+  payOfficeId: number
+  sumdanId: number
   _all: number
 }
 
@@ -94,6 +100,8 @@ export type OTSDefaultMinAggregateInputType = {
   max_daily_get?: true
   produkPembiayaanId?: true
   jenisPembiayaanId?: true
+  payOfficeId?: true
+  sumdanId?: true
 }
 
 export type OTSDefaultMaxAggregateInputType = {
@@ -104,6 +112,8 @@ export type OTSDefaultMaxAggregateInputType = {
   max_daily_get?: true
   produkPembiayaanId?: true
   jenisPembiayaanId?: true
+  payOfficeId?: true
+  sumdanId?: true
 }
 
 export type OTSDefaultCountAggregateInputType = {
@@ -114,6 +124,8 @@ export type OTSDefaultCountAggregateInputType = {
   max_daily_get?: true
   produkPembiayaanId?: true
   jenisPembiayaanId?: true
+  payOfficeId?: true
+  sumdanId?: true
   _all?: true
 }
 
@@ -209,8 +221,10 @@ export type OTSDefaultGroupByOutputType = {
   reset_day: number
   max_dev: number
   max_daily_get: number
-  produkPembiayaanId: string
+  produkPembiayaanId: string | null
   jenisPembiayaanId: string
+  payOfficeId: string
+  sumdanId: string
   _count: OTSDefaultCountAggregateOutputType | null
   _avg: OTSDefaultAvgAggregateOutputType | null
   _sum: OTSDefaultSumAggregateOutputType | null
@@ -242,10 +256,14 @@ export type OTSDefaultWhereInput = {
   reset_day?: Prisma.IntFilter<"OTSDefault"> | number
   max_dev?: Prisma.FloatFilter<"OTSDefault"> | number
   max_daily_get?: Prisma.IntFilter<"OTSDefault"> | number
-  produkPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
+  produkPembiayaanId?: Prisma.StringNullableFilter<"OTSDefault"> | string | null
   jenisPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
-  ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
+  payOfficeId?: Prisma.StringFilter<"OTSDefault"> | string
+  sumdanId?: Prisma.StringFilter<"OTSDefault"> | string
+  ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanNullableScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput> | null
   JenisPembiayaan?: Prisma.XOR<Prisma.JenisPembiayaanScalarRelationFilter, Prisma.JenisPembiayaanWhereInput>
+  PayOffice?: Prisma.XOR<Prisma.PayOfficeScalarRelationFilter, Prisma.PayOfficeWhereInput>
+  Sumdan?: Prisma.XOR<Prisma.SumdanScalarRelationFilter, Prisma.SumdanWhereInput>
 }
 
 export type OTSDefaultOrderByWithRelationInput = {
@@ -254,10 +272,14 @@ export type OTSDefaultOrderByWithRelationInput = {
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
   max_daily_get?: Prisma.SortOrder
-  produkPembiayaanId?: Prisma.SortOrder
+  produkPembiayaanId?: Prisma.SortOrderInput | Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
+  payOfficeId?: Prisma.SortOrder
+  sumdanId?: Prisma.SortOrder
   ProdukPembiayaan?: Prisma.ProdukPembiayaanOrderByWithRelationInput
   JenisPembiayaan?: Prisma.JenisPembiayaanOrderByWithRelationInput
+  PayOffice?: Prisma.PayOfficeOrderByWithRelationInput
+  Sumdan?: Prisma.SumdanOrderByWithRelationInput
   _relevance?: Prisma.OTSDefaultOrderByRelevanceInput
 }
 
@@ -270,10 +292,14 @@ export type OTSDefaultWhereUniqueInput = Prisma.AtLeast<{
   reset_day?: Prisma.IntFilter<"OTSDefault"> | number
   max_dev?: Prisma.FloatFilter<"OTSDefault"> | number
   max_daily_get?: Prisma.IntFilter<"OTSDefault"> | number
-  produkPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
+  produkPembiayaanId?: Prisma.StringNullableFilter<"OTSDefault"> | string | null
   jenisPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
-  ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput>
+  payOfficeId?: Prisma.StringFilter<"OTSDefault"> | string
+  sumdanId?: Prisma.StringFilter<"OTSDefault"> | string
+  ProdukPembiayaan?: Prisma.XOR<Prisma.ProdukPembiayaanNullableScalarRelationFilter, Prisma.ProdukPembiayaanWhereInput> | null
   JenisPembiayaan?: Prisma.XOR<Prisma.JenisPembiayaanScalarRelationFilter, Prisma.JenisPembiayaanWhereInput>
+  PayOffice?: Prisma.XOR<Prisma.PayOfficeScalarRelationFilter, Prisma.PayOfficeWhereInput>
+  Sumdan?: Prisma.XOR<Prisma.SumdanScalarRelationFilter, Prisma.SumdanWhereInput>
 }, "id">
 
 export type OTSDefaultOrderByWithAggregationInput = {
@@ -282,8 +308,10 @@ export type OTSDefaultOrderByWithAggregationInput = {
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
   max_daily_get?: Prisma.SortOrder
-  produkPembiayaanId?: Prisma.SortOrder
+  produkPembiayaanId?: Prisma.SortOrderInput | Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
+  payOfficeId?: Prisma.SortOrder
+  sumdanId?: Prisma.SortOrder
   _count?: Prisma.OTSDefaultCountOrderByAggregateInput
   _avg?: Prisma.OTSDefaultAvgOrderByAggregateInput
   _max?: Prisma.OTSDefaultMaxOrderByAggregateInput
@@ -300,8 +328,10 @@ export type OTSDefaultScalarWhereWithAggregatesInput = {
   reset_day?: Prisma.IntWithAggregatesFilter<"OTSDefault"> | number
   max_dev?: Prisma.FloatWithAggregatesFilter<"OTSDefault"> | number
   max_daily_get?: Prisma.IntWithAggregatesFilter<"OTSDefault"> | number
-  produkPembiayaanId?: Prisma.StringWithAggregatesFilter<"OTSDefault"> | string
+  produkPembiayaanId?: Prisma.StringNullableWithAggregatesFilter<"OTSDefault"> | string | null
   jenisPembiayaanId?: Prisma.StringWithAggregatesFilter<"OTSDefault"> | string
+  payOfficeId?: Prisma.StringWithAggregatesFilter<"OTSDefault"> | string
+  sumdanId?: Prisma.StringWithAggregatesFilter<"OTSDefault"> | string
 }
 
 export type OTSDefaultCreateInput = {
@@ -310,8 +340,10 @@ export type OTSDefaultCreateInput = {
   reset_day: number
   max_dev: number
   max_daily_get?: number
-  ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput
+  ProdukPembiayaan?: Prisma.ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutOtsdefaultsInput
+  PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutOtsdefaultsInput
+  Sumdan?: Prisma.SumdanCreateNestedOneWithoutOtsdefaultsInput
 }
 
 export type OTSDefaultUncheckedCreateInput = {
@@ -320,8 +352,10 @@ export type OTSDefaultUncheckedCreateInput = {
   reset_day: number
   max_dev: number
   max_daily_get?: number
-  produkPembiayaanId: string
+  produkPembiayaanId?: string | null
   jenisPembiayaanId: string
+  payOfficeId?: string
+  sumdanId?: string
 }
 
 export type OTSDefaultUpdateInput = {
@@ -330,8 +364,10 @@ export type OTSDefaultUpdateInput = {
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
   max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
-  ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
+  ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneWithoutOtsdefaultsNestedInput
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
+  PayOffice?: Prisma.PayOfficeUpdateOneRequiredWithoutOtsdefaultsNestedInput
+  Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutOtsdefaultsNestedInput
 }
 
 export type OTSDefaultUncheckedUpdateInput = {
@@ -340,8 +376,10 @@ export type OTSDefaultUncheckedUpdateInput = {
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
   max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
-  produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  produkPembiayaanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  payOfficeId?: Prisma.StringFieldUpdateOperationsInput | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type OTSDefaultCreateManyInput = {
@@ -350,8 +388,10 @@ export type OTSDefaultCreateManyInput = {
   reset_day: number
   max_dev: number
   max_daily_get?: number
-  produkPembiayaanId: string
+  produkPembiayaanId?: string | null
   jenisPembiayaanId: string
+  payOfficeId?: string
+  sumdanId?: string
 }
 
 export type OTSDefaultUpdateManyMutationInput = {
@@ -368,8 +408,10 @@ export type OTSDefaultUncheckedUpdateManyInput = {
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
   max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
-  produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  produkPembiayaanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  payOfficeId?: Prisma.StringFieldUpdateOperationsInput | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type OTSDefaultListRelationFilter = {
@@ -396,6 +438,8 @@ export type OTSDefaultCountOrderByAggregateInput = {
   max_daily_get?: Prisma.SortOrder
   produkPembiayaanId?: Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
+  payOfficeId?: Prisma.SortOrder
+  sumdanId?: Prisma.SortOrder
 }
 
 export type OTSDefaultAvgOrderByAggregateInput = {
@@ -413,6 +457,8 @@ export type OTSDefaultMaxOrderByAggregateInput = {
   max_daily_get?: Prisma.SortOrder
   produkPembiayaanId?: Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
+  payOfficeId?: Prisma.SortOrder
+  sumdanId?: Prisma.SortOrder
 }
 
 export type OTSDefaultMinOrderByAggregateInput = {
@@ -423,6 +469,8 @@ export type OTSDefaultMinOrderByAggregateInput = {
   max_daily_get?: Prisma.SortOrder
   produkPembiayaanId?: Prisma.SortOrder
   jenisPembiayaanId?: Prisma.SortOrder
+  payOfficeId?: Prisma.SortOrder
+  sumdanId?: Prisma.SortOrder
 }
 
 export type OTSDefaultSumOrderByAggregateInput = {
@@ -430,6 +478,48 @@ export type OTSDefaultSumOrderByAggregateInput = {
   reset_day?: Prisma.SortOrder
   max_dev?: Prisma.SortOrder
   max_daily_get?: Prisma.SortOrder
+}
+
+export type OTSDefaultCreateNestedManyWithoutSumdanInput = {
+  create?: Prisma.XOR<Prisma.OTSDefaultCreateWithoutSumdanInput, Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput> | Prisma.OTSDefaultCreateWithoutSumdanInput[] | Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput[]
+  connectOrCreate?: Prisma.OTSDefaultCreateOrConnectWithoutSumdanInput | Prisma.OTSDefaultCreateOrConnectWithoutSumdanInput[]
+  createMany?: Prisma.OTSDefaultCreateManySumdanInputEnvelope
+  connect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+}
+
+export type OTSDefaultUncheckedCreateNestedManyWithoutSumdanInput = {
+  create?: Prisma.XOR<Prisma.OTSDefaultCreateWithoutSumdanInput, Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput> | Prisma.OTSDefaultCreateWithoutSumdanInput[] | Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput[]
+  connectOrCreate?: Prisma.OTSDefaultCreateOrConnectWithoutSumdanInput | Prisma.OTSDefaultCreateOrConnectWithoutSumdanInput[]
+  createMany?: Prisma.OTSDefaultCreateManySumdanInputEnvelope
+  connect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+}
+
+export type OTSDefaultUpdateManyWithoutSumdanNestedInput = {
+  create?: Prisma.XOR<Prisma.OTSDefaultCreateWithoutSumdanInput, Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput> | Prisma.OTSDefaultCreateWithoutSumdanInput[] | Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput[]
+  connectOrCreate?: Prisma.OTSDefaultCreateOrConnectWithoutSumdanInput | Prisma.OTSDefaultCreateOrConnectWithoutSumdanInput[]
+  upsert?: Prisma.OTSDefaultUpsertWithWhereUniqueWithoutSumdanInput | Prisma.OTSDefaultUpsertWithWhereUniqueWithoutSumdanInput[]
+  createMany?: Prisma.OTSDefaultCreateManySumdanInputEnvelope
+  set?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  disconnect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  delete?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  connect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  update?: Prisma.OTSDefaultUpdateWithWhereUniqueWithoutSumdanInput | Prisma.OTSDefaultUpdateWithWhereUniqueWithoutSumdanInput[]
+  updateMany?: Prisma.OTSDefaultUpdateManyWithWhereWithoutSumdanInput | Prisma.OTSDefaultUpdateManyWithWhereWithoutSumdanInput[]
+  deleteMany?: Prisma.OTSDefaultScalarWhereInput | Prisma.OTSDefaultScalarWhereInput[]
+}
+
+export type OTSDefaultUncheckedUpdateManyWithoutSumdanNestedInput = {
+  create?: Prisma.XOR<Prisma.OTSDefaultCreateWithoutSumdanInput, Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput> | Prisma.OTSDefaultCreateWithoutSumdanInput[] | Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput[]
+  connectOrCreate?: Prisma.OTSDefaultCreateOrConnectWithoutSumdanInput | Prisma.OTSDefaultCreateOrConnectWithoutSumdanInput[]
+  upsert?: Prisma.OTSDefaultUpsertWithWhereUniqueWithoutSumdanInput | Prisma.OTSDefaultUpsertWithWhereUniqueWithoutSumdanInput[]
+  createMany?: Prisma.OTSDefaultCreateManySumdanInputEnvelope
+  set?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  disconnect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  delete?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  connect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  update?: Prisma.OTSDefaultUpdateWithWhereUniqueWithoutSumdanInput | Prisma.OTSDefaultUpdateWithWhereUniqueWithoutSumdanInput[]
+  updateMany?: Prisma.OTSDefaultUpdateManyWithWhereWithoutSumdanInput | Prisma.OTSDefaultUpdateManyWithWhereWithoutSumdanInput[]
+  deleteMany?: Prisma.OTSDefaultScalarWhereInput | Prisma.OTSDefaultScalarWhereInput[]
 }
 
 export type OTSDefaultCreateNestedManyWithoutProdukPembiayaanInput = {
@@ -516,6 +606,111 @@ export type OTSDefaultUncheckedUpdateManyWithoutJenisPembiayaanNestedInput = {
   deleteMany?: Prisma.OTSDefaultScalarWhereInput | Prisma.OTSDefaultScalarWhereInput[]
 }
 
+export type OTSDefaultCreateNestedManyWithoutPayOfficeInput = {
+  create?: Prisma.XOR<Prisma.OTSDefaultCreateWithoutPayOfficeInput, Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput> | Prisma.OTSDefaultCreateWithoutPayOfficeInput[] | Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput[]
+  connectOrCreate?: Prisma.OTSDefaultCreateOrConnectWithoutPayOfficeInput | Prisma.OTSDefaultCreateOrConnectWithoutPayOfficeInput[]
+  createMany?: Prisma.OTSDefaultCreateManyPayOfficeInputEnvelope
+  connect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+}
+
+export type OTSDefaultUncheckedCreateNestedManyWithoutPayOfficeInput = {
+  create?: Prisma.XOR<Prisma.OTSDefaultCreateWithoutPayOfficeInput, Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput> | Prisma.OTSDefaultCreateWithoutPayOfficeInput[] | Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput[]
+  connectOrCreate?: Prisma.OTSDefaultCreateOrConnectWithoutPayOfficeInput | Prisma.OTSDefaultCreateOrConnectWithoutPayOfficeInput[]
+  createMany?: Prisma.OTSDefaultCreateManyPayOfficeInputEnvelope
+  connect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+}
+
+export type OTSDefaultUpdateManyWithoutPayOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.OTSDefaultCreateWithoutPayOfficeInput, Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput> | Prisma.OTSDefaultCreateWithoutPayOfficeInput[] | Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput[]
+  connectOrCreate?: Prisma.OTSDefaultCreateOrConnectWithoutPayOfficeInput | Prisma.OTSDefaultCreateOrConnectWithoutPayOfficeInput[]
+  upsert?: Prisma.OTSDefaultUpsertWithWhereUniqueWithoutPayOfficeInput | Prisma.OTSDefaultUpsertWithWhereUniqueWithoutPayOfficeInput[]
+  createMany?: Prisma.OTSDefaultCreateManyPayOfficeInputEnvelope
+  set?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  disconnect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  delete?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  connect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  update?: Prisma.OTSDefaultUpdateWithWhereUniqueWithoutPayOfficeInput | Prisma.OTSDefaultUpdateWithWhereUniqueWithoutPayOfficeInput[]
+  updateMany?: Prisma.OTSDefaultUpdateManyWithWhereWithoutPayOfficeInput | Prisma.OTSDefaultUpdateManyWithWhereWithoutPayOfficeInput[]
+  deleteMany?: Prisma.OTSDefaultScalarWhereInput | Prisma.OTSDefaultScalarWhereInput[]
+}
+
+export type OTSDefaultUncheckedUpdateManyWithoutPayOfficeNestedInput = {
+  create?: Prisma.XOR<Prisma.OTSDefaultCreateWithoutPayOfficeInput, Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput> | Prisma.OTSDefaultCreateWithoutPayOfficeInput[] | Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput[]
+  connectOrCreate?: Prisma.OTSDefaultCreateOrConnectWithoutPayOfficeInput | Prisma.OTSDefaultCreateOrConnectWithoutPayOfficeInput[]
+  upsert?: Prisma.OTSDefaultUpsertWithWhereUniqueWithoutPayOfficeInput | Prisma.OTSDefaultUpsertWithWhereUniqueWithoutPayOfficeInput[]
+  createMany?: Prisma.OTSDefaultCreateManyPayOfficeInputEnvelope
+  set?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  disconnect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  delete?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  connect?: Prisma.OTSDefaultWhereUniqueInput | Prisma.OTSDefaultWhereUniqueInput[]
+  update?: Prisma.OTSDefaultUpdateWithWhereUniqueWithoutPayOfficeInput | Prisma.OTSDefaultUpdateWithWhereUniqueWithoutPayOfficeInput[]
+  updateMany?: Prisma.OTSDefaultUpdateManyWithWhereWithoutPayOfficeInput | Prisma.OTSDefaultUpdateManyWithWhereWithoutPayOfficeInput[]
+  deleteMany?: Prisma.OTSDefaultScalarWhereInput | Prisma.OTSDefaultScalarWhereInput[]
+}
+
+export type OTSDefaultCreateWithoutSumdanInput = {
+  id?: string
+  pagesize?: number
+  reset_day: number
+  max_dev: number
+  max_daily_get?: number
+  ProdukPembiayaan?: Prisma.ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput
+  JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutOtsdefaultsInput
+  PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutOtsdefaultsInput
+}
+
+export type OTSDefaultUncheckedCreateWithoutSumdanInput = {
+  id?: string
+  pagesize?: number
+  reset_day: number
+  max_dev: number
+  max_daily_get?: number
+  produkPembiayaanId?: string | null
+  jenisPembiayaanId: string
+  payOfficeId?: string
+}
+
+export type OTSDefaultCreateOrConnectWithoutSumdanInput = {
+  where: Prisma.OTSDefaultWhereUniqueInput
+  create: Prisma.XOR<Prisma.OTSDefaultCreateWithoutSumdanInput, Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput>
+}
+
+export type OTSDefaultCreateManySumdanInputEnvelope = {
+  data: Prisma.OTSDefaultCreateManySumdanInput | Prisma.OTSDefaultCreateManySumdanInput[]
+  skipDuplicates?: boolean
+}
+
+export type OTSDefaultUpsertWithWhereUniqueWithoutSumdanInput = {
+  where: Prisma.OTSDefaultWhereUniqueInput
+  update: Prisma.XOR<Prisma.OTSDefaultUpdateWithoutSumdanInput, Prisma.OTSDefaultUncheckedUpdateWithoutSumdanInput>
+  create: Prisma.XOR<Prisma.OTSDefaultCreateWithoutSumdanInput, Prisma.OTSDefaultUncheckedCreateWithoutSumdanInput>
+}
+
+export type OTSDefaultUpdateWithWhereUniqueWithoutSumdanInput = {
+  where: Prisma.OTSDefaultWhereUniqueInput
+  data: Prisma.XOR<Prisma.OTSDefaultUpdateWithoutSumdanInput, Prisma.OTSDefaultUncheckedUpdateWithoutSumdanInput>
+}
+
+export type OTSDefaultUpdateManyWithWhereWithoutSumdanInput = {
+  where: Prisma.OTSDefaultScalarWhereInput
+  data: Prisma.XOR<Prisma.OTSDefaultUpdateManyMutationInput, Prisma.OTSDefaultUncheckedUpdateManyWithoutSumdanInput>
+}
+
+export type OTSDefaultScalarWhereInput = {
+  AND?: Prisma.OTSDefaultScalarWhereInput | Prisma.OTSDefaultScalarWhereInput[]
+  OR?: Prisma.OTSDefaultScalarWhereInput[]
+  NOT?: Prisma.OTSDefaultScalarWhereInput | Prisma.OTSDefaultScalarWhereInput[]
+  id?: Prisma.StringFilter<"OTSDefault"> | string
+  pagesize?: Prisma.IntFilter<"OTSDefault"> | number
+  reset_day?: Prisma.IntFilter<"OTSDefault"> | number
+  max_dev?: Prisma.FloatFilter<"OTSDefault"> | number
+  max_daily_get?: Prisma.IntFilter<"OTSDefault"> | number
+  produkPembiayaanId?: Prisma.StringNullableFilter<"OTSDefault"> | string | null
+  jenisPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
+  payOfficeId?: Prisma.StringFilter<"OTSDefault"> | string
+  sumdanId?: Prisma.StringFilter<"OTSDefault"> | string
+}
+
 export type OTSDefaultCreateWithoutProdukPembiayaanInput = {
   id?: string
   pagesize?: number
@@ -523,6 +718,8 @@ export type OTSDefaultCreateWithoutProdukPembiayaanInput = {
   max_dev: number
   max_daily_get?: number
   JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutOtsdefaultsInput
+  PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutOtsdefaultsInput
+  Sumdan?: Prisma.SumdanCreateNestedOneWithoutOtsdefaultsInput
 }
 
 export type OTSDefaultUncheckedCreateWithoutProdukPembiayaanInput = {
@@ -532,6 +729,8 @@ export type OTSDefaultUncheckedCreateWithoutProdukPembiayaanInput = {
   max_dev: number
   max_daily_get?: number
   jenisPembiayaanId: string
+  payOfficeId?: string
+  sumdanId?: string
 }
 
 export type OTSDefaultCreateOrConnectWithoutProdukPembiayaanInput = {
@@ -560,26 +759,15 @@ export type OTSDefaultUpdateManyWithWhereWithoutProdukPembiayaanInput = {
   data: Prisma.XOR<Prisma.OTSDefaultUpdateManyMutationInput, Prisma.OTSDefaultUncheckedUpdateManyWithoutProdukPembiayaanInput>
 }
 
-export type OTSDefaultScalarWhereInput = {
-  AND?: Prisma.OTSDefaultScalarWhereInput | Prisma.OTSDefaultScalarWhereInput[]
-  OR?: Prisma.OTSDefaultScalarWhereInput[]
-  NOT?: Prisma.OTSDefaultScalarWhereInput | Prisma.OTSDefaultScalarWhereInput[]
-  id?: Prisma.StringFilter<"OTSDefault"> | string
-  pagesize?: Prisma.IntFilter<"OTSDefault"> | number
-  reset_day?: Prisma.IntFilter<"OTSDefault"> | number
-  max_dev?: Prisma.FloatFilter<"OTSDefault"> | number
-  max_daily_get?: Prisma.IntFilter<"OTSDefault"> | number
-  produkPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
-  jenisPembiayaanId?: Prisma.StringFilter<"OTSDefault"> | string
-}
-
 export type OTSDefaultCreateWithoutJenisPembiayaanInput = {
   id?: string
   pagesize?: number
   reset_day: number
   max_dev: number
   max_daily_get?: number
-  ProdukPembiayaan: Prisma.ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput
+  ProdukPembiayaan?: Prisma.ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput
+  PayOffice?: Prisma.PayOfficeCreateNestedOneWithoutOtsdefaultsInput
+  Sumdan?: Prisma.SumdanCreateNestedOneWithoutOtsdefaultsInput
 }
 
 export type OTSDefaultUncheckedCreateWithoutJenisPembiayaanInput = {
@@ -588,7 +776,9 @@ export type OTSDefaultUncheckedCreateWithoutJenisPembiayaanInput = {
   reset_day: number
   max_dev: number
   max_daily_get?: number
-  produkPembiayaanId: string
+  produkPembiayaanId?: string | null
+  payOfficeId?: string
+  sumdanId?: string
 }
 
 export type OTSDefaultCreateOrConnectWithoutJenisPembiayaanInput = {
@@ -617,6 +807,98 @@ export type OTSDefaultUpdateManyWithWhereWithoutJenisPembiayaanInput = {
   data: Prisma.XOR<Prisma.OTSDefaultUpdateManyMutationInput, Prisma.OTSDefaultUncheckedUpdateManyWithoutJenisPembiayaanInput>
 }
 
+export type OTSDefaultCreateWithoutPayOfficeInput = {
+  id?: string
+  pagesize?: number
+  reset_day: number
+  max_dev: number
+  max_daily_get?: number
+  ProdukPembiayaan?: Prisma.ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput
+  JenisPembiayaan: Prisma.JenisPembiayaanCreateNestedOneWithoutOtsdefaultsInput
+  Sumdan?: Prisma.SumdanCreateNestedOneWithoutOtsdefaultsInput
+}
+
+export type OTSDefaultUncheckedCreateWithoutPayOfficeInput = {
+  id?: string
+  pagesize?: number
+  reset_day: number
+  max_dev: number
+  max_daily_get?: number
+  produkPembiayaanId?: string | null
+  jenisPembiayaanId: string
+  sumdanId?: string
+}
+
+export type OTSDefaultCreateOrConnectWithoutPayOfficeInput = {
+  where: Prisma.OTSDefaultWhereUniqueInput
+  create: Prisma.XOR<Prisma.OTSDefaultCreateWithoutPayOfficeInput, Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput>
+}
+
+export type OTSDefaultCreateManyPayOfficeInputEnvelope = {
+  data: Prisma.OTSDefaultCreateManyPayOfficeInput | Prisma.OTSDefaultCreateManyPayOfficeInput[]
+  skipDuplicates?: boolean
+}
+
+export type OTSDefaultUpsertWithWhereUniqueWithoutPayOfficeInput = {
+  where: Prisma.OTSDefaultWhereUniqueInput
+  update: Prisma.XOR<Prisma.OTSDefaultUpdateWithoutPayOfficeInput, Prisma.OTSDefaultUncheckedUpdateWithoutPayOfficeInput>
+  create: Prisma.XOR<Prisma.OTSDefaultCreateWithoutPayOfficeInput, Prisma.OTSDefaultUncheckedCreateWithoutPayOfficeInput>
+}
+
+export type OTSDefaultUpdateWithWhereUniqueWithoutPayOfficeInput = {
+  where: Prisma.OTSDefaultWhereUniqueInput
+  data: Prisma.XOR<Prisma.OTSDefaultUpdateWithoutPayOfficeInput, Prisma.OTSDefaultUncheckedUpdateWithoutPayOfficeInput>
+}
+
+export type OTSDefaultUpdateManyWithWhereWithoutPayOfficeInput = {
+  where: Prisma.OTSDefaultScalarWhereInput
+  data: Prisma.XOR<Prisma.OTSDefaultUpdateManyMutationInput, Prisma.OTSDefaultUncheckedUpdateManyWithoutPayOfficeInput>
+}
+
+export type OTSDefaultCreateManySumdanInput = {
+  id?: string
+  pagesize?: number
+  reset_day: number
+  max_dev: number
+  max_daily_get?: number
+  produkPembiayaanId?: string | null
+  jenisPembiayaanId: string
+  payOfficeId?: string
+}
+
+export type OTSDefaultUpdateWithoutSumdanInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
+  reset_day?: Prisma.IntFieldUpdateOperationsInput | number
+  max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
+  ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneWithoutOtsdefaultsNestedInput
+  JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
+  PayOffice?: Prisma.PayOfficeUpdateOneRequiredWithoutOtsdefaultsNestedInput
+}
+
+export type OTSDefaultUncheckedUpdateWithoutSumdanInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
+  reset_day?: Prisma.IntFieldUpdateOperationsInput | number
+  max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
+  produkPembiayaanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  payOfficeId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type OTSDefaultUncheckedUpdateManyWithoutSumdanInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
+  reset_day?: Prisma.IntFieldUpdateOperationsInput | number
+  max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
+  produkPembiayaanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  payOfficeId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
 export type OTSDefaultCreateManyProdukPembiayaanInput = {
   id?: string
   pagesize?: number
@@ -624,6 +906,8 @@ export type OTSDefaultCreateManyProdukPembiayaanInput = {
   max_dev: number
   max_daily_get?: number
   jenisPembiayaanId: string
+  payOfficeId?: string
+  sumdanId?: string
 }
 
 export type OTSDefaultUpdateWithoutProdukPembiayaanInput = {
@@ -633,6 +917,8 @@ export type OTSDefaultUpdateWithoutProdukPembiayaanInput = {
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
   max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
+  PayOffice?: Prisma.PayOfficeUpdateOneRequiredWithoutOtsdefaultsNestedInput
+  Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutOtsdefaultsNestedInput
 }
 
 export type OTSDefaultUncheckedUpdateWithoutProdukPembiayaanInput = {
@@ -642,6 +928,8 @@ export type OTSDefaultUncheckedUpdateWithoutProdukPembiayaanInput = {
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
   max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  payOfficeId?: Prisma.StringFieldUpdateOperationsInput | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type OTSDefaultUncheckedUpdateManyWithoutProdukPembiayaanInput = {
@@ -651,6 +939,8 @@ export type OTSDefaultUncheckedUpdateManyWithoutProdukPembiayaanInput = {
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
   max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
   jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  payOfficeId?: Prisma.StringFieldUpdateOperationsInput | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type OTSDefaultCreateManyJenisPembiayaanInput = {
@@ -659,7 +949,9 @@ export type OTSDefaultCreateManyJenisPembiayaanInput = {
   reset_day: number
   max_dev: number
   max_daily_get?: number
-  produkPembiayaanId: string
+  produkPembiayaanId?: string | null
+  payOfficeId?: string
+  sumdanId?: string
 }
 
 export type OTSDefaultUpdateWithoutJenisPembiayaanInput = {
@@ -668,7 +960,9 @@ export type OTSDefaultUpdateWithoutJenisPembiayaanInput = {
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
   max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
-  ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
+  ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneWithoutOtsdefaultsNestedInput
+  PayOffice?: Prisma.PayOfficeUpdateOneRequiredWithoutOtsdefaultsNestedInput
+  Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutOtsdefaultsNestedInput
 }
 
 export type OTSDefaultUncheckedUpdateWithoutJenisPembiayaanInput = {
@@ -677,7 +971,9 @@ export type OTSDefaultUncheckedUpdateWithoutJenisPembiayaanInput = {
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
   max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
-  produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  produkPembiayaanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  payOfficeId?: Prisma.StringFieldUpdateOperationsInput | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type OTSDefaultUncheckedUpdateManyWithoutJenisPembiayaanInput = {
@@ -686,7 +982,53 @@ export type OTSDefaultUncheckedUpdateManyWithoutJenisPembiayaanInput = {
   reset_day?: Prisma.IntFieldUpdateOperationsInput | number
   max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
   max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
-  produkPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  produkPembiayaanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  payOfficeId?: Prisma.StringFieldUpdateOperationsInput | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type OTSDefaultCreateManyPayOfficeInput = {
+  id?: string
+  pagesize?: number
+  reset_day: number
+  max_dev: number
+  max_daily_get?: number
+  produkPembiayaanId?: string | null
+  jenisPembiayaanId: string
+  sumdanId?: string
+}
+
+export type OTSDefaultUpdateWithoutPayOfficeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
+  reset_day?: Prisma.IntFieldUpdateOperationsInput | number
+  max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
+  ProdukPembiayaan?: Prisma.ProdukPembiayaanUpdateOneWithoutOtsdefaultsNestedInput
+  JenisPembiayaan?: Prisma.JenisPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput
+  Sumdan?: Prisma.SumdanUpdateOneRequiredWithoutOtsdefaultsNestedInput
+}
+
+export type OTSDefaultUncheckedUpdateWithoutPayOfficeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
+  reset_day?: Prisma.IntFieldUpdateOperationsInput | number
+  max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
+  produkPembiayaanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type OTSDefaultUncheckedUpdateManyWithoutPayOfficeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
+  reset_day?: Prisma.IntFieldUpdateOperationsInput | number
+  max_dev?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_daily_get?: Prisma.IntFieldUpdateOperationsInput | number
+  produkPembiayaanId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jenisPembiayaanId?: Prisma.StringFieldUpdateOperationsInput | string
+  sumdanId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -699,8 +1041,12 @@ export type OTSDefaultSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   max_daily_get?: boolean
   produkPembiayaanId?: boolean
   jenisPembiayaanId?: boolean
-  ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
+  payOfficeId?: boolean
+  sumdanId?: boolean
+  ProdukPembiayaan?: boolean | Prisma.OTSDefault$ProdukPembiayaanArgs<ExtArgs>
   JenisPembiayaan?: boolean | Prisma.JenisPembiayaanDefaultArgs<ExtArgs>
+  PayOffice?: boolean | Prisma.PayOfficeDefaultArgs<ExtArgs>
+  Sumdan?: boolean | Prisma.SumdanDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["oTSDefault"]>
 
 
@@ -713,19 +1059,25 @@ export type OTSDefaultSelectScalar = {
   max_daily_get?: boolean
   produkPembiayaanId?: boolean
   jenisPembiayaanId?: boolean
+  payOfficeId?: boolean
+  sumdanId?: boolean
 }
 
-export type OTSDefaultOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "pagesize" | "reset_day" | "max_dev" | "max_daily_get" | "produkPembiayaanId" | "jenisPembiayaanId", ExtArgs["result"]["oTSDefault"]>
+export type OTSDefaultOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "pagesize" | "reset_day" | "max_dev" | "max_daily_get" | "produkPembiayaanId" | "jenisPembiayaanId" | "payOfficeId" | "sumdanId", ExtArgs["result"]["oTSDefault"]>
 export type OTSDefaultInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  ProdukPembiayaan?: boolean | Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>
+  ProdukPembiayaan?: boolean | Prisma.OTSDefault$ProdukPembiayaanArgs<ExtArgs>
   JenisPembiayaan?: boolean | Prisma.JenisPembiayaanDefaultArgs<ExtArgs>
+  PayOffice?: boolean | Prisma.PayOfficeDefaultArgs<ExtArgs>
+  Sumdan?: boolean | Prisma.SumdanDefaultArgs<ExtArgs>
 }
 
 export type $OTSDefaultPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "OTSDefault"
   objects: {
-    ProdukPembiayaan: Prisma.$ProdukPembiayaanPayload<ExtArgs>
+    ProdukPembiayaan: Prisma.$ProdukPembiayaanPayload<ExtArgs> | null
     JenisPembiayaan: Prisma.$JenisPembiayaanPayload<ExtArgs>
+    PayOffice: Prisma.$PayOfficePayload<ExtArgs>
+    Sumdan: Prisma.$SumdanPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -733,8 +1085,10 @@ export type $OTSDefaultPayload<ExtArgs extends runtime.Types.Extensions.Internal
     reset_day: number
     max_dev: number
     max_daily_get: number
-    produkPembiayaanId: string
+    produkPembiayaanId: string | null
     jenisPembiayaanId: string
+    payOfficeId: string
+    sumdanId: string
   }, ExtArgs["result"]["oTSDefault"]>
   composites: {}
 }
@@ -1075,8 +1429,10 @@ readonly fields: OTSDefaultFieldRefs;
  */
 export interface Prisma__OTSDefaultClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  ProdukPembiayaan<T extends Prisma.ProdukPembiayaanDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProdukPembiayaanDefaultArgs<ExtArgs>>): Prisma.Prisma__ProdukPembiayaanClient<runtime.Types.Result.GetResult<Prisma.$ProdukPembiayaanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  ProdukPembiayaan<T extends Prisma.OTSDefault$ProdukPembiayaanArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OTSDefault$ProdukPembiayaanArgs<ExtArgs>>): Prisma.Prisma__ProdukPembiayaanClient<runtime.Types.Result.GetResult<Prisma.$ProdukPembiayaanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   JenisPembiayaan<T extends Prisma.JenisPembiayaanDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.JenisPembiayaanDefaultArgs<ExtArgs>>): Prisma.Prisma__JenisPembiayaanClient<runtime.Types.Result.GetResult<Prisma.$JenisPembiayaanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  PayOffice<T extends Prisma.PayOfficeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PayOfficeDefaultArgs<ExtArgs>>): Prisma.Prisma__PayOfficeClient<runtime.Types.Result.GetResult<Prisma.$PayOfficePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  Sumdan<T extends Prisma.SumdanDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SumdanDefaultArgs<ExtArgs>>): Prisma.Prisma__SumdanClient<runtime.Types.Result.GetResult<Prisma.$SumdanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1113,6 +1469,8 @@ export interface OTSDefaultFieldRefs {
   readonly max_daily_get: Prisma.FieldRef<"OTSDefault", 'Int'>
   readonly produkPembiayaanId: Prisma.FieldRef<"OTSDefault", 'String'>
   readonly jenisPembiayaanId: Prisma.FieldRef<"OTSDefault", 'String'>
+  readonly payOfficeId: Prisma.FieldRef<"OTSDefault", 'String'>
+  readonly sumdanId: Prisma.FieldRef<"OTSDefault", 'String'>
 }
     
 
@@ -1458,6 +1816,25 @@ export type OTSDefaultDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Limit how many OTSDefaults to delete.
    */
   limit?: number
+}
+
+/**
+ * OTSDefault.ProdukPembiayaan
+ */
+export type OTSDefault$ProdukPembiayaanArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProdukPembiayaan
+   */
+  select?: Prisma.ProdukPembiayaanSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProdukPembiayaan
+   */
+  omit?: Prisma.ProdukPembiayaanOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProdukPembiayaanInclude<ExtArgs> | null
+  where?: Prisma.ProdukPembiayaanWhereInput
 }
 
 /**

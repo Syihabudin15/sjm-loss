@@ -609,7 +609,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "number",
                       value: data.c_adm_sumdan,
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, c_adm_sumdan: parseFloat(e) }),
                     }}
                   />
@@ -619,7 +619,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "text",
                       value: IDRFormat(data.c_account_sumdan || 0),
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, c_account_sumdan: IDRToNumber(e) }),
                     }}
                   />
@@ -629,7 +629,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "number",
                       value: data.c_provisi_sumdan,
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({
                           ...data,
                           c_provisi_sumdan: parseFloat(e || "0"),
@@ -642,7 +642,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "number",
                       value: data.dsr,
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, dsr: parseFloat(e) }),
                     }}
                   />
@@ -652,7 +652,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "text",
                       value: IDRFormat(Number(data.limit) || 0),
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({
                           ...data,
                           limit: BigInt(IDRToNumber(e || "0")),
@@ -665,7 +665,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "number",
                       value: data.c_margin,
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, c_margin: parseFloat(e) }),
                     }}
                   />
@@ -675,7 +675,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "number",
                       value: data.tbo,
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, tbo: parseInt(e) }),
                     }}
                   />
@@ -688,7 +688,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "number",
                       value: data.c_adm,
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, c_adm: parseFloat(e) }),
                     }}
                   />
@@ -698,7 +698,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "number",
                       value: IDRFormat(data.c_provisi),
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, c_provisi: IDRToNumber(e) }),
                     }}
                   />
@@ -708,7 +708,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "text",
                       value: IDRFormat(data.c_gov),
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, c_gov: IDRToNumber(e) }),
                     }}
                   />
@@ -718,7 +718,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "text",
                       value: IDRFormat(data.c_flagging),
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, c_flagging: IDRToNumber(e) }),
                     }}
                   />
@@ -728,7 +728,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "text",
                       value: IDRFormat(data.c_information),
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, c_information: IDRToNumber(e) }),
                     }}
                   />
@@ -748,7 +748,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "text",
                       value: IDRFormat(data.max_bpp),
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, max_bpp: IDRToNumber(e || "0") }),
                     }}
                   />
@@ -768,7 +768,7 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "text",
                       value: IDRFormat(data.c_ned),
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, c_ned: IDRToNumber(e || "0") }),
                     }}
                   />
@@ -778,8 +778,33 @@ function UpsertSumdan({
                       mode: "horizontal",
                       type: "text",
                       value: IDRFormat(data.rounded || 0),
-                      onChange: (e: any) =>
+                      onChange: (e: string) =>
                         setData({ ...data, rounded: IDRToNumber(e || "0") }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      label: "Izinkan SJM Notify",
+                      mode: "horizontal",
+                      type: "select",
+                      value: data.allow_bot,
+                      options: [
+                        { label: "Ya, Izinkan SJM Notify", value: true },
+                        { label: "Tidak, Izinkan SJM Notify", value: false },
+                      ],
+                      onChange: (e: boolean) =>
+                        setData({ ...data, allow_bot: e }),
+                    }}
+                  />
+                  <FormInput
+                    data={{
+                      label: "Pembulatan",
+                      mode: "horizontal",
+                      hidden: !data.allow_bot,
+                      type: "text",
+                      value: data.group_id,
+                      onChange: (e: string | null) =>
+                        setData({ ...data, group_id: e || null }),
                     }}
                   />
                 </div>
@@ -1417,6 +1442,8 @@ const defaultSumdan: ISumdan = {
   limit: BigInt(0),
 
   fronting: false,
+  allow_bot: false,
+  group_id: null,
   status: true,
   created_at: new Date(),
   updated_at: new Date(),

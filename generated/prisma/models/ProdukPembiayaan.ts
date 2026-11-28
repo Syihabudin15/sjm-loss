@@ -656,6 +656,11 @@ export type ProdukPembiayaanScalarRelationFilter = {
   isNot?: Prisma.ProdukPembiayaanWhereInput
 }
 
+export type ProdukPembiayaanNullableScalarRelationFilter = {
+  is?: Prisma.ProdukPembiayaanWhereInput | null
+  isNot?: Prisma.ProdukPembiayaanWhereInput | null
+}
+
 export type ProdukPembiayaanCreateNestedManyWithoutSumdanInput = {
   create?: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutSumdanInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutSumdanInput> | Prisma.ProdukPembiayaanCreateWithoutSumdanInput[] | Prisma.ProdukPembiayaanUncheckedCreateWithoutSumdanInput[]
   connectOrCreate?: Prisma.ProdukPembiayaanCreateOrConnectWithoutSumdanInput | Prisma.ProdukPembiayaanCreateOrConnectWithoutSumdanInput[]
@@ -736,10 +741,12 @@ export type ProdukPembiayaanCreateNestedOneWithoutOtsdefaultsInput = {
   connect?: Prisma.ProdukPembiayaanWhereUniqueInput
 }
 
-export type ProdukPembiayaanUpdateOneRequiredWithoutOtsdefaultsNestedInput = {
+export type ProdukPembiayaanUpdateOneWithoutOtsdefaultsNestedInput = {
   create?: Prisma.XOR<Prisma.ProdukPembiayaanCreateWithoutOtsdefaultsInput, Prisma.ProdukPembiayaanUncheckedCreateWithoutOtsdefaultsInput>
   connectOrCreate?: Prisma.ProdukPembiayaanCreateOrConnectWithoutOtsdefaultsInput
   upsert?: Prisma.ProdukPembiayaanUpsertWithoutOtsdefaultsInput
+  disconnect?: Prisma.ProdukPembiayaanWhereInput | boolean
+  delete?: Prisma.ProdukPembiayaanWhereInput | boolean
   connect?: Prisma.ProdukPembiayaanWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProdukPembiayaanUpdateToOneWithWhereWithoutOtsdefaultsInput, Prisma.ProdukPembiayaanUpdateWithoutOtsdefaultsInput>, Prisma.ProdukPembiayaanUncheckedUpdateWithoutOtsdefaultsInput>
 }

@@ -4,12 +4,21 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
-    const [data, jenis, sumdan] = await Promise.all([
+    const [data, jenis, sumdan, payOffice] = await Promise.all([
       prisma.oTSDefault.findFirst({
         orderBy: { id: "asc" },
         include: {
           ProdukPembiayaan: { include: { Sumdan: true } },
           JenisPembiayaan: true,
+          PayOffice: true,
+          Sumdan: {
+            include: {
+              ProdukPembiayaans: {
+                where: { status: true },
+                orderBy: { name: "asc" },
+              },
+            },
+          },
         },
       }),
       prisma.jenisPembiayaan.findMany({
@@ -26,9 +35,19 @@ export const GET = async () => {
           },
         },
       }),
+      prisma.payOffice.findMany({
+        where: { status: true },
+        orderBy: { name: "asc" },
+        select: { id: true, name: true, code: true },
+      }),
     ]);
     return NextResponse.json(
-      { data: serializeForApi(data), jenis, sumdan: serializeForApi(sumdan) },
+      {
+        data: serializeForApi(data),
+        jenis,
+        sumdan: serializeForApi(sumdan),
+        payOffice,
+      },
       { status: 200 },
     );
   } catch (error) {
@@ -65,8 +84,14 @@ export const PUT = async (request: NextRequest) => {
     max_dev,
     max_daily_get,
     produkPembiayaanId,
+    sumdanId,
+    payOfficeId,
     jenisPembiayaanId,
   } = values;
+  const productId =
+    typeof produkPembiayaanId === "string" && produkPembiayaanId.trim()
+      ? produkPembiayaanId.trim()
+      : null;
 
   if (
     typeof pagesize !== "number" ||
@@ -82,8 +107,13 @@ export const PUT = async (request: NextRequest) => {
     typeof max_daily_get !== "number" ||
     !Number.isInteger(max_daily_get) ||
     max_daily_get < 1 ||
-    typeof produkPembiayaanId !== "string" ||
-    !produkPembiayaanId ||
+    (produkPembiayaanId !== undefined &&
+      produkPembiayaanId !== null &&
+      typeof produkPembiayaanId !== "string") ||
+    typeof sumdanId !== "string" ||
+    !sumdanId ||
+    typeof payOfficeId !== "string" ||
+    !payOfficeId ||
     typeof jenisPembiayaanId !== "string" ||
     !jenisPembiayaanId
   ) {
@@ -94,24 +124,37 @@ export const PUT = async (request: NextRequest) => {
   }
 
   try {
-    const [product, jenis] = await Promise.all([
-      prisma.produkPembiayaan.findFirst({
-        where: {
-          id: produkPembiayaanId,
-          status: true,
-          Sumdan: { status: true },
-        },
+    const [sumdan, payOffice, jenis, product] = await Promise.all([
+      prisma.sumdan.findFirst({
+        where: { id: sumdanId, status: true, fronting: false },
+        select: { id: true },
+      }),
+      prisma.payOffice.findFirst({
+        where: { id: payOfficeId, status: true },
         select: { id: true },
       }),
       prisma.jenisPembiayaan.findFirst({
         where: { id: jenisPembiayaanId, status: true },
         select: { id: true },
       }),
+      productId
+        ? prisma.produkPembiayaan.findFirst({
+            where: {
+              id: productId,
+              sumdanId,
+              status: true,
+              Sumdan: { status: true, fronting: false },
+            },
+            select: { id: true },
+          })
+        : Promise.resolve(null),
     ]);
 
-    if (!product || !jenis) {
+    if (!sumdan || !payOffice || !jenis || (productId && !product)) {
       return NextResponse.json(
-        { msg: "Produk atau jenis pembiayaan tidak tersedia." },
+        {
+          msg: "Sumdan, kantor bayar, jenis, atau produk pembiayaan tidak tersedia atau tidak sesuai.",
+        },
         { status: 400 },
       );
     }
@@ -121,7 +164,9 @@ export const PUT = async (request: NextRequest) => {
       reset_day,
       max_dev,
       max_daily_get,
-      produkPembiayaanId,
+      produkPembiayaanId: productId,
+      sumdanId,
+      payOfficeId,
       jenisPembiayaanId,
     };
     const existing = await prisma.oTSDefault.findFirst({
@@ -135,6 +180,15 @@ export const PUT = async (request: NextRequest) => {
           include: {
             ProdukPembiayaan: { include: { Sumdan: true } },
             JenisPembiayaan: true,
+            PayOffice: true,
+            Sumdan: {
+              include: {
+                ProdukPembiayaans: {
+                  where: { status: true },
+                  orderBy: { name: "asc" },
+                },
+              },
+            },
           },
         })
       : await prisma.oTSDefault.create({
@@ -142,6 +196,15 @@ export const PUT = async (request: NextRequest) => {
           include: {
             ProdukPembiayaan: { include: { Sumdan: true } },
             JenisPembiayaan: true,
+            PayOffice: true,
+            Sumdan: {
+              include: {
+                ProdukPembiayaans: {
+                  where: { status: true },
+                  orderBy: { name: "asc" },
+                },
+              },
+            },
           },
         });
 

@@ -65,8 +65,10 @@ enum ESettleStatus {
 enum EOTSStatus {
   PENDING
   PROSES
+  INREVIEW
   AKTIF
   HAPUS
+  LUNAS
 }
 
 model Role {
@@ -121,6 +123,8 @@ model Sumdan {
   file          String?   @db.Text
   sk_akad       String?   @db.Text
   fronting      Boolean   @default(false)
+  allow_bot     Boolean   @default(false)
+  group_id      String?
 
   status               Boolean               @default(true)
   created_at           DateTime              @default(now())
@@ -131,9 +135,11 @@ model Sumdan {
   Berkass              Berkas[]
   Jaminans             Jaminan[]
   SumdanAgentFrontings SumdanAgentFronting[]
+  otsdefaults          OTSDefault[]
 
   @@index([status, fronting, code, name])
   @@index([status, code, name])
+  @@index([group_id])
   @@map("sumdan")
 }
 
@@ -538,6 +544,7 @@ model PayOffice {
   PrevPayOffices Dapem[]        @relation("PrevPayOffice")
   Debiturs       Debitur[]
   dataSimulasis  DataSimulasi[]
+  otsdefaults    OTSDefault[]
 
   @@index([status, name, code])
   @@map("payoffice")
@@ -843,39 +850,42 @@ model OTSDefault {
   max_dev       Float
   max_daily_get Int    @default(3)
 
-  ProdukPembiayaan   ProdukPembiayaan @relation(fields: [produkPembiayaanId], references: [id])
-  JenisPembiayaan    JenisPembiayaan  @relation(fields: [jenisPembiayaanId], references: [id])
-  produkPembiayaanId String
+  ProdukPembiayaan   ProdukPembiayaan? @relation(fields: [produkPembiayaanId], references: [id])
+  JenisPembiayaan    JenisPembiayaan   @relation(fields: [jenisPembiayaanId], references: [id])
+  PayOffice          PayOffice         @relation(fields: [payOfficeId], references: [id])
+  Sumdan             Sumdan            @relation(fields: [sumdanId], references: [id])
+  produkPembiayaanId String?
   jenisPembiayaanId  String
+  payOfficeId        String            @default("PAY0001")
+  sumdanId           String            @default("MITRA0001")
 
   @@map("ots_default")
 }
 
 model OTSData {
-  id         String   @id @default(uuid())
-  get_date   DateTime
-  province   String?
-  city       String?
-  district   String?
-  ward       String?
-  pagesize   Int
-  count      Int
-  reset_date DateTime
+  id       String   @id @default(uuid())
+  get_date DateTime
+  province String?
+  city     String?
+  district String?
+  ward     String?
 
   User       User        @relation(fields: [userId], references: [id])
   userId     String
   Otsdetails OTSDetail[]
 
-  @@index([reset_date])
   @@index([get_date, userId])
   @@map("ots_data")
 }
 
 model OTSDetail {
-  id         String     @id @default(uuid())
-  desc       String?
-  ots_status EOTSStatus @default(PENDING)
-  files      Json       @default("[]")
+  id          String     @id @default(uuid())
+  desc        String?
+  ots_status  EOTSStatus @default(PENDING)
+  files       Json       @default("[]")
+  get_date    DateTime   @default(now())
+  reset_date  DateTime   @default(now())
+  reset_count Int        @default(0)
 
   OTSData      OTSData @relation(fields: [oTSDataId], references: [id])
   Debitur      Debitur @relation(fields: [debiturNopen], references: [nopen])
@@ -883,6 +893,7 @@ model OTSDetail {
   debiturNopen String
 
   @@index([ots_status])
+  @@index([reset_date])
   @@index([oTSDataId, ots_status, debiturNopen])
   @@map("ots_detail")
 }

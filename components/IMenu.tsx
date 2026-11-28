@@ -27,6 +27,7 @@ import {
   TagOutlined,
   TeamOutlined,
   TransactionOutlined,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import { Banknote, List } from "lucide-react";
 import Link from "next/link";
@@ -120,7 +121,7 @@ export const listMenuUI: IMenuType[] = [
         key: "/proses/verif",
         icon: <FileProtectOutlined />,
         needaccess: true,
-        availableAccess: ["read", "proses"],
+        availableAccess: ["read", "proses", "notify"],
       },
       {
         label: "Verifikasi SLIK",
@@ -379,6 +380,13 @@ export const listMenuUI: IMenuType[] = [
         needaccess: true,
         availableAccess: ["read", "write", "update", "delete"],
       },
+      {
+        label: "Whatsapp Group",
+        key: "/master/whatsapp",
+        icon: <WhatsAppOutlined />,
+        needaccess: true,
+        availableAccess: ["read"],
+      },
     ],
   },
   {
@@ -553,6 +561,10 @@ export const listMenuServer: { key: string; needaccess: boolean }[] = [
   },
   {
     key: "/master/insurance",
+    needaccess: true,
+  },
+  {
+    key: "/master/whatsapp",
     needaccess: true,
   },
   {

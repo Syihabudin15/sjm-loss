@@ -1417,6 +1417,8 @@ const defaultSumdan: ISumdan = {
   limit: BigInt(0),
 
   fronting: true,
+  allow_bot: false,
+  group_id: null,
   status: true,
   created_at: new Date(),
   updated_at: new Date(),

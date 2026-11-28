@@ -20,14 +20,27 @@ export type OTSDetailModel = runtime.Types.Result.DefaultSelection<Prisma.$OTSDe
 
 export type AggregateOTSDetail = {
   _count: OTSDetailCountAggregateOutputType | null
+  _avg: OTSDetailAvgAggregateOutputType | null
+  _sum: OTSDetailSumAggregateOutputType | null
   _min: OTSDetailMinAggregateOutputType | null
   _max: OTSDetailMaxAggregateOutputType | null
+}
+
+export type OTSDetailAvgAggregateOutputType = {
+  reset_count: number | null
+}
+
+export type OTSDetailSumAggregateOutputType = {
+  reset_count: number | null
 }
 
 export type OTSDetailMinAggregateOutputType = {
   id: string | null
   desc: string | null
   ots_status: $Enums.EOTSStatus | null
+  get_date: Date | null
+  reset_date: Date | null
+  reset_count: number | null
   oTSDataId: string | null
   debiturNopen: string | null
 }
@@ -36,6 +49,9 @@ export type OTSDetailMaxAggregateOutputType = {
   id: string | null
   desc: string | null
   ots_status: $Enums.EOTSStatus | null
+  get_date: Date | null
+  reset_date: Date | null
+  reset_count: number | null
   oTSDataId: string | null
   debiturNopen: string | null
 }
@@ -45,16 +61,30 @@ export type OTSDetailCountAggregateOutputType = {
   desc: number
   ots_status: number
   files: number
+  get_date: number
+  reset_date: number
+  reset_count: number
   oTSDataId: number
   debiturNopen: number
   _all: number
 }
 
 
+export type OTSDetailAvgAggregateInputType = {
+  reset_count?: true
+}
+
+export type OTSDetailSumAggregateInputType = {
+  reset_count?: true
+}
+
 export type OTSDetailMinAggregateInputType = {
   id?: true
   desc?: true
   ots_status?: true
+  get_date?: true
+  reset_date?: true
+  reset_count?: true
   oTSDataId?: true
   debiturNopen?: true
 }
@@ -63,6 +93,9 @@ export type OTSDetailMaxAggregateInputType = {
   id?: true
   desc?: true
   ots_status?: true
+  get_date?: true
+  reset_date?: true
+  reset_count?: true
   oTSDataId?: true
   debiturNopen?: true
 }
@@ -72,6 +105,9 @@ export type OTSDetailCountAggregateInputType = {
   desc?: true
   ots_status?: true
   files?: true
+  get_date?: true
+  reset_date?: true
+  reset_count?: true
   oTSDataId?: true
   debiturNopen?: true
   _all?: true
@@ -115,6 +151,18 @@ export type OTSDetailAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inte
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: OTSDetailAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: OTSDetailSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: OTSDetailMinAggregateInputType
@@ -145,6 +193,8 @@ export type OTSDetailGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   _count?: OTSDetailCountAggregateInputType | true
+  _avg?: OTSDetailAvgAggregateInputType
+  _sum?: OTSDetailSumAggregateInputType
   _min?: OTSDetailMinAggregateInputType
   _max?: OTSDetailMaxAggregateInputType
 }
@@ -154,9 +204,14 @@ export type OTSDetailGroupByOutputType = {
   desc: string | null
   ots_status: $Enums.EOTSStatus
   files: runtime.JsonValue
+  get_date: Date
+  reset_date: Date
+  reset_count: number
   oTSDataId: string
   debiturNopen: string
   _count: OTSDetailCountAggregateOutputType | null
+  _avg: OTSDetailAvgAggregateOutputType | null
+  _sum: OTSDetailSumAggregateOutputType | null
   _min: OTSDetailMinAggregateOutputType | null
   _max: OTSDetailMaxAggregateOutputType | null
 }
@@ -184,6 +239,9 @@ export type OTSDetailWhereInput = {
   desc?: Prisma.StringNullableFilter<"OTSDetail"> | string | null
   ots_status?: Prisma.EnumEOTSStatusFilter<"OTSDetail"> | $Enums.EOTSStatus
   files?: Prisma.JsonFilter<"OTSDetail">
+  get_date?: Prisma.DateTimeFilter<"OTSDetail"> | Date | string
+  reset_date?: Prisma.DateTimeFilter<"OTSDetail"> | Date | string
+  reset_count?: Prisma.IntFilter<"OTSDetail"> | number
   oTSDataId?: Prisma.StringFilter<"OTSDetail"> | string
   debiturNopen?: Prisma.StringFilter<"OTSDetail"> | string
   OTSData?: Prisma.XOR<Prisma.OTSDataScalarRelationFilter, Prisma.OTSDataWhereInput>
@@ -195,6 +253,9 @@ export type OTSDetailOrderByWithRelationInput = {
   desc?: Prisma.SortOrderInput | Prisma.SortOrder
   ots_status?: Prisma.SortOrder
   files?: Prisma.SortOrder
+  get_date?: Prisma.SortOrder
+  reset_date?: Prisma.SortOrder
+  reset_count?: Prisma.SortOrder
   oTSDataId?: Prisma.SortOrder
   debiturNopen?: Prisma.SortOrder
   OTSData?: Prisma.OTSDataOrderByWithRelationInput
@@ -210,6 +271,9 @@ export type OTSDetailWhereUniqueInput = Prisma.AtLeast<{
   desc?: Prisma.StringNullableFilter<"OTSDetail"> | string | null
   ots_status?: Prisma.EnumEOTSStatusFilter<"OTSDetail"> | $Enums.EOTSStatus
   files?: Prisma.JsonFilter<"OTSDetail">
+  get_date?: Prisma.DateTimeFilter<"OTSDetail"> | Date | string
+  reset_date?: Prisma.DateTimeFilter<"OTSDetail"> | Date | string
+  reset_count?: Prisma.IntFilter<"OTSDetail"> | number
   oTSDataId?: Prisma.StringFilter<"OTSDetail"> | string
   debiturNopen?: Prisma.StringFilter<"OTSDetail"> | string
   OTSData?: Prisma.XOR<Prisma.OTSDataScalarRelationFilter, Prisma.OTSDataWhereInput>
@@ -221,11 +285,16 @@ export type OTSDetailOrderByWithAggregationInput = {
   desc?: Prisma.SortOrderInput | Prisma.SortOrder
   ots_status?: Prisma.SortOrder
   files?: Prisma.SortOrder
+  get_date?: Prisma.SortOrder
+  reset_date?: Prisma.SortOrder
+  reset_count?: Prisma.SortOrder
   oTSDataId?: Prisma.SortOrder
   debiturNopen?: Prisma.SortOrder
   _count?: Prisma.OTSDetailCountOrderByAggregateInput
+  _avg?: Prisma.OTSDetailAvgOrderByAggregateInput
   _max?: Prisma.OTSDetailMaxOrderByAggregateInput
   _min?: Prisma.OTSDetailMinOrderByAggregateInput
+  _sum?: Prisma.OTSDetailSumOrderByAggregateInput
 }
 
 export type OTSDetailScalarWhereWithAggregatesInput = {
@@ -236,6 +305,9 @@ export type OTSDetailScalarWhereWithAggregatesInput = {
   desc?: Prisma.StringNullableWithAggregatesFilter<"OTSDetail"> | string | null
   ots_status?: Prisma.EnumEOTSStatusWithAggregatesFilter<"OTSDetail"> | $Enums.EOTSStatus
   files?: Prisma.JsonWithAggregatesFilter<"OTSDetail">
+  get_date?: Prisma.DateTimeWithAggregatesFilter<"OTSDetail"> | Date | string
+  reset_date?: Prisma.DateTimeWithAggregatesFilter<"OTSDetail"> | Date | string
+  reset_count?: Prisma.IntWithAggregatesFilter<"OTSDetail"> | number
   oTSDataId?: Prisma.StringWithAggregatesFilter<"OTSDetail"> | string
   debiturNopen?: Prisma.StringWithAggregatesFilter<"OTSDetail"> | string
 }
@@ -245,6 +317,9 @@ export type OTSDetailCreateInput = {
   desc?: string | null
   ots_status?: $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Date | string
+  reset_date?: Date | string
+  reset_count?: number
   OTSData: Prisma.OTSDataCreateNestedOneWithoutOtsdetailsInput
   Debitur: Prisma.DebiturCreateNestedOneWithoutOtsdetailsInput
 }
@@ -254,6 +329,9 @@ export type OTSDetailUncheckedCreateInput = {
   desc?: string | null
   ots_status?: $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Date | string
+  reset_date?: Date | string
+  reset_count?: number
   oTSDataId: string
   debiturNopen: string
 }
@@ -263,6 +341,9 @@ export type OTSDetailUpdateInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
   OTSData?: Prisma.OTSDataUpdateOneRequiredWithoutOtsdetailsNestedInput
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutOtsdetailsNestedInput
 }
@@ -272,6 +353,9 @@ export type OTSDetailUncheckedUpdateInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
   oTSDataId?: Prisma.StringFieldUpdateOperationsInput | string
   debiturNopen?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -281,6 +365,9 @@ export type OTSDetailCreateManyInput = {
   desc?: string | null
   ots_status?: $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Date | string
+  reset_date?: Date | string
+  reset_count?: number
   oTSDataId: string
   debiturNopen: string
 }
@@ -290,6 +377,9 @@ export type OTSDetailUpdateManyMutationInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type OTSDetailUncheckedUpdateManyInput = {
@@ -297,6 +387,9 @@ export type OTSDetailUncheckedUpdateManyInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
   oTSDataId?: Prisma.StringFieldUpdateOperationsInput | string
   debiturNopen?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -322,14 +415,24 @@ export type OTSDetailCountOrderByAggregateInput = {
   desc?: Prisma.SortOrder
   ots_status?: Prisma.SortOrder
   files?: Prisma.SortOrder
+  get_date?: Prisma.SortOrder
+  reset_date?: Prisma.SortOrder
+  reset_count?: Prisma.SortOrder
   oTSDataId?: Prisma.SortOrder
   debiturNopen?: Prisma.SortOrder
+}
+
+export type OTSDetailAvgOrderByAggregateInput = {
+  reset_count?: Prisma.SortOrder
 }
 
 export type OTSDetailMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   desc?: Prisma.SortOrder
   ots_status?: Prisma.SortOrder
+  get_date?: Prisma.SortOrder
+  reset_date?: Prisma.SortOrder
+  reset_count?: Prisma.SortOrder
   oTSDataId?: Prisma.SortOrder
   debiturNopen?: Prisma.SortOrder
 }
@@ -338,8 +441,15 @@ export type OTSDetailMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   desc?: Prisma.SortOrder
   ots_status?: Prisma.SortOrder
+  get_date?: Prisma.SortOrder
+  reset_date?: Prisma.SortOrder
+  reset_count?: Prisma.SortOrder
   oTSDataId?: Prisma.SortOrder
   debiturNopen?: Prisma.SortOrder
+}
+
+export type OTSDetailSumOrderByAggregateInput = {
+  reset_count?: Prisma.SortOrder
 }
 
 export type OTSDetailCreateNestedManyWithoutDebiturInput = {
@@ -435,6 +545,9 @@ export type OTSDetailCreateWithoutDebiturInput = {
   desc?: string | null
   ots_status?: $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Date | string
+  reset_date?: Date | string
+  reset_count?: number
   OTSData: Prisma.OTSDataCreateNestedOneWithoutOtsdetailsInput
 }
 
@@ -443,6 +556,9 @@ export type OTSDetailUncheckedCreateWithoutDebiturInput = {
   desc?: string | null
   ots_status?: $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Date | string
+  reset_date?: Date | string
+  reset_count?: number
   oTSDataId: string
 }
 
@@ -480,6 +596,9 @@ export type OTSDetailScalarWhereInput = {
   desc?: Prisma.StringNullableFilter<"OTSDetail"> | string | null
   ots_status?: Prisma.EnumEOTSStatusFilter<"OTSDetail"> | $Enums.EOTSStatus
   files?: Prisma.JsonFilter<"OTSDetail">
+  get_date?: Prisma.DateTimeFilter<"OTSDetail"> | Date | string
+  reset_date?: Prisma.DateTimeFilter<"OTSDetail"> | Date | string
+  reset_count?: Prisma.IntFilter<"OTSDetail"> | number
   oTSDataId?: Prisma.StringFilter<"OTSDetail"> | string
   debiturNopen?: Prisma.StringFilter<"OTSDetail"> | string
 }
@@ -489,6 +608,9 @@ export type OTSDetailCreateWithoutOTSDataInput = {
   desc?: string | null
   ots_status?: $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Date | string
+  reset_date?: Date | string
+  reset_count?: number
   Debitur: Prisma.DebiturCreateNestedOneWithoutOtsdetailsInput
 }
 
@@ -497,6 +619,9 @@ export type OTSDetailUncheckedCreateWithoutOTSDataInput = {
   desc?: string | null
   ots_status?: $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Date | string
+  reset_date?: Date | string
+  reset_count?: number
   debiturNopen: string
 }
 
@@ -531,6 +656,9 @@ export type OTSDetailCreateManyDebiturInput = {
   desc?: string | null
   ots_status?: $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Date | string
+  reset_date?: Date | string
+  reset_count?: number
   oTSDataId: string
 }
 
@@ -539,6 +667,9 @@ export type OTSDetailUpdateWithoutDebiturInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
   OTSData?: Prisma.OTSDataUpdateOneRequiredWithoutOtsdetailsNestedInput
 }
 
@@ -547,6 +678,9 @@ export type OTSDetailUncheckedUpdateWithoutDebiturInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
   oTSDataId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -555,6 +689,9 @@ export type OTSDetailUncheckedUpdateManyWithoutDebiturInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
   oTSDataId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -563,6 +700,9 @@ export type OTSDetailCreateManyOTSDataInput = {
   desc?: string | null
   ots_status?: $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Date | string
+  reset_date?: Date | string
+  reset_count?: number
   debiturNopen: string
 }
 
@@ -571,6 +711,9 @@ export type OTSDetailUpdateWithoutOTSDataInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
   Debitur?: Prisma.DebiturUpdateOneRequiredWithoutOtsdetailsNestedInput
 }
 
@@ -579,6 +722,9 @@ export type OTSDetailUncheckedUpdateWithoutOTSDataInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
   debiturNopen?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -587,6 +733,9 @@ export type OTSDetailUncheckedUpdateManyWithoutOTSDataInput = {
   desc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ots_status?: Prisma.EnumEOTSStatusFieldUpdateOperationsInput | $Enums.EOTSStatus
   files?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  get_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reset_count?: Prisma.IntFieldUpdateOperationsInput | number
   debiturNopen?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -597,6 +746,9 @@ export type OTSDetailSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   desc?: boolean
   ots_status?: boolean
   files?: boolean
+  get_date?: boolean
+  reset_date?: boolean
+  reset_count?: boolean
   oTSDataId?: boolean
   debiturNopen?: boolean
   OTSData?: boolean | Prisma.OTSDataDefaultArgs<ExtArgs>
@@ -610,11 +762,14 @@ export type OTSDetailSelectScalar = {
   desc?: boolean
   ots_status?: boolean
   files?: boolean
+  get_date?: boolean
+  reset_date?: boolean
+  reset_count?: boolean
   oTSDataId?: boolean
   debiturNopen?: boolean
 }
 
-export type OTSDetailOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "desc" | "ots_status" | "files" | "oTSDataId" | "debiturNopen", ExtArgs["result"]["oTSDetail"]>
+export type OTSDetailOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "desc" | "ots_status" | "files" | "get_date" | "reset_date" | "reset_count" | "oTSDataId" | "debiturNopen", ExtArgs["result"]["oTSDetail"]>
 export type OTSDetailInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   OTSData?: boolean | Prisma.OTSDataDefaultArgs<ExtArgs>
   Debitur?: boolean | Prisma.DebiturDefaultArgs<ExtArgs>
@@ -631,6 +786,9 @@ export type $OTSDetailPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     desc: string | null
     ots_status: $Enums.EOTSStatus
     files: runtime.JsonValue
+    get_date: Date
+    reset_date: Date
+    reset_count: number
     oTSDataId: string
     debiturNopen: string
   }, ExtArgs["result"]["oTSDetail"]>
@@ -1008,6 +1166,9 @@ export interface OTSDetailFieldRefs {
   readonly desc: Prisma.FieldRef<"OTSDetail", 'String'>
   readonly ots_status: Prisma.FieldRef<"OTSDetail", 'EOTSStatus'>
   readonly files: Prisma.FieldRef<"OTSDetail", 'Json'>
+  readonly get_date: Prisma.FieldRef<"OTSDetail", 'DateTime'>
+  readonly reset_date: Prisma.FieldRef<"OTSDetail", 'DateTime'>
+  readonly reset_count: Prisma.FieldRef<"OTSDetail", 'Int'>
   readonly oTSDataId: Prisma.FieldRef<"OTSDetail", 'String'>
   readonly debiturNopen: Prisma.FieldRef<"OTSDetail", 'String'>
 }

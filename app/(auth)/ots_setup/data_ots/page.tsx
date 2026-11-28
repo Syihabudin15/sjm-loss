@@ -242,7 +242,7 @@ export default function Page() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-5 p-3 sm:p-5">
-      <Card className="overflow-hidden rounded-2xl border-0 bg-gradient-to-r from-sky-50 via-white to-indigo-50 shadow-sm">
+      <Card className="overflow-hidden rounded-2xl border-0 bg-linear-to-r from-sky-50 via-white to-indigo-50 shadow-sm">
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
           <div>
             <div className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-blue-700">
@@ -434,13 +434,11 @@ export default function Page() {
                     <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-500">
                       <span>
                         <ClockCircleOutlined className="mr-1" />
-                        Ditarik{" "}
-                        {moment(record.OTSData.get_date).format("DD/MM/YYYY")}
+                        Ditarik {moment(record.get_date).format("DD/MM/YYYY")}
                       </span>
                       <span>
                         <ClockCircleOutlined className="mr-1 text-rose-500" />
-                        Reset{" "}
-                        {moment(record.OTSData.reset_date).format("DD/MM/YYYY")}
+                        Reset {moment(record.reset_date).format("DD/MM/YYYY")}
                       </span>
                       <span className="ml-auto">#{index + 1}</span>
                     </div>

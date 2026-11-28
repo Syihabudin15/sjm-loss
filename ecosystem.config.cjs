@@ -8,12 +8,41 @@ module.exports = {
       exec_mode: "cluster", // ⬅️ lebih hemat daripada cluster
       autorestart: true,
       watch: false,
-      max_memory_restart: "500M",
+      max_memory_restart: "768M",
       env: {
         NODE_ENV: "production",
         PORT: 6001,
         NEXT_SERVER_ACTIONS_ENCRYPTION_KEY:
           "VS5JQq6Nsu73wVZEF4j4BFGMEzymKgD3XNZ0eL+BDCU=",
+        WA_PORT: 6002,
+        WA_WORKER_SECRET: "wa-secret",
+      },
+    },
+    {
+      name: "sjm-wa-worker",
+      script: "wa-worker/index.mjs",
+      instances: 1,
+      exec_mode: "fork",
+      autorestart: true,
+      watch: false,
+      max_memory_restart: "300M",
+      env: {
+        NODE_ENV: "production",
+        WA_PORT: 6002,
+        WA_WORKER_SECRET: "wa-secret",
+      },
+    },
+    {
+      name: "sjm-cron-worker",
+      script: "cron-worker/index.mjs",
+      instances: 1,
+      exec_mode: "fork",
+      autorestart: true,
+      watch: false,
+      max_memory_restart: "300M",
+      env: {
+        NODE_ENV: "production",
+        TZ: "Asia/Jakarta",
       },
     },
   ],

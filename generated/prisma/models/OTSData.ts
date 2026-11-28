@@ -20,20 +20,8 @@ export type OTSDataModel = runtime.Types.Result.DefaultSelection<Prisma.$OTSData
 
 export type AggregateOTSData = {
   _count: OTSDataCountAggregateOutputType | null
-  _avg: OTSDataAvgAggregateOutputType | null
-  _sum: OTSDataSumAggregateOutputType | null
   _min: OTSDataMinAggregateOutputType | null
   _max: OTSDataMaxAggregateOutputType | null
-}
-
-export type OTSDataAvgAggregateOutputType = {
-  pagesize: number | null
-  count: number | null
-}
-
-export type OTSDataSumAggregateOutputType = {
-  pagesize: number | null
-  count: number | null
 }
 
 export type OTSDataMinAggregateOutputType = {
@@ -43,9 +31,6 @@ export type OTSDataMinAggregateOutputType = {
   city: string | null
   district: string | null
   ward: string | null
-  pagesize: number | null
-  count: number | null
-  reset_date: Date | null
   userId: string | null
 }
 
@@ -56,9 +41,6 @@ export type OTSDataMaxAggregateOutputType = {
   city: string | null
   district: string | null
   ward: string | null
-  pagesize: number | null
-  count: number | null
-  reset_date: Date | null
   userId: string | null
 }
 
@@ -69,23 +51,10 @@ export type OTSDataCountAggregateOutputType = {
   city: number
   district: number
   ward: number
-  pagesize: number
-  count: number
-  reset_date: number
   userId: number
   _all: number
 }
 
-
-export type OTSDataAvgAggregateInputType = {
-  pagesize?: true
-  count?: true
-}
-
-export type OTSDataSumAggregateInputType = {
-  pagesize?: true
-  count?: true
-}
 
 export type OTSDataMinAggregateInputType = {
   id?: true
@@ -94,9 +63,6 @@ export type OTSDataMinAggregateInputType = {
   city?: true
   district?: true
   ward?: true
-  pagesize?: true
-  count?: true
-  reset_date?: true
   userId?: true
 }
 
@@ -107,9 +73,6 @@ export type OTSDataMaxAggregateInputType = {
   city?: true
   district?: true
   ward?: true
-  pagesize?: true
-  count?: true
-  reset_date?: true
   userId?: true
 }
 
@@ -120,9 +83,6 @@ export type OTSDataCountAggregateInputType = {
   city?: true
   district?: true
   ward?: true
-  pagesize?: true
-  count?: true
-  reset_date?: true
   userId?: true
   _all?: true
 }
@@ -165,18 +125,6 @@ export type OTSDataAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: OTSDataAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: OTSDataSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: OTSDataMinAggregateInputType
@@ -207,8 +155,6 @@ export type OTSDataGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: OTSDataCountAggregateInputType | true
-  _avg?: OTSDataAvgAggregateInputType
-  _sum?: OTSDataSumAggregateInputType
   _min?: OTSDataMinAggregateInputType
   _max?: OTSDataMaxAggregateInputType
 }
@@ -220,13 +166,8 @@ export type OTSDataGroupByOutputType = {
   city: string | null
   district: string | null
   ward: string | null
-  pagesize: number
-  count: number
-  reset_date: Date
   userId: string
   _count: OTSDataCountAggregateOutputType | null
-  _avg: OTSDataAvgAggregateOutputType | null
-  _sum: OTSDataSumAggregateOutputType | null
   _min: OTSDataMinAggregateOutputType | null
   _max: OTSDataMaxAggregateOutputType | null
 }
@@ -256,9 +197,6 @@ export type OTSDataWhereInput = {
   city?: Prisma.StringNullableFilter<"OTSData"> | string | null
   district?: Prisma.StringNullableFilter<"OTSData"> | string | null
   ward?: Prisma.StringNullableFilter<"OTSData"> | string | null
-  pagesize?: Prisma.IntFilter<"OTSData"> | number
-  count?: Prisma.IntFilter<"OTSData"> | number
-  reset_date?: Prisma.DateTimeFilter<"OTSData"> | Date | string
   userId?: Prisma.StringFilter<"OTSData"> | string
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   Otsdetails?: Prisma.OTSDetailListRelationFilter
@@ -271,9 +209,6 @@ export type OTSDataOrderByWithRelationInput = {
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   district?: Prisma.SortOrderInput | Prisma.SortOrder
   ward?: Prisma.SortOrderInput | Prisma.SortOrder
-  pagesize?: Prisma.SortOrder
-  count?: Prisma.SortOrder
-  reset_date?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   User?: Prisma.UserOrderByWithRelationInput
   Otsdetails?: Prisma.OTSDetailOrderByRelationAggregateInput
@@ -290,9 +225,6 @@ export type OTSDataWhereUniqueInput = Prisma.AtLeast<{
   city?: Prisma.StringNullableFilter<"OTSData"> | string | null
   district?: Prisma.StringNullableFilter<"OTSData"> | string | null
   ward?: Prisma.StringNullableFilter<"OTSData"> | string | null
-  pagesize?: Prisma.IntFilter<"OTSData"> | number
-  count?: Prisma.IntFilter<"OTSData"> | number
-  reset_date?: Prisma.DateTimeFilter<"OTSData"> | Date | string
   userId?: Prisma.StringFilter<"OTSData"> | string
   User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   Otsdetails?: Prisma.OTSDetailListRelationFilter
@@ -305,15 +237,10 @@ export type OTSDataOrderByWithAggregationInput = {
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   district?: Prisma.SortOrderInput | Prisma.SortOrder
   ward?: Prisma.SortOrderInput | Prisma.SortOrder
-  pagesize?: Prisma.SortOrder
-  count?: Prisma.SortOrder
-  reset_date?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   _count?: Prisma.OTSDataCountOrderByAggregateInput
-  _avg?: Prisma.OTSDataAvgOrderByAggregateInput
   _max?: Prisma.OTSDataMaxOrderByAggregateInput
   _min?: Prisma.OTSDataMinOrderByAggregateInput
-  _sum?: Prisma.OTSDataSumOrderByAggregateInput
 }
 
 export type OTSDataScalarWhereWithAggregatesInput = {
@@ -326,9 +253,6 @@ export type OTSDataScalarWhereWithAggregatesInput = {
   city?: Prisma.StringNullableWithAggregatesFilter<"OTSData"> | string | null
   district?: Prisma.StringNullableWithAggregatesFilter<"OTSData"> | string | null
   ward?: Prisma.StringNullableWithAggregatesFilter<"OTSData"> | string | null
-  pagesize?: Prisma.IntWithAggregatesFilter<"OTSData"> | number
-  count?: Prisma.IntWithAggregatesFilter<"OTSData"> | number
-  reset_date?: Prisma.DateTimeWithAggregatesFilter<"OTSData"> | Date | string
   userId?: Prisma.StringWithAggregatesFilter<"OTSData"> | string
 }
 
@@ -339,9 +263,6 @@ export type OTSDataCreateInput = {
   city?: string | null
   district?: string | null
   ward?: string | null
-  pagesize: number
-  count: number
-  reset_date: Date | string
   User: Prisma.UserCreateNestedOneWithoutOtsdataInput
   Otsdetails?: Prisma.OTSDetailCreateNestedManyWithoutOTSDataInput
 }
@@ -353,9 +274,6 @@ export type OTSDataUncheckedCreateInput = {
   city?: string | null
   district?: string | null
   ward?: string | null
-  pagesize: number
-  count: number
-  reset_date: Date | string
   userId: string
   Otsdetails?: Prisma.OTSDetailUncheckedCreateNestedManyWithoutOTSDataInput
 }
@@ -367,9 +285,6 @@ export type OTSDataUpdateInput = {
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
-  count?: Prisma.IntFieldUpdateOperationsInput | number
-  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   User?: Prisma.UserUpdateOneRequiredWithoutOtsdataNestedInput
   Otsdetails?: Prisma.OTSDetailUpdateManyWithoutOTSDataNestedInput
 }
@@ -381,9 +296,6 @@ export type OTSDataUncheckedUpdateInput = {
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
-  count?: Prisma.IntFieldUpdateOperationsInput | number
-  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   Otsdetails?: Prisma.OTSDetailUncheckedUpdateManyWithoutOTSDataNestedInput
 }
@@ -395,9 +307,6 @@ export type OTSDataCreateManyInput = {
   city?: string | null
   district?: string | null
   ward?: string | null
-  pagesize: number
-  count: number
-  reset_date: Date | string
   userId: string
 }
 
@@ -408,9 +317,6 @@ export type OTSDataUpdateManyMutationInput = {
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
-  count?: Prisma.IntFieldUpdateOperationsInput | number
-  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OTSDataUncheckedUpdateManyInput = {
@@ -420,9 +326,6 @@ export type OTSDataUncheckedUpdateManyInput = {
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
-  count?: Prisma.IntFieldUpdateOperationsInput | number
-  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -449,15 +352,7 @@ export type OTSDataCountOrderByAggregateInput = {
   city?: Prisma.SortOrder
   district?: Prisma.SortOrder
   ward?: Prisma.SortOrder
-  pagesize?: Prisma.SortOrder
-  count?: Prisma.SortOrder
-  reset_date?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-}
-
-export type OTSDataAvgOrderByAggregateInput = {
-  pagesize?: Prisma.SortOrder
-  count?: Prisma.SortOrder
 }
 
 export type OTSDataMaxOrderByAggregateInput = {
@@ -467,9 +362,6 @@ export type OTSDataMaxOrderByAggregateInput = {
   city?: Prisma.SortOrder
   district?: Prisma.SortOrder
   ward?: Prisma.SortOrder
-  pagesize?: Prisma.SortOrder
-  count?: Prisma.SortOrder
-  reset_date?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
@@ -480,15 +372,7 @@ export type OTSDataMinOrderByAggregateInput = {
   city?: Prisma.SortOrder
   district?: Prisma.SortOrder
   ward?: Prisma.SortOrder
-  pagesize?: Prisma.SortOrder
-  count?: Prisma.SortOrder
-  reset_date?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-}
-
-export type OTSDataSumOrderByAggregateInput = {
-  pagesize?: Prisma.SortOrder
-  count?: Prisma.SortOrder
 }
 
 export type OTSDataScalarRelationFilter = {
@@ -559,9 +443,6 @@ export type OTSDataCreateWithoutUserInput = {
   city?: string | null
   district?: string | null
   ward?: string | null
-  pagesize: number
-  count: number
-  reset_date: Date | string
   Otsdetails?: Prisma.OTSDetailCreateNestedManyWithoutOTSDataInput
 }
 
@@ -572,9 +453,6 @@ export type OTSDataUncheckedCreateWithoutUserInput = {
   city?: string | null
   district?: string | null
   ward?: string | null
-  pagesize: number
-  count: number
-  reset_date: Date | string
   Otsdetails?: Prisma.OTSDetailUncheckedCreateNestedManyWithoutOTSDataInput
 }
 
@@ -614,9 +492,6 @@ export type OTSDataScalarWhereInput = {
   city?: Prisma.StringNullableFilter<"OTSData"> | string | null
   district?: Prisma.StringNullableFilter<"OTSData"> | string | null
   ward?: Prisma.StringNullableFilter<"OTSData"> | string | null
-  pagesize?: Prisma.IntFilter<"OTSData"> | number
-  count?: Prisma.IntFilter<"OTSData"> | number
-  reset_date?: Prisma.DateTimeFilter<"OTSData"> | Date | string
   userId?: Prisma.StringFilter<"OTSData"> | string
 }
 
@@ -627,9 +502,6 @@ export type OTSDataCreateWithoutOtsdetailsInput = {
   city?: string | null
   district?: string | null
   ward?: string | null
-  pagesize: number
-  count: number
-  reset_date: Date | string
   User: Prisma.UserCreateNestedOneWithoutOtsdataInput
 }
 
@@ -640,9 +512,6 @@ export type OTSDataUncheckedCreateWithoutOtsdetailsInput = {
   city?: string | null
   district?: string | null
   ward?: string | null
-  pagesize: number
-  count: number
-  reset_date: Date | string
   userId: string
 }
 
@@ -669,9 +538,6 @@ export type OTSDataUpdateWithoutOtsdetailsInput = {
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
-  count?: Prisma.IntFieldUpdateOperationsInput | number
-  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   User?: Prisma.UserUpdateOneRequiredWithoutOtsdataNestedInput
 }
 
@@ -682,9 +548,6 @@ export type OTSDataUncheckedUpdateWithoutOtsdetailsInput = {
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
-  count?: Prisma.IntFieldUpdateOperationsInput | number
-  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -695,9 +558,6 @@ export type OTSDataCreateManyUserInput = {
   city?: string | null
   district?: string | null
   ward?: string | null
-  pagesize: number
-  count: number
-  reset_date: Date | string
 }
 
 export type OTSDataUpdateWithoutUserInput = {
@@ -707,9 +567,6 @@ export type OTSDataUpdateWithoutUserInput = {
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
-  count?: Prisma.IntFieldUpdateOperationsInput | number
-  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Otsdetails?: Prisma.OTSDetailUpdateManyWithoutOTSDataNestedInput
 }
 
@@ -720,9 +577,6 @@ export type OTSDataUncheckedUpdateWithoutUserInput = {
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
-  count?: Prisma.IntFieldUpdateOperationsInput | number
-  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Otsdetails?: Prisma.OTSDetailUncheckedUpdateManyWithoutOTSDataNestedInput
 }
 
@@ -733,9 +587,6 @@ export type OTSDataUncheckedUpdateManyWithoutUserInput = {
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ward?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pagesize?: Prisma.IntFieldUpdateOperationsInput | number
-  count?: Prisma.IntFieldUpdateOperationsInput | number
-  reset_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -776,9 +627,6 @@ export type OTSDataSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   city?: boolean
   district?: boolean
   ward?: boolean
-  pagesize?: boolean
-  count?: boolean
-  reset_date?: boolean
   userId?: boolean
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   Otsdetails?: boolean | Prisma.OTSData$OtsdetailsArgs<ExtArgs>
@@ -794,13 +642,10 @@ export type OTSDataSelectScalar = {
   city?: boolean
   district?: boolean
   ward?: boolean
-  pagesize?: boolean
-  count?: boolean
-  reset_date?: boolean
   userId?: boolean
 }
 
-export type OTSDataOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "get_date" | "province" | "city" | "district" | "ward" | "pagesize" | "count" | "reset_date" | "userId", ExtArgs["result"]["oTSData"]>
+export type OTSDataOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "get_date" | "province" | "city" | "district" | "ward" | "userId", ExtArgs["result"]["oTSData"]>
 export type OTSDataInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   Otsdetails?: boolean | Prisma.OTSData$OtsdetailsArgs<ExtArgs>
@@ -820,9 +665,6 @@ export type $OTSDataPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     city: string | null
     district: string | null
     ward: string | null
-    pagesize: number
-    count: number
-    reset_date: Date
     userId: string
   }, ExtArgs["result"]["oTSData"]>
   composites: {}
@@ -1201,9 +1043,6 @@ export interface OTSDataFieldRefs {
   readonly city: Prisma.FieldRef<"OTSData", 'String'>
   readonly district: Prisma.FieldRef<"OTSData", 'String'>
   readonly ward: Prisma.FieldRef<"OTSData", 'String'>
-  readonly pagesize: Prisma.FieldRef<"OTSData", 'Int'>
-  readonly count: Prisma.FieldRef<"OTSData", 'Int'>
-  readonly reset_date: Prisma.FieldRef<"OTSData", 'DateTime'>
   readonly userId: Prisma.FieldRef<"OTSData", 'String'>
 }
     

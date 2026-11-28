@@ -101,6 +101,8 @@ export type SumdanMinAggregateOutputType = {
   file: string | null
   sk_akad: string | null
   fronting: boolean | null
+  allow_bot: boolean | null
+  group_id: string | null
   status: boolean | null
   created_at: Date | null
   updated_at: Date | null
@@ -141,6 +143,8 @@ export type SumdanMaxAggregateOutputType = {
   file: string | null
   sk_akad: string | null
   fronting: boolean | null
+  allow_bot: boolean | null
+  group_id: string | null
   status: boolean | null
   created_at: Date | null
   updated_at: Date | null
@@ -181,6 +185,8 @@ export type SumdanCountAggregateOutputType = {
   file: number
   sk_akad: number
   fronting: number
+  allow_bot: number
+  group_id: number
   status: number
   created_at: number
   updated_at: number
@@ -263,6 +269,8 @@ export type SumdanMinAggregateInputType = {
   file?: true
   sk_akad?: true
   fronting?: true
+  allow_bot?: true
+  group_id?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -303,6 +311,8 @@ export type SumdanMaxAggregateInputType = {
   file?: true
   sk_akad?: true
   fronting?: true
+  allow_bot?: true
+  group_id?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -343,6 +353,8 @@ export type SumdanCountAggregateInputType = {
   file?: true
   sk_akad?: true
   fronting?: true
+  allow_bot?: true
+  group_id?: true
   status?: true
   created_at?: true
   updated_at?: true
@@ -470,6 +482,8 @@ export type SumdanGroupByOutputType = {
   file: string | null
   sk_akad: string | null
   fronting: boolean
+  allow_bot: boolean
+  group_id: string | null
   status: boolean
   created_at: Date
   updated_at: Date
@@ -533,6 +547,8 @@ export type SumdanWhereInput = {
   file?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   sk_akad?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   fronting?: Prisma.BoolFilter<"Sumdan"> | boolean
+  allow_bot?: Prisma.BoolFilter<"Sumdan"> | boolean
+  group_id?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   status?: Prisma.BoolFilter<"Sumdan"> | boolean
   created_at?: Prisma.DateTimeFilter<"Sumdan"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Sumdan"> | Date | string
@@ -542,6 +558,7 @@ export type SumdanWhereInput = {
   Berkass?: Prisma.BerkasListRelationFilter
   Jaminans?: Prisma.JaminanListRelationFilter
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingListRelationFilter
+  otsdefaults?: Prisma.OTSDefaultListRelationFilter
 }
 
 export type SumdanOrderByWithRelationInput = {
@@ -579,6 +596,8 @@ export type SumdanOrderByWithRelationInput = {
   file?: Prisma.SortOrderInput | Prisma.SortOrder
   sk_akad?: Prisma.SortOrderInput | Prisma.SortOrder
   fronting?: Prisma.SortOrder
+  allow_bot?: Prisma.SortOrder
+  group_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -588,6 +607,7 @@ export type SumdanOrderByWithRelationInput = {
   Berkass?: Prisma.BerkasOrderByRelationAggregateInput
   Jaminans?: Prisma.JaminanOrderByRelationAggregateInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingOrderByRelationAggregateInput
+  otsdefaults?: Prisma.OTSDefaultOrderByRelationAggregateInput
   _relevance?: Prisma.SumdanOrderByRelevanceInput
 }
 
@@ -629,6 +649,8 @@ export type SumdanWhereUniqueInput = Prisma.AtLeast<{
   file?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   sk_akad?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   fronting?: Prisma.BoolFilter<"Sumdan"> | boolean
+  allow_bot?: Prisma.BoolFilter<"Sumdan"> | boolean
+  group_id?: Prisma.StringNullableFilter<"Sumdan"> | string | null
   status?: Prisma.BoolFilter<"Sumdan"> | boolean
   created_at?: Prisma.DateTimeFilter<"Sumdan"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Sumdan"> | Date | string
@@ -638,6 +660,7 @@ export type SumdanWhereUniqueInput = Prisma.AtLeast<{
   Berkass?: Prisma.BerkasListRelationFilter
   Jaminans?: Prisma.JaminanListRelationFilter
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingListRelationFilter
+  otsdefaults?: Prisma.OTSDefaultListRelationFilter
 }, "id">
 
 export type SumdanOrderByWithAggregationInput = {
@@ -675,6 +698,8 @@ export type SumdanOrderByWithAggregationInput = {
   file?: Prisma.SortOrderInput | Prisma.SortOrder
   sk_akad?: Prisma.SortOrderInput | Prisma.SortOrder
   fronting?: Prisma.SortOrder
+  allow_bot?: Prisma.SortOrder
+  group_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -723,6 +748,8 @@ export type SumdanScalarWhereWithAggregatesInput = {
   file?: Prisma.StringNullableWithAggregatesFilter<"Sumdan"> | string | null
   sk_akad?: Prisma.StringNullableWithAggregatesFilter<"Sumdan"> | string | null
   fronting?: Prisma.BoolWithAggregatesFilter<"Sumdan"> | boolean
+  allow_bot?: Prisma.BoolWithAggregatesFilter<"Sumdan"> | boolean
+  group_id?: Prisma.StringNullableWithAggregatesFilter<"Sumdan"> | string | null
   status?: Prisma.BoolWithAggregatesFilter<"Sumdan"> | boolean
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Sumdan"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Sumdan"> | Date | string
@@ -763,6 +790,8 @@ export type SumdanCreateInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -772,6 +801,7 @@ export type SumdanCreateInput = {
   Berkass?: Prisma.BerkasCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanUncheckedCreateInput = {
@@ -809,6 +839,8 @@ export type SumdanUncheckedCreateInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -818,6 +850,7 @@ export type SumdanUncheckedCreateInput = {
   Berkass?: Prisma.BerkasUncheckedCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanUncheckedCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanUpdateInput = {
@@ -855,6 +888,8 @@ export type SumdanUpdateInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -864,6 +899,7 @@ export type SumdanUpdateInput = {
   Berkass?: Prisma.BerkasUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanUncheckedUpdateInput = {
@@ -901,6 +937,8 @@ export type SumdanUncheckedUpdateInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -910,6 +948,7 @@ export type SumdanUncheckedUpdateInput = {
   Berkass?: Prisma.BerkasUncheckedUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUncheckedUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanCreateManyInput = {
@@ -947,6 +986,8 @@ export type SumdanCreateManyInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -987,6 +1028,8 @@ export type SumdanUpdateManyMutationInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1027,6 +1070,8 @@ export type SumdanUncheckedUpdateManyInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1073,6 +1118,8 @@ export type SumdanCountOrderByAggregateInput = {
   file?: Prisma.SortOrder
   sk_akad?: Prisma.SortOrder
   fronting?: Prisma.SortOrder
+  allow_bot?: Prisma.SortOrder
+  group_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -1133,6 +1180,8 @@ export type SumdanMaxOrderByAggregateInput = {
   file?: Prisma.SortOrder
   sk_akad?: Prisma.SortOrder
   fronting?: Prisma.SortOrder
+  allow_bot?: Prisma.SortOrder
+  group_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -1173,6 +1222,8 @@ export type SumdanMinOrderByAggregateInput = {
   file?: Prisma.SortOrder
   sk_akad?: Prisma.SortOrder
   fronting?: Prisma.SortOrder
+  allow_bot?: Prisma.SortOrder
+  group_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -1326,6 +1377,20 @@ export type SumdanUpdateOneRequiredWithoutSumdanAgentFrontingsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SumdanUpdateToOneWithWhereWithoutSumdanAgentFrontingsInput, Prisma.SumdanUpdateWithoutSumdanAgentFrontingsInput>, Prisma.SumdanUncheckedUpdateWithoutSumdanAgentFrontingsInput>
 }
 
+export type SumdanCreateNestedOneWithoutOtsdefaultsInput = {
+  create?: Prisma.XOR<Prisma.SumdanCreateWithoutOtsdefaultsInput, Prisma.SumdanUncheckedCreateWithoutOtsdefaultsInput>
+  connectOrCreate?: Prisma.SumdanCreateOrConnectWithoutOtsdefaultsInput
+  connect?: Prisma.SumdanWhereUniqueInput
+}
+
+export type SumdanUpdateOneRequiredWithoutOtsdefaultsNestedInput = {
+  create?: Prisma.XOR<Prisma.SumdanCreateWithoutOtsdefaultsInput, Prisma.SumdanUncheckedCreateWithoutOtsdefaultsInput>
+  connectOrCreate?: Prisma.SumdanCreateOrConnectWithoutOtsdefaultsInput
+  upsert?: Prisma.SumdanUpsertWithoutOtsdefaultsInput
+  connect?: Prisma.SumdanWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SumdanUpdateToOneWithWhereWithoutOtsdefaultsInput, Prisma.SumdanUpdateWithoutOtsdefaultsInput>, Prisma.SumdanUncheckedUpdateWithoutOtsdefaultsInput>
+}
+
 export type SumdanCreateWithoutUsersInput = {
   id?: string
   name: string
@@ -1361,6 +1426,8 @@ export type SumdanCreateWithoutUsersInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1369,6 +1436,7 @@ export type SumdanCreateWithoutUsersInput = {
   Berkass?: Prisma.BerkasCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanUncheckedCreateWithoutUsersInput = {
@@ -1406,6 +1474,8 @@ export type SumdanUncheckedCreateWithoutUsersInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1414,6 +1484,7 @@ export type SumdanUncheckedCreateWithoutUsersInput = {
   Berkass?: Prisma.BerkasUncheckedCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanUncheckedCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanCreateOrConnectWithoutUsersInput = {
@@ -1467,6 +1538,8 @@ export type SumdanUpdateWithoutUsersInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1475,6 +1548,7 @@ export type SumdanUpdateWithoutUsersInput = {
   Berkass?: Prisma.BerkasUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanUncheckedUpdateWithoutUsersInput = {
@@ -1512,6 +1586,8 @@ export type SumdanUncheckedUpdateWithoutUsersInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1520,6 +1596,7 @@ export type SumdanUncheckedUpdateWithoutUsersInput = {
   Berkass?: Prisma.BerkasUncheckedUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUncheckedUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanCreateWithoutProdukPembiayaansInput = {
@@ -1557,6 +1634,8 @@ export type SumdanCreateWithoutProdukPembiayaansInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1565,6 +1644,7 @@ export type SumdanCreateWithoutProdukPembiayaansInput = {
   Berkass?: Prisma.BerkasCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanUncheckedCreateWithoutProdukPembiayaansInput = {
@@ -1602,6 +1682,8 @@ export type SumdanUncheckedCreateWithoutProdukPembiayaansInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1610,6 +1692,7 @@ export type SumdanUncheckedCreateWithoutProdukPembiayaansInput = {
   Berkass?: Prisma.BerkasUncheckedCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanUncheckedCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanCreateOrConnectWithoutProdukPembiayaansInput = {
@@ -1663,6 +1746,8 @@ export type SumdanUpdateWithoutProdukPembiayaansInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1671,6 +1756,7 @@ export type SumdanUpdateWithoutProdukPembiayaansInput = {
   Berkass?: Prisma.BerkasUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanUncheckedUpdateWithoutProdukPembiayaansInput = {
@@ -1708,6 +1794,8 @@ export type SumdanUncheckedUpdateWithoutProdukPembiayaansInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1716,6 +1804,7 @@ export type SumdanUncheckedUpdateWithoutProdukPembiayaansInput = {
   Berkass?: Prisma.BerkasUncheckedUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUncheckedUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanCreateWithoutDroppingsInput = {
@@ -1753,6 +1842,8 @@ export type SumdanCreateWithoutDroppingsInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1761,6 +1852,7 @@ export type SumdanCreateWithoutDroppingsInput = {
   Berkass?: Prisma.BerkasCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanUncheckedCreateWithoutDroppingsInput = {
@@ -1798,6 +1890,8 @@ export type SumdanUncheckedCreateWithoutDroppingsInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1806,6 +1900,7 @@ export type SumdanUncheckedCreateWithoutDroppingsInput = {
   Berkass?: Prisma.BerkasUncheckedCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanUncheckedCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanCreateOrConnectWithoutDroppingsInput = {
@@ -1859,6 +1954,8 @@ export type SumdanUpdateWithoutDroppingsInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1867,6 +1964,7 @@ export type SumdanUpdateWithoutDroppingsInput = {
   Berkass?: Prisma.BerkasUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanUncheckedUpdateWithoutDroppingsInput = {
@@ -1904,6 +2002,8 @@ export type SumdanUncheckedUpdateWithoutDroppingsInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1912,6 +2012,7 @@ export type SumdanUncheckedUpdateWithoutDroppingsInput = {
   Berkass?: Prisma.BerkasUncheckedUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUncheckedUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanCreateWithoutBerkassInput = {
@@ -1949,6 +2050,8 @@ export type SumdanCreateWithoutBerkassInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -1957,6 +2060,7 @@ export type SumdanCreateWithoutBerkassInput = {
   Droppings?: Prisma.DroppingCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanUncheckedCreateWithoutBerkassInput = {
@@ -1994,6 +2098,8 @@ export type SumdanUncheckedCreateWithoutBerkassInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2002,6 +2108,7 @@ export type SumdanUncheckedCreateWithoutBerkassInput = {
   Droppings?: Prisma.DroppingUncheckedCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanUncheckedCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanCreateOrConnectWithoutBerkassInput = {
@@ -2055,6 +2162,8 @@ export type SumdanUpdateWithoutBerkassInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2063,6 +2172,7 @@ export type SumdanUpdateWithoutBerkassInput = {
   Droppings?: Prisma.DroppingUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanUncheckedUpdateWithoutBerkassInput = {
@@ -2100,6 +2210,8 @@ export type SumdanUncheckedUpdateWithoutBerkassInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2108,6 +2220,7 @@ export type SumdanUncheckedUpdateWithoutBerkassInput = {
   Droppings?: Prisma.DroppingUncheckedUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUncheckedUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanCreateWithoutJaminansInput = {
@@ -2145,6 +2258,8 @@ export type SumdanCreateWithoutJaminansInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2153,6 +2268,7 @@ export type SumdanCreateWithoutJaminansInput = {
   Droppings?: Prisma.DroppingCreateNestedManyWithoutSumdanInput
   Berkass?: Prisma.BerkasCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanUncheckedCreateWithoutJaminansInput = {
@@ -2190,6 +2306,8 @@ export type SumdanUncheckedCreateWithoutJaminansInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2198,6 +2316,7 @@ export type SumdanUncheckedCreateWithoutJaminansInput = {
   Droppings?: Prisma.DroppingUncheckedCreateNestedManyWithoutSumdanInput
   Berkass?: Prisma.BerkasUncheckedCreateNestedManyWithoutSumdanInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanCreateOrConnectWithoutJaminansInput = {
@@ -2251,6 +2370,8 @@ export type SumdanUpdateWithoutJaminansInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2259,6 +2380,7 @@ export type SumdanUpdateWithoutJaminansInput = {
   Droppings?: Prisma.DroppingUpdateManyWithoutSumdanNestedInput
   Berkass?: Prisma.BerkasUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanUncheckedUpdateWithoutJaminansInput = {
@@ -2296,6 +2418,8 @@ export type SumdanUncheckedUpdateWithoutJaminansInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2304,6 +2428,7 @@ export type SumdanUncheckedUpdateWithoutJaminansInput = {
   Droppings?: Prisma.DroppingUncheckedUpdateManyWithoutSumdanNestedInput
   Berkass?: Prisma.BerkasUncheckedUpdateManyWithoutSumdanNestedInput
   SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanCreateWithoutSumdanAgentFrontingsInput = {
@@ -2341,6 +2466,8 @@ export type SumdanCreateWithoutSumdanAgentFrontingsInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2349,6 +2476,7 @@ export type SumdanCreateWithoutSumdanAgentFrontingsInput = {
   Droppings?: Prisma.DroppingCreateNestedManyWithoutSumdanInput
   Berkass?: Prisma.BerkasCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanUncheckedCreateWithoutSumdanAgentFrontingsInput = {
@@ -2386,6 +2514,8 @@ export type SumdanUncheckedCreateWithoutSumdanAgentFrontingsInput = {
   file?: string | null
   sk_akad?: string | null
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
   status?: boolean
   created_at?: Date | string
   updated_at?: Date | string
@@ -2394,6 +2524,7 @@ export type SumdanUncheckedCreateWithoutSumdanAgentFrontingsInput = {
   Droppings?: Prisma.DroppingUncheckedCreateNestedManyWithoutSumdanInput
   Berkass?: Prisma.BerkasUncheckedCreateNestedManyWithoutSumdanInput
   Jaminans?: Prisma.JaminanUncheckedCreateNestedManyWithoutSumdanInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedCreateNestedManyWithoutSumdanInput
 }
 
 export type SumdanCreateOrConnectWithoutSumdanAgentFrontingsInput = {
@@ -2447,6 +2578,8 @@ export type SumdanUpdateWithoutSumdanAgentFrontingsInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2455,6 +2588,7 @@ export type SumdanUpdateWithoutSumdanAgentFrontingsInput = {
   Droppings?: Prisma.DroppingUpdateManyWithoutSumdanNestedInput
   Berkass?: Prisma.BerkasUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUpdateManyWithoutSumdanNestedInput
 }
 
 export type SumdanUncheckedUpdateWithoutSumdanAgentFrontingsInput = {
@@ -2492,6 +2626,8 @@ export type SumdanUncheckedUpdateWithoutSumdanAgentFrontingsInput = {
   file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2500,6 +2636,215 @@ export type SumdanUncheckedUpdateWithoutSumdanAgentFrontingsInput = {
   Droppings?: Prisma.DroppingUncheckedUpdateManyWithoutSumdanNestedInput
   Berkass?: Prisma.BerkasUncheckedUpdateManyWithoutSumdanNestedInput
   Jaminans?: Prisma.JaminanUncheckedUpdateManyWithoutSumdanNestedInput
+  otsdefaults?: Prisma.OTSDefaultUncheckedUpdateManyWithoutSumdanNestedInput
+}
+
+export type SumdanCreateWithoutOtsdefaultsInput = {
+  id?: string
+  name: string
+  code: string
+  description?: string | null
+  logo?: string | null
+  address?: string | null
+  phone?: string | null
+  email?: string | null
+  tbo?: number
+  limit?: bigint | number
+  c_margin: number
+  c_adm_sumdan: number
+  c_account_sumdan: number
+  c_provisi_sumdan?: number
+  c_adm: number
+  c_provisi?: number
+  c_gov: number
+  c_stamps: number
+  c_flagging: number
+  c_information: number
+  c_ned?: number
+  fee_banpot?: number
+  max_bpp: number
+  rounded?: number
+  dsr: number
+  contract_no?: string | null
+  contract_no2?: string | null
+  contract_date?: Date | string | null
+  sk_no?: string | null
+  sk_date?: Date | string | null
+  pic?: string | null
+  file?: string | null
+  sk_akad?: string | null
+  fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Users?: Prisma.UserCreateNestedManyWithoutSumdanInput
+  ProdukPembiayaans?: Prisma.ProdukPembiayaanCreateNestedManyWithoutSumdanInput
+  Droppings?: Prisma.DroppingCreateNestedManyWithoutSumdanInput
+  Berkass?: Prisma.BerkasCreateNestedManyWithoutSumdanInput
+  Jaminans?: Prisma.JaminanCreateNestedManyWithoutSumdanInput
+  SumdanAgentFrontings?: Prisma.SumdanAgentFrontingCreateNestedManyWithoutSumdanInput
+}
+
+export type SumdanUncheckedCreateWithoutOtsdefaultsInput = {
+  id?: string
+  name: string
+  code: string
+  description?: string | null
+  logo?: string | null
+  address?: string | null
+  phone?: string | null
+  email?: string | null
+  tbo?: number
+  limit?: bigint | number
+  c_margin: number
+  c_adm_sumdan: number
+  c_account_sumdan: number
+  c_provisi_sumdan?: number
+  c_adm: number
+  c_provisi?: number
+  c_gov: number
+  c_stamps: number
+  c_flagging: number
+  c_information: number
+  c_ned?: number
+  fee_banpot?: number
+  max_bpp: number
+  rounded?: number
+  dsr: number
+  contract_no?: string | null
+  contract_no2?: string | null
+  contract_date?: Date | string | null
+  sk_no?: string | null
+  sk_date?: Date | string | null
+  pic?: string | null
+  file?: string | null
+  sk_akad?: string | null
+  fronting?: boolean
+  allow_bot?: boolean
+  group_id?: string | null
+  status?: boolean
+  created_at?: Date | string
+  updated_at?: Date | string
+  Users?: Prisma.UserUncheckedCreateNestedManyWithoutSumdanInput
+  ProdukPembiayaans?: Prisma.ProdukPembiayaanUncheckedCreateNestedManyWithoutSumdanInput
+  Droppings?: Prisma.DroppingUncheckedCreateNestedManyWithoutSumdanInput
+  Berkass?: Prisma.BerkasUncheckedCreateNestedManyWithoutSumdanInput
+  Jaminans?: Prisma.JaminanUncheckedCreateNestedManyWithoutSumdanInput
+  SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedCreateNestedManyWithoutSumdanInput
+}
+
+export type SumdanCreateOrConnectWithoutOtsdefaultsInput = {
+  where: Prisma.SumdanWhereUniqueInput
+  create: Prisma.XOR<Prisma.SumdanCreateWithoutOtsdefaultsInput, Prisma.SumdanUncheckedCreateWithoutOtsdefaultsInput>
+}
+
+export type SumdanUpsertWithoutOtsdefaultsInput = {
+  update: Prisma.XOR<Prisma.SumdanUpdateWithoutOtsdefaultsInput, Prisma.SumdanUncheckedUpdateWithoutOtsdefaultsInput>
+  create: Prisma.XOR<Prisma.SumdanCreateWithoutOtsdefaultsInput, Prisma.SumdanUncheckedCreateWithoutOtsdefaultsInput>
+  where?: Prisma.SumdanWhereInput
+}
+
+export type SumdanUpdateToOneWithWhereWithoutOtsdefaultsInput = {
+  where?: Prisma.SumdanWhereInput
+  data: Prisma.XOR<Prisma.SumdanUpdateWithoutOtsdefaultsInput, Prisma.SumdanUncheckedUpdateWithoutOtsdefaultsInput>
+}
+
+export type SumdanUpdateWithoutOtsdefaultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tbo?: Prisma.IntFieldUpdateOperationsInput | number
+  limit?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.IntFieldUpdateOperationsInput | number
+  c_stamps?: Prisma.IntFieldUpdateOperationsInput | number
+  c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
+  c_information?: Prisma.IntFieldUpdateOperationsInput | number
+  c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_bpp?: Prisma.IntFieldUpdateOperationsInput | number
+  rounded?: Prisma.IntFieldUpdateOperationsInput | number
+  dsr?: Prisma.FloatFieldUpdateOperationsInput | number
+  contract_no?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contract_no2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contract_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sk_no?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sk_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Users?: Prisma.UserUpdateManyWithoutSumdanNestedInput
+  ProdukPembiayaans?: Prisma.ProdukPembiayaanUpdateManyWithoutSumdanNestedInput
+  Droppings?: Prisma.DroppingUpdateManyWithoutSumdanNestedInput
+  Berkass?: Prisma.BerkasUpdateManyWithoutSumdanNestedInput
+  Jaminans?: Prisma.JaminanUpdateManyWithoutSumdanNestedInput
+  SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUpdateManyWithoutSumdanNestedInput
+}
+
+export type SumdanUncheckedUpdateWithoutOtsdefaultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tbo?: Prisma.IntFieldUpdateOperationsInput | number
+  limit?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  c_margin?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_account_sumdan?: Prisma.IntFieldUpdateOperationsInput | number
+  c_provisi_sumdan?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_adm?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_provisi?: Prisma.FloatFieldUpdateOperationsInput | number
+  c_gov?: Prisma.IntFieldUpdateOperationsInput | number
+  c_stamps?: Prisma.IntFieldUpdateOperationsInput | number
+  c_flagging?: Prisma.IntFieldUpdateOperationsInput | number
+  c_information?: Prisma.IntFieldUpdateOperationsInput | number
+  c_ned?: Prisma.IntFieldUpdateOperationsInput | number
+  fee_banpot?: Prisma.FloatFieldUpdateOperationsInput | number
+  max_bpp?: Prisma.IntFieldUpdateOperationsInput | number
+  rounded?: Prisma.IntFieldUpdateOperationsInput | number
+  dsr?: Prisma.FloatFieldUpdateOperationsInput | number
+  contract_no?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contract_no2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contract_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sk_no?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sk_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  pic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sk_akad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fronting?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  allow_bot?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  Users?: Prisma.UserUncheckedUpdateManyWithoutSumdanNestedInput
+  ProdukPembiayaans?: Prisma.ProdukPembiayaanUncheckedUpdateManyWithoutSumdanNestedInput
+  Droppings?: Prisma.DroppingUncheckedUpdateManyWithoutSumdanNestedInput
+  Berkass?: Prisma.BerkasUncheckedUpdateManyWithoutSumdanNestedInput
+  Jaminans?: Prisma.JaminanUncheckedUpdateManyWithoutSumdanNestedInput
+  SumdanAgentFrontings?: Prisma.SumdanAgentFrontingUncheckedUpdateManyWithoutSumdanNestedInput
 }
 
 
@@ -2514,6 +2859,7 @@ export type SumdanCountOutputType = {
   Berkass: number
   Jaminans: number
   SumdanAgentFrontings: number
+  otsdefaults: number
 }
 
 export type SumdanCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2523,6 +2869,7 @@ export type SumdanCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   Berkass?: boolean | SumdanCountOutputTypeCountBerkassArgs
   Jaminans?: boolean | SumdanCountOutputTypeCountJaminansArgs
   SumdanAgentFrontings?: boolean | SumdanCountOutputTypeCountSumdanAgentFrontingsArgs
+  otsdefaults?: boolean | SumdanCountOutputTypeCountOtsdefaultsArgs
 }
 
 /**
@@ -2577,6 +2924,13 @@ export type SumdanCountOutputTypeCountSumdanAgentFrontingsArgs<ExtArgs extends r
   where?: Prisma.SumdanAgentFrontingWhereInput
 }
 
+/**
+ * SumdanCountOutputType without action
+ */
+export type SumdanCountOutputTypeCountOtsdefaultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OTSDefaultWhereInput
+}
+
 
 export type SumdanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2613,6 +2967,8 @@ export type SumdanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   file?: boolean
   sk_akad?: boolean
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: boolean
   status?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -2622,6 +2978,7 @@ export type SumdanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   Berkass?: boolean | Prisma.Sumdan$BerkassArgs<ExtArgs>
   Jaminans?: boolean | Prisma.Sumdan$JaminansArgs<ExtArgs>
   SumdanAgentFrontings?: boolean | Prisma.Sumdan$SumdanAgentFrontingsArgs<ExtArgs>
+  otsdefaults?: boolean | Prisma.Sumdan$otsdefaultsArgs<ExtArgs>
   _count?: boolean | Prisma.SumdanCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sumdan"]>
 
@@ -2662,12 +3019,14 @@ export type SumdanSelectScalar = {
   file?: boolean
   sk_akad?: boolean
   fronting?: boolean
+  allow_bot?: boolean
+  group_id?: boolean
   status?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type SumdanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "description" | "logo" | "address" | "phone" | "email" | "tbo" | "limit" | "c_margin" | "c_adm_sumdan" | "c_account_sumdan" | "c_provisi_sumdan" | "c_adm" | "c_provisi" | "c_gov" | "c_stamps" | "c_flagging" | "c_information" | "c_ned" | "fee_banpot" | "max_bpp" | "rounded" | "dsr" | "contract_no" | "contract_no2" | "contract_date" | "sk_no" | "sk_date" | "pic" | "file" | "sk_akad" | "fronting" | "status" | "created_at" | "updated_at", ExtArgs["result"]["sumdan"]>
+export type SumdanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "description" | "logo" | "address" | "phone" | "email" | "tbo" | "limit" | "c_margin" | "c_adm_sumdan" | "c_account_sumdan" | "c_provisi_sumdan" | "c_adm" | "c_provisi" | "c_gov" | "c_stamps" | "c_flagging" | "c_information" | "c_ned" | "fee_banpot" | "max_bpp" | "rounded" | "dsr" | "contract_no" | "contract_no2" | "contract_date" | "sk_no" | "sk_date" | "pic" | "file" | "sk_akad" | "fronting" | "allow_bot" | "group_id" | "status" | "created_at" | "updated_at", ExtArgs["result"]["sumdan"]>
 export type SumdanInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Users?: boolean | Prisma.Sumdan$UsersArgs<ExtArgs>
   ProdukPembiayaans?: boolean | Prisma.Sumdan$ProdukPembiayaansArgs<ExtArgs>
@@ -2675,6 +3034,7 @@ export type SumdanInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   Berkass?: boolean | Prisma.Sumdan$BerkassArgs<ExtArgs>
   Jaminans?: boolean | Prisma.Sumdan$JaminansArgs<ExtArgs>
   SumdanAgentFrontings?: boolean | Prisma.Sumdan$SumdanAgentFrontingsArgs<ExtArgs>
+  otsdefaults?: boolean | Prisma.Sumdan$otsdefaultsArgs<ExtArgs>
   _count?: boolean | Prisma.SumdanCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -2687,6 +3047,7 @@ export type $SumdanPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     Berkass: Prisma.$BerkasPayload<ExtArgs>[]
     Jaminans: Prisma.$JaminanPayload<ExtArgs>[]
     SumdanAgentFrontings: Prisma.$SumdanAgentFrontingPayload<ExtArgs>[]
+    otsdefaults: Prisma.$OTSDefaultPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2723,6 +3084,8 @@ export type $SumdanPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     file: string | null
     sk_akad: string | null
     fronting: boolean
+    allow_bot: boolean
+    group_id: string | null
     status: boolean
     created_at: Date
     updated_at: Date
@@ -3072,6 +3435,7 @@ export interface Prisma__SumdanClient<T, Null = never, ExtArgs extends runtime.T
   Berkass<T extends Prisma.Sumdan$BerkassArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sumdan$BerkassArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BerkasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Jaminans<T extends Prisma.Sumdan$JaminansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sumdan$JaminansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JaminanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   SumdanAgentFrontings<T extends Prisma.Sumdan$SumdanAgentFrontingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sumdan$SumdanAgentFrontingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SumdanAgentFrontingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  otsdefaults<T extends Prisma.Sumdan$otsdefaultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sumdan$otsdefaultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OTSDefaultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3135,6 +3499,8 @@ export interface SumdanFieldRefs {
   readonly file: Prisma.FieldRef<"Sumdan", 'String'>
   readonly sk_akad: Prisma.FieldRef<"Sumdan", 'String'>
   readonly fronting: Prisma.FieldRef<"Sumdan", 'Boolean'>
+  readonly allow_bot: Prisma.FieldRef<"Sumdan", 'Boolean'>
+  readonly group_id: Prisma.FieldRef<"Sumdan", 'String'>
   readonly status: Prisma.FieldRef<"Sumdan", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"Sumdan", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Sumdan", 'DateTime'>
@@ -3627,6 +3993,30 @@ export type Sumdan$SumdanAgentFrontingsArgs<ExtArgs extends runtime.Types.Extens
   take?: number
   skip?: number
   distinct?: Prisma.SumdanAgentFrontingScalarFieldEnum | Prisma.SumdanAgentFrontingScalarFieldEnum[]
+}
+
+/**
+ * Sumdan.otsdefaults
+ */
+export type Sumdan$otsdefaultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OTSDefault
+   */
+  select?: Prisma.OTSDefaultSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OTSDefault
+   */
+  omit?: Prisma.OTSDefaultOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OTSDefaultInclude<ExtArgs> | null
+  where?: Prisma.OTSDefaultWhereInput
+  orderBy?: Prisma.OTSDefaultOrderByWithRelationInput | Prisma.OTSDefaultOrderByWithRelationInput[]
+  cursor?: Prisma.OTSDefaultWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OTSDefaultScalarFieldEnum | Prisma.OTSDefaultScalarFieldEnum[]
 }
 
 /**
