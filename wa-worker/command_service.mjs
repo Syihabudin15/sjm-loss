@@ -51,13 +51,27 @@ export async function handleCommandMessage(sock, msg, options = {}) {
       react: { text: "⏳", key: msg.key },
     });
 
-    const replyText = await executeCommand(command, {
+    const reply = await executeCommand(command, {
       appPort: options.appPort || 6001,
       chatJid,
       internalGroup,
+      workerSecret: options.workerSecret,
     });
 
-    await sock.sendMessage(chatJid, { text: replyText }, { quoted: msg });
+    let response;
+    if (typeof reply === "string") {
+      response = { text: reply };
+    } else if (
+      reply &&
+      Buffer.isBuffer(reply.image) &&
+      typeof reply.caption === "string"
+    ) {
+      response = { image: reply.image, caption: reply.caption };
+    } else {
+      throw new TypeError("Command menghasilkan respons yang tidak dikenal.");
+    }
+
+    await sock.sendMessage(chatJid, response, { quoted: msg });
     await sock.sendMessage(chatJid, {
       react: { text: "✅", key: msg.key },
     });

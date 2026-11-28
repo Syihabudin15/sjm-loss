@@ -8,7 +8,7 @@ const commandHandlers = new Map([
   ["@update_report", (_, context) => getReport("@update_report", context)],
   ["@pending_report", (_, context) => getReport("@pending_report", context)],
   ["@info", () => showInfo()],
-  ["@simulasi", (args) => simulate(args)],
+  ["@simulasi", (args, context) => simulate(args, context)],
 ]);
 
 export function parseCommand(text) {

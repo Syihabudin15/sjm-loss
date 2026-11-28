@@ -71,6 +71,7 @@ async function startWhatsApp() {
       await handleCommandMessage(sock, msg, {
         allowedGroups: config.allowedGroups,
         appPort: config.appPort,
+        workerSecret: config.secret,
       });
     }
   });

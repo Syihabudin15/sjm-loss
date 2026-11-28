@@ -1,17 +1,12 @@
 "use client";
 
-import {
-  GetDetailDapem,
-  GetFullAge,
-  GetMaxPlafond,
-  GetMaxTenor,
-  IDRFormat,
-} from "@/components/utils/PembiayaanUtil";
+import { GetFullAge, IDRFormat } from "@/components/utils/PembiayaanUtil";
 import { IOTSDefault, IOTSDetail } from "@/libs/IInterfaces";
+import { calculateOtsSimulation } from "@/libs/OtsSimulation";
 import { Alert, Button, Descriptions, Modal } from "antd";
 import { PrinterOutlined } from "@ant-design/icons";
 import moment from "moment";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 
 export const SimulasiAutomation = ({
   open,
@@ -27,71 +22,22 @@ export const SimulasiAutomation = ({
   const printRef = useRef<HTMLDivElement>(null);
   const jenis = appData.JenisPembiayaan;
   const simulationDate = record.OTSData.get_date;
-  const age = GetFullAge(record.Debitur.birthdate, simulationDate);
-  const eligibleProducts = (appData.Sumdan?.ProdukPembiayaans || []).filter(
-    (item) => age.year >= item.min_age && age.year < item.max_age,
-  );
   const configuredProduct = appData.ProdukPembiayaan;
-  const product =
-    configuredProduct &&
-    eligibleProducts.some((item) => item.id === configuredProduct.id)
-      ? configuredProduct
-      : (eligibleProducts[0] ?? null);
   const sumdan = appData.Sumdan;
-  const maxTenor = Math.max(
-    0,
-    Math.min(
-      product?.max_tenor || 0,
-      GetMaxTenor(product?.max_paid || 0, age.year, age.month),
-    ),
-  );
-  const maxInstallment = Math.max(
-    0,
-    ((record.Debitur.salary - 100000) * (sumdan?.dsr || 0)) / 100,
-  );
-  const plafond = Math.max(
-    0,
-    Math.min(
-      product?.max_plafond || 0,
-      maxTenor > 0
-        ? Math.trunc(
-            GetMaxPlafond(
-              (product?.c_margin || 0) + (product?.c_margin_sumdan || 0),
-              maxTenor,
-              maxInstallment,
-            ),
-          )
-        : 0,
-    ),
-  );
-  const calculation = useMemo(() => {
-    if (!product?.id || !jenis?.id || !sumdan || maxTenor < 1) return null;
-
-    return GetDetailDapem({
-      plafond,
-      tenor: maxTenor,
-      c_margin: product.c_margin,
-      c_margin_sumdan: product.c_margin_sumdan,
-      margin_type: product.margin_type,
-      rounded: sumdan.rounded,
-      c_ned: sumdan.c_ned,
-      c_adm_sumdan: sumdan.c_adm_sumdan,
-      c_provisi_sumdan: sumdan.c_provisi_sumdan,
-      c_insurance: product.c_insurance,
-      c_adm: sumdan.c_adm,
-      c_provisi: sumdan.c_provisi,
-      c_account_sumdan: sumdan.c_account_sumdan,
-      c_gov: sumdan.c_gov,
-      c_infomation: sumdan.c_information,
-      c_stamp: sumdan.c_stamps,
-      c_mutasi: jenis.c_mutasi,
-      c_fee_bpp: 0,
-      c_flagging: sumdan.c_flagging,
-      fee_banpot: sumdan.fee_banpot,
-      c_takeover: 0,
-      c_blokir: jenis.c_blokir,
-    });
-  }, [jenis, maxTenor, plafond, product, sumdan]);
+  const {
+    age,
+    product,
+    maxTenor,
+    plafond,
+    calculation,
+  } = calculateOtsSimulation({
+    birthdate: record.Debitur.birthdate,
+    simulationDate,
+    salary: record.Debitur.salary,
+    sumdan: appData.Sumdan,
+    jenis,
+    configuredProduct,
+  });
 
   const handleDownloadImage = async () => {
     if (!printRef.current) return;
