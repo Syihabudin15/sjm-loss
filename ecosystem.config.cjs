@@ -27,9 +27,12 @@ module.exports = {
       watch: false,
       max_memory_restart: "300M",
       env: {
+        PORT: 6001,
         NODE_ENV: "production",
         WA_PORT: 6002,
         WA_WORKER_SECRET: "wa-secret",
+        WA_DEFAULT_ID: "120363432282929126@g.us",
+        WA_GROUP_ALLOWED: "120363432282929126@g.us,120363406964279192@g.us",
       },
     },
     {

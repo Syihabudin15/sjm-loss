@@ -81,7 +81,7 @@ async function startWhatsApp() {
     for (const msg of messages) {
       await handleCommandMessage(sock, msg, {
         allowedGroup: (process.env.WA_GROUP_ALLOWED || "").split(","),
-        appPort: process.env.PORT || process.env.APP_PORT || "6001",
+        appPort: process.env.PORT || process.env.APP_PORT || 6001,
         // workerSecret: process.env.WA_WORKER_SECRET || "",
       });
     }

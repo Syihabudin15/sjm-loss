@@ -81,7 +81,7 @@ export async function handleCommandMessage(sock, msg, options = {}) {
         replyText =
           res.ok && data.msg
             ? data.msg
-            : res.msg || "❌ Maaf, permintaan gagal diproses oleh sistem.";
+            : data.msg || "❌ Maaf, permintaan gagal diproses oleh sistem.";
         break;
       }
     }
